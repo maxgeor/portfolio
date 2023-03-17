@@ -1,0 +1,15 @@
+---
+export interface Props {
+	href: string;
+	textColor: string;
+	bgColor: string;
+}
+
+const { href, textColor, bgColor } = Astro.props;
+---
+
+<div class={`${bgColor} p-12`}>
+	<div class={`${textColor} text-4xl leading-[48px] font-thin max-w-5xl`}>
+		<slot/>
+	</div>
+</div>

@@ -1,81 +1,64 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Tile from '../components/Tile.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Max Georgopoulos">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-black"
+			bgColor="bg-white"
+		>
+			Hey, Max here. I design and code. I've done Full-Stack Development at Wavy. Big cooker and fan of economics. I'm trying to figure out how to create the perfect environment to learn coding.
+		</Tile>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-white"
+			bgColor="bg-[#005e7a]"
+		>
+			At Wavy, I built and co-designed Polls.
+		</Tile>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-white"
+			bgColor="bg-[#005e7a]"
+		>
+			I also co-designed and built Custom Content.
+		</Tile>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-white"
+			bgColor="bg-blue-500"
+		>
+			I made a thing called <a href="formie.co">Formie</a>, a no code UI maker for smart contracts
+		</Tile>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-black"
+			bgColor="bg-white"
+		>
+			<div class="flex flex-col gap-y-12">
+				<p>I've made a few other things too</p>
+				<ul class="flex flex-col gap-y-6">
+					<li><a href="#">Scope Todo</a>, a todo widget for Figjam</li>
+					<li><a href="#">The Quest Board</a>, a bounty board for the Loot community</li>
+					<li><a href="#">Dissect Design</a>, a collection of design case studies</li>
+				</ul>
+			</div>
+		</Tile>
+		<Tile
+			href="https://docs.astro.build/"
+			textColor="text-black"
+			bgColor="bg-white"
+		>
+			<div class="flex flex-col gap-y-12">
+				<p>and I write a little bit</p>
+				<ul class="flex flex-col gap-y-6">
+					<li><a href="#">In defence of bad writing</a></li>
+					<li><a href="#">Yes, you can learn to code</a></li>
+				</ul>
+			</div>
+		</Tile>
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
