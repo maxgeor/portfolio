@@ -4,43 +4,43 @@ import Card from '../components/Card.astro';
 ---
 
 <Layout title="Max Georgopoulos">
-	<main class="flex flex-col gap-y-20 pb-48 max-w-5xl mx-auto" >
-		<header class="px-6 pt-16">
+	<main class="flex flex-col gap-y-24 pb-48 max-w-5xl mx-auto" >
+		<header class="px-6 pt-12">
 				<!-- <ul class="flex flex-col gap-y-1">
-					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Work</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Writing</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Random</li>
+					<li class="leading-[16px] text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">Work</li>
+					<li class="leading-[16px] text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">Writing</li>
+					<li class="leading-[16px] text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">Random</li>
 				</ul> -->
-				<h1 class="mb-3 leading-[20px] text-4xl italic tracking-tight">
+				<h1 class="mb-2 leading-6 text-4xl italic tracking-tight">
 					Max Georgopoulos
 				</h1>
-				<div class="flex gap-x-1.5 items-baseline font-ibm text-gray-500">
+				<div class="flex gap-x-1.5 items-baseline font-ibm text-[#918C88]">
 					<span>Frontend-developer</span> 
 					<span class="font-crimson italic text-lg h-3">&</span> 
 					<span>product designer</span> 
 				</div>
-					<!-- <div class="flex gap-x-1.5 text-gray-500 mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
+					<!-- <div class="flex gap-x-1.5 text-[#918C88] mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
 						<a href="" >
 							Email
 						</a>
-						<span class="text-gray-400">/</span>
+						<span class="text-stone-600">/</span>
 						<a href="" >
 							Twitter
 						</a>
-						<span class="text-gray-400">/</span>
+						<span class="text-stone-600">/</span>
 						<a href="" >
 							github
 						</a>
-						<span class="text-gray-400">/</span>
+						<span class="text-stone-600">/</span>
 						<a href="" >
 							dribbble
 						</a>
 					</div> -->
 		</header>
-		<!-- <div class="mx-6 pt-4 mb-6 border-t-[0.5px] border-gray-400">
+		<!-- <div class="mx-6 pt-4 mb-6 border-t-[0.5px] border-stone-600">
 			<h2 class="text-4xl">Work</h2>
 		</div> -->
-		<div class="flex gap-x-6 mx-6 overflow-x-scroll overflow-y-hidden">
+		<div class="flex flex-col md:flex-row overflow-x-scroll overflow-y-hidden -my-6">
 			<Card
 				href="/studies/memiori"
 				companyName="Client project"
@@ -61,42 +61,39 @@ import Card from '../components/Card.astro';
 				roles={["branding", "UI/UX design", "Frontend development"]}
 			/>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-3 ">
-			<h2 class="text-2xl col-span-3">Projects</h2>
+		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
+			<h2 class="text-2xl leading-6 col-span-3">Projects</h2>
 			<div class="flex col-span-4 ">
 				<table>
 					<tr>
 						<td>Scope Todo</td>
-						<td class="text-gray-500">Figma todow widget</td>
+						<td class="text-[#918C88]">Figma todow widget</td>
 					</tr>
 					<tr>
 						<td>Disect Design</td>
-						<td class="text-gray-500">Place to find and share product design case studies</td>
+						<td class="text-[#918C88]">Place to find and share product design case studies</td>
 					</tr>
 					<tr>
 						<td>Sayings, forgotten</td>
-						<td class="text-gray-500">Collection of saying who's meanings changed overtime</td>
+						<td class="text-[#918C88]">Collection of saying who's meanings changed overtime</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<!-- <div class="mx-6 pt-4 mt-24 mb-6 border-t-[0.5px] border-gray-400">
-			<h2 class="text-4xl">Writing</h2>
-		</div> -->
-		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-3">
-			<h2 class="text-2xl col-span-3">Writing</h2>
+		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
+			<h2 class="text-2xl leading-6 col-span-3">Writing</h2>
 			<div class="flex flex-col gap-y-2 col-span-4">
 				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
 				</a>
 				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
 				</a>
 				<a href="#" class="flex flex-col sm:flex-row  items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class="group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
 				</a>
 			</div>
 		</div>

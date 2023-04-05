@@ -3,9 +3,9 @@ const {frontmatter} = Astro.props;
 ---
 <div >
   <div class="flex h-48">
-    <div class="w-full bg-gray-500 h-full"></div>
-    <div class="w-full bg-gray-400 h-full"></div>
-    <div class="w-full bg-gray-300 h-full"></div>
+    <div class="w-full bg-[#918C88] h-full"></div>
+    <div class="w-full bg-stone-600 h-full"></div>
+    <div class="w-full bg-stone-500 h-full"></div>
     <div class="w-full bg-gray-200 h-full"></div>
   </div>
   <section class="p-6  md:p-9  ">
@@ -14,7 +14,7 @@ const {frontmatter} = Astro.props;
         <h1 class="italic leading-[28px] md:leading-[32px]  text-4xl md:text-5xl tracking-tight">
           {frontmatter.title}
         </h1>
-        <span class="leading-3 text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">
+        <span class="leading-4 text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">
           Case Study
         </span>
       </div>
@@ -30,23 +30,23 @@ const {frontmatter} = Astro.props;
           {frontmatter.company && (
             <tr>
               <td>Company</td>
-              <td class="text-gray-500">{frontmatter.company}</td>
+              <td class="text-[#918C88]">{frontmatter.company}</td>
             </tr>
           )}
           <tr>
             <td>Role</td>
-            <td class="text-gray-500">
+            <td class="text-[#918C88]">
               {frontmatter.roles.join(", ")}
             </td>
           </tr>
           <tr>
             <td>Tools</td>
-            <td class="text-gray-500">{frontmatter.tools.join(", ")}</td>
+            <td class="text-[#918C88]">{frontmatter.tools.join(", ")}</td>
           </tr>
           {frontmatter.collaborators && (
             <tr>
               <td><p>Collaborators</p></td>
-              <td class="text-gray-500">{frontmatter.roles.join(", ")}</td>
+              <td class="text-[#918C88]">{frontmatter.roles.join(", ")}</td>
             </tr>
           )}
         </table>
@@ -54,7 +54,7 @@ const {frontmatter} = Astro.props;
       </div>
     </div>
   </section>
-  <main class="max-w-prose text-lg text-gray-400">
+  <main class="max-w-prose text-lg text-stone-600">
     <span class="font-ornament">
       d
     </span>
