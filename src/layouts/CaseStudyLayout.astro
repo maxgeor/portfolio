@@ -2,20 +2,17 @@
 const {frontmatter} = Astro.props;
 ---
 <div class="relative flex flex-col">
-  <a href="/" class="h-16 w-16 -mt-[64px] bg-stone-800 outline-1 outline-white/10 rounded-full sticky top-6 right-6" ></a>
-  <div class="flex h-64">
+  <a href="/" class="h-12 w-12 -mt-[64px] bg-stone-800 outline-1 outline-white/10 rounded-full sticky top-6 left-6" ></a>
+  <div class="flex h-64 md:h-80">
     <div class="w-full bg-[#918C88] h-full"></div>
-    <div class="w-full bg-stone-600 h-full"></div>
-    <div class="w-full bg-stone-500 h-full"></div>
-    <div class="w-full bg-gray-200 h-full"></div>
   </div>
-  <section class="p-6 md:p-9 pb-0 mb-24">
-    <div class="flex flex-col gap-y-6 md:gap-y-9 ">
+  <section class="mb-12 mx-6 md:mx-9">
+    <div class="flex flex-col gap-y-6 md:gap-y-9 max-w-5xl mx-auto py-6 md:py-9 border-b border-stone-700">
       <div class="flex justify-between">
-        <h1 class="italic text-4xl md:text-5xl leading-[32px] tracking-tight">
+        <h1 class="italic text-4xl md:text-5xl leading-8 md:leading-8 tracking-tight">
           {frontmatter.title}
         </h1>
-        <span class="leading-4 text-[10px] font-ibm text-stone-400 uppercase tracking-wider ">
+        <span class="leading-4 text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">
           Case Study
         </span>
       </div>
@@ -52,31 +49,21 @@ const {frontmatter} = Astro.props;
       </div>
     </div>
   </section>
-  <article id="content" class="text-base mx-auto">
-    <span class="font-flowers ">d</span>
-    <slot />
-  </article>
+  <div class="mx-6 ">
+    <article id="content" class="md:text-base max-w-prose mx-auto w-full">
+      <slot />
+    </article>
+  </div>
 </div>
 
 <style is:inline>
   td {
     width: fit-content;
   }
-  article#content > * {
-    width: 100%;
-    max-width: 65ch;
-    margin: 0 auto;
-  }
-
-  article#content > img {
-    width: 100%;
-    max-width: calc(65ch + 48px);
-    margin: 0 auto;
-  }
 
   article#content > h2 {
     font-size: 2rem;
-    line-height: 2.25rem;
+    line-height: 2rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
   }
@@ -86,6 +73,10 @@ const {frontmatter} = Astro.props;
     margin-bottom: 1.5rem;
   }
   
+  article#content > p:first-child {
+    margin-top: 0;
+  }
+
   article#content > p:last-child {
     margin-bottom: 0;
   }

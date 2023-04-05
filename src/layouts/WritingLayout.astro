@@ -1,12 +1,13 @@
 ---
 const {frontmatter} = Astro.props;
 ---
-<div class="flex flex-col items-center gap-y-24 mx-6 pt-12">
-  <section class="flex flex-col items-center gap-y-6">
-    <h1 class="text-5xl tracking-tight">{frontmatter.title}</h1>
-    <p class="text-xs uppercase tracking-wider text-[#918C88]">{frontmatter.date}</p>
+<div class="relative flex flex-col items-center">
+  <a href="/" class="h-12 w-12 -mt-[64px] bg-stone-800 outline-1 outline-[#322e2d] rounded-full sticky top-6 left-1/2 -translate-x-1/2" ></a>
+  <section class="flex flex-col items-center bg-[#322e2d] px-6 pt-[112px] pb-12 w-full">
+    <h1 class="text-5xl tracking-tight mb-6 text-center">{frontmatter.title}</h1>
+    <p class="text-[10px] leading-3 uppercase tracking-wider text-stone-400">{frontmatter.date}</p>
   </section>
-  <article id="content" class="text-base mx-6">
+  <article id="content" class="text-base text-stone-400 mx-6 mt-12">
     <slot />
   </article>
 </div>
@@ -24,19 +25,22 @@ const {frontmatter} = Astro.props;
     margin: 0 auto;
   }
 
-  h2 {
+  article#content > h2 {
     font-size: 2rem;
     line-height: 2.25rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
   }
 
-  p {
+  article#content > p {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
   
-  p:last-child {
+  article#content > p:first-child {
+    margin-top: 0;
+  }
+  article#content > p:last-child {
     margin-bottom: 0;
   }
 </style>
