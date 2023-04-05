@@ -6,37 +6,49 @@ import Card from '../components/Card.astro';
 <Layout title="Max Georgopoulos">
 	<main class="pb-48" >
 		<header class="p-6 py-12 ">
-			<div class="flex justify-between gap-x-6">
-				<ul class="">
-					<li class="leading-[16px] text-[10px] font-ibm text-neutral-400 uppercase tracking-wider ">Work</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-neutral-400 uppercase tracking-wider ">Writing</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-neutral-400 uppercase tracking-wider ">Random</li>
+			<div class="flex justify-between gap-x-12">
+				<ul class="flex flex-col gap-y-1">
+					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Work</li>
+					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Writing</li>
+					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Random</li>
 				</ul>
 				<div class="text-right">
-					<h1 class="leading-[28px] md:leading-[36px] mb-4 text-4xl md:text-5xl italic tracking-tight">
+					<h1 class="leading-[32px] md:leading-[36px] mb-3 text-4xl md:text-5xl italic tracking-tight ml-4">
 						Max Georgopoulos
 					</h1>
-					<div class="flex gap-x-0.5 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm text-neutral-400 uppercase tracking-wider ">
-						<span>Frontend-developer +</span> 
-						<span>product designer +</span> 
-						<a href="#" class="text-neutral-300 underline  underline-offset-4 font-bold tracking-[2px] w-[13px] overflow-clip">...</a>
+					<div class="flex gap-x-1.5 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">
+						<span>Frontend-developer</span> 
+						<span class="font-crimson italic text-base h-4">&</span> 
+						<span>product designer</span> 
 					</div>
-					
+					<div class="flex gap-x-1.5 text-[#8c8c8c] mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
+						<a href="" >
+							<!-- <img src="/icons/mail.svg" class="w-5 h-5" alt="email"> -->
+							Email
+						</a>
+						<span class="text-neutral-600">/</span>
+						<a href="" >
+							<!-- <img src="/icons/twitter.svg" class="w-5 h-5" alt="twitter"> -->
+							Twitter
+						</a>
+						<span class="text-neutral-600">/</span>
+						<a href="" >
+							<!-- <img src="/icons/github.svg" class="w-5 h-5" alt="github"> -->
+							github
+						</a>
+						<span class="text-neutral-600">/</span>
+						<a href="" >
+							<!-- <img src="/icons/dribbble.svg" class="w-5 h-5" alt="dribbble"> -->
+							dribbble
+						</a>
+					</div>
 				</div>
 			</div>
-			<!-- <div class="mt-4">
-				<ul>
-					<li>I'm a guy who liks to code. I'm interested in a lotof stuff. Chat GPT made this whole site</li>
-					<li>I'm a guy who liks to code. I'm interested in a lotof stuff. Chat GPT made this whole site</li>
-					<li>I'm a guy who liks to code. I'm interested in a lotof stuff. Chat GPT made this whole site</li>
-				</ul>
-				<p class="text-small font-ibm">I'm a guy who liks to code. I'm interested in a lotof stuff. Chat GPT made this whole site</p>
-			</div> -->
 		</header>
 		<div class="mx-6 pt-4 mb-6 border-t-[0.5px] border-neutral-700">
 			<h2 class="text-4xl">Work</h2>
 		</div>
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-1">
 			<Card
 				href="/studies/memiori"
 				companyName="Client project"
@@ -44,12 +56,6 @@ import Card from '../components/Card.astro';
 				description="Redesigned note taking app"
 				roles={["branding", "Mobile design"]}
 			/>
-			<!-- <Card
-				companyName="Wavy"
-				title="Polls"
-				description="I built and co-designed Polls"
-				role="UI/UX design, Ruby on Rails"
-			/> -->
 			<Card
 				companyName="Wavy"
 				title="Polls"
@@ -62,19 +68,39 @@ import Card from '../components/Card.astro';
 				description="Designed & co-built a smart contract UI generator"
 				roles={["branding", "UI/UX design", "Frontend development"]}
 			/>
+			<div class="flex lg:items-center lg:justify-center m-6">
+				<table>
+					<tr>
+						<td>Scope Todo</td>
+						<td class="text-[#8c8c8c]">Figma todow widget</td>
+					</tr>
+					<tr>
+						<td>Disect Design</td>
+						<td class="text-[#8c8c8c]">Place to find and share product design case studies</td>
+					</tr>
+					<tr>
+						<td>Sayings, forgotten</td>
+						<td class="text-[#8c8c8c]">Collection of saying who's meanings changed overtime</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		<div class="mx-6 pt-4 mt-12 mb-6 border-t-[0.5px] border-neutral-700">
+		<div class="mx-6 pt-4 mt-24 mb-6 border-t-[0.5px] border-neutral-700">
 			<h2 class="text-4xl">Writing</h2>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-2 ">
-			<div class="flex flex-col gap-y-4 lg:col-start-2 mx-6">
-				<a href="#" class="flex items-baseline gap-x-3 group underline-none transition">
+			<div class="flex flex-col gap-y-3 lg:col-start-2 mx-6 lg:ml-0">
+				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-xs text-neutral-400">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
 				</a>
-				<a href="#" class="flex items-baseline gap-x-3 group underline-none transition">
+				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-xs text-neutral-400">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
+				</a>
+				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
+					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
+					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
 				</a>
 			</div>
 		</div>

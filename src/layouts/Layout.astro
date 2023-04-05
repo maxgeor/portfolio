@@ -26,4 +26,19 @@ const { title } = Astro.props;
 		font-family: "Crimson Text", serif;
 		font-style: italic;
 	}
+
+	tr > td {
+		padding-bottom: 12px;
+	}
+	
+	tr:last-child > td {
+		padding-bottom: 0;
+	}
+	tr > td:first-child {
+		padding-right: 24px;
+	}
+
+	td {
+		vertical-align: top;
+	}
 </style>
