@@ -1,27 +1,56 @@
 ---
 const {frontmatter} = Astro.props;
 ---
-<html class="bg-neutral-900">
-  <section class="bg-[#252525] p-6">
-    <div class="flex justify-between gap-x-6 gap-y-4 w-full">
-      <span class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">
-        Case Study
-      </span>
+
+<section class="bg-[#252525] p-6 py-12">
+  <div class="flex flex-col gap-y-24 max-w-5xl mx-auto">
+    <div class="flex justify-between ">
       <h1 class="italic leading-[28px] md:leading-[36px]  text-4xl md:text-5xl tracking-tight">
         {frontmatter.title}
       </h1>
+      <span class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">
+        Case Study
+      </span>
     </div>
-    <h2>{frontmatter.roles}</h2>
-    <p>{frontmatter.company}</p>
-    {frontmatter.bullets && (
-      <ul class="list-disc list-inside">
-        {frontmatter.bullets.map((bullet: string) => (
-          <li>{bullet}</li>
-        ))}
-      </ul>
-    )}
-  </section>
-  <main class="max-w-prose text-lg text-gray-400">
-    <slot />
-  </main>
-</html>
+    <div class="grid grid-cols-1 sm:grid-cols-2 w-full">
+        <table class="col-span-1">
+          {frontmatter.company && (
+            <tr>
+              <td>Company</td>
+              <td class="text-gray-500">{frontmatter.company}</td>
+            </tr>
+          )}
+          <tr>
+            <td>Role</td>
+            <td class="text-gray-500">{frontmatter.roles.join(", ")}</td>
+          </tr>
+          <tr>
+            <td>Tools</td>
+            <td class="text-gray-500">{frontmatter.tools.join(", ")}</td>
+          </tr>
+          {frontmatter.collaborators && (
+            <tr>
+              <td>collaborators</td>
+              <td class="text-gray-500">{frontmatter.roles.join(", ")}</td>
+            </tr>
+          )}
+        </table>
+        {frontmatter.bullets && (
+          <ul class="col-span-1 list-disc list-inside">
+          {frontmatter.bullets.map((bullet: string) => (
+            <li>{bullet}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+  </div>
+</section>
+<main class="max-w-prose text-lg text-gray-400">
+  <slot />
+</main>
+
+<style>
+	tr > td {
+		padding-bottom: 0;
+	}
+</style>

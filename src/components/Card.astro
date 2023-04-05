@@ -21,21 +21,19 @@ const {
 } = Astro.props;
 ---
 
-<a href={href || '#'} class={`relative bg-[#252525] hover:bg-[#2a2a2a] p-6 pt-16 md:pt-6 hover:shadow-lg transform hover:scale-[100.5%] transition duration-[500ms] ease-out`}>
-	<img src="Frame-168.png" alt="" class="max-h-[300px] w-auto "/>
-	<div class="text-right mt-12">
-		<p class={`absolute top-6 right-6 text-[#8c8c8c] leading-[16px] font-ibm uppercase text-[10px] tracking-wider`}>{companyName}</p>
-		<h2 class={`text-3xl leading-[20px] italic mb-3 `}>{title}</h2>
-		<p class={`font-ibm text-[#8c8c8c] text-sm`}>{description}</p>
-		<div class="text-[#8c8c8c] text-[10px] leading-[16px] font-ibm uppercase tracking-wider flex gap-x-1.5 md:flex-col justify-end flex-wrap text-right md:text-left md:absolute bottom-6 left-6 mt-3">
-			{roles.map((role, index) => (
-				index < roles.length - 1 ? (
-					<p>{role}</p>
-					<span class="md:hidden text-neutral-600">/</span>
+<a href={href || '#'} class={` transform hover:scale-[100.5%] transition duration-[500ms] ease-out`}>
+	<p class={`text-gray-500 mb-6 leading-3 font-ibm uppercase text-[10px] tracking-wider`}>{companyName}</p>
+	<h2 class={`text-3xl leading-[20px] italic mb-2 `}>{title}</h2>
+	<p class={`font-ibm text-sm mb-4 text-gray-600`}>{description}</p>
+	<div class="text-gray-500 text-[10px] leading-3 font-ibm uppercase tracking-wider flex gap-x-1.5">
+		{roles.map((role, index) => (
+			index < roles.length - 1 ? (
+				<p>{role}</p>
+				<span class="md:hidden text-gray-500">/</span>
 				) : (
 					<p>{role}</p>
-				)
-			))}
+					)
+					))}
 		</div>
-	</div>
+	<img src="Frame-168.png" alt="" class="max-h-[300px] w-auto mt-6"/>
 </a>
