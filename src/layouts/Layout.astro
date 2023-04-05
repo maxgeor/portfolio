@@ -15,22 +15,15 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="text-sm font-ibm antialiased bg-neutral-900 text-neutral-300">
 		<slot />
 	</body>
 </html>
 <style is:global>
-	html {
-		font-family: 'Arial', sans-serif;
-		background-color: #FFF;
-	}
-	/* code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	} */
+	@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-	a {
-		text-decoration: underline;
-		text-underline-offset: 0.2em;
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Crimson Text", serif;
+		font-style: italic;
 	}
 </style>
