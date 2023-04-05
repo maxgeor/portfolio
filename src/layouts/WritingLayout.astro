@@ -1,0 +1,42 @@
+---
+const {frontmatter} = Astro.props;
+---
+<div class="flex flex-col items-center gap-y-24 mx-6 pt-12">
+  <section class="flex flex-col items-center gap-y-6">
+    <h1 class="text-5xl tracking-tight">{frontmatter.title}</h1>
+    <p class="text-xs uppercase tracking-wider text-[#918C88]">{frontmatter.date}</p>
+  </section>
+  <article id="content" class="text-base mx-6">
+    <slot />
+  </article>
+</div>
+
+<style is:inline>
+  article#content > * {
+    width: 100%;
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+
+  article#content > img, video {
+    width: 100%;
+    max-width: calc(65ch + 48px);
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+</style>

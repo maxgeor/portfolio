@@ -8,7 +8,7 @@ const caseStudyCollection = defineCollection({
     roles: z.array(z.string()),
     collaborators: z.array(z.string()).optional(),
     tools: z.array(z.string()).optional(),
-    bullets: z.array(z.string()).optional(),
+    tldr: z.string(),
   }),
 });
 const writingCollection = defineCollection({ 

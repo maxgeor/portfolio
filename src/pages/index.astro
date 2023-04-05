@@ -3,8 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 ---
 
-<Layout title="Max Georgopoulos">
-	<main class="flex flex-col gap-y-24 pb-48 max-w-5xl mx-auto" >
+<Layout 
+	title="Max Georgopoulos" 
+	maxWidth="max-w-5xl"
+>
+	<main class="flex flex-col gap-y-24" >
 		<header class="px-6 pt-12">
 				<!-- <ul class="flex flex-col gap-y-1">
 					<li class="leading-[16px] text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">Work</li>
@@ -14,28 +17,12 @@ import Card from '../components/Card.astro';
 				<h1 class="mb-2 leading-6 text-4xl italic tracking-tight">
 					Max Georgopoulos
 				</h1>
-				<div class="flex gap-x-1.5 items-baseline font-ibm text-[#918C88]">
+				<div class="flex gap-x-1.5 items-baseline font-ibm text-[#918C88] mb-6">
 					<span>Frontend-developer</span> 
 					<span class="font-crimson italic text-lg h-3">&</span> 
 					<span>product designer</span> 
 				</div>
-					<!-- <div class="flex gap-x-1.5 text-[#918C88] mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
-						<a href="" >
-							Email
-						</a>
-						<span class="text-stone-600">/</span>
-						<a href="" >
-							Twitter
-						</a>
-						<span class="text-stone-600">/</span>
-						<a href="" >
-							github
-						</a>
-						<span class="text-stone-600">/</span>
-						<a href="" >
-							dribbble
-						</a>
-					</div> -->
+				<p class="text-[#918C88] max-w-2xl">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
 		</header>
 		<!-- <div class="mx-6 pt-4 mb-6 border-t-[0.5px] border-stone-600">
 			<h2 class="text-4xl">Work</h2>
@@ -62,7 +49,7 @@ import Card from '../components/Card.astro';
 			/>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
-			<h2 class="text-2xl leading-6 col-span-3">Projects</h2>
+			<h2 class="text-2xl leading-5 col-span-3">Projects</h2>
 			<div class="flex col-span-4 ">
 				<table>
 					<tr>
@@ -81,18 +68,10 @@ import Card from '../components/Card.astro';
 			</div>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
-			<h2 class="text-2xl leading-6 col-span-3">Writing</h2>
+			<h2 class="text-2xl leading-5 col-span-3">Writing</h2>
 			<div class="flex flex-col gap-y-2 col-span-4">
-				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
+				<a href="/writing/yes" class="flex flex-col gap-y-1 sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
-				</a>
-				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
-					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
-				</a>
-				<a href="#" class="flex flex-col sm:flex-row  items-baseline flex-wrap gap-x-3 group underline-none transition">
-					<p class="group-hover:underline">Yes, you can learn to code</p> 
 					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
 				</a>
 			</div>
