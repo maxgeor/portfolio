@@ -23,13 +23,13 @@ const {
 
 <a href={href || '#'} class={` transform hover:scale-[100.5%] transition duration-[500ms] ease-out`}>
 	<p class={`text-gray-500 mb-6 leading-3 font-ibm uppercase text-[10px] tracking-wider`}>{companyName}</p>
-	<h2 class={`text-3xl leading-[20px] italic mb-2 `}>{title}</h2>
-	<p class={`font-ibm text-sm mb-4 text-gray-600`}>{description}</p>
+	<h2 class={`text-2xl leading-[20px] italic mb-3 `}>{title}</h2>
+	<p class={`font-ibm text-xs mb-3 text-gray-600`}>{description}</p>
 	<div class="text-gray-500 text-[10px] leading-3 font-ibm uppercase tracking-wider flex gap-x-1.5">
 		{roles.map((role, index) => (
 			index < roles.length - 1 ? (
 				<p>{role}</p>
-				<span class="md:hidden text-gray-500">/</span>
+				<span class="text-gray-400">/</span>
 				) : (
 					<p>{role}</p>
 					)

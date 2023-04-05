@@ -16,9 +16,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="text-sm font-ibm antialiased bg-gray-100 text-gray-900">
-		<div class="max-w-5xl mx-auto">
-			<slot />
-		</div>
+		<slot />
 	</body>
 </html>
 <style is:global>
@@ -29,18 +27,32 @@ const { title } = Astro.props;
 		font-style: italic;
 	}
 
-	tr > td {
-		padding-bottom: 12px;
+	@font-face {
+    font-family: ornament;
+    src: url(../../public/fonts/bodooitc.ttf);
+  }
+
+	font-onament {
+		font-family: ornament;
 	}
+
+	tr {
+		height: fit-content;
+	}
+
 	
 	tr:last-child > td {
 		padding-bottom: 0;
 	}
+
 	tr > td:first-child {
+		width: min-content;
 		padding-right: 24px;
 	}
 
 	td {
 		vertical-align: top;
+		padding: 0;
+		margin: 0;
 	}
 </style>

@@ -4,19 +4,19 @@ import Card from '../components/Card.astro';
 ---
 
 <Layout title="Max Georgopoulos">
-	<main class="flex flex-col gap-y-12 pb-48" >
-		<header class="p-6 pt-12">
+	<main class="flex flex-col gap-y-20 pb-48 max-w-5xl mx-auto" >
+		<header class="px-6 pt-16">
 				<!-- <ul class="flex flex-col gap-y-1">
 					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Work</li>
 					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Writing</li>
 					<li class="leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">Random</li>
 				</ul> -->
-				<h1 class=" mb-3 text-4xl md:text-5xl italic tracking-tight">
+				<h1 class="mb-3 leading-[20px] text-4xl italic tracking-tight">
 					Max Georgopoulos
 				</h1>
-				<div class="flex gap-x-1.5 items-baseline flex-wrap leading-[16px] text-[10px] font-ibm text-gray-500 uppercase tracking-wider ">
+				<div class="flex gap-x-1.5 items-baseline font-ibm text-gray-500">
 					<span>Frontend-developer</span> 
-					<span class="font-crimson italic text-base h-4">&</span> 
+					<span class="font-crimson italic text-lg h-3">&</span> 
 					<span>product designer</span> 
 				</div>
 					<!-- <div class="flex gap-x-1.5 text-gray-500 mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
@@ -62,7 +62,7 @@ import Card from '../components/Card.astro';
 			/>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-3 ">
-			<h2 class="text-xl col-span-3">Projects</h2>
+			<h2 class="text-2xl col-span-3">Projects</h2>
 			<div class="flex col-span-4 ">
 				<table>
 					<tr>
@@ -84,17 +84,17 @@ import Card from '../components/Card.astro';
 			<h2 class="text-4xl">Writing</h2>
 		</div> -->
 		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-3">
-			<h2 class="text-xl col-span-3">Writing</h2>
-			<div class="flex flex-col gap-y-3 col-span-4">
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
+			<h2 class="text-2xl col-span-3">Writing</h2>
+			<div class="flex flex-col gap-y-2 col-span-4">
+				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
 					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
 				</a>
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
+				<a href="#" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
 					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
 				</a>
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
+				<a href="#" class="flex flex-col sm:flex-row  items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class="group-hover:underline">Yes, you can learn to code</p> 
 					<span class="uppercase tracking-wider text-[10px] text-gray-500">Feb 2022</span>
 				</a>
@@ -102,3 +102,9 @@ import Card from '../components/Card.astro';
 		</div>
 	</main>
 </Layout>
+
+<style>
+	tr > td {
+		padding-bottom: 8px;
+	}
+</style>
