@@ -1,19 +1,30 @@
 ---
+import Logo from '../components/Logo.astro';
 const {frontmatter} = Astro.props;
 ---
 <div class="relative flex flex-col">
-  <a href="/" class="h-12 w-12 -mt-[64px] bg-stone-800 outline-1 outline-white/10 rounded-full sticky top-6 left-6" ></a>
-  <div class="flex h-64 md:h-80">
-    <div class="w-full bg-[#918C88] h-full"></div>
-  </div>
+  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f] transition duration-150 rounded-full sticky top-4 left-4" >
+    <Logo classes="h-10 w-10 shrink-0" />
+  </a>
+  {frontmatter.image ? (
+    <img 
+      src={frontmatter.image} 
+      alt={`${frontmatter.title} mockups`}
+      class="max-h-[256px] md:max-h-[448px] h-full w-full object-cover"
+    />
+  ) : (
+    <div class="flex h-64 md:h-[448px]">
+      <div class="w-full bg-[#918C88] h-full"></div>
+    </div>
+  )}
   <section class="mb-12 mx-6 md:mx-9">
-    <div class="flex flex-col gap-y-6 md:gap-y-9 max-w-5xl mx-auto py-6 md:py-9 border-b border-stone-700">
+    <div class="flex flex-col gap-y-6 md:gap-y-9 max-w-4xl mx-auto py-6 md:py-9 border-b border-neutral-700">
       <div class="flex justify-between">
         <h1 class="italic text-4xl md:text-5xl leading-8 md:leading-8 tracking-tight">
           {frontmatter.title}
         </h1>
         <span class="leading-4 text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">
-          Case Study
+          {frontmatter.type}
         </span>
       </div>
       <div class="inline-flex flex-col-reverse md:flex-row w-full gap-y-6">
@@ -50,7 +61,7 @@ const {frontmatter} = Astro.props;
     </div>
   </section>
   <div class="mx-6 ">
-    <article id="content" class="md:text-base max-w-prose mx-auto w-full">
+    <article id="content" class="text-base max-w-prose text-neutral-400 mx-auto w-full">
       <slot />
     </article>
   </div>
@@ -66,6 +77,10 @@ const {frontmatter} = Astro.props;
     line-height: 2rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
+  }
+
+  article#content > h2:first-child {
+    margin-top: 0;
   }
 
   article#content > p {

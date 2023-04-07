@@ -18,7 +18,7 @@ const { title, maxWidth } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm font-ibm antialiased bg-stone-800 text-stone-300">
+	<body class="text-sm font-ibm antialiased bg-neutral-800 text-neutral-300">
 		<div class={maxWidth && `${maxWidth} mx-auto`}>
 			<slot />
 			<Footer />
@@ -33,12 +33,27 @@ const { title, maxWidth } = Astro.props;
 		font-style: italic;
 	}
 
+	ul > li, ol > li {
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+
+	ul, ol {
+		list-style-position: outside;
+	}
+
+	li {
+    list-style: none;
+    background: transparent url(../images/bullet.svg) no-repeat left top;
+		padding-left: 16px;
+	}
+
 	@font-face {
     font-family: flowers;
     src: url(../../public/fonts/bodooitc.ttf) format('ttf');
   }
 
-	font-onament {
+	font-flowers {
 		font-family: flowers;
 	}
 

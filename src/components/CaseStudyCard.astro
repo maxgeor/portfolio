@@ -1,0 +1,50 @@
+---
+export interface Props {
+	href: string;
+	client: string;
+	title: string;
+	description: string;
+	roles: string[];
+	textColorPrimary: string;
+	textColorSecondary: string;
+	backgroundColor: string;
+	image: string;
+}
+
+const { 
+	href, 
+	client,
+	title,
+	description,
+	roles,
+	image,
+} = Astro.props;
+---
+
+<a href={href || '#'} class={`flex flex-col items-start p-6 hover:bg-[#2f2f2f] transform hover:scale-[100.5%] transition-all duration-[500ms] ease-out`}>
+	<div class="w-full">
+		<div class="flex flex-col xs:flex-row-reverse lg:flex-col xs:justify-between lg:justify-start gap-y-6 mb-2">
+			<p class={`text-[#918C88] leading-3 font-ibm uppercase text-[10px] tracking-wider`}>{client}</p>
+			<h2 class={`text-2xl leading-6 italic`}>{title}</h2>
+		</div>
+		<div class="mr-6 md:mr-0">
+			<p class={`font-ibm text-xs mb-2 text-neutral-300`}>{description}</p>
+			<div class="text-[#918C88] text-[10px] leading-4 font-ibm uppercase tracking-wider flex gap-x-1 flex-wrap">
+				{roles.map((role, index) => (
+					index < roles.length - 1 ? (
+						<p>{role}</p>
+						<span class="text-neutral-600">/</span>
+						) : (
+							<p>{role}</p>
+						)
+					 )
+				)}
+				</div>
+		</div>
+	</div>
+	{image ? (
+		<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto mt-6"/>
+	) : (
+		<div class="h-[300px] w-full mt-6 bg-neutral-700"></div>
+	)}
+</a>

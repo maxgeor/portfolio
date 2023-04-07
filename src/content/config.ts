@@ -4,7 +4,8 @@ const caseStudyCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     url: z.array(z.string()).optional(),
-    company: z.string().optional(),
+    image: z.string().optional(),
+    type: z.string(),
     roles: z.array(z.string()),
     collaborators: z.array(z.string()).optional(),
     tools: z.array(z.string()).optional(),

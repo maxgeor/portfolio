@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import Logo from '../components/Logo.astro'
 ---
 
-<Layout 
-	title="Max Georgopoulos" 
-	maxWidth="max-w-5xl"
->
+<Layout title="Max Georgopoulos" maxWidth="max-w-5xl">
 	<main class="flex flex-col gap-y-24" >
 		<header class="px-6 pt-12">
+			<Logo classes="text-[#c1c1c1] h-11 w-11 -ml-0.5 -mt-2 mb-6" />
+			<div>
 				<h1 class="mb-2 leading-6 text-4xl italic tracking-tight">
 					Max Georgopoulos
 				</h1>
@@ -18,23 +18,26 @@ import Card from '../components/Card.astro';
 					<span>product designer</span> 
 				</div>
 				<p class="text-[#918C88] max-w-2xl">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
+			</div>
 		</header>
 		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 overflow-x-scroll overflow-y-hidden -my-6">
-			<Card
+			<CaseStudyCard
 				href="/studies/memiori"
-				companyName="Client project"
+				image="/studies/memiori/preview.png"
+				client="Freelance"
 				title="Memiori"
 				description="Redesigned note taking app"
 				roles={["branding", "Mobile design"]}
 			/>
-			<Card
-				companyName="Wavy"
+			<CaseStudyCard
+				client="Wavy"
 				title="Polls"
 				description="Built and co-designed Wavy's Polls feature"
 				roles={["UI/UX design", "Full-stack development"]}
 			/>
-			<Card
-				companyName="Personal Project"
+			<CaseStudyCard
+				href="/studies/formie"
+				client="Personal Project"
 				title="Formie"
 				description="Designed & co-built a smart contract UI generator"
 				roles={["branding", "UI/UX design", "Frontend development"]}
