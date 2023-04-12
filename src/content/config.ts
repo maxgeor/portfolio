@@ -3,11 +3,11 @@ import { z, defineCollection } from 'astro:content';
 const caseStudyCollection = defineCollection({
   schema: z.object({
     title: z.string(),
-    url: z.array(z.string()).optional(),
+    link: z.string().optional(),
     image: z.string().optional(),
     type: z.string(),
     roles: z.array(z.string()),
-    collaborators: z.array(z.string()).optional(),
+    collaborators: z.object({ name: z.string(), role: z.string(), link: z.string()}).array().optional(),
     tools: z.array(z.string()).optional(),
     tldr: z.string(),
   }),

@@ -18,7 +18,7 @@ const { title, maxWidth } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm font-ibm antialiased bg-neutral-800 text-neutral-300">
+	<body class="text-sm font-ibm antialiased bg-yellow-600 italic text-black">
 		<div class={maxWidth && `${maxWidth} mx-auto`}>
 			<slot />
 			<Footer />
@@ -31,23 +31,45 @@ const { title, maxWidth } = Astro.props;
 	h1, h2, h3, h4, h5, h6 {
 		font-family: "Crimson Text", serif;
 		font-style: italic;
-		letter-spacing: -0.025em;
+		letter-spacing: -0.02em;
 		color: #d4d4d4;
 	}
 
 	ul > li, ol > li {
-		margin-top: 8px;
-		margin-bottom: 8px;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+	
+	ul > li:first-child, ol > li:first-child {
+		margin-top: 0;
+	}
+	
+	ul > li:last-child, ol > li:last-child {
+		margin-bottom: 1.5rem;
 	}
 
 	ul, ol {
 		list-style-position: outside;
 	}
 
-	li {
+	ol {
+		list-style-type: decimal;
+		margin-left: 18px;
+	}
+
+	ul > li {
     list-style: none;
-    background: transparent url(../images/bullet.svg) no-repeat left top;
-		padding-left: 16px;
+		background: transparent url(../images/bullet-18px.svg) no-repeat left top;
+		padding-left: 20px;
+		margin-left: -1px;
+	}
+
+	@media (max-width: 767px) {
+		ul > li {
+			background: transparent url(../images/bullet-16px.svg) no-repeat left top;
+			padding-left: 16px;
+			margin-left: 1px;
+		}
 	}
 
 	@font-face {
@@ -63,6 +85,9 @@ const { title, maxWidth } = Astro.props;
 		height: fit-content;
 	}
 
+	tr > td {
+		padding-bottom: 8px;
+	}
 	
 	tr:last-child > td {
 		padding-bottom: 0;
@@ -73,9 +98,11 @@ const { title, maxWidth } = Astro.props;
 		padding-right: 24px;
 	}
 
+
 	td {
 		vertical-align: top;
 		padding: 0;
 		margin: 0;
+		line-height: 20px;
 	}
 </style>

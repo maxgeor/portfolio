@@ -3,14 +3,14 @@ const {frontmatter} = Astro.props;
 import Logo from '../components/Logo.astro';
 ---
 <div class="relative flex flex-col items-center">
-  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f] transition duration-150 outline-1 outline-white/10 rounded-full sticky top-8" >
-    <Logo classes="h-10 w-10 shrink-0 text-[#c2c2c2]" />
+  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-gradient-to-b from-neutral-800 to-[#272727] hover:to-neutral-800 transition duration-150 rounded-full sticky top-8 z-10" >
+    <Logo classes="h-10 w-10 shrink-0 text-[#C6C6C6]" />
   </a>
   <section class="flex flex-col items-center bg-[#2f2f2f] px-6 pt-[88px] pb-12 w-full">
     <h1 class="mt-8 text-5xl leading-[48px] mb-6 text-center">{frontmatter.title}</h1>
-    <p class="text-[10px] leading-3 uppercase tracking-wider text-neutral-400">{frontmatter.date}</p>
+    <p class="text-[10px] leading-3 uppercase tracking-wider ">{frontmatter.date}</p>
   </section>
-  <article id="content" class="text-base text-neutral-400 mx-6 mt-12">
+  <article id="content" class="text-base  mx-6 mt-12">
     <slot />
   </article>
 </div>

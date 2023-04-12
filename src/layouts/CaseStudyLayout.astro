@@ -2,8 +2,8 @@
 import Logo from '../components/Logo.astro';
 const {frontmatter} = Astro.props;
 ---
-<div class="relative flex flex-col">
-  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f] transition duration-150 rounded-full sticky top-4 left-4" >
+<div class="relative flex flex-col ">
+  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f] transition duration-150 rounded-full sticky top-4 left-4 z-10" >
     <Logo classes="h-10 w-10 shrink-0" />
   </a>
   {frontmatter.image ? (
@@ -17,42 +17,65 @@ const {frontmatter} = Astro.props;
       <div class="w-full bg-[#918C88] h-full"></div>
     </div>
   )}
-  <section class="mb-12 mx-6 md:mx-9">
-    <div class="flex flex-col gap-y-6 md:gap-y-9 max-w-4xl mx-auto py-6 md:py-9 border-b border-neutral-700">
-      <div class="flex justify-between">
-        <h1 class="italic text-4xl md:text-5xl leading-8 md:leading-8">
+
+  <section class="mx-6 md:mx-9">
+    <div class="max-w-6xl mx-auto relative flex flex-col gap-y-6 md:gap-y-9 mt-6 md:mt-9 pb-6 md:pb-9 border-b border-neutral-700">
+      <div class="flex flex-col md:flex-row gap-y-2 gap-x-12 justify-between">
+        <h1 class="italic text-4xl md:text-5xl leading-7 md:leading-[44px]">
           {frontmatter.title}
         </h1>
-        <span class="leading-4 text-[10px] font-ibm text-[#918C88] uppercase tracking-wider ">
-          {frontmatter.type}
-        </span>
+        {frontmatter.link && (
+          <a href={frontmatter.link} target="_blank" class="group flex items-end gap-x-1">
+            <span class="group-hover:underline">Check it out</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-px -translate-y-px group-hover:-translate-y-0.5 transition ease-out duration-100">
+              <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        )}
       </div>
-      <div class="inline-flex flex-col-reverse md:flex-row w-full gap-y-6">
+      <span class="absolute top-0 right-0 leading-4 text-[10px] font-ibm  uppercase tracking-wider ">
+        {frontmatter.type}
+      </span>
+      <div class="flex flex-col-reverse md:flex-row w-full gap-6 md:gap-9">
         <div class="flex-1">
-          <table class="h-min max-w-sm" cellspacing="0" cellpadding="0">
-            {frontmatter.company && (
+          <div class="md:w-fit">
+            <table class="" cellspacing="0" cellpadding="0">
+              {frontmatter.company && (
+                <tr>
+                  <td>Company</td>
+                  <td class="">{frontmatter.company}</td>
+                </tr>
+              )}
               <tr>
-                <td>Company</td>
-                <td class="text-[#918C88]">{frontmatter.company}</td>
+                <td>Role</td>
+                <td>
+                  {frontmatter.roles.join(", ")}
+                </td>
               </tr>
-            )}
-            <tr>
-              <td>Role</td>
-              <td class="text-[#918C88]">
-                {frontmatter.roles.join(", ")}
-              </td>
-            </tr>
-            <tr>
-              <td>Tools</td>
-              <td class="text-[#918C88]">{frontmatter.tools.join(", ")}</td>
-            </tr>
-            {frontmatter.collaborators && (
               <tr>
-                <td><p>Collaborators</p></td>
-                <td class="text-[#918C88]">{frontmatter.roles.join(", ")}</td>
+                <td>Tools</td>
+                <td>{frontmatter.tools.join(", ")}</td>
               </tr>
-            )}
-          </table>
+              {frontmatter.collaborators && (
+                <tr>
+                  <td><p>Collaborators</p></td>
+                  <td class="flex flex-col gap-y-2 525:gap-0 ">
+                    {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
+                      <div class="flex flex-col 525:flex-row 525:items-end 525:justify-between gap-x-2 w-full">
+                        <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+                          {collaborator.name}
+                        </a>  
+                        <div class="flex items-center gap-x-2 w-full">
+                          <hr class="hidden 525:block h-0.5 border-t-2 border-[#3d3d3d] border-dotted w-full"/>
+                          <span class="text-[10px] leading-4 uppercase tracking-wider 525:whitespace-nowrap">{collaborator.role}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </td>
+                </tr>
+              )}
+            </table>
+          </div>
         </div>
         <div class="flex-1">
           <p class="max-w-sm">{frontmatter.tldr}</p>
@@ -60,39 +83,88 @@ const {frontmatter} = Astro.props;
       </div>
     </div>
   </section>
-  <div class="mx-6 ">
-    <article id="content" class="text-base max-w-prose text-neutral-400 mx-auto w-full">
+  <div class="mx-6 md:mx-9 mt-12">
+    <article id="content" class="normal-case	text-lg font-ibm text-neutral-400 mx-auto w-full max-w-4xl">
       <slot />
     </article>
   </div>
 </div>
 
 <style is:inline>
-  td {
-    width: fit-content;
+  tr > td:last-child {
+    width: 100%;
   }
 
-  article#content > h2 {
+  tr.collaborator {
+    border-top: 0.5px solid #444;
+    border-style: dotted;
+  }
+  tr.collaborator:first-child {
+    border: none;
+  }
+  tr.collaborator > td {
+    padding-bottom: 0;
+  }
+
+  tr.collaborator > td:first-child {
+		padding-right: 20px;
+	}
+
+  tr.collaborator > td:last-child {
+		algin-text: end;
+	}
+
+  article#content img {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  article#content blockquote {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  article#content h2 {
     font-size: 2rem;
     line-height: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  article#content > h2:first-child {
-    margin-top: 0;
-  }
-
-  article#content > p {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 1.25rem;
   }
   
-  article#content > p:first-child {
+  article#content h3 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.15px;
+  }
+  
+  article#content strong {
+    color: #d4d4d4;
+    font-weight: 600;
+  }
+
+
+  article#content h2:first-child {
     margin-top: 0;
   }
 
-  article#content > p:last-child {
+  article#content p {
+    max-width: 65ch;
+    margin: 1.5rem auto;
+    margin-top: 0;
+  }
+  
+  article#content p:first-child {
+    margin-top: 0;
+  }
+
+  article#content p:last-child {
     margin-bottom: 0;
   }
 </style>

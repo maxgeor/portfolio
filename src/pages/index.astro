@@ -4,41 +4,42 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 import Logo from '../components/Logo.astro'
 ---
 
-<Layout title="Max Georgopoulos" maxWidth="max-w-5xl">
+<Layout title="Max Georgopoulos" maxWidth="max-w-6xl">
 	<main class="flex flex-col gap-y-24" >
-		<header class="px-6 pt-12">
-			<Logo classes="text-[#c1c1c1] h-10 w-10  -mt-2 mb-6" />
-			<div>
-				<h1 class="mb-2 leading-6 text-4xl italic tracking-tight">
-					Max Georgopoulos
-				</h1>
-				<div class="flex gap-x-1.5 items-baseline font-ibm text-[#918C88] mb-6">
-					<span>Frontend-developer</span> 
-					<span class="font-crimson italic text-lg h-3">&</span> 
-					<span>product designer</span> 
+		<section class="grid cols-span 1 md:cols-span-12 gap-6">
+			<Logo classes="text-[#C6C6C6] h-14 w-14 col-start-11 col-end-12" />
+			<h1 class="mb-2 letter-wrap leading-[52px] outline text-9xl italic tracking-tight overflow-">
+				Max Georgopoulos
+			</h1>
+			<div class="flex self-end w-full">
+				<p class=" max-w-2xl">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
+				<div class="flex flex-col gap-x-1.5 items-center justify-between font-ibm  mb-6 w-full ">
+					<p>Frontend developer</p> 
+					<p class="font-crimson italic text-lg">&</p> 
+					<p class="text-right">Product designer</p> 
 				</div>
-				<p class="text-[#918C88] max-w-2xl">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
 			</div>
-		</header>
+		</section>
 		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 overflow-x-scroll overflow-y-hidden -my-6">
 			<CaseStudyCard
-				href="/studies/memiori"
-				image="/studies/memiori/preview.png"
-				client="Freelance"
 				title="Memiori"
+				href="/studies/memiori"
+				type="Freelance"
 				description="Redesigned note taking app"
 				roles={["branding", "Mobile design"]}
+				image="/studies/memiori/preview.png"
 			/>
 			<CaseStudyCard
-				client="Wavy"
 				title="Polls"
+				href="/studies/polls"
+				type="Wavy"
 				description="Built and co-designed Wavy's Polls feature"
 				roles={["UI/UX design", "Full-stack development"]}
 			/>
 			<CaseStudyCard
-				href="/studies/formie"
-				client="Personal Project"
 				title="Formie"
+				href="/studies/formie"
+				type="Personal Project"
 				description="Designed & co-built a smart contract UI generator"
 				roles={["branding", "UI/UX design", "Frontend development"]}
 			/>
@@ -49,15 +50,15 @@ import Logo from '../components/Logo.astro'
 				<table>
 					<tr>
 						<td>Scope Todo</td>
-						<td class="text-[#918C88]">Figma todow widget</td>
+						<td class="">Figma todow widget</td>
 					</tr>
 					<tr>
 						<td>Dissect Design</td>
-						<td class="text-[#918C88]">Place to find and share product design case studies</td>
+						<td class="">Place to find and share product design case studies</td>
 					</tr>
 					<tr>
 						<td>Sayings, forgotten</td>
-						<td class="text-[#918C88]">Collection of saying who's meanings changed overtime</td>
+						<td class="">Collection of saying who's meanings changed overtime</td>
 					</tr>
 				</table>
 			</div>
@@ -67,15 +68,9 @@ import Logo from '../components/Logo.astro'
 			<div class="flex flex-col gap-y-2 col-span-4">
 				<a href="/writing/yes" class="flex flex-col gap-y-1 sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#918C88]">Feb 2022</span>
+					<span class="uppercase tracking-wider text-[10px] ">Feb 2022</span>
 				</a>
 			</div>
 		</div>
 	</main>
 </Layout>
-
-<style>
-	tr > td {
-		padding-bottom: 8px;
-	}
-</style>
