@@ -2,10 +2,10 @@
 import Logo from '../components/Logo.astro';
 const {frontmatter} = Astro.props;
 ---
-<div class="relative flex flex-col ">
-  <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f] transition duration-150 rounded-full sticky top-4 left-4 z-10" >
+<div class="relative flex flex-col max-w-6xl mx-auto">
+  <!-- <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f]  duration-150 rounded-full sticky top-4 left-4 z-10" >
     <Logo classes="h-10 w-10 shrink-0" />
-  </a>
+  </a> -->
   {frontmatter.image ? (
     <img 
       src={frontmatter.image} 
@@ -13,27 +13,30 @@ const {frontmatter} = Astro.props;
       class="max-h-[256px] md:max-h-[448px] h-full w-full object-cover"
     />
   ) : (
-    <div class="flex h-64 md:h-[448px]">
+    <div class="flex h-64 md:h-[448px] pb-0 m-6 md:m-10 mb-0 md:mb-0">
       <div class="w-full bg-[#918C88] h-full"></div>
     </div>
   )}
 
   <section class="mx-6 md:mx-9">
-    <div class="max-w-6xl mx-auto relative flex flex-col gap-y-6 md:gap-y-9 mt-6 md:mt-9 pb-6 md:pb-9 border-b border-neutral-700">
+    <div class="max-w-6xl mx-auto relative flex flex-col gap-y-6 md:gap-y-10 mt-6 md:mt-10 pb-6 md:pb-10 border-b-[0.5px] border-black -mb-[0.5px]">
       <div class="flex flex-col md:flex-row gap-y-2 gap-x-12 justify-between">
-        <h1 class="italic text-4xl md:text-5xl leading-7 md:leading-[44px]">
+        <h1 class=" text-4xl md:text-5xl leading-7 md:leading-[44px]">
           {frontmatter.title}
         </h1>
         {frontmatter.link && (
           <a href={frontmatter.link} target="_blank" class="group flex items-end gap-x-1">
             <span class="group-hover:underline">Check it out</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-px -translate-y-px group-hover:-translate-y-0.5 transition ease-out duration-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-px -translate-y-px group-hover:-translate-y-0.5  ease-out duration-100">
               <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
             </svg>
           </a>
         )}
       </div>
-      <span class="absolute top-0 right-0 leading-4 text-[10px] font-ibm  uppercase tracking-wider ">
+      <!-- <span class="absolute top-0 right-0 text-[10px] uppercase tracking-wide font-sans leading-3">
+        {frontmatter.type}
+      </span> -->
+      <span class="absolute top-0 right-0 text-[10px] uppercase tracking-wide font-sans leading-3">
         {frontmatter.type}
       </span>
       <div class="flex flex-col-reverse md:flex-row w-full gap-6 md:gap-9">
@@ -61,15 +64,12 @@ const {frontmatter} = Astro.props;
                   <td><p>Collaborators</p></td>
                   <td class="flex flex-col gap-y-2 525:gap-0 ">
                     {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
-                      <div class="flex flex-col 525:flex-row 525:items-end 525:justify-between gap-x-2 w-full">
+                      <div class="flex flex-wrap gap-x-[5px]">
                         <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
                           {collaborator.name}
                         </a>  
-                        <div class="flex items-center gap-x-2 w-full">
-                          <hr class="hidden 525:block h-0.5 border-t-2 border-[#3d3d3d] border-dotted w-full"/>
-                          <span class="text-[10px] leading-4 uppercase tracking-wider 525:whitespace-nowrap">{collaborator.role}</span>
-                        </div>
-                      </div>
+                        <span class="525:whitespace-nowrap">({collaborator.role})</span>
+                      </div>  
                     ))}
                   </td>
                 </tr>
@@ -83,8 +83,8 @@ const {frontmatter} = Astro.props;
       </div>
     </div>
   </section>
-  <div class="mx-6 md:mx-9 mt-12">
-    <article id="content" class="normal-case	text-lg font-ibm text-neutral-400 mx-auto w-full max-w-4xl">
+  <div class="mx-6 md:mx-9 mt-20">
+    <article id="content" class="normal-case	text-lg mx-auto w-full">
       <slot />
     </article>
   </div>
@@ -95,32 +95,12 @@ const {frontmatter} = Astro.props;
     width: 100%;
   }
 
-  tr.collaborator {
-    border-top: 0.5px solid #444;
-    border-style: dotted;
-  }
-  tr.collaborator:first-child {
-    border: none;
-  }
-  tr.collaborator > td {
-    padding-bottom: 0;
-  }
-
-  tr.collaborator > td:first-child {
-		padding-right: 20px;
-	}
-
-  tr.collaborator > td:last-child {
-		algin-text: end;
-	}
-
   article#content img {
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
 
   article#content blockquote {
-    background-color: #1e1e1e;
     padding: 2rem;
     border-radius: 8px;
     margin-top: 3rem;
@@ -129,6 +109,12 @@ const {frontmatter} = Astro.props;
     font-size: 1rem;
   }
 
+  article#content h1 {
+    font-size: 40px;
+    line-height: 44px;
+    text-indent: 40px;
+    margin-bottom: 32px;
+  }
   article#content h2 {
     font-size: 2rem;
     line-height: 2rem;
@@ -139,27 +125,20 @@ const {frontmatter} = Astro.props;
   article#content h3 {
     font-size: 1.5rem;
     line-height: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
     margin-bottom: 0.75rem;
     letter-spacing: -0.15px;
-  }
-  
-  article#content strong {
-    color: #d4d4d4;
-    font-weight: 600;
   }
 
 
   article#content h2:first-child {
     margin-top: 0;
   }
-
+  
   article#content p {
     max-width: 65ch;
-    margin: 1.5rem auto;
-    margin-top: 0;
   }
-  
+
   article#content p:first-child {
     margin-top: 0;
   }

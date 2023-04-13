@@ -18,7 +18,7 @@ const { title, maxWidth } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm font-ibm antialiased bg-yellow-600 italic text-black">
+	<body class="text-sm font-serif text-neutral-800">
 		<div class={maxWidth && `${maxWidth} mx-auto`}>
 			<slot />
 			<Footer />
@@ -28,11 +28,71 @@ const { title, maxWidth } = Astro.props;
 <style is:global>
 	@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-	h1, h2, h3, h4, h5, h6 {
+	/* h1, h2, h3, h4, h5, h6 {
 		font-family: "Crimson Text", serif;
 		font-style: italic;
 		letter-spacing: -0.02em;
 		color: #d4d4d4;
+	} */
+
+	max-header {
+  	text-align: justify;
+	}
+
+	@font-face {
+    font-family: floral;
+    src: url(FloralCapitals.ttf);
+	}
+  
+	.font-floral {
+		font-family: floral;
+	}
+	@font-face {
+    font-family: goudy;
+    src: url(GoudyInitialen.ttf);
+	}
+  
+	.font-goudy {
+		font-family: goudy;
+	}
+	@font-face {
+    font-family: beaked;
+    src: url(BeakedTyrant.ttf);
+	}
+  
+	.font-beaked {
+		font-family: beaked;
+	}
+	
+	@font-face {
+    font-family: fark;
+    src: url(WhetherFarkDemoRegular.ttf);
+	}
+  
+	.font-goudy {
+		font-family: fark;
+	}
+	@font-face {
+    font-family: fark;
+    src: url(WhetherFarkDemoRegular.ttf);
+	}
+  
+	.font-goudy {
+		font-family: fark;
+	}
+	@font-face {
+    font-family: garamond;
+    src: url(EBGaramond/otf/EBGaramond-Initials.otf.otf) format("otf");
+	}
+  
+	.font-garamond {
+		font-family: garamond;
+	}
+
+	max-header:after {
+		content: "";
+		display: inline-block;
+		width: 100%;
 	}
 
 	ul > li, ol > li {
@@ -58,19 +118,19 @@ const { title, maxWidth } = Astro.props;
 	}
 
 	ul > li {
-    list-style: none;
-		background: transparent url(../images/bullet-18px.svg) no-repeat left top;
-		padding-left: 20px;
-		margin-left: -1px;
+    list-style: disc;
+		/* background: transparent url(../images/bullet-18px.svg) no-repeat left top; */
+		margin-left: 16px;
+		/* margin-left: -1px; */
 	}
 
-	@media (max-width: 767px) {
+	/* @media (max-width: 767px) {
 		ul > li {
 			background: transparent url(../images/bullet-16px.svg) no-repeat left top;
 			padding-left: 16px;
 			margin-left: 1px;
 		}
-	}
+	} */
 
 	@font-face {
     font-family: flowers;

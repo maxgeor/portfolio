@@ -5,23 +5,33 @@ import Logo from '../components/Logo.astro'
 ---
 
 <Layout title="Max Georgopoulos" maxWidth="max-w-6xl">
-	<main class="flex flex-col gap-y-24" >
-		<section class="grid cols-span 1 md:cols-span-12 gap-6">
-			<Logo classes="text-[#C6C6C6] h-14 w-14 col-start-11 col-end-12" />
-			<h1 class="mb-2 letter-wrap leading-[52px] outline text-9xl italic tracking-tight overflow-">
-				Max Georgopoulos
-			</h1>
-			<div class="flex self-end w-full">
-				<p class=" max-w-2xl">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
-				<div class="flex flex-col gap-x-1.5 items-center justify-between font-ibm  mb-6 w-full ">
-					<p>Frontend developer</p> 
-					<p class="font-crimson italic text-lg">&</p> 
-					<p class="text-right">Product designer</p> 
+	<main class="flex flex-col gap-y-20 mix-blend-difference	mt-10 m-6 md:m-10" >
+		<section class="text-3xl md:text-4xl md:leading-[48px] ">
+			<span class="float-left pt-[37px] pr-2 -ml-1 font-floral text-[138px]">M</span>
+			<p>
+				
+				ax (Georgopoulos) here. <i>Product designer & developer</i>. Doing Rails stuff at <i>Wavy</i>. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé 
+			</p>
+			<!-- <span id="drop-letter" class="absolute top-[40px] -left-1 text-[#964252] font-floral text-[140px]">M</span>ax Georgopoulos. Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé  -->
+		</section>
+		<!-- <section class="grid cols-span 1 md:cols-span-12 gap-6"> -->
+			<!-- <Logo classes="text-[#C6C6C6] h-14 w-14 col-start-11 col-end-12" /> -->
+			
+			
+
+			
+			
+			<!-- <div class="flex self-end w-full">
+				<p class=" max-w-2xl z-10 bg-white">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
+				<div class="flex flex-col gap-x-1.5 items-center justify-between   mb-6 w-full bg-white ">
+					<p class="bg-white">Frontend developer</p> 
+					<p class="bg-white font-crimson italic text-lg">&</p> 
+					<p class="bg-white text-right">Product designer</p> 
 				</div>
 			</div>
-		</section>
-		<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 overflow-x-scroll overflow-y-hidden -my-6">
-			<CaseStudyCard
+		</section> -->
+		<div >
+			<!-- <CaseStudyCard
 				title="Memiori"
 				href="/studies/memiori"
 				type="Freelance"
@@ -35,16 +45,29 @@ import Logo from '../components/Logo.astro'
 				type="Wavy"
 				description="Built and co-designed Wavy's Polls feature"
 				roles={["UI/UX design", "Full-stack development"]}
-			/>
+			/> -->
 			<CaseStudyCard
 				title="Formie"
+				company="Wavy"
 				href="/studies/formie"
 				type="Personal Project"
 				description="Designed & co-built a smart contract UI generator"
-				roles={["branding", "UI/UX design", "Frontend development"]}
+				roles={["Branding", "UI/UX design", "Frontend development"]}
+				collaborators={
+					[{
+							name: "Hassan Syed",
+							role: "Frontend Development",
+							link: "https://twitter.com/hassantsyed",
+						},
+						// { name: "Max Syed", role: "Frontend", link: "https://twitter.com/hassantsyed" },
+					]
+				}
+				tools={["NextJS", "Firebase", "TailwindCSS"]}
+				tldr="Transforming smart contract interaction with focused, friendly forms."
 			/>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
+		<!-- <hr class="h-px border-t-neutral-700"/> -->
+		<div class="grid grid-cols-1 md:grid-cols-7 gap-y-6 border-t-[0.5px] border-black -mt-[0.5px] pt-4">
 			<h2 class="text-2xl leading-5 col-span-3">Projects</h2>
 			<div class="flex col-span-4 ">
 				<table>
@@ -63,12 +86,12 @@ import Logo from '../components/Logo.astro'
 				</table>
 			</div>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-7 mx-6 gap-y-6">
-			<h2 class="text-2xl leading-5 col-span-3">Writing</h2>
+		<div class="grid grid-cols-1 md:grid-cols-7 gap-y-6 border-t-[0.5px] border-black pt-4 -mt-[0.5px]">
+			<h2 class=" col-span-3 text-2xl leading-5 ">Writing</h2>
 			<div class="flex flex-col gap-y-2 col-span-4">
-				<a href="/writing/yes" class="flex flex-col gap-y-1 sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none transition">
+				<a href="/writing/yes" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none ">
 					<p class=" group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] ">Feb 2022</span>
+					<span class="uppercase font-sans tracking-wide text-[10px] ">Feb 2022</span>
 				</a>
 			</div>
 		</div>
