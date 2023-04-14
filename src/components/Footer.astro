@@ -1,17 +1,35 @@
-<footer class="mb-6 mt-48 mx-6 flex gap-x-1.5 flex-wrap text-sm">
-  <a href="" >
-    Email
-  </a>
-  <span class="">/</span>
-  <a href="" >
-    Twitter
-  </a>
-  <span class="">/</span>
-  <a href="" >
-    Github
-  </a>
-  <span class="">/</span>
-  <a href="" >
-    Dribbble
-  </a>
+---
+import Flower from "./Flower.astro";
+---
+
+<footer class="flex items-center justify-between  m-6 md:m-9 mt-48 md:mt-48 gap-x-6 flex-wrap text-xs">
+  <div class="flex gap-x-1.5 flex-wrap">
+    <a href="hover:underline" >
+      Email
+    </a>
+    <span class="">/</span>
+    <a href="hover:underline" >
+      Twitter
+    </a>
+    <span class="hover:underline">/</span>
+    <a href="" >
+      Github
+    </a>
+    <span class="hover:underline">/</span>
+    <a href="hover:underline" >
+      Dribbble
+    </a>
+  </div>
+  <div class="flex gap-x-1.5 flex-wrap">
+    <Flower classes={'h-6 w-6'} fluttering={false}/>
+    <Flower classes={'h-6 w-6'} fluttering={true}/>
+    <Flower classes={'h-6 w-6'} fluttering={false}/>
+    <Flower classes={'h-6 w-6'} fluttering={true}/>
+  </div>
 </footer>
+
+<script>
+  const flowers = document.querySelectorAll('.flower');
+
+  setInterval(() => flowers.forEach((flower) => flower.classList.toggle('fluttering')), 350);
+</script>

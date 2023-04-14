@@ -1,0 +1,14 @@
+---
+export interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+
+import DropLetter from './DropLetter.astro';
+---
+
+<section class="text-3xl leading-[40px] md:text-4xl md:leading-[48px] ">
+  <DropLetter letter={text.slice(0, 1)} classes="float-left text-[112px] font-floral md:text-[137px] pt-[32px] md:pt-[37px]  pr-[9px]  -ml-0.5 md:-ml-1 " />
+  <p class="tracking-tightish">{text.substring(1)}</p>
+</section>
