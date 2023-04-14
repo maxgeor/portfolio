@@ -1,28 +1,22 @@
 ---
-import Logo from '../components/Logo.astro';
 const {frontmatter} = Astro.props;
+import Flower from "../components/Flower.astro";
 ---
-<div class="relative flex flex-col max-w-6xl mx-auto">
-  <!-- <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-neutral-800 hover:bg-[#2f2f2f]  duration-150 rounded-full sticky top-4 left-4 z-10" >
-    <Logo classes="h-10 w-10 shrink-0" />
-  </a> -->
-  {frontmatter.image ? (
-    <img 
-      src={frontmatter.image} 
-      alt={`${frontmatter.title} mockups`}
-      class="max-h-[256px] md:max-h-[448px] h-full w-full object-cover"
-    />
-  ) : (
-    <div class="flex h-64 md:h-[448px] pb-0 m-6 md:m-10 mb-0 md:mb-0">
-      <div class="w-full bg-[#918C88] h-full"></div>
-    </div>
-  )}
-
-  <section class="mx-6 md:mx-9">
-    <div class="max-w-6xl mx-auto relative flex flex-col gap-y-6 md:gap-y-10 mt-6 md:mt-10 pb-6 md:pb-10 border-b-[0.5px] border-black -mb-[0.5px]">
-      <div class="flex flex-col md:flex-row gap-y-2 gap-x-12 justify-between">
-        <h1 class=" text-4xl md:text-5xl leading-7 md:leading-[44px]">
+<div class="relative flex flex-col max-w-8xl mx-auto">
+  <!-- <header class="flex items-center sticky top-0  border-t-[0.5px] border-black mt-6 md:mt-9 pt-4"> -->
+  <header class="flex items-center justify-between sticky top-0 mx-6 md:mx-9 py-3 md:py-4 z-50">
+    <a href="/" class="hover:underline whitespace-nowrap -ml-0.5">
+      ← Go back
+    </a>
+    <a href="/" class="hover:underline whitespace-nowrap">Max Georgopoulos</a>
+  </header>
+  <div class="m-6 md:m-9 mt-3 md:mt-5">
+    <div class=" border-t-[0.5px] border-black pt-4 relative flex flex-col gap-y-6 md:gap-y-9 pb-6 md:pb-9">
+      <div class="flex flex-col md:flex-row gap-y-2 gap-x-12 justify-between mt-3 md:mt-6">
+        <h1 class=" text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-8 md:leading-10 xl:leading-[48px] 2xl:leading-[56px]">
           {frontmatter.title}
+          <!-- <span class="font-floral text-9xl w-fit leading-4 ">{frontmatter.title.slice(0,1)}</span>
+          {frontmatter.title.substring(1)} -->
         </h1>
         {frontmatter.link && (
           <a href={frontmatter.link} target="_blank" class="group flex items-end gap-x-1">
@@ -33,58 +27,66 @@ const {frontmatter} = Astro.props;
           </a>
         )}
       </div>
-      <!-- <span class="absolute top-0 right-0 text-[10px] uppercase tracking-wide font-sans leading-3">
-        {frontmatter.type}
-      </span> -->
-      <span class="absolute top-0 right-0 text-[10px] uppercase tracking-wide font-sans leading-3">
+      <span class="absolute top-0 right-0 text-[10px] uppercase tracking-wide font-sans ">
         {frontmatter.type}
       </span>
-      <div class="flex flex-col-reverse md:flex-row w-full gap-6 md:gap-9">
-        <div class="flex-1">
-          <div class="md:w-fit">
-            <table class="" cellspacing="0" cellpadding="0">
-              {frontmatter.company && (
-                <tr>
-                  <td>Company</td>
-                  <td class="">{frontmatter.company}</td>
-                </tr>
-              )}
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-9">
+        <div class="col-span-6 max-w-sm md:order-last"><p>{frontmatter.tldr}</p></div>
+        <div class="col-span-6 md:w-fit md:order-first">
+          <table class="" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="">Did</td>
+              <td>
+                {frontmatter.roles.join(", ")}
+              </td>
+            </tr>
+            {frontmatter.company && (
               <tr>
-                <td>Role</td>
-                <td>
-                  {frontmatter.roles.join(", ")}
+                <td class="">For</td>
+                <td class="">{frontmatter.company}</td>
+              </tr>
+            )}
+            {frontmatter.collaborators && (
+              <tr>
+                <td class="">With</td>
+                <td class="flex flex-col gap-y-2 525:gap-0 ">
+                  <table class="w-fit" cellspacing="0" cellpadding="0">
+                    {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
+                      <tr class="collaborator ">
+                        <td>
+                          <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+                            {collaborator.name}
+                          </a>  
+                        </td>
+                        <td>
+                          <span class="525:whitespace-nowrap">({collaborator.role})</span>
+                        </td>
+                      </tr>  
+                    ))}
+                  </table>
                 </td>
               </tr>
-              <tr>
-                <td>Tools</td>
-                <td>{frontmatter.tools.join(", ")}</td>
-              </tr>
-              {frontmatter.collaborators && (
-                <tr>
-                  <td><p>Collaborators</p></td>
-                  <td class="flex flex-col gap-y-2 525:gap-0 ">
-                    {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
-                      <div class="flex flex-wrap gap-x-[5px]">
-                        <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
-                          {collaborator.name}
-                        </a>  
-                        <span class="525:whitespace-nowrap">({collaborator.role})</span>
-                      </div>  
-                    ))}
-                  </td>
-                </tr>
-              )}
-            </table>
-          </div>
-        </div>
-        <div class="flex-1">
-          <p class="max-w-sm">{frontmatter.tldr}</p>
+            )}
+            <tr>
+              <td class="">Using</td>
+              <td>{frontmatter.tools.join(", ")}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
-  </section>
-  <div class="mx-6 md:mx-9 mt-20">
-    <article id="content" class="normal-case	text-lg mx-auto w-full">
+    {frontmatter.image ? (
+      <img 
+        src={frontmatter.image} 
+        alt={`${frontmatter.title} mockups`}
+        class=" min-h-0 max-h-[256px] md:max-h-[448px] h-full object-cover "
+      />
+    ) : (
+      <div class="flex h-64 md:h-[448px] ">
+        <div class="w-full bg-[#918C88] h-full"></div>
+      </div>
+    )}
+    <article id="content" class="max-w-prose mx-auto normal-case text-lg w-full mt-12">
       <slot />
     </article>
   </div>
@@ -96,8 +98,23 @@ const {frontmatter} = Astro.props;
   }
 
   article#content img {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    border: 1px #e8e8e8 solid;
+    max-width: 800px;
+    margin: 3rem auto;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    article#content img {
+      width: 100vw;
+      margin: 3rem calc(-50vw + 50%);
+    }
+  }
+
+  article#content p {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   article#content blockquote {
@@ -133,10 +150,6 @@ const {frontmatter} = Astro.props;
 
   article#content h2:first-child {
     margin-top: 0;
-  }
-  
-  article#content p {
-    max-width: 65ch;
   }
 
   article#content p:first-child {

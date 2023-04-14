@@ -1,39 +1,26 @@
 ---
 const {frontmatter} = Astro.props;
-import Logo from '../components/Logo.astro';
+import DropLetter from '../components/DropLetter.astro';
 ---
-<div class="fonr-serif relative flex flex-col items-center">
-  <!-- <a href="/" class="flex items-center justify-center h-14 w-14 -mt-[56px] bg-gradient-to-b from-neutral-800 to-[#272727] hover:to-neutral-800  duration-150 rounded-full sticky top-8 z-10" >
-    <Logo classes="h-10 w-10 shrink-0 text-[#C6C6C6]" />
-  </a> -->
-  <section class="flex flex-col items-center px-6 pt-[88px] pb-12 w-full">
-    <h1 class="text-6xl  mb-6 text-center">
-      <span class="font-floral text-[134px] bg-black">
-        <!-- {frontmatter.title.slice(0, 1)} -->
-        Y
-      </span>
-      {frontmatter.title.substring(1)}
-    </h1>
-    <p class="text-[10px] leading-3 uppercase acking-wide ">{frontmatter.date}</p>
-  </section>
-  <article id="content" class="text-lg  mx-6 mt-12">
-    <slot />
-  </article>
+<div class="font-serif flex flex-col items-center mx-6 md:mx-9">
+  <header class="flex items-center justify-between py-3 md:py-4 gap-6 md:gap-9 w-full">
+    <p class="text-[11px] leading-3 font-sans uppercase tacking-wide  md:-ml-4">{frontmatter.date}</p>
+    <a href="/" class="hover:underline whitespace-nowrap">Max Georgopoulos</a>
+  </header>
+  <div class="">
+    <section class="max-w-3xl flex flex-col items-center mt-40 mb-40 w-full">
+		<h1 class="indent-[124px] relative text-7xl  mb-6 leading-[84px] tracking-tight">
+			<span class=" font-floral text[#333] text-[164px] absolute -top-0.5 -left-[126px]">Y</span>
+			<span >es, you can learn to code</span>
+		</h1>
+	</section>
+    <article id="content" class="text-lg max-w-3xl mt-12">
+      <slot />
+    </article>
+  </div>
 </div>
 
 <style is:inline>
-  article#content > * {
-    width: 100%;
-    max-width: 65ch;
-    margin: 0 auto;
-  }
-
-  article#content > img, video {
-    width: 100%;
-    max-width: calc(65ch + 48px);
-    margin: 0 auto;
-  }
-
   article#content > h2 {
     font-size: 2rem;
     line-height: 2.25rem;

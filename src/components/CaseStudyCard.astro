@@ -11,7 +11,7 @@ export interface Props {
 		link: string;
 		role: string;
 	}[];
-	image: string;
+	image?: string;
 	tools: string[];
 }
 
@@ -28,11 +28,18 @@ const {
 } = Astro.props;
 ---
 
-<a href={href || '#'} class={`flex justify-between group`}>
+<a href={href || '#'} class={`flex flex-col-reverse md:flex-row-reverse md:justify-between gap-6 md:gap-9 group border-t-[0.5px] border-black pt-2`}>
+	<div class="md:mt-6">
+		{image ? (
+			<img src={image || "Frame-168.png"} alt="" class="max-w-md "/>
+		) : (
+			<div class="h-[300px] w-full bg-[#f6f6f6]"></div>
+		)}
+	</div>
 	<div>
-		<h2 class={` text-4xl leading-[44px] group-hover:underline group-focus:underline`}>{title}</h2>
-		<p class={`text-[10px] uppercase tracking-wide font-sans leading-6`}>{type}</p>
-		<p class={`mt-2 mb-6`}>{description}</p>
+		<p class={`mb-6 text-[10px] leading-3 uppercase tracking-wide font-sans`}>{type}</p>
+		<h2 class={`mb-4 text-4xl leading-8 group-hover:underline group-focus:underline`}>{title}</h2>
+		<p class={`mb-4`}>{description}</p>
 		<table class="" cellspacing="0" cellpadding="0">
 			<tr>
 				<td class="">Did</td>
@@ -73,11 +80,6 @@ const {
 			</tr>
 		</table>
 	</div>
-	{image ? (
-		<img src={image || "Frame-168.png"} alt="" class="max-w-md "/>
-	) : (
-		<div class="h-[300px] w-full mt-6 bg-[#f6f6f6]"></div>
-	)}
 </a>
 <style>
 	.collaborator > td {

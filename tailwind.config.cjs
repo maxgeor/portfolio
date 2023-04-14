@@ -12,7 +12,10 @@ module.exports = {
 				ibm: ['IBM Plex Sans', 'sans-serif'],
 				karla: ['Karla', 'sans-serif'],
 				lora: ['Lora', 'serif'],
-			}
+			},
+			maxWidth: {
+				'8xl': '96rem',
+			},
 		},
 	},
 	plugins: [],

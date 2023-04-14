@@ -1,51 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
-import Logo from '../components/Logo.astro'
+import DropLetter from '../components/DropLetter.astro';
+import Flower from '../components/Flower.astro';
 ---
 
-<Layout title="Max Georgopoulos" maxWidth="max-w-6xl">
-	<main class="flex flex-col gap-y-20 mix-blend-difference	mt-10 m-6 md:m-10" >
-		<section class="text-3xl md:text-4xl md:leading-[48px] ">
-			<span class="float-left pt-[37px] pr-2 -ml-1 font-floral text-[138px]">M</span>
-			<p>
-				
-				ax (Georgopoulos) here. <i>Product designer & developer</i>. Doing Rails stuff at <i>Wavy</i>. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé 
-			</p>
-			<!-- <span id="drop-letter" class="absolute top-[40px] -left-1 text-[#964252] font-floral text-[140px]">M</span>ax Georgopoulos. Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé  -->
+<Layout title="Max Georgopoulos" maxWidth="max-w-8xl">
+	<header class="flex items-center justify-between sticky top-0 mx-6 md:mx-9 py-3 md:py-4 gap-6 md:gap-9">
+		<p class="whitespace-nowrap">Designer & Developer</p>
+    <p class="whitespace-nowrap">Max Georgopoulos</p>
+  </header>
+	<main class=" flex flex-col gap-y-[72px] mix-blend-difference m-6 md:m-9 " >
+		<section class="text-3xl leading-[40px] md:text-4xl md:leading-[48px] ">
+			<DropLetter letter="M" classes="float-left text-[#333] text-[112px] font-floral md:text-[139px] pt-[31px] md:pt-[38px]  pr-[10px]  -ml-0.5 md:-ml-1 " />
+			<p>ax here. I code & design software. Doing Rails stuff at <i>Wavy</i>. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
 		</section>
-		<!-- <section class="grid cols-span 1 md:cols-span-12 gap-6"> -->
-			<!-- <Logo classes="text-[#C6C6C6] h-14 w-14 col-start-11 col-end-12" /> -->
-			
-			
-
-			
-			
-			<!-- <div class="flex self-end w-full">
-				<p class=" max-w-2xl z-10 bg-white">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé .</p>
-				<div class="flex flex-col gap-x-1.5 items-center justify-between   mb-6 w-full bg-white ">
-					<p class="bg-white">Frontend developer</p> 
-					<p class="bg-white font-crimson italic text-lg">&</p> 
-					<p class="bg-white text-right">Product designer</p> 
-				</div>
-			</div>
-		</section> -->
-		<div >
-			<!-- <CaseStudyCard
+		<div class="flex flex-col gap-6 md:gap-9">
+			<CaseStudyCard
 				title="Memiori"
 				href="/studies/memiori"
 				type="Freelance"
 				description="Redesigned note taking app"
 				roles={["branding", "Mobile design"]}
 				image="/studies/memiori/preview.png"
+
+				roles={["UI/UX design", "Full-stack development"]}
+				tools={["Figma", "NextJS"]}
 			/>
 			<CaseStudyCard
 				title="Polls"
 				href="/studies/polls"
-				type="Wavy"
+				type="Feature"
+				company="Wavy"
 				description="Built and co-designed Wavy's Polls feature"
 				roles={["UI/UX design", "Full-stack development"]}
-			/> -->
+				collaborators={
+					[{
+						name: "Dan Stein",
+						role: "Design",
+						link: "https://twitter.com/hassantsyed",
+					}]
+				}
+				tools={["Ruby on Rails", "Hotwire", "TailwindCSS"]}
+			/>
 			<CaseStudyCard
 				title="Formie"
 				company="Wavy"
