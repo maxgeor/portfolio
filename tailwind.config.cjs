@@ -17,7 +17,7 @@ module.exports = {
 				'8xl': '96rem',
 			},
 			letterSpacing: {
-				tightish: '-0.015em',
+				tightish: '-0.016em',
 			}
 		},
 	},
