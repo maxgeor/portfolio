@@ -27,8 +27,8 @@ const {
 	tools
 } = Astro.props;
 ---
-
-<a href={href || '#'} class={`flex flex-col-reverse lg:flex-row-reverse lg:justify-between gap-6 lg:gap-9 group border-t-[0.5px] border-black pt-2`}>
+<!-- <a href={href || '#'} class={`crossed flex flex-col-reverse lg:flex-row-reverse lg:justify-between gap-6 lg:gap-9 group border-t-[0.5px] border-black pt-2`}> -->
+<a href={href || '#'} class={`crossed flex flex-col-reverse lg:flex-row-reverse lg:justify-between gap-6 lg:gap-10 `}>
 	<div class="lg:mt-6">
 		{image ? (
 			<img src={image || "Frame-168.png"} alt="" class="max-w-md "/>
@@ -37,7 +37,7 @@ const {
 		)}
 	</div>
 	<div>
-		<p class={`mb-6 text-[10px] leading-3 uppercase tracking-wide font-sans`}>{type}</p>
+		<p class={`mb-6 text-[10px] leading-3 uppercase tracking-wide font-ibm`}>{type}</p>
 		<h2 class={`mb-4 text-4xl leading-8 group-hover:underline group-focus:underline `}>{title}</h2>
 		<p class={`mb-4`}>{description}</p>
 		<table class="" cellspacing="0" cellpadding="0">
@@ -88,5 +88,21 @@ const {
 	}
 	.collaborator > td:first-child {
 		padding-right: 12px;
+	}
+
+	.crossed {
+		background: 
+			linear-gradient(to top left,
+				rgba(0,0,0,0) 0%,
+				rgba(0,0,0,0) calc(50% - 0.8px),
+				rgba(0,0,0,1) 50%,
+				rgba(0,0,0,0) calc(50% + 0.8px),
+				rgba(0,0,0,0) 100%),
+			linear-gradient(to top right,
+				rgba(0,0,0,0) 0%,
+				rgba(0,0,0,0) calc(50% - 0.8px),
+				rgba(0,0,0,1) 50%,
+				rgba(0,0,0,0) calc(50% + 0.8px),
+				rgba(0,0,0,0) 100%);
 	}
 </style>

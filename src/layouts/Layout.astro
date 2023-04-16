@@ -18,7 +18,7 @@ const { title, maxWidth } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm font-serif text-neutral-800">
+	<body class="text-sm  text-neutral-800">
 		<div class={maxWidth && `${maxWidth} mx-auto`}>
 			<slot />
 			<Footer />
@@ -26,12 +26,14 @@ const { title, maxWidth } = Astro.props;
 	</body>
 </html>
 <style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
 
 	h1, h2, h3, h4, h5, h6 {
 		letter-spacing: -0.0075em;
 	}
-	max-header {
-  	text-align: justify;
+
+	a {
+		text-decoration-thickness: 0.1em;
 	}
 
 	@font-face {
@@ -42,6 +44,7 @@ const { title, maxWidth } = Astro.props;
 	.font-floral {
 		font-family: floral;
 	}
+
 	@font-face {
     font-family: goudy;
     src: url(/GoudyInitialen.ttf);
@@ -52,12 +55,12 @@ const { title, maxWidth } = Astro.props;
 	}
 	
 	@font-face {
-    font-family: pointer;
-    src: url(/Pointage.ttf);
+    font-family: ornament;
+    src: url(/bodooitc.ttf);
 	}
   
-	.font-pointer {
-		font-family: pointer;
+	.font-ornament {
+		font-family: ornament;
 	}
 
 	max-header:after {
@@ -90,18 +93,8 @@ const { title, maxWidth } = Astro.props;
 
 	ul > li {
     list-style: disc;
-		/* background: transparent url(../images/bullet-18px.svg) no-repeat left top; */
 		margin-left: 16px;
-		/* margin-left: -1px; */
 	}
-
-	/* @media (max-width: 767px) {
-		ul > li {
-			background: transparent url(../images/bullet-16px.svg) no-repeat left top;
-			padding-left: 16px;
-			margin-left: 1px;
-		}
-	} */
 
 	@font-face {
     font-family: flowers;
@@ -137,3 +130,4 @@ const { title, maxWidth } = Astro.props;
 		line-height: 20px;
 	}
 </style>
+
