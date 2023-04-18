@@ -1,15 +1,49 @@
 ---
-export interface Props {
-  letter: string;
-  classes?: string;
+const paths = Astro.url.pathname.split('/');
+const pathNames = {
+  '': 'Home',
+  'case-studies': 'Case studies',
+  'case-studies/memiori': 'Memiori',
 }
-
-const { letter, classes } = Astro.props;
+import Flower from "./Flower.astro";
 ---
 
-<span class={`
-  font-floral
-  ${classes} 
-`}>
-  {letter}
-</span>
+
+<header class="flex items-center justify-between ">
+  <div class="flex gap-x-2">
+    <a href="/" class="hover:underline whitespace-nowrap">
+      Max Georgopoulos
+    </a>
+    <!-- {paths && (
+      paths.map((path, index) => {
+        <a 
+          href={`/${path}`} 
+          class="hover:underline whitespace-nowrap"
+        >
+          Case studies
+        </a>
+      })
+    )}
+    \
+    <a href="/" class="hover:underline whitespace-nowrap">
+      Case studies
+    </a>
+    \
+    <a href="/" class="hover:underline whitespace-nowrap text-[#767676]">
+      Memiori
+    </a> -->
+  </div>
+  <div class="flex gap-x-1.5 flex-wrap text-sm">
+    <Flower type="°" classes={'h-6 w-6'} fluttering={true}/>
+    <Flower type="Ø" classes={'h-6 w-6'} fluttering={false}/>
+    <Flower type=">" classes={'h-6 w-6'} fluttering={false}/>
+    <Flower type="`" classes={'h-6 w-6'} fluttering={true}/>
+  </div>
+  <!-- <span class="font-ornament text-2xl leading-4 -mr-1.5">`</span>  -->
+</header>
+
+<script>
+  const flowers = document.querySelectorAll('.flower');
+
+  setInterval(() => flowers.forEach((flower) => flower.classList.toggle('fluttering')), 350);
+</script>

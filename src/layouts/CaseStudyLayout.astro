@@ -3,53 +3,30 @@ const {frontmatter} = Astro.props;
 import DropLetter from '../components/DropLetter.astro';
 
 ---
-<div class="relative flex flex-col max-w-8xl mx-auto">
-  <header class="sticky top-0 mx-6 md:mx-10 pt-3 md:pt-4 z-50">
-    <div class="relative flex items-center justify-between ">
-      <div class="flex gap-x-2">
-        <a href="/" class="hover:underline whitespace-nowrap">
-          Max Georgopoulos
-        </a>
-        \
-        <a href="/" class="hover:underline whitespace-nowrap">
-          Case studies
-        </a>
-        \
-        <a href="/" class="hover:underline whitespace-nowrap">
-          Memiori
-        </a>
-      </div>
-      <a href="/" class="hover:underline whitespace-nowrap -ml-0.5">
-        <span class="font-ornament text-xl leading-5 transform rotate-45">`</span> 
-        Go back
-      </a>
-    </div>
-  </header>
-  <div class="flex flex-col gap-y-20 m-6 md:m-10 mt-16 md:mt-14">
-    <div class="grid lg:grid-cols-4 gap-6 lg:gap-20">
-      <section class="col-span-3 text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] xl:text-[56px] xl:leading-[72px] max-w-5xl">
-        <p class="tracking-tightish">
-          <a href="#" class="text-neutral-800 underline"><DropLetter letter={frontmatter.title.slice(0, 1)} classes="float-left font-floral text-[139px] md:text-[190px] xl:text-[214px] pt-[38px] md:pt-[51px] xl:pt-[58px] pr-2.5 -ml-0.5 md:-ml-1"/> {frontmatter.title.substring(1)}</a>
-          is a {frontmatter.type} I designed & co-built to <span class="text-neutral-800 lowercase">{frontmatter.tldr}</span>
-        </p>
-      </section>
-      <div class="col-span-1 grid grid-cols-4 lg:grid-cols-1 gap-y-6 gap-x-6  h-fit mt-3">
-        <div class="flex justify-between ">
-          <p>{frontmatter.type}</p>
-        </div>
-        <div class="flex flex-col gap-y-1">
-          <p class=" ">Role</p>
-          <p>{frontmatter.roles.join(", ")}</p>
-        </div>
-        {frontmatter.company && (
-          <div class="flex flex-col gap-y-1">
-            <p class="">For</p>
-            <p>{frontmatter.company}</p>
-          </div>
-        )}
-        {frontmatter.collaborators && (
-          <div class="flex flex-col gap-y-1">
-            <p class=" ">With</p>
+<>
+  <section id="hero" class="lg:col-span-9 font-untitled-serif text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] xl:text-[56px] xl:leading-[72px] max-w-5xl">
+    <p>
+      <a href="#" class="text-neutral-800 underline"><DropLetter letter={frontmatter.title.slice(0, 1)} classes="float-left font-floral text-[139px] md:text-[190px] xl:text-[214px] pt-[38px] md:pt-[51px] xl:pt-[58px] pr-2.5 md:pr-3 -ml-0.5 md:-ml-1"/> {frontmatter.title.substring(1)}</a>
+      is a {frontmatter.type} I designed & co-built to <span class="text-neutral-800 lowercase">{frontmatter.tldr}</span>
+    </p>
+  </section>
+  <div class="col-span-3 flex flex-col gap-y-5">
+    <p>{frontmatter.type}</p>
+    <table id="details" class="hidden md:block  ">
+      {frontmatter.company && (
+        <tr>
+          <td>For</td>
+          <td>{frontmatter.company}</td>
+        </tr>
+      )}
+      <tr>
+        <td>Role</td>
+        <td>{frontmatter.roles.join(", ")}</td>
+      </tr>
+      {frontmatter.collaborators && (
+        <tr>
+          <td>With</td>
+          <td>
             <table cellspacing="0" cellpadding="0">
               {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
                 <tr class="collaborator">
@@ -62,54 +39,79 @@ import DropLetter from '../components/DropLetter.astro';
                 </tr>  
               ))}
             </table>
-          </div>
-        )}
-        <div class="flex flex-col gap-y-1">
-          <p>Using</p>
-          <p>{frontmatter.tools.join(", ")}</p>
-        </div>
-      </div>
+          </td>
+        </tr>
+      )}
+      <tr>
+        <td>Using</td>
+        <td>{frontmatter.tools.join(", ")}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="md:hidden -mt-4">
+    <div>
+      <p>{frontmatter.type}</p>
     </div>
-    {frontmatter.image ? (
-      <img 
-        src={frontmatter.image} 
-        alt={`${frontmatter.title} mockups`}
-        class=" min-h-0 max-h-[256px] md:max-h-[448px] h-full object-cover"
-      />
-    ) : (
-      <div class="flex h-64 md:h-[448px] ">
-        <div class="w-full bg-[#918C88] h-full"></div>
+    {frontmatter.company && (
+      <div class="flex flex-col  col-span-4 lg:col-span-1">
+        <p class="">For</p>
+        <p>{frontmatter.company}</p>
       </div>
     )}
-    <article class="normal-case text-lg w-full">
-      <slot />
-    </article>
+    <div class="flex flex-col  col-span-4 lg:col-span-1">
+      <p class=" ">Role</p>
+      <p>{frontmatter.roles.join(", ")}</p>
+    </div>
+    {frontmatter.collaborators && (
+      <div class="flex flex-col  col-span-4 lg:col-span-1">
+        <p class=" ">With</p>
+        <table cellspacing="0" cellpadding="0">
+          {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
+            <tr class="collaborator">
+              <td class="leading-4">
+                <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+                  {collaborator.name}
+                </a>  
+                ({collaborator.role})
+              </td>
+            </tr>  
+          ))}
+        </table>
+      </div>
+    )}
+    <div class="flex flex-col  col-span-4 lg:col-span-1">
+      <p>Using</p>
+      <p>{frontmatter.tools.join(", ")}</p>
+    </div>
   </div>
-  
-</div>
+
+  {frontmatter.image ? (
+    <img 
+      src={frontmatter.image} 
+      alt={`${frontmatter.title} mockups`}
+      class=" min-h-0 max-h-[256px] md:max-h-[448px] h-full object-cover"
+    />
+  ) : (
+    <div class="flex h-64 md:h-[448px] ">
+      <div class="w-full bg-[#918C88] h-full"></div>
+    </div>
+  )}
+  <article class="font-untitled-serif normal-case text-xl w-full">
+    <slot />
+  </article>
+</>
 
 <style is:inline>
-  tr > td:last-child {
-    width: 100%;
+  table#details > tr > td {
+    padding-bottom: 20px;
   }
 
   article > p:has(img) {
-    /* margin: 3rem auto; */
     margin-left: auto;
     border: 0.5px rgba(0,0,0, 0.11) solid;
     width: 100%;
     height: auto;
   }
-
-  /* article > p:has(img) {
-    max-width: 900px;
-  } */
-
-  /* article > * {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  } */
 
   article h1 {
     font-size: 56px;
@@ -137,6 +139,9 @@ import DropLetter from '../components/DropLetter.astro';
     margin-top: 0;
   }
 
+  article p {
+    margin: 1.75rem 0;
+  }
   article p:first-child {
     margin-top: 0;
   }
@@ -145,3 +150,5 @@ import DropLetter from '../components/DropLetter.astro';
     margin-bottom: 0;
   }
 </style>
+
+<script src="../animations/hopping.js"></script>

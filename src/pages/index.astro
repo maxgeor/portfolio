@@ -5,29 +5,14 @@ import DropLetter from '../components/DropLetter.astro';
 
 ---
 
-<Layout title="Max Georgopoulos" maxWidth="max-w-8xl">
-	<main class="flex flex-col gap-y-20  m-6 md:m-10 ">
-
-		<header class="flex items-center justify-between sticky top-0 gap-5 md:gap-10">
-			<p class="whitespace-nowrap">
-				Max Georgopoulos
-			</p>
-		</header>
-		<!-- <section id="hero" class="text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] font-serif">
-			<p 
-				class="tracking-tightish"
-				aria-label="Max here. I'm a designer & developer based out of Toronto. I love thinking big about. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two"
-			>
-				<span><DropLetter letter='M' aria-hidden="true" classes="float-left font-floral text-[139px] pt-[38px] md:text-[190px] md:pt-[51px]  pr-2.5 -ml-0.5 md:-ml-1 " /></span>ax here. I'm a <span class="flower-letter text-neutral-800">designer & developer</span> based out of <span class="text-neutral-800 flower-letters">Toronto</span>. I love to <span class="text-neutral-800">think big</span>, <span class="text-neutral-800">question everything</span> and <span class="text-neutral-800">blur the lines</span> between design and engineering (you get better results by blending the two).
-			</p>
-		</section> -->
-		<section class="mt-10 mb-20 font-serif col-span-3 text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] xl:text-[56px] xl:leading-[72px]">
-        <p class="tracking-tightish">
-          <DropLetter letter="M" classes="text-neutral-800 float-left font-floral text-[139px] md:text-[190px] xl:text-[214px] pt-[38px] md:pt-[51px] xl:pt-[58px] pr-2.5 -ml-0.5 md:-ml-1"/>
-          ax here. I'm a <span class="flower-letter text-neutral-800">designer & developer</span> based out of <span class="text-neutral-800 flower-letters">Toronto</span>. I love to <span class="text-neutral-800">think big</span>, <span class="text-neutral-800">question everything</span> and <span class="text-neutral-800">blur the lines</span> between design and engineering (you get better results by blending the two).
-        </p>
-      </section>
-		<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-10">
+<Layout title="Max Georgopoulos">
+		<!-- <section id="hero" class="-mt-4 mb-10 font-untitled-serif text-neutral-400 text-4xl leading-[44px] md:text-5xl md:leading-[60px] xl:text-6xl xl:leading-[72px]"> -->
+		<section id="hero" class="-mt-4 mb-10 font-untitled-serif text-neutral-400 text-4xl leading-[44px] md:text-5xl md:leading-[60px]">
+				<DropLetter letter="M" classes="text-neutral-800 float-left font-floral text-[130px] md:text-[178px]  pt-[35px] md:pt-[48px] pr-2 md:pr-2.5 -ml-0.5 md:-ml-1"/>
+				ax here. I'm a <span class="flower-letter text-neutral-800">designer & developer</span> based out of <span class="text-neutral-800 flower-letters">Toronto</span>. I love to <span class="text-neutral-800">think big</span>, <span class="text-neutral-800">question everything</span> and <span class="text-neutral-800">blur the lines</span> between design and engineering (you get better results by blending the two).
+			</h1>
+		</section>
+		<div class="grid grid-cols-1 xl:grid-cols-2 gap-20 mb-20 ">
 			<CaseStudyCard
 				title="Memiori"
 				href="/studies/memiori"
@@ -65,7 +50,7 @@ import DropLetter from '../components/DropLetter.astro';
 				collaborators={
 					[{
 							name: "Hassan Syed",
-							role: "Frontend Development",
+							role: "Development",
 							link: "https://twitter.com/hassantsyed",
 						},
 						// { name: "Max Syed", role: "Frontend", link: "https://twitter.com/hassantsyed" },
@@ -84,7 +69,7 @@ import DropLetter from '../components/DropLetter.astro';
 				collaborators={
 					[{
 							name: "Hassan Syed",
-							role: "Frontend Development",
+							role: "Development",
 							link: "https://twitter.com/hassantsyed",
 						},
 						// { name: "Max Syed", role: "Frontend", link: "https://twitter.com/hassantsyed" },
@@ -94,10 +79,11 @@ import DropLetter from '../components/DropLetter.astro';
 				tldr="Transforming smart contract interaction with focused, friendly forms."
 			/>
 		</div>
-		<section>
-			<!-- <div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-10 border-t-[0.5px] border-black -mt-[0.5px] pt-4"> -->
-			<div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-10">
-				<h2 class="text-2xl leading-5">Projects</h2>
+		<!-- <hr class="h-[0.5px] border-t-[0.5px] border-neutral-800"/> -->
+		<section class="grid xl:grid-cols-2 gap-20">
+			<!-- <div class="flex flex-col gap-5 border-t-[0.5px] border-neutral-800 pt-5"> -->
+			<div class="flex flex-col gap-5">
+				<h2 class="text-4xl leading-6 pt-0.5 pb-2.5 font-untitled-serif">Projects</h2>
 				<div class="flex ">
 					<table>
 						<tr>
@@ -115,18 +101,17 @@ import DropLetter from '../components/DropLetter.astro';
 					</table>
 				</div>
 			</div>
-			<!-- <div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-10 border-t-[0.5px] border-black pt-4 -mt-[0.5px]"> -->
-			<div class="grid grid-cols-1 xl:grid-cols-2 xl:gap-10">
-				<h2 class=" text-2xl leading-5">Writing</h2>
+			<!-- <div class="flex flex-col gap-5 border-t-[0.5px] border-neutral-800 pt-5"> -->
+			<div class="flex flex-col gap-5">
+				<h2 class="text-4xl leading-6 pt-0.5 pb-2.5 font-untitled-serif">Writing</h2>
 				<div class="flex flex-col gap-y-2">
 					<a href="/writing/yes" class="flex flex-col sm:flex-row items-baseline flex-wrap gap-x-3 group underline-none ">
 						<p class=" group-hover:underline">Yes, you can learn to code</p> 
-						<span class="uppercase font-ibm tracking-wide text-[10px] ">Feb 2022</span>
+						<span class="uppercase tracking-wider text-[9px] ">Feb 2022</span>
 					</a>
 				</div>
 			</div>
 		</section>
-	</main>
 </Layout>
 
 <style>

@@ -1,12 +1,13 @@
 ---
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 
 export interface Props {
 	title: string;
 	maxWidth?: string;
 }
 
-const { title, maxWidth } = Astro.props;
+const { title, maxWidth = '6xl' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,23 +19,48 @@ const { title, maxWidth } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm  text-neutral-800">
-		<div class={maxWidth && `${maxWidth} mx-auto`}>
-			<slot />
-			<Footer />
+	<body class="text-xs font-untitled-sans text-neutral-800">
+		<div class={`${maxWidth} mx-auto`}>
+			<main class={`antialiased grid grid-cols-12 gap-20 m-5 md:m-10 xl:mx-20 xl:my-10`}>
+				<Header/>
+				<slot />
+				<Footer />
+			</main>
 		</div>
 	</body>
 </html>
 <style is:global>
 	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
 
-	h1, h2, h3, h4, h5, h6 {
-		letter-spacing: -0.0075em;
+	main > * {
+		grid-column: 1 / -1;
 	}
 
-	a {
-		text-decoration-thickness: 0.1em;
+	section#hero {
+		letter-spacing: -0.035em;
 	}
+	h2, h3, h4 {
+		letter-spacing: -0.035em;
+	}
+
+	@font-face {
+    font-family: untitled-sans;
+    src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+	}
+  
+	.font-untitled-sans {
+		font-family: untitled-sans;
+	}
+	
+	@font-face {
+    font-family: untitled-serif;
+    src: url(/untitled/serif/test-untitled-serif-regular.woff2)  format('woff2');
+	}
+  
+	.font-untitled-serif {
+		font-family: untitled-serif;
+	}
+
 
 	@font-face {
     font-family: floral;
@@ -61,12 +87,6 @@ const { title, maxWidth } = Astro.props;
   
 	.font-ornament {
 		font-family: ornament;
-	}
-
-	max-header:after {
-		content: "";
-		display: inline-block;
-		width: 100%;
 	}
 
 	ul > li, ol > li {
@@ -110,7 +130,7 @@ const { title, maxWidth } = Astro.props;
 	}
 
 	tr > td {
-		padding-bottom: 8px;
+		padding-bottom: 20px;
 	}
 	
 	tr:last-child > td {
@@ -119,7 +139,7 @@ const { title, maxWidth } = Astro.props;
 
 	tr > td:first-child {
 		width: min-content;
-		padding-right: 24px;
+		padding-right: 20px;
 	}
 
 
@@ -127,7 +147,8 @@ const { title, maxWidth } = Astro.props;
 		vertical-align: top;
 		padding: 0;
 		margin: 0;
-		line-height: 20px;
+		text: 12px;
+		line-height: 16px;
 	}
 </style>
 

@@ -10,7 +10,7 @@ const { size = 'normal', text, classes } = Astro.props;
 import DropLetter from './DropLetter.astro';
 ---
 
-<section class={`
+<!-- <section class={`
   wide-paragraph text-3xl leading-[40px] md:text-4xl md:leading-[48px] 
   ${size === 'large' 
     ? 'text-4xl  leading-[48px] md:leading-[56px] md:text-5xl xl:text-6xl xl:leading-[72px]'
@@ -28,5 +28,5 @@ import DropLetter from './DropLetter.astro';
       }
     `}
   />
-  <span class="tracking-tightish">{text.substring(1)}</span>
+  <span>{text.substring(1)}</span> -->
 </section>

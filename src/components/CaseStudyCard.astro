@@ -27,32 +27,32 @@ const {
 	tools
 } = Astro.props;
 ---
-<!-- <a href={href || '#'} class={`crossed flex flex-col-reverse lg:flex-row-reverse lg:justify-between gap-6 lg:gap-9 group border-t-[0.5px] border-black pt-2`}> -->
-<a href={href || '#'} class={`crossed flex flex-col-reverse lg:flex-row-reverse lg:justify-between gap-6 lg:gap-10 `}>
-	<div class="lg:mt-6">
+<!-- <a href={href || '#'} class={`grid grid-cols-5 gap-6 lg:gap-10 w-full border-t-[0.5px] border-neutral-800`}> -->
+<a href={href || '#'} class={`grid grid-cols-5 gap-6 lg:gap-10 w-full group`}>
+	<div class="col-span-3 flex justify-end order-last">
 		{image ? (
-			<img src={image || "Frame-168.png"} alt="" class="max-w-md "/>
+			<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto"/>
 		) : (
-			<div class="h-[300px] w-full bg-[#f6f6f6]"></div>
+			<div class="max-h-[300px] w-full bg-[#f1f1f1]"></div>
 		)}
 	</div>
-	<div>
-		<p class={`mb-6 text-[10px] leading-3 uppercase tracking-wide font-ibm`}>{type}</p>
-		<h2 class={`mb-4 text-4xl leading-8 group-hover:underline group-focus:underline `}>{title}</h2>
-		<p class={`mb-4`}>{description}</p>
+	<div class="col-span-2">
+		<h2 class={`mb-3 text-4xl leading-8 group-hover:underline group-focus:underline  font-untitled-serif`}>{title}</h2>
+		<p class={`text-[9px] leading-3 uppercase tracking-wider mb-5`}>{type}</p>
+		<p class={`mb-5`}>{description}</p>
 		<table class="" cellspacing="0" cellpadding="0">
-			<tr>
-				<td class="">Did</td>
-				<td>
-					{roles.join(", ")}
-				</td>
-			</tr>
 			{company && (
 				<tr>
 					<td class="">For</td>
 					<td class="">{company}</td>
 				</tr>
 			)}
+			<tr>
+				<td class="">Did</td>
+				<td>
+					{roles.join(", ")}
+				</td>
+			</tr>
 			{collaborators && (
 				<tr>
 					<td class="">With</td>
@@ -81,6 +81,7 @@ const {
 		</table>
 	</div>
 </a>
+
 <style>
 	.collaborator > td {
 		padding-bottom: 0;
@@ -88,21 +89,5 @@ const {
 	}
 	.collaborator > td:first-child {
 		padding-right: 12px;
-	}
-
-	.crossed {
-		background: 
-			linear-gradient(to top left,
-				rgba(0,0,0,0) 0%,
-				rgba(0,0,0,0) calc(50% - 0.8px),
-				rgba(0,0,0,1) 50%,
-				rgba(0,0,0,0) calc(50% + 0.8px),
-				rgba(0,0,0,0) 100%),
-			linear-gradient(to top right,
-				rgba(0,0,0,0) 0%,
-				rgba(0,0,0,0) calc(50% - 0.8px),
-				rgba(0,0,0,1) 50%,
-				rgba(0,0,0,0) calc(50% + 0.8px),
-				rgba(0,0,0,0) 100%);
 	}
 </style>
