@@ -12,7 +12,7 @@ const { align = 'right', isTitle = false, classes } = Astro.props;
   ${isTitle ? 'text-[13px] uppercase border-t-[0.5px] tracking-wider' : null} 
   ${!isTitle && (align === 'right' ? 'justify-between' : null)}
   ${classes}
-  py-0.5 flex gap-x-2 w-full border-b-[0.5px] border-[#403c38]
+  py-0.5 flex gap-x-2 w-full border-b-[0.5px] border-[#3d352b]
 `}>
   {isTitle ? <th class="font-normal"><slot/></th> : <slot/>}
 </tr>

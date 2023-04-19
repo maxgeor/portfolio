@@ -30,18 +30,16 @@ const {
 	tools
 } = Astro.props;
 ---
-<a href={href || '#'} class={`grid sm:grid-cols-12 gap-6 w-full group`}>
-	<div class="w-full col-span-6 md:col-span-5 lg:col-span-6 xl:col-span-5">
-		<div class="max-w-md w-full ">
-			{image ? (
-				<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto"/>
-			) : (
-				<div class="h-[200px] w-full bg-[#cbcbcb]"></div>
-			)}
-		</div>	
+<a href={href || '#'} class={`flex flex-col sm:grid sm:grid-cols-12 gap-6 sm:gap-12 w-full group`}>
+	<div class="sm:col-span-5">
+		{image ? (
+			<img src={image} alt="" class="max-w-md max-h-[232px]"/>
+		) : (
+			<div class="max-w-md max-h-[232px] aspect[1.25/1] h-full w-full bg-[#cbcbcb]"></div>
+		)}
 	</div>
-	<div class="col-span-6 md:col-span-7 lg:col-span-6 xl:col-span-7 flex flex-col-reverse sm:flex-col gap-y-6 sm:gap-y-16">
-		<Table classes='border-t-[0.5px] border-[#403c38]'>
+	<div class="sm:col-span-7 flex flex-col-reverse sm:flex-col gap-y-6 sm:gap-y-12">
+		<Table classes='border-t-[0.5px] border-[#3d352b]'>
 			{company && (
 				<Row>
 					<td>Client</td>

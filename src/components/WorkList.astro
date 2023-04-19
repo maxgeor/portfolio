@@ -1,5 +1,6 @@
 ---
 import WorkBlock from "./WorkBlock.astro";
+import memioriPreviewImage from '../images/work.memiori/preview.png';
 
 export interface Props {
   classes?: string;
@@ -12,11 +13,12 @@ const { classes } = Astro.props
   flex flex-col gap-y-6
   ${classes}
 `}>
-  <div class="hidden md:block border-t-[0.5px] border-[#403c38]">
+  <div class="hidden sm:block border-t-[0.5px] border-[#3d352b]">
     <h2 class="uppercase tracking-wide text-[13px] leading-6">Work</h2>
   </div>
   <div class="flex flex-col gap-y-12">
     <WorkBlock
+      image='/work/memiori/preview.png'
       title="Memiori"
       description="Redesigned a feeling-based note app"
       type="Freelance"
