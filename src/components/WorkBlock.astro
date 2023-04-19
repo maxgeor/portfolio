@@ -1,4 +1,5 @@
 ---
+import Table from './Table.astro';
 import Row from './Row.astro';
 
 export interface Props {
@@ -29,16 +30,18 @@ const {
 	tools
 } = Astro.props;
 ---
-<a href={href || '#'} class={`grid grid-cols-12 gap-6 w-full group`}>
-	<div class="col-span-6 flex justify-end">
-		{image ? (
-			<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto"/>
-		) : (
-			<div class="max-h-[300px] w-full bg-[#cbcbcb]"></div>
-		)}
+<a href={href || '#'} class={`grid sm:grid-cols-12 gap-6 w-full group`}>
+	<div class="w-full col-span-6 md:col-span-5 lg:col-span-6 xl:col-span-5">
+		<div class="max-w-md w-full ">
+			{image ? (
+				<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto"/>
+			) : (
+				<div class="h-[200px] w-full bg-[#cbcbcb]"></div>
+			)}
+		</div>	
 	</div>
-	<div class="col-span-6 flex flex-col gap-y-6">
-		<table cellpadding="0" cellspacing="0" class="w-full border-t-[0.5px] border-[#403c38]">
+	<div class="col-span-6 md:col-span-7 lg:col-span-6 xl:col-span-7 flex flex-col-reverse sm:flex-col gap-y-6 sm:gap-y-16">
+		<Table classes='border-t-[0.5px] border-[#403c38]'>
 			{company && (
 				<Row>
 					<td>Client</td>
@@ -69,15 +72,17 @@ const {
 				</Row>
 			)}
 			<Row>
-				<td class="">Using</td>
-				<td class="text-right">{tools.join(", ")}</td>
+				<td class="">Tools</td>
+				<td class="align-right">{tools.join(", ")}</td>
 			</Row>
 			<Row>
 				<td>{type}</td>
 			</Row>
-		</table>
-		<h2 class={`text-4xl leading-8 group-hover:underline group-focus:underline  font-untitled-serif`}>{title}</h2>
-		<p>{description}</p>
+		</Table>
+		<div>
+			<h2 class={`mb-1 md:mb-2 text-3xl leading-7 md:text-4xl md:leading-8 group-hover:underline group-focus:underline  font-untitled-serif`}>{title}</h2>
+			<p>{description}</p>
+		</div>
 	</div>
 </a>
 

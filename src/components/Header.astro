@@ -2,8 +2,8 @@
 const paths = Astro.url.pathname.split('/');
 const pathNames = {
   '': 'Home',
-  'case-studies': 'Case studies',
-  'case-studies/memiori': 'Memiori',
+  'case-work': 'Case work',
+  'case-work/memiori': 'Memiori',
 }
 import Flower from "./Flower.astro";
 ---
@@ -20,13 +20,13 @@ import Flower from "./Flower.astro";
           href={`/${path}`} 
           class="hover:underline whitespace-nowrap"
         >
-          Case studies
+          Case work
         </a>
       })
     )}
     \
     <a href="/" class="hover:underline whitespace-nowrap">
-      Case studies
+      Case work
     </a>
     \
     <a href="/" class="hover:underline whitespace-nowrap text-[#767676]">

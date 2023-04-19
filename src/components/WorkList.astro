@@ -1,0 +1,34 @@
+---
+import WorkBlock from "./WorkBlock.astro";
+
+export interface Props {
+  classes?: string;
+}
+
+const { classes } = Astro.props
+---
+
+<div class={`
+  flex flex-col gap-y-6
+  ${classes}
+`}>
+  <div class="hidden md:block border-t-[0.5px] border-[#403c38]">
+    <h2 class="uppercase tracking-wide text-[13px] leading-6">Work</h2>
+  </div>
+  <div class="flex flex-col gap-y-12">
+    <WorkBlock
+      title="Memiori"
+      description="Redesigned a feeling-based note app"
+      type="Freelance"
+      roles={['Branding, Mobile Design']}
+      tools={['Figma, NextJS, TailwindCSS']}
+    />
+    <WorkBlock
+      title="Memiori"
+      description="Redesigned a feeling-based note app"
+      type="Freelance"
+      roles={['Branding, Mobile Design']}
+      tools={['Figma, NextJS, TailwindCSS']}
+    />
+  </div>
+</div>
