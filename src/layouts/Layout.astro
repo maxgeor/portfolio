@@ -19,16 +19,9 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#98928d] text-[#403c38] antialiased font-miller text-sm">
-		<div class={`${maxWidth} mx-auto p-6`}>
-			<!-- <span class="italic" style="font-size: 9.1vw; line-height: 8vw;">
-				Max
-				<span class="relative">
-					O 
-					<span class="font-ornament"></span>
-				</span>
-				Georgopoulos</span> -->
-			<main class={`grid grid-cols-12 gap-6`}>
+	<body class="bg-[#e9e9e9] text-[#2f2f2f] antialiased font-miller text-sm">
+		<div class={`${maxWidth} mx-auto p-12`}>
+			<main class={`grid grid-cols-12 gap-y-12 gap-x-24`}>
 				<slot />
 			</main>
 		</div>

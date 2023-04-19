@@ -1,27 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
-import Cell from '../components/Cell.astro';
+import Row from '../components/Row.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
 
 ---
 
-<Layout title="Max Georgopoulos">
-	<!-- <div class="col-span-12 border-t-2 border-[#403c38] py-2"> -->
-	<div class="col-span-12">
-		<h1>Max Georgopoulos</h1>	
-		<p class="">Software designer & developer</p>
-		<!-- <p class="">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p> -->
+<Layout title="Max Georgopoulos" maxWidth='max-w-8xl'>
+	<div class="col-span-6 xl:col-span-4 flex flex-col gap-y-10">
+		<div class="border-t-[0.5px] border-[#403c38] pt-1">
+			<h1 class="uppercase leading-6 tracking-wide text-base">Max Georgopoulos</h1>	
+			<p class="italic">Software designer & developer</p>
+		</div>
+		<p class="text-justify -mt-2">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
+		<table cellpadding="0" cellspacing="0" class="w-full">
+			<Row isTitle={true}>Projects</Row>
+			<Row>
+				<td ><a>Scope Todo</a></td>
+				<td >A good ol' todo widget for Figma</td>
+			</Row>
+			<Row>
+				<td ><a>Sayings, Forgotten</a></td>
+				<td >Colletion of misremembered sayings</td>
+			</Row>
+			<Row>
+				<td ><a>The Quest Board</a></td>
+				<td >Job board for the Loot community</td>
+			</Row>
+			<Row>
+				<td><a>The Quest Board</a></td>
+				<td>Collection of design case studies</td>
+			</Row>
+		</table>
+		<table cellpadding="0" cellspacing="0" class="w-full">
+			<Row isTitle={true}>Writing</Row>
+			<Row>
+				<td><a>In defence of bad writing</a></td>
+				<td class='text-right'>2022</td>
+			</Row>
+			<Row>
+				<td><a>Yes, you can learn to code</a></td>
+				<td class='text-right'>2021</td>
+			</Row>
+		</table>
 	</div>
-	<div class="col-span-9 grdi grid-cols-9 ">
-		<Table title="Work">
-			<Cell text="Software designer & developer"/>
-		</Table>
+	<div class="col-span-6 xl:col-span-8 flex flex-col gap-y-6 border-t-[0.5px] border-[#403c38] pt-1">
+		<h2 class="uppercase tracking-wide">Work</h2>
+		<div class="flex flex-col gap-y-12">
+			<CaseStudyCard
+				title="Memiori"
+				description="Redesigned a feeling-based note app"
+				type="Freelance"
+				roles={['Branding, Mobile Design']}
+				tools={['Figma, NextJS, TailwindCSS']}
+			/>
+			<CaseStudyCard
+				title="Memiori"
+				description="Redesigned a feeling-based note app"
+				type="Freelance"
+				roles={['Branding, Mobile Design']}
+				tools={['Figma, NextJS, TailwindCSS']}
+			/>
+		</div>
 	</div>
+	
 </Layout>
-
-<!-- <style>
-	section#hero > p > span {
-		color: #262626;
-	}
-</style> -->
-

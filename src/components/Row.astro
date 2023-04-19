@@ -1,0 +1,23 @@
+---
+export interface Props {
+  isTitle?: boolean;
+  classes?: string;
+}
+
+const { isTitle = false, classes } = Astro.props;
+---
+
+<tr class={`
+  ${isTitle ? 'text-[13px] leading-5 uppercase border-t-[0.5px] tracking-wide' : null} 
+  ${classes}
+  py-1 flex gap-x-2 items-baseline w-full border-b-[0.5px] border-[#403c38]
+`}>
+  {isTitle ? <th class="font-normal"><slot/></th> : <slot/>}
+</tr>
+
+<style>
+  th, td {
+    white-space: nowrap;
+    text-align: left;
+  }
+</style>

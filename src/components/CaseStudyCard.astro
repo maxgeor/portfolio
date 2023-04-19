@@ -1,4 +1,6 @@
 ---
+import Row from './Row.astro';
+
 export interface Props {
 	href: string;
 	type: string;
@@ -27,58 +29,55 @@ const {
 	tools
 } = Astro.props;
 ---
-<!-- <a href={href || '#'} class={`grid grid-cols-5 gap-6 lg:gap-10 w-full border-t-[0.5px] border-neutral-800`}> -->
-<a href={href || '#'} class={`grid grid-cols-5 gap-6 lg:gap-10 w-full group`}>
-	<div class="col-span-3 flex justify-end order-last">
+<a href={href || '#'} class={`grid grid-cols-12 gap-6 w-full group`}>
+	<div class="col-span-6 flex justify-end">
 		{image ? (
 			<img src={image || "Frame-168.png"} alt="" class="max-h-[300px] w-auto"/>
 		) : (
-			<div class="max-h-[300px] w-full bg-[#f1f1f1]"></div>
+			<div class="max-h-[300px] w-full bg-[#cbcbcb]"></div>
 		)}
 	</div>
-	<div class="col-span-2">
-		<h2 class={`mb-3 text-4xl leading-8 group-hover:underline group-focus:underline  font-untitled-serif`}>{title}</h2>
-		<p class={`text-[9px] leading-3 uppercase tracking-wider mb-5`}>{type}</p>
-		<p class={`mb-5`}>{description}</p>
-		<table class="" cellspacing="0" cellpadding="0">
+	<div class="col-span-6 flex flex-col gap-y-6">
+		<table cellpadding="0" cellspacing="0" class="w-full border-t-[0.5px] border-[#403c38]">
 			{company && (
-				<tr>
-					<td class="">For</td>
-					<td class="">{company}</td>
-				</tr>
+				<Row>
+					<td>Client</td>
+					<td class="text-right">{company}</td>
+				</Row>
 			)}
-			<tr>
-				<td class="">Did</td>
-				<td>
+			<Row>
+				<td>Role</td>
+				<td class="text-right">
 					{roles.join(", ")}
 				</td>
-			</tr>
+			</Row>
 			{collaborators && (
-				<tr>
-					<td class="">With</td>
-					<td class="flex flex-col gap-y-2 525:gap-0 ">
-						<table class="w-fit" cellspacing="0" cellpadding="0">
+				<Row>
+					<td class="">Collaborators</td>
+					<td class="text-right flex flex-col gap-y-2 525:gap-0 ">
+						<div>
 							{collaborators.map((collaborator: { name: string, link: string }) => (
-								<tr class="collaborator ">
-									<td>
-										<a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
-											{collaborator.name}
-										</a>  
-									</td>
-									<td>
-										<span class="525:whitespace-nowrap">({collaborator.role})</span>
-									</td>
-								</tr>  
+								<p>
+									<a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+										{collaborator.name}
+									</a>   
+									{collaborator.role}
+								</p>
 							))}
-						</table>
+						</div>
 					</td>
-				</tr>
+				</Row>
 			)}
-			<tr>
+			<Row>
 				<td class="">Using</td>
-				<td>{tools.join(", ")}</td>
-			</tr>
+				<td class="text-right">{tools.join(", ")}</td>
+			</Row>
+			<Row>
+				<td>{type}</td>
+			</Row>
 		</table>
+		<h2 class={`text-4xl leading-8 group-hover:underline group-focus:underline  font-untitled-serif`}>{title}</h2>
+		<p>{description}</p>
 	</div>
 </a>
 
