@@ -19,17 +19,42 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-xs font-untitled-sans text-neutral-800">
-		<div class={`${maxWidth} mx-auto`}>
-			<main class={`antialiased grid grid-cols-12 gap-20 m-5 md:m-10 xl:mx-20 xl:my-10`}>
-				<Header/>
+	<body class="bg-[#98928d] text-[#403c38] antialiased font-miller text-sm">
+		<div class={`${maxWidth} mx-auto p-6`}>
+			<!-- <span class="italic" style="font-size: 9.1vw; line-height: 8vw;">
+				Max
+				<span class="relative">
+					O 
+					<span class="font-ornament"></span>
+				</span>
+				Georgopoulos</span> -->
+			<main class={`grid grid-cols-12 gap-6`}>
 				<slot />
-				<Footer />
 			</main>
 		</div>
 	</body>
 </html>
-<style is:global>
+<style>
+	@font-face {
+    font-family: miller;
+    src: url(/miller-display-regular.otf) format('otf');
+	}
+
+	.font-miller {
+		font-family: miller;
+	}
+	
+	@font-face {
+    font-family: miller-italic;
+    src: url(miller-display-italic.otf) format('otf');
+	}
+  
+	.font-miller-italic {
+		font-family: miller-italic;
+	}
+
+</style>
+<!-- <style is:global>
 	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
 
 	main > * {
@@ -151,4 +176,4 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		line-height: 16px;
 	}
 </style>
-
+ -->

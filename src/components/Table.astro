@@ -1,0 +1,16 @@
+---
+import Cell from './Cell.astro';
+
+export interface Props {
+  title: string;
+  cols?: string;
+  image?: string;
+}
+
+const { title, cols = 'col-span-12', image } = Astro.props;
+---
+
+<div class={`font-floral ${cols}`}>
+  <Cell text={title} title={true}/>
+  <slot/>
+</div>
