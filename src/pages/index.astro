@@ -3,15 +3,71 @@ import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
 import Row from '../components/Row.astro';
 import WorkList from '../components/WorkList.astro';
-import Swup from 'swup';
-
-// const swup = new Swup({
-//   /* options */
-// });
 
 ---
 <Layout title="Max Georgopoulos" maxWidth='max-w-8xl'>
-	<div class="flex flex-col gap-y-12 lg:col-span-5 xl:col-span-4">
+	<div 
+		class="flex s gap-y-3"
+		style="font-family: 'untitled';"
+	>
+		<header class="flex flex-col gap-3 justify-between  bg-white pt-3 px-3">
+			<div 
+				style="font-family: 'Erode-VariableItalic';" 
+				class="px-3 text-2xl font-medium tracking-tight "
+			>
+				mg.
+			</div>
+			<div class="flex flex-col gap-3">
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-3 px-4 text-xs bg-[#E4E4E4]">Work</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-3 px-4 text-xs bg-[#ffbda9]">Projects</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-3 px-4 text-xs bg-[#9cccff]">Writing</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-3 px-4 text-xs bg-[#fff693]">Links</span>
+			</div>
+			<div class="flex flex-col">
+				<hr class="border-t-[0.5px] border-black"/>
+				<span>Twitter</span>
+				<hr class="border-t-[0.5px] border-black"/>
+				<span>Github</span>
+				<hr class="border-t-[0.5px] border-black"/>
+				<span>Dribbble</span>
+				<hr class="border-t-[0.5px] border-black"/>
+				<span>Email</span>
+				<hr class="border-t-[0.5px] border-black"/>
+			</div>
+		</header>
+		<div class="flex flex-col gap-y-6">
+
+			<h1 
+				class=" border-neutral-700 font-ranade text-justify text-[5vw] leading-[5vw]  uppercase " 
+				style="font-family: 'Gambarino-Regular';"
+			>
+				Max Georgopoulos Product designer & developer. Be design and engineering is artificial
+			</h1>
+			<div class="columns-2 md:columns-3 lg:columns-4 gap-3">
+				<div class="bg-[#E4E4E4] p-3">
+					<div class="h-80 w-80 bg-neutral-300"></div>
+					<h3>Formie</h3>
+					<p>Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div class="bg-[#E4E4E4] p-3 h-fit">
+					<div class="h-60 w-80 bg-neutral-300"></div>
+					<h3>Formie</h3>
+					<p>Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div class="bg-[#E4E4E4] p-3">
+					<div class="h-80 w-80 bg-neutral-300"></div>
+					<h3>Formie</h3>
+					<p>Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div class="bg-[#E4E4E4] p-3 rounded-lg">
+					<div class="h-80 w-80 bg-neutral-300"></div>
+					<h3>Formie</h3>
+					<p>Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="flex flex-col gap-y-12 lg:col-span-5 xl:col-span-4">
 		<div class="border-t-[0.5px] border-[#3d352b] pt-2 lg:border-0 lg:p-0">
 			<h1 class="uppercase leading-6 tracking-wider text-base">Max Georgopoulos</h1>	
 			<p class="italic mb-4">Software designer & developer</p>
@@ -49,5 +105,11 @@ import Swup from 'swup';
 			</Row>
 		</Table>
 	</div>
-	<WorkList classes='lg:col-span-7 xl:col-span-8 hidden lg:flex'/>
+	<WorkList classes='lg:col-span-7 xl:col-span-8 hidden lg:flex'/> -->
 </Layout>
+
+<style>
+	h1 {
+		font-family: 'Ranade_Light';
+	}
+</style>

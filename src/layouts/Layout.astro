@@ -16,21 +16,36 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" type="text/css" href="/bespoke-serif/web/css/bespoke-serif.css"/>
+		<link rel="stylesheet" type="text/css" href="/Ranade_Complete/Fonts/WEB/css/ranade.css"/>
+		<link rel="stylesheet" type="text/css" href="/Erode_Complete/Fonts/WEB/css/erode.css"/>
+		<link rel="stylesheet" type="text/css" href="/Switzer_Complete/Fonts/WEB/css/switzer.css"/>
+		<link rel="stylesheet" type="text/css" href="/Zodiak_Complete/Fonts/WEB/css/zodiak.css"/>
+		<link rel="stylesheet" type="text/css" href="/Literata_Complete/Fonts/WEB/css/literata.css"/>
+		<link rel="stylesheet" type="text/css" href="/Gambarino_Complete/Fonts/WEB/css/gambarino.css"/>
+		<link rel="stylesheet" type="text/css" href="/Melodrama_Complete/Fonts/WEB/css/melodrama.css"/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#e5e5e5] text-[#363636] antialiased font-bespoke text-sm">
-		<div class={`${maxWidth} mx-auto p-6 pb-12 md:p-12`}>
-			<main class={`grid lg:grid-cols-12 gap-12 xl:gap-x-24`}>
+	<body class="text-sm">
+		<div class={` mx-auto`}>
+			<main class={`grid lg:grid-cols-12 min-h-screen`}>
 				<slot />
 			</main>
 		</div>
 	</body>
 </html>
-<style>
+<style is:global>
 	main > * {
 		grid-column: 1 / -1;
+	}
+
+	@font-face {
+    font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+	}
+
+	.font-untitled {
+		font-family: untitled;
 	}
 
 	.font-bespoke {
