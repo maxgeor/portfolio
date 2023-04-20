@@ -11,126 +11,141 @@ import WorkList from '../components/WorkList.astro';
 		style="font-family: 'untitled';"
 	>
 		<nav class="md:fixed left-0 flex flex-col items-center gap-4 md:justify-between p-4 md:h-screen md:w-[160px]">
-			<!-- <div 
-				style="font-family: 'Erode-VariableItalic';" 
-				class="font-ornament w-full text-center border-y-[0.5px] leading-4 pt-0.5 pb-2.5  text-2xl tracking-tight "
-			>
-				mg.
-			</div> -->
 			<div 
-				class="font-ornament w-full text-center border-y-[0.5px] border-[#4a4a4a] leading-4 pt-0.5 pb-2.5  text-2xl tracking-tight "
-				style="font-family: ornament;"
+				class="flex items-center justify-center md:justify-start gap-x-4 md:gap-x-2 border-y-[0.5px] border-[#3f3f3f] w-full"
 			>
-				3 ® 4 $ - ! " / \ a d f ß • © ≥
+				<span class="hidden md:inline-block w-1.5 h-1.5 ml-0.5 mr-0.5 bg-[#e4e4e4] rounded-full"></span>
+				<span 
+					class="leading-6 pb-2 text-2xl tracking-tight"
+					style="font-family: 'Erode-VariableItalic';" 
+				>
+					mg·
+				</span>
+				<div class="md:hidden flex items-center gap-x-4">
+					<span class="text-[#888] ml-1">/</span>
+					<span class="flex items-center  gap-x-2 ">
+						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
+						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
+					</span>
+					<span class="text-[#888]">/</span>
+					<p >Formie</p>
+				</div>
 			</div>
-			<!-- <div class="hidden md:flex flex-col items-center gap-y-4 gap-x-2 w-full ">
-				<span class="text-center rounded-full w-full uppercase tracking-wider text-black py-4 px-4 text-xs bg-[#d94668]">Work</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#3884e7]">Projects</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#d4ed31]">Writing</span>
-			</div> -->
 			<div class="hidden md:flex flex-col w-full ">
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-				<span class="flex items-center justify-between gap-x-2 w-full">
-					<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-					<span class="h-[10px] w-[10px] bg-[#d94668] rounded-full"></span>
-				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-				<span class=" flex items-center justify-between gap-x-2 w-full">
+				
+				<hr class="w-full border-t-[0.5px] border-[#3f3f3f]"/>
+				<div class="relative py-0.5">
+					<span class="flex items-center  gap-x-2 w-full ">
+						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
+						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
+					</span>
+					<!-- <span >
+						<span class="absolute top-[29px] left-[3px] h-[8px] w-1.5 border-l border-b border-[#888]"></span>
+						<span class="text-[13px]  ml-[16px] text-[#888]">Memiori</span>
+					</span> -->
+				</div>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<span class=" flex items-center  gap-x-2 w-full py-0.5">
+					<span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
 					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
-					<span class="h-[10px] w-[10px] bg-[#3884e7] rounded-full"></span>
 				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-				<span class="flex items-center justify-between gap-x-2 w-full">
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<span class="flex items-center  gap-x-2 w-full py-0.5">
+					<span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
 					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
-					<span class="h-[10px] w-[10px] bg-[#d4ed31] rounded-full"></span>
 				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-				<!-- <span class="text-5xl"> ☞</span> -->
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<div class="relative py-1.5">
+					<span class="flex items-center  gap-x-2 w-full ">
+						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
+						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
+					</span>
+					<span >
+						<span class="absolute top-[29px] left-[3px] h-[8px] w-1.5 border-l border-b border-[#888]"></span>
+						<span class="text-[13px]  ml-[16px] text-[#888]">Memiori</span>
+					</span>
+				</div>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<span class=" flex items-center  gap-x-2 w-full py-0.5">
+					<span class="h-2 w-2  rounded-full"></span>
+					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
+				</span>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<span class="flex items-center  gap-x-2 w-full py-0.5">
+					<span class="h-2 w-2  rounded-full"></span>
+					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
+				</span>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
 			</div>
 			<div class="hidden md:flex flex-col w-full">
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-				<div class="flex items-center justify-between gap-x-1">
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<div class="flex items-center  gap-x-1 py-0.5">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
+						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+					</svg>
 					<span>Twitter</span>
+				</div>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<div class="flex items-center  gap-x-1 py-0.5">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
 						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
 					</svg>
-				</div>
-
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-
-				<div class="flex items-center justify-between gap-x-1">
 					<span>Github</span>
+				</div>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<div class="flex items-center  gap-x-1 py-0.5">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
 						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
 					</svg>
-				</div>
-
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-
-				<div class="flex items-center justify-between gap-x-1">
 					<span>Dribbble</span>
+				</div>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
+				<div class="flex items-center  gap-x-1 py-0.5">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
 						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
 					</svg>
-				</div>
-
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
-
-				<div class="flex items-center justify-between gap-x-1">
 					<span>Email</span>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
-						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-					</svg>
 				</div>
-
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a]"/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
 			</div>
 		</nav>
-		<div class="relative md:ml-[160px] w-auto flex flex-col  gap-8 p-4 pt-0 md:pt-1.5 md:pb-[18px]">
-			<!-- <h1 
-				class="ml-1 text-justify text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl  uppercase " 
-				style="font-family: 'Gambarino-Regular'; text-justify: inter-character;"
-			>
-				Max Georgopoulos Product designer & developer. Be design and engineering is artificial
-			</h1> -->
+		<div class="relative md:ml-[160px] w-auto flex flex-col  gap-4 p-4 pt-0 md:pt-4 md:pl-0">
 			<h1 
-			 class="text-justify text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl  uppercase font-bold" 
-			 style="font-family: 'untitled-light';"
+			 class="text-justify text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl  uppercase font-thin tracking-tighter" 
+			 style="font-family: 'Ranade-Variable';"
 			>
-				Max Georgopoulos Product designer + developer. Be design and engineering is artificial
+				<span class="">Max Georgopoulos</span> Product designer & developer Be design and engineering is artificial
 			</h1>
 			<div class="flex flex-col md:hidden w-full">
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a] "/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
 				<span>Twitter</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a] "/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
 				<span>Github</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a] "/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
 				<span>Dribbble</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a] "/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
 				<span>Email</span>
-				<hr class="w-full border-t-[0.5px]  border-[#4a4a4a] "/>
+				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
 			</div>
-			<div class="border-y-[0.5px]  border-[#4a4a4a] flex md:hidden gap-x-4 items-center w-full ">
-				<span class="flex items-center justify-center gap-x-2 w-full">
+			<div class="flex md:hidden items-center w-full full-width">
+				<span class="flex items-center justify-center gap-x-2 w-full border-t-[0.5px]  ">
+					<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
 					<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-					<span class="h-[10px] w-[10px] bg-[#d94668] rounded-full"></span>
 				</span>
-				<span class="border-r w-px border-[#4a4a4a] h-full"></span>
-				<span class=" flex items-center justify-center  gap-x-2 w-full">
+				<span class=" flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-[#3f3f3f]">
+					<span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
 					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
-					<span class="h-[10px] w-[10px] bg-[#3884e7] rounded-full"></span>
 				</span>
-				<span class="border-r w-px border-[#4a4a4a] h-full"></span>
-				<span class="flex items-center justify-center  gap-x-2 w-full">
+				<span class="flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-[#3f3f3f]">
+					<span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
 					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
-					<span class="h-[10px] w-[10px] bg-[#d4ed31] rounded-full"></span>
 				</span>
 				<!-- <span class="text-5xl"> ☞</span> -->
 			</div>
 			<!-- <div class="flex md:hidden items-center gap-x-2 w-full ">
-				<span class="text-center rounded-full w-full uppercase tracking-wider text-black py-4 px-4 text-xs bg-[#d94668]">Work</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#3884e7]">Projects</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#d4ed31]">Writing</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider text-black py-4 px-4 text-xs bg-[#f7628a]">Work</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#4072fb]">Projects</span>
+				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#f4f44a]">Writing</span>
 			</div> -->
 
 
@@ -152,82 +167,42 @@ import WorkList from '../components/WorkList.astro';
 				<p>I'm also the creator of <a href="https://formie.design/" class="text-[#ff6f61]">Formie</a>, a form builder for Figma.</p>
 				<p>I'm also the creator of <a href="https://formie.design/" class="text-[#ff6f61]">Formie</a>, a form builder for Figma.</p>
 			</div> -->
-			<div class="space-y-4 columns-2 md:columns-3 lg:columns-4 gap-4">
+			<div class="space-y-4 columns-2 lg:columns-3 xl:columns-4 gap-4">
 				<div>
 					<div class="aspect-square bg-neutral-300"></div>
 					<div class="mt-1 flex items-center justify-between">
 						<h3>Formie</h3>
-						<div class="h-[10px] w-[10px] rounded-full bg-[#d94668]"></div>
+						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
 					</div>
-					<p class="text-[#7d7d7d]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+					<p class="text-[#888888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
 				</div>
 				<div>
 					<div class="aspect-video bg-neutral-300"></div>
 					<div class="mt-1 flex items-center justify-between">
 						<h3>Formie</h3>
-						<div class="h-[10px] w-[10px] rounded-full bg-[#d94668]"></div>
+						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
 					</div>
-					<p class="text-[#7d7d7d]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
 				</div>
 				<div>
 					<div class="aspect-square bg-neutral-300"></div>
 					<div class="mt-1 flex items-center justify-between">
 						<h3>Formie</h3>
-						<div class="h-[10px] w-[10px] rounded-full bg-[#d94668]"></div>
+						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
 					</div>
-					<p class="text-[#7d7d7d]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
 				</div>
 				<div>
 					<div class="aspect-square bg-neutral-300"></div>
 					<div class="mt-1 flex items-center justify-between">
 						<h3>Formie</h3>
-						<div class="h-[10px] w-[10px] rounded-full bg-[#d94668]"></div>
+						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
 					</div>
-					<p class="text-[#7d7d7d]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- <div class="flex flex-col gap-y-12 lg:col-span-5 xl:col-span-4">
-		<div class="border-t-[0.5px] border-[#3d352b] pt-2 lg:border-0 lg:p-0">
-			<h1 class="uppercase leading-6 tracking-wider text-base">Max Georgopoulos</h1>	
-			<p class="italic mb-4">Software designer & developer</p>
-			<p class="text-justify">Product designer & developer. Doing Rails stuff at Wavy. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
-		</div>
-		<WorkList classes='lg:hidden' />
-		<Table>
-			<Row isTitle={true}>Projects</Row>
-			<Row>
-				<td ><a>Scope Todo</a></td>
-				<td >Good ol' todo widget for Figma</td>
-			</Row>
-			<Row>
-				<td ><a>Sayings, Forgotten</a></td>
-				<td >Collection of misremembered sayings</td>
-			</Row>
-			<Row>
-				<td ><a>The Quest Board</a></td>
-				<td >Job board for the Loot community</td>
-			</Row>
-			<Row>
-				<td><a>Dissect Design</a></td>
-				<td>Collection of design case studies</td>
-			</Row>
-		</Table>
-		<Table>
-			<Row isTitle={true}>Writing</Row>
-			<Row>
-				<td><a>In defence of bad writing</a></td>
-				<td class='text-right'>2022</td>
-			</Row>
-			<Row>
-				<td><a>Yes, you can learn to code</a></td>
-				<td class='text-right'>2021</td>
-			</Row>
-		</Table>
-	</div>
-	<WorkList classes='lg:col-span-7 xl:col-span-8 hidden lg:flex'/> -->
-
 </Layout> 
 
 <style>

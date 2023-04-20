@@ -81,127 +81,13 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		font-family: miller-italic;
 	}
 
+	.full-width {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+
 </style>
-<!-- <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
-
-	main > * {
-		grid-column: 1 / -1;
-	}
-
-	section#hero {
-		letter-spacing: -0.035em;
-	}
-	h2, h3, h4 {
-		letter-spacing: -0.035em;
-	}
-
-	@font-face {
-    font-family: untitled-sans;
-    src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
-	}
-  
-	.font-untitled-sans {
-		font-family: untitled-sans;
-	}
-	
-	@font-face {
-    font-family: untitled-serif;
-    src: url(/untitled/serif/test-untitled-serif-regular.woff2)  format('woff2');
-	}
-  
-	.font-untitled-serif {
-		font-family: untitled-serif;
-	}
-
-
-	@font-face {
-    font-family: floral;
-    src: url(/FloralCapitals.ttf);
-	}
-  
-	.font-floral {
-		font-family: floral;
-	}
-
-	@font-face {
-    font-family: goudy;
-    src: url(/GoudyInitialen.ttf);
-	}
-  
-	.font-goudy {
-		font-family: goudy;
-	}
-	
-	@font-face {
-    font-family: ornament;
-    src: url(/bodooitc.ttf);
-	}
-  
-	.font-ornament {
-		font-family: ornament;
-	}
-
-	ul > li, ol > li {
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
-	}
-	
-	ul > li:first-child, ol > li:first-child {
-		margin-top: 0;
-	}
-	
-	ul > li:last-child, ol > li:last-child {
-		margin-bottom: 1.5rem;
-	}
-
-	ul, ol {
-		list-style-position: outside;
-	}
-
-	ol {
-		list-style-type: decimal;
-		padding-left: 18px;
-	}
-
-	ul > li {
-    list-style: disc;
-		margin-left: 16px;
-	}
-
-	@font-face {
-    font-family: flowers;
-    src: url(../../public/fonts/bodooitc.ttf) format('ttf');
-  }
-
-	font-flowers {
-		font-family: flowers;
-	}
-
-	tr {
-		height: fit-content;
-	}
-
-	tr > td {
-		padding-bottom: 20px;
-	}
-	
-	tr:last-child > td {
-		padding-bottom: 0;
-	}
-
-	tr > td:first-child {
-		width: min-content;
-		padding-right: 20px;
-	}
-
-
-	td {
-		vertical-align: top;
-		padding: 0;
-		margin: 0;
-		text: 12px;
-		line-height: 16px;
-	}
-</style>
- -->
