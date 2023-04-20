@@ -23,10 +23,13 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<link rel="stylesheet" type="text/css" href="/Literata_Complete/Fonts/WEB/css/literata.css"/>
 		<link rel="stylesheet" type="text/css" href="/Gambarino_Complete/Fonts/WEB/css/gambarino.css"/>
 		<link rel="stylesheet" type="text/css" href="/Melodrama_Complete/Fonts/WEB/css/melodrama.css"/>
+		<link rel="stylesheet" type="text/css" href="/Sentient_Complete/Fonts/WEB/css/sentient.css"/>
+		<link rel="stylesheet" type="text/css" href="/Gambetta_Complete/Fonts/WEB/css/gambetta.css"/>
+		<link rel="stylesheet" type="text/css" href="/BespokeSerif_Complete/Fonts/WEB/css/bespoke-serif.css"/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm">
+	<body class="bg-black text-white text-sm">
 		<div class={` mx-auto`}>
 			<main class={`grid lg:grid-cols-12 min-h-screen`}>
 				<slot />
@@ -42,6 +45,15 @@ const { title, maxWidth = '6xl' } = Astro.props;
 	@font-face {
     font-family: untitled;
     src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+	}
+
+	.font-untitled {
+		font-family: untitled;
+	}
+	
+	@font-face {
+    font-family: untitled-light;
+    src: url(/untitled/sans/test-untitled-sans-light.woff2) format('woff2');
 	}
 
 	.font-untitled {
