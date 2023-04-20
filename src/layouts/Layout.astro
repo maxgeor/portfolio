@@ -31,17 +31,16 @@ const { title, maxWidth = '6xl' } = Astro.props;
 	</head>
 	<body class="bg-black text-white text-sm">
 		<div class={` mx-auto`}>
-			<main class={`grid lg:grid-cols-12 min-h-screen`}>
+			<main class={`min-h-screen`}>
 				<slot />
 			</main>
 		</div>
 	</body>
 </html>
 <style is:global>
-	main > * {
-		grid-column: 1 / -1;
-	}
 
+	
+	
 	@font-face {
     font-family: untitled;
     src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
