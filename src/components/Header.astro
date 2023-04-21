@@ -5,23 +5,28 @@ import Tab from './Tab.astro';
 export interface Props {
   activeTab?: string;
   currentPage?: string;
-  path: string;
+  path?: string;
 }
 // The question you want to know is if you're on the home page or not?
   // Well you could be on the About page, which shouldn't expand the Tab list
 ---
 
-<header class='flex items-center justify-center gap-x-5 border-b-[0.5px] border-gray-dark w-full'>
+<header class='flex md:hidden items-center justify-between gap-x border-b-[0.5px] border-gray-dark w-full py-1.5'>
   <a 
     href='#'
-    class='flex items-center gap-x-5 md:gap-x-2 border-y-[0.5px] border-gray-dark w-full'
+    class='flex items-center gap-x-3 md:gap-x-3 w-full -ml-px'
   >
-    <Logo/>
+    <Logo useSvg={true} size='small'/>
   </a>
-  <div class="md:hidden flex items-center gap-x-5">
-    <span class="text-gray ml-1">/</span>
+  <div class="md:hidden flex items-center gap-x-3">
+    <div class="flex -mr-0.5">
+      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-red z-[3]"></span>
+      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue  -ml-1 z-[2]"></span>
+      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
+    </div>
+    <span class="text-[#666]">/</span>
     <Tab title='work' />
-    <span class="text-gray">/</span>
-    <p>Formie</p>
+    <span class="text-[#666]">/</span>
+    <p class="text-[13px]">Formie</p>
   </div>
 </header>

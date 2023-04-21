@@ -12,9 +12,13 @@ module.exports = {
 					DEFAULT: '#888',
 					light: '#e4e4e4'
 				},
-				red: '#FF4275',
-				blue: '#518CFE',
-				yellow: '#f4f44a',
+				red: '#FF2C2C',
+				// blue: '#006DFF',
+				blue: '#385BFF',
+				yellow: '#EAEA00',
+				// red: '#FF4275',
+				// blue: '#518CFE',
+				// yellow: '#f4f44a',
 			},
 			screens: {
 				xs: '375px',
