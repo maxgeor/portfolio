@@ -22,7 +22,9 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="bg-black text-white text-[12.5px] leading-4 min-h-screen">
-		<slot />
+		<div class="2xl:max-w-6xl 2xl:mx-auto">
+			<slot />
+		</div>
 	</body>
 </html>
 <style is:global>

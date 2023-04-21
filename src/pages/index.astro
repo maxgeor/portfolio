@@ -9,23 +9,24 @@ import Headline from '../components/Headline.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="relative flex" style="font-family: 'untitled';">
-		<aside class="hidden md:flex flex-col justify-between left-0 gap-3 p-3 h-screen w-min">
+		<aside class="hidden md:flex flex-col justify-between fixed left-0 gap-3 p-3 h-screen w-min">
 			<a 
 				href='#'
-				class='group flex gap-x-2 border-gray-dark w-full -mt-[3px] mb-px'
+				class='group flex gap-x-2 border-gray-dark w-full -mt-0.5 mb-0.5'
 			>
-				<span class="w-2 h-2 border border-white mt-[5px] group-hover:bg-white group-focus:bg-white transition duration-200 rounded-full"></span>
+			<!-- <span class="w-2 h-2 mt-[5px] bg-gray-light rounded-full"></span> -->
+			<span class="w-2 h-2 border-[1.5px] border-box border-white mt-[5px] group-hover:bg-white transition duration-200 rounded-full"></span>
 				<Logo/>
 			</a>
 			<TabList/>
 			<LinkList/>
 		</aside>
-		<main class="relative md:ml-[72px] w-auto flex flex-col gap-3 p-3 pt-0 md:pt-3">
+		<main class="relative md:ml-[176px] 2xl:ml-0 w-auto flex flex-col gap-3 p-3 pt-0 md:pt-3">
 			<Header />
 			<Headline text="Max Georgopoulos Product designer & developer Be design and engineering is artificial" />
 			<LinkList isMobile={true} isInfititeScroll={true}/>
 			<TabList type='row'/>
-			<div class="space-y-3 columns-2 md:columns-3 lg:columns-4 2xl:columns-5 gap-3 md:mt-[36px]">
+			<div class="space-y-3 columns-2 md:columns-3 lg:columns-4 gap-3 md:mt-[36px]">
 				<div>
 					<div class="rounded-lg aspect-square bg-neutral-300"></div>
 					<div class="mt-1 flex items-center justify-between">
