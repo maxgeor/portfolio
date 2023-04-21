@@ -14,11 +14,11 @@ const {
 } = Astro.props;
 ---
 <div class={`
-  text-gray text-xs
+  text-gray
   ${isMobile ? 'flex md:hidden' : 'hidden md:flex'}
   ${isInfititeScroll ? 'infinite-scroller full-width' : null}`
 }>
-  <ul class={`flex ${isInfititeScroll ? 'gap-x-3' : 'flex-col w-full gap-y-0.5'}`}>
+  <ul class={`flex ${isInfititeScroll ? 'gap-x-3' : 'flex-col w-full'}`}>
     <li class={`
       ${hasDividers && 'border-t-[0.5px] border-gray-dark'}
       flex items-center gap-x-1 w-full

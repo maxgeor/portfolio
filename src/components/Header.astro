@@ -11,22 +11,19 @@ export interface Props {
   // Well you could be on the About page, which shouldn't expand the Tab list
 ---
 
-<header class='flex md:hidden items-center justify-between gap-x border-b-[0.5px] border-gray-dark w-full py-1.5'>
-  <a 
-    href='#'
-    class='flex items-center gap-x-3 md:gap-x-3 w-full -ml-px'
-  >
+<header class='h-8 border-box flex md:hidden items-center justify-between border-b-[0.5px] border-gray-dark w-full py-1.5'>
+  <a href='#' class='-ml-px'>
     <Logo useSvg={true} size='small'/>
   </a>
   <div class="md:hidden flex items-center gap-x-3">
     <div class="flex -mr-0.5">
       <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-red z-[3]"></span>
-      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue  -ml-1 z-[2]"></span>
+      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue -ml-1 z-[2]"></span>
       <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
     </div>
     <span class="text-[#666]">/</span>
     <Tab title='work' />
     <span class="text-[#666]">/</span>
-    <p class="text-[13px]">Formie</p>
+    <p>Formie</p>
   </div>
 </header>

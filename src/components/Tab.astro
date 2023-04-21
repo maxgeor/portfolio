@@ -13,12 +13,12 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<span class="flex items-center  gap-x-2 ">
+<span class="flex items-center gap-x-2 ">
   <span 
     class={`
       text-${tabColorMap.get(title.toLowerCase())}
       h-2 w-2 bg-red rounded-full
     `}
   ></span>
-  <span class="uppercase tracking-wider text-xs leading-5">{title}</span>
+  <span class="uppercase tracking-wider text-[11.5px]">{title}</span>
 </span>
