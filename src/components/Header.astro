@@ -13,7 +13,7 @@ export interface Props {
 
 <header class='h-8 border-box flex md:hidden items-center justify-between border-b-[0.5px] border-gray-dark w-full py-1.5'>
   <a href='#' class='-ml-px'>
-    <Logo useSvg={true} size='small'/>
+    <Logo/>
   </a>
   <div class="md:hidden flex items-center gap-x-3">
     <div class="flex -mr-0.5">
@@ -23,7 +23,7 @@ export interface Props {
     </div>
     <span class="text-[#666]">/</span>
     <Tab title='work' />
-    <span class="text-[#666]">/</span>
-    <p>Formie</p>
+    <span class="hidden xs:inline-block text-[#666]">/</span>
+    <p class="hidden xs:inline-block">Formie</p>
   </div>
 </header>
