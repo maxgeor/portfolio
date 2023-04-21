@@ -1,0 +1,13 @@
+---
+export interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<h1 
+  class="text-justify text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl  uppercase font-thin tracking-tighter" 
+  style="font-family: 'Ranade-Variable';"
+>
+  {text}
+</h1>

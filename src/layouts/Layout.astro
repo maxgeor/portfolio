@@ -29,12 +29,8 @@ const { title, maxWidth = '6xl' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-black text-white text-sm">
-		<div class={` mx-auto`}>
-			<main class={`min-h-screen`}>
-				<slot />
-			</main>
-		</div>
+	<body class="bg-black text-white text-sm min-h-screen">
+		<slot />
 	</body>
 </html>
 <style is:global>

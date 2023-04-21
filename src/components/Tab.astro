@@ -1,0 +1,22 @@
+---
+import type Section from '../types/section';
+
+const tabColorMap = new Map([
+  ['work', 'red'],
+  ['projects', 'blue'],
+  ['writing', 'yellow'],
+]);
+
+export interface Props {
+  title: Section;
+}
+const { title } = Astro.props;
+---
+
+<span class="flex items-center  gap-x-2 ">
+  <span 
+    class="h-2 w-2 bg-red rounded-full"
+    style={`background-color: ${tabColorMap.get(title.toLowerCase())}`}
+  ></span>
+  <span class="uppercase tracking-wider text-xs leading-5">{title}</span>
+</span>

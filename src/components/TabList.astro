@@ -1,0 +1,73 @@
+---
+export interface Props {
+  type?: 'list' | 'row'
+  activeTab?: string;
+}
+const { activeTab, type = 'list' } = Astro.props;
+---
+
+{type === 'row' ? (
+  <div class="flex md:hidden items-center w-full full-width">
+    <span class="flex items-center justify-center gap-x-2 w-full border-t-[0.5px]  ">
+      <span class="h-2 w-2 bg-red rounded-full"></span>
+      <span class="uppercase tracking-wider text-xs leading-5">Work</span>
+    </span>
+    <span class=" flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-gray-dark ">
+      <span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
+      <span class="uppercase tracking-wider text-xs leading-5">Projects</span>
+    </span>
+    <span class="flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-gray-dark ">
+      <span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
+      <span class="uppercase tracking-wider text-xs leading-5">Writing</span>
+    </span>
+  </div>
+) : (
+  <div class="hidden md:flex flex-col w-full ">
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+    <div class="relative ">
+      <span class="flex items-center  gap-x-2 w-full ">
+        <span class="h-2 w-2 bg-red rounded-full"></span>
+        <span class="uppercase tracking-wider text-xs leading-5">Work</span>
+      </span>
+      <!-- <span >
+        <span class="absolute top-[29px] left-[3px] h-[8px] w-1.5 border-l border-b border-gray"></span>
+        <span class="text-[13px]  ml-[16px] text-gray">Memiori</span>
+      </span> -->
+    </div>
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+    <span class=" flex items-center  gap-x-2 w-full ">
+      <span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
+      <span class="uppercase tracking-wider text-xs leading-5">Projects</span>
+    </span>
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+    <span class="flex items-center  gap-x-2 w-full ">
+      <span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
+      <span class="uppercase tracking-wider text-xs leading-5">Writing</span>
+    </span>
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+    <div >
+      <span class="flex items-center  gap-x-2 w-full ">
+        <span class="h-2 w-2 bg-red rounded-full"></span>
+        <span class="uppercase tracking-wider text-xs leading-5">Pork</span>
+      </span>
+      <span class="flex gap-x-[7px] ml-[3px]">
+        <div class="mt-0.5 h-2 w-1.5 border-l border-b border-gray shrink-0"></div>
+        
+        <span class="text-xs leading-5 text-gray -mt-px pb-px ">Memiori</span>
+      </span>
+    </div>
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+      <span class=" flex items-center  gap-x-2 w-full ">
+        <span class="h-2 w-2  rounded-full"></span>
+        <span class="uppercase tracking-wider text-xs leading-5">Projects</span>
+      </span>
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+    {/*
+      <span class="flex items-center  gap-x-2 w-full ">
+        <span class="h-2 w-2  rounded-full"></span>
+        <span class="uppercase tracking-wider text-xs leading-5">Writing</span>
+      </span>
+    */}
+    {/*<hr class="w-full border-t-[0.5px] border-gray-dark"/>*/}
+  </div>
+)}

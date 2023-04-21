@@ -1,154 +1,63 @@
 ---
+import Logo from '../components/Logo.astro';
 import Layout from '../layouts/Layout.astro';
-import Table from '../components/Table.astro';
-import Row from '../components/Row.astro';
-import WorkList from '../components/WorkList.astro';
+import Header from '../components/Header.astro';
+import TabList from '../components/TabList.astro';
+import LinkList from '../components/LinkList.astro';
+import Headline from '../components/Headline.astro';
 
 ---
 <Layout title="Max Georgopoulos">
-	<div 
-		class="relative"
-		style="font-family: 'untitled';"
-	>
-		<nav class="md:fixed left-0 flex flex-col items-center gap-4 md:justify-between p-4 md:h-screen md:w-[160px]">
-			<div 
-				class="flex items-center justify-center md:justify-start gap-x-4 md:gap-x-2 border-y-[0.5px] border-[#3f3f3f] w-full"
+	<div class="relative" style="font-family: 'untitled';">
+		<aside class="hidden md:flex flex-col items-center justify-between fixed left-0 gap-5 p-5 h-screen w-[160px]">
+			<a 
+				href='#'
+				class='flex items-center gap-x-5 md:gap-x-2 border-y-[0.5px] border-gray-dark w-full'
 			>
-				<span class="hidden md:inline-block w-1.5 h-1.5 ml-0.5 mr-0.5 bg-[#e4e4e4] rounded-full"></span>
-				<span 
-					class="leading-6 pb-2 text-2xl tracking-tight"
-					style="font-family: 'Erode-VariableItalic';" 
-				>
-					mg·
-				</span>
-				<div class="md:hidden flex items-center gap-x-4">
-					<span class="text-[#888] ml-1">/</span>
-					<span class="flex items-center  gap-x-2 ">
-						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
-						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-					</span>
-					<span class="text-[#888]">/</span>
-					<p >Formie</p>
+				<span class="hidden md:inline-block w-1.5 h-1.5 ml-0.5 mr-0.5 bg-gray-light rounded-full"></span>
+				<Logo/>
+			</a>
+			<TabList/>
+			<LinkList/>
+		</aside>
+		<main class="relative md:ml-[160px] w-auto flex flex-col  gap-5 p-5 pt-0 md:pt-5 md:pl-0">
+			<Headline text="Max Georgopoulos Product designer & developer Be design and engineering is artificial" />
+			<LinkList/>
+			<TabList type='row'/>
+			<div class="space-y-5 columns-2 lg:columns-3 xl:columns-4 gap-5">
+				<div>
+					<div class="aspect-square bg-neutral-300"></div>
+					<div class="mt-1 flex items-center justify-between">
+						<h3>Formie</h3>
+						<div class="h-2 w-2 rounded-full bg-red"></div>
+					</div>
+					<p class="text-[#888888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div>
+					<div class="aspect-video bg-neutral-300"></div>
+					<div class="mt-1 flex items-center justify-between">
+						<h3>Formie</h3>
+						<div class="h-2 w-2 rounded-full bg-red"></div>
+					</div>
+					<p class="text-gray">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div>
+					<div class="aspect-square bg-neutral-300"></div>
+					<div class="mt-1 flex items-center justify-between">
+						<h3>Formie</h3>
+						<div class="h-2 w-2 rounded-full bg-red"></div>
+					</div>
+					<p class="text-gray">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
+				</div>
+				<div>
+					<div class="aspect-square bg-neutral-300"></div>
+					<div class="mt-1 flex items-center justify-between">
+						<h3>Formie</h3>
+						<div class="h-2 w-2 rounded-full bg-red"></div>
+					</div>
+					<p class="text-gray">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
 				</div>
 			</div>
-			<div class="hidden md:flex flex-col w-full ">
-				
-				<hr class="w-full border-t-[0.5px] border-[#3f3f3f]"/>
-				<div class="relative py-0.5">
-					<span class="flex items-center  gap-x-2 w-full ">
-						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
-						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-					</span>
-					<!-- <span >
-						<span class="absolute top-[29px] left-[3px] h-[8px] w-1.5 border-l border-b border-[#888]"></span>
-						<span class="text-[13px]  ml-[16px] text-[#888]">Memiori</span>
-					</span> -->
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<span class=" flex items-center  gap-x-2 w-full py-0.5">
-					<span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
-				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<span class="flex items-center  gap-x-2 w-full py-0.5">
-					<span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
-				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<div class="relative py-1.5">
-					<span class="flex items-center  gap-x-2 w-full ">
-						<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
-						<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-					</span>
-					<span >
-						<span class="absolute top-[29px] left-[3px] h-[8px] w-1.5 border-l border-b border-[#888]"></span>
-						<span class="text-[13px]  ml-[16px] text-[#888]">Memiori</span>
-					</span>
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<span class=" flex items-center  gap-x-2 w-full py-0.5">
-					<span class="h-2 w-2  rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
-				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<span class="flex items-center  gap-x-2 w-full py-0.5">
-					<span class="h-2 w-2  rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
-				</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-			</div>
-			<div class="hidden md:flex flex-col w-full">
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<div class="flex items-center  gap-x-1 py-0.5">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
-						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-					</svg>
-					<span>Twitter</span>
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<div class="flex items-center  gap-x-1 py-0.5">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
-						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-					</svg>
-					<span>Github</span>
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<div class="flex items-center  gap-x-1 py-0.5">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
-						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-					</svg>
-					<span>Dribbble</span>
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-				<div class="flex items-center  gap-x-1 py-0.5">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 -ml-1">
-						<path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-					</svg>
-					<span>Email</span>
-				</div>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f]"/>
-			</div>
-		</nav>
-		<div class="relative md:ml-[160px] w-auto flex flex-col  gap-4 p-4 pt-0 md:pt-4 md:pl-0">
-			<h1 
-			 class="text-justify text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl  uppercase font-thin tracking-tighter" 
-			 style="font-family: 'Ranade-Variable';"
-			>
-				<span class="">Max Georgopoulos</span> Product designer & developer Be design and engineering is artificial
-			</h1>
-			<div class="flex flex-col md:hidden w-full">
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
-				<span>Twitter</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
-				<span>Github</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
-				<span>Dribbble</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
-				<span>Email</span>
-				<hr class="w-full border-t-[0.5px]  border-[#3f3f3f] "/>
-			</div>
-			<div class="flex md:hidden items-center w-full full-width">
-				<span class="flex items-center justify-center gap-x-2 w-full border-t-[0.5px]  ">
-					<span class="h-2 w-2 bg-[#f7628a] rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Work</span>
-				</span>
-				<span class=" flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-[#3f3f3f]">
-					<span class="h-2 w-2 bg-[#4072fb] rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Projects</span>
-				</span>
-				<span class="flex items-center justify-center  gap-x-2 w-full border-t-[0.5px]  border-[#3f3f3f]">
-					<span class="h-2 w-2 bg-[#f4f44a] rounded-full"></span>
-					<span class="uppercase tracking-wider text-xs leading-5">Writing</span>
-				</span>
-				<!-- <span class="text-5xl"> ☞</span> -->
-			</div>
-			<!-- <div class="flex md:hidden items-center gap-x-2 w-full ">
-				<span class="text-center rounded-full w-full uppercase tracking-wider text-black py-4 px-4 text-xs bg-[#f7628a]">Work</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#4072fb]">Projects</span>
-				<span class="text-center rounded-full w-full uppercase tracking-wider py-4 px-4 text-black text-xs bg-[#f4f44a]">Writing</span>
-			</div> -->
-
-
 			<!-- <div class="flex flex-col items-center w-full">
 				<hr class="w-full border-t-[0.5px]  "/>
 				<span>Feb 24, 2023</span>
@@ -167,55 +76,6 @@ import WorkList from '../components/WorkList.astro';
 				<p>I'm also the creator of <a href="https://formie.design/" class="text-[#ff6f61]">Formie</a>, a form builder for Figma.</p>
 				<p>I'm also the creator of <a href="https://formie.design/" class="text-[#ff6f61]">Formie</a>, a form builder for Figma.</p>
 			</div> -->
-			<div class="space-y-4 columns-2 lg:columns-3 xl:columns-4 gap-4">
-				<div>
-					<div class="aspect-square bg-neutral-300"></div>
-					<div class="mt-1 flex items-center justify-between">
-						<h3>Formie</h3>
-						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
-					</div>
-					<p class="text-[#888888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
-				</div>
-				<div>
-					<div class="aspect-video bg-neutral-300"></div>
-					<div class="mt-1 flex items-center justify-between">
-						<h3>Formie</h3>
-						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
-					</div>
-					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
-				</div>
-				<div>
-					<div class="aspect-square bg-neutral-300"></div>
-					<div class="mt-1 flex items-center justify-between">
-						<h3>Formie</h3>
-						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
-					</div>
-					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
-				</div>
-				<div>
-					<div class="aspect-square bg-neutral-300"></div>
-					<div class="mt-1 flex items-center justify-between">
-						<h3>Formie</h3>
-						<div class="h-2 w-2 rounded-full bg-[#f7628a]"></div>
-					</div>
-					<p class="text-[#888]">Formie is a form builder for Figma. It's a plugin that lets you create forms in Figma, and then export them as HTML, CSS, and JavaScript.</p>
-				</div>
-			</div>
-		</div>
+		</main>
 	</div>
 </Layout> 
-
-<style>
-	h1 {
-		font-family: 'Ranade_Light';
-	}
-
-	@font-face {
-    font-family: ornament;
-    src: url(/ornaments.ttf) format('ttf');
-	}
-
-	.font-ornament {
-		font-family: ornament;
-	}
-</style>

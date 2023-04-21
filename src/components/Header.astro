@@ -1,49 +1,27 @@
 ---
-const paths = Astro.url.pathname.split('/');
-const pathNames = {
-  '': 'Home',
-  'case-work': 'Case work',
-  'case-work/memiori': 'Memiori',
+import Logo from './Logo.astro';
+import Tab from './Tab.astro';
+
+export interface Props {
+  activeTab?: string;
+  currentPage?: string;
+  path: string;
 }
-import Flower from "./Flower.astro";
+// The question you want to know is if you're on the home page or not?
+  // Well you could be on the About page, which shouldn't expand the Tab list
 ---
 
-
-<header class="flex items-center justify-between ">
-  <div class="flex gap-x-2">
-    <a href="/" class="hover:underline whitespace-nowrap">
-      Max Georgopoulos
-    </a>
-    <!-- {paths && (
-      paths.map((path, index) => {
-        <a 
-          href={`/${path}`} 
-          class="hover:underline whitespace-nowrap"
-        >
-          Case work
-        </a>
-      })
-    )}
-    \
-    <a href="/" class="hover:underline whitespace-nowrap">
-      Case work
-    </a>
-    \
-    <a href="/" class="hover:underline whitespace-nowrap text-[#767676]">
-      Memiori
-    </a> -->
+<header class='flex items-center justify-center gap-x-5 border-b-[0.5px] border-gray-dark w-full'>
+  <a 
+    href='#'
+    class='flex items-center gap-x-5 md:gap-x-2 border-y-[0.5px] border-gray-dark w-full'
+  >
+    <Logo/>
+  </a>
+  <div class="md:hidden flex items-center gap-x-5">
+    <span class="text-gray ml-1">/</span>
+    <Tab title='work' />
+    <span class="text-gray">/</span>
+    <p>Formie</p>
   </div>
-  <div class="flex gap-x-1.5 flex-wrap text-sm">
-    <Flower type="°" classes={'h-6 w-6'} fluttering={true}/>
-    <Flower type="Ø" classes={'h-6 w-6'} fluttering={false}/>
-    <Flower type=">" classes={'h-6 w-6'} fluttering={false}/>
-    <Flower type="`" classes={'h-6 w-6'} fluttering={true}/>
-  </div>
-  <!-- <span class="font-ornament text-2xl leading-4 -mr-1.5">`</span>  -->
 </header>
-
-<script>
-  const flowers = document.querySelectorAll('.flower');
-
-  setInterval(() => flowers.forEach((flower) => flower.classList.toggle('fluttering')), 350);
-</script>
