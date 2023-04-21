@@ -10,10 +10,10 @@ module.exports = {
 				gray: {
 					dark: '#434343',
 					DEFAULT: '#888',
-					light: '#D9D9D9'
+					light: '#C9C9C9'
 				},
 				red: '#FF2C2C',
-				blue: '#385BFF',
+				blue: '#4A6AFD',
 				yellow: '#EAEA00',
 			},
 			screens: {
