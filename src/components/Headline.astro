@@ -1,13 +1,24 @@
 ---
-export interface Props {
-  text: string;
-}
-const { text } = Astro.props;
----
+import ChevronRightIcon from './icons/ChevronRightIcon.astro';
 
+export interface Props {
+  url?: string;
+  isJumbo?: boolean;
+}
+const { url, isJumbo = false } = Astro.props;
+---
 <h1 
-  class="-ml-1 md:-ml-[7px] -my-1.5 text-justify text-3xl xs:text-4xl sm:text-5xl lg:text-6xl  uppercase font-thin tracking-tighter" 
+  class={`
+    ${isJumbo ? 'text-4xl sm:text-6xl lg:text-7xl xl:text-8xl' : 'text-3xl xs:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl'}
+    -ml-1 md:-ml-[7px] -my-1.5 text-justify uppercase font-thin tracking-tighter
+  `} 
   style="font-family: 'Ranade-Variable';"
 >
-  {text}
+  <slot/>
+  <!-- {url ? (
+    // <a href={url} class="tracking-widest underline decoration-[3px] underline-offset-[6px] decoration-gray">...</a>
+    <a href={url}>
+      <ChevronRightIcon classes="h-[32px] w-[32px] xs:h-[36px] xs:w-[36px] sm:h-[48px] sm:w-[48px] lg:h-[48px] lg:w-[48px]"/>
+    </a>
+  ) : null} -->
 </h1>

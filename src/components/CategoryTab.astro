@@ -1,0 +1,51 @@
+---
+import type Category from '../types/category.ts';
+
+const categoryColorMap = new Map([
+  ['work', 'red'],
+  ['writing', 'blue'],
+  ['projects', 'yellow'],
+]);
+
+export interface Props {
+  title: Category;
+  classes?: string;
+  isFiltering?: boolean;
+  isActive?: boolean;
+  isOnCategoryPage?: boolean;
+}
+
+const { 
+  title, 
+  classes, 
+  isFiltering = false,
+  isActive = false,
+  isOnCategoryPage = false 
+} = Astro.props;
+
+const color = categoryColorMap.get(title.toLowerCase());
+---
+<div class="w-full">
+  <span class={`
+    group flex items-center gap-x-2
+    ${classes}
+  `}>
+    <span 
+      class={`
+        ${isFiltering && !isActive ? (
+          `bg-transparent group-hover:bg-${color} group-focus:bg-${color}`
+          ) : (
+          `bg-${color}`
+        )}
+        h-2 w-2 rounded-full
+      `}
+    ></span>
+    <span class="uppercase tracking-wider text-xs">{title}</span>
+  </span>
+  {isOnCategoryPage ? (
+    <span class="flex gap-x-[7px] ml-[3px]">
+      <div class="mt-[4px] h-[10px] w-1.5 border-l border-b border-[#646464] shrink-0"></div>
+      <span class="text-gray pt-[5px] pb-[3px]">Yes, you can learn to code</span>
+    </span>
+  ) : null}
+</div>

@@ -1,29 +1,37 @@
 ---
 import Logo from './Logo.astro';
-import Tab from './Tab.astro';
+import CategoryTab from './CategoryTab.astro';
 
 export interface Props {
-  activeTab?: string;
-  currentPage?: string;
   path?: string;
+  currentPage?: string;
+  isFloating?: boolean;
 }
-// The question you want to know is if you're on the home page or not?
-  // Well you could be on the About page, which shouldn't expand the Tab list
----
 
-<header class='h-8 border-box flex md:hidden items-center justify-between border-b-[0.5px] border-gray-dark w-full py-1.5'>
-  <a href='#' class='-ml-px'>
-    <Logo/>
-  </a>
-  <div class="md:hidden flex items-center gap-x-3">
-    <div class="flex -mr-0.5">
-      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-red z-[3]"></span>
-      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue -ml-1 z-[2]"></span>
-      <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
-    </div>
-    <span class="text-[#666]">/</span>
-    <Tab title='work' />
-    <span class="hidden xs:inline-block text-[#666]">/</span>
-    <p class="hidden xs:inline-block">Formie</p>
+const { path, currentPage, isFloating = false } = Astro.props;
+---
+{isFloating ? (
+  <div class="absolute bottom-3 left-3 h-16 w-16 bg-black border border-white/10 border-box rounded-full">
+    <a href='#'>
+      <Logo/>
+    </a>
   </div>
-</header>
+) : (
+  <header class='h-8 border-box flex md:hidden items-center justify-between border-b-[0.5px] border-gray-dark w-full py-1.5'>
+    <a href='#' class='-ml-px'>
+      <Logo/>
+    </a>
+    <span class="shrink-0 w-2 h-2 border-[1.5px] border-box border-white group-hover:bg-white transition duration-200 rounded-full"></span>
+    <!-- <div class="md:hidden flex items-center gap-x-3">
+      <div class="flex -mr-0.5">
+        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-red z-[3]"></span>
+        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue -ml-1 z-[2]"></span>
+        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
+      </div>
+      <span class="text-[#666]">/</span>
+      <CategoryTab title='work'/>
+      <span class="hidden xs:inline-block text-[#666]">/</span>
+      <p class="hidden xs:inline-block text-[13px]">Formie</p>
+    </div> -->
+  </header>
+)}

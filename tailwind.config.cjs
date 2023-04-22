@@ -10,7 +10,7 @@ module.exports = {
 				gray: {
 					dark: '#434343',
 					DEFAULT: '#888',
-					light: '#B6B6B6'
+					light: '#D5D5D5'
 				},
 				red: '#FF2C2C',
 				blue: '#4A6AFD',
@@ -19,7 +19,6 @@ module.exports = {
 			screens: {
 				xs: '375px',
 				525: '525px',
-				// '2xl': '1630px'
 			},
 			fontFamily: {
 				ibm: ['IBM Plex Sans', 'sans-serif'],

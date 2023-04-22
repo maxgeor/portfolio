@@ -1,0 +1,31 @@
+---
+import CategoryTab from './CategoryTab.astro';
+
+export interface Props {
+  type?: 'list' | 'row'
+  currentPage?: string;
+}
+const { type = 'list', currentPage = '/'} = Astro.props;
+---
+{type === 'row' ? (
+  <div class='flex md:hidden items-center w-full full-width'>
+    <CategoryTab 
+      title={'work'}
+      classes='flex items-center justify-center gap-x-2 border-t-[0.5px] border-gray-dark border-box h-6 w-full pt-1'
+    />
+    <CategoryTab 
+      title={'writing'}
+      classes='flex items-center justify-center gap-x-2 border-t-[0.5px] border-gray-dark border-box h-6 w-full pt-1'
+    />
+    <CategoryTab 
+      title={'projects'}
+      classes='flex items-center justify-center gap-x-2 border-t-[0.5px] border-gray-dark border-box h-6 w-full pt-1'
+    />
+  </div>
+) : (
+  <div class='hidden md:flex flex-col gap-y-1 w-full'>
+    <CategoryTab title='work'/>
+    <CategoryTab title='writing'/>
+    <CategoryTab title='projects'/>
+  </div>
+)}
