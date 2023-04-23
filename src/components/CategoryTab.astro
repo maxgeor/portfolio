@@ -13,6 +13,8 @@ export interface Props {
   isFiltering?: boolean;
   isActive?: boolean;
   isOnCategoryPage?: boolean;
+  dotPosition?: 'left' | 'right';
+  hasDot?: boolean;
 }
 
 const { 
@@ -20,27 +22,36 @@ const {
   classes, 
   isFiltering = false,
   isActive = false,
-  isOnCategoryPage = false 
+  isOnCategoryPage = false,
+  dotPosition = 'left',
+  hasDot = true,
 } = Astro.props;
 
 const color = categoryColorMap.get(title.toLowerCase());
 ---
-<div class="w-full">
+<div class={`
+  flex w-full
+  `}>
   <span class={`
-    group flex items-center gap-x-2
+    ${dotPosition === 'left' ? 'justify-start gap-x-2' : 'justify-between gap-x-5'}
+    group flex items-center w-full
     ${classes}
   `}>
-    <span 
-      class={`
-        ${isFiltering && !isActive ? (
-          `bg-transparent group-hover:bg-${color} group-focus:bg-${color}`
-          ) : (
-          `bg-${color}`
-        )}
-        h-2 w-2 rounded-full
-      `}
-    ></span>
-    <span class="uppercase tracking-wider text-xs">{title}</span>
+    {hasDot ? (
+      <span 
+        class={`
+          ${dotPosition === 'left' ? 'order-first' : 'order-last'}
+          ${isFiltering && !isActive ? (
+            `bg-transparent group-hover:bg-${color} group-focus:bg-${color}`
+            ) : (
+            `bg-${color}`
+          )}
+          h-2 w-2 rounded-full
+        `}
+      ></span>
+    ) : null}
+    <!-- <span class="uppercase tracking-wider text-xs">{title}</span> -->
+    <span class="capitalize">{title}</span>
   </span>
   {isOnCategoryPage ? (
     <span class="flex gap-x-[7px] ml-[3px]">
