@@ -19,9 +19,11 @@ module.exports = {
 			screens: {
 				xs: '375px',
 				525: '525px',
+				mdlg: '884px'
 			},
 			fontFamily: {
-				ibm: ['IBM Plex Sans', 'sans-serif'],
+				bodoni: ['Bodoni Moda', 'serif'],
+				garamond: ['Cormorant Garamond', 'serif'],
 			},
 			maxWidth: {
 				'8xl': '96rem',
