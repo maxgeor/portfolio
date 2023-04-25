@@ -29,11 +29,11 @@ const {
 ---
 <!-- <a 
 	href={href}
-	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#39393b] hover:bg-[#c1c1c4] focus:bg-[#c1c1c4]"
+	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#45454a] hover:bg-[#c1c1c4] focus:bg-[#c1c1c4]"
 > -->
 <a 
 	href={href}
-	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#39393b]"
+	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#3e3e44]"
 >
 	<img src="/work/memiori/cover.png" class="col-span-full sm:hidden aspect-video object-cover w-full"/>
 	<div class="hidden sm:flex flex-col gap-2 col-span-6 order-last">
@@ -43,15 +43,19 @@ const {
 		</div>
 		<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full"/>
 	</div>
-	<div class="col-span-full sm:col-span-6 flex justify-between">
-		<div class="flex flex-col gap-y-5 justify-between">
-			<div class="flex flex-col gap-y-2">
-				<h2 class="text-3xl lg:text-4xl 2xl:text-5xl group-hover:underline group-focus:underline">
+	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full">
+		<div class="flex flex-col gap-y-2">
+			<div class="flex justify-between gap-x-5">
+				<h2 class="text-3xl lg:text-4xl 2xl:text-5xl tracking-[-0.03em] group-hover:underline group-focus:underline">
 					{title}
 				</h2>
-				<p>{description}</p>
+				<p class="sm:hidden text-sm leading-5">2021</p>
 			</div>
-			<table class="flex flex-col w-full">
+			<p>{description}</p>
+		</div>
+		<div class="flex flex-col gap-5">
+			<p class="sm:hidden">{roles.join(', ')}</p>
+			<table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
 				{company ? (
 					<tr>
 						<td class="pr-5"><p>For</p></td>
@@ -78,10 +82,6 @@ const {
 					</tr>
 				) : null}
 			</table>
-		</div>
-		<div class="sm:hidden flex flex-col items-end justify-between">
-			<p class="text-sm leading-5">2021</p>
-			<p>{roles.join(', ')}</p>
 		</div>
 	</div>
 </a>

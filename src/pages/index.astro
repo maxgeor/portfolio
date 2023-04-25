@@ -7,14 +7,14 @@ import WorkBlock from '../components/WorkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="relative">
-		<section class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-[#39393b] lg:h-screen">
-			<section class="basis-5/6 lg:basis-auto p-5 pt-2 flex-grow overflow-y-scroll">
-				<div class="flex items-center gap-x-5">
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#39393b] w-full"/>
-					<h1 class="uppercase text-lg tracking-[0.02em] text-center">MG</h1>
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#39393b] w-full"/>
+		<section class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-[#3e3e44] lg:h-screen">
+			<section class="basis-5/6 lg:basis-auto p-5 pt-[7px] lg:pt-2 flex-grow overflow-y-scroll">
+				<div class="flex items-center gap-x-5 -pb-px lg:pb-0">
+					<hr class="h-[0.5px] border-t-[0.5px] border-[#3e3e44] w-full"/>
+					<h1 class="uppercase text-[17px] lg:text-lg tracking-[0.02em] text-center">MG</h1>
+					<hr class="h-[0.5px] border-t-[0.5px] border-[#3e3e44] w-full"/>
 				</div>
-				<p class="italic mt-1 mb-5 text-sm font-bodoni text-center">Software desiger <span class="text-[13px]">&</span> developer</p>
+				<p class="italic mt-1 mb-5 text-sm font-bodoni text-center">Software desiger <span class="text-[12px]">&</span> developer</p>
 				<p class="lg:indent-5">I'm a product designer & developer based out of Toronto.</p>
 				<p class="lg:indent-5">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
 				<div class="flex justify-center lg:hidden text-center text-sm gap-x-5 gap-y-1 flex-wrap w-full mt-5">
@@ -25,7 +25,7 @@ import WorkBlock from '../components/WorkBlock.astro';
 					<a href="#" class="underline">Dribbble</a>
 				</div>
 			</section>
-			<section class="hidden lg:flex flex-col 1.5xl:flex-row  text-sm p-5 border-t-[0.5px] border-[#39393b]">
+			<section class="hidden lg:flex flex-col 1.5xl:flex-row  text-sm p-5 border-t-[0.5px] border-[#3e3e44]">
 			<a href="#" class="w-full underline">Email</a>
 				<a href="#" class="w-full underline">Are.na</a>
 				<a href="#" class="w-full underline">Github</a>
@@ -34,14 +34,17 @@ import WorkBlock from '../components/WorkBlock.astro';
 			</section>
 		</section>
 		<main class="relative lg:ml-[calc(100vw/4)]">
-			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] lg:border-t-0 border-[#39393b]">
-				<div class="flex items-center justify-center bg-[#d1d1d4] w-full border-r-[0.5px] border-[#39393b] h-10 border-box">
+			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-[#3e3e44] lg:border-t-0 ">
+				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-r-[0.5px]  h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-[#59595f] text-[#d5d5dc] w-full border-r-[0.5px] border-[#3e3e44] h-10 border-box">
 					<p>Work</p>
 				</div>
-				<div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-r-[0.5px] border-[#39393b] h-10 border-box">
+				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-r-[0.5px] border-[#3e3e44] h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-[#59595f] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-r-[0.5px] border-[#3e3e44] h-10 border-box">
 					<p>Projects</p>
 				</div>
-				<div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-[#39393b] h-10 border-box">
+				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-[#3e3e44] h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-[#59595f] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-[#3e3e44] h-10 border-box">
 					<p>Writing</p>
 				</div>
 			</nav>
