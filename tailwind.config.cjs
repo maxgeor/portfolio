@@ -6,6 +6,9 @@ module.exports = {
       sans: ['"Times"', 'serif']
     },
 		extend: {
+			boxShadow: {
+				px: '0 0 0 1px rgba(0, 0, 0, 0.03)',
+			},
 			colors: {
 				gray: {
 					dark: '#434343',
