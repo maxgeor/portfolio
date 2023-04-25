@@ -2,14 +2,15 @@ import { z, defineCollection } from 'astro:content';
 
 const workCollection = defineCollection({
   schema: z.object({
+    type: z.string(),
     title: z.string(),
+    description: z.string(),
+    roles: z.array(z.string()),
+    year: z.number(),
     link: z.string().optional(),
     image: z.string().optional(),
-    type: z.string(),
-    roles: z.array(z.string()),
-    collaborators: z.object({ name: z.string(), role: z.string(), link: z.string()}).array().optional(),
     tools: z.array(z.string()).optional(),
-    tldr: z.string(),
+    collaborators: z.object({ name: z.string(), role: z.string(), href: z.string()}).array().optional(),
   }),
 });
 const writingCollection = defineCollection({ 

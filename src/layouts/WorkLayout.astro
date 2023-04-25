@@ -1,107 +1,180 @@
 ---
 const {frontmatter} = Astro.props;
-import DropLetter from '../components/DropLetter.astro';
+import Layout from "./Layout.astro";
 
 ---
-<>
-  <section id="hero" class="lg:col-span-9 font-untitled-serif text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] xl:text-[56px] xl:leading-[72px] max-w-5xl">
-    <p>
-      <a href="#" class="text-neutral-800 underline"><DropLetter letter={frontmatter.title.slice(0, 1)} classes="float-left font-floral text-[139px] md:text-[190px] xl:text-[214px] pt-[38px] md:pt-[51px] xl:pt-[58px] pr-2.5 md:pr-3 -ml-0.5 md:-ml-1"/> {frontmatter.title.substring(1)}</a>
-      is a {frontmatter.type} I designed & co-built to <span class="text-neutral-800 lowercase">{frontmatter.tldr}</span>
-    </p>
-  </section>
-  <div class="col-span-3 flex flex-col gap-y-5">
-    <p>{frontmatter.type}</p>
-    <table id="details" class="hidden md:block  ">
-      {frontmatter.company && (
-        <tr>
-          <td>For</td>
-          <td>{frontmatter.company}</td>
-        </tr>
-      )}
-      <tr>
-        <td>Role</td>
-        <td>{frontmatter.roles.join(", ")}</td>
-      </tr>
-      {frontmatter.collaborators && (
-        <tr>
-          <td>With</td>
-          <td>
-            <table cellspacing="0" cellpadding="0">
-              {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
-                <tr class="collaborator">
-                  <td class="leading-4">
-                    <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
-                      {collaborator.name}
-                    </a>  
-                    ({collaborator.role})
+<Layout title='Case Study'>
+  <div class="relativeflex">
+    <a 
+      id="logo"
+      href="/" 
+      class="text-lg font-bodoni flex flex-col items-center justify-center font-serif uppercase tracking-[0.02em] md:fixed h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-l-[0.5px] border-[#39393b] hover:bg-[#c1c1c4]"
+    >
+      MG
+    </a>
+    <main class="md:ml-10 px-5 ">
+      <nav class="relative flex items-center gap-x-2.5 w-full text-xs uppercase tracking-wider  h-10 border-b-[0.5px] border-[#39393b]">
+        <a href="/" class="hover:underline">Work</a>
+        <span>/</span>
+        <p class="text-[#848386]">{frontmatter.title}</p>
+        <span class="absolute -bottom-5 right-0 uppercase tracking-wider text-[10px]">Case Study</span>
+      </nav>
+      <div class="max-w-7xl mx-auto">
+        <section class="relative grid grid-cols-12 gap-5 pt-60 pb-10 border-b-[0.5px] border-[#39393b]">
+          <!-- <img src="/work/memiori/cover.png" class="col-span-full sm:hidden aspect-video object-cover w-full "/> -->
+          <div class="col-span-full md:col-span-8 flex flex-col gap-y-5 self-end">
+            <h2 class="uppercase tracking-[-0.063em] text-6xl md:text-7xl lg:text-8xl xl:text-9xl -my-1.5 md:-my-2 lg:-my-2.5 xl:-my-3">
+              {frontmatter.title}
+            </h2>
+            <p>{frontmatter.description}</p>
+          </div>
+          <!-- <div class="col-span-full md:col-span-4 border-t-[0.5px] border-[#39393b]"> -->
+          <div class="col-span-full md:col-span-4 flex flex-col gap-y-5">
+            <p class="capitalize">{frontmatter.roles.join(', ')}</p>
+            <table class="flex flex-col w-full">
+              <tr>
+                  <td class="pr-5"><p>Year</p></td>
+                  <td><p>{frontmatter.year}</p></td>
+                </tr>
+              {frontmatter.company ? (
+                <tr>
+                  <td class="pr-5"><p>For</p></td>
+                  <td><p>{frontmatter.company}</p></td>
+                </tr>
+              ) : null}
+              {frontmatter.tools ? (
+                <tr>
+                  <td class="pr-5"><p>Tools</p></td>
+                  <td><p>{frontmatter.tools.join(', ')}</p></td>
+                </tr>
+              ) : null}
+              {frontmatter.collaborators ? (
+                <tr>
+                  <td class="pr-5">Collaborators</td>
+                  <td>
+                    {frontmatter.collaborators.map(({ name, href, role }) => (
+                      <span>
+                        <a href={href} target="_blank" class="underline">{name}</a>
+                        <span>({role})</span>
+                      </span>
+                    ))}
                   </td>
-                </tr>  
-              ))}
+                </tr>
+              ) : null}
             </table>
-          </td>
-        </tr>
-      )}
-      <tr>
-        <td>Using</td>
-        <td>{frontmatter.tools.join(", ")}</td>
-      </tr>
-    </table>
+          </div>
+        </section>
+      </div>
+    </main>
   </div>
-  <div class="md:hidden -mt-4">
-    <div>
+  <!-- <>
+    <section id="hero" class="lg:col-span-9 font-untitled-serif text-neutral-400 text-4xl leading-[48px] md:text-5xl md:leading-[64px] xl:text-[56px] xl:leading-[72px] max-w-5xl">
+      <p>
+        <a href="#" class="text-neutral-800 underline"><DropLetter letter={frontmatter.title.slice(0, 1)} classes="float-left font-floral text-[139px] md:text-[190px] xl:text-[214px] pt-[38px] md:pt-[51px] xl:pt-[58px] pr-2.5 md:pr-3 -ml-0.5 md:-ml-1"/> {frontmatter.title.substring(1)}</a>
+        is a {frontmatter.type} I designed & co-built to <span class="text-neutral-800 lowercase">{frontmatter.tldr}</span>
+      </p>
+    </section>
+    <div class="col-span-3 flex flex-col gap-y-5">
       <p>{frontmatter.type}</p>
+      <table id="details" class="hidden md:block  ">
+        {frontmatter.company && (
+          <tr>
+            <td>For</td>
+            <td>{frontmatter.company}</td>
+          </tr>
+        )}
+        <tr>
+          <td>Role</td>
+          <td>{frontmatter.roles.join(", ")}</td>
+        </tr>
+        {frontmatter.collaborators && (
+          <tr>
+            <td>With</td>
+            <td>
+              <table cellspacing="0" cellpadding="0">
+                {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
+                  <tr class="collaborator">
+                    <td class="leading-4">
+                      <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+                        {collaborator.name}
+                      </a>  
+                      ({collaborator.role})
+                    </td>
+                  </tr>  
+                ))}
+              </table>
+            </td>
+          </tr>
+        )}
+        <tr>
+          <td>Using</td>
+          <td>{frontmatter.tools.join(", ")}</td>
+        </tr>
+      </table>
     </div>
-    {frontmatter.company && (
+    <div class="md:hidden -mt-4">
+      <div>
+        <p>{frontmatter.type}</p>
+      </div>
+      {frontmatter.company && (
+        <div class="flex flex-col  col-span-4 lg:col-span-1">
+          <p class="">For</p>
+          <p>{frontmatter.company}</p>
+        </div>
+      )}
       <div class="flex flex-col  col-span-4 lg:col-span-1">
-        <p class="">For</p>
-        <p>{frontmatter.company}</p>
+        <p class=" ">Role</p>
+        <p>{frontmatter.roles.join(", ")}</p>
+      </div>
+      {frontmatter.collaborators && (
+        <div class="flex flex-col  col-span-4 lg:col-span-1">
+          <p class=" ">With</p>
+          <table cellspacing="0" cellpadding="0">
+            {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
+              <tr class="collaborator">
+                <td class="leading-4">
+                  <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
+                    {collaborator.name}
+                  </a>  
+                  ({collaborator.role})
+                </td>
+              </tr>  
+            ))}
+          </table>
+        </div>
+      )}
+      <div class="flex flex-col  col-span-4 lg:col-span-1">
+        <p>Using</p>
+        <p>{frontmatter.tools.join(", ")}</p>
+      </div>
+    </div>
+  
+    {frontmatter.image ? (
+      <img 
+        src={frontmatter.image} 
+        alt={`${frontmatter.title} mockups`}
+        class=" min-h-0 max-h-[256px] md:max-h-[448px] h-full object-cover"
+      />
+    ) : (
+      <div class="flex h-64 md:h-[448px] ">
+        <div class="w-full bg-[#918C88] h-full"></div>
       </div>
     )}
-    <div class="flex flex-col  col-span-4 lg:col-span-1">
-      <p class=" ">Role</p>
-      <p>{frontmatter.roles.join(", ")}</p>
-    </div>
-    {frontmatter.collaborators && (
-      <div class="flex flex-col  col-span-4 lg:col-span-1">
-        <p class=" ">With</p>
-        <table cellspacing="0" cellpadding="0">
-          {frontmatter.collaborators.map((collaborator: { name: string, link: string }) => (
-            <tr class="collaborator">
-              <td class="leading-4">
-                <a href={collaborator.link} target="_blank" class="whitespace-nowrap underline-none hover:underline focus:underline">
-                  {collaborator.name}
-                </a>  
-                ({collaborator.role})
-              </td>
-            </tr>  
-          ))}
-        </table>
-      </div>
-    )}
-    <div class="flex flex-col  col-span-4 lg:col-span-1">
-      <p>Using</p>
-      <p>{frontmatter.tools.join(", ")}</p>
-    </div>
-  </div>
-
-  {frontmatter.image ? (
-    <img 
-      src={frontmatter.image} 
-      alt={`${frontmatter.title} mockups`}
-      class=" min-h-0 max-h-[256px] md:max-h-[448px] h-full object-cover"
-    />
-  ) : (
-    <div class="flex h-64 md:h-[448px] ">
-      <div class="w-full bg-[#918C88] h-full"></div>
-    </div>
-  )}
-  <article class="font-untitled-serif normal-case text-xl w-full">
-    <slot />
-  </article>
-</>
+    <article class="font-untitled-serif normal-case text-xl w-full">
+      <slot />
+    </article>
+  </> -->
+</Layout>
 
 <style is:inline>
+
+  @media (min-width: 768px) {
+    #logo {
+      writing-mode: vertical-rl; 
+      transform: rotate(180deg);
+    }
+  }
+
   table#details > tr > td {
     padding-bottom: 20px;
   }

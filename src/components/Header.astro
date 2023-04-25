@@ -11,7 +11,7 @@ export interface Props {
 const { path, currentPage, isFloating = false } = Astro.props;
 ---
 {isFloating ? (
-  <div class="absolute bottom-5 left-5 h-16 w-16 bg-black border border-white/10 border-box rounded-full">
+  <div class="absolute bottom-5 left-5 h-16 w-16 bg-[#39393b] border border-white/10 border-box rounded-full">
     <a href='#'>
       <Logo/>
     </a>
@@ -24,9 +24,9 @@ const { path, currentPage, isFloating = false } = Astro.props;
     <span class="shrink-0 w-2 h-2 border-[1.5px] border-box border-white group-hover:bg-white transition duration-200 rounded-full"></span>
     <!-- <div class="md:hidden flex items-center gap-x-5">
       <div class="flex -mr-0.5">
-        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-red z-[3]"></span>
-        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-blue -ml-1 z-[2]"></span>
-        <span class="h-3 w-3 border-2 border-black border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
+        <span class="h-3 w-3 border-2 border-[#39393b] border-box rounded-full bg-red z-[3]"></span>
+        <span class="h-3 w-3 border-2 border-[#39393b] border-box rounded-full bg-blue -ml-1 z-[2]"></span>
+        <span class="h-3 w-3 border-2 border-[#39393b] border-box rounded-full bg-yellow -ml-1 z-[1]"></span>
       </div>
       <span class="text-[#666]">/</span>
       <CategoryTab title='work'/>

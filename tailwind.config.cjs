@@ -22,7 +22,8 @@ module.exports = {
 			screens: {
 				xs: '375px',
 				525: '525px',
-				mdlg: '884px'
+				mdlg: '884px',
+				'1.5xl': '1230px'
 			},
 			fontFamily: {
 				bodoni: ['Bodoni Moda', 'serif'],
