@@ -4,15 +4,16 @@ import Header from '../components/Header.astro';
 import CategoryTabList from '../components/CategoryTabList.astro';
 import CategoryTab from '../components/CategoryTab.astro';
 import WorkBlock from '../components/WorkBlock.astro';
+import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="relative">
-		<section class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-[#3e3e44] lg:h-screen">
+		<section class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-[#3b3b3f] lg:h-screen">
 			<section class="basis-5/6 lg:basis-auto p-5 pt-[7px] lg:pt-2 flex-grow overflow-y-scroll">
 				<div class="flex items-center gap-x-5 -pb-px lg:pb-0">
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#3e3e44] w-full"/>
-					<h1 class="uppercase text-[17px] lg:text-lg tracking-[0.02em] text-center">MG</h1>
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#3e3e44] w-full"/>
+					<hr class="h-[0.5px] border-t-[0.5px] border-[#3b3b3f] w-full"/>
+					<h1 id="logo" class="uppercase text-[17px] lg:text-lg tracking-[0.02em] text-center">MG</h1>
+					<hr class="h-[0.5px] border-t-[0.5px] border-[#3b3b3f] w-full"/>
 				</div>
 				<p class="italic mt-1 mb-5 text-sm font-bodoni text-center">Software desiger <span class="text-[12px]">&</span> developer</p>
 				<p class="lg:indent-5">I'm a product designer & developer based out of Toronto.</p>
@@ -25,7 +26,7 @@ import WorkBlock from '../components/WorkBlock.astro';
 					<a href="#" class="underline">Dribbble</a>
 				</div>
 			</section>
-			<section class="hidden lg:flex flex-col 1.5xl:flex-row  text-sm p-5 border-t-[0.5px] border-[#3e3e44]">
+			<section class="hidden lg:flex flex-col 1.5xl:flex-row text-sm p-5 border-t-[0.5px] border-[#3b3b3f]">
 			<a href="#" class="w-full underline">Email</a>
 				<a href="#" class="w-full underline">Are.na</a>
 				<a href="#" class="w-full underline">Github</a>
@@ -34,17 +35,14 @@ import WorkBlock from '../components/WorkBlock.astro';
 			</section>
 		</section>
 		<main class="relative lg:ml-[calc(100vw/4)]">
-			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-[#3e3e44] lg:border-t-0 ">
-				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-r-[0.5px]  h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#59595f] text-[#d5d5dc] w-full border-r-[0.5px] border-[#3e3e44] h-10 border-box">
+			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-[#3b3b3f] lg:border-t-0 ">
+				<div class="flex items-center justify-center bg-[#58585c] text-[#d5d5dc] w-full border-r-[0.5px] border-[#3b3b3f] h-10 border-box">
 					<p>Work</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-r-[0.5px] border-[#3e3e44] h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#59595f] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-r-[0.5px] border-[#3e3e44] h-10 border-box">
+				<div class="flex items-center justify-center bg-[#58585c] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-r-[0.5px] border-[#3b3b3f] h-10 border-box">
 					<p>Projects</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-[#d1d1d4] w-full border-b-[0.5px] border-[#3e3e44] h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#59595f] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-[#3e3e44] h-10 border-box">
+				<div class="flex items-center justify-center bg-[#58585c] hover:bg-[#515157] text-[#d5d5dc] w-full border-b-[0.5px] border-[#3b3b3f] h-10 border-box">
 					<p>Writing</p>
 				</div>
 			</nav>
@@ -75,6 +73,57 @@ import WorkBlock from '../components/WorkBlock.astro';
 					collaborators={[{ name: 'Hassan Seyed', role: 'developement', href: '#' }]}
 					year={2022}
 					tools={['Next.js', 'TailwindCSS', 'Web3']}
+				/>
+				<!-- <hr class="h-px border-t-1 border-[#3b3b3f] w-full"/> -->
+				<div class="p-5">
+					<!-- <h2 class="text-2xl lg:text-3xl 2xl:text-4xl tracking-[-0.03em]"> -->
+					<h2 class="text-xl lg:text-2xl 2xl:text-3xl tracking-[-0.03em]">
+						Projects
+					</h2>
+				</div>
+				<LinkBlock 
+					type='project'
+					title='Scope Todo'
+					href='#'
+					description="A good ol' todo widget for FigJam (inspired by Ryan Singer's design techniques)"
+				/>
+				<LinkBlock 
+					type='project'
+					title='The Quest Board'
+					href='#'
+					description="Job board for the Loot community"
+				/>
+				<LinkBlock 
+					type='project'
+					title='Sayings, forgotten'
+					href='#'
+					description="Collection of sayings with forgotten meanings"
+				/>
+				<LinkBlock 
+					type='project'
+					title='Dissect Design'
+					href='#'
+					description="Collection of design decisions (mostly from 37Signals)"
+				/>
+				<!-- <hr class="h-px border-t-1 border-[#3b3b3f] w-full"/> -->
+				<div class="p-5">
+					<!-- <h2 class="text-2xl lg:text-3xl 2xl:text-4xl tracking-[-0.03em]"> -->
+					<h2 class="text-xl lg:text-2xl 2xl:text-3xl tracking-[-0.03em]">
+						Writing
+					</h2>
+				</div>
+				<!-- <hr class="h-[0.5px] border-t-[0.5px] border-[#3b3b3f] w-full"/> -->
+				<LinkBlock 
+					type='writing'
+					title='In defence of bad writing'
+					href='#'
+					description="Mar 2022"
+				/>
+				<LinkBlock 
+					type='writing'
+					title='Yes, you can learn to code'
+					href='#'
+					description="Feb 2021"
 				/>
 			</section>
 		</main>

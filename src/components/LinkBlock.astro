@@ -1,0 +1,27 @@
+---
+export interface Props {
+	type: 'project' | 'writing';
+	href: string;
+	title: string;
+	description: string;
+}
+
+const { type, href, title, description } = Astro.props;
+---
+<a 
+	href={href}
+	class="col-span-full grid grid-cols-12 gap-5 sm:gap-0 p-5 border-b-[0.5px] border-[#3b3b3f] hover:bg-[#515157] group"
+>
+	<div class={type === 'writing' ? 'col-span-8 md:col-span-4' : 'col-span-4'}>
+		<p>{title}</p>
+	</div>
+	<div class={type === 'writing' ? 'col-span-4 text-sm' : 'col-span-8 md:col-span-4'}>
+		<p>{description}</p>
+	</div>
+</a>
+
+<style>
+	td {
+		vertical-align: top;
+	}
+</style>
