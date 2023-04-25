@@ -8,24 +8,24 @@ import Layout from "./Layout.astro";
     <a 
       id="logo"
       href="/" 
-      class="text-[17px] lg:text-lg font-bodoni flex flex-col items-center justify-center font-serif uppercase tracking-[0.02em] md:fixed h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-[#3b3b3f] hover:bg-[#515157]"
+      class="text-[17px] lg:text-lg font-bodoni flex flex-col items-center justify-center font-serif uppercase tracking-[0.02em] md:fixed h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-[#3f3f44] hover:bg-[#505055]"
     >
       MG
     </a>
     <main class="md:ml-10 px-5">
-      <nav class="relative flex items-center gap-x-2.5 w-full text-xs uppercase tracking-wider  h-10 border-b-[0.5px] border-[#3b3b3f]">
+      <nav class="relative flex items-center gap-x-2.5 w-full text-xs uppercase tracking-wider  h-10 border-b-[0.5px] border-[#3f3f44]">
         <a href="/" class="hover:underline">Work</a>
         <span>/</span>
         <p class="opacity-50">{frontmatter.title}</p>
-        <span class="absolute -bottom-5 right-0 uppercase tracking-wider text-[10px]">Case Study</span>
+        <span class="absolute -bottom-6 right-0 uppercase tracking-wider text-[10px]">Case Study</span>
       </nav>
       <div class="max-w-7xl mx-auto md:px-5">
-        <section id="hero" class="relative grid grid-cols-12 gap-y-5 gap-x-10 pt-60 pb-10 border-b-[0.5px] border-[#3b3b3f]">
+        <section id="hero" class="relative grid grid-cols-12 gap-y-5 gap-x-10 pt-[200px] md:pt-60 pb-10 border-b-[0.5px] border-[#3f3f44]">
           <div class="col-span-full lg:col-span-8 flex flex-col gap-y-5 self-end">
             <h2 class="col-span-full lg:col-span-8 uppercase tracking-[-0.063em] text-7xl lg:text-8xl xl:text-9xl -my-2 lg:-my-2.5 xl:-my-3">
               {frontmatter.title}
             </h2>
-            <p class="col-span-full lg:col-span-8">{frontmatter.description}</p>
+            <p class="col-span-full lg:col-span-8 text-base xl:text-lg leading-5 xl:leading-6">{frontmatter.description}</p>
           </div>
           <div class="col-span-full lg:col-span-4 flex flex-col gap-y-5">
             <p class="capitalize">{frontmatter.roles.join(', ')}</p>
@@ -64,7 +64,7 @@ import Layout from "./Layout.astro";
             <a href="#" class="underline mt-5 order-last text-sm">Jump to pretty pictures</a>
           </div>  
         </section>
-        <article class="grid grid-cols-3 max-w-7xl text-lg w-full mt-20">
+        <article class="grid grid-cols-3 max-w-7xl text-base lg:text-lg leading-5 lg:leading-6 w-full mt-10 lg:mt-20">
           <slot />
         </article>
       </div>

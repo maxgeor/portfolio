@@ -4,20 +4,29 @@ export interface Props {
 	href: string;
 	title: string;
 	description: string;
+	externalLink?: boolean;
 }
 
-const { type, href, title, description } = Astro.props;
+const { type, href, title, description, externalLink = false } = Astro.props;
 ---
 <a 
 	href={href}
-	class="col-span-full grid grid-cols-12 gap-5 sm:gap-0 p-5 border-b-[0.5px] border-[#3b3b3f] hover:bg-[#515157] group"
+	target={externalLink ? '_blank' : '_self'}
+	class="group relative col-span-full grid grid-cols-12 gap-5 sm:gap-0 p-5 border-b-[0.5px] last:border-0 border-[#4b4b51] hover:bg-[#505055] focus:bg-[#505055] group"
 >
 	<div class={type === 'writing' ? 'col-span-8 md:col-span-4' : 'col-span-4'}>
 		<p>{title}</p>
 	</div>
-	<div class={type === 'writing' ? 'col-span-4 text-sm' : 'col-span-8 md:col-span-4'}>
+	<div class={`
+		${type === 'writing' ? 'col-span-4 text-sm' : 'col-span-8 md:col-span-4'}
+		lg:mr-10
+	`}>
 		<p>{description}</p>
 	</div>
+	<span class={`
+		${externalLink ? '-rotate-45' : null}
+		hidden group-hover:inline-block lg:group-hover:hidden group-focus:inline-block lg:group-focus:hidden absolute transform top-1/2 -translate-y-1/2 right-5 text-xl text-[#eaeaef]
+	`}>☞</span>
 </a>
 
 <style>
