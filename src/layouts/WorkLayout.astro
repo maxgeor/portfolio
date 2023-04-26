@@ -86,8 +86,14 @@ const {
             <!-- <a href="#" class="underline mt-5 order-last text-sm">Jump to pretty pictures</a> -->
           </div>  
         </section>
-        <article class="grid grid-cols-12 max-w-7xl text-base lg:text-lg leading-5 lg:leading-6 w-full mt-10 lg:mt-20">
-          <slot />
+        <article class="max-w-7xl w-full mt-10 lg:mt-20 text-base lg:text-lg leading-5 lg:leading-6">
+          <div class={`
+            prose lg:prose-xl
+            prose-headings:text-gray-light prose-strong:text-gray-light
+          text-gray-light mx-auto
+          `}>
+            <slot />
+          </div>
         </article>
       </div>
     </main>
@@ -102,53 +108,7 @@ const {
     }
   }
 
-  article > * {
-    grid-column: 7 / 13;
-  }
-
-  article > p:has(img) {
-    margin-left: auto;
-    border: 0.5px rgba(0,0,0, 0.11) solid;
-    width: 100%;
-    height: auto;
-  }
-
-  article h1 {
-    font-size: 56px;
-    line-height: 68px;
-    margin-bottom: 80px;
-    letter-spacing: -0.05em;
-    text-indent: 40px;
-  }
-
-  article h2 {
-    font-size: 2rem;
-    line-height: 2rem;
-    /* margin-top: 4rem;
-    margin-bottom: 1.25rem; */
-  }
-  
-  article h3 {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    /* margin-top: 2.25rem;
-    margin-bottom: 0.75rem; */
-  }
-
-  article h2:first-child {
-    margin-top: 0;
-  }
-
-  article p {
-    margin-bottom: 1.75rem;
-  }
-  article p:first-child {
-    margin-top: 0;
-  }
-
-  article p:last-child {
-    margin-bottom: 0;
+  .prose {
+    color: #d5d5d5;
   }
 </style>
-
-<script src="../animations/hopping.js"></script>

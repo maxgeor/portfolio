@@ -8,7 +8,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="relative">
-		<aside class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-gray-darkest lg:h-screen">
+		<aside class="lg:fixed lg:w-[calc(100vw/6)] flex flex-col lg:border-r-[0.5px] border-gray-darkest lg:h-screen">
 			<section class="basis-5/6 lg:basis-auto p-5 pt-[7px] lg:pt-2 flex-grow overflow-y-scroll">
 				<div class="flex items-center gap-x-5 -pb-px lg:pb-0">
 					<hr class="h-[0.5px] border-t-[0.5px] border-gray-darkest w-full"/>
@@ -18,6 +18,10 @@ import LinkBlock from '../components/LinkBlock.astro';
 				<p class="italic mt-1 mb-5 text-sm font-bodoni text-center">Software desiger <span class="text-[12px]">&</span> developer</p>
 				<p class="lg:indent-5">I'm a product designer & developer based out of Toronto.</p>
 				<p class="lg:indent-5">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
+				<ul>
+					<li>I'm a product designer & developer based out of Toronto.</li>
+					<li>I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</li>
+				</ul>
 				<div class="flex justify-center lg:hidden text-center gap-x-5 gap-y-1 text-sm leading-4 flex-wrap w-full mt-5">
 					<a href="#" class="hover:underline">Email</a>
 					<a href="#" class="hover:underline">Are.na</a>
@@ -37,20 +41,17 @@ import LinkBlock from '../components/LinkBlock.astro';
 			</section>
 		</aside>
 		<div class="relative lg:ml-[calc(100vw/4)]">
-			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-gray-darkest lg:border-t-0 ">
-				<!-- <div class="flex items-center justify-center bg-gray text-gray-light w-full border-r-[0.5px] border-gray-darkest h-10 border-box"> -->
+			<!-- <nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-gray-darkest lg:border-t-0 ">
 				<div class="flex items-center justify-center bg-gray w-full border-r-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Work</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-gray hover:bg-gray-dark text-gray-light w-full border-b-[0.5px] border-r-[0.5px] border-gray-darkest h-10 border-box"> -->
 				<div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-r-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Projects</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-gray-darkest h-10 border-box"> -->
 				<div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Writing</p>
 				</div>
-			</nav>
+			</nav> -->
 			<main>
 				<WorkBlock
 					title='Memiori'
@@ -79,11 +80,8 @@ import LinkBlock from '../components/LinkBlock.astro';
 					year={2022}
 					tools={['Next.js', 'TailwindCSS', 'Web3']}
 				/>
-				<!-- <hr class="h-px border-t-1 border-gray-darkest w-full"/> -->
 				<section class="border-b-[0.5px] border-gray-darkest">
-
 					<div class="p-5">
-						<!-- <h2 class="text-2xl lg:text-3xl 2xl:text-4xl tracking-[-0.03em]"> -->
 						<h2 class="text-xl lg:text-2xl 2xl:text-3xl tracking-[-0.03em] -mb-1">
 							Projects
 						</h2>
@@ -119,7 +117,6 @@ import LinkBlock from '../components/LinkBlock.astro';
 						/>
 					</div>
 				</section>
-				<!-- <hr class="h-[0.5px] border-t-[0.5px] border-gray-darkest w-full"/> -->
 				<section>
 					<div class="p-5">
 						<h2 class="text-xl lg:text-2xl 2xl:text-3xl tracking-[-0.03em] -mb-1">

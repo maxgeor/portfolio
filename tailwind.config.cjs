@@ -11,6 +11,13 @@ module.exports = {
 			},
 			colors: {
 				gray: {
+					darkest: '#3a3a3a',
+					darker: '#474747',
+					dark: '#505050',
+					DEFAULT: '#565656',
+					light: '#d5d5d5'
+				},
+				twilight: {
 					darkest: '#3A3A41',
 					darker: '#47474E',
 					dark: '#505055',
@@ -39,5 +46,7 @@ module.exports = {
 			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/typography'),
+	],
 }

@@ -43,7 +43,11 @@ const {
 			</div>
 			<p>{description}</p>
 		</div>
-		<div class="flex flex-col gap-5">
+		<div class="flex items-baseline justify-between gap-5">
+			<p>{roles.join(', ')}</p>
+			<p class="text-sm">{year}</p>
+		</div>
+		<!-- <div class="flex flex-col gap-5">
 			<p class="sm:hidden">{roles.join(', ')}</p>
 			<table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
 				{company ? (
@@ -72,13 +76,9 @@ const {
 					</tr>
 				) : null}
 			</table>
-		</div>
+		</div> -->
 	</div>
-	<div class="hidden sm:flex flex-col gap-2 col-span-6">
-		<div class="flex items-baseline justify-between gap-5">
-			<p>{roles.join(', ')}</p>
-			<p class="text-sm">{year}</p>
-		</div>
-		<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full"/>
-	</div>
+	<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full h-full"/>
+	<!-- <div class="hidden sm:flex flex-col gap-2 col-span-6">
+	</div> -->
 </a>
