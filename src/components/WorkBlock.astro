@@ -21,64 +21,26 @@ const {
 	description,
 	roles,
 	image,
-	company,
-	collaborators,
-	tools,
 	year
 } = Astro.props;
 ---
 <a 
 	href={href}
-	class="group grid grid-cols-12 gap-y-5 p-5 border-b-[0.5px] border-gray-darkest hover:bg-gray-dark focus:bg-gray-dark"
+	class="group grid grid-cols-12 gap-y-5 gap-x-5 xl:gap-x-0 p-5 xl:pr-0 border-b-[0.5px] border-gray-darkest hover:bg-gray focus:bg-gray transition duration-100"
 >
 	<img src="/work/memiori/cover.png" class="col-span-full sm:hidden aspect-video object-cover w-full"/>
 	
-	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full sm:pr-5">
-		<div class="flex flex-col gap-y-2">
+	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full xl:pr-5">
+		<div class="flex flex-col gap-y-3 sm:gap-y-5">
 			<div class="flex justify-between gap-x-5">
-				<h2 class="text-3xl xl:text-4xl 2xl:text-5xl tracking-[-0.03em]">
+				<h2 class="text-[28px] leading-6">
 					{title}
 				</h2>
-				<p class="sm:hidden text-sm leading-5">2021</p>
+				<p class="text-sm leading-5 clear-left -my-1">{year}</p>
 			</div>
-			<p>{description}</p>
+			<p class="-my-1 text-[#8D8D8D] sm:text-gray-light">{roles.join(', ')}</p>
 		</div>
-		<div class="flex items-baseline justify-between gap-5">
-			<p>{roles.join(', ')}</p>
-			<p class="text-sm">{year}</p>
-		</div>
-		<!-- <div class="flex flex-col gap-5">
-			<p class="sm:hidden">{roles.join(', ')}</p>
-			<table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
-				{company ? (
-					<tr>
-						<td class="pr-5"><p>For</p></td>
-						<td><p>{company}</p></td>
-					</tr>
-				) : null}
-				{tools ? (
-					<tr>
-						<td class="pr-5"><p>Tools</p></td>
-						<td><p>{tools.join(', ')}</p></td>
-					</tr>
-				) : null}
-				{collaborators ? (
-					<tr>
-						<td class="pr-5">Collaborators</td>
-						<td>
-							{collaborators.map(({ name, href, role }) => (
-								<p>
-									<span>{name}</span>
-									<span>({role})</span>
-								</p>
-							))}
-						</td>
-					</tr>
-				) : null}
-			</table>
-		</div> -->
+		<p class="-my-1">{description}</p>
 	</div>
-	<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full h-full"/>
-	<!-- <div class="hidden sm:flex flex-col gap-2 col-span-6">
-	</div> -->
+	<img src="/work/memiori/cover.png" class="col-span-6 hidden sm:block aspect-video object-cover w-full h-full"/>
 </a>

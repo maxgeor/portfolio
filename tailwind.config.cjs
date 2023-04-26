@@ -11,11 +11,11 @@ module.exports = {
 			},
 			colors: {
 				gray: {
-					darkest: '#3a3a3a',
-					darker: '#474747',
-					dark: '#505050',
-					DEFAULT: '#565656',
-					light: '#d5d5d5'
+					darkest: '#070707',
+					darker: '#1D1D1D',
+					dark: '#282828',
+					DEFAULT: '#2e2e2e',
+					light: '#B6B6B6'
 				},
 				twilight: {
 					darkest: '#3A3A41',
@@ -32,7 +32,8 @@ module.exports = {
 				xs: '375px',
 				525: '525px',
 				mdlg: '884px',
-				'1.5xl': '1280px'
+				'1.5xl': '1280px',
+				'2.5xl': '1360px',
 			},
 			fontFamily: {
 				bodoni: ['Bodoni Moda', 'serif'],

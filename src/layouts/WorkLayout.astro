@@ -19,34 +19,36 @@ const {
     <a 
       id="logo"
       href="/" 
-      class="text-[17px] lg:text-lg font-bodoni flex flex-col items-center justify-center font-serif uppercase tracking-[0.02em] md:fixed h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-gray-darkest hover:bg-gray-dark"
+      class="text-lg font-bodoni flex flex-col items-center justify-center font-serif uppercase tracking-[0.02em] md:fixed top-0 bottom-0 left-0 h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-gray-darkest hover:bg-gray transition duration-100"
     >
       MG
     </a>
-    <main class="md:ml-10 px-5">
-      <nav class="relative flex items-center gap-x-2.5 w-full text-xs uppercase tracking-wider  h-10 border-b-[0.5px] border-gray-darkest">
-        <a href="/" class="hover:underline">Work</a>
-        <span>/</span>
-        <p class="opacity-50">{title}</p>
-        <span class="absolute -bottom-6 right-0 uppercase tracking-wider text-[10px]">Case Study</span>
+    <main class="px-5 md:px-10 md:ml-10 2.5xl:p-0 2.5xl:mx-auto 2.5xl:max-w-[1200px]">
+      <nav class="flex items-baseline justify-between gap-x-5 w-full pt-5">
+        <div class="flex items-center gap-2.5 -my-1.5">
+          <a href="/" class="hover:underline">Work</a>
+          <span>/</span>
+          <p class="opacity-40">{title}</p>
+        </div>
+        <span class="uppercase tracking-wider text-[10px] leading-4">Case Study</span>
       </nav>
-      <div class="max-w-7xl mx-auto md:px-5">
+      <div class="">
         <section id="hero" class="relative grid grid-cols-12 gap-y-5 gap-x-10 pt-[200px] md:pt-60 pb-10 border-b-[0.5px] border-gray-darkest">
           <div class="relative col-span-full lg:col-span-8 flex flex-col gap-y-5 self-end">
-            <h2 class="col-span-full lg:col-span-8 uppercase tracking-[-0.063em] text-7xl lg:text-8xl xl:text-9xl -my-2 lg:-my-2.5 xl:-my-3">
+            <h2 class="col-span-full lg:col-span-8 uppercase tracking-[-0.063em] text-7xl lg:text-8xl -my-2 lg:-my-2.5 ">
               {title}
             </h2>
-            <p class="col-span-full lg:col-span-8 text-base xl:text-lg leading-5 xl:leading-6">{description}</p>
+            <p class="col-span-full lg:col-span-8 -my-1">{description}</p>
             {link ? (
-              <a href={link} target="_blank" class="lg:hidden absolute top-0 -right-0.5 flex items-end gap-x-1 underline ">
+              <a href={link} target="_blank" class="lg:hidden absolute top-0 -right-0.5 flex items-end gap-x-1 underline -my-1 group">
                 <span>See it</span>
-                <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                <svg class="mt-0.5 transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition duration-100" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
               </a>
             ) : null}
           </div>
           <div class="col-span-full lg:col-span-4 flex flex-col gap-y-5">
-            <p class="capitalize">{roles.join(', ')}</p>
-            <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
+            <p class="capitalize -my-1">{roles.join(', ')}</p>
+            <table class="flex flex-col w-full -my-1" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="pr-5"><p>Year</p></td>
                 <td><p>{year}</p></td>
@@ -66,7 +68,7 @@ const {
               {collaborators ? (
                 <tr>
                   <td class="pr-5">Collaborators</td>
-                  <td>
+                  <td >
                     {collaborators.map(({ name, href, role }) => (
                       <span>
                         <a href={href} target="_blank" class="underline">{name}</a>
@@ -78,7 +80,7 @@ const {
               ) : null}
             </table>
             {link ? (
-              <a href={link} target="_blank" class="hidden lg:flex items-end gap-x-1 underline order-last">
+              <a href={link} target="_blank" class="hidden lg:flex items-end gap-x-1 underline order-last -my-1">
                 <span>See it</span>
                 <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
               </a>
@@ -88,8 +90,8 @@ const {
         </section>
         <article class="max-w-7xl w-full mt-10 lg:mt-20 text-base lg:text-lg leading-5 lg:leading-6">
           <div class={`
-            prose lg:prose-xl
-            prose-headings:text-gray-light prose-strong:text-gray-light
+            prose lg:prose-lg
+            prose-headings:text-gray-light prose-headings:font-normal prose-strong:text-gray-light
           text-gray-light mx-auto
           `}>
             <slot />
