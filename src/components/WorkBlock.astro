@@ -29,17 +29,11 @@ const {
 ---
 <a 
 	href={href}
-	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-gray-darkest hover:bg-gray-dark focus:bg-gray-dark"
+	class="group grid grid-cols-12 gap-y-5 p-5 border-b-[0.5px] border-gray-darkest hover:bg-gray-dark focus:bg-gray-dark"
 >
 	<img src="/work/memiori/cover.png" class="col-span-full sm:hidden aspect-video object-cover w-full"/>
-	<div class="hidden sm:flex flex-col gap-2 col-span-6 order-last">
-		<div class="flex items-baseline justify-between gap-5">
-			<p>{roles.join(', ')}</p>
-			<p class="text-sm">{year}</p>
-		</div>
-		<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full"/>
-	</div>
-	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full">
+	
+	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full sm:pr-5">
 		<div class="flex flex-col gap-y-2">
 			<div class="flex justify-between gap-x-5">
 				<h2 class="text-3xl xl:text-4xl 2xl:text-5xl tracking-[-0.03em]">
@@ -79,5 +73,12 @@ const {
 				) : null}
 			</table>
 		</div>
+	</div>
+	<div class="hidden sm:flex flex-col gap-2 col-span-6">
+		<div class="flex items-baseline justify-between gap-5">
+			<p>{roles.join(', ')}</p>
+			<p class="text-sm">{year}</p>
+		</div>
+		<img src="/work/memiori/cover.png" class="hidden sm:block aspect-video object-cover w-full"/>
 	</div>
 </a>

@@ -12,9 +12,9 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 <a 
 	href={href}
 	target={externalLink ? '_blank' : '_self'}
-	class="group relative col-span-full grid grid-cols-12 gap-5 p-5 border-b-[0.5px] last:border-0 border-gray-darker hover:bg-gray-dark focus:bg-gray-dark group"
+	class="group relative col-span-full grid grid-cols-12 p-5 border-b-[0.5px] last:border-0 border-gray-darker hover:bg-gray-dark focus:bg-gray-dark group"
 >
-	<div class='col-span-6'>
+	<div class='col-span-6 pr-5'>
 		<p>{title}</p>
 	</div>
 	<div class={`
