@@ -12,25 +12,15 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 <a 
 	href={href}
 	target={externalLink ? '_blank' : '_self'}
-	class="group relative col-span-full grid grid-cols-12 gap-5 sm:gap-0 p-5 border-b-[0.5px] last:border-0 border-[#4b4b51] hover:bg-[#505055] focus:bg-[#505055] group"
+	class="group relative col-span-full grid grid-cols-12 gap-5 p-5 border-b-[0.5px] last:border-0 border-gray-darker hover:bg-gray-dark focus:bg-gray-dark group"
 >
-	<div class={type === 'writing' ? 'col-span-8 md:col-span-4' : 'col-span-4'}>
+	<div class='col-span-6'>
 		<p>{title}</p>
 	</div>
 	<div class={`
-		${type === 'writing' ? 'col-span-4 text-sm' : 'col-span-8 md:col-span-4'}
-		lg:mr-10
+		${type === 'writing' ? 'text-sm' : null}
+		col-span-6
 	`}>
 		<p>{description}</p>
 	</div>
-	<span class={`
-		${externalLink ? '-rotate-45' : null}
-		hidden group-hover:inline-block lg:group-hover:hidden group-focus:inline-block lg:group-focus:hidden absolute transform top-1/2 -translate-y-1/2 right-5 text-xl text-[#eaeaef]
-	`}>☞</span>
 </a>
-
-<style>
-	td {
-		vertical-align: top;
-	}
-</style>

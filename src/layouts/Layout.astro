@@ -17,8 +17,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#56565b] text-[#d5d5dc] leading-5 min-h-screen antialiased">
-	<!-- <body class="bg-[#585858] text-[#d5d5d5] leading-5 min-h-screen antialiased"> -->
+	<body class="bg-gray text-gray-light leading-5 min-h-screen antialiased">
 		<slot />
 	</body>
 </html>
@@ -29,6 +28,15 @@ const { title } = Astro.props;
 		font-family: 'Bodoni Moda', serif;
 		text-transform: uppercase;
 		line-height: normal;
+	}
+
+	a {
+		text-underline-offset: 3px;
+		text-underline-thickness: 0.01em;
+	}
+
+	td {
+		vertical-align: top;
 	}
 
 	@font-face {

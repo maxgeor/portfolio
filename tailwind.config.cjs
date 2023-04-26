@@ -11,9 +11,11 @@ module.exports = {
 			},
 			colors: {
 				gray: {
-					dark: '#434343',
-					DEFAULT: '#888',
-					light: '#D5D5D5'
+					darkest: '#3A3A41',
+					darker: '#47474E',
+					dark: '#505055',
+					DEFAULT: '#56565b',
+					light: '#d5d5dc'
 				},
 				red: '#FF2C2C',
 				blue: '#4A6AFD',
@@ -23,7 +25,7 @@ module.exports = {
 				xs: '375px',
 				525: '525px',
 				mdlg: '884px',
-				'1.5xl': '1230px'
+				'1.5xl': '1280px'
 			},
 			fontFamily: {
 				bodoni: ['Bodoni Moda', 'serif'],

@@ -27,17 +27,13 @@ const {
 	year
 } = Astro.props;
 ---
-<!-- <a 
-	href={href}
-	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#45454a] hover:bg-[#c1c1c4] focus:bg-[#c1c1c4]"
-> -->
 <a 
 	href={href}
-	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-[#3f3f44] hover:bg-[#505055] focus:bg-[#505055]"
+	class="group grid grid-cols-12 gap-5 p-5 border-b-[0.5px] border-gray-darkest hover:bg-gray-dark focus:bg-gray-dark"
 >
 	<img src="/work/memiori/cover.png" class="col-span-full sm:hidden aspect-video object-cover w-full"/>
 	<div class="hidden sm:flex flex-col gap-2 col-span-6 order-last">
-		<div class="flex items-baseline justify-between">
+		<div class="flex items-baseline justify-between gap-5">
 			<p>{roles.join(', ')}</p>
 			<p class="text-sm">{year}</p>
 		</div>
@@ -46,7 +42,7 @@ const {
 	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full">
 		<div class="flex flex-col gap-y-2">
 			<div class="flex justify-between gap-x-5">
-				<h2 class="text-3xl lg:text-4xl 2xl:text-5xl tracking-[-0.03em]">
+				<h2 class="text-3xl xl:text-4xl 2xl:text-5xl tracking-[-0.03em]">
 					{title}
 				</h2>
 				<p class="sm:hidden text-sm leading-5">2021</p>
@@ -73,10 +69,10 @@ const {
 						<td class="pr-5">Collaborators</td>
 						<td>
 							{collaborators.map(({ name, href, role }) => (
-								<span>
-									<a href={href} target="_blank" class="underline">{name}</a>
+								<p>
+									<span>{name}</span>
 									<span>({role})</span>
-								</span>
+								</p>
 							))}
 						</td>
 					</tr>
@@ -85,9 +81,3 @@ const {
 		</div>
 	</div>
 </a>
-
-<style>
-	td {
-		vertical-align: top;
-	}
-</style>

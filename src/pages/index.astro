@@ -8,12 +8,12 @@ import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="relative">
-		<aside class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-[#3f3f44] lg:h-screen">
+		<aside class="lg:fixed lg:w-[calc(100vw/4)] flex flex-col lg:border-r-[0.5px] border-gray-darkest lg:h-screen">
 			<section class="basis-5/6 lg:basis-auto p-5 pt-[7px] lg:pt-2 flex-grow overflow-y-scroll">
 				<div class="flex items-center gap-x-5 -pb-px lg:pb-0">
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#3f3f44] w-full"/>
+					<hr class="h-[0.5px] border-t-[0.5px] border-gray-darkest w-full"/>
 					<h1 id="logo" class="uppercase text-[17px] lg:text-lg tracking-[0.02em] text-center">MG</h1>
-					<hr class="h-[0.5px] border-t-[0.5px] border-[#3f3f44] w-full"/>
+					<hr class="h-[0.5px] border-t-[0.5px] border-gray-darkest w-full"/>
 				</div>
 				<p class="italic mt-1 mb-5 text-sm font-bodoni text-center">Software desiger <span class="text-[12px]">&</span> developer</p>
 				<p class="lg:indent-5">I'm a product designer & developer based out of Toronto.</p>
@@ -26,26 +26,28 @@ import LinkBlock from '../components/LinkBlock.astro';
 					<a href="#" class="hover:underline">Dribbble</a>
 				</div>
 			</section>
-			<section class="hidden lg:flex flex-col 1.5xl:flex-row p-5 border-t-[0.5px] text-sm border-[#3f3f44]">
-				<a href="#" class="w-full hover:underline">Email</a>
-				<a href="#" class="w-full hover:underline">Are.na</a>
-				<a href="#" class="w-full hover:underline">Github</a>
-				<a href="#" class="w-full hover:underline">Twitter</a>
-				<a href="#" class="w-full hover:underline">Dribbble</a>
+			<section class="hidden lg:block p-5 border-t-[0.5px] border-gray-darkest">
+				<div class="flex flex-col 1.5xl:flex-row 1.5xl:justify-around gap-x-5 1.5xl:text-center text-sm">
+					<a href="#" class="w-full hover:underline 1.5xl:order-1">Email</a>
+					<a href="#" class="w-full hover:underline 1.5xl:order-5">Are.na</a>
+					<a href="#" class="w-full hover:underline 1.5xl:order-2">Github</a>
+					<a href="#" class="w-full hover:underline 1.5xl:order-4">Twitter</a>
+					<a href="#" class="w-full hover:underline 1.5xl:order-3">Dribbble</a>
+				</div>
 			</section>
 		</aside>
 		<div class="relative lg:ml-[calc(100vw/4)]">
-			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-[#3f3f44] lg:border-t-0 ">
-				<!-- <div class="flex items-center justify-center bg-[#56565b] text-[#d5d5dc] w-full border-r-[0.5px] border-[#3f3f44] h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#56565b] w-full border-r-[0.5px] border-[#3f3f44] h-10 border-box">
+			<nav class="sticky top-0 flex w-full text-xs uppercase tracking-wider border-t-[0.5px] border-gray-darkest lg:border-t-0 ">
+				<!-- <div class="flex items-center justify-center bg-gray text-gray-light w-full border-r-[0.5px] border-gray-darkest h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-gray w-full border-r-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Work</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-[#56565b] hover:bg-[#505055] text-[#d5d5dc] w-full border-b-[0.5px] border-r-[0.5px] border-[#3f3f44] h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#56565b] hover:bg-[#505055] w-full border-b-[0.5px] border-r-[0.5px] border-[#3f3f44] h-10 border-box">
+				<!-- <div class="flex items-center justify-center bg-gray hover:bg-gray-dark text-gray-light w-full border-b-[0.5px] border-r-[0.5px] border-gray-darkest h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-r-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Projects</p>
 				</div>
-				<!-- <div class="flex items-center justify-center bg-[#56565b] hover:bg-[#505055] w-full border-b-[0.5px] border-[#3f3f44] h-10 border-box"> -->
-				<div class="flex items-center justify-center bg-[#56565b] hover:bg-[#505055] w-full border-b-[0.5px] border-[#3f3f44] h-10 border-box">
+				<!-- <div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-gray-darkest h-10 border-box"> -->
+				<div class="flex items-center justify-center bg-gray hover:bg-gray-dark w-full border-b-[0.5px] border-gray-darkest h-10 border-box">
 					<p>Writing</p>
 				</div>
 			</nav>
@@ -77,8 +79,8 @@ import LinkBlock from '../components/LinkBlock.astro';
 					year={2022}
 					tools={['Next.js', 'TailwindCSS', 'Web3']}
 				/>
-				<!-- <hr class="h-px border-t-1 border-[#3f3f44] w-full"/> -->
-				<section class="border-b-[0.5px] border-[#3f3f44]">
+				<!-- <hr class="h-px border-t-1 border-gray-darkest w-full"/> -->
+				<section class="border-b-[0.5px] border-gray-darkest">
 
 					<div class="p-5">
 						<!-- <h2 class="text-2xl lg:text-3xl 2xl:text-4xl tracking-[-0.03em]"> -->
@@ -117,7 +119,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 						/>
 					</div>
 				</section>
-				<!-- <hr class="h-[0.5px] border-t-[0.5px] border-[#3f3f44] w-full"/> -->
+				<!-- <hr class="h-[0.5px] border-t-[0.5px] border-gray-darkest w-full"/> -->
 				<section>
 					<div class="p-5">
 						<h2 class="text-xl lg:text-2xl 2xl:text-3xl tracking-[-0.03em] -mb-1">
