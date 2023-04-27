@@ -3,12 +3,22 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-      sans: ['"Times"', 'serif']
+      serif: ['Times', 'serif'],
+			sans: ['untitled', 'Ariel', 'Helvetica', 'sans']
     },
 		extend: {
 			boxShadow: {
 				px: '0 0 0 1px rgba(0, 0, 0, 0.03)',
 			},
+			// fontSize: {
+			// 	sm: ['11px', '1rem'],
+			// 	sm: ['13px', '1rem'],
+			// 	base: ['16px', '1.25rem'],
+			// 	md: ['19px', '1.5rem'],
+			// 	lg: ['23px', '1.75rem'],
+			// 	xl: ['28px', '2rem'],
+			// 	'2xl': ['28px', '2rem'],
+			// },
 			colors: {
 				gray: {
 					darkest: '#070707',
@@ -37,7 +47,6 @@ module.exports = {
 			},
 			fontFamily: {
 				bodoni: ['Bodoni Moda', 'serif'],
-				garamond: ['Cormorant Garamond', 'serif'],
 			},
 			maxWidth: {
 				'8xl': '96rem',

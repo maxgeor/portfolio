@@ -1,30 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import CategoryTabList from '../components/CategoryTabList.astro';
-import CategoryTab from '../components/CategoryTab.astro';
 import WorkBlock from '../components/WorkBlock.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
-	<div class="grid lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full">
-		<aside class="lg:col-span-1 flex flex-col border-b-[0.5px] lg:border-b-0 lg:border-r-[0.5px] border-gray-darkest lg:h-screen lg:sticky lg:top-0 p-5 xl:pl-0">
-			<section class="flex flex-col lg:justify-between gap-5  h-full">
-				<div class="flex flex-col gap-5 flex-grow overflow-y-scroll">
+	<div class="grid md:grid-cols-3 relative max-w-[1200px] mx-auto w-full">
+		<aside class="col-span-1 flex flex-col border-b-[0.5px] md:border-b-0 md:border-r-[0.5px] border-gray-darkest md:h-screen md:sticky md:top-0 p-5 xl:pl-0">
+			<section class="flex flex-col md:justify-between gap-5  h-full">
+				<div class="flex flex-col gap-5 flex-grow md:overflow-y-scroll">
 					<div class="flex flex-col justify-center items-center gap-y-2">
-						<h1 id="logo" class="uppercase text-lg text-center -my-1.5">MG</h1>
-						<p class="italic text-sm font-bodoni text-center leading-5 -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p>
+						<div class="flex justify-center items-center gap-5">
+							<span style="font-family: ornaments;" class="text-lg leading-5 font-ornament">@</span>
+							<h1 id="logo" class="uppercase text-[19px] text-center -my-1.5">MG</h1>
+							<span class="text-lg leading-5 font-ornament">@</span>
+						</div>
+						<p class="italic text-[15px] font-bodoni text-center leading-5 -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p>
 					</div>
 					<div class="-my-1">
-						<p class="lg:indent-5">I'm a product designer & developer based out of Toronto.</p>
-						<p class="lg:indent-5">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
+						<p class="md:indent-5">I'm a product designer & developer based out of Toronto.</p>
+						<p class="md:indent-5">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
 						<ul>
 							<li>I'm a product designer & developer based out of Toronto.</li>
 							<li>I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</li>
 						</ul>
 					</div>
 				</div>
-				<div class="flex justify-center lg:justify-around gap-x-5 text-sm pt-5 -my-1">
+				<div class="flex justify-center md:justify-around gap-x-5 text-xs -my-1">
 					<a href="#" class="hover:underline">Email</a>
 					<a href="#" class="hover:underline">Are.na</a>
 					<a href="#" class="hover:underline">Github</a>
@@ -34,7 +35,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 			</section>
 			
 		</aside>
-		<div class="lg:col-span-2 relative">
+		<div class="md:col-span-2 relative">
 			<main>
 				<WorkBlock
 					title='Memiori'
@@ -65,7 +66,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 				/>
 				<section class="border-b-[0.5px] border-gray-darkest">
 					<div class="p-5">
-						<h2 class="text-2xl leading-5">
+						<h2 class="text-[23px] leading-5">
 							Projects
 						</h2>
 					</div>
@@ -102,7 +103,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 				</section>
 				<section>
 					<div class="p-5">
-						<h2 class="text-2xl leading-5">
+						<h2 class="text-[23px] leading-5">
 							Writing
 						</h2>
 					</div>
