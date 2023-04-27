@@ -4,28 +4,22 @@ module.exports = {
 	theme: {
 		fontFamily: {
       serif: ['Times', 'serif'],
-			sans: ['untitled', 'Ariel', 'Helvetica', 'sans']
+			sans: ['untitled', 'Ariel', 'Helvetica', 'sans'],
+			ornament: ["ornament"],
     },
 		extend: {
 			boxShadow: {
 				px: '0 0 0 1px rgba(0, 0, 0, 0.03)',
 			},
-			// fontSize: {
-			// 	sm: ['11px', '1rem'],
-			// 	sm: ['13px', '1rem'],
-			// 	base: ['16px', '1.25rem'],
-			// 	md: ['19px', '1.5rem'],
-			// 	lg: ['23px', '1.75rem'],
-			// 	xl: ['28px', '2rem'],
-			// 	'2xl': ['28px', '2rem'],
-			// },
 			colors: {
 				gray: {
-					darkest: '#070707',
-					darker: '#1D1D1D',
+					darkest: '#030303',
+					darker: '#181818',
+					// darkest: '#191919',
+					// darker: '#212121',
 					dark: '#282828',
 					DEFAULT: '#2e2e2e',
-					light: '#B6B6B6'
+					light: '#BFBFBF'
 				},
 				twilight: {
 					darkest: '#3A3A41',
@@ -42,7 +36,7 @@ module.exports = {
 				xs: '375px',
 				525: '525px',
 				mdlg: '884px',
-				'1.5xl': '1280px',
+				'1.5xl': '1200px',
 				'2.5xl': '1360px',
 			},
 			fontFamily: {

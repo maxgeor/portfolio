@@ -17,41 +17,56 @@ link: https://www.formie.co/
 year: 2022
 ---
 
-# Anyone who's called a smart contract method on Etherscan knows how frustrating it can be.
+import Carouselle from "../../components/prose/Carouselle.astro";
+import Image from "../../components/prose/Image.astro";
 
-1. **They're hard to find**. Methods are hidden under the fold, behind a bunch of nerd words.
-2. **They're hard to understand**. You're left to decrypt the method names to find the right one.
-3. **There's no feedback**. Transactions take time, but Etherscan doesn't give updates, leaving you feeling anxious and confused.
+# Using Etherscan to call a smart contract _sucks_.
 
-![Annotated page showing how bad Etherscan's smart contract UI is](../../../public/work/formie/annotated-etherscan-page.png "Doesn't it suck??")
+1. **Everything's hidden**. Methods are hidden under the fold, behind a bunch of nerd words.
+   {/* ![Annotated page showing how bad Etherscan's smart contract UI is](../../../work/formie/etherscan-1.png "Isn't that hard to find??") */}
+
+2. **You're overloaded with information**. You have to decypher each method name to find the right one.
+   {/* ![Annotated page showing how bad Etherscan's smart contract UI is](../../../work/formie/etherscan-2.png "Why r *all* these methods her, right??") */}
+
+3. **It's impossible to understand**. Technical wording and little feedback leaves survivors frustrated and confused.
+   {/* ![Annotated page showing how bad Etherscan's smart contract UI is](../../../work/formie/etherscan-3.png "... speechless — I need a nap") */}
+
+<Carouselle>
+  <Image
+    src="/work/formie/etherscan-1.png"
+    alt="Annotated page showing how bad Etherscan's smart contract UI is"
+  />
+  <Image
+    src="/work/formie/etherscan-2.png"
+    alt="Annotated page showing how bad Etherscan's smart contract UI is"
+  />
+  <Image
+    src="/work/formie/etherscan-3.png"
+    alt="Annotated page showing how bad Etherscan's smart contract UI is"
+  />
+</Carouselle>
 
 We refused to believe that this was the best solution. We thought, "Wait, aren't these 'methods' just mini forms?"
 
 **Why couldn't we make Google Forms, but for smart contracts?"**
 
-## Challenges
+# Some challenges were there the whole way
 
-Crafting a friendly, focused experience was table stakes, but other requirements made it extra challenging:
-
-### Trust vs Ease
-
-The biggest risk is bad actors using Formie to misrepresent a contract and scam people.
-But, you don't want to overwhelm people with technical details.
+1. **Trust vs Ease**. The biggest risk is bad actors using Formie to misrepresent a contract and scam people.
+   But, you don't want to overwhelm people with technical details.
 
 - How much detail to you share? What information is essential for every user?
 - How do you protecting users from scammers (and themselves) while crafting a seamless experience?
 
 **Solution**: link to contract, make it clear what it's doing, but with the right framing, you can have it both ways
 
-### Universality
-
-Every method had different needs & context, but needs a universal interface.
+2. **Universality**. Every method had different needs & context, but needs a universal interface.
 
 - How do you create an interface, voice, and aesthetic that works, regardless of the method? (univesally approachable)?
 
 **Solution**: Balanced voice, stripped-back aesthetic, custom copy (flexible communication)
 
-## Here are some big decisions we made
+# Here are some big decisions we made
 
 I made several key design decisions to improve the user experience:
 

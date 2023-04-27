@@ -4,28 +4,19 @@ import WorkBlock from '../components/WorkBlock.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
-	<div class="grid md:grid-cols-3 relative max-w-[1200px] mx-auto w-full">
-		<aside class="col-span-1 flex flex-col border-b-[0.5px] md:border-b-0 md:border-r-[0.5px] border-gray-darkest md:h-screen md:sticky md:top-0 p-5 xl:pl-0">
-			<section class="flex flex-col md:justify-between gap-5  h-full">
-				<div class="flex flex-col gap-5 flex-grow md:overflow-y-scroll">
-					<div class="flex flex-col justify-center items-center gap-y-2">
-						<div class="flex justify-center items-center gap-5">
-							<span style="font-family: ornaments;" class="text-lg leading-5 font-ornament">@</span>
-							<h1 id="logo" class="uppercase text-[19px] text-center -my-1.5">MG</h1>
-							<span class="text-lg leading-5 font-ornament">@</span>
-						</div>
-						<p class="italic text-[15px] font-bodoni text-center leading-5 -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p>
+	<div class="grid lg:grid-cols-10 relative 1.5xl:max-w-6xl mx-auto w-full">
+		<aside class="lg:col-span-2 flex flex-col border-b-[0.5px] lg:border-b-0 lg:border-r-[0.5px] border-gray-darkest lg:h-screen lg:sticky lg:top-0 p-5 1.5xl:pl-0">
+			<section class="flex flex-col lg:justify-between gap-5 h-full">
+				<div class="flex flex-col gap-5 flex-grow lg:overflow-y-scroll">
+					<div class="flex flex-col items-center lg:items-start justify-center gap-y-5">
+						<h1 id="logo" class="uppercase text-xl -my-1.5">MG</h1>
+						<p class="italic text-[15px] leading-4 font-bodoni -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p>
 					</div>
-					<div class="-my-1">
-						<p class="md:indent-5">I'm a product designer & developer based out of Toronto.</p>
-						<p class="md:indent-5">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
-						<ul>
-							<li>I'm a product designer & developer based out of Toronto.</li>
-							<li>I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</li>
-						</ul>
+					<div class="-my-1 sm:max-w-prose mx-auto">
+						<p class="indent-5 lg:indent-0">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
 					</div>
 				</div>
-				<div class="flex justify-center md:justify-around gap-x-5 text-xs -my-1">
+				<div class="flex lg:flex-col justify-center lg:justify-around gap-x-5 -my-1 text-xs lg:text-sm">
 					<a href="#" class="hover:underline">Email</a>
 					<a href="#" class="hover:underline">Are.na</a>
 					<a href="#" class="hover:underline">Github</a>
@@ -33,96 +24,100 @@ import LinkBlock from '../components/LinkBlock.astro';
 					<a href="#" class="hover:underline">Dribbble</a>
 				</div>
 			</section>
-			
 		</aside>
-		<div class="md:col-span-2 relative">
-			<main>
-				<WorkBlock
-					title='Memiori'
-					href='/work/memiori'
-					description="Redesign & brand refresh for mood tracking app"
-					roles={['Branding', 'Mobile Design']}
-					year={2023}
-					tools={['Figma', 'TailwindCSS']}
-				/>
-				<WorkBlock
-					title='Polls'
-					href='/work/polls'
-					description="Built & co-designed feature at Wavy to let people vote for their next team event"
-					roles={['Full-Stack Development', 'UX/UI Design']}
-					company='Wavy'
-					collaborators={[{ name: 'Dan Stein', role: 'design', href: '#' }]}
-					year={2023}
-					tools={['Ruby on Rails', 'Hotwire', 'TailwindCSS']}
-				/>
-				<WorkBlock
-					title='Formie'
-					href='/work/formie'
-					description="Designed & co-built a form builder for smart contracts"
-					roles={['Frontend Development', 'UX/UI Design', 'Branding']}
-					collaborators={[{ name: 'Hassan Seyed', role: 'developement', href: '#' }]}
-					year={2022}
-					tools={['Next.js', 'TailwindCSS', 'Web3']}
-				/>
-				<section class="border-b-[0.5px] border-gray-darkest">
-					<div class="p-5">
-						<h2 class="text-[23px] leading-5">
-							Projects
-						</h2>
-					</div>
-					<div>
-						<LinkBlock 
-							type='project'
-							title='Scope Todo'
-							href='#'
-							description="A good ol' todo widget for FigJam (inspired by Ryan Singer's design techniques)"
-							externalLink={true}
-						/>
-						<LinkBlock 
-							type='project'
-							title='The Quest Board'
-							href='#'
-							description="Job board for the Loot community"
-							externalLink={true}
-						/>
-						<LinkBlock 
-							type='project'
-							title='Sayings, forgotten'
-							href='#'
-							description="Collection of sayings with forgotten meanings"
-							externalLink={true}
-						/>
-						<LinkBlock 
-							type='project'
-							title='Dissect Design'
-							href='#'
-							description="Collection of design decisions (mostly from 37Signals)"
-							externalLink={true}
-						/>
-					</div>
-				</section>
-				<section>
-					<div class="p-5">
-						<h2 class="text-[23px] leading-5">
-							Writing
-						</h2>
-					</div>
-					<div>
-						<LinkBlock 
-							type='writing'
-							title='In defence of bad writing'
-							href='#'
-							description="Mar 2022"
-						/>
-						<LinkBlock 
-							type='writing'
-							title='Yes, you can learn to code'
-							href='#'
-							description="Feb 2021"
-						/>
-					</div>
-				</section>
-			</main>
-		</div>
+		<main class="lg:col-span-8 relative">
+			<WorkBlock
+				title='Memiori'
+				href='/work/memiori'
+				description="Redesign & brand refresh for mood tracking app"
+				roles={['Branding', 'Mobile Design']}
+				year={2023}
+				tools={['Figma', 'TailwindCSS']}
+			/>
+			<WorkBlock
+				title='Wavy'
+				titleTightness='tight'
+				href='/work/wavy'
+				description="Built & co-designed working as a full-stack developer at Wavy"
+				roles={['Full-Stack Development', 'UX/UI Design']}
+				company='Wavy'
+				collaborators={[{ name: 'Dan Stein', role: 'design', href: '#' }]}
+				year={2023}
+				tools={['Ruby on Rails', 'Hotwire', 'TailwindCSS']}
+			/>
+			<WorkBlock
+				title='Formie'
+				href='/work/formie'
+				description="Designed & co-built a form builder for smart contracts"
+				roles={['Frontend Development', 'UX/UI Design', 'Branding']}
+				collaborators={[{ name: 'Hassan Seyed', role: 'developement', href: '#' }]}
+				year={2022}
+				tools={['Next.js', 'TailwindCSS', 'Web3']}
+			/>
+			<section class="border-b-[0.5px] border-gray-darkest">
+				<div class="flex justify-between p-5">
+					<h2 class="text-[23px] leading-5">
+						Projects
+					</h2>
+				</div>
+				<div>
+					<LinkBlock 
+						type='project'
+						title='Scope Todo'
+						href='#'
+						description="A good ol' todo widget for FigJam"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='The Quest Board'
+						href='#'
+						description="Job board for the Loot community"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='Sayings, Forgotten'
+						href='#'
+						description="Collection of sayings with forgotten meanings"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='Dissect Design'
+						href='#'
+						description="Collection of design decisions"
+						externalLink={true}
+					/>
+				</div>
+			</section>
+			<section>
+				<div class="p-5">
+					<h2 class="text-[23px] leading-5 -ml-0.5">
+						Writing
+					</h2>
+				</div>
+				<div>
+					<LinkBlock 
+						type='writing'
+						title='In defence of bad writing'
+						href='#'
+						description="Mar 2022"
+					/>
+					<LinkBlock 
+						type='writing'
+						title='Yes, you can learn to code'
+						href='#'
+						description="Feb 2021"
+					/>
+				</div>
+			</section>
+		</main>
 	</div>
 </Layout>
+
+<style>
+	.text-horizontal {
+		writing-mode: sideways-lr;
+	}
+</style>

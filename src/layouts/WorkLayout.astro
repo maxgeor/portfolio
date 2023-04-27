@@ -11,7 +11,8 @@ const {
   image,
   company,
   tools,
-  collaborators
+  collaborators,
+  titleTightness = 'normal'
 } = frontmatter;
 ---
 <Layout title={title}>
@@ -19,12 +20,12 @@ const {
     <a 
       id="logo"
       href="/" 
-      class="text-lg font-bodoni flex flex-col items-center justify-center uppercase tracking-[0.02em] md:fixed top-0 bottom-0 left-0 h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-gray-darkest hover:bg-gray transition duration-100"
+      class="flex flex-col items-center justify-center md:fixed md:top-0 md:bottom-0 md:left-0 h-10 md:h-screen md:w-10 border-b-[0.5px] md:border-b-0 md:border-l-[0.5px] border-gray-darkest hover:bg-gray transition duration-100"
     >
-      MG
+      <span class="text-xl font-bodoni uppercase tracking-[0.02em]">MG</span>
     </a>
-    <main class="px-5 md:px-10 md:ml-10 2.5xl:p-0 2.5xl:mx-auto 2.5xl:max-w-[1200px]">
-      <nav class="flex items-baseline justify-between gap-x-5 w-full pt-5">
+    <main class="px-5 md:px-10 md:ml-10 2.5xl:p-0 2.5xl:mx-auto 2.5xl:max-w-6xl">
+      <nav class="flex items-baseline justify-between gap-x-5 w-full pt-5 pb-1">
         <div class="flex items-center gap-2.5 -my-1.5">
           <a href="/" class="hover:underline">Work</a>
           <span>/</span>
@@ -32,23 +33,41 @@ const {
         </div>
         <span class="uppercase tracking-wider text-[10px] leading-4">Case Study</span>
       </nav>
-      <div class="">
-        <section id="hero" class="relative grid grid-cols-12 gap-y-5 gap-x-10 pt-[200px] md:pt-60 pb-10 border-b-[0.5px] border-gray-darkest">
-          <div class="relative col-span-full lg:col-span-8 flex flex-col gap-y-5 self-end">
-            <h2 class="col-span-full lg:col-span-8 uppercase tracking-[-0.063em] text-7xl lg:text-8xl -my-2 lg:-my-2.5 ">
-              {title}
-            </h2>
-            <p class="col-span-full lg:col-span-8 -my-1">{description}</p>
+      <div class="flex flex-col items-center gap-[140px] pt-[200px] md:pt-60">
+        <section id="hero" class="relative grid grid-cols-12 gap-y-5 lg:gap-x-10  w-full">
+          <div class="relative col-span-full lg:col-span-8 flex items-start justify-between gap-5 flex-wrap self-end ">
+            <div class="flex flex-col gap-y-5">
+              <h2 class={`
+                ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
+                col-span-full lg:col-span-8 uppercase tracking-[-0.063em] text-7xl lg:text-8xl -my-2 lg:-my-2.5 -ml-0.5
+              `}>
+                {title}
+              </h2>
+              <p class="col-span-full lg:col-span-8 -my-1">{description}</p>
+            </div>
             {link ? (
-              <a href={link} target="_blank" class="lg:hidden absolute top-0 -right-0.5 flex items-end gap-x-1 underline -my-1 group">
-                <span>See it</span>
-                <svg class="mt-0.5 transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition duration-100" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              <a href={link} target="_blank" class="group lg:hidden order-last -my-1 p-4 -mt-[19px] -ml-3.5 -mb-4 -mr-4 w-fit">
+                <span class="flex items-end gap-x-1 border-b-[0.1em] border-gray-darkest w-[16px] group-hover:rounded-[8px] group-focus:rounded-[8px] transition-all ease-in-out duration-100">
+                  <span class={`
+                    transform rotate-[160deg] transition ease-in-out duration-75 opacity-[80%]
+                    group-hover:-translate-y-px group-focus:-translate-y-px group-active:-translate-y-px
+                    group-hover:translate-x-px group-focus:translate-x-px group-active:translate-x-px
+                    group-hover:scale-[107%] group-focus:scale-[107%] group-active:scale-[106%] 
+                  `}>👀</span>
+                </span>
               </a>
+              // <a href={link} target="_blank" class="group flex lg:hidden items-center gap-0.5 flex-nowrap order-last -my-1">
+              //   <span class="underline">See it</span>
+              //   <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              // </a>
             ) : null}
           </div>
           <div class="col-span-full lg:col-span-4 flex flex-col gap-y-5">
-            <p class="capitalize -my-1">{roles.join(', ')}</p>
             <table class="flex flex-col w-full -my-1" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="pr-5"><p>Role</p></td>
+                <td><p class="capitalize">{roles.join(', ')}</p></td>
+              </tr>
               <tr>
                 <td class="pr-5"><p>Year</p></td>
                 <td><p>{year}</p></td>
@@ -80,19 +99,32 @@ const {
               ) : null}
             </table>
             {link ? (
-              <a href={link} target="_blank" class="hidden lg:flex items-end gap-x-1 underline order-last -my-1">
-                <span>See it</span>
-                <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              <a href={link} target="_blank" class="group hidden lg:inline-block order-last -my-1 p-4 -mt-4 -ml-3.5 -mb-4 -mr-4 w-fit">
+                <span class="flex items-end gap-x-1 border-b-[0.1em] border-gray-darkest w-[18px] group-hover:rounded-[8px] group-focus:rounded-[8px] transition-all ease-in-out duration-100">
+                  <span class={`
+                    transform rotate-[160deg] transition ease-in-out duration-75 ml-px opacity-[80%] group-hover:opacity-100 group-focus:opacity-100
+                    group-hover:-translate-y-px group-focus:-translate-y-px group-active:-translate-y-0
+                    group-hover:translate-x-px group-focus:translate-x-px group-active:translate-x-0 
+                    group-hover:scale-[107%] group-focus:scale-[107%] group-active:scale-[106%] 
+                  `}>👀</span>
+                </span>
               </a>
+              // <a href={link} target="_blank" class="group hidden lg:flex gap-0.5 items-center flex-nowrap order-last -my-1">
+              //   <span class="underline">See it</span>
+              //   <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              // </a>
             ) : null}
           </div>  
         </section>
-        <article class="max-w-7xl w-full mt-10 lg:mt-20 text-base lg:text-lg leading-5 lg:leading-6">
+        <article class="max-w-7xl w-full text-base lg:text-lg leading-5 lg:leading-6">
           <div class={`
             prose
-            prose-headings:text-gray-light prose-headings:font-normal prose-strong:text-gray-light
+            prose-headings:text-[#dcdcdc] prose-headings:font-normal prose-strong:text-[#fafafa] prose-a:text-[#fafafa]
             prose-h1:text-center
-          text-gray-light mx-auto
+            prose:text-gray-light mx-auto
+            prose-li:marker:text-neutral-400 prose-li:marker:text-opacity-50
+            prose-p:text-gray-light prose-li:text-gray-light
+            prose-h1:mb-10 prose-h1:my-16 prose-h1:first:mt-0
           `}>
             <slot />
           </div>
@@ -110,7 +142,12 @@ const {
     }
   }
 
-  .prose {
-    color: #d5d5d5;
+  .full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
 </style>
