@@ -4,13 +4,13 @@ import WorkBlock from '../components/WorkBlock.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
-	<div class="grid lg:grid-cols-10 relative 1.5xl:max-w-6xl mx-auto w-full">
-		<aside class="lg:col-span-2 flex flex-col border-b-[0.5px] lg:border-b-0 lg:border-r-[0.5px] border-gray-darkest lg:h-screen lg:sticky lg:top-0 p-5 1.5xl:pl-0">
+	<div class="grid lg:grid-cols-12 gap-10 relative 1.5xl:max-w-6xl mx-auto w-full px-10 1.5xl:pl-0">
+		<aside class="lg:col-span-3 flex flex-col lg:h-[calc(100vh-80px)] lg:sticky lg:top-0 py-10">
 			<section class="flex flex-col lg:justify-between gap-5 h-full">
 				<div class="flex flex-col gap-5 flex-grow lg:overflow-y-scroll">
 					<div class="flex flex-col items-center lg:items-start justify-center gap-y-5">
 						<h1 id="logo" class="uppercase text-xl -my-1.5">MG</h1>
-						<p class="italic text-[15px] leading-4 font-bodoni -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p>
+						<!-- <p class="italic text-[15px] leading-4 font-bodoni -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p> -->
 					</div>
 					<div class="-my-1 sm:max-w-prose mx-auto">
 						<p class="indent-5 lg:indent-0">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
@@ -25,7 +25,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 				</div>
 			</section>
 		</aside>
-		<main class="lg:col-span-8 relative">
+		<main class="lg:col-span-9 relative py-10 flex flex-col gap-10">
 			<WorkBlock
 				title='Memiori'
 				href='/work/memiori'
@@ -54,7 +54,7 @@ import LinkBlock from '../components/LinkBlock.astro';
 				year={2022}
 				tools={['Next.js', 'TailwindCSS', 'Web3']}
 			/>
-			<section class="border-b-[0.5px] border-gray-darkest">
+			<section class="border-b-[1px]  border-gray-darkest">
 				<div class="flex justify-between p-5">
 					<h2 class="text-[23px] leading-5">
 						Projects

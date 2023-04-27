@@ -19,32 +19,26 @@ const {
 	titleTightness = 'normal',
 } = Astro.props;
 ---
+<!-- <a 
+	href={href}
+	class="group grid grid-cols-12 gap-y-5 gap-x-5 1.5xl:gap-x-0 p-5 1.5xl:pr-0 border-b-[1px]  border-gray-darkest hover:bg-gray focus:bg-gray transition duration-100"
+> -->
 <a 
 	href={href}
-	class="group grid grid-cols-12 gap-y-5 gap-x-5 1.5xl:gap-x-0 p-5 1.5xl:pr-0 border-b-[0.5px] border-gray-darkest hover:bg-gray focus:bg-gray transition duration-100"
+	class="group col-span-full col-span-1/3 transition duration-100"
 >
-	<img src="/work/memiori/cover.png" class="sm:order-last col-span-full sm:col-span-6 aspect-video object-cover w-full sm:h-full"/>
-	<div class="col-span-full sm:col-span-6 flex flex-col gap-y-5 justify-between w-full 1.5xl:pr-5">
-		<div class="flex flex-col gap-y-2">
-			<div class="flex justify-between gap-x-5">
-				<h2 class={`
-					${titleTightness === 'tight' ? 'tracking-[-0.175em]' : null}
-					text-[29px] leading-6
-				`}>
-					{title}
-				</h2>
-				<p class="text-[11px] leading-5 clear-left -my-1 tracking-wider">{year}</p>
-			</div>
-			<div class="flex flex-col gap-y-1">
-				<hr class="border-t h-px border-neutral-600 w-full"/>
-				<p class="-my-1 text-[13px] sm:text-sm">{roles.join(', ')}</p>
-				<hr class="border-t h-px border-gray-darkest w-full"/>
-			</div>
+	
+	<div class="flex flex-col justify-between w-full 1.5xl:pr-5">
+		<div class="flex justify-between gap-x-5 pt-3 border-t-[2px] border-gray-darkest">
+			<h2 class={`
+				${titleTightness === 'tight' ? 'tracking-[-0.175em]' : null}
+				text-[35px] leading-7 mb-3
+			`}>
+				{title}
+			</h2>
+			<p class="text-[11px] leading-3 -my-0.5 tracking-wider">{year}</p>
 		</div>
-		<div class="flex flex-col gap-y-1">
-			<hr class="border-t h-px border-gray-darkest w-full"/>
-			<p class="-my-1">{description}</p>
-			<hr class="border-t h-px border-gray-darkest w-full"/>
-		</div>
+		<p class="-my-1 mb-3">{description}</p>
+		<img src="/work/memiori/cover.png" class="sm:order-last col-span-full aspect-video object-cover w-full sm:h-full"/>
 	</div>
 </a>
