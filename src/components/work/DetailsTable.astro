@@ -14,7 +14,7 @@ export interface Props {
 const { type, roles, year, tools, link, collaborators } = Astro.props;
 ---
 
-<table id="details" class="flex flex-col w-full -my-1 transition-all ease-out duration-150" cellspacing="0" cellpadding="0">
+<table id="details" class="flex flex-col w-full -my-1 transition-all ease-out duration-150 hover:!text-black" cellspacing="0" cellpadding="0">
   <tr>
     <td class="pr-5 pb-1"><p>Role</p></td>
     <td><p class="capitalize pb-1">{roles.join(', ')}</p></td>
