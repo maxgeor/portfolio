@@ -4,19 +4,14 @@ import WorkBlock from '../components/WorkBlock.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
-	<div class="grid lg:grid-cols-12 gap-10 relative 1.5xl:max-w-6xl mx-auto w-full px-10 1.5xl:pl-0">
-		<aside class="lg:col-span-3 flex flex-col lg:h-[calc(100vh-80px)] lg:sticky lg:top-0 py-10">
-			<section class="flex flex-col lg:justify-between gap-5 h-full">
-				<div class="flex flex-col gap-5 flex-grow lg:overflow-y-scroll">
-					<div class="flex flex-col items-center lg:items-start justify-center gap-y-5">
-						<h1 id="logo" class="uppercase text-xl -my-1.5">MG</h1>
-						<!-- <p class="italic text-[15px] leading-4 font-bodoni -my-1">Software desiger <span class="text-xs font-thin">&</span> developer</p> -->
-					</div>
-					<div class="-my-1 sm:max-w-prose mx-auto">
-						<p class="indent-5 lg:indent-0">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
-					</div>
+	<div class="grid md:grid-cols-12 gap-10 lg:gap-20 relative md:max-w-7xl mx-auto w-full px-5 md:px-10">
+		<aside class="md:col-span-3 flex flex-col md:h-screen md:sticky md:top-0 py-5 md:py-10">
+			<section class="flex flex-col md:justify-between gap-5 lg:gap-10 h-full">
+				<div class="flex flex-col gap-5 md:gap-10 flex-grow md:overflow-y-scroll">
+					<h1 id="logo" class="font-bodoni uppercase text-xl -my-1.5 text-center md:text-left ">MG</h1>
+					<p class="-my-1 sm:max-w-prose mx-auto indent-5 md:indent-0">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
 				</div>
-				<div class="flex lg:flex-col justify-center lg:justify-around gap-x-5 -my-1 text-xs lg:text-sm">
+				<div class="flex md:flex-col gap-y-1 justify-center md:justify-around gap-x-5 flex-wrap -my-1 ">
 					<a href="#" class="hover:underline">Email</a>
 					<a href="#" class="hover:underline">Are.na</a>
 					<a href="#" class="hover:underline">Github</a>
@@ -25,42 +20,36 @@ import LinkBlock from '../components/LinkBlock.astro';
 				</div>
 			</section>
 		</aside>
-		<main class="lg:col-span-9 relative py-10 flex flex-col gap-10">
-			<WorkBlock
-				title='Memiori'
-				href='/work/memiori'
-				description="Redesign & brand refresh for mood tracking app"
-				roles={['Branding', 'Mobile Design']}
-				year={2023}
-				tools={['Figma', 'TailwindCSS']}
-			/>
-			<WorkBlock
-				title='Wavy'
-				titleTightness='tight'
-				href='/work/wavy'
-				description="Built & co-designed working as a full-stack developer at Wavy"
-				roles={['Full-Stack Development', 'UX/UI Design']}
-				company='Wavy'
-				collaborators={[{ name: 'Dan Stein', role: 'design', href: '#' }]}
-				year={2023}
-				tools={['Ruby on Rails', 'Hotwire', 'TailwindCSS']}
-			/>
-			<WorkBlock
-				title='Formie'
-				href='/work/formie'
-				description="Designed & co-built a form builder for smart contracts"
-				roles={['Frontend Development', 'UX/UI Design', 'Branding']}
-				collaborators={[{ name: 'Hassan Seyed', role: 'developement', href: '#' }]}
-				year={2022}
-				tools={['Next.js', 'TailwindCSS', 'Web3']}
-			/>
-			<section class="border-b-[1px]  border-gray-darkest">
-				<div class="flex justify-between p-5">
-					<h2 class="text-[23px] leading-5">
-						Projects
-					</h2>
-				</div>
-				<div>
+		<main class="md:col-span-9 relative pt-5 md:pt-10 pb-40 flex flex-col gap-20">
+			<section class="flex flex-col gap-10">
+				<WorkBlock
+					title='Memiori'
+					href='/work/memiori'
+					description="Redesign & brand refresh for mood tracking app"
+					roles={['Branding', 'Mobile Design']}
+					year={2023}
+				/>
+				<WorkBlock
+					title='Wavy'
+					titleTightness='tight'
+					href='/work/wavy'
+					description="Built & co-designed working as a full-stack developer at Wavy"
+					roles={['Full-Stack Development', 'UX/UI Design']}
+					year={2023}
+				/>
+				<WorkBlock
+					title='Formie'
+					href='/work/formie'
+					description="Designed & co-built a form builder for smart contracts"
+					roles={['Frontend Development', 'UX/UI Design', 'Branding']}
+					year={2022}
+				/>
+			</section>
+			<section class="flex flex-col gap-10">
+				<h2 class="font-bodoni uppercase text-2xl leading-6 -my-0.5">
+					Projects
+				</h2>
+				<div class="flex flex-col gap-y-1 -my-1">
 					<LinkBlock 
 						type='project'
 						title='Scope Todo'
@@ -91,13 +80,11 @@ import LinkBlock from '../components/LinkBlock.astro';
 					/>
 				</div>
 			</section>
-			<section>
-				<div class="p-5">
-					<h2 class="text-[23px] leading-5 -ml-0.5">
-						Writing
-					</h2>
-				</div>
-				<div>
+			<section class="flex flex-col gap-10">
+				<h2 class="font-bodoni uppercase text-2xl leading-6 -my-0.5">
+					Writing
+				</h2>
+				<div class="flex flex-col gap-y-1 -my-1">
 					<LinkBlock 
 						type='writing'
 						title='In defence of bad writing'
