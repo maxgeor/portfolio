@@ -4,24 +4,22 @@ import WorkBlock from '../components/WorkBlock.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
-	<div class="grid md:grid-cols-12 gap-10 lg:gap-20 relative md:max-w-7xl mx-auto w-full px-5 md:px-10">
-		<aside class="md:col-span-3 flex flex-col md:h-screen md:sticky md:top-0 py-5 md:py-10">
-			<section class="flex flex-col md:justify-between gap-5 lg:gap-10 h-full">
-				<div class="flex flex-col gap-5 md:gap-10 flex-grow md:overflow-y-scroll">
-					<h1 id="logo" class="font-bodoni uppercase text-xl -my-1.5 text-center md:text-left ">MG</h1>
-					<p class="-my-1 -mt-2 sm:max-w-prose mx-auto indent-5 md:indent-0">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
-				</div>
-				<div class="flex md:flex-col gap-y-1 justify-center md:justify-around gap-x-5 flex-wrap -my-1 ">
+	<div class="grid grid-cols-12 relative mx-auto w-full gap-x-10 px-5 sm:px-10">
+		<aside class="col-span-full lg:col-span-3 flex flex-col lg:h-screen lg:sticky lg:top-0 gap-5 lg:gap-10 py-5 sm:pt-10 lg:py-10">
+			<h1 id="logo" class="col-span-full font-bodoni uppercase text-xl -my-1.5">MG</h1>
+			<div class="basis-2/3ms:basis-auto flex flex-col lg:justify-between gap-5 lg:gap-10 h-full">
+				<p class=" lg:basis-auto -my-1 sm:max-w-prose">I'm a product designer & developer based out of Toronto. I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
+				<div class=" lg:basis-auto flex gap-x-5 flex-wrap lg:flex-col -my-1 ">
 					<a href="#" class="hover:underline">Email</a>
 					<a href="#" class="hover:underline">Are.na</a>
 					<a href="#" class="hover:underline">Github</a>
 					<a href="#" class="hover:underline">Twitter</a>
 					<a href="#" class="hover:underline">Dribbble</a>
 				</div>
-			</section>
+			</div>
 		</aside>
-		<main class="md:col-span-9 relative pt-5 md:pt-10 pb-40 flex flex-col gap-20">
-			<section class="flex flex-col gap-10">
+		<main class="col-span-full lg:col-span-9 flex flex-col gap-10 relative py-5 sm:pb-10 lg:py-10">
+			<section class="col-span-full flex flex-col gap-10">
 				<WorkBlock
 					title='Memiori'
 					href='/work/memiori'
@@ -45,11 +43,11 @@ import LinkBlock from '../components/LinkBlock.astro';
 					year={2022}
 				/>
 			</section>
-			<section class="flex flex-col gap-10">
-				<h2 class="font-bodoni uppercase text-2xl leading-6 -my-0.5">
+			<section class="col-span-full lg:grid grid-cols-3 gap-5 lg:gap-10 border-t-[0.5px] border-black">
+				<h2 class="col-span-1 -my-0.5 pt-1">
 					Projects
 				</h2>
-				<div class="flex flex-col gap-y-1 -mb-1 -mt-2">
+				<div class="col-span-2 flex flex-col pt-5 -my-1">
 					<LinkBlock 
 						type='project'
 						title='Scope Todo'
@@ -80,17 +78,18 @@ import LinkBlock from '../components/LinkBlock.astro';
 					/>
 				</div>
 			</section>
-			<section class="flex flex-col gap-10">
-				<h2 class="font-bodoni uppercase text-2xl leading-6 -my-0.5">
+			<section class="col-span-full lg:grid grid-cols-3 gap-5 lg:gap-10 border-t-[0.5px] border-black">
+				<h2 class="col-span-1 -my-0.5 pt-1">
 					Writing
 				</h2>
-				<div class="flex flex-col gap-y-1 -mb-1 -mt-2">
+				<div class="col-span-2 flex flex-col pt-5 -my-1">
 					<LinkBlock 
 						type='writing'
 						title='In defence of bad writing'
 						href='#'
 						description="Mar 2022"
 					/>
+
 					<LinkBlock 
 						type='writing'
 						title='Yes, you can learn to code'

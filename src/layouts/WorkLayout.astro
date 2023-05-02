@@ -15,59 +15,49 @@ const {
 } = frontmatter;
 ---
 <Layout title={title}>
-  <div class="grid lg:grid-cols-12 gap-10 lg:gap-20 relative lg:max-w-7xl mx-auto w-full px-5 lg:px-10">
-		<aside class="col-span-3 hidden lg:flex flex-col items-start gap-10 h-screen sticky top-0 py-10">
-      <a href="/" class="font-bodoni uppercase text-xl -my-1.5">MG</a>
-      <div class="flex flex-col gap-10 -mt-1">
-        <DetailsTable
-          type={type}
-          roles={roles}
-          year={year}
-          tools={tools}
-          link={link}
-          collaborators={collaborators}
-        />
-      </div>
-		</aside>
-		<main class="col-span-full lg:col-span-9 flex flex-col gap-20 pt-5 lg:pt-10 pb-20 lg:pb-40 relative">
-      <nav class="relative flex flex-col items-center justify-center lg:justify-between gap-5 w-full">
-        <a href="/" class="block lg:hidden w-full text-center font-bodoni uppercase text-xl -my-1.5">MG</a>
-        <div class="flex items-center gap-2.5 -my-1  border-t-[0.5px] lg:border-0 border-black pt-5 lg:p-0 h-10 lg:h-auto border-box w-full">
-          <a href="/" class="hover:underline">Work</a>
+  <div class="grid px-5 gap-5">
+    <nav class="col-span-full grid grid-cols-12">
+      <aside class="col-span-full flex justify-center py-5">
+        <a href="/" class="font-bodoni uppercase text-xl -my-1.5">MG</a>
+      </aside>
+      <div class="col-span-full pt-3 border-t-[0.5px] border-black border-box">
+        <div class="flex gap-2 -my-1.5">
+          <a href="/" class="hover:underline ">Work</a>
           <span>/</span>
           <p class="opacity-40">{title}</p>
         </div>
-      </nav>
-      <section class="flex flex-col gap-[106px] pt-20">
-        <div class="flex flex-col gap-y-10">
-          <h2 class={`
-            ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
-            font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl md:text-8xl lg:text-9xl -my-2 lg:-my-2.5 -ml-0.5
-          `}>
-            {title}
-          </h2>
-          <div class="lg:hidden flex flex-col gap-10">
-            <DetailsTable
-              type={type}
-              roles={roles}
-              year={year}
-              tools={tools}
-              link={link}
-              collaborators={collaborators}
-            />
-          </div>
+      </div>
+    </nav>
+    <main class="col-span-full grid grid-cols-12">
+      <section class="col-span-full grid grid-cols-12">
+        <h1 class={`
+          ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
+          font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl lg:text-8xl lg:text-9xl -my-2 lg:-my-2.5 -ml-0.5
+          col-span-full
+        `}>
+          {title}
+        </h1>
+        <div class="col-span-full">
+          <DetailsTable
+            type={type}
+            roles={roles}
+            year={year}
+            tools={tools}
+            link={link}
+            collaborators={collaborators}
+          />
         </div>
-        <article id="content" class="text-base lg:text-lg leading-5 lg:leading-6">
-          <div class={`
-            prose ml-0 text-black 
-            prose-headings:font-medium prose-headings:tracking-tight
-            prose-li:marker:text-neutral-500 prose-li:marker:text-opacity-50
-          `}>
-            <slot />
-          </div>
-        </article>
       </section>
-		</main>
+      <article id="content" class="col-span-full">
+        <div class={`
+          prose ml-0 text-black 
+          prose-headings:font-medium prose-headings:tracking-tight
+          prose-li:marker:text-neutral-500 prose-li:marker:text-opacity-50
+        `}>
+          <slot />
+        </div>
+      </article>
+    </main>
   </div>
 </Layout>
 
