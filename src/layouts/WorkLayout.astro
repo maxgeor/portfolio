@@ -10,48 +10,57 @@ const {
   link,
   image,
   tools,
+  description,
   collaborators,
   titleTightness = 'normal'
 } = frontmatter;
 ---
 <Layout title={title}>
-  <div class="grid px-5 gap-5">
-    <nav class="col-span-full grid grid-cols-12">
-      <aside class="col-span-full flex justify-center py-5">
-        <a href="/" class="font-bodoni uppercase text-xl -my-1.5">MG</a>
-      </aside>
-      <div class="col-span-full pt-3 border-t-[0.5px] border-black border-box">
-        <div class="flex gap-2 -my-1.5">
+  <div class="grid grid-cols-12 px-5 sm:px-10 lg:gap-20">
+    <aside class="col-span-full lg:col-span-3 flex flex-col lg:h-screen lg:sticky lg:top-0 gap-5 sm:gap-10 py-5 sm:pt-10 lg:py-10">
+      <a href="/" class="font-bodoni uppercase text-xl -my-1.5">MG</a>
+      <div class="hidden lg:block">
+        <DetailsTable
+          type={type}
+          roles={roles}
+          year={year}
+          tools={tools}
+          link={link}
+          collaborators={collaborators}
+        />
+      </div>
+    </aside>
+    <main class="col-span-full lg:col-span-9 grid grid-cols-9 gap-x-10 lg:gap-x-20 gap-y-40 py-5 sm:pb-10 lg:py-10">
+      <div class="col-span-full -my-1">
+        <div class="flex gap-2.5">
           <a href="/" class="hover:underline ">Work</a>
           <span>/</span>
           <p class="opacity-40">{title}</p>
         </div>
       </div>
-    </nav>
-    <main class="col-span-full grid grid-cols-12">
-      <section class="col-span-full grid grid-cols-12">
-        <h1 class={`
-          ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
-          font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl lg:text-8xl lg:text-9xl -my-2 lg:-my-2.5 -ml-0.5
-          col-span-full
-        `}>
-          {title}
-        </h1>
-        <div class="col-span-full">
-          <DetailsTable
-            type={type}
-            roles={roles}
-            year={year}
-            tools={tools}
-            link={link}
-            collaborators={collaborators}
-          />
-        </div>
-      </section>
-      <article id="content" class="col-span-full">
+      <h1 class={`
+        ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
+        font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl lg:text-8xl xl:text-9xl -my-2 lg:-my-2.5 -ml-0.5
+        col-span-full sm:col-span-6
+      `}>
+        {title}
+      </h1>
+      <div class="col-span-full sm:col-span-3 flex lg:hidden">
+        <DetailsTable
+          type={type}
+          roles={roles}
+          year={year}
+          tools={tools}
+          link={link}
+          collaborators={collaborators}
+        />
+      </div>
+      <p class="text-[17px] leading-7 max-w-[300px] text-neutral-500 lg:col-span-3 -my-1.5">{description}</p>
+      <article id="content" class="col-span-full lg:col-span-6">
         <div class={`
-          prose ml-0 text-black 
-          prose-headings:font-medium prose-headings:tracking-tight
+          max-w-none
+          prose text-[17px] ml-0 text-black 
+          prose-headings:text-[17px] prose-headings:font-bold prose-headings:leading-[1.75] prose-headings:mt-[2.5em] prose-headings:mb-[1.25em]
           prose-li:marker:text-neutral-500 prose-li:marker:text-opacity-50
         `}>
           <slot />
@@ -63,7 +72,7 @@ const {
 
 <script>
   const content = document.getElementById('content');
-  const details = document.getElementById('details');
+  const details = document.getElementById('work-details');
 
   const targetPosition = 200;
 
@@ -74,7 +83,7 @@ const {
 
   function changeTextColorOnScroll() {
     if (isTriggerElementVisible()) {
-      details.style.opacity = '30%';
+      details.style.opacity = '0%';
     } else {
       details.style.opacity = '100%';
     }

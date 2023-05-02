@@ -13,53 +13,44 @@ export interface Props {
 }
 const { type, roles, year, tools, link, collaborators } = Astro.props;
 ---
-
-<table id="details" class="flex flex-col w-full -my-1 transition-all ease-out duration-150 hover:!text-black" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="pr-5 pb-1"><p>Role</p></td>
-    <td><p class="capitalize pb-1">{roles.join(', ')}</p></td>
-  </tr>
-  <tr>
-    <td class="pr-5 pb-1"><p>Year</p></td>
-    <td class="pb-1"><p>{year}</p></td>
-  </tr>
-  <tr>
-    <td class="pr-5 pb-1"><p>Type</p></td>
-    <td><p class="capitalize pb-1">{type}</p></td>
-  </tr>
-  {tools ? (
+<div id="work-details" class="flex flex-col gap-y-5 sm:gap-y-10 transition-opacity duration-[300ms] ease-out">
+  <table class="flex flex-col w-full -my-1 transition-all ease-out duration-150 hover:!text-black" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="pr-5 pb-1"><p>Tools</p></td>
-      <td class="pb-1"><p>{tools.join(', ')}</p></td>
+      <td class="pr-5 pb-1"><p>Role</p></td>
+      <td><p class="capitalize pb-1">{roles.join(', ')}</p></td>
     </tr>
-  ) : null}
-  {collaborators ? (
     <tr>
-      <td class="pr-5 pb-1">Team</td>
-      <td class="pb-1">
-        {collaborators.map(({ name, href, role }) => (
-          <span>
-            <a href={href} target="_blank" class="underline">{name}</a>
-            <span>({role})</span>
-          </span>
-        ))}
-      </td>
+      <td class="pr-5 pb-1"><p>Year</p></td>
+      <td class="pb-1"><p>{year}</p></td>
     </tr>
+    <tr>
+      <td class="pr-5 pb-1"><p>Type</p></td>
+      <td><p class="capitalize pb-1">{type}</p></td>
+    </tr>
+    {tools ? (
+      <tr>
+        <td class="pr-5 pb-1"><p>Tools</p></td>
+        <td class="pb-1"><p>{tools.join(', ')}</p></td>
+      </tr>
+    ) : null}
+    {collaborators ? (
+      <tr>
+        <td class="pr-5 pb-1">Team</td>
+        <td class="pb-1">
+          {collaborators.map(({ name, href, role }) => (
+            <span>
+              <a href={href} target="_blank" class="underline">{name}</a>
+              <span>({role})</span>
+            </span>
+          ))}
+        </td>
+      </tr>
+    ) : null}
+  </table>
+  {link ? (
+    <a href={link} target="_blank" class="group order-last flex gap-0.5 items-center flex-nowrap -my-1">
+      <span class="underline">See it</span>
+      <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+    </a>
   ) : null}
-</table>
-{link ? (
-  // <a href={link} target="_blank" class="group hidden lg:inline-block order-last -my-1 p-4 -mt-4 -ml-3.5 -mb-4 -mr-4 w-fit">
-  //   <span class="flex items-end gap-x-1 border-b-[0.1em] border-gray-darkest w-[18px] group-hover:rounded-[8px] group-focus:rounded-[8px] transition-all ease-in-out duration-100">
-  //     <span class={`
-  //       transform rotate-[160deg] transition ease-in-out duration-75 ml-px opacity-[80%] group-hover:opacity-100 group-focus:opacity-100
-  //       group-hover:-translate-y-px group-focus:-translate-y-px group-active:-translate-y-0
-  //       group-hover:translate-x-px group-focus:translate-x-px group-active:translate-x-0 
-  //       group-hover:scale-[107%] group-focus:scale-[107%] group-active:scale-[106%] 
-  //     `}>👀</span>
-  //   </span>
-  // </a>
-  <a href={link} target="_blank" class="group order-last flex gap-0.5 items-center flex-nowrap -my-1">
-    <span class="underline">See it</span>
-    <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-  </a>
-) : null}
+</div>
