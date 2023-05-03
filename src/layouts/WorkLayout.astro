@@ -19,24 +19,25 @@ const {
   <main class="grid sm:grid-cols-12 gap-x-10 xl:gap-x-20 gap-y-40 p-5 lg:p-10">
     <header class="col-span-full flex flex-col gap-5 sm:gap-10">
       <div class="flex items-center gap-5 -my-0.5">
-        <a href="/" class="font-bodoni uppercase text-xl -my-1.5">MG</a>
+        <a href="/" class="font-bodoni uppercase text-xl -my-1.5 -ml-px">MG</a>
         <span class="text-neutral-400">/</span>
         <a href="/" class="hover:underline ">Work</a>
         <span class="text-neutral-400">/</span>
-        <p class="opacity-40">{title}</p>
+        <p class="text-neutral-400">{title}</p>
       </div>
     </header>
     <div class="col-span-full flex flex-col md:grid grid-cols-12 gap-10 xl:gap-x-20">
-      <div class="col-span-full md:col-span-7 lg:col-span-8 flex flex-col gap-10">
+      <div class="col-span-full md:col-span-7  flex flex-col gap-10">
         <h1 class={`
           ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
-          font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl sm:text-[87px] lg:text-[104px] xl:text-[125px] -mt-1.5 -mb-2.5 sm:-mt-2.5 sm:-mb-3.5 xl:-mt-3.5 xl:-mb-[18px] -ml-0.5
+          font-bodoni text-[#222] uppercase tracking-[-0.063em] text-7xl sm:text-[82px] lg:text-[104px] xl:text-[131px] -mt-1.5 -mb-2.5 sm:-mt-2.5 sm:-mb-3.5 xl:-mt-3.5 xl:-mb-[18px] -ml-0.5
         `}>
           {title}
         </h1>
-        <p class="lg:text-[17px] text-neutral-500 -my-1 lg:max-w-[calc(100vh-80px)] lg:max-w-[calc(100vh-160px)]">{description}</p>
+        <p class="lg:text-base text-neutral-500 -my-1 lg:-my-1.5 ">{description}</p>
       </div>
-      <div class="col-span-full md:col-span-5 lg:col-span-4">
+      <!-- <div class="col-span-full md:col-span-5 lg:col-span-4"> -->
+      <div class="col-span-full md:col-start-8  lg:col-start-9 col-end-13">
         <DetailsTable
           type={type}
           roles={roles}
@@ -47,13 +48,14 @@ const {
         />
       </div>
     </div>
-    <article id="content" class="col-span-full md:col-start-3 lg:col-start-4 md:col-end-11 lg:col-end-10">
-      <div class={`
-        max-w-none
-        prose text-[17px] ml-0 text-black 
-        prose-headings:text-[17px] prose-headings:font-bold prose-headings:leading-[1.75] prose-headings:mt-[2.5em] prose-headings:mb-[1.25em]
-        prose-li:marker:text-neutral-500 prose-li:marker:text-opacity-50
-      `}>
+    <article id="content" class="col-span-full mx-auto">
+      <!-- <div class={`
+        prose ml-0 text-neutral-800 prose-strong:text-black prose-p:my-6
+        prose-headings:text-black prose-headings:text-[20px] prose-headings:font-bold prose-headings:leading-[1.75] prose-headings:mt-[3em] prose-headings:mb-[1em]
+        prose-li:marker:text-neutral-500 prose-li:marker:text-opacity-50 prose-li:my-1
+        prose-img:rounded-xl prose-img:ring-1 prose-img:ring-inset prose-img:ring-black
+      `}> -->
+      <div class='prose text-neutral-800 prose-strong:text-black  prose-headings:text-black prose-headings:text-base prose-headings:mt-6 prose-headings:mb-1 prose-p:my-6'> 
         <slot />
       </div>
     </article>
