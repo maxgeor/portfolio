@@ -14,15 +14,10 @@ const {
 	title,
 	description,
 	roles,
-	year,
 	image,
 	titleTightness = 'normal',
 } = Astro.props;
 ---
-<!-- <a 
-	href={href}
-	class="relative group col-span-full flex flex-col gap-5 sm:gap-10 pt-5 border-t-[0.5px] border-black"
->	 -->
 <a 
 	href={href}
 	class="col-span-full grid grid-cols-1 sm:grid-cols-12 gap-5 lg:gap-10 xl:gap-20 border-t-[0.5px] border-black pt-3 sm:pt-5"
@@ -42,7 +37,6 @@ const {
 			<div class="basis-1/2 flex sm:items-end ">
 				<p class="-my-1 leading-5">{roles.join(', ')}</p>
 			</div>
-			<!-- <p class="absolute right-0 -my-0.5 leading-3 text-[12px] text-right">{year}</p> -->
 		</div>
 	</div>
 	<img src="/work/memiori/cover.png" class="sm:col-span-8 aspect-video object-cover w-full sm:h-full"/>

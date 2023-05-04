@@ -42,7 +42,7 @@ module.exports = {
 			},
 			maxWidth: {
 				'6.5xl': '1200px',
-				'8xl': '96rem',
+				'8xl': '1300px',
 			},
 			letterSpacing: {
 				tightish: '-0.016em',
