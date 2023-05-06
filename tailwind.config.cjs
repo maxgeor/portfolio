@@ -25,10 +25,7 @@ module.exports = {
 					dark: '#505055',
 					DEFAULT: '#56565b',
 					light: '#d5d5dc'
-				},
-				red: '#FF2C2C',
-				blue: '#4A6AFD',
-				yellow: '#EAEA00',
+				}
 			},
 			screens: {
 				xs: '375px',

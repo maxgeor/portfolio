@@ -18,12 +18,12 @@ const {
 ---
 <Layout title={title}>
   <main class="grid sm:grid-cols-12 gap-x-10 xl:gap-x-20 ">
-    <header class="col-span-full p-5 sm:p-10 pb-0 sm:pb-0 bg-black ">
+    <header class="col-span-full p-5 sm:p-10 pb-0 sm:pb-0 bg-black">
       <div class="flex flex-col gap-5 sm:gap-10 max-w-8xl mx-auto"></div>
-      <div class="flex items-center gap-5 -my-0.5">
-        <a href="/" class="text-white font-bodoni uppercase text-xl -my-1.5 -ml-px">MG</a>
+      <div class="flex items-center gap-5 -my-0.5 text-white">
+        <a href="/" class="font-bodoni uppercase text-xl -my-1.5 -ml-px">MG</a>
         <span class="text-neutral-600">/</span>
-        <a href="/" class="text-white hover:underline ">Work</a>
+        <a href="/" class="hover:underline ">Work</a>
         <span class="text-neutral-600">/</span>
         <p class="text-white/40">{title}</p>
       </div>
@@ -56,8 +56,8 @@ const {
         </div>
       </div>
     </div>
-    <article id="content" class="col-span-full mx-auto p-5 pt-10 sm:p-10 md:pt-20">
-      <div class='-mt-2 prose text-neutral-800 prose-strong:text-black prose-headings:text-[32px]  prose-headings:text-black prose-headings:text-base prose-headings:mt-6 '> 
+    <article id="content" class="col-span-full p-5 pt-10 sm:p-10 xl:p-20 md:pt-20">
+      <div class="mx-auto -mt-2 prose text-neutral-800 prose-strong:text-black prose-headings:text-[32px] prose-headings:text-black prose-headings:text-base prose-headings:mt-6 prose-img:h-min">
         <slot />
       </div>
     </article>
