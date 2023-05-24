@@ -17,8 +17,8 @@ const {
 ---
 <Layout title={title}>
   <main class="grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
-    <article id="content" class="order-last col-span-full lg:col-span-9 -mt-1">
-      <div class="-mt-1 prose-sm max-w-prose text-neutral-800 prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
+    <article id="content" class="order-last col-span-full lg:col-span-9 xl:col-span-6 -mt-1">
+      <div class="-mt-1 prose-sm max-w-prose sm:mx-auto lg:mx-0 xl:mx-auto text-neutral-800 prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
         <slot />
       </div>
     </article>
@@ -47,3 +47,12 @@ const {
     </div>
   </main>
 </Layout>
+
+<style is:inline>
+  #content > div > ul > li::marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: #000;
+  }
+</style>

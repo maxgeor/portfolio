@@ -18,17 +18,10 @@ const { type, roles, year, tools, link, collaborators, isShowingLink = true } = 
 <div id="work-details" class="flex flex-col gap-y-10 transition-opacity duration-[300ms] ease-out">
   
   <table class="flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
-    <!-- <tr>
-      <td class="w-20 pr-5 capitalize pb-1">{type}</p></td>
-    </tr> -->
     <tr>
       <td class="w-4 pr-5 pb-1"><p>Role</p></td>
       <td><p class="capitalize pb-1">{roles.join(', ')}</p></td>
     </tr>
-    <!-- <tr>
-      <td class="pr-5 pb-1"><p>Year</p></td>
-      <td class="pb-1"><p>{year}</p></td>
-    </tr> -->
     {tools ? (
       <tr>
         <td class="pr-5 pb-1"><p>Tools</p></td>
@@ -49,11 +42,6 @@ const { type, roles, year, tools, link, collaborators, isShowingLink = true } = 
       </tr>
     ) : null}
   </table>
-  <!-- {link ? (
-      <div class="md:hidden lg:inline-block order-last">
-        <ExternalLink href={link}/>
-    </div>
-  ) : null} -->
 </div>
 
 <style is:inline>
