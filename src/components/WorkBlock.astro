@@ -2,6 +2,7 @@
 export interface Props {
 	href: string;
 	title: string;
+	type: string;
 	description: string;
 	roles: string[];
 	year: number;
@@ -12,13 +13,40 @@ export interface Props {
 const { 
 	href, 
 	title,
+	type,
 	description,
 	roles,
 	image,
 	titleTightness = 'normal',
 } = Astro.props;
 ---
+<!-- <a 
+	href={href}
+	class="bg-[#2b2b2b] relative flex items-center justify-center gap-5 p-5 pt-[52px] sm:p-[52px]"
+> -->
 <a 
+	href={href}
+	class="bg-neutral-50 relative flex items-center justify-center gap-6 p-6 pt-[60px] sm:p-12 sm:pt-[60px]"
+>
+	<img src="/work/memiori/preview.png" class="h-full w-full max-w-md mx-auto"/>
+	<div class="flex gap-5 absolute top-5 left-6">
+		<h2>{title}</h2>
+		<!-- <p class="text-[#737373]">{type}</p> -->
+	</div>
+	<p class="text-[#737373] absolute top-5 right-6 lg:top-auto lg:right-auto lg:bottom-5 lg:left-6">{type}</p>
+	<!-- <p class="absolute top-4 right-5">
+		{type}
+	</p> -->
+	<!-- <div class="flex sm:flex-col gap-5 h-full">
+		<div class="basis-1/2 ">
+			<p class="-my-1 leading-5">{description}</p>
+		</div>
+		<div class="basis-1/2 flex sm:items-end ">
+			<p class="-my-1 leading-5">{roles.join(', ')}</p>
+		</div>
+	</div> -->
+</a>
+<!-- <a 
 	href={href}
 	class="col-span-full grid grid-cols-1 sm:grid-cols-12 gap-5 lg:gap-10 xl:gap-20 border-t-[0.5px] border-black pt-3 sm:pt-5"
 >
@@ -39,4 +67,4 @@ const {
 		</div>
 	</div>
 	<img src="/work/memiori/cover.png" class="sm:col-span-8 aspect-video object-cover w-full sm:h-full"/>
-</a>
+</a> -->

@@ -17,8 +17,14 @@ const {
 } = frontmatter;
 ---
 <Layout title={title}>
-  <main class="grid sm:grid-cols-12 gap-x-10 xl:gap-x-20 ">
-    <header class="col-span-full p-5 sm:p-10 pb-0 sm:pb-0 bg-black">
+  <main class="grid sm:grid-cols-12 gap-12 lg:gap-x-20 mx-6 md:mx-12 pb-24">
+    <article id="content" class="order-last col-span-full md:col-span-8 lg:col-span-9 -mt-1">
+      <!-- <div class="-mt-1 prose-sm max-w-prose text-neutral-800 prose-strong:text-black prose-headings:text-[32px] prose-headings:first:mt-0 prose-headings:text-black prose-headings:text-base prose-headings:mt-6 prose-img:h-min"> -->
+      <div class="-mt-1 prose-sm max-w-prose text-neutral-800 prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
+        <slot />
+      </div>
+    </article>
+    <!-- <header class="col-span-full p-5 sm:p-10 pb-0 sm:pb-0 bg-black">
       <div class="flex flex-col gap-5 sm:gap-10 max-w-8xl mx-auto"></div>
       <div class="flex items-center gap-5 -my-0.5 text-white">
         <a href="/" class="font-bodoni uppercase text-xl -my-1.5 -ml-px">MG</a>
@@ -27,8 +33,40 @@ const {
         <span class="text-neutral-600">/</span>
         <p class="text-white/40">{title}</p>
       </div>
+    </header> -->
+    <header class="col-span-full pt-6 sm:pt-12 -my-1">
+      <a href="/" class="hover:underline ">Max Georgopoulos</a>
     </header>
-    <div class="col-span-full bg-black text-white pt-40 lg:pt-60 px-5 sm:px-10 xl:px-20 pb-10 md:pb-20 ">
+    <!-- <div class="bg-neutral-50 relative col-span-full grid grid-cols-12 gap-5 md:gap-10 px-5 sm:px-10 border-b-[0.5px] border-neutral-300 py-5"> -->
+    <div class="relative col-span-full md:col-span-4 lg:col-span-3 flex flex-col gap-6  pb-6 md:pb-0 border-b-[0.5px] md:border-none border-neutral-300">
+      <div class="col-span-full md:col-span-2 flex flex-col gap-6 ">
+        <h1 class="-my-1">{title}</h1>
+        <p class="md:hidden col-span-full md:col-span-4 -my-1">{description}</p>
+        <!-- <p class="text-[#737373]">{type}</p> -->
+        <!-- {link ? <ExternalLink href={link}/> : null} -->
+      </div>  
+      <p class="col-span-full md:col-span-4 -my-1 hidden md:inline-block">{description}</p>
+      <div class="col-span-full md:col-span-4 flex flex-col -my-1">
+        <DetailsTable
+          type={type}
+          roles={roles}
+          year={year}
+          tools={tools}
+          link={link}
+          collaborators={collaborators}
+        />
+        <!-- <p class="capitalize">{roles.join(', ')}</p> -->
+        <!-- <p class="text-[#767676]">{tools.join(', ')}</p> -->
+      </div>
+      {link ? (
+        <div class="absolute md:static -top-1 right-0 col-span-full md:col-span-2">
+          <ExternalLink href={link}/>
+        </div>  
+      ) : null}
+      </div>
+    </div>
+    
+    <!-- <div class="col-span-full bg-black text-white pt-40 lg:pt-60 px-5 sm:px-10 xl:px-20 pb-10 md:pb-20 ">
       <div class="flex flex-col md:grid grid-cols-12 gap-10 lg:gap-x-20 max-w-8xl mx-auto">
         <div class="col-span-full md:col-span-7 flex flex-col gap-10 justify-end">
           <h1 class={`
@@ -55,12 +93,7 @@ const {
           />
         </div>
       </div>
-    </div>
-    <article id="content" class="col-span-full p-5 pt-10 sm:p-10 xl:p-20 md:pt-20">
-      <div class="mx-auto -mt-2 prose text-neutral-800 prose-strong:text-black prose-headings:text-[32px] prose-headings:text-black prose-headings:text-base prose-headings:mt-6 prose-img:h-min">
-        <slot />
-      </div>
-    </article>
+    </div> -->
   </main>
 </Layout>
 
