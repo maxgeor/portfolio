@@ -13,40 +13,22 @@ const {
   tools,
   description,
   collaborators,
-  titleTightness = 'normal'
 } = frontmatter;
 ---
 <Layout title={title}>
-  <main class="grid sm:grid-cols-12 gap-12 lg:gap-x-20 mx-6 md:mx-12 pb-24">
-    <article id="content" class="order-last col-span-full md:col-span-8 lg:col-span-9 -mt-1">
-      <!-- <div class="-mt-1 prose-sm max-w-prose text-neutral-800 prose-strong:text-black prose-headings:text-[32px] prose-headings:first:mt-0 prose-headings:text-black prose-headings:text-base prose-headings:mt-6 prose-img:h-min"> -->
+  <main class="grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
+    <article id="content" class="order-last col-span-full lg:col-span-9 -mt-1">
       <div class="-mt-1 prose-sm max-w-prose text-neutral-800 prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
         <slot />
       </div>
     </article>
-    <!-- <header class="col-span-full p-5 sm:p-10 pb-0 sm:pb-0 bg-black">
-      <div class="flex flex-col gap-5 sm:gap-10 max-w-8xl mx-auto"></div>
-      <div class="flex items-center gap-5 -my-0.5 text-white">
-        <a href="/" class="font-bodoni uppercase text-xl -my-1.5 -ml-px">MG</a>
-        <span class="text-neutral-600">/</span>
-        <a href="/" class="hover:underline ">Work</a>
-        <span class="text-neutral-600">/</span>
-        <p class="text-white/40">{title}</p>
-      </div>
-    </header> -->
     <header class="col-span-full pt-6 sm:pt-12 -my-1">
       <a href="/" class="hover:underline ">Max Georgopoulos</a>
     </header>
-    <!-- <div class="bg-neutral-50 relative col-span-full grid grid-cols-12 gap-5 md:gap-10 px-5 sm:px-10 border-b-[0.5px] border-neutral-300 py-5"> -->
-    <div class="relative col-span-full md:col-span-4 lg:col-span-3 flex flex-col gap-6  pb-6 md:pb-0 border-b-[0.5px] md:border-none border-neutral-300">
-      <div class="col-span-full md:col-span-2 flex flex-col gap-6 ">
-        <h1 class="-my-1">{title}</h1>
-        <p class="md:hidden col-span-full md:col-span-4 -my-1">{description}</p>
-        <!-- <p class="text-[#737373]">{type}</p> -->
-        <!-- {link ? <ExternalLink href={link}/> : null} -->
-      </div>  
-      <p class="col-span-full md:col-span-4 -my-1 hidden md:inline-block">{description}</p>
-      <div class="col-span-full md:col-span-4 flex flex-col -my-1">
+    <div class="relative col-span-full lg:col-span-3 flex flex-col gap-6  pb-12 lg:pb-0 border-b-[0.5px] lg:border-none border-neutral-300">
+      <h1 class="-my-1">{title}</h1>
+      <p class="-my-1">{description}</p>
+      <div class="flex flex-col -my-1">
         <DetailsTable
           type={type}
           roles={roles}
@@ -55,66 +37,13 @@ const {
           link={link}
           collaborators={collaborators}
         />
-        <!-- <p class="capitalize">{roles.join(', ')}</p> -->
-        <!-- <p class="text-[#767676]">{tools.join(', ')}</p> -->
       </div>
       {link ? (
-        <div class="absolute md:static -top-1 right-0 col-span-full md:col-span-2">
+        <div class="absolute lg:static top-0 sm:-top-1 -right-[3px]">
           <ExternalLink href={link}/>
         </div>  
       ) : null}
       </div>
     </div>
-    
-    <!-- <div class="col-span-full bg-black text-white pt-40 lg:pt-60 px-5 sm:px-10 xl:px-20 pb-10 md:pb-20 ">
-      <div class="flex flex-col md:grid grid-cols-12 gap-10 lg:gap-x-20 max-w-8xl mx-auto">
-        <div class="col-span-full md:col-span-7 flex flex-col gap-10 justify-end">
-          <h1 class={`
-            ${titleTightness === 'tight' ? 'tracking-[-0.21em]' : null}
-            font-bodoni uppercase tracking-[-0.063em] text-7xl sm:text-[82px] lg:text-[104px] xl:text-[131px] -mt-1.5 sm:-mt-2.5 lg:-mt-3 xl:-mt-3.5 -mb-2.5 sm:-mb-3.5 lg:-mb-4 xl:-mb-[18px] -ml-0.5
-          `}>
-            {title}
-          </h1>
-          <p class="lg:text-base -my-1 lg:-my-1.5 ">{description}</p>
-          {link ? (
-            <div class="hidden md:inline-block lg:hidden">
-              <ExternalLink href={link}/>
-            </div>
-          ) : null}
-        </div>
-        <div class="col-span-full col-start-9 col-end-13">
-          <DetailsTable
-            type={type}
-            roles={roles}
-            year={year}
-            tools={tools}
-            link={link}
-            collaborators={collaborators}
-          />
-        </div>
-      </div>
-    </div> -->
   </main>
 </Layout>
-
-<script>
-  const content = document.getElementById('content');
-  const details = document.getElementById('work-details');
-
-  const targetPosition = 200;
-
-  function isTriggerElementVisible() {
-    const rect = content.getBoundingClientRect();
-    return (rect.top <= targetPosition) && ((rect.top + rect.height) >= targetPosition);
-  }
-
-  function changeTextColorOnScroll() {
-    if (isTriggerElementVisible()) {
-      details.style.opacity = '0%';
-    } else {
-      details.style.opacity = '100%';
-    }
-  }
-
-  window.addEventListener('scroll', changeTextColorOnScroll);
-</script>

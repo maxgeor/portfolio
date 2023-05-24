@@ -12,7 +12,6 @@ const workCollection = defineCollection({
     company: z.string().optional(),
     tools: z.array(z.string()).optional(),
     collaborators: z.object({ name: z.string(), role: z.string(), href: z.string()}).array().optional(),
-    titleTightness: z.string().optional(),
   }),
 });
 const writingCollection = defineCollection({ 

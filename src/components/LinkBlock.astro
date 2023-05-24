@@ -13,7 +13,7 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 	href={href}
 	target={externalLink ? '_blank' : '_self'}
 	class={`
-	group relative col-span-full items-baseline gap-x-5 sm:gap-x-10 xl:gap-x-20 flex
+	group relative col-span-full items-baseline gap-x-6 sm:gap-x-12 flex
 	`}
 >
 	<p class='basis-1/2 md:basis-1/3 lg:basis-1/2 group-hover:underline'>
@@ -26,9 +26,3 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 		{description}
 	</p>
 </a>
-
-<style>
-	a:last-child > div {
-		border-bottom: none;
-	}
-</style>
