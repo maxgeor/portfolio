@@ -15,7 +15,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen text-sm antialiased" style="text-rendering: optimizeLegibility;">
+	<body class="min-h-screen text-sm antialiased max-w-9xl mx-auto" style="text-rendering: optimizeLegibility;">
 		<slot />
 	</body>
 </html>
@@ -47,6 +47,18 @@ const { title } = Astro.props;
 	@font-face {
     font-family: untitled;
     src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+	}
+	
+	@font-face {
+    font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-bold.woff2) format('woff2');
+		font-weight: bold;
+	}
+	
+	@font-face {
+    font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-regular-italic.woff2) format('woff2');
+		font-style: italic;
 	}
 
 	.font-untitled {

@@ -40,6 +40,7 @@ module.exports = {
 			maxWidth: {
 				'6.5xl': '1200px',
 				'8xl': '1300px',
+				'9xl': '1600px'
 			},
 			letterSpacing: {
 				tightish: '-0.016em',
