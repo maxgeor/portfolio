@@ -1,0 +1,17 @@
+---
+export interface Props {
+  span?: string;
+  slot?: string;
+  classes?: string;
+}
+const { span = 'col-span-full lg:col-span-6', slot = '', classes = '' } = Astro.props;
+---
+<div 
+  slot={slot}
+  class=`
+    ${span} ${classes}
+    flex flex-col gap-6 
+  `
+>
+  <slot/>
+</div>

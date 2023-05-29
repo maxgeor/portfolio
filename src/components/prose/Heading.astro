@@ -1,0 +1,11 @@
+---
+export interface Props {
+  slot?: string;
+}
+const { slot = '' } = Astro.props;
+---
+
+<h2 slot={slot} class=`pt-[18px] lg:pt-0 -my-1.5 font-bold col-span-full lg:col-span-2`>
+  <slot />
+</h2>
+

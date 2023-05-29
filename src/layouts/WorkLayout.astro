@@ -17,17 +17,18 @@ const {
 ---
 <Layout title={title}>
   <main class="relative grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
-    <article id="content" class="order-last col-span-full -mt-1">
-      <div class="-mt-1 prose-sm max-w-prose mx-auto text-black prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
+    <article id="content" class="order-last col-span-full">
+      <div class="-mt-6 lg:mt-0 max-w-prose lg:max-w-none prose-img:m-0 prose-p:-my-1.5 prose-ul:m-0 prose-ol:m-0 prose-ol:list-decimal gap-12 grid grid-cols-12 prose-sm mx-auto text-black prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
         <slot />
       </div>
     </article>
     <header class="col-span-full pt-6 sm:pt-12 -my-1">
       <a href="/" class="hover:underline ">Max Georgopoulos</a>
     </header>
-    <div class="relative lg:static col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 border-b lg:border-none border-[#E9E9E9]">
-      <h1 class={`col-span-full lg:col-span-2 -my-1 lg:border-r border-[#E9E9E9]`}>{title}</h1>
-      <p class={`col-span-full lg:col-span-4 -my-1 lg:border-r border-[#E9E9E9] lg:pr-12`}>{description}</p>
+    <!-- <div class="border-brelative lg:static col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 border-b lg:border-none border-[#E9E9E9]"> -->
+    <div class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 border-b border-[#E9E9E9]">
+      <h1 class={`col-span-full lg:col-span-2 -my-1 `}>{title}</h1>
+      <p class={`col-span-full lg:col-span-4 -my-1`}>{description}</p>
       <div class="flex flex-col -my-1 col-span-full lg:col-span-4">
         <DetailsTable
           type={type}
@@ -38,7 +39,7 @@ const {
           collaborators={collaborators}
         />
       </div>
-      <div class="lg:border-l border-[#E9E9E9] col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
+      <div class="col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
     {link ? (
       <div class="absolute top-[84px] sm:top-[108px] lg:top-12 right-5 sm:right-11 ">

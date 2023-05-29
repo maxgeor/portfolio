@@ -1,0 +1,18 @@
+---
+export interface Props {
+  title: string;
+  team: {
+    name: string;
+    role: string;
+  }[];
+}
+
+const { title, team } = Astro.props;
+---
+<div class="border-t col-span-12 pt-2 grid grid-cols-1 md:grid-cols-4">
+  <h2 >{title}</h2>
+  <div class="flex gap-6">
+    <p>Team</p>
+    <p>{team.map(teammate => `${teammate.name} (${teammate.role})`).join(', ')}</p>
+  </div>
+</div>

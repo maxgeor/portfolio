@@ -5,6 +5,7 @@ module.exports = {
 		fontFamily: {
       serif: ['Times', 'serif'],
 			sans: ['untitled', 'Ariel', 'Helvetica', 'sans'],
+			mono: ["Berkeley Mono", "monospace"],
 			ornament: ["ornament"],
     },
 		extend: {

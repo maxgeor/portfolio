@@ -12,42 +12,53 @@ collaborators:
   ]
 roles: [Branding, Frontend Development, Product Design, Copywriting]
 tools: ["NextJS", "Firebase", "TailwindCSS"]
-description: Personal project to make a simple, universal interface for smart contracts.
+# description: Personal project to make a focused, universal interface for smart contracts.
+description: Personal project to make a form builder for smart contracts
 link: https://www.formie.co/
 year: 2022
 ---
 
+import Block from "../../components/prose/Block.astro";
 import Image from "../../components/prose/Image.astro";
+import Text from "../../components/prose/Text.astro";
+import Heading from "../../components/prose/Heading.astro";
+import Section from "../../components/prose/Section.astro";
+import SectionContent from "../../components/prose/SectionContent.astro";
 
-<details>
-  <summary>Don't know what Etherscan is?</summary>
+<Section title="Problem">
+  <div slot="text" class="flex flex-col gap-y-6">
+    Using Etherscan to call smart contracts _sucks_.
 
-Etherscan is a place to explore all data on the blockchain.
+    Methods are hidden under the fold (1), behind a bunch of nerd words. You
+    have to decypher each method name to find the right one (2). Technical
+    wording and little feedback leaves survivors frustrated and confused (3).
 
-</details>
+    We refused to believe that this was the best solution. We thought, "Wait,
+    aren't these 'methods' just mini forms?"
 
-Using Etherscan to call a smart contract _sucks_.
+  </div>
+  <div slot="images" class="flex flex-col gap-y-6">
+    <Image
+      src="/work/formie/etherscan-1.png"
+      alt="Annotated page showing how bad Etherscan's smart contract UI is"
+    />
+  </div>
+</Section>
 
-1. Everything's hidden. Methods are hidden under the fold, behind a bunch of nerd words.
-2. You're overloaded with information. You have to decypher each method name to find the right one.
-3. It's impossible to understand. Technical wording and little feedback leaves survivors frustrated and confused.
-
-<Image
-  src="/work/formie/etherscan-1.png"
-  alt="Annotated page showing how bad Etherscan's smart contract UI is"
-/>
-<Image
-  src="/work/formie/etherscan-2.png"
-  alt="Annotated page showing how bad Etherscan's smart contract UI is"
-/>
-<Image
-  src="/work/formie/etherscan-3.png"
-  alt="Annotated page showing how bad Etherscan's smart contract UI is"
-/>
-
-We refused to believe that this was the best solution. We thought, "Wait, aren't these 'methods' just mini forms?"
-
-Why couldn't we make Google Forms, but for smart contracts?"
+<Section>
+  <Heading slot="title">Finding the form</Heading>
+  <Block slot="text" span="col-span-full lg:col-start-3 lg:col-end-7">
+    <Text>
+      The big a-ha came from realizing that **smart contracts are just
+      min-forms**: It has some fields and a button that does something when
+      pressed.
+    </Text>
+    <Text>
+      This made it clear that the most intuitive design would be similar to
+      Google or Airtable Forms.
+    </Text>
+  </Block>
+</Section>
 
 # Some challenges were there the whole way
 
