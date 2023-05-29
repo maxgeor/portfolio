@@ -20,10 +20,10 @@ year: 2022
 
 import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
-import SectionContent from "../../components/prose/SectionContent.astro";
+import Stuff from "../../components/prose/Stuff.astro";
 
 <Section title="Problem">
-  <SectionContent>
+  <Stuff>
     <Fragment slot="text">
       Using Etherscan to call smart contracts _sucks_.
 
@@ -42,77 +42,108 @@ import SectionContent from "../../components/prose/SectionContent.astro";
       />
     </Fragment>
 
-  </SectionContent>
+  </Stuff>
 </Section>
 
 <Section title="Finding the form">
-  <SectionContent>
+  <Stuff hasImages={false}>
     <Fragment slot="text">
-      The big a-ha came from realizing that **smart contracts are just
-      min-forms**: It has some fields and a button that does something when
-      pressed.
-
-      This made it clear that the most intuitive design would be similar to
+      The big a-ha came from realizing that smart contracts are just
+      min-forms: It has some fields and a button that does something when
+      pressed. This made it clear that the most intuitive design would be similar to
       Google or Airtable Forms.
 
     </Fragment>
 
-  </SectionContent>
+  </Stuff>
 </Section>
 
-# Some challenges were there the whole way
+<Section title="Challenges">
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      ## Trust vs Ease
 
-1. Trust vs Ease. The biggest risk is bad actors using Formie to misrepresent a contract and scam people.
-   But, you don't want to overwhelm people with technical details.
+      The biggest risk is bad actors using Formie to misrepresent a contract and scam people.
+      But, you don't want to overwhelm people with technical details. How much detail to you share? What information is essential for every user? How do you protecting users from scammers (and themselves) while crafting a seamless experience? Solution: link to contract, make it clear what it's doing, but with the right framing, you can have it both ways
+    </Fragment>
 
-- How much detail to you share? What information is essential for every user?
-- How do you protecting users from scammers (and themselves) while crafting a seamless experience?
+  </Stuff>
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      ## Trust
 
-Solution: link to contract, make it clear what it's doing, but with the right framing, you can have it both ways
+      The big a-ha came from realizing that smart contracts are just
+      min-forms: It has some fields and a button that does something when
+      pressed. This made it clear that the most intuitive design would be similar to
+      Google or Airtable Forms.
 
-2. Universality. Every method had different needs & context, but needs a universal interface.
+    </Fragment>
 
-- How do you create an interface, voice, and aesthetic that works, regardless of the method? (univesally approachable)?
+  </Stuff>
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      ## Universality
 
-Solution: Balanced voice, stripped-back aesthetic, custom copy (flexible communication)
+      Every method had different needs & context, but needs a universal interface. How do you create an interface, voice, and aesthetic that works, regardless of the method? (univesally approachable)? Solution: Balanced voice, stripped-back aesthetic, custom copy (flexible communication)
 
-# Here are some big decisions we made
+    </Fragment>
 
-I made several key design decisions to improve the user experience:
+  </Stuff>
+</Section>
 
-- Just a regular form: Wrap single methods into standalone forms.
-- Human words: Ditched technical terms like "Method" and "Writing". Let people give forms their own title and descriptions to allow explanation.
-- Trust > seamlessness: I ensured that users knew who they were sending money to by linking to the contract and requiring trust confirmation.
-- Clear transaction feedback: I worked on creating anxiety-relieving copy and ensuring non-technical users could understand and act on the information provided.
+<Section title="Key Decisions">
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      - Just a regular form: Wrap single methods into standalone forms.
+      - Human words: Ditched technical terms like "Method" and "Writing". Let people give forms their own title and descriptions to allow explanation.
+      - Trust > seamlessness: I ensured that users knew who they were sending money to by linking to the contract and requiring trust confirmation.
+      - Clear transaction feedback: I worked on creating anxiety-relieving copy and ensuring non-technical users could understand and act on the information provided.
+    </Fragment>
 
-## Process
+  </Stuff>
+</Section>
 
-1. I sketched out the high-level UI/flow
-2. Batching & sequencing pages/functionality
-3. Code & design scope-by-scope
+<Section title="Process">
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      1. I sketched out the high-level UI/flow
+      2. Batching & sequencing pages/functionality
+      3. Code & design scope-by-scope
+    </Fragment>
 
-## Solution
+  </Stuff>
+</Section>
 
-The answer was simple: Wrap a familiar form around the smart contract. I realized that smart contract methods were just like web forms, so why not make them more accessible by using a form-based approach?
+<Section title="Solution">
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      The answer was simple: Wrap a familiar form around the smart contract. I realized that smart contract methods were just like web forms, so why not make them more accessible by using a form-based approach?
 
-To make Formie more intuitive, I:
+      To make Formie more intuitive, I:
 
-- Created single pages for single methods, avoiding the confusion of having all methods on one page.
-- Focused on a visually appealing UI to build trust and enhance the user experience.
+      - Created single pages for single methods, avoiding the confusion of having all methods on one page.
+      - Focused on a visually appealing UI to build trust and enhance the user experience.
+    </Fragment>
 
-## Things we left out
+  </Stuff>
+</Section>
 
-Time was my biggest constraint, which led to several tradeoffs:
+<Section title="Tradeoffs">
+  <Stuff hasImages={false}>
+    <Fragment slot="text">
+      ## Custom field titles and descriptions
 
-### Custom field titles and descriptions
+      Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
 
-Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
+      ## Editing form Stuff
 
-### Editing form SectionContent
+      I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
+      Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms)
 
-I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
-Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms)
+      ## Remembering pending transactions when users leave the page
 
-### Remembering pending transactions when users leave the page
+      Most transactions were short enough that users wouldn't navigate away, and the pending transaction copy helped ease users' concerns.
+    </Fragment>
 
-Most transactions were short enough that users wouldn't navigate away, and the pending transaction copy helped ease users' concerns.
+  </Stuff>
+</Section>

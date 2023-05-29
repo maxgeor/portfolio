@@ -17,11 +17,6 @@ const {
 ---
 <Layout title={title}>
   <main class="relative grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
-    <article id="content" class="order-last col-span-full">
-      <div class="max-w-prose lg:max-w-none prose-img:m-0 prose-p:-my-1.5 prose-ul:m-0 prose-ol:m-0 prose-ol:list-decimal gap-12 grid grid-cols-12 prose-sm mx-auto text-black prose-strong:text-black prose-headings:text-sm prose-headings:font-bold prose-headings:text-black prose-headings:mt-8 first:prose-headings:mt-0 prose-img:h-min">
-        <slot />
-      </div>
-    </article>
     <header class="col-span-full pt-6 sm:pt-12 -my-1">
       <a href="/" class="hover:underline ">Max Georgopoulos</a>
     </header>
@@ -39,12 +34,26 @@ const {
         />
       </div>
       <div class="col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
-    </div>
-    {link ? (
+      {link ? (
       <div class="absolute top-[84px] sm:top-[108px] lg:top-12 right-5 sm:right-11 ">
         <ExternalLink href={link}/>
       </div>  
     ) : null}
+    </div>
+    <article id="content" class="col-span-full">
+      <div class={`
+        prose-sm max-w-prose lg:max-w-none mx-auto
+        prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5 
+        prose-h1:font-bold prose-h2:italic prose-h2:font-normal prose-h2:-mb-4
+        prose-p:-my-1.5 
+        prose-ul:-my-1.5 prose-ul:list-disc 
+        prose-ol:-my-1.5 prose-ol:list-decimal 
+        prose-img:h-min prose-img:m-0
+        grid grid-cols-12 gap-12 text-black
+      `}>
+        <slot />
+      </div>
+    </article>
   </main>
 </Layout>
 
