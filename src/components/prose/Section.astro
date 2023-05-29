@@ -5,17 +5,12 @@ export interface Props {
 }
 const { title, classes = '' } = Astro.props;
 ---
-<div class=`
-  col-span-full grid grid-cols-12 grid gap-y-6 gap-x-12 first:mt-6
+<section class=`
+  col-span-full grid grid-cols-12 grid gap-y-6 gap-x-12
   ${classes}
 `>
   <h2 class=`col-span-full lg:col-span-2 font-bold -my-1.5`>
     {title}
   </h2>
-  <div class="col-span-full lg:col-start-3 lg:col-end-7">
-    <slot name="text"/>
-  </div>
-  <div class="order-last col-span-full lg:col-start-7 lg:col-end-13">
-    <slot name="images"/>
-  </div>
-</div>
+  <slot/>
+</section>
