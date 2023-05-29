@@ -8,7 +8,7 @@ const { hasImages = true } = Astro.props;
   <slot name="text"/>
 </div>
 {hasImages ? (
-  <div class="flex flex-col gap-6 col-span-full lg:col-start-7 lg:col-end-13">
+  <div class="flex flex-col gap-6 col-span-full lg:col-start-7 lg:col-end-13 -mx-6 sm:mx-0">
     <slot name="images"/>
   </div>
 ) : null}

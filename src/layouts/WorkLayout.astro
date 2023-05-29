@@ -17,11 +17,15 @@ const {
 ---
 <Layout title={title}>
   <main class="relative grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
-    <header class="col-span-full pt-6 sm:pt-12 -my-1">
-      <a href="/" class="hover:underline ">Max Georgopoulos</a>
+    <header class="col-span-full flex justify-between pt-6 sm:pt-12">
+      <a href="/" class="hover:underline -my-1">Max Georgopoulos</a>
+      {link ? <ExternalLink href={link} classes="hidden lg:flex -mr-1" /> : null}
     </header>
     <div class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 border-b border-[#E9E9E9]">
-      <h1 class={`col-span-full lg:col-span-2 -my-1 `}>{title}</h1>
+      <div class="col-span-full lg:col-span-2 flex justify-between">
+        <h1 class="-my-1">{title}</h1>
+        {link ? <ExternalLink href={link} classes="lg:hidden -mr-1" /> : null}
+      </div>
       <p class={`col-span-full lg:col-span-4 -my-1`}>{description}</p>
       <div class="flex flex-col -my-1 col-span-full lg:col-span-4">
         <DetailsTable
@@ -33,12 +37,7 @@ const {
           collaborators={collaborators}
         />
       </div>
-      <div class="col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
-      {link ? (
-      <div class="absolute top-[84px] sm:top-[108px] lg:top-12 right-5 sm:right-11 ">
-        <ExternalLink href={link}/>
-      </div>  
-    ) : null}
+      <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
     <article id="content" class="col-span-full">
       <div class={`
@@ -49,7 +48,7 @@ const {
         prose-ul:-my-1.5 prose-ul:list-disc 
         prose-ol:-my-1.5 prose-ol:list-decimal 
         prose-img:h-min prose-img:m-0
-        grid grid-cols-12 gap-12 text-black
+        grid grid-cols-1 lg:grid-cols-12 gap-12 text-black
       `}>
         <slot />
       </div>

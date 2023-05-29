@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import WorkBlock from '../components/WorkBlock.astro';
+import Card from '../components/work/Card.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
@@ -20,17 +20,17 @@ import LinkBlock from '../components/LinkBlock.astro';
 		</aside>
 		<main class="col-span-full lg:col-span-9 flex flex-col gap-12 relative lg:pt-6 pb-24">
 			<section class="col-span-full flex flex-col gap-y-6 ">
-				<WorkBlock
+				<Card
 					title='Memiori'
 					href='/work/memiori'
 					type="Brand, Product"
 				/>
-				<WorkBlock
+				<Card
 					title='Wavy'
 					href='/work/wavy'
 					type="Development, Product"
 				/>
-				<WorkBlock
+				<Card
 					title='Formie'
 					href='/work/formie'
 					type="Brand, Development, Product"
