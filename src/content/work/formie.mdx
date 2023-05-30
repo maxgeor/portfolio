@@ -33,7 +33,6 @@ import SubSection from "../../components/prose/SubSection.astro";
 
       We refused to believe that this was the best solution. We thought, "Wait,
       aren't these 'methods' just mini forms?"
-
     </Fragment>
     <Fragment slot="images">
       <Image
@@ -45,16 +44,29 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="Finding the form">
+<Section title="Process">
   <SubSection hasImages={false}>
     <Fragment slot="text">
-      The big a-ha came from realizing that smart contracts are just
-      min-forms: It has some fields and a button that does something when
-      pressed. This made it clear that the most intuitive design would be similar to
-      Google or Airtable Forms.
+      We built Formie piece-by-piece. The project was broken into chunks of work,
+      sequenced by unknowns & dependencies, then designed and
+      implemented in order. 
+      
+      Instead of designing upfront, we designed as we built. I'd figure out the UI & flows with rough sketches, then skip Figma and jump right into the code.
 
+      This made us faster to find big unknowns, make key decisions, and get to the right design.
     </Fragment>
 
+  </SubSection>
+</Section>
+
+<Section title="Layout">
+  <SubSection hasImages={false}>
+    <Fragment slot="text">
+      The big a-ha came from realizing that smart contracts are just min-forms:
+      there's a few fields and a button that does something when pressed. This
+      made it clear that the most intuitive layout and experience would be close
+      to Google or Airtable Forms.
+    </Fragment>
   </SubSection>
 </Section>
 
@@ -74,40 +86,28 @@ import SubSection from "../../components/prose/SubSection.astro";
       min-forms: It has some fields and a button that does something when
       pressed. This made it clear that the most intuitive design would be similar to
       Google or Airtable Forms.
-
     </Fragment>
-
   </SubSection>
   <SubSection hasImages={false}>
     <Fragment slot="text">
       ## Universality
       Every method had different needs & context, but needs a universal interface. How do you create an interface, voice, and aesthetic that works, regardless of the method? (univesally approachable)? Solution: Balanced voice, stripped-back aesthetic, custom copy (flexible communication)
-
     </Fragment>
-
   </SubSection>
 </Section>
 
 <Section title="Key Decisions">
   <SubSection hasImages={false}>
     <Fragment slot="text">
-      - Just a regular form: Wrap single methods into standalone forms.
-      - Human words: Ditched technical terms like "Method" and "Writing". Let people give forms their own title and descriptions to allow explanation.
-      - Trust > seamlessness: I ensured that users knew who they were sending money to by linking to the contract and requiring trust confirmation.
-      - Clear transaction feedback: I worked on creating anxiety-relieving copy and ensuring non-technical users could understand and act on the information provided.
+      - Just a regular form: Wrap single methods into standalone forms. - Human
+      words: Ditched technical terms like "Method" and "Writing". Let people
+      give forms their own title and descriptions to allow explanation. - Trust
+      > seamlessness: I ensured that users knew who they were sending money to
+      by linking to the contract and requiring trust confirmation. - Clear
+      transaction feedback: I worked on creating anxiety-relieving copy and
+      ensuring non-technical users could understand and act on the information
+      provided.
     </Fragment>
-
-  </SubSection>
-</Section>
-
-<Section title="Process">
-  <SubSection hasImages={false}>
-    <Fragment slot="text">
-      1. I sketched out the high-level UI/flow
-      2. Batching & sequencing pages/functionality
-      3. Code & design scope-by-scope
-    </Fragment>
-
   </SubSection>
 </Section>
 
