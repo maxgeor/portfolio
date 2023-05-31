@@ -10,7 +10,7 @@ collaborators:
       href: https://twitter.com/hassantsyed,
     },
   ]
-roles: [Branding, Frontend Development, Product Design, Copywriting]
+roles: [Branding, Frontend Development, Product Design, Web Design, Copywriting]
 tools: ["NextJS", "Firebase", "TailwindCSS"]
 # description: Personal project to make a focused, universal interface for smart contracts.
 description: Personal project to make a form builder for smart contracts
@@ -27,9 +27,9 @@ import SubSection from "../../components/prose/SubSection.astro";
     <Fragment slot="text">
       Using Etherscan to call smart contracts _sucks_.
 
-      Methods are hidden under the fold (1), behind a bunch of nerd words. You
-      have to decypher each method name to find the right one (2). Technical
-      wording and little feedback leaves survivors frustrated and confused (3).
+      1. Methods are hidden under the fold, behind a bunch of nerd words.
+      2. You have to decypher each method name to find the right one.
+      3. Technical wording and little feedback leaves survivors frustrated and confused.
 
       We refused to believe that this was the best solution. We thought, "Wait,
       aren't these 'methods' just mini forms?"
@@ -44,16 +44,92 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
+<Section title="Scope">
+  <SubSection hasImages={false}>
+    <Fragment slot="text">
+      Our focus was V1. We wanted to ship fast and make the product easy to change. To do that, we focused on underbuilding and eliminating problems by asking, "What could we remove in V1 to make this problem go away?"
+      </Fragment>
+    </SubSection>
+
+</Section>
+<Section title="Challenges">
+  <SubSection hasImages={false}>
+    <Fragment slot="text">
+      - (Trust) Make sure people are informed enough to trust forms
+        - The radically open & techical nature of crypto is ripe for scams. 
+        - Technical nature of crypto makes it opaque to non-technical people.
+        - People have trust issues with crypto.
+        - The most important thing is making sure that people, experienced or not, can trust forms.
+      - (Communication) Communicate unique details & characteristics of interacting with smart contracts to non-technical users
+      - (Flexibility)
+        - Can't cover every edge case but Needs to be a UI that works for every method and every brand
+          - Needs to support enough
+        - Aesthetic, but unopinionated
+        - Friendly, but not getting in the way of other's brand
+
+      ## Key Decisions
+        - Friendly brand (trust)
+        - Form builder UI (communication)
+          - Intuitive UI
+        - Only write methods for Etherscan Mainnet contracts
+          -
+        - Custom titles & descriptions
+        - Trust confirmation
+
+      ## Tradeoffs
+        - No custom branding (not important — getting most of the value from the form)
+        - No support of
+
+      - Seeing the problem
+      - Realizing the high-level solution (**form builder**)
+        - Familiar experinece for using and creating forms
+        - Streamlines the experience by just giving people the fields they need.
+      - Figuring out how to deter spammers and protect people from getting scammed (**forcing people to confirm trust**)
+        - We knew try to stop scammers from making a form would be impossible, so we focused on making it clear who the form was for and what it did.
+        - Most of the time, anyone can detect a scam with some time and effort
+          - it often involves, double checking the form's source or asking a smart friend to make sure it's kosher.
+          - Also why we always include a link to the Etherscan page
+        - Went from asking "How do we make sure no one gets scammed?" to "How do we make sure anyone "
+        - Simple 80/20 solution
+        - Easy to understand, no technical stuff to explain
+        - soft-lock
+        - great because people don't need to understand the technical parts — as long as
+      - Flexible
+        - one form needed to work well for every method
+        - **Ethereum Mainnet only**
+          - **Write Methods onlys**
+            - Custom interfaces and tools like Dune and Etherscan covered pulling and displaying of data fine.
+            - Most of people used Etherscan for write methods (Mint, renouncing Ownership).
+            - Not having to focus on displaying data simplified Formie's job.
+
+      - How to make sure people are informed without being overwhelmed
+
+        - **Custom title & description**
+
+          - Best tool is plain english
+          - Lightweight, flexible way to let form creators give context to the action.
+            - Explain what it does
+            - Instructions for what to do before
+            - Add prices if something costs money
+
+        - Facts > Education
+          - Say transactions can take a while
+          - Anticipate common post-mint issues on success screen
+      </Fragment>
+
+    </SubSection>
+
+</Section>
+
 <Section title="Process">
   <SubSection hasImages={false}>
     <Fragment slot="text">
-      We built Formie piece-by-piece. The project was broken into chunks of work,
-      sequenced by unknowns & dependencies, then designed and
-      implemented in order. 
+      We built Formie by breaking the project into chunks of work,
+      sequencing them by unknowns & dependencies, then finishing each in order. 
       
-      Instead of designing upfront, we designed as we built. I'd figure out the UI & flows with rough sketches, then skip Figma and jump right into the code.
+      Instead of designing upfront, we designed & bulit at the same time. I'd figure out the UI & flows with rough sketches then jump into the code.
 
-      This made us faster to find big unknowns, make key decisions, and get to the right design.
+      An integrated, sequential approach helped us uncover unknowns and solve problems faster.
     </Fragment>
 
   </SubSection>
@@ -131,9 +207,11 @@ import SubSection from "../../components/prose/SubSection.astro";
       ## Custom field titles and descriptions
       Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
 
-      ## Editing form SubSection
+      ## Editing
       I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
-      Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms)
+      Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms).
+
+      Comparing to the baseline experience of using Etherscan, moving a single contract action mathout out of Ether
 
       ## Remembering pending transactions when users leave the page
       Most transactions were short enough that users wouldn't navigate away, and the pending transaction copy helped ease users' concerns.
