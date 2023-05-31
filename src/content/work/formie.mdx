@@ -25,14 +25,13 @@ import SubSection from "../../components/prose/SubSection.astro";
 <Section title="Problem">
   <SubSection>
     <Fragment slot="text">
-      Using Etherscan to call smart contracts _sucks_.
+      Using Etherscan to call smart contracts _sucks_. Watching friends, Twitter, and myself stuggle made it's flow feel like an obstacle course:
 
-      1. Methods are hidden under the fold, behind a bunch of nerd words.
-      2. You have to decypher each method name to find the right one.
-      3. Technical wording and little feedback leaves survivors frustrated and confused.
+      1. To find the right action, you go the bottom of the page and open two technically-worded drawers
+      2. Then, you have to decypher a list of actions to find the right one
+      3. Finally, if you find the action, its technical wording and weak feedback makes it near-impossible to know what info to give or know if the transaction worked at all.
 
-      We refused to believe that this was the best solution. We thought, "Wait,
-      aren't these 'methods' just mini forms?"
+      While Etherscan's UI-in-a-box proved to be a developer favorite, we knew it could be better.
     </Fragment>
     <Fragment slot="images">
       <Image
@@ -47,7 +46,7 @@ import SubSection from "../../components/prose/SubSection.astro";
 <Section title="Scope">
   <SubSection hasImages={false}>
     <Fragment slot="text">
-      Our focus was V1. We wanted to ship fast and make the product easy to change. To do that, we focused on underbuilding and eliminating problems by asking, "What could we remove in V1 to make this problem go away?"
+      Starting from scratch, our focus was shipping V1. We wanted to make something fast that was easy to change later. Putting speed first lead us to [trade off important but non-vital features](#tradeoffs) for an earlier launch.
       </Fragment>
     </SubSection>
 
@@ -56,30 +55,83 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection hasImages={false}>
     <Fragment slot="text">
       - (Trust) Make sure people are informed enough to trust forms
+        - Smart Contracts: Public code that's stored and run a blockchain.
+          - Anyone see
         - The radically open & techical nature of crypto is ripe for scams. 
         - Technical nature of crypto makes it opaque to non-technical people.
         - People have trust issues with crypto.
         - The most important thing is making sure that people, experienced or not, can trust forms.
-      - (Communication) Communicate unique details & characteristics of interacting with smart contracts to non-technical users
+      - (Communication) 
+        - Communicate unique details & characteristics of interacting with smart contracts to non-technical users
+        - How to make sure people are informed without being overwhelmed
+        - Giving feedback ot users about what's happening behind the scenes after 
       - (Flexibility)
         - Can't cover every edge case but Needs to be a UI that works for every method and every brand
           - Needs to support enough
         - Aesthetic, but unopinionated
         - Friendly, but not getting in the way of other's brand
+        - one form needed to work well for every method
 
       ## Key Decisions
+        - Feedback focused
         - Friendly brand (trust)
         - Form builder UI (communication)
-          - Intuitive UI
-        - Only write methods for Etherscan Mainnet contracts
-          -
+          - Familiar experinece for using and creating forms
+          - Streamlines the experience by just giving people the fields they need.
+          - **Custom title & description** (flexibility, communication)
+          - Best tool is plain english
+          - Lightweight, flexible way to let form creators give context to the action.
+            - Explain what it does
+            - Instructions for what to do before
+            - Add prices if something costs money
+        - Figuring out how to deter spammers and protect people from getting scammed (**forcing people to confirm trust**)
+          - We knew try to stop scammers from making a form would be impossible, so we focused on making it clear who the form was for and what it did.
+          - Most of the time, anyone can detect a scam with some time and effort
+            - it often involves, double checking the form's source or asking a smart friend to make sure it's kosher.
+            - Also why we always include a link to the Etherscan page
+          - Went from asking "How do we make sure no one gets scammed?" to "How do we make sure anyone "
+          - Simple 80/20 solution
+          - Easy to understand, no technical stuff to explain
+          - soft-lock
+          - great because people don't need to understand the technical parts — as long as
+        - One-way methods only
+
+          - Custom interfaces and tools like Dune and Etherscan covered pulling and displaying of data fine.
+          - Most of people used Etherscan for write methods (Mint, renouncing Ownership).
+          - Not having to focus on displaying data simplified Formie's job.
         - Custom titles & descriptions
         - Trust confirmation
+      </Fragment>
 
-      ## Tradeoffs
-        - No custom branding (not important — getting most of the value from the form)
-        - No support of
+    </SubSection>
 
+</Section>
+<Section title="Key Decisions">
+  <SubSection hasImages={false}>
+    <Fragment slot="text">
+      - Clear communication, (Facts > Education )
+        - Say transactions can take a while
+        - Anticipate common post-mint issues on success screen
+      - Friendly brand (trust)
+      - Form builder UI (communication)
+      - Intuitive UI
+      - Only write methods
+        - There are two kinds of actions on a smart contract:
+          - One-way: You hit a button and _make some change_ (ex: voting, sending money, changing ownership)
+          - Two-way: You hit a button and _get something back_ (ex: a Cryptopunk's characteristics)
+        - We focused only on one-way methods because...
+        1. _They're neglected_: Plenty of tools exist for getting and displaying blockchian data (Dune, Etherscan, etc), but very few for  and b) they're simpler (only have).
+      - Custom titles & descriptions
+      - Trust confirmation
+    </Fragment>
+  </SubSection>
+
+</Section>
+<Section title="Tradeoffs">
+  <SubSection hasImages={false}>
+    <Fragment slot="text">
+      Our priority was speed-to-launch. This lead us to cut important but non-essential features by [comparing to baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline): Is this V1 better than people's current solution?
+      - No custom branding (not important — getting most of the value from the form)
       - Seeing the problem
       - Realizing the high-level solution (**form builder**)
         - Familiar experinece for using and creating forms
@@ -115,12 +167,10 @@ import SubSection from "../../components/prose/SubSection.astro";
         - Facts > Education
           - Say transactions can take a while
           - Anticipate common post-mint issues on success screen
-      </Fragment>
+    </Fragment>
 
-    </SubSection>
-
+  </SubSection>
 </Section>
-
 <Section title="Process">
   <SubSection hasImages={false}>
     <Fragment slot="text">
