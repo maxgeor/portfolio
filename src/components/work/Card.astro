@@ -15,9 +15,11 @@ const {
 ---
 <a 
 	href={href}
-	class="-mx-6 sm:mx-0 bg-neutral-50 hover:brightness-[98.75%] active:hover:brightness-[98.75%] focus:hover:brightness-[98.75%] transition duration-75 relative flex items-center justify-center gap-6 p-6 pt-[60px] sm:p-12 sm:pt-[60px]"
+	class="group grid grid-cols-12 col-span-full relative  gap-6 lg:gap-12"
 >
-	<img src="/work/memiori/preview.png" class="h-full w-full max-w-xs sm:max-w-md mx-auto"/>
-	<h2 class="absolute top-5 left-6">{title}</h2>
-	<p class="text-[#737373] absolute top-5 right-6 lg:top-auto lg:right-auto lg:bottom-5 lg:left-6">{type}</p>
+	<div class="col-span-full md:col-span-4 lg:col-span-3">
+		<h2 class="group-hover:underline ">{title}</h2>
+		<p class="text-[#737373] ">{type}</p>
+	</div>
+	<img src="/work/memiori/preview.png" class="col-span-full md:col-span-8 lg:col-start-4 lg:col-end-10 h-full w-full "/>
 </a>
