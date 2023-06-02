@@ -11,28 +11,38 @@ import LinkBlock from '../components/LinkBlock.astro';
 				<p class="text-[#737373]">Frontend Developer, Product Designer</p>
 			</div>
 			<div class="col-span-full md:col-span-8 lg:col-span-6 flex  justify-between gap-y-6 gap-x-12">
-				<p class="sm:max-w-prose -my-1">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p>
-				<div class="text-[13px] lg:hidden flex flex-col md:flex-row flex-wrap gap-x-2 -my-1 h-fit w-min">
-					<a href="#" class="hover:underline">Email</a> 
+				<!-- <p class="sm:max-w-prose -my-1">I believe that the boundary between design and engineering is artificial — you get the best results by blending the two. Lately, I've been inspired by Ryan Singer's design techniques, TailwindCSS, and The 2023 Spring Summer Collection from Homme Plissé.</p> -->
+				<div class="text-[13px] lg:hidden  text-right md:flex-row flex-wrap gap-x-2 -my-1 h-fit w-min">
+					<a href="#" class="hover:underline">About</a> 
+					<a href="#" class="hover:underline">Links</a> 
+					<!-- <a href="#" class="hover:underline">Email</a> 
 					<a href="#" class="hover:underline">Arena</a> 
 					<a href="#" class="hover:underline">Github</a> 
 					<a href="#" class="hover:underline">Twitter</a>
-					<a href="#" class="hover:underline">Dribbble</a>
+					<a href="#" class="hover:underline">Dribbble</a> -->
 				</div>
 			</div>
 			<div class="hidden lg:flex flex-col col-span-6 lg:col-span-3 items-end flex-wrap gap-y-0 gap-x-2 ">
-				<div class="text-[13px] h-fit w-min text-left -my-1">
-					<a href="#" class="hover:underline ">Email</a> 
+				<div class="text-[13px] h-fit w-min  text-right -my-1">
+					<a href="#" class="hover:underline">About</a> 
+					<a href="#" class="hover:underline">Links</a> 
+					<!-- <a href="#" class="hover:underline ">Email</a> 
 					<a href="#" class="hover:underline ">Arena</a> 
 					<a href="#" class="hover:underline ">Github</a> 
 					<a href="#" class="hover:underline ">Twitter</a>
-					<a href="#" class="hover:underlinen">Dribbble</a>
+					<a href="#" class="hover:underlinen">Dribbble</a> -->
 				</div>
 			</div>
 
 		</section>
 		<main class="col-span-full flex flex-col gap-12 relative pb-24">
 			<section class="col-span-full flex flex-col gap-y-6 md:gap-y-12 ">
+				<Card
+					title='Formie'
+					href='/work/formie'
+					type="Brand, Development, Product"
+					image="/work/formie/preview.png"
+				/>
 				<Card
 					title='Memiori'
 					href='/work/memiori'
@@ -42,12 +52,6 @@ import LinkBlock from '../components/LinkBlock.astro';
 					title='Wavy'
 					href='/work/wavy'
 					type="Development, Product"
-				/>
-				<Card
-					title='Formie'
-					href='/work/formie'
-					type="Brand, Development, Product"
-					image="/work/formie/preview.png"
 				/>
 			</section>
 			<section class="col-span-full grid grid-cols-12 gap-y-6 gap-x-6 md:gap-12">
