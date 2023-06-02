@@ -15,11 +15,11 @@ const {
 ---
 <a 
 	href={href}
-	class="group grid grid-cols-12 col-span-full relative  gap-6 lg:gap-12"
+	class="group grid grid-cols-12 col-span-full relative  gap-6 md:gap-12"
 >
-	<div class="col-span-full md:col-span-4 lg:col-span-3">
+	<div class="col-span-full md:col-span-4 lg:col-span-3 -my-1">
 		<h2 class="group-hover:underline ">{title}</h2>
 		<p class="text-[#737373] ">{type}</p>
 	</div>
-	<img src="/work/memiori/preview.png" class="col-span-full md:col-span-8 lg:col-start-4 lg:col-end-10 h-full w-full "/>
+	<img src={image || "/work/memiori/preview.png"} class="col-span-full md:col-span-8 lg:col-span-6 h-full w-full "/>
 </a>
