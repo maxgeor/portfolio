@@ -44,21 +44,26 @@ import SubSection from "../../components/prose/SubSection.astro";
 
 <Section title="Idea">
   <SubSection>
-    We realized that smart contract actions were just mini forms: a few fields and a button that does something when submitted. 
+    Our big break came from realizing smart contract actions were just mini forms: a few fields and a button that produced some output. 
     
-    Why weren't we treating these actions like any other form? What couldn't each of these actions have thier own page? What if we made a tool that made these forms?
+    This raised lots of questions: Why weren't fields labelled? Why aren't there detailed error messages? Why didn't each action live on their own page?
+    
+    These questions sparked the idea for Formie: A form builder, like Google Forms, but for smart contracts.
 
   </SubSection>
 </Section>
 
 <Section title="Process">
   <SubSection>
+    ## Research
+    We knew little about smart contracts and their
+
     We worked by building the product piece-by-piece. We'd figure out the most important chunk of work then start building & designing it together. I skipped mockups, opting to roughly sketch the UI & flow then doing the rest in code.
 
-    Working this way had big benefits:
+    {/* Working this way had big benefits:
     1. We were lazer-focused on the biggest problem at a time.
     2. We discovered & resolved constraints in real-time, avoiding expensive re-designs.
-    3. We covered key risks upfront, making our to-do list easy to trim as our deadline approached.
+    3. We covered key risks upfront, making our to-do list easy to trim as our deadline approached. */}
 
   </SubSection>
 </Section>
@@ -67,32 +72,52 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection></SubSection>
 </Section>
 
-<Section title="Identity">
-  <SubSection>
-    I held off on crafting the brand identity. I focused on answering the products core questions first then let the emerging constraints guide the identity.
+{/* Need to talk about deciding on layout first because it informed other decisions */}
 
-    To have a universal brand, the colors needing a neutral pallate. Blue was the most unopinioned color one and has connotations with safety and reliability.
+{/* LAYOUT */}
+{/* Form structure */}
+{/* Error handling */}
+{/* custom title & description */}
 
-    The typography came from the product needing a friendly tone. The layout was sparce, so there was room for character in the text. and has a lot of character without
+{/* Always display and link to data about the contract */}
 
-    I try to to overthink identity and let core constraints guide the design. Sometimes, the brand of a product comes first, if its philosophy is core to the product.
+{/* FORCED PEOPLE TO CONFIRM THEY TRUSTED THE FORM */}
+{/* Letting people give their own context on forms was absolutely essential. */}
+{/* but it created another problem: Letting people describe their own form would let people misrepresent one contract as another */}
+{/* Even though we show */}
 
-  </SubSection>
-</Section>
+{/* ONE-WAY ACTIONS ONLY */}
+{/* One-way actions only */}
+{/* Custom interfaces and tools like Dune and Etherscan covered pulling and displaying of data fine. */}
+{/* Most of people used Etherscan for write methods (Mint, renouncing Ownership). */}
+{/* Not having to focus on displaying data simplified Formie's job. */}
+
+{/* IDENTITY */}
+{/* Colors */}
+{/* Typography */}
+
+{/* TRADEOFFS */}
+{/* Custom field titles and descriptions */}
+{/* Editing */}
+{/* Remembering pending transactions when users leave the page */}
 
 <Section title="Challenges">
   <SubSection>
     ## Trust
-    The biggest risk is bad actors using Formie to misrepresent a contract and scam people. People who know about crypto have trust issues, while everyone else aren't aware of the risks.
+    Our biggest risk was bad actors using Formie to misrepresent contracts to scam people. People who know about crypto have trust issues, while everyone else aren't aware of the risks. The most important thing was Formie would die if it didn't  We had to be proactive about deterring
 
-    ## Communication
-    A form that interacts with a blockchain has big differences that aren't obvious:
+    ## Simple vs Secure
+    We knew tons of non-technical people would use Formie. My first was to make the experience seamless — abstracting away all the complexity associated with smart contracts.
 
-    - Transactions cost money, instead of nothing
-    - Transactions take time to process, instead of instant
-    - Smart contract code can be seen and used by anyone, instead of being private
+    The problem was that there are some things people _need_ to know about smart contracts to gauge how legit a form is. Looking at a pretty form, who would think anything was at risk?
+    -
+    - If you get scammed, there's no way to get your money back or find out who the scammer is
 
-    non-technical people
+    We had to find a balance between simplicity and security.
+
+    Smart contracts are inherently technical . While it's tempting to abstract away all complexity, leaving out key details about how smart contracts would leave users uninformed and misinformed about the legitimacy of the form. We had to craft a seamless experience while  bet making Formie simple and secure.
+    3. Overabstracting the details would confuse non-technical users and potentially expose them to scams.
+
     While it needs What did people _really_ needed to know about smart contracts so they could guage how legit a form is?
 
     ## Universality
@@ -154,6 +179,19 @@ import SubSection from "../../components/prose/SubSection.astro";
     Best tool is plain english - Lightweight, flexible way to let form creators
     give context to the action. - Explain what it does - Instructions for what
     to do before - Add prices if something costs money
+  </SubSection>
+</Section>
+
+<Section title="Identity">
+  <SubSection>
+    I held off on crafting the brand identity. I focused on answering the products core questions first then let the emerging constraints guide the identity.
+
+    To have a universal brand, the colors needing a neutral pallate. Blue was the most unopinioned color one and has connotations with safety and reliability.
+
+    The typography came from the product needing a friendly tone. The layout was sparce, so there was room for character in the text. and has a lot of character without
+
+    I try to to overthink identity and let core constraints guide the design. Sometimes, the brand of a product comes first, if its philosophy is core to the product.
+
   </SubSection>
 </Section>
 
