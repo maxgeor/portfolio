@@ -19,12 +19,22 @@ const {
   <main class="grid sm:grid-cols-12 gap-12 mx-6 sm:mx-12 pb-24">
     <header class="col-span-full flex justify-between pt-6 sm:pt-12">
       <a href="/" class="hover:underline -my-1">Max Georgopoulos</a>
+      {link ? (
+        <a href={link} target="_blank" class="hidden lg:flex items-center gap-[3px] underline -my-1 -mr-[3px]">
+            <span>See it</span>
+            <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </a>
+      ) : null}
     </header>
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 border-b border-[#E9E9E9]">
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 lg:pb-12 lg:border-b border-[#e9e9e9]">
       <div class="col-span-full lg:col-span-2 flex justify-between">
-        <h1 class="-my-1">
-          {link ? <a href={link} target="_blank" class="underline">{title}</a> : title}
-        </h1>
+        <h1 class="-my-1">{title}</h1>
+        {link ? (
+          <a href={link} target="_blank" class="flex items-center lg:hidden gap-[3px] underline -my-1 -mr-[3px]">
+            <span>See it</span>
+            <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </a>
+        ) : null}
       </div>
       <p class={`col-span-full lg:col-span-4 -my-1`}>{description}</p>
       <div class="flex flex-col -my-1 col-span-full lg:col-span-4">
@@ -41,13 +51,14 @@ const {
     </div>
     <article id="content" class="col-span-full">
       <div class={`
-        prose-sm max-w-prose lg:max-w-none mx-auto
-        prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5 
-        prose-h1:font-bold prose-h2:italic prose-h2:font-normal prose-h2:-mb-4
-        prose-p:-my-1.5 
+        prose-sm max-w-none
+        prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5
+        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5
+        prose-h2:italic prose-h2:font-normal prose-h2:-mb-4
+        prose-p:-my-1.5 prose-p:max-w-prose
         prose-a:underline
-        prose-ul:list-disc prose-ul:-my-1.5
-        prose-ol:list-decimal prose-ol:-my-1.5
+        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:max-w-prose
+        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:max-w-prose
         prose-img:h-min prose-img:m-0
         grid grid-cols-1 lg:grid-cols-12 gap-12 text-black
       `}>

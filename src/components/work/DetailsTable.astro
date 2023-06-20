@@ -19,19 +19,19 @@ const { type, roles, year, tools, link, collaborators, isShowingLink = true } = 
   
   <table class="flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
     <tr>
-      <td class="w-4 pr-5 pb-1"><p>Role</p></td>
-      <td><p class="capitalize pb-1">{roles.join(', ')}</p></td>
+      <td class="w-4 pr-5 pb-2"><p>Role</p></td>
+      <td><p class="capitalize pb-2">{roles.join(', ')}</p></td>
     </tr>
     {tools ? (
       <tr>
-        <td class="pr-5 pb-1"><p>Tools</p></td>
-        <td class="pb-1"><p>{tools.join(', ')}</p></td>
+        <td class="pr-5 pb-2"><p>Tools</p></td>
+        <td class="pb-2"><p>{tools.join(', ')}</p></td>
       </tr>
     ) : null}
     {collaborators ? (
       <tr>
-        <td class="pr-5 pb-1">Team</td>
-        <td class="pb-1">
+        <td class="pr-5 pb-2">Team</td>
+        <td class="pb-2">
           {collaborators.map(({ name, href, role }) => (
             <span>
               <a href={href} target="_blank" class="underline">{name}</a>
