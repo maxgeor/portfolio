@@ -1,0 +1,21 @@
+---
+export interface Props {
+  title: string;
+  date: string;
+  tech: string[];
+  blurb: string;
+  company?: string;
+  isLast?: boolean; 
+}
+
+const { title, date, tech, blurb, company, isLast } = Astro.props;
+---
+
+<article class="col-span-3 grid grid-cols-3 gap-4">
+  <h2 class="font-medium w-24">{title}</h2>
+  <p>{company}</p>
+  <p>{date}</p>
+  <p class="-ml-2">{tech.map(tool => (<span>- {tool}<br/></span>))}</p>
+  <p class="col-span-2">{blurb}</p>
+  <slot />
+</article>
