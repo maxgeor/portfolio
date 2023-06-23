@@ -25,7 +25,7 @@ const {
           </a>
       ) : null}
     </header>
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 lg:pb-12 lg:border-b border-neutral-200">
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 lg:pb-12 lg:border-b border-[#D8D8D8]">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>
         {link ? (
@@ -38,11 +38,8 @@ const {
       <p class={`col-span-full lg:col-span-4 -my-1`}>{description}</p>
       <div class="flex flex-col -my-1 col-span-full lg:col-span-4">
         <DetailsTable
-          type={type}
           roles={roles}
-          year={year}
           tools={tools}
-          link={link}
           collaborators={collaborators}
         />
       </div>
