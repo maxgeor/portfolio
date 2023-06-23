@@ -15,30 +15,73 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="text-sm font-ibm antialiased bg-neutral-900 text-neutral-300">
+	<body class="min-h-screen text-sm antialiased max-w-9xl mx-auto" style="text-rendering: optimizeLegibility;">
 		<slot />
 	</body>
 </html>
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Karla:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
-
-	h1, h2, h3, h4, h5, h6 {
-		font-family: "Crimson Text", serif;
-		font-style: italic;
-	}
-
-	tr > td {
-		padding-bottom: 12px;
-	}
+	@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 	
-	tr:last-child > td {
-		padding-bottom: 0;
+	::-moz-selection {
+		background: #ffff00;
 	}
-	tr > td:first-child {
-		padding-right: 24px;
+
+	::selection {
+		color: black;
+		background: yellow;
+	}
+	html {
+		text-rendering: optimizeLegibility;
+		letter-spacing: -0.01em;
+	}
+
+	a {
+		text-underline-offset: 3px;
+		text-underline-thickness: 0.01em;
 	}
 
 	td {
 		vertical-align: top;
 	}
+	
+	@font-face {
+    font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+	}
+	
+	@font-face {
+		font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-bold.woff2) format('woff2');
+		font-weight: bold;
+	}
+	
+	@font-face {
+		font-family: untitled;
+		src: url(/untitled/sans/test-untitled-sans-medium.woff2) format('woff2');
+		font-weight: 500;
+	}
+	
+	@font-face {
+    font-family: untitled;
+    src: url(/untitled/sans/test-untitled-sans-regular-italic.woff2) format('woff2');
+		font-style: italic;
+	}
+	
+	@font-face {
+    font-family: "Berkeley Mono";
+    src: url(/BerkeleyMono-Regular.ttf);
+	}
+
+	.full-width {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+
+	tr:last-child > td {
+    padding-bottom: 0;
+  }
 </style>

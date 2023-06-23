@@ -1,128 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Card from '../components/work/Card.astro';
+import LinkBlock from '../components/LinkBlock.astro';
 ---
-
 <Layout title="Max Georgopoulos">
-	<main class="pb-48" >
-		<header class="p-6 py-12 ">
-			<div class="flex justify-between gap-x-12">
-				<ul class="flex flex-col gap-y-1">
-					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Work</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Writing</li>
-					<li class="leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">Random</li>
-				</ul>
-				<div class="text-right">
-					<h1 class="mb-3 text-4xl md:text-5xl italic tracking-tight ml-4">
-						Max Georgopoulos
-					</h1>
-					<div class="flex gap-x-1.5 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm text-[#8c8c8c] uppercase tracking-wider ">
-						<span>Frontend-developer</span> 
-						<span class="font-crimson italic text-base h-4">&</span> 
-						<span>product designer</span> 
-					</div>
-					<div class="flex gap-x-1.5 text-[#8c8c8c] mt-3 justify-end items-baseline flex-wrap leading-[16px] text-[10px] font-ibm  uppercase tracking-wider">
-						<a href="" >
-							<!-- <img src="/icons/mail.svg" class="w-5 h-5" alt="email"> -->
-							Email
-						</a>
-						<span class="text-neutral-600">/</span>
-						<a href="" >
-							<!-- <img src="/icons/twitter.svg" class="w-5 h-5" alt="twitter"> -->
-							Twitter
-						</a>
-						<span class="text-neutral-600">/</span>
-						<a href="" >
-							<!-- <img src="/icons/github.svg" class="w-5 h-5" alt="github"> -->
-							github
-						</a>
-						<span class="text-neutral-600">/</span>
-						<a href="" >
-							<!-- <img src="/icons/dribbble.svg" class="w-5 h-5" alt="dribbble"> -->
-							dribbble
-						</a>
-					</div>
+	<div class="grid sm:grid-cols-12 relative mx-auto gap-12 px-6 sm:px-12 ">
+		<section class="col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 ">
+			<div class="col-span-full md:col-span-4 lg:col-span-3 -my-1">
+				<h1 id="logo" class="col-span-full ">Max Georgopoulos</h1>
+				<p class="text-[#737373]">Frontend Developer, Product Designer</p>
+			</div>
+			<div class="text-right -my-1 w-min">
+				<a href="/about" class="hover:underline">About</a> 
+			</div>
+		</section>
+		<main class="col-span-full flex flex-col gap-12 relative pb-24">
+			<section class="col-span-full flex flex-col gap-y-6 md:gap-y-12 ">
+				<Card
+					title='Formie'
+					href='/work/formie'
+					type="Brand, Product, Development"
+					image="/work/formie/preview.png"
+				/>
+				<Card
+					title='Memiori'
+					href='/work/memiori'
+					type="Brand, Product"
+				/>
+				<Card
+					title='Wavy'
+					href='/work/wavy'
+					type="Product, Development"
+				/>
+			</section>
+			<section class="col-span-full grid grid-cols-12 gap-y-6 gap-x-6 md:gap-12">
+				<h2 class="col-span-full md:col-span-4 xl:col-span-3 -my-1">
+					Projects
+				</h2>
+				<div class="col-span-full md:col-span-8 xl:col-span-6 flex flex-col gap-y-1 -my-1">
+					<LinkBlock 
+						type='project'
+						title='Scope Todo'
+						href='#'
+						description="A good ol' todo widget for FigJam"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='The Quest Board'
+						href='#'
+						description="Job board for the Loot community"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='Dissect Design'
+						href='#'
+						description="Collection of design decisions"
+						externalLink={true}
+					/>
+					<LinkBlock 
+						type='project'
+						title='Sayings, Forgotten'
+						href='#'
+						description="Collection of sayings with forgotten meanings"
+						externalLink={true}
+					/>
 				</div>
-			</div>
-		</header>
-		<div class="mx-6 pt-4 mb-6 border-t-[0.5px] border-neutral-700">
-			<h2 class="text-4xl">Work</h2>
-		</div>
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-			<Card
-				href="/studies/memiori"
-				companyName="Client project"
-				title="Memiori"
-				description="Redesigned note taking app"
-				roles={["branding", "Mobile design"]}
-			/>
-			<Card
-				companyName="Wavy"
-				title="Polls"
-				description="Built and co-designed Wavy's Polls feature"
-				roles={["UI/UX design", "Full-stack development"]}
-			/>
-			<Card
-				companyName="Personal Project"
-				title="Formie"
-				description="Designed & co-built a smart contract UI generator"
-				roles={["branding", "UI/UX design", "Frontend development"]}
-			/>
-			<div class="flex lg:items-center lg:justify-center m-6">
-				<table>
-					<tr>
-						<td>Scope Todo</td>
-						<td class="text-[#8c8c8c]">Figma todow widget</td>
-					</tr>
-					<tr>
-						<td>Disect Design</td>
-						<td class="text-[#8c8c8c]">Place to find and share product design case studies</td>
-					</tr>
-					<tr>
-						<td>Sayings, forgotten</td>
-						<td class="text-[#8c8c8c]">Collection of saying who's meanings changed overtime</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="mx-6 pt-4 mt-24 mb-6 border-t-[0.5px] border-neutral-700">
-			<h2 class="text-4xl">Writing</h2>
-		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 ">
-			<div class="flex flex-col gap-y-3 lg:col-start-2 mx-6 lg:ml-0">
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
-					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
-				</a>
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
-					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
-				</a>
-				<a href="#" class="flex flex-col sm:flex-row gap-y-1 items-baseline flex-wrap gap-x-3 group underline-none transition">
-					<p class="text-lg group-hover:underline">Yes, you can learn to code</p> 
-					<span class="uppercase tracking-wider text-[10px] text-[#8c8c8c]">Feb 2022</span>
-				</a>
-			</div>
-		</div>
-		<!-- <p>I also co-designed and built Custom Content.</p>
-		Hey, Max here. I design and code. I've done Full-Stack Development at Wavy. Big cooker and fan of economics. I'm trying to figure out how to create the perfect environment to learn coding.
-		At Wavy, I built and co-designed Polls.
-		I also co-designed and built Custom Content.
-		I made a thing called <a href="formie.co">Formie</a>, a no code UI maker for smart contracts -->
-		<!-- <div class="flex flex-col gap-y-12">
-			<p>I've made a few other things too</p>
-			<ul class="flex flex-col gap-y-6">
-				<li><a href="#">Scope Todo</a>, a todo widget for Figjam</li>
-				<li><a href="#">The Quest Board</a>, a bounty board for the Loot community</li>
-				<li><a href="#">Dissect Design</a>, a collection of design case studies</li>
-			</ul>
-		</div>
-		<div class="flex flex-col gap-y-12">
-			<p>and I write a little bit</p>
-			<ul class="flex flex-col gap-y-6">
-				<li><a href="#">In defence of bad writing</a></li>
-				<li><a href="#">Yes, you can learn to code</a></li>
-			</ul>
-		</div> -->
-	</main>
+			</section>
+			<section class="col-span-full grid grid-cols-12 gap-y-6 gap-x-6 md:gap-12">
+				<h2 class="col-span-full md:col-span-4 xl:col-span-3 -my-1">
+					Writing
+				</h2>
+				<div class="col-span-full md:col-span-8 xl:col-span-6 flex flex-col gap-y-1 -my-1">
+					<LinkBlock 
+						type='writing'
+						title='In defence of bad writing'
+						href='#'
+						description="Mar 2022"
+					/>
+					<LinkBlock 
+						type='writing'
+						title='Yes, you can learn to code'
+						href='#'
+						description="Feb 2021"
+					/>
+				</div>
+			</section>
+		</main>
+	</div>
 </Layout>

@@ -1,0 +1,52 @@
+---
+import ExternalLink from "../ExternalLink.astro";
+export interface Props {
+  type: string;
+  roles: string[];
+  year: number;
+  tools: string[];
+  link? : string;
+  collaborators?: {
+    name: string;
+    role: string;
+    href: string;
+  }[],
+  isShowingLink?: boolean;
+}
+const { type, roles, year, tools, link, collaborators, isShowingLink = true } = Astro.props;
+---
+<div id="work-details" class="flex flex-col gap-y-10 transition-opacity duration-[300ms] ease-out">
+  
+  <table class="flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="w-4 pr-5 pb-2"><p>Role</p></td>
+      <td><p class="capitalize pb-2">{roles.join(', ')}</p></td>
+    </tr>
+    {tools ? (
+      <tr>
+        <td class="pr-5 pb-2"><p>Tools</p></td>
+        <td class="pb-2"><p>{tools.join(', ')}</p></td>
+      </tr>
+    ) : null}
+    {collaborators ? (
+      <tr>
+        <td class="pr-5 pb-2">Team</td>
+        <td class="pb-2">
+          {collaborators.map(({ name, href, role }) => (
+            <span>
+              <a href={href} target="_blank" class="underline">{name}</a>
+              <span>({role})</span>
+            </span>
+          ))}
+        </td>
+      </tr>
+    ) : null}
+  </table>
+</div>
+
+<style is:inline>
+  tr > td:first-child {
+    width: min-content;
+    padding-right: 24px;
+  }
+</style>

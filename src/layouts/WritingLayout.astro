@@ -1,0 +1,49 @@
+---
+const {frontmatter} = Astro.props;
+import DropLetter from '../components/DropLetter.astro';
+---
+<div class="flex flex-col items-center ">
+  <header class="leading-3 flex items-center justify-between gap-6 lg:gap-12 w-full">
+    <a href="/" class="hover:underline whitespace-nowrap">Max Georgopoulos</a>
+    <p class="">{frontmatter.date}</p>
+  </header>
+  <section id="hero" class="mb-20 font-untitled-serif text-neutral-400 text-4xl leading-[48px] lg:text-5xl lg:leading-[64px] xl:text-6xl xl:leading-[72px]">
+    <p>
+      <DropLetter letter="M" classes="text-neutral-800 float-left font-floral text-[139px] lg:text-[190px] xl:text-[214px] pt-[38px] lg:pt-[51px] xl:pt-[56px] pr-2.5 xl:pr-3 -ml-0.5 lg:-ml-1"/>
+      ax here. I'm a <span class="flower-letter text-neutral-800">designer & developer</span> based out of <span class="text-neutral-800 flower-letters">Toronto</span>. I love to <span class="text-neutral-800">think big</span>, <span class="text-neutral-800">question everything</span> and <span class="text-neutral-800">blur the lines</span> between design and engineering (you get better results by blending the two).
+    </p>
+    <h1 class="indent-[124px] relative text-4xl leading-[48px] lg:text-5xl lg:leading-[64px] xl:text-6xl xl:leading-[72px]">
+      <span class=" font-floral text[#333] lg:text-[190px] xl:text-[214px] absolute -top-0.5 -left-[126px]">Y</span>
+      <span >es, you can learn to code</span>
+    </h1>
+	</section>
+
+  <article id="content" class="font-untitled-serif antialiased text-xl max-w-4xl mt-12">
+    <slot />
+    <div class="bg-gray-100 w-full"></div>
+  </article>
+</div>
+
+<style is:inline>
+  article#content > h2 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  article#content > p,
+  article#content > ul,
+  article#content > ol {
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    max-width: 65ch;
+  }
+  
+  article#content > p:first-child {
+    margin-top: 0;
+  }
+  article#content > p:last-child {
+    margin-bottom: 0;
+  }
+</style>
