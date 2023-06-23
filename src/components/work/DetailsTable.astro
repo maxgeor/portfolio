@@ -1,19 +1,14 @@
 ---
-import ExternalLink from "../ExternalLink.astro";
 export interface Props {
-  type: string;
   roles: string[];
-  year: number;
   tools: string[];
-  link? : string;
   collaborators?: {
     name: string;
     role: string;
     href: string;
   }[],
-  isShowingLink?: boolean;
 }
-const { type, roles, year, tools, link, collaborators, isShowingLink = true } = Astro.props;
+const { roles, tools, collaborators } = Astro.props;
 ---
 <div id="work-details" class="flex flex-col gap-y-10 transition-opacity duration-[300ms] ease-out">
   
