@@ -20,7 +20,14 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } = Astro.pr
     <span class="absolute top-1/2 transform -translate-y-1/2  left-[58px]">-</span>
     <p class="w-[53px] shrink-0">{endDate}</p>
   </div>
-  <p class="-ml-2">{tech.map(tool => (<span>- {tool}<br/></span>))}</p>
+  <ul>
+    {tech.map(tool => (
+      <li class="relative">
+        <span class="absolute -top-px -left-[17px]">-</span> 
+        {tool}
+      </li>
+    ))}
+  </ul>
   <p class="col-span-2">{blurb}</p>
   <slot />
 </article>
