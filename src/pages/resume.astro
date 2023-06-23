@@ -5,23 +5,39 @@ import Project from '../components/resume/Project.astro';
 ---
 <Layout title="Resume">
 	<div class="bg-black">
-		<div class="flex flex-col gap-4 text-xs bg-[#587e69] max-w-[595px] mx-auto pt-6 px-8 pb-12 h-[842px]">
+		<div class="flex flex-col gap-4 text-xs bg-blue-500 max-w-[595px] mx-auto pt-6 px-8 pb-12 h-[842px]">
 			<header class="grid grid-cols-4 gap-4">
 				<h1 class="col-span-2">Max Georgopoulos</h1>
-				<p>Frontend Developer<br/>Product Designer</p>
+				<!-- <p>Frontend Developer<br/>Product Designer</p> -->
 				<div>
-					<p>max123358@gmail</p>
-					<p>416-804-8644</p>
 					<p>Toronto</p>
+					<p>416-804-8644</p>
+					<p>max123358@gmail</p>
+				</div>
+				<div>
+					<div class="flex ">
+						<p class="w-[69px]">github</p>
+						<p>maxgeor</p>
+					</div>
+					<div class="flex ">
+						<p class="w-[69px]">dribbble</p>
+						<p>maxgeo</p>
+					</div>
+					<div class="flex ">
+						<p class="w-[69px]">first + last</p>
+						<p>.com</p>
+					</div>
 				</div>
 			</header>
 			<div class="grid grid-cols-4 border-t-[0.5px] border-black gap-4">
 				<p>Work</p>
-				<div class="col-span-3 grid grid-cols-3 gap-6 mt-4">
+				<div class="col-span-3 grid grid-cols-3 gap-4 mt-4">
 					<Experience 
 						title="Full-Stack Engineer"
+						titleWidth="w-24"
 						company="Wavy"
-						date='Jan 2023 - Mar 2023'
+						startDate='Jan 2023'
+						endDate='Mar 2023'
 						tech={["Ruby on Rails", "View Components", "TailwindCSS"]}
 						blurb="I did this for a while and it was good"
 					>
@@ -32,14 +48,14 @@ import Project from '../components/resume/Project.astro';
 							Co-designed and built a feature that allows people to save & compare events. Saved sales 5 hours/week of creating proposals.
 						</Project>
 					</Experience>
-					<!-- <hr class="h-0 border-t-[0.5px] border-black col-span-3"/> -->
+					<hr class="border-black col-span-full border-t-[0.5px]"/>
 					<Experience 
 						title="Junior Full-Stack Engineer"
 						company="Wavy"
-						date='Jan 2023 - Mar 2023'
+						startDate='Feb 2022'
+						endDate='Jan 2023'
 						tech={["Ruby on Rails", "Auth0", "React"]}
 						blurb="I did this for a while and it was good"
-						isLast={true}
 					>
 						<Project title="Custom Content">
 							Built a flow for companies to add and edit events. Created the platform's most adopted feature.
@@ -47,9 +63,6 @@ import Project from '../components/resume/Project.astro';
 						<Project title="Onboarding">
 							Co-designed, built, and led a project to allow people sign up for Wavy themselves. Led to 50 sign-ups in the first few months.
 						</Project>
-						<!-- <Project title="Admin Redesign">
-							Redesigned and co-built Wavy's internal admin tool. Replaced Airtable and Retool with tool used daily by Wavers.
-						</Project> -->
 					</Experience>
 				</div>
 			</div>
@@ -69,7 +82,11 @@ import Project from '../components/resume/Project.astro';
 				<div class="col-span-3 grid grid-cols-3 gap-6 mt-4">
 					<p>Bachelor of Commerce</p>
 					<p>Dalhousie<br/>University</p>
-					<p>Jan 2023 - Mar 2023</p>
+					<div class="flex relative h-fit">
+						<p class="w-[68px] shrink-0">Sep 2016</p>
+						<span class="absolute top-1/2 transform -translate-y-1/2  left-[57px]">-</span>
+						<p class="w-[53px] shrink-0">Apr 2021</p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,20 +1,25 @@
 ---
 export interface Props {
   title: string;
-  date: string;
+  startDate: string;
+  endDate: string;
   tech: string[];
   blurb: string;
+  titleWidth?: string;
   company?: string;
-  isLast?: boolean; 
 }
 
-const { title, date, tech, blurb, company, isLast } = Astro.props;
+const { title, startDate, endDate, tech, blurb, company, titleWidth } = Astro.props;
 ---
 
 <article class="col-span-3 grid grid-cols-3 gap-4">
-  <h2 class="font-medium w-24">{title}</h2>
+  <h2 class={`font-medium ${titleWidth}`}>{title}</h2>
   <p>{company}</p>
-  <p>{date}</p>
+  <div class="flex relative h-fit">
+    <p class="w-[69px] shrink-0">{startDate}</p>
+    <span class="absolute top-1/2 transform -translate-y-1/2  left-[58px]">-</span>
+    <p class="w-[53px] shrink-0">{endDate}</p>
+  </div>
   <p class="-ml-2">{tech.map(tool => (<span>- {tool}<br/></span>))}</p>
   <p class="col-span-2">{blurb}</p>
   <slot />
