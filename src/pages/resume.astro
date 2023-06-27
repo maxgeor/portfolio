@@ -3,45 +3,42 @@ import Layout from '../layouts/Layout.astro';
 import Experience from '../components/resume/Experience.astro';
 import Project from '../components/resume/Project.astro';
 ---
-<Layout title="Resume" backgroundColor='bg-[#6f7c66]'>
+<Layout title="Resume" backgroundColor='bg-[#77866e]'>
 	<div class="max-w-3xl mx-auto">
-		<div class="flex flex-col bg-[#6f7c66] gap-4 text-xs mx-auto pt-6 px-8 pb-12 h-[842px]">
+		<div class="flex flex-col bg-[#77866e] gap-4 text-xs mx-auto pt-6 px-8 pb-16 ">
 			<header class="grid grid-cols-4 gap-4">
-				<h1 class="col-span-2">Max Georgopoulos</h1>
-				<div>
-					<p>Toronto</p>
-					<p>416-804-8644</p>
-					<p>max123358@gmail</p>
+				<h1>Max Georgopoulos</h1>
+				<div class="flex flex-col gap-4">
+					<div>
+						<p>Toronto</p>
+						<p>416-804-8644</p>
+						<p>max123358@gmail.com</p>
+					</div>
+					<div class="col-start-3">
+						<p>github/maxgeor</p>
+						<p>dribbble/maxgeo</p>
+						<p>maxgeorgopoulos.com</p>
+					</div>
 				</div>
-				<div>
-					<div class="flex ">
-						<p class="w-[69px]">github</p>
-						<p>maxgeor</p>
-					</div>
-					<div class="flex ">
-						<p class="w-[69px]">dribbble</p>
-						<p>maxgeo</p>
-					</div>
-					<div class="flex ">
-						<p class="w-[69px]">first + last</p>
-						<p class="-ml-0.5">.com</p>
-					</div>
+				<div class="flex flex-col gap-4 col-span-2">
+					<p class="col-span-2">Primarily a frontend engineer, with full-stack experience. I've owned multiple features, responsible for planning, development, and release.</p>
+					<p class="col-span-2">I also have experience practicing product design. My blended skills let me bridge gaps within product teams to ship edpo interfaces.</p>
 				</div>
 			</header>
 			<section class="grid grid-cols-4 border-t border-[#525D4D] gap-4">
 				<h2>Work</h2>
 				<div class="col-span-3 grid grid-cols-3 gap-4 mt-4">
 					<Experience 
-						title="Full-Stack Engineer"
+						title="Full-Stack \n Engineer"
 						titleWidth="w-24"
 						company="Wavy"
 						startDate='Jan 2023'
 						endDate='Mar 2023'
 						tech={["Ruby on Rails", "View Components", "TailwindCSS"]}
-						blurb="I did this for a while and it was good"
+						blurb="Owned development & design of key features. Conceptualized & pitched projects. Maintained production code quality via code review & bug fixing."
 					>
 						<Project title="Polls">
-							Created a feature that allows teams to vote for their next event. Saved Sales and CS teams 5 hours of work per week.
+							Designed & built a feature allowing teams to vote for their next event. Saved Sales and CS teams 5 hours of work per week.
 						</Project>
 						<Project title="Saves & Collections">
 							Co-designed and built a feature that allows people to save & compare events. Saved sales 5 hours/week of creating proposals.
@@ -50,17 +47,18 @@ import Project from '../components/resume/Project.astro';
 					<hr class="border-[#525D4D] col-span-full border-t"/>
 					<Experience 
 						title="Junior Full-Stack Engineer"
+						titleWidth="w-28"
 						company="Wavy"
 						startDate='Feb 2022'
 						endDate='Jan 2023'
 						tech={["Ruby on Rails", "Auth0", "React"]}
-						blurb="I did this for a while and it was good"
+						blurb="Owned development of key features. Worked with design to advocate for and maintain Wavy's design system."
 					>
-						<Project title="Custom Content">
-							Built a flow for companies to add and edit events. Created the platform's most adopted feature.
-						</Project>
 						<Project title="Onboarding">
-							Co-designed, built, and led a project to allow people sign up for Wavy themselves. Led to 50 sign-ups in the first few months.
+							Co-designed, built, and led a project to add robust user authentication & onboarding. Led to 50 sign-ups in the first few months.
+						</Project>
+						<Project title="Custom Content">
+							Built a bulk & multi-step flow for companies to add and edit events. Became a key feature of the platform.
 						</Project>
 					</Experience>
 				</div>
@@ -69,7 +67,7 @@ import Project from '../components/resume/Project.astro';
 				<h2>Projects</h2>
 				<div class="col-span-3 grid grid-cols-3 gap-4 mt-4">
 					<Project title="Formie">
-						Created a tool to make beautiful UI for any smart contract (NextJS & Firebase). Featured by The Milk Road.
+						Created a tool to make beautiful UI for any smart contract (Next.JS & Firebase). Featured by The Milk Road.
 					</Project>
 					<Project title="Scope Todo">
 						Created a collaborative todo widget for Figma & Figjam (React) with 25k+ downloads.
@@ -86,6 +84,12 @@ import Project from '../components/resume/Project.astro';
 						<span class="absolute top-1/2 transform -translate-y-1/2  left-[57px]">-</span>
 						<p class="w-[53px] shrink-0">Apr 2021</p>
 					</div>
+				</div>
+			</section>
+			<section class="grid grid-cols-4 border-t border-[#525D4D] gap-4">
+				<h2>Technologies</h2>
+				<div class="col-span-3 mt-4">
+					<p>Next.JS, React, Javascript, Typescript, HTML, CSS, TailwindCSS, Sanity CMS, Ruby on Rails, View Components, Git, PostgreSQL Auth0, Firebase</p>
 				</div>
 			</section>
 		</div>
