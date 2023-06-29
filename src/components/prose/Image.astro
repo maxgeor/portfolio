@@ -2,11 +2,12 @@
 export interface Props {
   src: string;
   alt: string;
+  classes?: string;
 }
-const { src, alt } = Astro.props;
+const { src, alt, classes = '' } = Astro.props;
 ---
 <img
   src={src} 
   alt={alt} 
-  class="bg-neutral-50 h-full" 
+  class={`bg-neutral-50 h-full ${classes}`} 
 />

@@ -16,6 +16,12 @@ const { images } = Astro.props;
 </div>
 {images ? (
   <div class="flex flex-col gap-6 col-span-full lg:col-start-7 lg:col-end-13 -mx-6 sm:mx-0">
-    {images.map((image) => <Image src={image.src} alt={image.alt || "Image"} />)}
+    {images.map((image) => (
+      <Image 
+        src={image.src} 
+        alt={image.alt || "Image"} 
+        classes="aspect-[7/4] object-contain w-full h-full"
+      />
+      ))}
   </div>
 ) : null}

@@ -21,6 +21,27 @@ import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import SubSection from "../../components/prose/SubSection.astro";
 
+<Section title="Background">
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/code-to-etherscan-to-frontend.png", 
+        alt: "Diagram showing code going through Etherscan and turning into a frontend"
+      }
+    ]}
+  >
+    This is how developers make blockchain apps:
+
+    1. Write the code
+    2. Upload the code to a blockchain (like Ethereum)
+    3. Build a “frontend” for the code (an app or website), so people can use it
+
+    Most developers build these frontends from scratch, which takes time & effort. Instead, some blockchain developers use “frontend generators”. These tools take your code and create a bare-bones UI for it.
+
+    Etherscan is the most popular frontend generator, saving developers tons of time & hassle.
+
+  </SubSection>
+</Section>
 <Section title="Problem">
   <SubSection
     images={[
@@ -30,31 +51,15 @@ import SubSection from "../../components/prose/SubSection.astro";
       }
     ]}
   >
-    If you're creating an blockchain app, you'd probably do this:
-    
-    1. Write your code
-    2. Upload it to a blockchain (like Ethereum)
-    3. Build a "frontend" for your code (an app or website), so people can use it
+    The problem? Etherscan's frontend _sucks_.
 
-    {/* Imagine you're making an NFT project. */}
+    - The "frontend" is at the bottom of a page, behind two drawers
+    - The "frontend" is actually a list of poorly-named forms for every action in the code.
+    - The "frontend" doesn't give guidance, helpful errors, or feedback about your transaction.
 
-    {/* First, you'd write the code to make the NFTs. Then, you'd upload your code to a blockchain, like Ethereum, so people can use it. */}
+    For users, Etherscan felt more like an obstacle course.
 
-    {/* Finally, to make that code easy to use, you'd build a "frontend" — an app or website that talks to your code. */}
-
-    {/* To save time and hassle, many blockchain developers use tools that generate bare-bones frontends instead of building one from scratch. */}
-
-    Instead of building a frontend from scratch, many blockchain developers use tools that generate a bare-bones UI for their project.
-
-    Etherscan (among other things) is the go-to "frontend generator" for code on Ethereum. Developers love it because it saves them the time & hassle of designign and building a forntend themselves.
-
-    The problem? The frontends _suck_.
-
-    1. To find the right action, you go the bottom of the page and open two technically-worded drawers
-    2. Then, you have to decypher a list of actions to find the right one
-    3. Finally, if you find the action, its technical wording and weak feedback makes it near-impossible to know what info to give or know if the transaction worked at all.
-
-    Seeing friends, family and Twitter struggle with Etherscan inspired me to build a better UI-in-a-box.
+    There had to be a better way.
 
   </SubSection>
 </Section>
@@ -63,9 +68,9 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection>
     We realized that smart contract actions were just mini forms: a few fields and a button that did something when pressed. This connection made Etherscan's shortcomings clear:
 
-    1. There's no dedicated page for each action
-    2. There's no labelling or helpful error messaging
-    3. There's no transaction feedback or confirmation
+    - There's no dedicated page for each action
+    - There's no labelling or helpful error messaging
+    - There's no transaction feedback or confirmation
 
     The high-level solution started taking shape: A form builder, like Google Forms, but for smart contracts.
 
