@@ -2,12 +2,16 @@
 export interface Props {
   src: string;
   alt: string;
+  isPadded?: boolean;
   classes?: string;
 }
-const { src, alt, classes = '' } = Astro.props;
+const { src, alt, isPadded = false, classes = '' } = Astro.props;
 ---
 <img
   src={src} 
   alt={alt} 
-  class={`bg-neutral-50 h-full ${classes}`} 
+  class={`
+    bg-neutral-50 h-full
+    ${classes}
+  `} 
 />

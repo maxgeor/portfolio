@@ -25,7 +25,7 @@ const {
           </a>
       ) : null}
     </header>
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 xl:pb-12 xl:border-b border-[#dfdfdf]">
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 xl:pb-12 xl:border-b border-gray-200">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>
         {link ? (
@@ -49,14 +49,16 @@ const {
       <div class={`
         prose-sm max-w-none
         prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5
-        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5
-        prose-h2:italic prose-h2:font-normal prose-h2:-mb-4
+        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5 prose-headings:text-black
+        prose-h2:font-medium prose-h2:-mt-0.5 prose-h2:-mb-[18px]
         prose-p:-my-1.5 prose-p:max-w-prose
         prose-a:underline
-        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:max-w-prose
-        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:max-w-prose
+        prose-strong:text-black
+        prose-code:bg-gray-200 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-300/40 prose-code:py-0.5 prose-code:text-[13px] prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-4 prose-ul:max-w-prose
+        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-4 prose-ol:max-w-prose
         prose-img:h-min prose-img:m-0
-        grid grid-cols-1 lg:grid-cols-12 gap-12 text-black
+        grid grid-cols-1 lg:grid-cols-12 gap-12 text-neutral-800
       `}>
         <slot />
       </div>
@@ -73,6 +75,13 @@ const {
   }
 
   #content > div > details {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
+    color: #767676;
+  }
+
+  mark {
+    padding: 2px;
+    margin: 0 -2px;
+    background-color: #FFFF20;
   }
 </style>

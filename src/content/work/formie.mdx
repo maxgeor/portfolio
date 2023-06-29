@@ -21,27 +21,6 @@ import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import SubSection from "../../components/prose/SubSection.astro";
 
-<Section title="Background">
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/code-to-etherscan-to-frontend.png", 
-        alt: "Diagram showing code going through Etherscan and turning into a frontend"
-      }
-    ]}
-  >
-    This is how developers make blockchain apps:
-
-    1. Write the code
-    2. Upload the code to a blockchain (like Ethereum)
-    3. Build a “frontend” for the code (an app or website), so people can use it
-
-    Most developers build these frontends from scratch, which takes time & effort. Instead, some blockchain developers use “frontend generators”. These tools take your code and create a bare-bones UI for it.
-
-    Etherscan is the most popular frontend generator, saving developers tons of time & hassle.
-
-  </SubSection>
-</Section>
 <Section title="Problem">
   <SubSection
     images={[
@@ -51,7 +30,22 @@ import SubSection from "../../components/prose/SubSection.astro";
       }
     ]}
   >
-    The problem? Etherscan's frontend _sucks_.
+    <details>
+      <summary>Smart contracts Etherscan</summary>
+      This is how developers make blockchain apps:
+
+      1. Write the code
+      2. Upload the code to a blockchain (like Ethereum)
+      3. Build a “frontend” for the code (an app or website), so people can use it
+
+      Instead of making your own frontend, blockchain devs use “frontend generators”. These create basic UI based on your code, saving you time & effort.
+
+      Etherscan is the most popular frontend generator, used by tons of Ethereum projects.
+
+      The problem?
+    </details>
+
+    <mark>Etherscan frontends suck</mark>.
 
     - The "frontend" is at the bottom of a page, behind two drawers
     - The "frontend" is actually a list of poorly-named forms for every action in the code.
@@ -65,68 +59,71 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Idea">
-  <SubSection>
-    We realized that smart contract actions were just mini forms: a few fields and a button that did something when pressed. This connection made Etherscan's shortcomings clear:
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/first-idea-for-form-builder.png", 
+        alt: "First sketch for form builder UI",
+        isPadded: true
+      }
+    ]}
+  >
+    Our big breakthrough was realizing that smart contract actions are mini forms. 
+    
+    They have a couple fields and a button that does something when pressed. Framing smart contract actions as forms made Etherscan's shortcomings clear:
 
-    - There's no dedicated page for each action
-    - There's no labelling or helpful error messaging
-    - There's no transaction feedback or confirmation
+    - There's no confirmation if anything worked
+    - You can't link someone to the action they want
+    - There's no copy guiding people or explaining things
 
-    The high-level solution started taking shape: A form builder, like Google Forms, but for smart contracts.
+    With this, we got our <mark>high-level solution: A form builder, like Google Forms, but for smart contracts</mark>.
 
   </SubSection>
 </Section>
 
 <Section title="Research">
   <SubSection>
-    We learned from talking with teams & developers using Etherscan that
-    
-    They used it anyways becasue it saved them lots of time designing and building their own website. Solo smart contract developers in particular leaned on Etherscan because a) they didn't like working in the frontend and b) were stressed out by designing an interface. They were willing to trade off
+    Talking with teams & developers using Etherscan gave us two key insights:
+
+    - People used Etherscan as a "good enough" interface. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers, liked working in the backend, delegating the frontend to Etherscan.
+    - Everyone who used Etherscan knew it sucked (visually & functionally) but weren't willing to build something themselves.
+    {/* Takeaway: We should focus on serving simple actions that don't need complex interfaces. Takeaway: The bar was _really_ low.  We had room to cut lots of functionality. */}
+
   </SubSection>
 </Section>
 <Section title="Process">
   <SubSection>
-    ## Research
-    We learned from talking with teams & developers using Etherscan that
-    
-     They used it anyways becasue it saved them lots of time designing and building their own website. Solo smart contract developers in particular leaned on Etherscan because a) they didn't like working in the frontend and b) were stressed out by designing an interface. They were willing to trade off
-
-    ## Building
     We worked by building the product piece-by-piece. We'd figure out the most important chunk of work then start building & designing it together. I skipped mockups, opting to roughly sketch the UI & flow then doing the rest in code.
-
-    {/* Working this way had big benefits:
-    1. We were lazer-focused on the biggest problem at a time.
-    2. We discovered & resolved constraints in real-time, avoiding expensive re-designs.
-    3. We covered key risks upfront, making our to-do list easy to trim as our deadline approached. */}
-
   </SubSection>
+
 </Section>
 
 <Section title="Challenges">
   <SubSection>
-    ## Trust
-    Our biggest risk was bad actors using Formie to misrepresent contracts to scam people. People who know about crypto have trust issues, while everyone else aren't aware of the risks. The most important thing was Formie would die if it didn't  We had to be proactive about deterring
+    ## Shooing scammers
+    We knew three things:
+    
+    1. Scammers would use forms to misrepresent contracts<br/>
+    2. We couldn't stop them<br/>
+    3. But we had to do something<br/>
+
+    We needed a way to deter scammers without making the product harder to build or use.
 
     ## Simple vs Secure
-    We knew tons of non-technical people would use Formie. My first was to make the experience seamless — abstracting away all the complexity associated with smart contracts.
+    I'm gonna write something here but I want some text here for structure
 
-    The problem was that there are some things people _need_ to know about smart contracts to gauge how legit a form is. Looking at a pretty form, who would think anything was at risk?
-    -
-    - If you get scammed, there's no way to get your money back or find out who the scammer is
+    ## Flexibility
+    Not only does the form need to work with most smart contracts, but it also needs to work with most brands. The product needed an unopinioned aestheic.
 
-    We had to find a balance between simplicity and security.
+    Why does it need an universal aesthetic? Well this page will basically be an extension of a project, acting as another page in their product's website, or it'll be the only interface to a product.
 
-    Smart contracts are inherently technical . While it's tempting to abstract away all complexity, leaving out key details about how smart contracts would leave users uninformed and misinformed about the legitimacy of the form. We had to craft a seamless experience while  bet making Formie simple and secure.
-    3. Overabstracting the details would confuse non-technical users and potentially expose them to scams.
+    Becuase it needs to work in a bunch of different contents, it doesn't call for a distinctive or particulartiy noteworthy brand. In a way, the "brand" or Formie should be invisible to anyone using a form.
 
-    While it needs What did people _really_ needed to know about smart contracts so they could guage how legit a form is?
-
-    ## Universality
-    Not only does the form need to work with most smart contracts, but it also needs to work with most brands. Projects and companies will use Formie as an extension of their brand, so it needs to be flexible enough to fit in with their voice and aesthetic.
+    A universal aestheic should be the opposite of distictive — invisible, no-brand.
 
     ## Key Decisions
     - Human words
-      -  Ditched technical terms like "Method" and "Writing"
+      - Ditched technical terms like "Method" and "Writing"
     - Figuring out how to deter spammers and protect people from getting scammed (**forcing people to confirm trust**)
       - We knew try to stop scammers from making a form would be impossible, so we focused on making it clear who the form was for and what it did.
       - Most of the time, anyone can detect a scam with some time and effort
@@ -180,19 +177,6 @@ import SubSection from "../../components/prose/SubSection.astro";
     Best tool is plain english - Lightweight, flexible way to let form creators
     give context to the action. - Explain what it does - Instructions for what
     to do before - Add prices if something costs money
-  </SubSection>
-</Section>
-
-<Section title="Identity">
-  <SubSection>
-    I held off on crafting the brand identity. I focused on answering the products core questions first then let the emerging constraints guide the identity.
-
-    To have a universal brand, the colors needing a neutral pallate. Blue was the most unopinioned color one and has connotations with safety and reliability.
-
-    The typography came from the product needing a friendly tone. The layout was sparce, so there was room for character in the text. and has a lot of character without
-
-    I try to to overthink identity and let core constraints guide the design. Sometimes, the brand of a product comes first, if its philosophy is core to the product.
-
   </SubSection>
 </Section>
 

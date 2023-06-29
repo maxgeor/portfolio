@@ -1,12 +1,11 @@
 ---
-import type { image } from 'astro:content';
-
 import Image from "../../components/prose/Image.astro";
 
 export interface Props {
   images?: {
     src: string;
     alt?: string;
+    isPadded?: boolean;
   }[];
 }
 const { images } = Astro.props;
@@ -20,7 +19,8 @@ const { images } = Astro.props;
       <Image 
         src={image.src} 
         alt={image.alt || "Image"} 
-        classes="aspect-[7/4] object-contain w-full h-full"
+        isPadded={image.isPadded}
+        classes={`aspect-[7/4] object-fit w-full h-full shadow`}
       />
       ))}
   </div>
