@@ -12,8 +12,7 @@ collaborators:
   ]
 roles: [Branding, Frontend Development, Product Design, Web Design, Copywriting]
 tools: ["NextJS", "Firebase", "TailwindCSS"]
-# description: Personal project to make a focused, universal interface for smart contracts.
-description: Personal project to make a form builder for smart contracts
+description: Personal project to make a better universal interface for smart contracts.
 link: https://www.formie.co/
 year: 2022
 ---
@@ -31,33 +30,63 @@ import SubSection from "../../components/prose/SubSection.astro";
       }
     ]}
   >
-    Using Etherscan to call smart contracts _sucks_. Seeing friends, family and Twitter struggle made it's flow feel more like an obstacle course:
+    If you're creating an blockchain app, you'd probably do this:
+    
+    1. Write your code
+    2. Upload it to a blockchain (like Ethereum)
+    3. Build a "frontend" for your code (an app or website), so people can use it
+
+    {/* Imagine you're making an NFT project. */}
+
+    {/* First, you'd write the code to make the NFTs. Then, you'd upload your code to a blockchain, like Ethereum, so people can use it. */}
+
+    {/* Finally, to make that code easy to use, you'd build a "frontend" — an app or website that talks to your code. */}
+
+    {/* To save time and hassle, many blockchain developers use tools that generate bare-bones frontends instead of building one from scratch. */}
+
+    Instead of building a frontend from scratch, many blockchain developers use tools that generate a bare-bones UI for their project.
+
+    Etherscan (among other things) is the go-to "frontend generator" for code on Ethereum. Developers love it because it saves them the time & hassle of designign and building a forntend themselves.
+
+    The problem? The frontends _suck_.
 
     1. To find the right action, you go the bottom of the page and open two technically-worded drawers
     2. Then, you have to decypher a list of actions to find the right one
     3. Finally, if you find the action, its technical wording and weak feedback makes it near-impossible to know what info to give or know if the transaction worked at all.
 
-    Etherscan's UI-in-a-box was a developer favourite, but we knew it could be better.
+    Seeing friends, family and Twitter struggle with Etherscan inspired me to build a better UI-in-a-box.
 
   </SubSection>
 </Section>
 
 <Section title="Idea">
   <SubSection>
-    Our big break came from realizing smart contract actions were just mini forms: a few fields and a button that produced some output. 
-    
-    This raised lots of questions: Why weren't fields labelled? Why aren't there detailed error messages? Why didn't each action live on their own page?
-    
-    These questions sparked the idea for Formie: A form builder, like Google Forms, but for smart contracts.
+    We realized that smart contract actions were just mini forms: a few fields and a button that did something when pressed. This connection made Etherscan's shortcomings clear:
+
+    1. There's no dedicated page for each action
+    2. There's no labelling or helpful error messaging
+    3. There's no transaction feedback or confirmation
+
+    The high-level solution started taking shape: A form builder, like Google Forms, but for smart contracts.
 
   </SubSection>
 </Section>
 
+<Section title="Research">
+  <SubSection>
+    We learned from talking with teams & developers using Etherscan that
+    
+    They used it anyways becasue it saved them lots of time designing and building their own website. Solo smart contract developers in particular leaned on Etherscan because a) they didn't like working in the frontend and b) were stressed out by designing an interface. They were willing to trade off
+  </SubSection>
+</Section>
 <Section title="Process">
   <SubSection>
     ## Research
-    We knew little about smart contracts and their
+    We learned from talking with teams & developers using Etherscan that
+    
+     They used it anyways becasue it saved them lots of time designing and building their own website. Solo smart contract developers in particular leaned on Etherscan because a) they didn't like working in the frontend and b) were stressed out by designing an interface. They were willing to trade off
 
+    ## Building
     We worked by building the product piece-by-piece. We'd figure out the most important chunk of work then start building & designing it together. I skipped mockups, opting to roughly sketch the UI & flow then doing the rest in code.
 
     {/* Working this way had big benefits:
@@ -215,4 +244,10 @@ import SubSection from "../../components/prose/SubSection.astro";
         - Anticipate common post-mint issues on success screen
 
   </SubSection>
+  <Section title="Result">
+    Formie got featured by the Milk Road and was picked as a top project from their Milk Money Cohort. While it got traction and was used by developers, we realized that many smart contract interfaces needed a custom solution.
+
+    Since Formie couldn't make enough money to justify the work needed to build it out, we decided to put Formie on hold and focus on other projects.
+
+  </Section>
 </Section>
