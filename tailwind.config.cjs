@@ -4,13 +4,13 @@ module.exports = {
 	theme: {
 		fontFamily: {
       serif: ['Times', 'serif'],
-			// sans: ['untitled', 'Ariel', 'Helvetica', 'sans'],
+			sans: ['untitled', 'Ariel', 'Helvetica', 'sans'],
 			mono: ["Berkeley Mono", "monospace"],
 			ornament: ["ornament"],
     },
 		extend: {
 			boxShadow: {
-				DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.095), 0 1px 2px -1px rgb(0 0 0 / 0.095)',
+				float: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;',
 			},
 			colors: {
 				gray: {

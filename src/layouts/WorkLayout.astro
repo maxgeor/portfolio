@@ -3,7 +3,6 @@ import Layout from "./Layout.astro";
 import DetailsTable from "../components/work/DetailsTable.astro";
 const { frontmatter } = Astro.props;
 const {
-  type,
   title,
   roles,
   year,
@@ -49,16 +48,15 @@ const {
       <div class={`
         prose-sm max-w-none
         prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5
-        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5 prose-headings:text-black
+        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5
         prose-h2:font-semibold prose-h2:-mt-0.5 prose-h2:-mb-[18px]
         prose-p:-my-1.5 prose-p:max-w-prose
         prose-a:underline
-        prose-strong:text-black
-        prose-code:bg-gray-200 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-300/40 prose-code:py-0.5 prose-code:text-[13px] prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+        prose-code:bg-gray-200 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/40 prose-code:py-0.5 prose-code:text-[13px] prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
         prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-4 prose-ul:max-w-prose
         prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-4 prose-ol:max-w-prose
         prose-img:h-min prose-img:m-0
-        grid grid-cols-1 lg:grid-cols-12 gap-12 text-neutral-800
+        grid grid-cols-1 lg:grid-cols-12 gap-12 text-black
       `}>
         <slot />
       </div>
@@ -74,14 +72,9 @@ const {
     background-color: #000;
   }
 
-  #content > div > details {
-    margin-bottom: 48px;
-    color: #767676;
-  }
-
   mark {
-    padding: 2px;
+    padding: 4px 2px;
     margin: 0 -2px;
-    background-color: #FFFF20;
+    background-color: #ffff7e;
   }
 </style>

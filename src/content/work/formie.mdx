@@ -18,8 +18,11 @@ year: 2022
 ---
 
 import Image from "../../components/prose/Image.astro";
+import Details from "../../components/prose/Details.astro";
 import Section from "../../components/prose/Section.astro";
 import SubSection from "../../components/prose/SubSection.astro";
+import Tooltip from "../../components/prose/Tooltip.astro";
+import Paragraph from "../../components/prose/Paragraph.astro";
 
 <Section title="Problem">
   <SubSection
@@ -30,21 +33,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       }
     ]}
   >
-    <details>
-      <summary>Smart contracts Etherscan</summary>
-      This is how developers make blockchain apps:
-
-      1. Write the code
-      2. Upload the code to a blockchain (like Ethereum)
-      3. Build a “frontend” for the code (an app or website), so people can use it
-
-      Instead of making your own frontend, blockchain devs use “frontend generators”. These create basic UI based on your code, saving you time & effort.
-
-      Etherscan is the most popular frontend generator, used by tons of Ethereum projects.
-
-      The problem?
-    </details>
-
     <mark>Etherscan frontends suck</mark>.
 
     - The "frontend" is at the bottom of a page, behind two drawers
@@ -54,6 +42,37 @@ import SubSection from "../../components/prose/SubSection.astro";
     For users, Etherscan felt more like an obstacle course.
 
     There had to be a better way.
+
+    <Details summary="Etherscan? Smart contracts?">
+      This is how developers make blockchain apps:
+
+      1. Write the code
+      2. Upload the code to a blockchain (like Ethereum)
+      3. Build a “frontend” for the code (an app or website), so people can use it
+
+      Instead of making their own frontend, blockchain devs use “frontend generators”. These spit out a basic UI based on your code, saving tons of time.
+
+      Etherscan is the most popular frontend generator, used by multiple Ethereum projects.
+
+      The problem?
+    </Details>
+
+    {/* <details>
+      <summary>Etherscan? Smart contracts?</summary>
+      <div>
+        This is how developers make blockchain apps:
+
+        1. Write the code
+        2. Upload the code to a blockchain (like Ethereum)
+        3. Build a “frontend” for the code (an app or website), so people can use it
+
+        Instead of making your own frontend, blockchain devs use “frontend generators”. These create basic UI based on your code, saving you time & effort.
+
+        Etherscan is the most popular frontend generator, used by tons of Ethereum projects.
+
+        The problem?
+      </div>
+    </details> */}
 
   </SubSection>
 </Section>
