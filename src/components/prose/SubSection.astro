@@ -1,6 +1,7 @@
 ---
 import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 import Image from "../../components/prose/Image.astro";
+import Carouselle from "./Carouselle.astro";
 
 export interface Props {
   images?: {
@@ -16,15 +17,19 @@ const { images } = Astro.props;
 </div>
 {images ? (
   <div class="flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13">
-    {images.map((image) => (
-      <div class="flex flex-col items-center gap-4">
-        <Image 
-          src={image.src} 
-          alt={image.alt || "Image"} 
-          classes={`aspect-[7/4] object-fit w-full h-full shadow-float`}
-        />
-        <p class="text-[13px] text-gray-500 italic">{image.alt}</p>
-      </div>
-    ))}
+    {images.length > 1 ? (
+      <Carouselle images={images} />
+    ) : (
+      images.map((image) => (
+        <div class="flex flex-col items-center gap-4">
+          <Image 
+            src={image.src} 
+            alt={image.alt || "Image"} 
+            classes={`aspect-[7/4] object-fit w-full shadow-float`}
+          />
+          <p class="text-[12px] leading-6 text-gray-500 text-center italic">{image.alt}</p>
+        </div>
+      ))
+    )}
   </div>
 ) : null}
