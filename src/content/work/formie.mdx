@@ -55,8 +55,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     images={[
       { 
         src: "/work/formie/first-idea-for-form-builder.png", 
-        alt: "First sketch for form builder UI",
-        isPadded: true
+        alt: "First sketch of form builder UI",
       }
     ]}
   > 
@@ -73,31 +72,27 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="Research">
-  <SubSection>
-    Talking with teams & developers using Etherscan gave us two key insights:
-
-    - **People used Etherscan as a "good enough" interface**. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers, liked working in the backend, delegating the frontend to Etherscan.
-    - **Everyone knew Etherscan sucked** (visually & functionally) but weren't willing to build something themselves.
-
-  </SubSection>
-</Section>
 <Section title="Process">
   <SubSection
     images={[
       { 
         src: "/work/formie/process/chunks.png", 
         alt: "Work chunks, sequenced in FigJam",
-        isPadded: true
       }
-    ]}  
+    ]} 
   >
+    ## Research
+    Talking with teams & developers using Etherscan gave us two key insights:
+
+    - _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers used it for personal projects & testing, since they preffered working in the backend.
+    - _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to build something themselves.
+
+    ## Building
     First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we designed & built each chunk in order.
 
     Design started with rough sketches. After breadboarding flows and UI, I’d jump into code and design the rest. Hassan would build the backend while I designed (I’d join when finished).
 
   </SubSection>
-
 </Section>
 
 <Section title="Challenges">
