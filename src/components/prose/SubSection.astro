@@ -14,7 +14,7 @@ const { images } = Astro.props;
   <slot/>
 </div>
 {images ? (
-  <div class="flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13 -mx-6 sm:mx-0">
+  <div class="flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13">
     {images.map((image) => (
       <Image 
         src={image.src} 

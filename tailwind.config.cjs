@@ -10,7 +10,7 @@ module.exports = {
     },
 		extend: {
 			boxShadow: {
-				float: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;',
+				float: 'rgba(0, 0, 0, 0.055) 0px 1px 4px, rgba(0, 0, 0, 0.11) 0px 1px 2px;',
 			},
 			colors: {
 				gray: {

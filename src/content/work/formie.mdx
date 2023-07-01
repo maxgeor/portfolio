@@ -25,54 +25,31 @@ import Tooltip from "../../components/prose/Tooltip.astro";
 import Paragraph from "../../components/prose/Paragraph.astro";
 
 <Section title="Problem">
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/etherscan-1.png", 
-        alt: "Annotated page showing how bad Etherscan's smart contract UI is"
-      }
-    ]}
-  >
-    <mark>Etherscan frontends suck</mark>.
+<SubSection
+  images={[
+    { 
+      src: "/work/formie/etherscan-1.png", 
+      alt: "Annotated page showing how bad Etherscan's smart contract UI is"
+    }
+  ]}
+>
+    Developers make blockchain apps by...
+
+    1. Writing code
+    2. Upload it to a blockchain
+    3. Building a “frontend” for their code (an app or website), so people can use it
+
+    To save time, blockchain developers use “frontend generators”. These take your code and give it a free, bare-bones UI.
+
+    Etherscan is the most popular one, which lots of projects use.
+
+    The problem? **Etherscan's frontends suck**.
 
     - The "frontend" is at the bottom of a page, behind two drawers
-    - The "frontend" is actually a list of poorly-named forms for every action in the code.
+    - The "frontend" is a list of forms with technical names for every action in the code.
     - The "frontend" doesn't give guidance, helpful errors, or feedback about your transaction.
 
-    For users, Etherscan felt more like an obstacle course.
-
-    There had to be a better way.
-
-    <Details summary="Etherscan? Smart contracts?">
-      This is how developers make blockchain apps:
-
-      1. Write the code
-      2. Upload the code to a blockchain (like Ethereum)
-      3. Build a “frontend” for the code (an app or website), so people can use it
-
-      Instead of making their own frontend, blockchain devs use “frontend generators”. These spit out a basic UI based on your code, saving tons of time.
-
-      Etherscan is the most popular frontend generator, used by multiple Ethereum projects.
-
-      The problem?
-    </Details>
-
-    {/* <details>
-      <summary>Etherscan? Smart contracts?</summary>
-      <div>
-        This is how developers make blockchain apps:
-
-        1. Write the code
-        2. Upload the code to a blockchain (like Ethereum)
-        3. Build a “frontend” for the code (an app or website), so people can use it
-
-        Instead of making your own frontend, blockchain devs use “frontend generators”. These create basic UI based on your code, saving you time & effort.
-
-        Etherscan is the most popular frontend generator, used by tons of Ethereum projects.
-
-        The problem?
-      </div>
-    </details> */}
+    The tool felt like an obstacle course — we knew it could be better.
 
   </SubSection>
 </Section>
@@ -95,7 +72,7 @@ import Paragraph from "../../components/prose/Paragraph.astro";
     - You can't link someone to the action they want
     - There's no copy guiding people or explaining things
 
-    With this, we got our <mark>high-level solution: A form builder, like Google Forms, but for smart contracts</mark>.
+    With this, we got our high-level solution: A form builder, like Google Forms, but for smart contracts.
 
   </SubSection>
 </Section>
@@ -106,6 +83,8 @@ import Paragraph from "../../components/prose/Paragraph.astro";
 
     - People used Etherscan as a "good enough" interface. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers, liked working in the backend, delegating the frontend to Etherscan.
     - Everyone who used Etherscan knew it sucked (visually & functionally) but weren't willing to build something themselves.
+
+    ❓ Takeaways
     {/* Takeaway: We should focus on serving simple actions that don't need complex interfaces. Takeaway: The bar was _really_ low.  We had room to cut lots of functionality. */}
 
   </SubSection>
@@ -128,10 +107,10 @@ import Paragraph from "../../components/prose/Paragraph.astro";
 
     We needed a way to deter scammers without making the product harder to build or use.
 
-    ## Simple vs Secure
+    ## ❓ Simple vs Secure
     Simple vs Secure Simple vs Secure Simple vs Secure Simple vs Secure vs Simple vs Secure Simple vs Secure Simple vs Secure
 
-    ## Flexibility
+    ## ❓ Flexibility
     Not only does the form need to work with most smart contracts, but it also needs to work with most brands. The product needed an unopinioned aestheic.
 
     Why does it need an universal aesthetic? Well this page will basically be an extension of a project, acting as another page in their product's website, or it'll be the only interface to a product.
