@@ -25,7 +25,7 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection
     images={[
       { 
-        src: "/work/formie/etherscan-1.png", 
+        src: "/work/formie/annotated-etherscan-page.png", 
         alt: "Etherscan's interface for smart contract actions",
       }
     ]}
@@ -35,9 +35,9 @@ import SubSection from "../../components/prose/SubSection.astro";
     2. Uploading it to the blockchain as `smart contracts`
     3. Building a `frontend` (usually an app or website) so people can interact with the contracts.
 
-    To save time, blockchain developers use frontend generators. These take your code and give it a free, bare-bones UI.
+    To save time, blockchain developers use `frontend generators`. They take your code and spit out a bare-bones, working UI.
 
-    Etherscan is the biggest frontend generator, powering tons of projects.
+    Etherscan is the biggest frontend generator, powering tons of Ethereum projects.
 
     The problem? **Etherscan's frontends suck**.
 
@@ -45,7 +45,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     - The "frontend" is a list of forms with technical names for every action in the code.
     - The "frontend" doesn't give guidance, helpful errors, or feedback about your transaction.
 
-    This frontend felt more like an obstacle course — we knew it could be better.
+    It felt more like an obstacle course than a tool — we knew it could be better.
 
   </SubSection>
 </Section>
@@ -60,15 +60,15 @@ import SubSection from "../../components/prose/SubSection.astro";
       }
     ]}
   > 
-    We cracked the nut by framing smart contract actions as mini forms.
+    Our high-level solution took shape after framing smart contract actions as mini forms.
     
-    They have a couple fields and a button that does something when pressed. Framing smart contract actions as forms made Etherscan's shortcomings clear:
+    They have a couple fields and a button that does something when pressed. Looking at contract actions this way made Etherscan's shortcomings clear:
 
     - There's no copy to guide, educate, or update users
-    - Layers of irrelevant stuff hide the only UI that matters
+    - Layers of irrelevant stuff hide the UI that actually matters
     - Users have to decipher every action name to find the right one
 
-    With this, we got our high-level solution: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
+    With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
 
   </SubSection>
 </Section>
@@ -83,7 +83,15 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 <Section title="Process">
-  <SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/process/chunks.png", 
+        alt: "Work chunks, sequenced in FigJam",
+        isPadded: true
+      }
+    ]}  
+  >
     First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we designed & built each chunk in order.
 
     Design started with rough sketches. After breadboarding flows and UI, I’d jump into code and design the rest. Hassan would build the backend while I designed (I’d join when finished).
