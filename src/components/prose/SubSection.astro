@@ -1,4 +1,5 @@
 ---
+import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 import Image from "../../components/prose/Image.astro";
 
 export interface Props {
@@ -22,6 +23,6 @@ const { images } = Astro.props;
         isPadded={image.isPadded}
         classes={`aspect-[7/4] object-fit w-full h-full shadow-float`}
       />
-      ))}
+    ))}
   </div>
 ) : null}
