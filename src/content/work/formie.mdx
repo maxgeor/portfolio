@@ -90,7 +90,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     Talking with teams & developers using Etherscan gave us two key insights:
 
     - _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers used it for personal projects & testing, since they preffered working in the backend.
-    - _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to build something themselves.
+    - _Everyone knew Etherscan sucked_ (visually & functionally) but building something custom wouldn't be worth the time & money.
 
     Takeaways:
 
@@ -119,14 +119,16 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     _How do we ward off scammers without making the product harder to build or use?_
 
-    ## Filtering & framing technical truths
-    They're tons of strange facts & behavious behaviours around smart contracts:
+    ## Filtering & framing technical details
+    There are tons of strange facts & behavious behaviours around smart contracts:
 
     - Transactions cost a bit of money
-    - Transactions can take a while to complete
+    - Transactions take time to go through
     - Anyone can make a frontend for any contract (becasuse they're public)
 
-    People without a clue are bound for confusion, missteps, and exploitation. _Which facts are essential? How do we communicate them without overwhelming users?_
+    People with no clue are bound to face confusion, missteps, and exploitation. Even though it's technical, there's stuff you just need to know.
+
+    _Which facts are essential? How do we communicate them without overwhelming users?_
 
     ## Keeping it flexible
     Because Formie could hook into any contract, it's copy, error handling, and layout had to accomodate _thousands_ of different actions.
@@ -157,6 +159,24 @@ import SubSection from "../../components/prose/SubSection.astro";
       - Not having to focus on displaying data simplified Formie's job.
     - Custom titles & descriptions
     - Trust confirmation
+
+  </SubSection>
+</Section>
+
+<Section title="One page, one action">
+  <SubSection>
+    The most important departure from Etherscan was limiting forms to a single
+    action.
+    
+    Etherscan puts every actions in one place for your convience, but
+    it's a mess! You end up cutting through jungle and solving puzzles
+    like Indiana Jones to find the form you want — it's insanity!!
+
+    Just give people a link to the form.
+
+    No fuss. No muss. Just a form.
+
+    Simple.
 
   </SubSection>
 </Section>
