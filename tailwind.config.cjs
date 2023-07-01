@@ -3,10 +3,8 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
-      serif: ['Times', 'serif'],
-			sans: ['untitled', 'Ariel', 'Helvetica', 'sans'],
-			mono: ["Berkeley Mono", "monospace"],
-			ornament: ["ornament"],
+			sans: ['untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+			mono: ["Berkeley Mono", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
     },
 		extend: {
 			boxShadow: {
