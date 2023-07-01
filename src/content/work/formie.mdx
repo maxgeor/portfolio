@@ -18,11 +18,8 @@ year: 2022
 ---
 
 import Image from "../../components/prose/Image.astro";
-import Details from "../../components/prose/Details.astro";
 import Section from "../../components/prose/Section.astro";
 import SubSection from "../../components/prose/SubSection.astro";
-import Tooltip from "../../components/prose/Tooltip.astro";
-import Paragraph from "../../components/prose/Paragraph.astro";
 
 <Section title="Problem">
   <SubSection
@@ -35,11 +32,10 @@ import Paragraph from "../../components/prose/Paragraph.astro";
   >
     Developers make blockchain apps by...
     1. Writing code
-    2. Uploading it to the blockchain as a `smart contract`
-    3. Building a `frontend` (as an app or website) for the contract, so people can interact with it
+    2. Uploading it to the blockchain as `smart contracts`
+    3. Building a `frontend` (usually an app or website) so people can interact with the contracts.
 
-    {/* To save time, blockchain developers use frontend generators. These take your code and give it a free, bare-bones UI. */}
-    To save time, blockchain developers use frontend generators. These take your code and make a free, bare-bones UI for it.
+    To save time, blockchain developers use frontend generators. These take your code and give it a free, bare-bones UI.
 
     Etherscan is the biggest frontend generator, powering tons of projects.
 
@@ -63,16 +59,16 @@ import Paragraph from "../../components/prose/Paragraph.astro";
         isPadded: true
       }
     ]}
-  >
-    Our big breakthrough was realizing that smart contract actions are mini forms. 
+  > 
+    We cracked the nut by framing smart contract actions as mini forms.
     
     They have a couple fields and a button that does something when pressed. Framing smart contract actions as forms made Etherscan's shortcomings clear:
 
-    - There's no confirmation if anything worked
-    - You can't link someone to the action they want
-    - There's no copy guiding people or explaining things
+    - There's no copy to guide, educate, or update users
+    - Layers of irrelevant stuff hide the only UI that matters
+    - Users have to decipher every action name to find the right one
 
-    With this, we got our high-level solution: A form builder, like Google Forms, but for smart contracts.
+    With this, we got our high-level solution: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
 
   </SubSection>
 </Section>
@@ -81,17 +77,17 @@ import Paragraph from "../../components/prose/Paragraph.astro";
   <SubSection>
     Talking with teams & developers using Etherscan gave us two key insights:
 
-    - People used Etherscan as a "good enough" interface. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers, liked working in the backend, delegating the frontend to Etherscan.
-    - Everyone who used Etherscan knew it sucked (visually & functionally) but weren't willing to build something themselves.
-
-    ❓ Takeaways
-    {/* Takeaway: We should focus on serving simple actions that don't need complex interfaces. Takeaway: The bar was _really_ low.  We had room to cut lots of functionality. */}
+    - **People used Etherscan as a "good enough" interface**. Teams used it for admin-like actions that didn't deserve fancy interfaces. Blockchain developers, liked working in the backend, delegating the frontend to Etherscan.
+    - **Everyone knew Etherscan sucked** (visually & functionally) but weren't willing to build something themselves.
 
   </SubSection>
 </Section>
 <Section title="Process">
   <SubSection>
-    We worked by building the product piece-by-piece. We'd figure out the most important chunk of work then start building & designing it together. I skipped mockups, opting to roughly sketch the UI & flow then doing the rest in code.
+    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we designed & built each chunk in order.
+
+    Design started with rough sketches. After breadboarding flows and UI, I’d jump into code and design the rest. Hassan would build the backend while I designed (I’d join when finished).
+
   </SubSection>
 
 </Section>
@@ -99,25 +95,34 @@ import Paragraph from "../../components/prose/Paragraph.astro";
 <Section title="Challenges">
   <SubSection>
     ## Shooing scammers
-    We knew three things:
+    We knew three things from the jump:
     
     1. Scammers would use forms to misrepresent contracts<br/>
     2. We couldn't stop them<br/>
     3. But we had to do something<br/>
 
-    We needed some way to deter scammers without making the product harder to build or use.
+    How do we deter scammers without making the product harder to build or use?
 
-    ## ❓ Simple vs Secure
-    Simple vs Secure Simple vs Secure Simple vs Secure Simple vs Secure vs Simple vs Secure Simple vs Secure Simple vs Secure
+    ## Filtering & framing technical truths
+    They're tons of strange facts & behavious behaviours around smart contracts:
 
-    ## ❓ Flexibility
-    Not only does the form need to work with most smart contracts, but it also needs to work with most brands. The product needed an unopinioned aestheic.
+    - Transactions cost a bit of money
+    - Transactions can take a while to complete
+    - Anyone can make a frontend for any contract (becasuse they're public)
 
-    Why does it need an universal aesthetic? Well this page will basically be an extension of a project, acting as another page in their product's website, or it'll be the only interface to a product.
+    People without a clue are bound for confusion, missteps, and exploitation.
 
-    Becuase it needs to work in a bunch of different contents, it doesn't call for a distinctive or particulartiy noteworthy brand. In a way, the "brand" or Formie should be invisible to anyone using a form.
+    What facts are essential? How do we explain them without overwhelming users?
 
-    Formie's aestheic should be the opposite of distinctive. To users, there should be no brand.
+    ## Keeping it flexible
+    - Has to work well with a ton of different actions
+    - Has to work well with a ton of different brands (unopinioned aesthetic)
+
+    Formie form would be an extension of a project's product, or the only interface to a product.
+
+    Not only does the form need to work with most smart contracts, but it also needs to work with most brands.
+
+    How do you design an interface that works with a wide range of brands and actions?
 
     ## Key Decisions
     - Human words
