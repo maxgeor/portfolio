@@ -27,7 +27,9 @@ const { images } = Astro.props;
         </div>
       ))}
     </div>
-    {images?.map(image => <Caption text={image.alt || ''} />)}
+    <div class="relative w-full">
+      {images?.map((image) => <Caption text={image.alt || ''} classes='absolute top-0 left-1/2 transform -translate-x-1/2 w-full' />)}
+    </div>
   </div>
 </div>
 
@@ -43,9 +45,8 @@ const { images } = Astro.props;
     });
   
     captions.forEach((caption, indx) => {
-      caption.style.transform = `translateX(${indx * 100}%)`;
       if (indx === 0) return;
-      caption.style.display = 'none';
+      caption.style.opacity = '0%';
     });
   
     let curSlide = 0;
@@ -66,12 +67,10 @@ const { images } = Astro.props;
       });
       
       captions.forEach((caption, indx) => {
-        caption.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-        
         if (indx === curSlide) {
-          caption.style.display = 'block';
+          caption.style.opacity = '100%';
         } else {
-          caption.style.display = 'none';
+          caption.style.opacity = '0%';
         }
       });
     });
@@ -89,12 +88,10 @@ const { images } = Astro.props;
       });
   
       captions.forEach((caption, indx) => {
-        caption.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-  
         if (indx === curSlide) {
-          caption.style.display = 'block';
+          caption.style.opacity = '100%';
         } else {
-          caption.style.display = 'none';
+          caption.style.opacity = '0%';
         }
       });
     });
