@@ -1,6 +1,6 @@
 ---
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 import Image from "../../components/prose/Image.astro";
+import Caption from "./Caption.astro";
 import Carouselle from "./Carouselle.astro";
 
 export interface Props {
@@ -27,7 +27,7 @@ const { images } = Astro.props;
             alt={image.alt || "Image"} 
             classes={`aspect-[7/4] object-fit w-full shadow-float`}
           />
-          <p class="text-[12px] leading-6 text-gray-500 text-center italic">{image.alt}</p>
+          <Caption text={image.alt || ''} />
         </div>
       ))
     )}

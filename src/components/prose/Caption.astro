@@ -1,0 +1,9 @@
+---
+export interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+<p class="caption transition text-center text-[12px] leading-6 italic text-gray-500">
+  {text}
+</p>
