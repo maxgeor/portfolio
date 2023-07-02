@@ -41,9 +41,9 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     The problem? **Etherscan's frontends suck**.
 
-    - The "frontend" is at the bottom of a page, behind two drawers
-    - The "frontend" is a list of forms with technical names for every action in the code.
-    - The "frontend" doesn't give guidance, helpful errors, or feedback about your transaction.
+    - It's is at the bottom of a page, behind two drawers
+    - It's a list of technically-named forms for every action in the code
+    - It doesn't give guidance, helpful errors, or feedback about your transaction.
 
     It felt more like an obstacle course than a tool — we knew it could be better.
 
@@ -120,7 +120,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     _How do we ward off scammers without making the product harder to build or use?_
 
     ## Filtering & framing technical details
-    There are tons of strange facts & behavious behaviours around smart contracts:
+    Smart contracts have tons of strange facts & behavious behaviours:
 
     - Transactions cost a bit of money
     - Transactions take time to go through
@@ -133,32 +133,9 @@ import SubSection from "../../components/prose/SubSection.astro";
     ## Keeping it flexible
     Because Formie could hook into any contract, it's copy, error handling, and layout had to accomodate _thousands_ of different actions.
 
-    Formie also had to work with different brands. Formie acts as an extension of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic would clash with the project's brand — confusing users and turning projects away.
+    It's aestheic also had to fit with different brands. Formie acts as an extension of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic would clash with the project's brand — confusing users and turning projects away.
 
     _How do you design an interface that works with a wide range of brands and actions?_
-
-    ## Key Decisions
-    - Human words
-      - Ditched technical terms like "Method" and "Writing"
-    - Figuring out how to deter spammers and protect people from getting scammed (**forcing people to confirm trust**)
-      - We knew try to stop scammers from making a form would be impossible, so we focused on making it clear who the form was for and what it did.
-      - Most of the time, anyone can detect a scam with some time and effort
-        - it often involves, double checking the form's source or asking a smart friend to make sure it's kosher.
-        - Also why we always include a link to the Etherscan page
-      - Went from asking "How do we make sure no one gets scammed?" to "How do we make sure anyone "
-      - Simple 80/20 solution
-      - Easy to understand, no technical stuff to explain
-      - soft-lock
-      - great because people don't need to understand the technical parts — as long as
-    - One-way methods only
-      - There are two kinds of actions on a smart contract:
-        - One-way: You hit a button and _make some change_ (ex: voting, sending money, changing ownership)
-        - Two-way: You hit a button and _get something back_ (ex: a Cryptopunk's characteristics)
-      - Custom interfaces and tools like Dune and Etherscan covered pulling and displaying of data fine.
-      - Most of people used Etherscan for write methods (Mint, renouncing Ownership).
-      - Not having to focus on displaying data simplified Formie's job.
-    - Custom titles & descriptions
-    - Trust confirmation
 
   </SubSection>
 </Section>
@@ -181,9 +158,25 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
+<Section title="Only one-way actions">
+  <SubSection>
+    There are two kinds of actions on a smart contract: 
+    
+    - One-way: You hit a button and trigger a change_ (ex: voting, sending money, changing ownership) 
+    - Two-way: You hit a button and _get data back_ (ex: a Cryptopunk's characteristics) 
+    
+    Two-way actions are complex. Every project needs to show their data differently, and pull from data outside the blockchain. Custom UI is the only way to create a great experience.
+
+    One-way actions, on the other hand, are simple. They just need a couple fields and a button. Plus, people rarely used two-way actions through Etherscan.
+
+    We decided to focus only on one-way actions — filtering out any two-ways when plugging in a contract. This radically simplified the product, letting a single interface give a consistenly great exprience.
+
+  </SubSection>
+</Section>
+
 <Section title="Human words">
   <SubSection>
-    Not only do we replace the techno-bable with plain english, but let people write the words themselves! no better way to ensure the right info is on any given form that to let form makers put them there!
+    Not only do we ditch techno-bable like "Method" and "Write" for plain english, but let people write the words themselves! no better way to ensure the right info is on any given form that to let form makers put them there!
 
     I also know that there's info someone would need on the page that I could never imagine. Giving someone a blank slate with good formatting opens a world of possibilities and makes the forms work for a wide array of use cases.
 
@@ -192,7 +185,7 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title='"Yes, I trust this form"'>
+<Section title="Force to confirm trust">
   <SubSection>
     Our solution to ward off spammers was forcing people to confirm that they trust the form before letting them submit.
 
@@ -204,39 +197,6 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     Adding a soft lock is enough to save most people from scams (and cover our butt, legally).
 
-  </SubSection>
-</Section>
-
-<Section title="Treat it like a form">
-  <SubSection>
-    - Form builder UI (communication) - Familiar experinece for using and
-    creating forms - Streamlines the experience by just giving people the fields
-    they need. - **Custom title & description** (flexibility, communication) -
-    Best tool is plain english - Lightweight, flexible way to let form creators
-    give context to the action. - Explain what it does - Instructions for what
-    to do before - Add prices if something costs money
-  </SubSection>
-</Section>
-
-<Section title="Forced confirmation">
-  <SubSection>
-    - Form builder UI (communication) - Familiar experinece for using and
-    creating forms - Streamlines the experience by just giving people the fields
-    they need. - **Custom title & description** (flexibility, communication) -
-    Best tool is plain english - Lightweight, flexible way to let form creators
-    give context to the action. - Explain what it does - Instructions for what
-    to do before - Add prices if something costs money
-  </SubSection>
-</Section>
-
-<Section title="Only one-way actions">
-  <SubSection>
-    - Form builder UI (communication) - Familiar experinece for using and
-    creating forms - Streamlines the experience by just giving people the fields
-    they need. - **Custom title & description** (flexibility, communication) -
-    Best tool is plain english - Lightweight, flexible way to let form creators
-    give context to the action. - Explain what it does - Instructions for what
-    to do before - Add prices if something costs money
   </SubSection>
 </Section>
 
