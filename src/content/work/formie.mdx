@@ -202,55 +202,21 @@ import SubSection from "../../components/prose/SubSection.astro";
 
 <Section title="Tradeoffs">
   <SubSection>
-    ## Custom field titles and descriptions
-    Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
+    Our priority was speed-to-launch. This lead us to cut important but non-essential features by [comparing to baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline): Is this V1 better than people's current solution?
 
-    ## Editing
+    ## No editing
+
     I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
     Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms).
 
     Comparing to the baseline experience of using Etherscan, moving a single contract action mathout out of Ether
 
-    ## Remembering pending transactions when users leave the page
-    Most transactions were short enough that users wouldn't navigate away, and the pending transaction copy helped ease users' concerns.
+    ## Custom field titles and descriptions
 
-    Our priority was speed-to-launch. This lead us to cut important but non-essential features by [comparing to baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline): Is this V1 better than people's current solution?
-    - No custom branding (not important — getting most of the value from the form)
-    - Seeing the problem
-    - Realizing the high-level solution (**form builder**)
-      - Familiar experinece for using and creating forms
-      - Streamlines the experience by just giving people the fields they need.
-    - Figuring out how to deter spammers and protect people from getting scammed (**forcing people to confirm trust**)
-      - We knew try to stop scammers from making a form would be impossible, so we focused on making it clear who the form was for and what it did.
-      - Most of the time, anyone can detect a scam with some time and effort
-        - it often involves, double checking the form's source or asking a smart friend to make sure it's kosher.
-        - Also why we always include a link to the Etherscan page
-      - Went from asking "How do we make sure no one gets scammed?" to "How do we make sure anyone "
-      - Simple 80/20 solution
-      - Easy to understand, no technical stuff to explain
-      - soft-lock
-      - great because people don't need to understand the technical parts — as long as
-    - Flexible
-      - one form needed to work well for every method
-      - **Ethereum Mainnet only**
-        - **Write Methods onlys**
-          - Custom interfaces and tools like Dune and Etherscan covered pulling and displaying of data fine.
-          - Most of people used Etherscan for write methods (Mint, renouncing Ownership).
-          - Not having to focus on displaying data simplified Formie's job.
+    Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
 
-    - How to make sure people are informed without being overwhelmed
-
-      - **Custom title & description**
-
-        - Best tool is plain english
-        - Lightweight, flexible way to let form creators give context to the action.
-          - Explain what it does
-          - Instructions for what to do before
-          - Add prices if something costs money
-
-      - Facts > Education
-        - Say transactions can take a while
-        - Anticipate common post-mint issues on success screen
+    ## No customized error messages or placeholders
+    Handling different errors across well smart contracts was difficult.
 
   </SubSection>
   <Section title="Result">
