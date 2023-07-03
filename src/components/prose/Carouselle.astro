@@ -60,10 +60,13 @@ const { images } = Astro.props;
   
     prevSlide.addEventListener("click", function () {
       curSlide--;
-  
+
+      if (!nextSlide.style.display || nextSlide.style.display === 'none') {
+        nextSlide.style.display = 'block';
+      }
+
       if (curSlide === 0) {
         prevSlide.style.display = 'none';
-        nextSlide.style.display = 'block';
       }
   
       slides.forEach((slide, indx) => {
@@ -81,9 +84,12 @@ const { images } = Astro.props;
     
     nextSlide.addEventListener("click", function () {
       curSlide++;
+
+      if (!prevSlide.style.display || prevSlide.style.display === 'none') {
+        prevSlide.style.display = 'block';
+      }
   
       if (curSlide === slides.length -1) {
-        prevSlide.style.display = 'block';
         nextSlide.style.display = 'none';
       }
   
