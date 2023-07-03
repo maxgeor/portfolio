@@ -162,23 +162,23 @@ import SubSection from "../../components/prose/SubSection.astro";
 
 <Section title="Only supporting one-way actions">
   <SubSection>
-    Smart contract have two kinds of actions: 
+    Smart contracts have two kinds of actions: 
     
-    - One-way: You hit a button and trigger a change_ (ex: voting, sending money, changing ownership) 
-    - Two-way: You hit a button and _get data back_ (ex: a Cryptopunk's characteristics) 
+    - One-way: An action that _triggers a change_ (ex: voting, sending money, changing ownership) 
+    - Two-way: An action that _returns data_ (ex: seeing an account's balance, asking for an NFT's characteristics) 
     
-    Two-way actions are complex. Every project needs to show their data differently, and pull from data outside the blockchain. Custom UI is the only way to create a great experience.
+    Two-way actions are complex. Different data needs different layouts, with non-blockchain data often mixed in. To make a great experience, you need a custom UI.
 
-    One-way actions, on the other hand, are simple. They just need a couple fields and a button. Plus, people rarely used two-way actions through Etherscan.
+    One-way actions are simple. They just need a couple fields and a button, so a standardized interface works well.
 
-    We decided to focus exclusively on one-way actions — shrinking the problem to something manageable.
+    We decided to focus exclusively on one-way actions — shrinking the scope to a manageable size.
 
   </SubSection>
 </Section>
 
 <Section title="Using human words">
   <SubSection>
-    Not only do we swap robot words like "Method" and "Write" for plain english, but let people write the words themselves! no better way to ensure the right info is on any given form that to let form makers put them there!
+    ❓ Not only do we swap robot words like "Method" and "Write" for plain english, but let people write the words themselves! no better way to ensure the right info is on any given form that to let form makers put them there!
 
     I also know that there's info someone would need on the page that I could never imagine. Giving someone a blank slate with good formatting opens a world of possibilities and makes the forms work for a wide array of use cases.
 
@@ -189,6 +189,7 @@ import SubSection from "../../components/prose/SubSection.astro";
 
 <Section title="Force people to confirm trust">
   <SubSection>
+    ❓ 
     Our solution to ward off spammers was forcing people to confirm that they trust the form before letting them submit.
 
     We knew we weren't going to stop every scam or build a trustless, zero-proof protocol to do it. We needed something simpler.
@@ -208,18 +209,16 @@ import SubSection from "../../components/prose/SubSection.astro";
     
     <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">Comparing to baseline</a>, we cut some important but non-essential features:
 
-    ## No editing
-
+    ## ❓ No editing
     I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
     Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms).
 
     Comparing to the baseline experience of using Etherscan, moving a single contract action mathout out of Ether
 
-    ## No custom field titles and descriptions
-
+    ## ❓ No custom field titles and descriptions
     Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
 
-    ## No customized error messages or placeholders
+    ## ❓ No customized error messages or placeholders
     Handling different errors across well smart contracts was difficult.
 
   </SubSection>
