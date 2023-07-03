@@ -145,7 +145,14 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="One page, one action">
-  <SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/decisions/one-page.png", 
+        alt: "Form for Uniswap's Delegate action",
+      },
+    ]} 
+  >
     The most important departure from Etherscan was limiting forms to a single
     action.
     
@@ -161,7 +168,14 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Only supporting one-way actions">
-  <SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/decisions/one-way-actions.png", 
+        alt: "UI for picking a form's action",
+      },
+    ]} 
+  >
     Smart contracts have two kinds of actions: 
     
     - **One-way**: An action that _triggers a change_ (ex: voting, sending money, changing ownership) 
@@ -177,7 +191,14 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Using human words">
-  <SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/decisions/words/title-and-description.png", 
+        alt: "UI for editing title & description",
+      },
+    ]} 
+  >
     We found that the best way to communicate complicated ideas was explaining it in plain english.
 
     On top if replaced words like "Method" and "Write" with "Action" and "Send", we **let people pick their form's title and description**.
@@ -192,7 +213,14 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Forcing people to confirm trust">
-  <SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/decisions/trust.png", 
+        alt: "Confirmation checkbox at the end of every form",
+      },
+    ]} 
+  >
     We knew we weren't going to stop every scam or build a trustless, zero-proof protocol to do it. We needed something simpler.
 
     Our solution to ward off bad actors was **forcing users to confirm they trust the form before letting them submit**.
