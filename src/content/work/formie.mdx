@@ -193,33 +193,33 @@ import SubSection from "../../components/prose/SubSection.astro";
 
 <Section title="Forcing people to confirm trust">
   <SubSection>
-    Our solution to ward off bad actors was forcing people to confirm that they trust the form before letting them submit.
-
     We knew we weren't going to stop every scam or build a trustless, zero-proof protocol to do it. We needed something simpler.
 
-    Most people who get scammed, especially in crypto, are in a rush. They see a link to a sick mint on Discord or Twitter and act out of FOMO.
+    Our solution to ward off bad actors was **forcing users to confirm they trust the form before letting them submit**.
 
-    Detecting scams isn't rocket science. Making people double check their source or ask a smart friend is often enough to sniff one out.
+    Most people who get scammed, especially in crypto, are in a rush. They see a link to a sick mint on Discord or Twitter, feel the FOMO, then act.
+
+    Making people double check their source is a cheap way to protect users from scammers and themselves.
 
   </SubSection>
 </Section>
 
 <Section title="Tradeoffs">
   <SubSection>
-    Our priority was speed-to-launch. We weren't shipping the ideal product, but something better than what people have right now.
+    Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
     
-    <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">Comparing to baseline</a>, we cut some important but non-essential features:
+    By <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to baseline</a>, we cut important, but non-essential features:
 
-    ## ❓ No editing
+    ## ❓ Editing
     I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
     Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms).
 
     Comparing to the baseline experience of using Etherscan, moving a single contract action mathout out of Ether
 
-    ## ❓ No custom field titles and descriptions
+    ## ❓ Custom field titles and descriptions
     Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
 
-    ## ❓ No customized error messages or placeholders
+    ## ❓ Customized error messages & placeholders
     Handling different errors across well smart contracts was difficult.
 
   </SubSection>
