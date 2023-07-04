@@ -53,8 +53,9 @@ const {
         prose-p:-my-1.5 prose-p:max-w-prose
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-5 lg:prose-ul:pl-4 prose-ul:max-w-prose
-        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-5 lg:prose-ol:pl-4 prose-ol:max-w-prose
+        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-6 lg:prose-ul:pl-4 prose-ul:max-w-prose
+        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-6 lg:prose-ol:pl-4 prose-ol:max-w-prose prose-ol:
+        first:prose-li:mt-0 last:prose-li:mb-0
         prose-img:h-min prose-img:m-0
         grid grid-cols-1 lg:grid-cols-12 gap-12 text-black
       `}>
@@ -70,6 +71,10 @@ const {
     height: 16px;
     border-radius: 100%;
     background-color: #000;
+  }
+  
+  ol li::marker {
+    font-family: sans-serif;
   }
 
   mark {
