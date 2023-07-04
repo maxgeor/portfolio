@@ -238,6 +238,12 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Tradeoffs">
+  <SubSection>
+    Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
+    
+    By <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to our baseline</a>, we cut important, but non-essential features:
+  </SubSection>
+
   <SubSection
     images={[
       { 
@@ -246,10 +252,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
-    
-    By <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to our baseline</a>, we cut important, but non-essential features:
-
     ## Replace editing with infinite forms
     We wanted to let people edit forms after creation. Late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
@@ -259,6 +261,16 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
+  </SubSection>
+  
+  <SubSection
+    images={[
+      { 
+        src: "/placeholder.png", 
+        alt: "...",
+      },
+    ]} 
+  >
     ## Only allow customizing form title & description
     Because we cut editing, all customization would happen on the form creation page. There's a lot to customize:
 
@@ -273,12 +285,22 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     Limited customization kept form creation easy, while still offering more control than Etherscan.
 
+  </SubSection>
+
+  <SubSection
+    images={[
+      { 
+        src: "/placeholder.png", 
+        alt: "...",
+      },
+    ]} 
+  >
     ## Limited error messaging
     We wanted to translate every error into clear, helpful messages, but it was much harder than we thought.
 
     At the time, no standard like HTTP existed for handling smart contract errors. Every contract handled them differently, with no way to signal the error type.
 
-    It was impossible to translate errors consistently, so we settled on...
+    It was impossible to translate errors consistently. We settled on...
 
     1. Humanizing basic type errors
     2. Wrapping other errors in a honest, generic message
