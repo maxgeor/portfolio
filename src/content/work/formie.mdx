@@ -237,16 +237,33 @@ import SubSection from "../../components/prose/SubSection.astro";
     By <a href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to our baseline</a>, we cut important, but non-essential features:
 
     ## ❓ Editing
-    I wanted to allow for custom titles, descriptions, submit buttons, and fields, but implementing authentication would have taken too long.
-    Tradeoff: Permanent forms with added form titles and descriptions (acceptable since users could create unlimited forms).
+    I always wanted someone to edit their entire form (fields, buttons, placeholders, etc.) We realized later that letting people edit forms after being created would mean rearchitecting our database and authentication.
 
-    Comparing to the baseline experience of using Etherscan, moving a single contract action mathout out of Ether
+    Instead of spending more 2 weeks, we tried to find annother approach.
 
-    ## ❓ Custom field titles and descriptions
-    Comparing to the baseline, having the Formie package and the same fields was still an improvement for Etherscan users.
+    - Problem was editing with current system wouldn't be secure.
+    - But it would be fine if they were uneditable.
 
-    ## ❓ Customized error messages & placeholders
-    Handling different errors across well smart contracts was difficult.
+    For V1, we decided to give people unlimited forms, but make them uneditable after creation.
+
+    - Having unlimited forms got around no editing because people could just make new forms whenever they made a mistake or needed a change.
+    - This was still better than using Etherscan and we'd be able to redo the backend later.
+    - Our decision let us ship Formie that day.
+
+    ## ❓ Custom field titles, descriptions & placeholders
+    Downstream of not allowing is not letting people edit field titles and descriptions.
+
+    - I really wanted to include this
+    - Could have included field editing under form title and description fields, but it would have added too many steps to the initial creation flow.
+    - Keeping the editorial decisions to form title and description was gave the most of the benefit without being daunting. Worst case, if some fields were super unclear, you could give context to them in the form description.
+    - Compared to Etherscan, having some editorial control is miles better than none at all.
+
+    ## ❓ Customized & humanized error messages
+    - I wanted to have every error message be handled
+    - Couldn't handle error messages. Massive range of error messages and smart contracts didn't have standardized error codes like HTTP.
+    - Couldn't let people write custom error messages becasue there was no way to programmatically get all of a contract's error messages.
+    - Etherscan just gave the raw error message, so we decided to wrap the error in some honest, helpful copy.
+    - Wasn't too happy about this, but only so much you can do when working with a black box.
 
   </SubSection>
 </Section>
