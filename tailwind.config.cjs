@@ -8,7 +8,7 @@ module.exports = {
     },
 		extend: {
 			boxShadow: {
-				float: 'rgba(0, 0, 0, 0.19) 0px 1px 2px, rgba(0, 0, 0, 0.045) 0 -.5px 0;',
+				float: 'rgba(0, 0, 0, 0.19) 0px 1px 2px, rgba(0, 0, 0, 0.05) 0 -.5px 0;',
 			},
 			colors: {
 				gray: {
