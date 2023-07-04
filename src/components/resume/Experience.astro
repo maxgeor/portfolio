@@ -15,7 +15,7 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } = Astro.pr
 <article class="col-span-3 grid grid-cols-3 gap-4">
   <h3 class={`font-semibold ${titleWidth ? titleWidth : ''}`}>{title}</h3>
   <p>{company}</p>
-  <div class="flex relative h-fit">
+  <div class="justify-self-end flex relative h-fit">
     <p class="w-[69px] shrink-0">{startDate}</p>
     <span class="absolute top-1/2 transform -translate-y-1/2  left-[58px]">-</span>
     <p class="w-[53px] shrink-0">{endDate}</p>
