@@ -27,6 +27,7 @@ const { images, isUsingCarouselle = false } = Astro.props;
             src={image.src} 
             alt={image.alt || "Image"} 
             classes={`aspect-[7/4] object-fit w-full shadow-float`}
+            // classes={`aspect-[7/4] object-fit w-full border border-[#EEF1F6] border-b-[#DDE0E5] border-t-gray-100`}
           />
           <Caption text={image.alt || ''} />
         </div>
