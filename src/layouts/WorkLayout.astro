@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import Header from "../components/Header.astro";
 import DetailsTable from "../components/work/DetailsTable.astro";
 const { frontmatter } = Astro.props;
 const {
@@ -19,15 +20,16 @@ const {
       <svg class="-ml-0.5 -mb-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 8.84197C3.3241 9.04343 3.64052 9.05363 3.84197 8.86477L7.5 5.43536L11.158 8.86477C11.3595 9.05363 11.6759 9.04343 11.8648 8.84197C12.0536 8.64051 12.0434 8.32409 11.842 8.13523L7.84197 4.38523C7.64964 4.20492 7.35036 4.20492 7.15803 4.38523L3.15803 8.13523C2.95657 8.32409 2.94637 8.64051 3.13523 8.84197Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
       Go back
     </button>
-    <header class="col-span-full flex justify-between pt-6 sm:pt-12">
-      <a href="/" class="hover:underline -my-1">Max Georgopoulos</a>
-      {link ? (
-        <a href={link} target="_blank" class="hidden lg:flex items-center gap-[3px] hover:underline focus:underline -my-1 -mr-[3px]">
-          <span>See it</span>
-          <svg class="mt-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-        </a>
-      ) : null}
-    </header>
+    <Header 
+      link={
+        link ? { 
+          text: 'See it', 
+          href: link, 
+          classes: 'hidden lg:flex', 
+          isExternal: true 
+        } : undefined
+      } 
+    />
     <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 xl:pb-12 xl:border-b border-gray-200">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>

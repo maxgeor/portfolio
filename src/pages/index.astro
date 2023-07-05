@@ -1,14 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
 import Card from '../components/work/Card.astro';
 import LinkBlock from '../components/LinkBlock.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="grid sm:grid-cols-12 relative mx-auto gap-12 px-6 sm:px-12 ">
-		<section class="col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 ">
-			<h1 class="col-span-full -my-1">Max Georgopoulos</h1>
-			<a href="/about" class="hover:underline -my-1">About</a> 
-		</section>
+		<Header link={{ text: 'About', href: '/about' }} />
 		<main class="col-span-full flex flex-col gap-12 relative pb-24">
 			<Card
 				title='Formie (wip)'

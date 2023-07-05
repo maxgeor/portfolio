@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<main class="col-span-full flex flex-col gap-12 pt-6 pb-12 px-6 sm:p-12 ">
-		<div class="flex justify-between">
-			<a href="/" class="group hover:underline -my-1">
-				Max Georgopoulos
-			</a>
-			<a href="/resume-max-georgopoulos.pdf" class="hover:underline xl:order-2 -my-1">Resume</a>
-		</div>
+		<Header 
+			link={{ text: 'Resume', href: '/resume-max-georgopoulos.pdf' }} 
+			classes='!p-0' 
+		/>
 		<div class="flex flex-col lg:grid lg:grid-cols-12 gap-12">
 			<img src="/me.jpeg" alt="my face" class="col-span-4 xl:col-span-3 aspect-square max-w-sm w-full h-full mx-auto" />
 			<div class="col-span-8 xl:col-span-9 flex flex-col xl:flex-row gap-12">
