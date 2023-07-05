@@ -154,7 +154,7 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="Key Decisions">
+<Section title="One page, one action">
   <SubSection
     images={[
       { 
@@ -163,7 +163,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## One page, one action
     The most important departure from Etherscan was limiting forms to a single
     action.
     
@@ -173,6 +172,8 @@ import SubSection from "../../components/prose/SubSection.astro";
     Linking straight to the action makes it impossible to miss.
 
   </SubSection>
+</Section>
+<Section title="Only supporting one-way actions">
   <SubSection
     images={[
       { 
@@ -181,7 +182,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## Only supporting one-way actions
     Smart contracts have two kinds of actions: 
     
     - `One-way`: An action that _triggers a change_ (ex: voting, sending money, changing ownership) 
@@ -194,6 +194,8 @@ import SubSection from "../../components/prose/SubSection.astro";
     We decided to only focus on one-way actions, shrinking our scope way down.
 
   </SubSection>
+</Section>
+<Section title="Using human words">
   <SubSection
     images={[
       { 
@@ -202,7 +204,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## Using human words
     To translate tricky ideas, we replaced technical terms ("Method", "Write") with Plain English ("Action" and "Send").
 
     While the copy was clean, we knew our static wording wouldn't help communicate the unique context of every action.
@@ -214,6 +215,8 @@ import SubSection from "../../components/prose/SubSection.astro";
     Despite its issues, open text was essential, so we had to design around it.
 
   </SubSection>
+</Section>
+<Section title="Making people confirm trust">
   <SubSection
     images={[
       { 
@@ -222,7 +225,6 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## Making people confirm trust
     We knew we weren't going to stop every scam or build a trustless, zero-proof protocol to do it. We needed something simpler.
 
     Our solution to ward off bad actors was forcing users to confirm they trust the form before letting them submit.
