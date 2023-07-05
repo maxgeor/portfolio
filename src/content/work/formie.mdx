@@ -253,11 +253,16 @@ import SubSection from "../../components/prose/SubSection.astro";
     ]} 
   >
     ## Replace editing with infinite forms
-    We wanted to let people edit forms after creation. Late in development, we realized the backend would need a week-long rewite to handle secure edits.
+    We wanted to let people edit any part of their form. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
-    Instead of rebuilding, we decided to 1) let people make unlimited forms and 2) make forms permanent (for security reasons). People could "edit" their forms by making another one, which only took ~30 seconds.
+    Instead of rebuilding, we decided to..
 
-    Since there isn't much content, we figured people wouldn't need to edit much. If we learned after launch that people edit frequently, we could add it, but edit via replacement might be enough.
+    1. Let people make unlimited forms, and
+    2. Make forms permanent (for security reasons).
+
+    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms didn't have much content, we figured people wouldn't need to edit much anyways.
+
+    If we learned after launch that people edit frequently, we could add it, but edit via replacement might be enough.
 
     Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
