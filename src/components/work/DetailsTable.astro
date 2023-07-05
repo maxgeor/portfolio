@@ -15,7 +15,7 @@ const { roles, tools, collaborators } = Astro.props;
   <table class="flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
     <tr>
       <td class="w-4 pr-5 pb-2"><p>Role</p></td>
-      <td><p class="capitalize pb-2">{roles.join(', ')}</p></td>
+      <td><p class="pb-2">{roles.join(', ')}</p></td>
     </tr>
     {tools ? (
       <tr>
