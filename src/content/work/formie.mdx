@@ -296,14 +296,14 @@ import SubSection from "../../components/prose/SubSection.astro";
     ]} 
   >
     ## Limited error messaging
-    We wanted to translate every error into clear, helpful messages, but it was much harder than we thought.
+    We wanted to translate every error into a clear, helpful message... but it was much harder than we thought.
 
-    At the time, no standard like HTTP existed for handling smart contract errors. Every contract handled them differently, with no way to signal the error type.
+    At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
 
-    It was impossible to translate errors consistently. We settled on...
+    It was impossible to translate errors consistently, so we settled on...
 
     1. Humanizing basic type errors
-    2. Wrapping other errors in a honest, generic message
+    2. Wrapping other errors in an honest, generic message
 
     We weren't happy about this, but you can only do so much working with a black box.
 
