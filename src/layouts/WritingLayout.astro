@@ -7,13 +7,13 @@ const {frontmatter} = Astro.props;
     <header class="col-span-full flex justify-between pt-6 sm:pt-12">
       <a href="/" class="hover:underline -my-1">Max Georgopoulos</a>
     </header>
-    <aside class="col-span-full lg:col-span-3 -my-1">
+    <aside class="col-span-full lg:col-span-3 -my-1 pb-2">
       <h1>{frontmatter.title}</h1>
-      <p class="text-gray-500 text-[13px] leading-6">{frontmatter.date}</p>
+      <p class="text-gray-500 text-[13px] mt-1">{frontmatter.date}</p>
     </aside>
     <main class="col-span-full lg:col-span-9 xl:col-span-6">
       <div class={`
-        prose-sm lg:-my-1.5 max-w-prose
+        prose-sm -my-1.5 max-w-prose
         prose-headings:text-sm prose-headings:font-semibold prose-headings:leading-6
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal
@@ -26,27 +26,3 @@ const {frontmatter} = Astro.props;
     </main>
   </div>
 </Layout>
-
-<!-- <style is:inline>
-  article#content > h2 {
-    font-size: 2rem;
-    line-height: 2.25rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  article#content > p,
-  article#content > ul,
-  article#content > ol {
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem;
-    max-width: 65ch;
-  }
-  
-  article#content > p:first-child {
-    margin-top: 0;
-  }
-  article#content > p:last-child {
-    margin-bottom: 0;
-  }
-</style> -->
