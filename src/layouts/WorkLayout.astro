@@ -143,16 +143,7 @@ const {
   const goBackUpButton = document.querySelector('#go-back-up-button');
   const goBackDownButton = document.querySelector('#go-back-down-button');
 
-  anchors.forEach(anchor => anchor.addEventListener('click', e => {
-    // TODO: See if programatic scroll fucks history
-    
-    // prevent default (stop navigation to anchor)
-    // scroll to anchor with padding
-
-    showGoBackButton(e);
-
-    // Push last location onto history (if needed)
-  }));
+  anchors.forEach(anchor => anchor.addEventListener('click', e => showGoBackButton(e)));
 
   goBackUpButton.addEventListener('click', () => {
     goBack();
