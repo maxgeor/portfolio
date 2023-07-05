@@ -18,7 +18,7 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 >
 	<p class={`
 		${type === 'writing' ? 'xs:basis-1/2' : 'basis-1/2'}
-		self-center group-hover:underline
+		self-center group-hover:underline pr-6 sm:pr-0
 	`}>
 		{title}
 	</p>
