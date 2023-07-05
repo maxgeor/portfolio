@@ -13,15 +13,18 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 	href={href}
 	target={externalLink ? '_blank' : '_self'}
 	class={`
-		group relative col-span-full lg:col-span-6 flex items-baseline gap-x-6 sm:gap-x-12 py-1 xl:py-0 border-t xl:border-0 last:border-b xl:last:border-0
+		group relative col-span-full lg:col-span-6 flex items-baseline justify-between gap-x-6 sm:gap-x-12 py-1 xl:py-0 border-t xl:border-0 last:border-b xl:last:border-0
 	`}
 >
-	<p class='self-center group-hover:underline basis-1/2'>
+	<p class={`
+		${type === 'writing' ? 'xs:basis-1/2' : 'basis-1/2'}
+		self-center group-hover:underline
+	`}>
 		{title}
 	</p>
 	<p class={`
-		${type === 'writing' ? 'text-[13px]' : null}
-		basis-1/2 self-center text-gray-500
+		${type === 'writing' ? 'text-[13px] xs:basis-1/2' : 'basis-1/2'}
+		self-center text-gray-500
 	`}>
 		{description}
 	</p>
