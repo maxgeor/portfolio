@@ -64,7 +64,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     They have a couple fields and a button that does something when pressed. Looking at contract actions this way made Etherscan's shortcomings clear:
 
     - There's no copy to guide, educate, or update users
-    - Layers of irrelevant info buries the UI that actually matters
+    - Layers of irrelevant info buries <a href="#one-page-one-action">the UI that actually matters</a>
     - Users have to decipher every action name to find the right one
 
     With this, our idea formed: **A tool, like Google Forms, that creates landing pages for single smart contract actions**.
@@ -95,13 +95,13 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     1. _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions, while blockchain developers used it for personal projects & testing (since they preffered working in the backend).
     2. _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money to build something custom.
-    3. _Etherscan was almost exclusively used for one-way actions_. Two-way actions (code that returned data) had custom frontends.
+    3. _Etherscan was almost exclusively used for <a href="#only-supporting-one-way-actions">one-way actions</a>_ (two-way actions tended to have custom frontends).
 
     Takeaways:
 
     - One-way smart contract actions were neglected
     - People still valued UX and might be willing to switch if setup was easy
-    - It the bar was _really_ low — we had lots of room to cut scope and still ship something better
+    - It the bar was _really_ low — we had lots of room to <a href="#tradeoffs">cut scope</a> and still ship something better.
 
     ## Building
     We worked by doing design and development at the same time.
@@ -129,7 +129,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     2. We couldn't stop them<br/>
     3. But we had to do something<br/>
 
-    _How do we ward off scammers without making the product harder to build or use?_
+    _<a href="#making-people-confirm-trust">How do we ward off scammers</a> without making the product harder to build or use?_
 
     ## Filtering & framing technical details
     Smart contracts have tons of strange behaviors:
@@ -140,14 +140,14 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     People who know nothing about smart contracts are bound to face confusion, missteps, and exploitation. Although it's a technical topic, there's stuff people needed to understand.
 
-    _Which ideas are essential? How do we share them without overwhelming people?_
+    _Which ideas are essential? <a href="#using-human-words">How do we explain things</a> without overwhelming people?_
 
     ## Keeping it flexible
     Formie could be used for any contract, so its copy, error handling, and layout had to work with _thousands_ of different actions.
 
     It also had to work with different brands. Formie is a part of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic could clash with the project's brand — confusing users and turning projects away.
 
-    _How do you design an interface that works with a wide range of brands and actions?_
+    _<a href="#only-supporting-one-way-actions">How do you design a universal interface</a>, serving a wide range of brands and actions?_
 
   </SubSection>
 </Section>
