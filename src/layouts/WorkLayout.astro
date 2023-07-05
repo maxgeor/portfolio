@@ -110,8 +110,8 @@ const {
   const goBack = () => window.history.back();
 
   const showGoBackUpButton = () => goBackUpButton.classList.remove('-translate-y-[52px]');
-  const showGoBackDownButton = () => goBackDownButton.classList.remove('translate-y-[52px]');
   const hideGoBackUpButton = () => goBackUpButton.classList.add('-translate-y-[52px]');
+  const showGoBackDownButton = () => goBackDownButton.classList.remove('translate-y-[52px]');
   const hideGoBackDownButton = () => goBackDownButton.classList.add('translate-y-[52px]');
 
   function showGoBackButton(e) {
@@ -120,7 +120,9 @@ const {
     setTimeout(() => {
       if (isElementInView(clickedLink)) return;
 
-      if (window.scrollY > clickedLink.offsetTop) {
+      const isClickedLinkAboveFold = window.scrollY > clickedLink.offsetTop;
+
+      if (isClickedLinkAboveFold) {
         showGoBackUpButton();
         setTimeout(() => hideGoBackUpButton(), 8000);
       } else {
