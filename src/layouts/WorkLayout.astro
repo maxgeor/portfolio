@@ -124,9 +124,11 @@ const {
 
       if (isClickedLinkAboveFold) {
         showGoBackUpButton();
+        // clearTimeout when necessary
         setTimeout(() => hideGoBackUpButton(), 8000);
       } else {
         showGoBackDownButton();
+        // clearTimeout when necessary
         setTimeout(() => hideGoBackDownButton(), 8000);
       }
     }, 800)
@@ -136,7 +138,16 @@ const {
   const goBackUpButton = document.querySelector('#go-back-up-button');
   const goBackDownButton = document.querySelector('#go-back-down-button');
 
-  anchors.forEach(anchor => anchor.addEventListener('click', e => showGoBackButton(e)));
+  anchors.forEach(anchor => anchor.addEventListener('click', e => {
+    // TODO: See if programatic scroll fucks history
+    
+    // prevent default (stop navigation to anchor)
+    // scroll to anchor with padding
+
+    showGoBackButton(e);
+
+    // Push last location onto history (if needed)
+  }));
 
   goBackUpButton.addEventListener('click', () => {
     goBack();
