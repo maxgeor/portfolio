@@ -152,7 +152,7 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="One page, one action">
+<Section title="Key Decisions">
   <SubSection
     images={[
       { 
@@ -161,6 +161,7 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
+    ## One page, one action
     The most important departure from Etherscan was limiting forms to a single
     action.
     
@@ -170,9 +171,6 @@ import SubSection from "../../components/prose/SubSection.astro";
     Linking straight to the action makes it impossible to miss.
 
   </SubSection>
-</Section>
-
-<Section title="Only supporting one-way actions">
   <SubSection
     images={[
       { 
@@ -181,10 +179,11 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
+    ## Only supporting one-way actions
     Smart contracts have two kinds of actions: 
     
-    - **One-way**: An action that _triggers a change_ (ex: voting, sending money, changing ownership) 
-    - **Two-way**: An action that _returns data_ (ex: seeing an account's balance, asking for an NFT's characteristics) 
+    - `One-way`: An action that _triggers a change_ (ex: voting, sending money, changing ownership) 
+    - `Two-way`: An action that _returns data_ (ex: seeing an account's balance, asking for an NFT's characteristics) 
     
     Two-way actions are complex. Different data needs different layouts, with non-blockchain data getting mixed in. You need something custom to give a great experience.
 
@@ -193,9 +192,6 @@ import SubSection from "../../components/prose/SubSection.astro";
     We decided to only focus on one-way actions — shrinking the scope way down.
 
   </SubSection>
-</Section>
-
-<Section title="Using human words">
   <SubSection
     images={[
       { 
@@ -204,20 +200,18 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-   To translate tricky ideas, explain them in Plain English.
+    ## Using human words
+    To translate tricky ideas, explain them in Plain English.
 
     We replaced words like "Method" and "Write" with "Action" and "Send".
 
-    We also **let people write their own titles and descriptions**, cheap and effective way to guarantee that actions made sense.
+    We also let people write their own titles and descriptions. It was a cheap and effective way to guarantee that any action could be made clear.
 
     Adding editable fields wasn't an easy decision: bad actors could make one action look like another and swindle ignorant users.
 
     Despite its issues, open text was essential, so we had to design around it.
 
   </SubSection>
-</Section>
-
-<Section title="Forcing people to confirm trust">
   <SubSection
     images={[
       { 
@@ -226,13 +220,14 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
+    ## Making people confirm trust
     We knew we weren't going to stop every scam or build a trustless, zero-proof protocol to do it. We needed something simpler.
 
-    Our solution to ward off bad actors was **forcing users to confirm they trust the form before letting them submit**.
+    Our solution to ward off bad actors was forcing users to confirm they trust the form before letting them submit.
 
     Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and rush to buy.
 
-    Making people stop to question their source is a easy way to protect users from scammers and themselves.
+    Forcing people to stop and question their source is a easy way to protect users from scammers and themselves.
 
   </SubSection>
 </Section>
