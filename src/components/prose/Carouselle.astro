@@ -37,12 +37,12 @@ const { images } = Astro.props;
   </div>
 </div>
 
-<script is:inline>
-  const carsouselles = document.querySelectorAll(".carouselle");
+<script>
+  const carsouselles: NodeListOf<HTMLElement> = document.querySelectorAll(".carouselle");
 
-  carsouselles.forEach((carsouselle) => {
-    const slides = carsouselle.querySelectorAll(".slide");
-    const captions = carsouselle.querySelectorAll(".caption");
+  carsouselles?.forEach((carsouselle) => {
+    const slides: NodeListOf<HTMLElement> = carsouselle.querySelectorAll(".slide");
+    const captions: NodeListOf<HTMLElement> = carsouselle.querySelectorAll(".caption");
   
     slides.forEach((slide, indx) => {
       slide.style.transform = `translateX(${indx * 100}%)`;
@@ -52,29 +52,29 @@ const { images } = Astro.props;
       if (indx === 0) return;
       caption.style.opacity = '0%';
     });
-  
+
     let curSlide = 0;
-  
-    const prevSlide = carsouselle.querySelector(".btn-prev");
-    const nextSlide = carsouselle.querySelector(".btn-next");
-  
-    prevSlide.addEventListener("click", function () {
+
+    const prevSlide: HTMLButtonElement | null = carsouselle.querySelector(".btn-prev");
+    const nextSlide: HTMLButtonElement | null = carsouselle.querySelector(".btn-next");
+
+    prevSlide?.addEventListener("click", function () {
       curSlide--;
 
-      if (!nextSlide.style.display || nextSlide.style.display === 'none') {
+      if (nextSlide && (!nextSlide.style.display || nextSlide.style.display === 'none')) {
         nextSlide.style.display = 'block';
       }
 
       if (curSlide === 0) {
         prevSlide.style.display = 'none';
-        nextSlide.focus();
+        nextSlide?.focus();
       }
   
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
       });
       
-      captions.forEach((caption, indx) => {
+      captions?.forEach((caption, indx) => {
         if (indx === curSlide) {
           caption.style.opacity = '100%';
         } else {
@@ -82,23 +82,23 @@ const { images } = Astro.props;
         }
       });
     });
-    
-    nextSlide.addEventListener("click", function () {
+
+    nextSlide?.addEventListener("click", function () {
       curSlide++;
 
-      if (!prevSlide.style.display || prevSlide.style.display === 'none') {
+      if (prevSlide && (!prevSlide.style.display || prevSlide.style.display === 'none')) {
         prevSlide.style.display = 'block';
       }
-  
+
       if (curSlide === slides.length -1) {
         nextSlide.style.display = 'none';
-        prevSlide.focus();
+        prevSlide?.focus();
       }
-  
+    
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
       });
-  
+    
       captions.forEach((caption, indx) => {
         if (indx === curSlide) {
           caption.style.opacity = '100%';

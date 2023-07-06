@@ -94,8 +94,12 @@ const {
   }
 </style>
 
-<script is:inline>
-  function isElementInView(element) {
+<script>
+  const anchors = document.querySelectorAll('.anchor');
+  const goBackUpButton: HTMLButtonElement | null = document.querySelector('#go-back-up-button');
+  const goBackDownButton: HTMLButtonElement | null = document.querySelector('#go-back-down-button');
+
+  function isElementInView(element: HTMLElement) {
     const rect = element.getBoundingClientRect();
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -111,16 +115,16 @@ const {
 
   const goBack = () => window.history.back();
 
-  const showGoBackUpButton = () => goBackUpButton.classList.remove('-translate-y-[52px]');
-  const hideGoBackUpButton = () => goBackUpButton.classList.add('-translate-y-[52px]');
-  const showGoBackDownButton = () => goBackDownButton.classList.remove('translate-y-[52px]');
-  const hideGoBackDownButton = () => goBackDownButton.classList.add('translate-y-[52px]');
+  const showGoBackUpButton = () => goBackUpButton?.classList.remove('-translate-y-[52px]');
+  const hideGoBackUpButton = () => goBackUpButton?.classList.add('-translate-y-[52px]');
+  const showGoBackDownButton = () => goBackDownButton?.classList.remove('translate-y-[52px]');
+  const hideGoBackDownButton = () => goBackDownButton?.classList.add('translate-y-[52px]');
 
-  function showGoBackButton(e) {
+  function showGoBackButton(e: Event) {
     hideGoBackUpButton();
     hideGoBackDownButton();
 
-    const clickedLink = e.target;
+    const clickedLink = e.target as HTMLAnchorElement;
 
     setTimeout(() => {
       if (isElementInView(clickedLink)) return;
@@ -129,28 +133,22 @@ const {
 
       if (isClickedLinkAboveFold) {
         showGoBackUpButton();
-        // clearTimeout when necessary
         setTimeout(() => hideGoBackUpButton(), 8000);
       } else {
         showGoBackDownButton();
-        // clearTimeout when necessary
         setTimeout(() => hideGoBackDownButton(), 8000);
       }
     }, 550)
   }
 
-  const anchors = document.querySelectorAll('.anchor');
-  const goBackUpButton = document.querySelector('#go-back-up-button');
-  const goBackDownButton = document.querySelector('#go-back-down-button');
-
   anchors.forEach(anchor => anchor.addEventListener('click', e => showGoBackButton(e)));
 
-  goBackUpButton.addEventListener('click', () => {
+  goBackUpButton?.addEventListener('click', () => {
     goBack();
     hideGoBackUpButton();
   });
 
-  goBackDownButton.addEventListener('click', () => {
+  goBackDownButton?.addEventListener('click', () => {
     goBack();
     hideGoBackDownButton();
   });
