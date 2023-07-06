@@ -24,8 +24,7 @@ const { images } = Astro.props;
     </div>
   </button>
   <div class="flex flex-col items-center gap-3 sm:gap-4">
-    <!-- <div class="relative aspect-[7/4] w-full overflow-hidden border border-t-[#F4F5F6] border-x-[#EFF1F6] border-b-[#E4E9EE] rounded-sm"> -->
-    <div class="relative aspect-[7/4] w-full overflow-hidden border border-t-[#F5F5F6] border-x-[#EFF1F6] border-b-gray-200 rounded-sm">
+    <div class="relative aspect-[7/4] w-full overflow-hidden border border-t-[#F4F5F6] border-x-[#EFF1F6] border-b-gray-200 rounded-sm">
       {images?.map(image => (
         <div class="slide absolute overflow-visible transition-all duration-[450ms] ease-in-out w-full h-fit">
           <Image classes={`aspect-[7/4] object-fit w-full `} src={image.src} alt={image.alt || ''} />
