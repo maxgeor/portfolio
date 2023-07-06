@@ -39,7 +39,7 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     Etherscan is the most popular frontend generator, powering tons of Ethereum projects.
 
-    <hr class="h-px border-t border-[#d2d6dc] border-dashed my-0"></hr>
+    <hr class="h-px border-t border-[#d3d7dc] border-dashed my-0"></hr>
 
     The problem? **Etherscan's frontends suck**.
 
@@ -75,6 +75,21 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Process">
+  <SubSection hasDoubleMargin={true}>
+    ## Research
+    Talking with teams & developers using Etherscan gave us three key insights:
+
+    1. _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions, while blockchain developers used it for personal projects & testing (since they preffered working in the backend).
+    2. _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money to build something custom.
+    3. _Etherscan was mostly used for <a class="anchor" href="#only-supporting-one-way-actions">one-way actions</a>_ (two-way actions tended to have custom frontends).
+
+    Takeaways:
+
+    - One-way smart contract actions were neglected
+    - People still valued UX and might be willing to switch if setup was easy
+    - It the bar was _really_ low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and still ship something better.
+
+  </SubSection>
   <SubSection
     images={[
       { 
@@ -92,19 +107,6 @@ import SubSection from "../../components/prose/SubSection.astro";
     ]} 
     isUsingCarouselle={true}
   >
-    ## Research
-    Talking with teams & developers using Etherscan gave us three key insights:
-
-    1. _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions, while blockchain developers used it for personal projects & testing (since they preffered working in the backend).
-    2. _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money to build something custom.
-    3. _Etherscan was mostly used for <a class="anchor" href="#only-supporting-one-way-actions">one-way actions</a>_ (two-way actions tended to have custom frontends).
-
-    Takeaways:
-
-    - One-way smart contract actions were neglected
-    - People still valued UX and might be willing to switch if setup was easy
-    - It the bar was _really_ low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and still ship something better.
-
     ## Building
     We worked by doing design and development at the same time.
 
@@ -129,7 +131,10 @@ import SubSection from "../../components/prose/SubSection.astro";
     ]} 
     isUsingCarouselle={true}
   >
-    ## Shooing scammers
+    {/* ## Shooing scammers */}
+    <h2 id="shooing-scammers">
+      Shooing scammers
+    </h2>
     We knew three things from the jump:
     
     1. Scammers would use forms to misrepresent contracts<br/>
@@ -138,7 +143,10 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     <a class="anchor" href="#making-people-confirm-trust">How do we ward off scammers</a> without making the product harder to build or use?
 
-    ## Filtering & framing technical details
+    {/* ## Filtering & framing technical details */}
+    <h2 id="filtering--framing-technical-details" class="lg:mt-6">
+      Filtering & framing technical details
+    </h2>
     Smart contracts have tons of strange behaviors:
 
     - Transactions cost a bit of money
@@ -149,7 +157,10 @@ import SubSection from "../../components/prose/SubSection.astro";
 
     <a class="anchor" href="#using-human-words">How do we explain difficult ideas</a> without overwhelming people? Which ideas are essential?
 
-    ## Keeping it flexible
+    {/* ## Keeping it flexible */}
+    <h2 id="keeping-it-flexible" class="lg:mt-6">
+      Keeping it flexible
+    </h2>
     Formie could be used for any contract, so its copy, error handling, and layout had to work with _thousands_ of different actions.
 
     It also had to work with different brands. Formie is a part of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic could clash with the project's brand — confusing users and turning projects away.
@@ -242,7 +253,7 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Tradeoffs">
-  <SubSection>
+  <SubSection hasDoubleMargin={true}>
     Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
     
     By <a class="anchor" href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to our baseline</a>, we cut important, but non-essential features:
@@ -268,6 +279,7 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]}
     isUsingCarouselle={true}
+    hasDoubleMargin={true}
   >
     ## Replacing editing with infinite forms
     We planned to let people edit their forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
@@ -293,6 +305,7 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]}
     isUsingCarouselle={true}
+    hasDoubleMargin={true}
   >
     ## Only letting people customize the title & description
     Originally, wanted every part of a form to be editable:
