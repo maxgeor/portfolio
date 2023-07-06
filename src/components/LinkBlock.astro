@@ -16,7 +16,16 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 		group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 border-t last:border-b
 	`}
 >
+	<p class="basis-1/2 self-center group-hover:underline pr-6 sm:pr-0">
+		{title}
+	</p>
 	<p class={`
+		${type === 'writing' ? 'text-[13px]' : null}
+		basis-1/2 self-center text-gray-500
+	`}>
+		{description}
+	</p>
+	<!-- <p class={`
 		${type === 'writing' ? 'xs:basis-1/2' : 'basis-1/2'}
 		self-center group-hover:underline pr-6 sm:pr-0
 	`}>
@@ -27,5 +36,5 @@ const { type, href, title, description, externalLink = false } = Astro.props;
 		self-center text-gray-500
 	`}>
 		{description}
-	</p>
+	</p> -->
 </a>
