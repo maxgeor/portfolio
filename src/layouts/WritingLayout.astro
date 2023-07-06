@@ -10,9 +10,9 @@ const {frontmatter} = Astro.props;
       <h1>{frontmatter.title}</h1>
       <p class="text-gray-500 text-[13px] mt-1">{frontmatter.date}</p>
     </aside>
-    <main class="col-span-full lg:col-span-9 xl:col-span-6">
+    <main class="col-span-full lg:col-span-9 xl:col-span-6 -my-1.5 ">
       <div class={`
-        prose-sm -my-1.5 max-w-prose
+        prose-sm max-w-prose
         prose-headings:text-sm prose-headings:font-semibold prose-headings:leading-6
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal
