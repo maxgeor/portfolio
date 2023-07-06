@@ -56,7 +56,7 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection
     images={[
       { 
-        src: "/work/formie/first-idea-for-form-builder.png", 
+        src: "..//work/formie/first-idea-for-form-builder.png", 
         alt: "First sketch of form builder UI",
       }
     ]}
@@ -251,7 +251,7 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## Replace editing with infinite forms
+    ## Replacing editing with infinite forms
     We planned to let people edit their forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
     Instead of rebuilding, we decided to..
@@ -275,16 +275,18 @@ import SubSection from "../../components/prose/SubSection.astro";
       },
     ]} 
   >
-    ## Only allow customizing form title & description
-    Originally, wanted every part of a form to be editable. On top of the title and description, we wanted to let people customize...
+    ## Only letting people customize the title & description
+    Originally, wanted every part of a form to be editable:
 
     - Field titles, descriptions, placeholders
     - Error messages
-    - Button label, and more.
+    - Button label, etc.
 
-    But, because we cut editing, all customization would happen on the form creation page. Making someone set all these options in one go would be overwhelming.
+    Because we cut editing, all customizations had to happen on the form creation page. Making someone set all these options in one go would be overwhelming.
 
-    To keep it simple, we decided to only allow the form's title and description to be customized. The open text fields existed to create clarity. The title & description could be used to clarify other parts of the form, so they could do 80% of the heavy lifting.
+    To keep it simple, we decided to only allow the form's title and description to be customized.
+
+    This worked becasue the form's title and description do 80% of the work. Custom fields had one job: make forms clear. Because top-level fields gave context to the entire form, customizing other fields wasn't essential.
 
     Limited customization kept form creation easy, while still offering more control than Etherscan.
 
