@@ -251,10 +251,19 @@ import SubSection from "../../components/prose/SubSection.astro";
   <SubSection
     images={[
       { 
-        src: "/placeholder.png", 
-        alt: "...",
+        src: "/work/formie/tradeoffs/no-editing/callout.png", 
+        alt: "Callout in editor preview",
       },
-    ]} 
+      { 
+        src: "/work/formie/tradeoffs/no-editing/one-time-message.png", 
+        alt: "One-time notice on list page",
+      },
+      { 
+        src: "/work/formie/tradeoffs/no-editing/plan.png", 
+        alt: "Plan for new solution",
+      },
+    ]}
+    isUsingCarouselle={true}
   >
     ## Replacing editing with infinite forms
     We planned to let people edit their forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
@@ -278,7 +287,8 @@ import SubSection from "../../components/prose/SubSection.astro";
         src: "/placeholder.png", 
         alt: "...",
       },
-    ]} 
+    ]}
+    isUsingCarouselle={true}
   >
     ## Only letting people customize the title & description
     Originally, wanted every part of a form to be editable:
@@ -303,7 +313,8 @@ import SubSection from "../../components/prose/SubSection.astro";
         src: "/placeholder.png", 
         alt: "...",
       },
-    ]} 
+    ]}
+    isUsingCarouselle={true}
   >
     ## Limited error messaging
     We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.
