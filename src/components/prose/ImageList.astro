@@ -9,11 +9,15 @@ export interface Props {
     alt: string;
   }[];
   isCarouselle?: boolean;
+  classes?: string;
 }
-const { images, isCarouselle = false } = Astro.props;
+const { images, isCarouselle = false, classes = '' } = Astro.props;
 ---
 
-<div slot="images" class='flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13'>
+<div slot="images" class={`
+  flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13
+  ${classes}
+`}>
   {images.length > 1 && isCarouselle ? (
     <Carouselle images={images} />
   ) : (

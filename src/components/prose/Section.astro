@@ -18,7 +18,7 @@ const headerId = title.split(' ').join('-').toLowerCase();
     {title}
   </h1>
   {images ? (
-    <div class="flex flex-col gap-6 xl:gap-12 col-span-full lg:col-span-6 xl:col-span-4">
+    <div class="flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-span-4">
       <slot/>
     </div>
     <ImageList images={images} isCarouselle={isCarouselle} />
