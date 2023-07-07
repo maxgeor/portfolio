@@ -1,0 +1,17 @@
+---
+export interface Props {
+	url: string;
+}
+
+const { url } = Astro.props;
+---
+<section class="text-gray-500 col-span-full lg:grid grid-cols-12 gap-6 sm:gap-12 -mb-1.5 -mt-3.5 lg:-mt-1.5">
+  <div class="col-span-2 hidden lg:block">Before you start...</div>
+  <div class="col-span-10">
+    Hate reading?{" "}
+    <a href={url} target="_blank" class="decoration-gray-400">
+      Watch a video walkthrough
+    </a>{" "}
+    instead
+  </div>
+</section>

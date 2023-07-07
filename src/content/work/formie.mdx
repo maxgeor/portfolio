@@ -20,16 +20,18 @@ year: 2022
 import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import SubSection from "../../components/prose/SubSection.astro";
+import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCallout.astro";
 
-<Section title="Problem">
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/annotated-etherscan-page.png", 
-        alt: "Etherscan's interface for smart contract actions",
-      }
-    ]}
-  >
+<Section 
+  title="Problem"
+  images={[
+    { 
+      src: "/work/formie/annotated-etherscan-page.png", 
+      alt: "Etherscan's interface for smart contract actions",
+    }
+  ]}
+>
+  <SubSection>
     Developers make blockchain apps by...
     1. Writing code
     2. Uploading it to the blockchain as `smart contracts`
@@ -38,8 +40,6 @@ import SubSection from "../../components/prose/SubSection.astro";
     To save time, blockchain developers use `frontend generators`. They take your code and spit out a bare-bones, working UI for it.
 
     Etherscan is the most popular frontend generator, powering tons of Ethereum projects.
-
-    <hr class="h-px border-t border-[#d3d7dc] border-dashed my-0"></hr>
 
     The problem? **Etherscan's frontends suck**.
 
@@ -50,6 +50,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     Their frontend felt more like an obstacle course than a useful tool — we knew it could be better.
 
   </SubSection>
+
 </Section>
 
 <Section title="Idea">
@@ -74,8 +75,25 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="Process">
-  <SubSection hasDoubleMargin={true}>
+<Section 
+  title="Process"
+  images={[
+    { 
+      src: "/work/formie/process/chunks.png", 
+      alt: "Work chunks, sequenced in FigJam",
+    },
+    { 
+      src: "/work/formie/process/flow.png", 
+      alt: "First breadboard flow",
+    },
+    { 
+      src: "/work/formie/process/sketch.png", 
+      alt: "Sketch of form page's header",
+    },
+  ]} 
+  isCarouselle={true}
+>
+  <SubSection >
     ## Research
     Talking with teams & developers using Etherscan gave us three key insights:
 
@@ -90,23 +108,7 @@ import SubSection from "../../components/prose/SubSection.astro";
     - It the bar was _really_ low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and still ship something better.
 
   </SubSection>
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/process/chunks.png", 
-        alt: "Work chunks, sequenced in FigJam",
-      },
-      { 
-        src: "/work/formie/process/flow.png", 
-        alt: "First breadboard flow",
-      },
-      { 
-        src: "/work/formie/process/sketch.png", 
-        alt: "Sketch of form page's header",
-      },
-    ]} 
-    isUsingCarouselle={true}
-  >
+  <SubSection>
     ## Building
     We worked by doing design and development at the same time.
 
@@ -117,57 +119,50 @@ import SubSection from "../../components/prose/SubSection.astro";
   </SubSection>
 </Section>
 
-<Section title="Challenges">
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/challenges/scam.png", 
-        alt: "Me musing on how to handle bad guys",
-      },
-      { 
-        src: "/work/formie/challenges/explain.png", 
-        alt: "Me figuring out how to explain stuff",
-      },
-    ]} 
-    isUsingCarouselle={true}
-  >
-    {/* ## Shooing scammers */}
-    <h2 id="shooing-scammers">
-      Shooing scammers
-    </h2>
-    We knew three things from the jump:
-    
-    1. Scammers would use forms to misrepresent contracts<br/>
-    2. We couldn't stop them<br/>
-    3. But we had to do something<br/>
+<Section 
+  title="Challenges"
+  images={[
+    { 
+      src: "/work/formie/challenges/scam.png", 
+      alt: "Me musing on how to handle bad guys",
+    },
+    {
+      src: "/work/formie/challenges/explain.png",
+      alt: "Me figuring out how to explain stuff",
+    },
+  ]} 
+>
+    <SubSection>
+      ## Shooing scammers
+      We knew three things from the jump:
+      
+      1. Scammers would use forms to misrepresent contracts<br/>
+      2. We couldn't stop them<br/>
+      3. But we had to do something<br/>
 
-    <a class="anchor" href="#making-people-confirm-trust">How do we ward off scammers</a> without making the product harder to build or use?
+      <a class="anchor" href="#making-people-confirm-trust">How do we ward off scammers</a> without making the product harder to build or use?
+    </SubSection>
+    <SubSection>
+      ## Filtering & framing technical details
+      Smart contracts have tons of strange behaviors:
 
-    {/* ## Filtering & framing technical details */}
-    <h2 id="filtering--framing-technical-details" class="lg:mt-6">
-      Filtering & framing technical details
-    </h2>
-    Smart contracts have tons of strange behaviors:
+      - Transactions cost a bit of money
+      - Transactions take time to go through
+      - Anyone can make a frontend for any contract (becasuse they're public)
 
-    - Transactions cost a bit of money
-    - Transactions take time to go through
-    - Anyone can make a frontend for any contract (becasuse they're public)
+      People who know nothing about smart contracts are bound to face confusion, missteps, and exploitation. Although it's a technical topic, there's stuff people needed to understand.
 
-    People who know nothing about smart contracts are bound to face confusion, missteps, and exploitation. Although it's a technical topic, there's stuff people needed to understand.
+      <a class="anchor" href="#using-human-words">How do we explain difficult ideas</a> without overwhelming people? Which ideas are essential?
+    </SubSection>
+    <SubSection>
+      ## Keeping it flexible
+      Formie could be used for any contract, so its copy, error handling, and layout had to work with _thousands_ of different actions.
 
-    <a class="anchor" href="#using-human-words">How do we explain difficult ideas</a> without overwhelming people? Which ideas are essential?
+      It also had to work with different brands. Formie is a part of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic could clash with the project's brand — confusing users and turning projects away.
 
-    {/* ## Keeping it flexible */}
-    <h2 id="keeping-it-flexible" class="lg:mt-6">
-      Keeping it flexible
-    </h2>
-    Formie could be used for any contract, so its copy, error handling, and layout had to work with _thousands_ of different actions.
+      <a href="#only-supporting-one-way-actions">How do we design a universal interface</a>, serving a wide range of brands and actions?
+    </SubSection>
 
-    It also had to work with different brands. Formie is a part of a project's interface. Sometimes, it _is_ the interface. A strong, noteworthy aestheic could clash with the project's brand — confusing users and turning projects away.
-
-    <a href="#only-supporting-one-way-actions">How do we design a universal interface</a>, serving a wide range of brands and actions?
-
-  </SubSection>
 </Section>
 
 <Section title="One page, one action">
@@ -253,7 +248,7 @@ import SubSection from "../../components/prose/SubSection.astro";
 </Section>
 
 <Section title="Tradeoffs">
-  <SubSection hasDoubleMargin={true}>
+  <SubSection>
     Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
     
     By <a class="anchor" href="https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline" target="_blank">comparing to our baseline</a>, we cut important, but non-essential features:
@@ -278,8 +273,7 @@ import SubSection from "../../components/prose/SubSection.astro";
         alt: "Plan for new solution",
       },
     ]}
-    isUsingCarouselle={true}
-    hasDoubleMargin={true}
+    isCarouselle={true}
   >
     ## Replacing editing with infinite forms
     We planned to let people edit their forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
@@ -304,8 +298,7 @@ import SubSection from "../../components/prose/SubSection.astro";
         alt: "...",
       },
     ]}
-    isUsingCarouselle={true}
-    hasDoubleMargin={true}
+    isCarouselle={true}
   >
     ## Only letting people customize the title & description
     Originally, wanted every part of a form to be editable:
@@ -331,7 +324,7 @@ import SubSection from "../../components/prose/SubSection.astro";
         alt: "...",
       },
     ]}
-    isUsingCarouselle={true}
+    isCarouselle={true}
   >
     ## Limited error messaging
     We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.

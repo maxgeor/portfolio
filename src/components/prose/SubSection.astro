@@ -1,43 +1,18 @@
 ---
-import Image from "../../components/prose/Image.astro";
-import Caption from "./Caption.astro";
-import Carouselle from "./Carouselle.astro";
+import ImageList from "../../components/prose/ImageList.astro";
 
 export interface Props {
   images?: {
     src: string;
-    alt?: string;
-    hasCaptions?: boolean;
+    alt: string;
   }[];
-  isUsingCarouselle?: boolean;
-  hasDoubleMargin?: boolean;
+  isCarouselle?: boolean;
 }
-const { images, isUsingCarouselle = false, hasDoubleMargin = false } = Astro.props;
+const { images, isCarouselle = false } = Astro.props;
 ---
 <div class={`
-  flex flex-col gap-6 col-span-full lg:col-start-1 lg:col-end-7 xl:col-start-3 xl:col-end-7
-  ${hasDoubleMargin ? 'lg:mb-6' : null}
+  flex flex-col gap-6 col-span-full lg:col-end-7 xl:col-start-3 xl:col-end-7
 `}>
   <slot/>
 </div>
-{images ? (
-  <div class={`
-    flex flex-col gap-6 col-span-full lg:col-span-6 xl:col-start-7 xl:col-end-13 lg:mb-6 lg:last:mb-0
-    ${hasDoubleMargin ? 'lg:mb-6' : null}
-  `}>
-    {images.length > 1 && isUsingCarouselle ? (
-      <Carouselle images={images} />
-    ) : (
-      images.map((image) => (
-        <div class="flex flex-col items-center gap-3 sm:gap-4">
-          <Image 
-            src={image.src} 
-            alt={image.alt || "Image"} 
-            classes={`aspect-[7/4] object-cover w-full border border-[#EFF1F6] border-b-gray-200 rounded-sm`}
-          />
-          <Caption text={image.alt || ''} />
-        </div>
-      ))
-    )}
-  </div>
-) : null}
+{images ? <ImageList images={images} isCarouselle={isCarouselle} /> : null}

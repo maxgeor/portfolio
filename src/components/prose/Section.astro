@@ -1,14 +1,28 @@
 ---
+import ImageList from "../../components/prose/ImageList.astro";
+
 export interface Props {
   title: string;
+  images?: {
+    src: string;
+    alt: string;
+  }[];
+  isCarouselle?: boolean;
 }
-const { title } = Astro.props;
+const { title, images, isCarouselle = false } = Astro.props;
 
 const headerId = title.split(' ').join('-').toLowerCase();
 ---
-<section class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12">
+<section class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-y-6 lg:gap-x-12 xl:gap-12">
   <h1 id={headerId} class="border-t xl:border-none border-[#ced3d9] lg:border-gray-200 col-span-full xl:col-span-2">
     {title}
   </h1>
-  <slot/>
+  {images ? (
+    <div class="flex flex-col gap-6 xl:gap-12 col-span-full lg:col-span-6 xl:col-span-4">
+      <slot/>
+    </div>
+    <ImageList images={images} isCarouselle={isCarouselle} />
+  ) : (
+    <slot/>
+  )}
 </section>

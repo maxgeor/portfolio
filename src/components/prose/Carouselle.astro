@@ -5,8 +5,7 @@ import Caption from './Caption.astro';
 export interface Props {
   images?: {
     src: string;
-    alt?: string;
-    hasCaptions?: boolean;
+    alt: string;
   }[];
 }
 const { images } = Astro.props;
