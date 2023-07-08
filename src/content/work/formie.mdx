@@ -34,10 +34,10 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
   <SubSection>
     Developers make blockchain apps by...
     1. Writing code
-    2. Uploading it to the blockchain as `smart contracts`
-    3. Building a `frontend` (usually an app or website) so people can interact with those contracts.
+    2. Uploading it to a blockchain as `smart contracts`
+    3. Building a `frontend` (usually an app or website) to let people use those contracts.
 
-    To save time, blockchain developers use `frontend generators`. They take your code and spit out a bare-bones, working UI.
+    To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI.
 
     Etherscan is the most popular frontend generator, powering tons of Ethereum projects.
 
@@ -45,9 +45,9 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
 
     - It's a list of technically-named forms
     - It's at the bottom of the page, behind two drawers
-    - It doesn't give you guidance, helpful errors, or feedback about your transaction
+    - It doesn’t give guidance, clear errors, or feedback about your transaction
 
-    Using their frontend felt like running an obstacle course — we knew it could be better.
+    Using their frontend felt more like running an obstacle course — we knew it could be better.
 
   </SubSection>
 
@@ -64,13 +64,13 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
   > 
     Our high-level solution took shape after framing smart contract actions as mini forms.
     
-    They have a couple of fields and a button that does something when pressed. Looking at contract actions this way made Etherscan's shortcomings clear:
+    They have a couple of fields and a button that does something when pressed. Seeing actions this way made Etherscan’s shortcomings clear:
 
     - There's no copy to guide, educate, or update users
-    - Layers of irrelevant info bury <a class="anchor" href="#one-page,-one-action">the UI that actually matters</a>
+    - Layers of irrelevant details bury <a class="anchor" href="#one-page,-one-action">the UI that actually matters</a>
     - Users have to decipher every action name to find the right one
 
-    With this, our idea formed: **A tool, like Google Forms, that creates landing pages for stand-alone smart contract actions**.
+    With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
 
   </SubSection>
 </Section>
@@ -95,26 +95,26 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
 >
   <SubSection >
     ## Research
-    Talking with teams & developers using Etherscan gave us three key insights:
+    Talking to teams & developers using Etherscan gave us three key insights:
 
-    1. _People used Etherscan as a "good enough" interface_. Teams plugged in their admin actions, while blockchain developers made it their UI for testing & personal projects (since they didn't like writing frontend code).
-    2. _Most people used Etherscan for <a class="anchor" href="#only-supporting-one-way-actions">one-way actions</a>_ (code that triggers a change), while two-way actions almost always had custom frontends.
-    3. _Everyone knew that Etherscan sucked_ (visually & functionally) but wasn't willing to invest the time & money to build something custom.
+    1. _They used Etherscan as a “good enough” interface_. Teams plugged in their admin actions, while blockchain developers made it their UI for testing & personal projects (since they didn’t like writing frontend code).
+    2. _They used Etherscan for <a class="anchor" href="#only-supporting-one-way-actions">one-way actions</a>_ (code that triggers a change), while two-way actions almost always had custom frontends.
+    3. _They knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money to make something custom.
 
     Takeaways:
 
-    - One-way smart contract actions were underserved
+    - One-way actions were underserved
     - People still valued UX and might be willing to switch if the setup was easy
-    - The bar was low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and ship something better
+    - The bar was low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> while shipping something better
 
   </SubSection>
   <SubSection>
     ## Building
     We worked by doing design and development at the same time.
 
-    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. We'd then design & build each chunk in order.
+    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design & build each chunk in order.
 
-    Design started with rough sketches. After breadboarding the flows and UI, I’d design the rest in code. While I pushed pixels, Hassan would build out the backend (I’d help after).
+    Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
 
   </SubSection>
 </Section>
@@ -199,9 +199,9 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     
     Two-way actions are complex. Different data needs different layouts, with non-blockchain data getting mixed in. These constraints make a custom UI necessary to deliver a great experience.
 
-    One-way actions are simple — they need some fields, a button, and a straightforward layout. Our research also <a class="anchor" href="#research">found that they're underserved</a> compared to two-ways.
+    One-way actions are simple. They need a straightforward layout with fields and a button, which is easy to standardize. Our research also found that <a class="anchor" href="#research">they’re underserved relative to two-ways</a>.
 
-    We decided to focus on serving one-way actions, shrinking our scope.
+    To serve lots of actions consistently, we decided to focus on one-way actions.
 
   </SubSection>
 </Section>
@@ -214,11 +214,11 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
       },
     ]} 
   >
-    To translate tricky ideas, we replaced technical terms (“Method” “Write”) with Plain English (“Action” “Send”).
+    To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
-    We realized, though, that static language couldn't convey the specific context of every action. To make forms flexible, we let people add a title and description. Now, people could share specific details and instructions for their form, in their own words.
+    But this wasn’t enough. Every action had something needing explanation that static language couldn’t cover. To make forms flexible, we let people customize their title and description. It was an effective way to ensure forms fit their actions without adding complexity.
 
-    Deciding to add editable fields was tough: bad actors could make one action look like another and swindle ignorant users.
+    Deciding to make fields editable wasn’t easy: bad actors could make one action look like another and swindle ignorant users.
 
     Open text was essential, so we had to design around it.
 
@@ -233,13 +233,11 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
       },
     ]} 
   >
-    We knew we couldn't stop every scam or build a trustless, zero-proof protocol to do it. We needed something simple.
-
-    Our solution for deterring bad actors was to make people confirm they trusted the form before submitting it.
+    We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting it.
 
     Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and pay.
 
-    Forcing people to stop and question their source is a easy way to protect users from scammers and themselves.
+    Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
 
   </SubSection>
 </Section>
@@ -272,7 +270,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     ]}
     isCarouselle={true}
   >
-    ## <span class="line-through ">Editing</span> Infinite forms
+    ## <span class="line-through">Editing</span> Infinite forms
     We planned to let people edit their forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
     Instead of rebuilding, we decided to..
@@ -280,9 +278,9 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     1. Let people make unlimited forms, and
     2. Make forms permanent (for security reasons).
 
-    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms didn't have much content, we figured people wouldn't need to edit much anyways.
+    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways.
 
-    If we learned after launch that people edit frequently, we could add it, but edit via replacement might be enough.
+    If we learned later that people edit frequently, we could add it. Until then, disposable forms were enough.
 
     Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
@@ -308,9 +306,9 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     - Error messages
     - Button label, etc.
 
-    Because we cut editing, all customizations had to happen on the form creation page. Making someone set all these options in one go would be overwhelming.
+    But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
 
-    To simplify, we only let people customize their form’s title and description. Because top-level fields give context to the entire form, making everything else static still works.
+    To simplify, we only let people customize their form’s title and description. Because top-level fields gave context to the entire form, static fields wouldn’t kill usability.
 
     Limited customization kept form creation straightforward while offering more control than Etherscan.
 
@@ -332,7 +330,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     It was impossible to translate errors consistently, so we settled on...
 
     1. Humanizing basic type errors
-    2. Wrapping other errors in an honest, generic message
+    2. Wrapping unknown errors in an honest, generic message
 
     Compromising on error handling stung, but you can only do so much when working with a black box.
 
