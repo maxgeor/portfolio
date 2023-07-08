@@ -66,7 +66,6 @@ const { images } = Astro.props;
 
       if (curSlide === 0) {
         prevSlide.style.display = 'none';
-        nextSlide?.focus();
       }
   
       slides.forEach((slide, indx) => {
@@ -91,7 +90,6 @@ const { images } = Astro.props;
 
       if (curSlide === slides.length -1) {
         nextSlide.style.display = 'none';
-        prevSlide?.focus();
       }
     
       slides.forEach((slide, indx) => {
