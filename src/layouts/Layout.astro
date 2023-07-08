@@ -16,13 +16,11 @@ const { title, backgroundColor } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class={`${backgroundColor} text-blackmin-h-screen text-sm antialiased max-w-[1440px] mx-auto`} style="text-rendering: optimizeLegibility;">
+	<body class={`${backgroundColor} text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`} style="text-rendering: optimizeLegibility;">
 		<slot />
 	</body>
 </html>
 <style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-	
 	::-moz-selection {
 		background: yellow;
 	}
@@ -48,25 +46,25 @@ const { title, backgroundColor } = Astro.props;
 	
 	@font-face {
     font-family: untitled;
-    src: url(/untitled/sans/test-untitled-sans-regular.woff2) format('woff2');
+    src: url(/fonts/untitled/test-untitled-sans-regular.woff2) format('woff2');
 		font-weight: regular;
 	}
 	
 	@font-face {
 		font-family: untitled;
-		src: url(/untitled/sans/test-untitled-sans-medium.woff2) format('woff2');
+		src: url(/fonts/untitled/test-untitled-sans-medium.woff2) format('woff2');
 		font-weight: bold;
 	}
 	
 	@font-face {
     font-family: untitled;
-    src: url(/untitled/sans/test-untitled-sans-regular-italic.woff2) format('woff2');
+    src: url(/fonts/untitled/test-untitled-sans-regular-italic.woff2) format('woff2');
 		font-style: italic;
 	}
 	
 	@font-face {
     font-family: "Berkeley Mono";
-    src: url(/BerkeleyMono-Regular.ttf);
+    src: url(/fonts/BerkeleyMono-Regular.ttf);
 	}
 
 	.full-width {

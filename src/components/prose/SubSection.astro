@@ -10,9 +10,19 @@ export interface Props {
 }
 const { images, isCarouselle = false } = Astro.props;
 ---
-<div class={`
+{images ? (
+  <div class='flex flex-col gap-6 col-span-full lg:col-end-7 xl:col-start-3 xl:col-end-7'>
+    <slot/>
+  </div>
+  <ImageList images={images} isCarouselle={isCarouselle} />
+) : (
+  <div class='flex flex-col gap-6 col-span-full xl:col-start-3 xl:col-end-7'>
+    <slot/>
+  </div>
+)}
+<!-- <div class={`
   flex flex-col gap-6 col-span-full lg:col-end-7 xl:col-start-3 xl:col-end-7
 `}>
   <slot/>
 </div>
-{images ? <ImageList images={images} isCarouselle={isCarouselle} classes='mb-2 last:mb-0 lg:mb-0' /> : null}
+{images ? <ImageList images={images} isCarouselle={isCarouselle} classes='mb-2 last:mb-0 lg:mb-0' /> : null} -->
