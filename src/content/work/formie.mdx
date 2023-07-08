@@ -163,25 +163,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
 
 </Section>
 
-<Section title="One page, one action">
-  <SubSection
-    images={[
-      { 
-        src: "/work/formie/decisions/one-page.png", 
-        alt: "Form for Uniswap's Delegate action",
-      },
-    ]} 
-  >
-    The main departure from Etherscan was limiting forms to a single
-    action.
-    
-    Etherscan puts every action in one place, but it's a mess! You look like Indiana Jones, hacking through jungle and solving puzzles to find the form you want (with luck).
-
-    Linking straight to the action makes it impossible to miss.
-
-  </SubSection>
-</Section>
-<Section title="Only supporting one-way actions">
+<Section title="Key Decisions">
   <SubSection
     images={[
       { 
@@ -190,6 +172,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
       },
     ]} 
   >
+    ## Only supporting one-way actions
     Smart contracts have two kinds of actions: 
     
     - `One-way`: An action that _triggers a change_<br/>(ex: Voting, sending money, changing ownership) 
@@ -202,8 +185,6 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     To serve lots of actions consistently, we decided to focus on one-way actions.
 
   </SubSection>
-</Section>
-<Section title="Using human words">
   <SubSection
     images={[
       { 
@@ -212,6 +193,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
       },
     ]} 
   >
+    ## Using Plain English
     To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
     But this wasn’t enough. Every action needed something explained that static language couldn’t cover. To make forms flexible, we let people customize their title and description. It was an effective way to ensure forms fit their actions without adding complexity.
@@ -221,8 +203,6 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     Open text was essential, so we had to design around it.
 
   </SubSection>
-</Section>
-<Section title="Making people confirm trust">
   <SubSection
     images={[
       { 
@@ -231,11 +211,29 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
       },
     ]} 
   >
+    ## Making people confirm trust
     We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting it.
 
     Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and pay.
 
     Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
+
+  </SubSection>
+  <SubSection
+    images={[
+      { 
+        src: "/work/formie/decisions/one-page.png", 
+        alt: "Form for Uniswap's Delegate action",
+      },
+    ]} 
+  >
+    ## One page, one action
+    The main departure from Etherscan was limiting forms to a single
+    action.
+    
+    Etherscan puts every action in one place, but it's a mess! You look like Indiana Jones, hacking through jungle and solving puzzles to find the form you want (with luck).
+
+    Linking straight to the action makes it impossible to miss.
 
   </SubSection>
 </Section>
