@@ -14,7 +14,7 @@ const { title, images, isCarouselle = false } = Astro.props;
 const headerId = title.split(' ').join('-').toLowerCase();
 ---
 <section class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-x-12 xl:gap-12">
-  <h1 id={headerId} class="border-t xl:border-none border-[#ced3d9] lg:border-gray-200 col-span-full xl:col-span-2 xl:leading-5 xl:py-0.5">
+  <h1 id={headerId} class="border-t xl:border-none border-[#cdd1d7] lg:border-gray-200 col-span-full xl:col-span-2 xl:leading-5 xl:py-0.5">
     {title}
   </h1>
   {images ? (
