@@ -37,7 +37,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     2. Uploading it to the blockchain as `smart contracts`
     3. Building a `frontend` (usually an app or website) so people can interact with those contracts.
 
-    To save time, blockchain developers use `frontend generators`. They take your code and spit out a bare-bones, working UI for it.
+    To save time, blockchain developers use `frontend generators`. They take your code and spit out a bare-bones, working UI.
 
     Etherscan is the most popular frontend generator, powering tons of Ethereum projects.
 
@@ -45,9 +45,9 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
 
     - They're at the bottom of a page, behind two drawers
     - They're a list of technically-named forms for every action in the code
-    - They don't give any guidance, helpful errors, or feedback about your transaction.
+    - They don't give guidance, helpful errors, or feedback about your transaction.
 
-    Their frontend felt more like an obstacle course than a useful tool — we knew it could be better.
+    Their frontend felt more like an obstacle course than a tool — we knew it could be better.
 
   </SubSection>
 
@@ -64,13 +64,13 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
   > 
     Our high-level solution took shape after framing smart contract actions as mini forms.
     
-    They have a couple fields and a button that does something when pressed. Looking at contract actions this way made Etherscan's shortcomings clear:
+    They have a couple of fields and a button that does something when pressed. Looking at contract actions this way made Etherscan's shortcomings clear:
 
     - There's no copy to guide, educate, or update users
-    - Layers of irrelevant info buries <a class="anchor" href="#one-page-one-action">the UI that actually matters</a>
+    - Layers of irrelevant info bury <a class="anchor" href="#one-page-one-action">the UI that actually matters</a>
     - Users have to decipher every action name to find the right one
 
-    With this, our idea formed: **A tool, like Google Forms, that creates landing pages for single smart contract actions**.
+    With this, our idea formed: **A tool, like Google Forms, that creates landing pages for stand-alone smart contract actions**.
 
   </SubSection>
 </Section>
@@ -97,15 +97,15 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     ## Research
     Talking with teams & developers using Etherscan gave us three key insights:
 
-    1. _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions, while blockchain developers used it for personal projects & testing (since they preffered working in the backend).
-    2. _Everyone knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money to build something custom.
+    1. _People used Etherscan as a "good enough" interface_. Teams used it for admin-like actions, while blockchain developers used it for personal projects & testing (since they preferred working in the backend).
+    2. _Everyone knew Etherscan sucked_ (visually & functionally) but wasn't willing to invest the time & money to build something custom.
     3. _Etherscan was mostly used for <a class="anchor" href="#only-supporting-one-way-actions">one-way actions</a>_ (two-way actions tended to have custom frontends).
 
     Takeaways:
 
     - One-way smart contract actions were neglected
-    - People still valued UX and might be willing to switch if setup was easy
-    - It the bar was _really_ low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and still ship something better.
+    - People still valued UX and might be willing to switch if the setup was easy
+    - The bar was _really_ low — we had lots of room to <a class="anchor" href="#tradeoffs">cut scope</a> and still ship something better.
 
   </SubSection>
   <SubSection>
@@ -305,7 +305,7 @@ import VideoWalkthroughCallout from "../../components/prose/VideoWalkthroughCall
     isCarouselle={true}
   >
     ## Only letting people customize the title & description
-    Originally, wanted every part of a form to be editable:
+    Originally, I wanted every part of a form to be editable:
 
     - Field titles, descriptions, placeholders
     - Error messages
