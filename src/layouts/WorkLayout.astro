@@ -8,8 +8,8 @@ const {
   roles,
   year,
   link,
-  image,
   tools,
+  sections,
   description,
   collaborators,
 } = frontmatter;
@@ -34,7 +34,7 @@ const {
         } : undefined
       } 
     />
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-2 xl:pb-12 xl:border-b border-gray-200">
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 ">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>
         {link ? (
@@ -54,34 +54,37 @@ const {
       </div>
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
-    <article id="content" class="col-span-full">
+    <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12">
+      <aside class="hidden md:flex flex-col gap-2 md:col-span-3 lg:col-span-2 sticky top-6 lg:order-first">
+        {sections.map((section: string) => (
+          <a href={`#${section.toLowerCase()}`} class="block leading-5 hover:underline focus:underline text-gray-500">{section}</a>
+        ))}
+      </aside>
       <div class={`
-        prose-sm max-w-none
-        prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5
-        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5
-        prose-h2:font-bold prose-h2:-mb-[16px] prose-h2:-mt-1 prose-h2:leading-5
-        prose-p:-my-1.5 prose-p:max-w-prose
+        prose-sm
+        prose-headings:col-start-2 prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
+        prose-h1:text-[22px] prose-h1:leading-[24px] prose-h1:mt-6 first:prose-h1:mt-0
+        prose-h2:text-[14px] prose-h2:leading-5 prose-h2:mt-2 prose-h2:-mb-2
+        prose-p:col-start-2 prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-5 lg:prose-ul:pl-4 prose-ul:max-w-prose
-        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-5 lg:prose-ol:pl-4 prose-ol:max-w-prose prose-ol:
-        first:prose-li:mt-0 last:prose-li:mb-0
-        prose-img:h-min prose-img:m-0
-        grid grid-cols-1 lg:grid-cols-12 gap-12
+        prose-ul:list-disc prose-ul:col-start-2 prose-ul:col-end-8 prose-p:max-ul-prose prose-ol:ul-6 lg:prose-ul:pl-4 prose-ul:m-0
+        prose-ol:list-decimal prose-ol:col-start-2 prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-6 lg:prose-ol:pl-4 prose-ol:m-0
+        prose-img:col-span-full prose-img:mt-2 prose-img:mb-0
+        prose-li:my-0
+        col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-4 gap-x-12
       `}>
       <!-- <div class={`
-        prose-sm max-w-none
-        prose-headings:text-sm prose-headings:leading-6 prose-headings:-my-1.5
-        prose-h1:font-normal lg:prose-h1:font-normal prose-h1:mt-0 lg:prose-h1:-mt-1.5
-        prose-h2:font-bold prose-h2:-mb-[16px] prose-h2:-mt-1 prose-h2:leading-5
-        prose-p:-my-1.5 prose-p:max-w-prose
+        prose-sm mx-auto
+        prose-headings:font-bold prose-headings:max-w-prose 
+        prose-h1:text-[24px] prose-h1:leading-[24px] prose-h1:mt-12 first:prose-h1:mt-0
+        prose-h2:text-sm 
+        prose-p:max-w-prose
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-        prose-ul:list-disc prose-ul:-my-1.5 prose-ul:pl-5 lg:prose-ul:pl-4 prose-ul:max-w-prose
-        prose-ol:list-decimal prose-ol:-my-1.5 prose-ol:pl-5 lg:prose-ol:pl-4 prose-ol:max-w-prose prose-ol:
-        first:prose-li:mt-0 last:prose-li:mb-0
-        prose-img:h-min prose-img:m-0
-        grid grid-cols-1 lg:grid-cols-12 gap-12
+        prose-ul:list-disc prose-ul:max-w-prose
+        prose-ol:list-decimal prose-ol:max-w-prose
+        col-span-full lg:col-start-3 lg:col-span-8
       `}> -->
         <slot />
       </div>
@@ -109,7 +112,8 @@ const {
 </style>
 
 <script>
-  const anchors = document.querySelectorAll('.anchor');
+  const links = Array.from(document.querySelectorAll('a'));
+  const anchors = links.filter(link => link.getAttribute('href')?.startsWith('#'));
   const goBackUpButton: HTMLButtonElement | null = document.querySelector('#go-back-up-button');
   const goBackDownButton: HTMLButtonElement | null = document.querySelector('#go-back-down-button');
 

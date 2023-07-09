@@ -3,14 +3,13 @@ import Image from './Image.astro'
 import Caption from './Caption.astro';
 
 export interface Props {
-  images?: {
+  images: {
     src: string;
     alt: string;
   }[];
 }
 const { images } = Astro.props;
 ---
-
 <div class="carouselle relative pb-2">
   <button class="btn-prev hidden group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -left-6 py-14 px-2 z-20 ">
     <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-75 p-2 rounded-full bg-white shadow-sm border border-gray-200">

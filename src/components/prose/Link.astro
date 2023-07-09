@@ -1,0 +1,20 @@
+---
+export interface Props {
+  text: string;
+  href: string;
+  classes?: string;
+  isAnchor?: string;
+  isExternal?: boolean;
+}
+const { text, href, classes = '', isAnchor = false, isExternal = false } = Astro.props;
+---
+<a 
+  href={href}
+  target={isExternal ? '_blank' : ''}
+  class={`
+    ${isAnchor ? 'anchor' : ''}
+    underline
+    ${classes} 
+`}>
+  {text}
+</a>
