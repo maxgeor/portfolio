@@ -75,8 +75,8 @@ const {
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
         prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[21px] sm:prose-ul:pl-5 xl:prose-ul:pl-4 prose-ul:m-0
         prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:5 xl:prose-ol:pl-4 prose-ol:m-0
-        prose-img:col-span-full prose-img:m-0
         prose-li:m-0
+        prose-img:col-span-full prose-img:m-0
         col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-4 gap-x-12
       `}>
         <slot />
@@ -107,41 +107,35 @@ const {
 
   const goBack = () => window.history.back();
 
-  const showGoBackUpButton = () => goBackUpButton?.classList.remove('-translate-y-[52px]');
-  const hideGoBackUpButton = () => goBackUpButton?.classList.add('-translate-y-[52px]');
-  const showGoBackDownButton = () => goBackDownButton?.classList.remove('-translate-y-[52px]');
-  const hideGoBackDownButton = () => goBackDownButton?.classList.add('-translate-y-[52px]');
+  const showBackButton = (button: HTMLButtonElement | null) => button?.classList.remove('-translate-y-[52px]');
+  const hideBackButton = (button: HTMLButtonElement | null) => button?.classList.add('-translate-y-[52px]');
 
   function showGoBackButton(e: Event) {
-    hideGoBackUpButton();
-    hideGoBackDownButton();
+    hideBackButton(goBackUpButton);
+    hideBackButton(goBackDownButton);
 
     const clickedLink = e.target as HTMLAnchorElement;
 
     setTimeout(() => {
       if (isElementInView(clickedLink)) return;
-
-      const isClickedLinkAboveFold = window.scrollY > clickedLink.offsetTop;
-
-      if (isClickedLinkAboveFold) {
-        showGoBackUpButton();
-        setTimeout(() => hideGoBackUpButton(), 8000);
-      } else {
-        showGoBackDownButton();
-        setTimeout(() => hideGoBackDownButton(), 8000);
-      }
+      
+      const backButton = window.scrollY > clickedLink.offsetTop ? goBackUpButton : goBackDownButton;
+      showBackButton(backButton);
+      setTimeout(() => hideBackButton(backButton), 8000);
     }, 550)
   }
 
-  internalLinks.forEach(internalLink => internalLink.addEventListener('click', e => showGoBackButton(e)));
+  internalLinks.forEach(internalLink => {
+    internalLink.addEventListener('click', e => showGoBackButton(e))
+  });
 
   goBackUpButton?.addEventListener('click', () => {
     goBack();
-    hideGoBackUpButton();
+    hideBackButton(goBackUpButton);
   });
 
   goBackDownButton?.addEventListener('click', () => {
     goBack();
-    hideGoBackDownButton();
+    hideBackButton(goBackDownButton);
   });
 </script>

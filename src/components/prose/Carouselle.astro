@@ -48,7 +48,7 @@ const { images } = Astro.props;
     const captions: NodeListOf<HTMLElement> = carsouselle.querySelectorAll(".caption");
   
     slides.forEach((slide, indx) => {
-      slide.style.transform = `translateX(${indx * 100}%)`;
+      slide.style.transform = `translateX(${indx * 100}%)`
     });
   
     captions.forEach((caption, indx) => {
@@ -108,7 +108,7 @@ const { images } = Astro.props;
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
       });
     
-      captions.forEach((caption, indx) => {
+      captions?.forEach((caption, indx) => {
         if (indx === curSlide) {
           caption.style.opacity = '100%';
         } else {
