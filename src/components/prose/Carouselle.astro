@@ -28,12 +28,13 @@ const { images } = Astro.props;
           <Image 
             src={image.src} 
             alt={image.alt}
-            classes='aspect-[7/4] object-cover w-full !mt-0 border-0' 
+            hasCaptions={false}
+            classes='aspect-[7/4] object-cover w-full !m-0 border-0' 
           />
         </div>
       ))}
     </div>
-    <div class="relative w-full">
+    <div class="relative h-3 w-full">
       {images?.map((image) => <Caption text={image.alt || ''} classes='absolute top-0  left-1/2 transform -translate-x-1/2 w-full' />)}
     </div>
   </div>

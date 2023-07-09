@@ -34,7 +34,7 @@ const {
         } : undefined
       } 
     />
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 ">
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 lg:pb-0 border-b lg:border-0">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>
         {link ? (
@@ -55,22 +55,22 @@ const {
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
     <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12">
-      <aside class="hidden md:flex flex-col gap-2 md:col-span-3 lg:col-span-2 sticky top-6 lg:order-first">
+      <aside class="hidden lg:flex flex-col gap-2 lg:col-span-2 sticky top-6">
         {sections.map((section: string) => (
           <a href={`#${section.toLowerCase()}`} class="block leading-5 hover:underline focus:underline text-gray-500">{section}</a>
         ))}
       </aside>
       <div class={`
         prose-sm
-        prose-headings:col-start-2 prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
-        prose-h1:text-[22px] prose-h1:leading-[24px] prose-h1:mt-6 first:prose-h1:mt-0
+        prose-headings:col-span-full lg:prose-headings:col-start-2 lg:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
+        prose-h1:text-[22px] prose-h1:leading-[24px] prose-h1:mt-7 first:prose-h1:mt-0
         prose-h2:text-[14px] prose-h2:leading-5 prose-h2:mt-2 prose-h2:-mb-2
-        prose-p:col-start-2 prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
+        prose-p:col-span-full lg:prose-p:col-start-2 lg:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
         prose-a:underline
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-        prose-ul:list-disc prose-ul:col-start-2 prose-ul:col-end-8 prose-p:max-ul-prose prose-ol:ul-6 lg:prose-ul:pl-4 prose-ul:m-0
-        prose-ol:list-decimal prose-ol:col-start-2 prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-6 lg:prose-ol:pl-4 prose-ol:m-0
-        prose-img:col-span-full prose-img:mt-2 prose-img:mb-0
+        prose-ul:list-disc prose-ul:col-span-full lg:prose-ul:col-start-2 lg:prose-ul:col-end-8 prose-p:max-ul-prose prose-ol:ul-6 lg:prose-ul:pl-4 prose-ul:m-0
+        prose-ol:list-decimal prose-ol:col-span-full lg:prose-ol:col-start-2 lg:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-6 lg:prose-ol:pl-4 prose-ol:m-0
+        prose-img:col-span-full prose-img:m-0
         prose-li:my-0
         col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-4 gap-x-12
       `}>

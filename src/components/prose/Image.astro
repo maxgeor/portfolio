@@ -1,13 +1,27 @@
 ---
+import { image } from 'astro:content';
+import Caption from './Caption.astro';
 export interface Props {
   src: string;
   alt: string;
+  hasCaptions?: boolean;
   classes?: string;
 }
-const { src, alt, classes = '' } = Astro.props;
+const { src, alt, hasCaptions = true, classes = '' } = Astro.props;
 ---
-<img
-  src={src} 
-  alt={alt} 
-  class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-sm bg-gray-50 ${classes}`} 
-/>
+{hasCaptions ? (
+  <div class="flex flex-col items-center gap-3 col-span-full my-2">
+    <img
+      src={src} 
+      alt={alt} 
+      class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-sm bg-gray-50 ${classes}`} 
+    />
+    <Caption text={alt} />
+  </div>
+) : (
+  <img
+    src={src} 
+    alt={alt} 
+    class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-sm bg-gray-50 ${classes}`} 
+  />
+)}
