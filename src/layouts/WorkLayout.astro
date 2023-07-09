@@ -87,7 +87,7 @@ const {
 
 <script>
   const links = Array.from(document.querySelectorAll('a'));
-  const anchors = links.filter(link => link.getAttribute('href')?.startsWith('#'));
+  const internalLinks = links.filter(link => link.getAttribute('href')?.startsWith('#'));
   const goBackUpButton: HTMLButtonElement | null = document.querySelector('#go-back-up-button');
   const goBackDownButton: HTMLButtonElement | null = document.querySelector('#go-back-down-button');
 
@@ -133,7 +133,7 @@ const {
     }, 550)
   }
 
-  anchors.forEach(anchor => anchor.addEventListener('click', e => showGoBackButton(e)));
+  internalLinks.forEach(internalLink => internalLink.addEventListener('click', e => showGoBackButton(e)));
 
   goBackUpButton?.addEventListener('click', () => {
     goBack();
