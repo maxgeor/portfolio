@@ -9,7 +9,7 @@ export interface Props {
 }
 const { src, alt, hasCaptions = true, classes = '' } = Astro.props;
 
-const imageClasses = `aspect-[7/4] object-cover w-full border border-[#eef0f4] border-b-gray-200 rounded-[calc(100vw*0.05)] bg-gray-50 ${classes}`;
+const imageClasses = `aspect-[7/4] object-cover w-full border border-[#eef0f4] border-b-gray-200 rounded-xl bg-gray-50 ${classes}`;
 ---
 {hasCaptions ? (
   <div class="flex flex-col items-center gap-3 col-span-full my-2">
