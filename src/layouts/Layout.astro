@@ -18,7 +18,10 @@ const { title, description, backgroundColor } = Astro.props;
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
 	</head>
-	<body class={`${backgroundColor} text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`} style="text-rendering: optimizeLegibility;">
+	<body 
+		style="text-rendering: optimizeLegibility;"
+		class={`${backgroundColor}text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`} 
+	>
 		<slot />
 	</body>
 </html>
