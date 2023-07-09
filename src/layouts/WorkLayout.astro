@@ -55,7 +55,7 @@ const {
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
     <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 h-full">
-      <aside class="hidden lg:flex flex-col gap-2 lg:col-span-2  sticky top-12">
+      <aside class="hidden lg:flex flex-col gap-2 lg:col-span-2  sticky top-12 -my-0.5">
         {sections.map((section: string) => (
           <a 
             href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
@@ -68,7 +68,7 @@ const {
       <div class={`
         prose-sm max-w-2xl lg:max-w-none mx-auto -mt-1 lg:mt-0
         prose-headings:col-span-full lg:prose-headings:col-start-2 lg:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
-        prose-h1:text-[20px] prose-h1:leading-[24px] prose-h1:mt-12 first:prose-h1:mt-0
+        prose-h1:text-[20px] lg:prose-h1:text-[22px] prose-h1:leading-[24px] prose-h1:mt-12 first:prose-h1:mt-0
         prose-h2:text-[14px] prose-h2:leading-6 prose-h2:mt-2 prose-h2:-mb-2
         prose-p:col-span-full lg:prose-p:col-start-2 lg:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
         prose-a:underline
