@@ -14,7 +14,7 @@ const { src, alt, hasCaptions = true, classes = '' } = Astro.props;
     <img
       src={src} 
       alt={alt} 
-      class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-md sm:rounded-lg lg:rounded-xl bg-gray-50 ${classes}`} 
+      class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-lg md:rounded-xl bg-gray-50 ${classes}`} 
     />
     <Caption text={alt} />
   </div>
@@ -22,6 +22,6 @@ const { src, alt, hasCaptions = true, classes = '' } = Astro.props;
   <img
     src={src} 
     alt={alt} 
-    class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-md sm:rounded-lg lg:rounded-xl bg-gray-50 ${classes}`} 
+    class={`aspect-[7/4] object-cover w-full border border-[#eff1f5] border-b-gray-200 rounded-lg md:rounded-xl bg-gray-50 ${classes}`} 
   />
 )}
