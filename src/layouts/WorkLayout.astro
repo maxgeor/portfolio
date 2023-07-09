@@ -106,7 +106,6 @@ const {
   }
 
   const goBack = () => window.history.back();
-
   const showBackButton = (button: HTMLButtonElement | null) => button?.classList.remove('-translate-y-[52px]');
   const hideBackButton = (button: HTMLButtonElement | null) => button?.classList.add('-translate-y-[52px]');
 
@@ -126,7 +125,7 @@ const {
   }
 
   internalLinks.forEach(internalLink => {
-    internalLink.addEventListener('click', e => showGoBackButton(e))
+    internalLink.addEventListener('click', e => showGoBackButton(e));
   });
 
   goBackUpButton?.addEventListener('click', () => {
