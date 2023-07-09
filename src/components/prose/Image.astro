@@ -12,7 +12,7 @@ const { src, alt, hasCaptions = true, classes = '' } = Astro.props;
 const imageClasses = `aspect-[7/4] object-cover w-full shadow-sm ring-1 ring-gray-900/[6%] rounded-lg sm:rounded-xl bg-gray-50 ${classes}`;
 ---
 {hasCaptions ? (
-  <div class="flex flex-col items-center gap-3 col-span-full my-2 overflow-visible">
+  <div class="flex flex-col items-center gap-3 col-span-full my-2 sm:mt-4 overflow-visible">
     <img src={src} alt={alt} class={imageClasses} />
     <Caption text={alt} />
   </div>
