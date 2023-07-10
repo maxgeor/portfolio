@@ -56,20 +56,28 @@ const {
       </div>
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
-    <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 max-w-2xl lg:max-w-none mx-auto h-full -mt-1">
-      <aside class="flex lg:flex-col gap-y-2 gap-x-4 sm:gap-x-6 col-span-full lg:col-span-2 lg:sticky lg:top-12 overflow-x-scroll no-scrollbar p-6 sm:px-12 md:px-0 lg:p-0 -ml-6 sm:-mx-12 md:mx-0 lg:m-0">
-        {sections.map((section: string, indx: number) => (
-          // <a 
-          //   href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
-          //   class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap text-[11px] lg:text-sm uppercase lg:capitalize tracking-wide lg:tracking-normal -my-0.5 lg:my-0 "
-          // > 
-          <a 
-            href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
-            class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap"
-          > 
-            {section}
-          </a>
-        ))}
+    <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 sm:max-w-2xl lg:max-w-none mx-auto h-full -mt-1">
+      <aside class="flex gap-4 col-span-full lg:col-span-2 lg:sticky lg:top-12 overflow-x-scroll no-scrollbar p-6 sm:px-12 md:px-0 lg:p-0 -m-6 sm:-mx-12 md:mx-0 lg:m-0">
+        <div class="flex lg:flex-col gap-y-2 gap-x-4">
+          {sections.map((section: string) => (
+            <a 
+              href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
+              class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap"
+            > 
+              {section}
+            </a>
+          ))}
+        </div>
+        <div class="flex sm:hidden gap-4">
+          {sections.map((section: string) => (
+            <a 
+              href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
+              class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap"
+            > 
+              {section}
+            </a>
+          ))}
+        </div>
       </aside>
       <div class={`
         prose-sm
@@ -90,15 +98,24 @@ const {
     </article>
   </main>
 </Layout>
-<!-- 
+
 <style>
-  article ul > li::marker {
-    height: 12px;
-    width: 12px;
-    background-color: #000;
-    border-radius: 99999px;
+  @media (max-width: 640px) {
+    aside > div {
+      animation: marquee 20s linear infinite;
+    }
+    
+    &:hover aside > div {
+      animation-play-state: paused;
+    }
   }
-</style> -->
+
+
+  @keyframes marquee {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+</style>
 
 <script>
   const links = Array.from(document.querySelectorAll('a'));
