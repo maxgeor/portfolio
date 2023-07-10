@@ -12,7 +12,7 @@ export interface Props {
 }
 const { images } = Astro.props;
 ---
-<div class="carouselle relative py-2 col-span-full">
+<div class="carouselle relative py-2 col-span-full xl:col-start-2 xl:col-end-8">
   <button disabled class="btn-prev opacity-0 group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -left-6 py-14 px-2 z-20 transition-opacity duration-200">
     <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8%]">
       <ChevronLeftIcon classes="shrink-0" />
