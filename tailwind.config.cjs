@@ -15,22 +15,8 @@ module.exports = {
 			},
 			screens: {
 				xs: '450px',
-				525: '525px',
-				mdlg: '884px',
-				'1.5xl': '1240px',
-				'2.5xl': '1360px',
+        'betterhover': {'raw': '(hover: hover)'},
 			},
-			fontFamily: {
-				bodoni: ['Bodoni Moda', 'serif'],
-			},
-			maxWidth: {
-				'6.5xl': '1200px',
-				'8xl': '1300px',
-				'9xl': '1600px'
-			},
-			letterSpacing: {
-				tightish: '-0.016em',
-			}
 		},
 	},
 	plugins: [
