@@ -8,11 +8,15 @@ export interface Props {
     classes?: string;
     isExternal?: boolean;
   };
+  classes?: string;
 }
 
-const { link } = Astro.props;
+const { link, classes = '' } = Astro.props;
 ---
-<header class='col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 -my-1'>
+<header class={`
+  col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
+  ${classes}
+`}>
   <a href="/" class="col-span-full hover:underline">Max Georgopoulos</a>
   {link ? (
     <a 
