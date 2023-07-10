@@ -47,29 +47,20 @@ import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		const email = document.querySelector('#email');
+		const email = document.querySelector('#email') as HTMLElement;
 
-		if (email == null) return;
-
-		email.addEventListener('click', function() {
-			var textToCopy = email.innerText;
+		email?.addEventListener('click', function() {
+			const textToCopy = email.innerText;
 			navigator.clipboard.writeText(textToCopy)
-				.then(function() {
-					console.log('Text copied to clipboard: ' + textToCopy);
-				})
-				.catch(function(error) {
-					console.error('Error copying text to clipboard: ', error);
-				});
+				.then(() => console.log('Text copied to clipboard: ' + textToCopy))
+				.catch((error) => console.error('Error copying text to clipboard: ', error));
 
-			// Show the hidden span tag
-			const copyIcon = document.querySelector('#copyIcon');
-			const copyConfirmationIcon = document.querySelector('#copyConfirmationIcon');
+			const copyIcon = document.querySelector('#copyIcon') as HTMLElement;
+			const copyConfirmationIcon = document.querySelector('#copyConfirmationIcon') as HTMLElement;
 			copyIcon.style.display = 'none';
 			copyConfirmationIcon.style.display = 'inline';
 			
-			
-			// Hide the span tag after 3 seconds
-			setTimeout(function() {
+			setTimeout(() => {
 				copyIcon.style.display = 'inline';
 				copyConfirmationIcon.style.display = 'none';
 			}, 1000);
