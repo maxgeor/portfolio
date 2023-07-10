@@ -1,7 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
-import DetailsTable from "../components/work/DetailsTable.astro";
+import Details from "../components/work/Details.astro";
 const { frontmatter } = Astro.props;
 const {
   title,
@@ -46,7 +46,7 @@ const {
       </div>
       <p class={`col-span-full lg:col-span-4 -my-1`}>{description}</p>
       <div class="flex flex-col -my-1 col-span-full lg:col-span-4">
-        <DetailsTable
+        <Details
           roles={roles}
           tools={tools}
           collaborators={collaborators}
@@ -109,7 +109,7 @@ const {
   const showBackButton = (button: HTMLButtonElement | null) => button?.classList.remove('-translate-y-[52px]');
   const hideBackButton = (button: HTMLButtonElement | null) => button?.classList.add('-translate-y-[52px]');
 
-  function showGoBackButton(e: Event) {
+  function showAndHideBackButton(e: Event) {
     hideBackButton(goBackUpButton);
     hideBackButton(goBackDownButton);
 
@@ -125,7 +125,7 @@ const {
   }
 
   internalLinks.forEach(internalLink => {
-    internalLink.addEventListener('click', e => showGoBackButton(e));
+    internalLink.addEventListener('click', e => showAndHideBackButton(e))
   });
 
   goBackUpButton?.addEventListener('click', () => {
