@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Card from '../components/work/Card.astro';
-import LinkBlock from '../components/LinkBlock.astro';
+import Link from '../components/Link.astro';
 ---
 <Layout title="Max Georgopoulos">
 	<div class="grid sm:grid-cols-12 relative mx-auto gap-12 px-6 sm:px-12 ">
@@ -33,28 +33,28 @@ import LinkBlock from '../components/LinkBlock.astro';
 					Projects
 				</h2>
 				<div class="col-span-full lg:col-span-9 xl:col-span-6 flex flex-col">
-					<LinkBlock 
+					<Link 
 						type='project'
 						title='Scope Todo'
 						href='https://www.figma.com/community/widget/1036372982291551669'
 						description="A good ol' todo widget for FigJam"
 						externalLink={true}
 					/>
-					<LinkBlock 
+					<Link 
 						type='project'
 						title='The Quest Board'
 						href='https://www.lootquestboard.com/'
 						description="Job board for the Loot community"
 						externalLink={true}
 					/>
-					<LinkBlock 
+					<Link 
 					type='project'
 					title='Sayings, Forgotten'
 					href='https://sayings-forgotten.maxgeor.repl.co/'
 					description="Collection of sayings with forgotten meanings"
 					externalLink={true}
 					/>
-					<LinkBlock 
+					<Link 
 						type='project'
 						title='Dissect Design'
 						href='https://dissect-design-sigma.vercel.app/'
@@ -68,19 +68,19 @@ import LinkBlock from '../components/LinkBlock.astro';
 					Writing
 				</h2>
 				<div class="col-span-full lg:col-span-9 xl:col-span-6 flex flex-col">
-					<LinkBlock 
+					<Link 
 						type='writing'
 						title='Write it'
 						href='/writing/write'
 						description="Jul 2023"
 					/>
-					<LinkBlock 
+					<Link 
 						type='writing'
 						title='In defence of bad writing'
 						href='/writing/bad'
 						description="Mar 2022"
 					/>
-					<LinkBlock 
+					<Link 
 						type='writing'
 						title='Yes, you can learn to code'
 						href='/writing/yes'
