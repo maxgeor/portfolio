@@ -57,11 +57,11 @@ const {
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
     <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 sm:max-w-3xl lg:max-w-none mx-auto h-full lg:-mt-1 lg:px-12">
-      <aside class="flex lg:flex-col gap-y-2 gap-x-4 sm:gap-x-6 col-span-full lg:col-span-2 overflow-x-scroll lg:overflow-auto no-scrollbar py-9 px-6 sm:px-12 lg:p-0 -my-9 mr-6 sm:mr-0 lg:m-0 ">
+      <aside class="flex lg:flex-col gap-y-2 col-span-full lg:col-span-2 overflow-x-scroll lg:overflow-auto no-scrollbar py-9 px-6 sm:px-12 lg:p-0 -my-9">
         {sections.map((section: string) => (
           <a 
             href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
-            class="block leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap -my-1 lg:m-0"
+            class="block leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap -my-1 mr-4 last:mr-6 sm:mr-6 sm:last:mr-0 lg:m-0"
           > 
             {section}
           </a>
