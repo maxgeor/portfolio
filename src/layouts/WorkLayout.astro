@@ -59,9 +59,13 @@ const {
     <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 max-w-2xl lg:max-w-none mx-auto h-full -mt-1">
       <aside class="flex lg:flex-col gap-y-2 gap-x-3 sm:gap-x-6 col-span-full lg:col-span-2 lg:sticky lg:top-12 overflow-x-scroll no-scrollbar p-6 sm:px-12 md:px-0 lg:p-0 -m-6 sm:-mx-12 md:mx-0 lg:m-0">
         {sections.map((section: string, indx: number) => (
+          // <a 
+          //   href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
+          //   class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap text-[11px] lg:text-sm uppercase lg:capitalize tracking-wide lg:tracking-normal -my-0.5 lg:my-0 "
+          // > 
           <a 
             href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
-            class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap text-[11px] lg:text-sm uppercase lg:capitalize tracking-wide lg:tracking-normal -my-0.5 lg:my-0 "
+            class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap"
           > 
             {section}
           </a>
