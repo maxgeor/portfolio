@@ -91,7 +91,7 @@ const {
   const goBackUpButton: HTMLButtonElement | null = document.querySelector('#go-back-up-button');
   const goBackDownButton: HTMLButtonElement | null = document.querySelector('#go-back-down-button');
 
-  function isElementInView(element: HTMLElement) {
+  const isElementInView = (element: HTMLElement) => {
     const rect = element.getBoundingClientRect();
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -108,8 +108,8 @@ const {
   const goBack = () => window.history.back();
   const showBackButton = (button: HTMLButtonElement | null) => button?.classList.remove('-translate-y-[52px]');
   const hideBackButton = (button: HTMLButtonElement | null) => button?.classList.add('-translate-y-[52px]');
-
-  function showAndHideBackButton(e: Event) {
+  
+  const showAndHideBackButton = (e: Event) => {
     hideBackButton(goBackUpButton);
     hideBackButton(goBackDownButton);
 
