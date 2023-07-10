@@ -10,19 +10,8 @@ module.exports = {
 		extend: {
 			colors: {
 				gray: {
-					darkest: '#030303',
-					darker: '#181818',
-					dark: '#282828',
-					DEFAULT: '#2e2e2e',
-					light: '#BFBFBF'
+					500: '#6F7685',
 				},
-				twilight: {
-					darkest: '#3A3A41',
-					darker: '#47474E',
-					dark: '#505055',
-					DEFAULT: '#56565b',
-					light: '#d5d5dc'
-				}
 			},
 			screens: {
 				xs: '450px',

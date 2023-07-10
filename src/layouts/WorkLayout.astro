@@ -35,7 +35,8 @@ const {
         } : undefined
       } 
     />
-    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 lg:pb-0 border-b lg:border-0">
+    <!-- <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12 pb-12 lg:pb-0 border-b lg:border-0"> -->
+    <div class="relative col-span-full grid grid-cols-1 lg:grid-cols-12 gap-y-6 gap-x-12">
       <div class="col-span-full lg:col-span-2 flex justify-between">
         <h1 class="-my-1">{title}</h1>
         {link ? (
@@ -55,19 +56,19 @@ const {
       </div>
       <div class="lg:col-span-2 w-full flex lg:justify-end -my-1">{year}</div>
     </div>
-    <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 h-full -mt-1">
-      <aside class="hidden lg:flex flex-col gap-2 lg:col-span-2  sticky top-12">
-        {sections.map((section: string) => (
+    <article id="content" class="relative col-span-full grid grid-cols-1 md:grid-cols-12 gap-12 max-w-2xl lg:max-w-none mx-auto h-full -mt-1">
+      <aside class="flex lg:flex-col gap-y-2 gap-x-3 sm:gap-x-6 col-span-full lg:col-span-2 lg:sticky lg:top-12 overflow-x-scroll no-scrollbar p-6 sm:px-12 md:px-0 lg:p-0 -m-6 sm:-mx-12 md:mx-0 lg:m-0">
+        {sections.map((section: string, indx: number) => (
           <a 
             href={`#${section.replace(/\s+/g, '-').toLowerCase()}`} 
-            class="block leading-5 hover:underline focus:underline text-gray-500"
-          >
+            class="leading-5 hover:underline focus:underline text-gray-500 whitespace-nowrap text-[11px] lg:text-sm uppercase lg:capitalize tracking-wide lg:tracking-normal -my-0.5 lg:my-0 "
+          > 
             {section}
           </a>
         ))}
       </aside>
       <div class={`
-        prose-sm max-w-2xl lg:max-w-none mx-auto
+        prose-sm
         prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
         prose-h1:text-[20px] lg:prose-h1:text-[22px] prose-h1:leading-[24px] prose-h1:mt-10 lg:prose-h1:mt-12 first:prose-h1:mt-0
         prose-h2:text-[14px] prose-h2:leading-6 prose-h2:mt-2 prose-h2:-mb-2

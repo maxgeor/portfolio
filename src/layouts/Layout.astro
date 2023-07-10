@@ -27,6 +27,15 @@ const { title, description, backgroundColor } = Astro.props;
 </html>
 
 <style is:global>
+	.no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none; 
+	}
+	
 	::-moz-selection {
 		background: yellow;
 	}
