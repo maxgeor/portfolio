@@ -14,24 +14,24 @@ const { images } = Astro.props;
 ---
 <div class="carouselle relative py-2 xl:pt-4 col-span-full">
   <button disabled class="btn-prev opacity-0 group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -left-6 py-14 px-2 z-20 transition-opacity duration-200">
-    <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[10%]">
+    <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8%]">
       <ChevronLeftIcon classes="shrink-0" />
     </div>
   </button>
   <button class="btn-next group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -right-6 py-14 px-2 z-20 transition-opacity duration-200">
-    <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[10%]">
+    <div class="shrink-0 w-fit  group-hover:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8%]">
       <ChevronRightIcon classes="shrink-0" />
     </div>
   </button>
   <div class="flex flex-col items-center gap-3">
-    <div class="relative aspect-[7/4] w-full overflow-hidden shadow-sm ring-1 ring-[#030712]/[7.5%] sm:ring-[#030712]/[6.2%] rounded-lg sm:rounded-xl">
+    <div class="relative aspect-[7/4] w-full overflow-hidden border border-[#eeeff1] rounded-lg sm:rounded-xl">
       {images?.map(image => (
         <div class="slide absolute overflow-visible transition-all duration-[450ms] ease-in-out w-full h-fit">
           <Image 
             src={image.src} 
             alt={image.alt}
             hasCaptions={false}
-            classes='aspect-[7/4] object-cover w-full !m-0 !ring-0 !shadow-none ' 
+            classes='aspect-[7/4] object-cover w-full !m-0 !border-none ' 
           />
         </div>
       ))}
