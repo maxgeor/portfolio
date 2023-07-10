@@ -2,11 +2,7 @@
 export interface Props {
   title: string;
 }
-
 const { title } = Astro.props;
 ---
-
-<>
-  <h4 class="cols-span-1 w-28">{title}</h4>
-  <p class="col-span-2"><slot /></p>
-</>
+<h4 class="cols-span-1 w-28">{title}</h4>
+<p class="col-span-2"><slot /></p>

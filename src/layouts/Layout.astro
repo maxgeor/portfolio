@@ -25,6 +25,7 @@ const { title, description, backgroundColor } = Astro.props;
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	::-moz-selection {
 		background: yellow;
@@ -70,15 +71,6 @@ const { title, description, backgroundColor } = Astro.props;
 	@font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
-	}
-
-	.full-width {
-		width: 100vw;
-		position: relative;
-		left: 50%;
-		right: 50%;
-		margin-left: -50vw;
-		margin-right: -50vw;
 	}
 
 	tr:last-child > td {
