@@ -37,7 +37,7 @@ import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
 					<button id="email" class="group flex items-center justify-between py-1 border-y cursor-pointer w-full">
 						<span class="group-hover:underline flex gap-px">max123358 <code>@</code>gmail.com</span>
 						<CopyIcon id="copyIcon" />
-						<CopiedIcon id="copyConfirmationIcon" classes='hidden' />
+						<CopiedIcon id="copiedIcon" classes='hidden' />
 					</button>
 				</div>
 			</div>
@@ -50,19 +50,16 @@ import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
 		const email = document.querySelector('#email') as HTMLElement;
 
 		email?.addEventListener('click', function() {
-			const textToCopy = email.innerText;
-			navigator.clipboard.writeText(textToCopy)
-				.then(() => console.log('Text copied to clipboard: ' + textToCopy))
-				.catch((error) => console.error('Error copying text to clipboard: ', error));
+			navigator.clipboard.writeText(email.innerText);
 
 			const copyIcon = document.querySelector('#copyIcon') as HTMLElement;
-			const copyConfirmationIcon = document.querySelector('#copyConfirmationIcon') as HTMLElement;
+			const copiedIcon = document.querySelector('#copiedIcon') as HTMLElement;
 			copyIcon.style.display = 'none';
-			copyConfirmationIcon.style.display = 'inline';
+			copiedIcon.style.display = 'inline';
 			
 			setTimeout(() => {
 				copyIcon.style.display = 'inline';
-				copyConfirmationIcon.style.display = 'none';
+				copiedIcon.style.display = 'none';
 			}, 1000);
 		});
 	});
