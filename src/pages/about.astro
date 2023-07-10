@@ -49,7 +49,7 @@ import ExternalLinkIcon from '../components/icons/ExternalLinkIcon.astro';
 	document.addEventListener('DOMContentLoaded', () => {
 		const email = document.querySelector('#email') as HTMLElement;
 
-		email?.addEventListener('click', function() {
+		email?.addEventListener('click', () => {
 			navigator.clipboard.writeText(email.innerText);
 
 			const copyIcon = document.querySelector('#copyIcon') as HTMLElement;
