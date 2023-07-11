@@ -33,23 +33,20 @@ const { images } = Astro.props;
       <ChevronRightIcon classes="shrink-0" />
     </div>
   </button>
-  <div class="flex flex-col items-center gap-4">
-    <div
-      class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff1] border-b-gray-200 dark:border-[#2a2c2f]/80 dark:border-b-[#2a2c2f]/80 dark:border-t-[#2B2E35]"
-    >
-      {
-        images?.map((image) => (
-          <div class="slide absolute h-fit w-full overflow-visible transition-all duration-[450ms] ease-in-out">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              hasCaptions={false}
-              classes="aspect-[7/4] object-cover w-full !m-0 !border-0"
-            />
-          </div>
-        ))
-      }
-    </div>
+  <div
+    class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff1] border-b-gray-200 dark:border-[#2a2c2f]/80 dark:border-b-[#2a2c2f]/80 dark:border-t-[#2B2E35]"
+  >
+    {
+      images?.map((image) => (
+        <div class="slide absolute h-fit w-full overflow-visible transition-all duration-[450ms] ease-in-out">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            classes="aspect-[7/4] object-cover w-full !m-0 !border-0"
+          />
+        </div>
+      ))
+    }
   </div>
 </div>
 
