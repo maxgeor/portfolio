@@ -5,7 +5,7 @@
 <script>
   const themeButton = document.querySelector('#theme-button') as HTMLButtonElement;
 
-  const toggleTheme = () => {
+  themeButton.addEventListener('click', () => {
     switch (localStorage.theme) {
       case "light":
         localStorage.theme = 'dark'
@@ -17,7 +17,5 @@
         localStorage.theme = 'light'
     }
     location.reload();
-  };
-
-  themeButton.addEventListener('click', () => toggleTheme());
+  });
 </script>
