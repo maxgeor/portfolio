@@ -37,7 +37,7 @@ const { images } = Astro.props;
   >
     {
       images?.map((image) => (
-        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out rotate-0">
+        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
           <Image
             src={image.src}
             alt={image.alt}
