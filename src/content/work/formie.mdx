@@ -116,9 +116,9 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
 We knew three things from the jump:
 
-1. Scammers would use forms to misrepresent contracts<br/>
-2. We couldn't stop them<br/>
-3. But we had to do something<br/>
+1. Scammers would use forms to misrepresent contracts
+2. We couldn't stop them
+3. But we had to do something.
 
 [How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
 
@@ -133,9 +133,9 @@ Smart contracts have tons of strange behaviors:
 
 - Transactions cost a bit of money
 - Transactions take time to go through
-- Anyone can make a frontend for any contract (because they're public)
+- Anyone can make a frontend for any contract (because they're public).
 
-People who know nothing about smart contracts will face confusion, missteps, and exploitation. Even though it's a technical topic, people had to know some things.
+The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
 
 [How do we explain challenging ideas](#using-human-words) without overwhelming people? Which concepts are essential?
 
@@ -228,9 +228,7 @@ Instead of rebuilding, we decided to...
 1. Let people make unlimited forms, and
 2. Make forms permanent (for security reasons).
 
-People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways.
-
-If we learned later that people edit frequently, we could add it. Until then, disposable forms were enough.
+People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. If we learned later that people edit a lot, we could add it. Until then, disposable forms were good enough.
 
 Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
@@ -287,7 +285,7 @@ At the time, a protocol to standardize errors like HTTP didn't exist for smart c
 It was impossible to translate errors consistently, so we settled on...
 
 1. Humanizing basic type errors
-2. Wrapping unknown errors in an honest, generic message
+2. Wrapping unknown errors in an honest, generic message.
 
 Compromising on error handling stung, but you can only do so much when working with a black box.
 
