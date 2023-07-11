@@ -15,21 +15,21 @@ const { images } = Astro.props;
 <div class="carouselle relative col-span-full py-2 xl:col-start-2 xl:col-end-8">
   <button
     disabled
-    class="btn-prev group absolute top-1/2 -left-6 z-20 -translate-y-1/2 transform py-14 px-2 opacity-0 transition-opacity duration-200"
+    class="btn-prev group absolute top-1/2 -left-[22px] z-20 -translate-y-1/2 transform py-14 px-2 opacity-0 transition-opacity duration-200"
   >
     <div
       class="w-fit shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[8.5%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2a2f31] dark:text-white dark:ring-white/[16%] dark:active:bg-[#373B3E] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#373B3E]"
     >
-      <ChevronLeftIcon classes="shrink-0" />
+      <ChevronLeftIcon classes="shrink-0 -ml-px" />
     </div>
   </button>
   <button
-    class="btn-next group absolute top-1/2 -right-6 z-20 -translate-y-1/2 transform py-14 px-2 transition-opacity duration-200"
+    class="btn-next group absolute top-1/2 -right-[22px] z-20 -translate-y-1/2 transform py-14 px-2 transition-opacity duration-200"
   >
     <div
       class="w-fit shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[8.5%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2a2f31] dark:text-white dark:ring-white/[16%] dark:active:bg-[#373B3E] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#373B3E]"
     >
-      <ChevronRightIcon classes="shrink-0" />
+      <ChevronRightIcon classes="shrink-0 -mr-px" />
     </div>
   </button>
   <div
