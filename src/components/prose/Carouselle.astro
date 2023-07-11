@@ -33,11 +33,11 @@ const { images } = Astro.props;
     </div>
   </button>
   <div
-    class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff1] border-b-gray-200 dark:border-[#303236]/80 dark:border-b-[#303236]/80 dark:border-t-[#2B2E35]"
+    class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff1] border-b-gray-200 dark:border-[#303236]/80 dark:border-b-[#303236]/80 dark:border-t-[#2B2E35] rotate-0"
   >
     {
       images?.map((image) => (
-        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
+        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out rotate-0">
           <Image
             src={image.src}
             alt={image.alt}
