@@ -17,7 +17,6 @@ const { title, description, backgroundColor } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-
     <script is:inline>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -29,10 +28,17 @@ const { title, description, backgroundColor } = Astro.props;
   <body
     style="text-rendering: optimizeLegibility;"
     class={`
-      dark:bg-[#0b0f12] text-black dark:text-[#9aa9b6] min-h-screen text-sm antialiased max-w-[1440px] mx-auto 
+      dark:bg-[#0b0f12] text-black dark:text-[#9AA2A9] min-h-screen text-sm antialiased max-w-[1440px] mx-auto 
       ${backgroundColor}
     `}
   >
+  <!-- <body
+    style="text-rendering: optimizeLegibility;"
+    class={`
+      dark:bg-[#0b0f12] text-black dark:text-[#9aa9b6] min-h-screen text-sm antialiased max-w-[1440px] mx-auto 
+      ${backgroundColor}
+    `}
+  > -->
     <slot />
   </body>
 </html>
