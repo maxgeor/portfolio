@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
@@ -10,7 +11,11 @@ module.exports = {
 		extend: {
 			colors: {
 				gray: {
+					300: '#b8bec3',
+					400: '#868B90',
 					500: '#6F7685',
+					700: '*2c2f33',
+					800: '*212427',
 				},
 			},
 			screens: {
@@ -18,6 +23,10 @@ module.exports = {
         'betterhover': {'raw': '(hover: hover)'},
 			},
 		},
+	},
+	variants: {
+		borderColor: ['group-hover', 'group-focus'],
+		scale: ['group-hover', 'group-focus'],
 	},
 	plugins: [
 		require('@tailwindcss/typography'),

@@ -23,19 +23,20 @@ const {
   <main class="relative grid h-full gap-12 pb-24 sm:grid-cols-12">
     <button
       id="go-back-up-button"
-      class="fixed top-0 left-0 right-0 z-10 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/75 bg-white/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out sm:px-12"
+      class="fixed top-0 left-0 right-0 z-10 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/75 bg-white/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#1d2025]/75 dark:bg-[#0b0f12]/[85%] sm:px-12"
     >
       <ChevronUpIcon classes="-ml-0.5 -mb-0.5" />
       Go back
     </button>
     <button
       id="go-back-down-button"
-      class="fixed top-0 left-0 right-0 z-10 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/75 bg-white/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out sm:px-12"
+      class="fixed top-0 left-0 right-0 z-10 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/75 bg-white/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#1d2025]/75 dark:bg-[#0b0f12]/[85%] sm:px-12"
     >
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
     </button>
-    <Header
+    <Header cellSpan="col-span-2" classes="px-6 sm:px-12" />
+    <!-- <Header
       link={link
         ? {
             text: "See it",
@@ -44,8 +45,9 @@ const {
             isExternal: true,
           }
         : undefined}
+      cellSpan="col-span-2"
       classes="px-6 sm:px-12"
-    />
+    /> -->
     <div
       class="relative col-span-full grid grid-cols-1 gap-y-6 gap-x-12 px-6 sm:px-12 lg:grid-cols-12"
     >
@@ -68,14 +70,28 @@ const {
       <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
         <Details roles={roles} tools={tools} collaborators={collaborators} />
       </div>
-      <div class="-my-1 flex w-full lg:col-span-2 lg:justify-end">{year}</div>
+      <div class="lg:col-span-2 flex flex-col gap-2 justify-between items-end">
+        {
+          link ? (
+            <a
+              href={link}
+              target="_blank"
+              class="hidden lg:flex items-center gap-[3px] -my-1 -mr-[3px] hover:underline focus:underline"
+            >
+              <span class="whitespace-nowrap">See it</span>
+              <ExternalLinkIcon classes="mt-0.5" />
+            </a>
+          ) : null
+        }
+        <span class="-my-1">{year}</span>
+      </div>
     </div>
     <article
       id="content"
       class="relative col-span-full mx-auto grid h-full grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
     >
       <hr
-        class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform bg-gray-200 lg:hidden"
+        class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#1d2025] lg:hidden"
       />
       <aside
         class="no-scrollbar col-span-full -mb-6 flex gap-y-2 gap-x-6 overflow-x-scroll scroll-smooth p-6 sm:-mb-12 sm:px-12 sm:pb-12 lg:col-span-2 lg:m-0 lg:flex-col lg:overflow-auto lg:p-0"
@@ -84,30 +100,31 @@ const {
           sections.map((section: string) => (
             <a
               href={`#${section.replace(/\s+/g, "-").toLowerCase()}`}
-              class="-my-1 whitespace-nowrap leading-5 text-gray-500 hover:underline focus:underline lg:m-0"
+              class="-my-1 whitespace-nowrap leading-5 text-gray-500 hover:underline focus:underline dark:text-[#72818f] lg:m-0"
             >
               {section}
             </a>
           ))
         }
         <div
-          class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white lg:hidden"
+          class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#0b0f12] lg:hidden"
         >
         </div>
         <div
-          class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white lg:hidden"
+          class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#0b0f12] lg:hidden"
         >
         </div>
       </aside>
       <div
         class={`
         prose-sm px-6 sm:px-12 lg:px-0
-        prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0
+        prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-bold prose-headings:m-0 dark:prose-headings:text-[#E2F0F7]
         prose-h1:text-[20px] lg:prose-h1:text-[24px] prose-h1:leading-[24px] lg:prose-h1:leading-[28px] prose-h1:mt-[48px] first:prose-h1:mt-0
         prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
         prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
+        dark:prose-strong:text-[#E2F0F7]
         prose-a:underline
-        prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+        prose-code:bg-gray-100 dark:prose-code:bg-[#151a1c] prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 dark:prose-code:border-[#72818f]/10 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
         prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-5 prose-ul:m-0
         prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-5 prose-ol:m-0
         prose-li:m-0

@@ -20,11 +20,22 @@ const { title, description, backgroundColor } = Astro.props;
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class={`${backgroundColor}text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`}
+    class={`
+      dark:bg-[#0b0f12] text-black dark:text-[#9aa9b6] min-h-screen text-sm antialiased max-w-[1440px] mx-auto 
+      ${backgroundColor}
+    `}
   >
     <slot />
   </body>
 </html>
+
+<script>
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+</script>
 
 <style is:global>
   .no-scrollbar::-webkit-scrollbar {

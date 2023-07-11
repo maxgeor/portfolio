@@ -9,19 +9,21 @@ const { frontmatter } = Astro.props;
     <Header />
     <aside class="col-span-full -my-1 pb-1 lg:col-span-3">
       <h1>{frontmatter.title}</h1>
-      <p class="mt-1 text-[12px] text-gray-500">{frontmatter.date}</p>
+      <p class="mt-1 text-[12px] text-gray-500 dark:text-[#72818f]">
+        {frontmatter.date}
+      </p>
     </aside>
     <main class="col-span-full -my-1.5 lg:col-span-9 xl:col-span-6">
       <div
         class={`
         prose-sm max-w-prose
-        prose-headings:text-sm prose-headings:font-bold prose-headings:leading-6
+        prose-headings:text-sm prose-headings:font-bold prose-headings:leading-6 dark:prose-headings:text-[#cbdee8]
         prose-h2:mt-6 prose-h2:mb-3
         prose-a:underline
+        dark:prose-strong:text-[#cbdee8]
         prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal
         prose-ul:list-disc  
         prose-ol:list-decimal
-        text-black
       `}
       >
         <slot />

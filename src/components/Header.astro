@@ -8,31 +8,49 @@ export interface Props {
     classes?: string;
     isExternal?: boolean;
   };
+  cellSpan?: "col-span-2" | "col-span-3"
   classes?: string;
 }
 
-const { link, classes = "" } = Astro.props;
+const { link, classes = "", cellSpan = "col-span-3" } = Astro.props;
 ---
 
 <header
   class={`
-  col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
-  ${classes}
-`}
+    relative col-span-full flex items-center justify-between lg:grid grid-cols-12 gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
+    ${classes}
+  `}
 >
-  <a href="/" class="col-span-full hover:underline">Max Georgopoulos</a>
-  {
-    link ? (
-      <a
-        href={link.href}
-        target={link.isExternal ? "_blank" : undefined}
-        class={`items-center gap-[3px] hover:underline lg:flex ${link.classes}`}
-      >
-        {link.text}
-        {link.isExternal ? (
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        ) : null}
-      </a>
-    ) : null
-  }
+  <div class={`
+    ${cellSpan} 
+    flex items-center justify-between gap-6 sm:gap-12 items-center
+  `}>
+    <a href="/" class="hover:underline col-span-3">Max Georgopoulos</a>
+  </div>
+  <div class={`
+    ${cellSpan} 
+    col-end-13 flex items-center gap-6 justify-self-end
+  `}>
+    {
+      link ? (
+        <>
+          <a
+            href={link.href}
+            target={link.isExternal ? "_blank" : undefined}
+            class={`items-center gap-[3px] hover:underline lg:flex ${link.classes}`}
+          >
+            {link.text}
+            {link.isExternal ? (
+              <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
+            ) : null}
+          </a>
+          <span class="hidden sm:block h-[14px] w-px border-r border-neutral-600 dark:border-[#29333C]"></span>
+          </>
+          ) : null
+        }
+        <!-- <span class="hidden sm:block h-[14px] w-px border-r border-neutral-600 dark:border-[#1F2327]"></span> -->
+    <button class="group justify-self-end p-5 -m-5">
+      <div class="h-2 w-2 rounded-full group-hover:scale-[120%] group-active:scale-[110%] group-focus:scale-[120%] border border-black dark:border-[#9aa9b6] group-hover:bg-[#0b0f12] group-focus:bg-[#0b0f12] group-hover:border-[#0b0f12] group-focus:border-[#0b0f12] dark:group-hover:bg-white dark:group-focus:bg-white dark:group-hover:border-white dark:group-focus:border-white shrink-0 transition duraton-75"></div>
+    </button>
+  </div>
 </header>
