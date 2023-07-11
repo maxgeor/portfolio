@@ -1,4 +1,5 @@
 ---
+import ThemeButton from "./ThemeButton.astro"
 import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
 
 export interface Props {
@@ -44,13 +45,10 @@ const { link, classes = "", cellSpan = "col-span-3" } = Astro.props;
               <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
             ) : null}
           </a>
-          <span class="hidden sm:block h-[14px] w-px border-r border-neutral-600 dark:border-[#29333C]"></span>
-          </>
-          ) : null
-        }
-        <!-- <span class="hidden sm:block h-[14px] w-px border-r border-neutral-600 dark:border-[#1F2327]"></span> -->
-    <button class="group justify-self-end p-5 -m-5">
-      <div class="h-2 w-2 rounded-full group-hover:scale-[120%] group-active:scale-[110%] group-focus:scale-[120%] border border-black dark:border-[#9aa9b6] group-hover:bg-[#0b0f12] group-focus:bg-[#0b0f12] group-hover:border-[#0b0f12] group-focus:border-[#0b0f12] dark:group-hover:bg-white dark:group-focus:bg-white dark:group-hover:border-white dark:group-focus:border-white shrink-0 transition duraton-75"></div>
-    </button>
+          <span class="hidden sm:block h-[14px] w-px border-r border-[#C4D0D7] dark:border-[#29333C]"></span>
+        </>
+      ) : null
+    }
+    <ThemeButton />
   </div>
 </header>
