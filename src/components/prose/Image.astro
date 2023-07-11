@@ -3,20 +3,13 @@ import Caption from "./Caption.astro";
 export interface Props {
   src: string;
   alt: string;
-  hasCaptions?: boolean;
   classes?: string;
 }
-const { src, alt, hasCaptions = true, classes = "" } = Astro.props;
-
-const imageClasses = `aspect-[7/4] object-cover w-full border border-[#eeeff1] border-b-gray-200 dark:border-[#2a2c2f]/80 dark:border-b-[#2a2c2f]/80 dark:border-t-[#24272D] rounded-lg bg-gray-50 dark:brightness-[90%] ${classes}`;
+const { src, alt, classes = "" } = Astro.props;
 ---
 
-{
-  hasCaptions ? (
-    <div class="col-span-full my-2 flex flex-col items-center gap-4 overflow-visible xl:col-start-2 xl:col-end-8">
-      <img src={src} alt={alt} class={imageClasses} />
-    </div>
-  ) : (
-    <img src={src} alt={alt} class={imageClasses} />
-  )
-}
+<img 
+  src={src} 
+  alt={alt} 
+  class={`col-span-full xl:col-start-2 xl:col-end-8 my-2 aspect-[7/4] object-cover w-full border border-[#eeeff1] border-b-gray-200 dark:border-[#2a2c2f]/80 dark:border-b-[#2a2c2f]/80 dark:border-t-[#2B2E35] rounded-lg bg-gray-50 dark:brightness-[90%] ${classes}`} 
+/>
