@@ -1,31 +1,36 @@
 ---
 export interface Props {
-	type: 'project' | 'writing';
-	href: string;
-	title: string;
-	description: string;
-	externalLink?: boolean;
+  type: "project" | "writing";
+  href: string;
+  title: string;
+  description: string;
+  externalLink?: boolean;
 }
 
 const { type, href, title, description, externalLink = false } = Astro.props;
 ---
-<a 
-	href={href}
-	target={externalLink ? '_blank' : '_self'}
-	class={`
+
+<a
+  href={href}
+  target={externalLink ? "_blank" : "_self"}
+  class={`
 		group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 border-t last:border-b
 	`}
 >
-	<p class={`
-		${type === 'writing' ? 'xs:basis-1/2' : 'basis-1/2'}
+  <p
+    class={`
+		${type === "writing" ? "xs:basis-1/2" : "basis-1/2"}
 		self-center group-hover:underline pr-6 sm:pr-0
-	`}>
-		{title}
-	</p>
-	<p class={`
-		${type === 'writing' ? 'text-[13px] xs:basis-1/2' : 'basis-1/2'}
+	`}
+  >
+    {title}
+  </p>
+  <p
+    class={`
+		${type === "writing" ? "text-[13px] xs:basis-1/2" : "basis-1/2"}
 		self-center text-gray-500
-	`}>
-		{description}
-	</p>
+	`}
+  >
+    {description}
+  </p>
 </a>

@@ -8,23 +8,29 @@ export interface Props {
   titleWidth?: string;
   company?: string;
 }
-const { title, startDate, endDate, tech, blurb, company, titleWidth } = Astro.props;
+const { title, startDate, endDate, tech, blurb, company, titleWidth } =
+  Astro.props;
 ---
+
 <article class="col-span-3 grid grid-cols-3 gap-4">
-  <h3 class={`font-bold ${titleWidth ? titleWidth : ''}`}>{title}</h3>
+  <h3 class={`font-bold ${titleWidth ? titleWidth : ""}`}>{title}</h3>
   <p>{company}</p>
-  <div class="justify-self-end flex relative h-fit">
+  <div class="relative flex h-fit justify-self-end">
     <p class="w-[69px] shrink-0">{startDate}</p>
-    <span class="absolute top-1/2 transform -translate-y-1/2  left-[58px]">-</span>
+    <span class="absolute top-1/2 left-[58px] -translate-y-1/2 transform"
+      >-</span
+    >
     <p class="w-[53px] shrink-0">{endDate}</p>
   </div>
   <ul>
-    {tech.map(tool => (
-      <li class="relative">
-        <span class="absolute -top-px -left-[17px]">-</span> 
-        {tool}
-      </li>
-    ))}
+    {
+      tech.map((tool) => (
+        <li class="relative">
+          <span class="absolute -left-[17px] -top-px">-</span>
+          {tool}
+        </li>
+      ))
+    }
   </ul>
   <p class="col-span-2">{blurb}</p>
   <slot />

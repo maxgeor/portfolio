@@ -1,8 +1,8 @@
 ---
-import ExternalLinkIcon from './icons/ExternalLinkIcon.astro';
+import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
 
 export interface Props {
-	link?: {
+  link?: {
     text: string;
     href: string;
     classes?: string;
@@ -11,21 +11,28 @@ export interface Props {
   classes?: string;
 }
 
-const { link, classes = '' } = Astro.props;
+const { link, classes = "" } = Astro.props;
 ---
-<header class={`
+
+<header
+  class={`
   col-span-full flex justify-between gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
   ${classes}
-`}>
+`}
+>
   <a href="/" class="col-span-full hover:underline">Max Georgopoulos</a>
-  {link ? (
-    <a 
-      href={link.href} 
-      target={link.isExternal ? "_blank" : undefined}
-      class={`lg:flex items-center gap-[3px] hover:underline ${link.classes}`}
-    >
-      {link.text}
-      {link.isExternal ? <ExternalLinkIcon classes="mt-0.5 -mr-[3px]"  /> : null}
-    </a>
-  ) : null}
+  {
+    link ? (
+      <a
+        href={link.href}
+        target={link.isExternal ? "_blank" : undefined}
+        class={`items-center gap-[3px] hover:underline lg:flex ${link.classes}`}
+      >
+        {link.text}
+        {link.isExternal ? (
+          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
+        ) : null}
+      </a>
+    ) : null
+  }
 </header>

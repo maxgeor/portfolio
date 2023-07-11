@@ -1,93 +1,94 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Card from '../components/work/Card.astro';
-import Link from '../components/Link.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Card from "../components/work/Card.astro";
+import Link from "../components/Link.astro";
 ---
+
 <Layout title="Max Georgopoulos">
-	<div class="grid sm:grid-cols-12 relative mx-auto gap-12 px-6 sm:px-12 ">
-		<Header link={{ text: 'About', href: '/about' }} />
-		<main class="col-span-full flex flex-col gap-12 relative pb-24">
-			<Card
-				title='Formie'
-				href='/work/formie'
-				roles={["Product", "Brand", "Code"]}
-				image="/work/formie/preview.png"
-				description='Personal project to build the universal UI for smart contracts'
-			/>
-			<Card
-				title='Memiori (coming soon)'
-				href='#'
-				roles={["Product", "Brand"]}
-				image="/work/memiori/preview.png"
-				description='Freelance refresh for a memory journaling app'
-			/>
-			<!-- <Card
+  <div class="relative mx-auto grid gap-12 px-6 sm:grid-cols-12 sm:px-12">
+    <Header link={{ text: "About", href: "/about" }} />
+    <main class="relative col-span-full flex flex-col gap-12 pb-24">
+      <Card
+        title="Formie"
+        href="/work/formie"
+        roles={["Product", "Brand", "Code"]}
+        image="/work/formie/preview.png"
+        description="Personal project to build the universal UI for smart contracts"
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        roles={["Product", "Brand"]}
+        image="/work/memiori/preview.png"
+        description="Freelance refresh for a memory journaling app"
+      />
+      <!-- <Card
 				title='Wavy'
 				href='/work/wavy'
 				roles={["Product", "Code"]}
 				description='Features I built while working at Wavy'
 			/> -->
-			<section class="col-span-full grid grid-cols-12 gap-4 lg:gap-12">
-				<h2 class="col-span-full lg:col-span-3 -my-1 lg:my-0 lg:py-1">
-					Projects
-				</h2>
-				<div class="col-span-full lg:col-span-9 xl:col-span-6 flex flex-col">
-					<Link 
-						type='project'
-						title='Scope Todo'
-						href='https://www.figma.com/community/widget/1036372982291551669'
-						description="A good ol' todo widget for FigJam"
-						externalLink={true}
-					/>
-					<Link 
-						type='project'
-						title='The Quest Board'
-						href='https://www.lootquestboard.com/'
-						description="Job board for the Loot community"
-						externalLink={true}
-					/>
-					<Link 
-					type='project'
-					title='Sayings, Forgotten'
-					href='https://sayings-forgotten.maxgeor.repl.co/'
-					description="Collection of sayings with forgotten meanings"
-					externalLink={true}
-					/>
-					<Link 
-						type='project'
-						title='Dissect Design'
-						href='https://dissect-design-sigma.vercel.app/'
-						description="Collection of design decisions"
-						externalLink={true}
-					/>
-				</div>
-			</section>
-			<section class="col-span-full grid grid-cols-12 gap-4 lg:gap-12">
-				<h2 class="col-span-full lg:col-span-3 -my-1 lg:my-0 lg:py-1">
-					Writing
-				</h2>
-				<div class="col-span-full lg:col-span-9 xl:col-span-6 flex flex-col">
-					<Link 
-						type='writing'
-						title='Write it'
-						href='/writing/write'
-						description="Jul 2023"
-					/>
-					<Link 
-						type='writing'
-						title='In defence of bad writing'
-						href='/writing/bad'
-						description="Mar 2022"
-					/>
-					<Link 
-						type='writing'
-						title='Yes, you can learn to code'
-						href='/writing/yes'
-						description="Feb 2021"
-					/>
-				</div>
-			</section>
-		</main>
-	</div>
+      <section class="col-span-full grid grid-cols-12 gap-4 lg:gap-12">
+        <h2 class="col-span-full -my-1 lg:col-span-3 lg:my-0 lg:py-1">
+          Projects
+        </h2>
+        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-6">
+          <Link
+            type="project"
+            title="Scope Todo"
+            href="https://www.figma.com/community/widget/1036372982291551669"
+            description="A good ol' todo widget for FigJam"
+            externalLink={true}
+          />
+          <Link
+            type="project"
+            title="The Quest Board"
+            href="https://www.lootquestboard.com/"
+            description="Job board for the Loot community"
+            externalLink={true}
+          />
+          <Link
+            type="project"
+            title="Sayings, Forgotten"
+            href="https://sayings-forgotten.maxgeor.repl.co/"
+            description="Collection of sayings with forgotten meanings"
+            externalLink={true}
+          />
+          <Link
+            type="project"
+            title="Dissect Design"
+            href="https://dissect-design-sigma.vercel.app/"
+            description="Collection of design decisions"
+            externalLink={true}
+          />
+        </div>
+      </section>
+      <section class="col-span-full grid grid-cols-12 gap-4 lg:gap-12">
+        <h2 class="col-span-full -my-1 lg:col-span-3 lg:my-0 lg:py-1">
+          Writing
+        </h2>
+        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-6">
+          <Link
+            type="writing"
+            title="Write it"
+            href="/writing/write"
+            description="Jul 2023"
+          />
+          <Link
+            type="writing"
+            title="In defence of bad writing"
+            href="/writing/bad"
+            description="Mar 2022"
+          />
+          <Link
+            type="writing"
+            title="Yes, you can learn to code"
+            href="/writing/yes"
+            description="Feb 2021"
+          />
+        </div>
+      </section>
+    </main>
+  </div>
 </Layout>

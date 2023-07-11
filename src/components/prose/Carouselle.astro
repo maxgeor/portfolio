@@ -1,8 +1,8 @@
 ---
-import Image from './Image.astro'
-import Caption from './Caption.astro';
-import ChevronLeftIcon from '../icons/ChevronLeftIcon.astro';
-import ChevronRightIcon from '../icons/ChevronRightIcon.astro';
+import Image from "./Image.astro";
+import Caption from "./Caption.astro";
+import ChevronLeftIcon from "../icons/ChevronLeftIcon.astro";
+import ChevronRightIcon from "../icons/ChevronRightIcon.astro";
 
 export interface Props {
   images: {
@@ -12,57 +12,72 @@ export interface Props {
 }
 const { images } = Astro.props;
 ---
-<div class="carouselle relative py-2 col-span-full xl:col-start-2 xl:col-end-8">
-  <button disabled class="btn-prev opacity-0 group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -left-6 py-14 px-2 z-20 transition-opacity duration-200">
-    <div class="shrink-0 w-fit  lg:group-hover:bg-gray-50 group-active:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8.5%]">
+
+<div class="carouselle relative col-span-full py-2 xl:col-start-2 xl:col-end-8">
+  <button
+    disabled
+    class="btn-prev group absolute top-[calc(50%-8px)] -left-6 z-20 -translate-y-1/2 transform py-14 px-2 opacity-0 transition-opacity duration-200 sm:top-1/2"
+  >
+    <div
+      class="w-fit shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8.5%] transition duration-100 group-active:scale-[97%] group-active:bg-gray-50 lg:group-hover:bg-gray-50"
+    >
       <ChevronLeftIcon classes="shrink-0" />
     </div>
   </button>
-  <button class="btn-next group absolute top-[calc(50%-8px)] sm:top-1/2 transform -translate-y-1/2 -right-6 py-14 px-2 z-20 transition-opacity duration-200">
-    <div class="shrink-0 w-fit lg:group-hover:bg-gray-50 group-active:bg-gray-50 group-active:scale-[97%] transition duration-100 p-2 rounded-full bg-white shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8.5%]">
+  <button
+    class="btn-next group absolute top-[calc(50%-8px)] -right-6 z-20 -translate-y-1/2 transform py-14 px-2 transition-opacity duration-200 sm:top-1/2"
+  >
+    <div
+      class="w-fit shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[8.5%] transition duration-100 group-active:scale-[97%] group-active:bg-gray-50 lg:group-hover:bg-gray-50"
+    >
       <ChevronRightIcon classes="shrink-0" />
     </div>
   </button>
   <div class="flex flex-col items-center gap-4">
-    <!-- <div class="relative aspect-[7/4] w-full overflow-hidden border border-[#eeeff1] border-b-gray-200 rounded-lg sm:rounded-xl"> -->
-    <div class="relative aspect-[7/4] w-full overflow-hidden border border-[#eeeff1] border-b-gray-200 rounded-lg">
-      {images?.map(image => (
-        <div class="slide absolute overflow-visible transition-all duration-[450ms] ease-in-out w-full h-fit">
-          <Image 
-            src={image.src} 
-            alt={image.alt}
-            hasCaptions={false}
-            classes='aspect-[7/4] object-cover w-full !m-0 !border-none' 
-          />
-        </div>
-      ))}
+    <div
+      class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff1] border-b-gray-200"
+    >
+      {
+        images?.map((image) => (
+          <div class="slide absolute h-fit w-full overflow-visible transition-all duration-[450ms] ease-in-out">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              hasCaptions={false}
+              classes="aspect-[7/4] object-cover w-full !m-0 !border-none"
+            />
+          </div>
+        ))
+      }
     </div>
-    <!-- <div class="relative h-3 w-full">
-      {images?.map((image) => <Caption text={image.alt || ''} classes='absolute top-0  left-1/2 transform -translate-x-1/2 w-full' />)}
-    </div> -->
   </div>
 </div>
 
 <script>
-  const carsouselles: NodeListOf<HTMLElement> = document.querySelectorAll(".carouselle");
+  const carsouselles: NodeListOf<HTMLElement> =
+    document.querySelectorAll(".carouselle");
 
   carsouselles?.forEach((carsouselle) => {
-    const slides: NodeListOf<HTMLElement> = carsouselle.querySelectorAll(".slide");
-    const captions: NodeListOf<HTMLElement> = carsouselle.querySelectorAll(".caption");
-  
+    const slides: NodeListOf<HTMLElement> =
+      carsouselle.querySelectorAll(".slide");
+    const captions: NodeListOf<HTMLElement> =
+      carsouselle.querySelectorAll(".caption");
+
     slides.forEach((slide, indx) => {
-      slide.style.transform = `translateX(${indx * 100}%)`
+      slide.style.transform = `translateX(${indx * 100}%)`;
     });
-  
+
     captions.forEach((caption, indx) => {
       if (indx === 0) return;
-      caption.style.opacity = '0%';
+      caption.style.opacity = "0%";
     });
 
     let curSlide = 0;
 
-    const prevSlide: HTMLButtonElement | null = carsouselle.querySelector(".btn-prev");
-    const nextSlide: HTMLButtonElement | null = carsouselle.querySelector(".btn-next");
+    const prevSlide: HTMLButtonElement | null =
+      carsouselle.querySelector(".btn-prev");
+    const nextSlide: HTMLButtonElement | null =
+      carsouselle.querySelector(".btn-next");
 
     prevSlide?.addEventListener("click", function () {
       curSlide--;
@@ -70,24 +85,24 @@ const { images } = Astro.props;
       if (nextSlide) {
         if (nextSlide.disabled) {
           nextSlide.disabled = false;
-          nextSlide.style.opacity = '100%';
+          nextSlide.style.opacity = "100%";
         }
-  
+
         if (curSlide === 0) {
           prevSlide.disabled = true;
-          prevSlide.style.opacity = '0%';
+          prevSlide.style.opacity = "0%";
         }
       }
-  
+
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
       });
-      
+
       captions?.forEach((caption, indx) => {
         if (indx === curSlide) {
-          caption.style.opacity = '100%';
+          caption.style.opacity = "100%";
         } else {
-          caption.style.opacity = '0%';
+          caption.style.opacity = "0%";
         }
       });
     });
@@ -98,24 +113,24 @@ const { images } = Astro.props;
       if (prevSlide) {
         if (prevSlide.disabled) {
           prevSlide.disabled = false;
-          prevSlide.style.opacity = '100%';
+          prevSlide.style.opacity = "100%";
         }
-  
-        if (curSlide === slides.length -1) {
+
+        if (curSlide === slides.length - 1) {
           nextSlide.disabled = true;
-          nextSlide.style.opacity = '0%';
+          nextSlide.style.opacity = "0%";
         }
       }
 
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
       });
-    
+
       captions?.forEach((caption, indx) => {
         if (indx === curSlide) {
-          caption.style.opacity = '100%';
+          caption.style.opacity = "100%";
         } else {
-          caption.style.opacity = '0%';
+          caption.style.opacity = "0%";
         }
       });
     });

@@ -1,8 +1,8 @@
 ---
 export interface Props {
-	title: string;
-	description?: string;
-	backgroundColor?: string;
+  title: string;
+  description?: string;
+  backgroundColor?: string;
 }
 
 const { title, description, backgroundColor } = Astro.props;
@@ -10,79 +10,80 @@ const { title, description, backgroundColor } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		{description && <meta name="description" content={description} />}
-	</head>
-	<body 
-		style="text-rendering: optimizeLegibility;"
-		class={`${backgroundColor}text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`} 
-	>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body
+    style="text-rendering: optimizeLegibility;"
+    class={`${backgroundColor}text-black min-h-screen text-sm antialiased max-w-[1440px] mx-auto`}
+  >
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	.no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none; 
-	}
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-	::-moz-selection {
-		background: yellow;
-	}
+  ::-moz-selection {
+    background: yellow;
+  }
 
-	::selection {
-		color: black;
-		background: yellow;
-	}
-	
-	html {
-		text-rendering: optimizeLegibility;
-		letter-spacing: -0.01em;
-	}
+  ::selection {
+    color: black;
+    background: yellow;
+  }
 
-	a {
-		text-underline-offset: 3px;
-		text-underline-thickness: 0.01em;
-	}
+  html {
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.01em;
+  }
 
-	td {
-		vertical-align: top;
-	}
-	
-	@font-face {
+  a {
+    text-underline-offset: 3px;
+    text-underline-thickness: 0.01em;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  @font-face {
     font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-regular.woff2) format('woff2');
-		font-weight: regular;
-	}
-	
-	@font-face {
-		font-family: untitled;
-		src: url(/fonts/untitled/test-untitled-sans-bold.woff2) format('woff2');
-		font-weight: bold;
-	}
-	
-	@font-face {
+    src: url(/fonts/untitled/test-untitled-sans-regular.woff2) format("woff2");
+    font-weight: regular;
+  }
+
+  @font-face {
     font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-regular-italic.woff2) format('woff2');
-		font-style: italic;
-	}
-	
-	@font-face {
+    src: url(/fonts/untitled/test-untitled-sans-bold.woff2) format("woff2");
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: untitled;
+    src: url(/fonts/untitled/test-untitled-sans-regular-italic.woff2)
+      format("woff2");
+    font-style: italic;
+  }
+
+  @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
-	}
+  }
 
-	tr:last-child > td {
+  tr:last-child > td {
     padding-bottom: 0;
   }
 </style>
