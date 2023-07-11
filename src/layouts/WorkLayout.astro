@@ -36,18 +36,6 @@ const {
       Go back
     </button>
     <Header cellSpan="col-span-2" classes="px-6 sm:px-12" />
-    <!-- <Header
-      link={link
-        ? {
-            text: "See it",
-            href: link,
-            classes: "hidden lg:flex",
-            isExternal: true,
-          }
-        : undefined}
-      cellSpan="col-span-2"
-      classes="px-6 sm:px-12"
-    /> -->
     <div
       class="relative col-span-full grid grid-cols-1 gap-y-6 gap-x-12 px-6 sm:px-12 lg:grid-cols-12"
     >
@@ -70,7 +58,7 @@ const {
       <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
         <Details roles={roles} tools={tools} collaborators={collaborators} />
       </div>
-      <div class="lg:col-span-2 flex flex-col gap-2 justify-between items-end">
+      <div class="lg:col-span-2 flex flex-col gap-2 justify-between lg:items-end">
         {
           link ? (
             <a
