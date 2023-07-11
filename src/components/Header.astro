@@ -9,11 +9,10 @@ export interface Props {
     classes?: string;
     isExternal?: boolean;
   };
-  cellSpan?: "col-span-2" | "col-span-3"
   classes?: string;
 }
 
-const { link, classes = "", cellSpan = "col-span-3" } = Astro.props;
+const { link, classes = "" } = Astro.props;
 ---
 
 <header
@@ -22,16 +21,10 @@ const { link, classes = "", cellSpan = "col-span-3" } = Astro.props;
     ${classes}
   `}
 >
-  <div class={`
-    ${cellSpan} 
-    flex items-center justify-between gap-6 sm:gap-12 items-center
-  `}>
+  <div class="col-span-3 flex items-center justify-between gap-6 sm:gap-12 items-center">
     <a href="/" class="hover:underline col-span-3">Max Georgopoulos</a>
   </div>
-  <div class={`
-    ${cellSpan} 
-    col-end-13 flex items-center gap-6 justify-self-end
-  `}>
+  <div class="col-span-3 col-end-13 flex items-center gap-6 justify-self-end">
     {
       link ? (
         <>
