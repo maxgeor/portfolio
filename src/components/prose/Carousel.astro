@@ -50,14 +50,11 @@ const { images } = Astro.props;
 </div>
 
 <script>
-  const carsouselles: NodeListOf<HTMLElement> =
-    document.querySelectorAll(".carousel");
+  const carousels: NodeListOf<HTMLElement> = document.querySelectorAll(".carousel");
 
-  carsouselles?.forEach((carsouselle) => {
-    const slides: NodeListOf<HTMLElement> =
-      carsouselle.querySelectorAll(".slide");
-    const captions: NodeListOf<HTMLElement> =
-      carsouselle.querySelectorAll(".caption");
+  carousels?.forEach((carousel) => {
+    const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
+    const captions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".caption");
 
     slides.forEach((slide, indx) => {
       slide.style.transform = `translateX(${indx * 100}%)`;
@@ -70,10 +67,8 @@ const { images } = Astro.props;
 
     let curSlide = 0;
 
-    const prevSlide: HTMLButtonElement | null =
-      carsouselle.querySelector(".btn-prev");
-    const nextSlide: HTMLButtonElement | null =
-      carsouselle.querySelector(".btn-next");
+    const prevSlide: HTMLButtonElement | null = carousel.querySelector(".btn-prev");
+    const nextSlide: HTMLButtonElement | null = carousel.querySelector(".btn-next");
 
     prevSlide?.addEventListener("click", function () {
       curSlide--;
