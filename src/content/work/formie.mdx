@@ -34,7 +34,7 @@ sections:
 ---
 
 import Image from "../../components/prose/Image.astro";
-import Carouselle from "../../components/prose/Carouselle.astro";
+import Carousel from "../../components/prose/Carousel.astro";
 
 # Problem
 
@@ -98,7 +98,7 @@ First, we broke the project into chunks, ordering them by importance, dependence
 
 Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
 
-<Carouselle
+<Carousel
   images={[
     {
       src: "/work/formie/process/chunks.png",
@@ -237,7 +237,7 @@ People could "edit" their forms by making another one, which only took ~30 secon
 
 Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
-<Carouselle
+<Carousel
   images={[
     {
       src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
@@ -268,7 +268,7 @@ To simplify, we only let people customize their form’s title and description. 
 
 Limited customization kept form creation straightforward while offering more control than Etherscan.
 
-<Carouselle
+<Carousel
   images={[
     {
       src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
