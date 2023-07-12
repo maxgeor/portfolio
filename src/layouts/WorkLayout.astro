@@ -55,12 +55,13 @@ const {
         }
       </div>
       {tldr.length === 1 ? tldr[0] : (
-        <ul role="list" class='col-span-full lg:col-span-4 flex flex-col gap-1 lg:gap-2 list-disc -my-1 pl-5'>
+        <ul role="list" class='col-span-full lg:col-span-4 flex flex-col gap-1 list-disc -my-1 pl-5'>
           {tldr.map((nugget: string) => (
-            // <li 
-            //   class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
-            // >
-            <li>{nugget}</li>
+            <li 
+              class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
+            >
+              {nugget}
+            </li>
           ))}
         </ul>
       )}
@@ -134,23 +135,6 @@ const {
     </article>
   </main>
 </Layout>
-
-<style>
-  ul li {
-    display: block;
-    position: relative;
-    list-style-type: disc;
-  }
-
-  ul li::before {
-    content: "•";
-    position: absolute;
-    font-size: 24px;
-    left: -22px;
-    top: -2px;
-    border-radius: 9999px;
-  }
-</style>
 
 <script>
   const links = Array.from(document.querySelectorAll("a"));
