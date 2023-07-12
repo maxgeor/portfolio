@@ -29,7 +29,7 @@ const { title, description, backgroundColor } = Astro.props;
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor ? backgroundColor : 'bg-white dark:bg-[#1c1e1e]'}
-      text-[#393e47] dark:text-[#b0b5b5] min-h-screen text-sm antialiased max-w-[1440px] mx-auto 
+      text-[#393e47] dark:text-[#b0b5b5] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased max-w-[1440px] mx-auto 
     `}
   >
     <slot />
@@ -37,38 +37,6 @@ const { title, description, backgroundColor } = Astro.props;
 </html>
 
 <style is:global>
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  ::-moz-selection {
-    background: yellow;
-  }
-
-  ::selection {
-    color: black;
-    background: yellow;
-  }
-
-  html {
-    text-rendering: optimizeLegibility;
-    letter-spacing: -0.01em;
-  }
-
-  a {
-    text-underline-offset: 3px;
-    text-underline-thickness: 0.01em;
-  }
-
-  td {
-    vertical-align: top;
-  }
-
   @font-face {
     font-family: untitled;
     src: url(/fonts/untitled/test-untitled-sans-regular.woff2) format("woff2");
@@ -92,8 +60,31 @@ const { title, description, backgroundColor } = Astro.props;
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
   }
+  
+  html {
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.01em;
+  }
 
+  a {
+    text-underline-offset: 3px;
+    text-underline-thickness: 0.01em;
+  }
+  
   tr:last-child > td {
     padding-bottom: 0;
+  }
+
+  td {
+    vertical-align: top;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>
