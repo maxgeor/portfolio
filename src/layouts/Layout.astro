@@ -29,16 +29,9 @@ const { title, description, backgroundColor } = Astro.props;
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor ? backgroundColor : 'bg-white dark:bg-[#212121]'}
-      text-[#393e47] dark:text-[#b0b3b3] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased max-w-[1440px] mx-auto 
+      text-[#393e47] dark:text-[#b1b1b1] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased max-w-[1440px] mx-auto 
     `}
   >
-  <!-- <body
-    style="text-rendering: optimizeLegibility;"
-    class={`
-      ${backgroundColor ? backgroundColor : 'bg-white dark:bg-[#202020]'}
-      text-[#393e47] dark:text-[#b0b5b5] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased max-w-[1440px] mx-auto 
-    `}
-  > -->
     <slot />
   </body>
 </html>
