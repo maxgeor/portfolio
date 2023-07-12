@@ -57,11 +57,10 @@ const {
       {tldr.length === 1 ? tldr[0] : (
         <ul role="list" class='col-span-full lg:col-span-4 flex flex-col gap-1 lg:gap-2 list-disc -my-1 pl-5'>
           {tldr.map((nugget: string) => (
-            <li 
-              class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
-            >
-              {nugget}
-            </li>
+            // <li 
+            //   class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
+            // >
+            <li>{nugget}</li>
           ))}
         </ul>
       )}
@@ -86,13 +85,13 @@ const {
     </div>
     <article
       id="content"
-      class="relative col-span-full mx-auto grid h-full grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
+      class="relative col-span-full mx-auto grid min-h-screen grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
     >
       <hr
         class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#303236] lg:hidden"
       />
       <aside
-        class="no-scrollbar col-span-full -mb-6 flex gap-y-2 gap-x-6 overflow-x-scroll scroll-smooth p-6 sm:-mb-12 sm:px-12 sm:pb-12 lg:col-span-2 lg:m-0 lg:flex-col lg:overflow-auto lg:p-0"
+        class="no-scrollbar col-span-full -mb-6 flex gap-y-2 gap-x-6 overflow-x-scroll lg:overflow-auto scroll-smooth p-6 sm:-mb-12 sm:px-12 sm:pb-12 lg:col-span-2 lg:m-0 lg:flex-col lg:p-0"
       >
         {
           sections.map((section: string) => (
@@ -135,6 +134,23 @@ const {
     </article>
   </main>
 </Layout>
+
+<style>
+  ul li {
+    display: block;
+    position: relative;
+    list-style-type: disc;
+  }
+
+  ul li::before {
+    content: "•";
+    position: absolute;
+    font-size: 24px;
+    left: -22px;
+    top: -2px;
+    border-radius: 9999px;
+  }
+</style>
 
 <script>
   const links = Array.from(document.querySelectorAll("a"));
