@@ -2,10 +2,16 @@
 export interface Props {
   title: string;
   description?: string;
+  maxWidth?: string;
   backgroundColor?: string;
 }
 
-const { title, description, backgroundColor } = Astro.props;
+const { 
+  title = "Max Georgopoulos",
+  description,
+  maxWidth = "", 
+  backgroundColor = "bg-white dark:bg-[#212121]" 
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,6 +23,7 @@ const { title, description, backgroundColor } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    
     <script is:inline>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -28,8 +35,8 @@ const { title, description, backgroundColor } = Astro.props;
   <body
     style="text-rendering: optimizeLegibility;"
     class={`
-      ${backgroundColor ? backgroundColor : 'bg-white dark:bg-[#212121]'}
-      text-[#393e47] dark:text-[#b1b1b1] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased max-w-[1440px] mx-auto 
+      ${backgroundColor} ${maxWidth}
+      text-[#393e47] dark:text-[#b1b1b1] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased mx-auto 
     `}
   >
     <slot />

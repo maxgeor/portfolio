@@ -5,6 +5,7 @@ import ThemeButton from "../components/ThemeButton.astro";
 import Details from "../components/work/Details.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
+import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
 import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
 
 const { frontmatter } = Astro.props;
@@ -21,8 +22,12 @@ const {
 } = frontmatter;
 ---
 
-<Layout title={title} description={tldr[0]}>
-  <main class="relative grid h-full gap-12 pb-24 sm:grid-cols-12">
+<Layout 
+  title={title} 
+  description={tldr[0]} 
+  maxWidth="max-w-none"
+>
+  <main class="relative flex flex-col gap-12 pb-24">
     <button
       id="go-back-up-button"
       class="col-span-full  w-full fixed top-0 left-0 right-0 z-10 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/75 bg-white/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 dark:bg-[#202020]/[92%] sm:px-12"
@@ -37,118 +42,124 @@ const {
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
     </button>
-    <a href="/" class="text-black dark:text-white fixed top-[14px] sm:top-[38px] left-3 sm:left-[36px] flex items-center gap-6 rounded-full bg-white/[90%] dark:bg-[#212121]/90 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-10">
-      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+    <a 
+      id="home-button" 
+      href="/" 
+      class="text-black dark:text-white fixed top-[14px] sm:top-[38px] left-3 sm:left-[33px] md:left-[36px]  flex items-center gap-6 rounded-full bg-white/70 dark:bg-[#212121]/70 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-50"
+    >
+      <ChevronLeftIcon classes="" />
     </a>
-    <div class="dark:text-white fixed top-[14px] sm:top-[38px] right-3 sm:right-[36px] flex items-center gap-6 rounded-full bg-white/[90%]  dark:bg-[#212121]/90 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-10 transition">
-      <ThemeButton classes="p-6 text-white transition" />
+    <div class="dark:text-white fixed top-[14px] sm:top-[38px] right-3 sm:right-[32px] md:right-[36px] flex items-center gap-6 rounded-full bg-white/70  dark:bg-[#212121]/70 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-50 transition">
+      <ThemeButton classes="p-6 transition" />
     </div>
     {image ? (
-      <div class="col-span-full -my-6 sm:-my-0">
+      <div class="w-full -my-6 sm:-my-0 ">
         <img
           src={image}
           alt={title}
-          class="w-full aspect-[3/2] sm:aspect-[2/1] lg:aspect-[5/2] object-cover object-center "
+          class="w-full aspect-[5/3] sm:aspect-[2/1] lg:aspect-[5/2] xl:aspect-none max-h-600px object-cover object-center "
         />
       </div>
     ) : null}
-    <div
-      class="relative col-span-full grid grid-cols-1 gap-y-6 gap-x-12 mx-6 sm:mx-12 lg:grid-cols-12 lg:border-b border-gray-200 dark:border-[#2f2f2f] lg:pb-12"
-    >
-      <div class="col-span-full flex justify-between lg:col-span-2">
-        <h1 class="-my-1">{title}</h1>
-        {
-          link ? (
-            <a
-              href={link}
-              target="_blank"
-              class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline  focus:underline lg:hidden"
-            >
-              See it
-              <ExternalLinkIcon classes="mt-0.5" />
-            </a>
-          ) : null
-        }
-      </div>
-      {tldr.length === 1 ? tldr[0] : (
-        <ul role="list" class='col-span-full lg:col-span-4 flex flex-col gap-1 list-disc -my-1 pl-5'>
-          {tldr.map((nugget: string) => (
-            <li 
-              class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
-            >
-              {nugget}
-            </li>
-          ))}
-        </ul>
-      )}
-      <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
-        <Details roles={roles} tools={tools} collaborators={collaborators} />
-      </div>
-      <div class="lg:col-span-2 flex flex-col gap-2 justify-between lg:items-end">
-        {
-          link ? (
-            <a
-              href={link}
-              target="_blank"
-              class="hidden lg:flex items-center gap-[3px] -my-1 -mr-[3px] hover:underline focus:underline"
-            >
-              <span class="whitespace-nowrap">See it</span>
-              <ExternalLinkIcon classes="mt-0.5" />
-            </a>
-          ) : null
-        }
-        <span class="-my-1">{year}</span>
-      </div>
-    </div>
-    <article
-      id="content"
-      class="relative col-span-full mx-auto grid min-h-screen grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
-    >
-      <hr
-        class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#2f2f2f] lg:hidden"
-      />
-      <aside
-        class="no-scrollbar col-span-full -mb-6 flex gap-y-2 gap-x-6 overflow-x-scroll lg:overflow-auto scroll-smooth p-6 sm:-mb-12 sm:px-12 sm:pb-12 lg:col-span-2 lg:m-0 lg:flex-col lg:p-0"
-      >
-        {
-          sections.map((section: string) => (
-            <a
-              href={`#${section.replace(/\s+/g, "-").toLowerCase()}`}
-              class="-my-1 whitespace-nowrap leading-5 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0"
-            >
-              {section}
-            </a>
-          ))
-        }
-        <div
-          class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#202020] lg:hidden"
-        >
-        </div>
-        <div
-          class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#202020] lg:hidden"
-        >
-        </div>
-      </aside>
+    <div class="flex flex-col gap-12">
       <div
-        class={`
-          prose-sm px-6 sm:px-12 lg:px-0
-          prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-black dark:prose-headings:text-[#f0f1f1] prose-headings:m-0
-          prose-h1:text-[20px] lg:prose-h1:text-[24px] prose-h1:leading-[24px] lg:prose-h1:leading-[28px] prose-h1:tracking-[-0.01975rem] dark:prose-h1:tracking-[-0.0185rem] prose-h1:mt-[48px] first:prose-h1:mt-0
-          prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
-          prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
-          prose-strong:font-medium prose-strong:text-black dark:prose-strong:text-[#f0f1f1]
-          prose-a:underline
-          prose-code:bg-gray-100 dark:prose-code:bg-[#2b2b2b] prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/[24%] dark:prose-code:border-[#888888]/10 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-          prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-5 prose-ul:m-0
-          prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-5 prose-ol:m-0
-          prose-li:m-0
-          prose-img:col-span-full prose-img:mt-1 prose-img:mb-2
-          col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-4 gap-x-12
-        `}
+        class="relative grid grid-cols-1 gap-y-6 gap-x-12 mx-6 sm:mx-12 lg:grid-cols-12 lg:border-b border-gray-200 dark:border-[#2f2f2f] lg:pb-12"
       >
-        <slot />
+        <div class="col-span-full flex justify-between lg:col-span-2">
+          <h1 class="-my-1">{title}</h1>
+          {
+            link ? (
+              <a
+                href={link}
+                target="_blank"
+                class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline  focus:underline lg:hidden"
+              >
+                See it
+                <ExternalLinkIcon classes="mt-0.5" />
+              </a>
+            ) : null
+          }
+        </div>
+        {tldr.length === 1 ? tldr[0] : (
+          <ul role="list" class='col-span-full lg:col-span-4 flex flex-col gap-1 list-disc -my-1 pl-5'>
+            {tldr.map((nugget: string) => (
+              <li 
+                class="block relative before:content-['•'] before:text-[24px] before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full"
+              >
+                {nugget}
+              </li>
+            ))}
+          </ul>
+        )}
+        <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
+          <Details roles={roles} tools={tools} collaborators={collaborators} />
+        </div>
+        <div class="lg:col-span-2 flex flex-col gap-2 justify-between lg:items-end">
+          {
+            link ? (
+              <a
+                href={link}
+                target="_blank"
+                class="hidden lg:flex items-center gap-[3px] -my-1 -mr-[3px] hover:underline focus:underline"
+              >
+                <span class="whitespace-nowrap">See it</span>
+                <ExternalLinkIcon classes="mt-0.5" />
+              </a>
+            ) : null
+          }
+          <span class="-my-1">{year}</span>
+        </div>
       </div>
-    </article>
+      <article
+        id="content"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
+      >
+        <hr
+          class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#2f2f2f] lg:hidden"
+        />
+        <aside
+          class="no-scrollbar col-span-full -mb-6 flex gap-y-2 gap-x-6 overflow-x-scroll lg:overflow-auto scroll-smooth p-6 sm:-mb-12 sm:px-12 sm:pb-12 lg:col-span-2 lg:m-0 lg:flex-col lg:p-0"
+        >
+          {
+            sections.map((section: string) => (
+              <a
+                href={`#${section.replace(/\s+/g, "-").toLowerCase()}`}
+                class="-my-1 whitespace-nowrap leading-5 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0"
+              >
+                {section}
+              </a>
+            ))
+          }
+          <div
+            class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#202020] lg:hidden"
+          >
+          </div>
+          <div
+            class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#202020] lg:hidden"
+          >
+          </div>
+        </aside>
+        <div
+          class={`
+            prose-sm px-6 sm:px-12 lg:px-0 xl:max-w-5xl mx-auto
+            prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-black dark:prose-headings:text-[#f0f1f1] prose-headings:m-0
+            prose-h1:text-[20px] lg:prose-h1:text-[24px] prose-h1:leading-[24px] lg:prose-h1:leading-[28px] prose-h1:tracking-[-0.01975rem] dark:prose-h1:tracking-[-0.0185rem] prose-h1:mt-[48px] first:prose-h1:mt-0
+            prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
+            prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
+            prose-strong:font-medium prose-strong:text-black dark:prose-strong:text-[#f0f1f1]
+            prose-a:underline
+            prose-code:bg-gray-100 dark:prose-code:bg-[#2b2b2b] prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/[24%] dark:prose-code:border-[#888888]/10 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-5 prose-ul:m-0
+            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-5 prose-ol:m-0
+            prose-li:m-0
+            prose-img:col-span-full prose-img:mt-1 prose-img:mb-2
+            col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-4 gap-x-12
+          `}
+        >
+          <slot />
+        </div>
+      </article>
+    </div>
   </main>
 </Layout>
 
