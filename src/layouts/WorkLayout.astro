@@ -30,14 +30,14 @@ const {
   <main class="relative flex flex-col gap-12 pb-24">
     <button
       id="go-back-up-button"
-      class="col-span-full  w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[53px] transform items-center gap-2 border-b border-gray-200/80 bg-white/[85%] dark:bg-[#212121]/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 sm:px-12"
+      class="text-black dark:text-white col-span-full fixed top-3 sm:top-9 z-50 flex left-1/2 -translate-x-1/2  transform items-center gap-2 -translate-y-[49px] sm:-translate-y-[88px] rounded-full w-fit ring-1 ring-gray-900/[11%] dark:ring-white/10 bg-white/[85%] dark:bg-[#212121]/[85%] py-2 pl-[15px] pr-4 backdrop-blur-sm hover:bg-gray-50 dark:hover:bg-[#2e2e2e] transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 shadow-sm dark:shadow-none"
     >
       <ChevronUpIcon classes="-ml-0.5 -mb-0.5" />
       Go back
     </button>
     <button
+      class="text-black dark:text-white col-span-full fixed top-3 sm:top-9 left-1/2 -translate-x-1/2 z-50 rounded-full w-fit flex -translate-y-[49px] sm:-translate-y-[88px] transform items-center gap-2 bg-white/[85%] ring-1 ring-gray-900/[11%] dark:ring-white/10 dark:bg-[#212121]/[85%] py-2 pl-[15px] pr-4 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 shadow-sm dark:shadow-none"
       id="go-back-down-button"
-      class="col-span-full w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[53px] transform items-center gap-2 border-b border-gray-200/80 bg-white/[85%] dark:bg-[#212121]/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 sm:px-12"
     >
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
@@ -193,9 +193,9 @@ const {
 
   const goBack = () => window.history.back();
   const showBackButton = (button: HTMLButtonElement | null) =>
-    button?.classList.remove("-translate-y-[53px]");
+    button?.classList.remove("-translate-y-[49px]", "sm:-translate-y-[88px]");
   const hideBackButton = (button: HTMLButtonElement | null) =>
-    button?.classList.add("-translate-y-[53px]");
+    button?.classList.add("-translate-y-[49px]", "sm:-translate-y-[88px]");
 
   const showAndHideBackButton = (e: Event) => {
     hideBackButton(goBackUpButton);
