@@ -30,14 +30,14 @@ const {
   <main class="relative flex flex-col gap-12 pb-24">
     <button
       id="go-back-up-button"
-      class="col-span-full  w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/80 bg-white/70 px-6 py-4 backdrop-blur transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 dark:bg-[#202020]/[80%] sm:px-12"
+      class="col-span-full  w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/80 bg-white/[85%] dark:bg-[#212121]/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 sm:px-12"
     >
       <ChevronUpIcon classes="-ml-0.5 -mb-0.5" />
       Go back
     </button>
     <button
       id="go-back-down-button"
-      class="col-span-full w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/80 bg-white/70 px-6 py-4 backdrop-blur transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 dark:bg-[#202020]/[80%] sm:px-12"
+      class="col-span-full w-full fixed top-0 left-0 right-0 z-50 flex -translate-y-[52px] transform items-center gap-2 border-b border-gray-200/80 bg-white/[85%] dark:bg-[#212121]/[85%] px-6 py-4 backdrop-blur-sm transition duration-[800ms] ease-in-out dark:border-[#2f2f2f]/75 sm:px-12"
     >
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
@@ -45,11 +45,11 @@ const {
     <a 
       id="home-button" 
       href="/" 
-      class="text-black dark:text-white fixed top-[14px] sm:top-[38px] left-3 sm:left-[33px] md:left-[36px]  flex items-center gap-6 rounded-full bg-white/70 dark:bg-[#212121]/70 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-40"
+      class="text-black dark:text-white fixed top-[14px] sm:top-[38px] left-3 sm:left-[33px] md:left-[36px]  flex items-center gap-6 rounded-full bg-white/[85%] dark:bg-[#212121]/[85%] hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-40"
     >
       <ChevronLeftIcon classes="" />
     </a>
-    <div class="dark:text-white fixed top-[14px] sm:top-[38px] right-3 sm:right-[32px] md:right-[36px] flex items-center gap-6 rounded-full bg-white/70  dark:bg-[#212121]/70 hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-40 transition">
+    <div class="dark:text-white fixed top-[14px] sm:top-[38px] right-3 sm:right-[32px] md:right-[36px] flex items-center gap-6 rounded-full bg-white/[85%] dark:bg-[#212121]/[85%] hover:bg-gray-100 dark:hover:bg-[#2e2e2e] backdrop-blur-sm ring-1 ring-gray-900/[12%] dark:ring-white/10 p-2 z-40 transition">
       <ThemeButton classes="p-6 transition" />
     </div>
     {image ? (
@@ -132,11 +132,11 @@ const {
             ))
           }
           <div
-            class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#202020] lg:hidden"
+            class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#212121] lg:hidden"
           >
           </div>
           <div
-            class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#202020] lg:hidden"
+            class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#212121] lg:hidden"
           >
           </div>
         </aside>
