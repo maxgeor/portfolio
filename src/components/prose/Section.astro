@@ -1,0 +1,16 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  isSubsection?: boolean;
+}
+const { id, isSubsection = false } = Astro.props;
+---
+<section 
+  id={id} 
+  class={`
+    ${!isSubsection ? 'mt-12 first:mt-0' : ''}
+    flex flex-col gap-4 col-span-full lg:col-start-1 lg:col-end-9 xl:col-start-2 xl:col-end-8 scroll-mt-[72px] sm:scroll-mt-[104px]
+  `}>
+  <slot/>
+</section>

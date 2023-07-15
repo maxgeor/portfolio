@@ -22,291 +22,352 @@ link: https://www.formie.co/
 year: 2022
 sections:
   [
-    "Problem",
-    "Idea",
-    "Research",
-    "Process",
-    "Challenges",
-    "Key Decisions",
-    "Tradeoffs",
-    "Result",
+    { title: "Problem" },
+    { title: "Idea" },
+    { title: "Research" },
+    { title: "Process" },
+    { 
+      title: "Challenges",
+      subsections: [
+        { title: "Shooing scammers" },
+        { title: "Filtering & framing technical details" },
+        { title: "Keeping it flexible" },
+      ]
+    },
+    { 
+      title: "Key Decisions",
+      subsections: [
+        { title: "One page, one action" },
+        { title: "Only supporting one-way actions" },
+        { title: "Letting people write their own title and description" },
+        { title: "Making people confirm trust" },
+      ]
+    },
+    { 
+      title: "Tradeoffs",
+      subsections: [
+        { title: "Infinite forms" },
+        { title: "Customize title & description" },
+        { title: "Limited error messaging" },
+      ]
+    },
+    { title: "Result" },
+    { title: "Showcase" },
   ]
 ---
 
 import Image from "../../components/prose/Image.astro";
+import Section from "../../components/prose/Section.astro";
 import Carousel from "../../components/prose/Carousel.astro";
 
-# Problem
+<Section id="problem">
+<h1>Problem</h1>
 
-Developers make blockchain apps by...
+  Developers make blockchain apps by...
 
-1. Writing code
-2. Uploading it to Ethereum (or another blockchain) as `smart contracts`
-3. Building a `frontend` for the contracts (usually an app or website) so people can use them.
+  1. Writing code
+  2. Uploading it to Ethereum (or another blockchain) as `smart contracts`
+  3. Building a `frontend` for the contracts (usually an app or website) so people can use them.
 
-To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
+  To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
 
-The problem? **Etherscan's frontend sucks**.
+  The problem? **Etherscan's frontend sucks**.
 
-- It's a list of technically-named forms
-- It's at the bottom of the page, behind two drawers
-- It doesn’t give guidance, clear errors, or feedback about your transaction
+  - It's a list of technically-named forms
+  - It's at the bottom of the page, behind two drawers
+  - It doesn’t give guidance, clear errors, or feedback about your transaction
 
-Using their frontend felt more like running an obstacle course — we knew it could be better.
+  Using their frontend felt more like running an obstacle course — we knew it could be better.
 
-<Image
-  src="/work/formie/annotated-etherscan-page.png"
-  alt="Etherscan's interface for smart contract actions"
-/>
+  <Image
+    src="/work/formie/annotated-etherscan-page.png"
+    alt="Etherscan's interface for smart contract actions"
+  />
+</Section>
 
-# Idea
+<Section id="idea">
+  <h1>Idea</h1>
 
-Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
+  Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
 
-Seeing actions this way made Etherscan’s shortcomings clear:
+  Seeing actions this way made Etherscan’s shortcomings clear:
 
-- There's no copy to guide, educate, or update users
-- Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
-- Users have to decipher every action name to find the right one
+  - There's no copy to guide, educate, or update users
+  - Layers of irrelevant details bury [the UI that actually matters](#one-page,-one-action)
+  - Users have to decipher every action name to find the right one
 
-With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
+  With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
 
-<Image
-  src="/work/formie/first-idea-for-form-builder.png"
-  alt="First sketch of form builder UI"
-/>
+  <Image
+    src="/work/formie/first-idea-for-form-builder.png"
+    alt="First sketch of form builder UI"
+  />
+</Section>
 
-# Research
+<Section id="research">
+  <h1>Research</h1>
 
-Talking to teams & developers using Etherscan gave us three key insights:
+  Talking to teams & developers using Etherscan gave us three key insights:
 
-1. _They used Etherscan as a “good enough” interface_. Developers avoided writing code for stuff like admin actions, personal projects, and tests.
-2. _They used Etherscan for [one-way actions](#only-supporting-one-way-actions)_ (code that triggers a change). Two-way actions almost always had their own frontend.
-3. _They knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money or have the confidence to make something custom.
+  1. _They used Etherscan as a “good enough” interface_. Developers avoided writing code for stuff like admin actions, personal projects, and tests.
+  2. _They used Etherscan for [one-way actions](#only-supporting-one-way-actions)_ (code that triggers a change). Two-way actions almost always had their own frontend.
+  3. _They knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money or have the confidence to make something custom.
 
-Takeaways:
+  Takeaways:
 
-- One-way actions were underserved
-- People still valued UX and might be willing to switch if the setup was easy
-- The bar was low — we had lots of room to [cut scope](#tradeoffs) while shipping something better.
+  - One-way actions were underserved
+  - People still valued UX and might be willing to switch if the setup was easy
+  - The bar was low — we had lots of room to [cut scope](#tradeoffs) while shipping something better.
+</Section>
 
-# Process
+<Section id="process">
+  <h1>Process</h1>
 
-We worked by doing design and development at the same time.
+  We worked by doing design and development at the same time.
 
-First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design & build each chunk in order.
+  First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design & build each chunk in order.
 
-Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
+  Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
 
-<Carousel
-  images={[
-    {
-      src: "/work/formie/process/chunks.png",
-      alt: "Work chunks, sequenced in FigJam",
-    },
-    {
-      src: "/work/formie/process/flow.png",
-      alt: "First breadboard flow",
-    },
-    {
-      src: "/work/formie/process/sketch.png",
-      alt: "Sketch of form page's header",
-    },
-  ]}
-/>
+  <Carousel
+    images={[
+      {
+        src: "/work/formie/process/chunks.png",
+        alt: "Work chunks, sequenced in FigJam",
+      },
+      {
+        src: "/work/formie/process/flow.png",
+        alt: "First breadboard flow",
+      },
+      {
+        src: "/work/formie/process/sketch.png",
+        alt: "Sketch of form page's header",
+      },
+    ]}
+  />
+</Section>
 
-# Challenges
+<Section id="challenges">
+  <h1>Challenges</h1>
 
-## Shooing scammers
+  <Section id="shooing-scammers" isSubsection={true}>
+    <h2>Shooing scammers</h2>
 
-We knew three things from the jump:
+    We knew three things from the jump:
 
-1. Scammers would use forms to misrepresent contracts
-2. We couldn't stop them
-3. But we had to do something.
+    1. Scammers would use forms to misrepresent contracts
+    2. We couldn't stop them
+    3. But we had to do something.
 
-[How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
+    [How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
 
-<Image
-  src="/work/formie/challenges/scam.png"
-  alt="Thinking about how to handle bad guys"
-/>
+    <Image
+      src="/work/formie/challenges/scam.png"
+      alt="Thinking about how to handle bad guys"
+    />
+  </Section>
 
-## Filtering & framing technical details
+  <Section id="filtering-&-framing-technical-details" isSubsection={true}>
+    <h2>Filtering & framing technical details</h2>
 
-Smart contracts have tons of strange behaviors:
+    Smart contracts have tons of strange behaviors:
 
-- Transactions cost a bit of money
-- Transactions take time to go through
-- Anyone can make a frontend for any contract (because they're public).
+    - Transactions cost a bit of money
+    - Transactions take time to go through
+    - Anyone can make a frontend for any contract (because they're public).
 
-The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
+    The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
 
-[How do we explain challenging ideas](#letting-people-write-their-own-title-and-description) without overwhelming people? Which concepts are essential?
+    [How do we explain challenging ideas](#letting-people-write-their-own-title-and-description) without overwhelming people? Which concepts are essential?
+    <Image
+      src="/work/formie/challenges/explain.png"
+      alt="Thinking about out how to explain stuff"
+    />
+  </Section>
 
-<Image
-  src="/work/formie/challenges/explain.png"
-  alt="Thinking about out how to explain stuff"
-/>
+  <Section id="keeping-it-flexible" isSubsection={true}>
+    <h2>Keeping it flexible</h2>
+  
+    Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
 
-## Keeping it flexible
+    It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
 
-Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
+    [How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
+  </Section>
+</Section>
 
-It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
+<Section id="key-decisions">
+  <h1>Key Decisions</h1>
 
-[How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
+  <Section id="one-page,-one-action" isSubsection={true}>
+    <h2>One page, one action</h2>
 
-# Key Decisions
+    The main departure from Etherscan was limiting forms to a single action.
 
-## One page, one action
+    Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
 
-The main departure from Etherscan was limiting forms to a single action.
+    Linking straight to the action makes it impossible to miss.
 
-Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
+    <Image
+      src="/work/formie/decisions/one-page.png"
+      alt="Form for Uniswap's Delegate action"
+    />
+  </Section>
 
-Linking straight to the action makes it impossible to miss.
+  <Section id="only-supporting-one-way-actions" isSubsection={true}>
+    <h2>Only supporting one-way actions</h2>
 
-<Image
-  src="/work/formie/decisions/one-page.png"
-  alt="Form for Uniswap's Delegate action"
-/>
+    Smart contracts have two kinds of actions:
 
-## Only supporting one-way actions
+    - `One-way`: An action that _triggers a change_<br/>(ex: Voting, sending money, changing ownership)
+    - `Two-way`: An action that _returns data_<br/>(ex: Seeing an account's balance, getting an NFT's characteristics)
 
-Smart contracts have two kinds of actions:
+    Two-way actions are complex. Different data needs different layouts, with non-blockchain data getting mixed in. These constraints make a custom UI necessary to deliver a great experience.
 
-- `One-way`: An action that _triggers a change_<br/>(ex: Voting, sending money, changing ownership)
-- `Two-way`: An action that _returns data_<br/>(ex: Seeing an account's balance, getting an NFT's characteristics)
+    One-way actions are simple. They need a straightforward layout with fields and a button, which is easy to standardize. Our research also found that [they’re underserved relative to two-ways](#research).
 
-Two-way actions are complex. Different data needs different layouts, with non-blockchain data getting mixed in. These constraints make a custom UI necessary to deliver a great experience.
+    To serve lots of actions consistently, we decided to focus only on one-way actions.
 
-One-way actions are simple. They need a straightforward layout with fields and a button, which is easy to standardize. Our research also found that [they’re underserved relative to two-ways](#research).
+    <Image
+      src="/work/formie/decisions/one-way-actions.png"
+      alt="UI for picking a form's action"
+    />
+  </Section>
 
-To serve lots of actions consistently, we decided to focus only on one-way actions.
+  <Section id="letting-people-write-their-own-title-and-description" isSubsection={true}>
+    <h2>Letting people write their own title and description</h2>
 
-<Image
-  src="/work/formie/decisions/one-way-actions.png"
-  alt="UI for picking a form's action"
-/>
+    To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
-## Letting people write their own title and description
+    But this wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people customize the title and description. It's a simple but effective way to keep forms flexible without adding complexity.
 
-To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
+    Deciding to let people edit wasn’t easy, since it would make it easier to misrepresent actions and swindle users.
 
-But this wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people customize the title and description. It's a simple but effective way to keep forms flexible without adding complexity.
+    Having open text was essential, though, so we had to design around it.
 
-Deciding to let people edit wasn’t easy, since it would make it easier to misrepresent actions and swindle users.
+    <Image
+      src="/work/formie/decisions/title-and-description.png"
+      alt="UI for editing title & description"
+    />
+  </Section>
 
-Having open text was essential, though, so we had to design around it.
+  <Section id="making-people-confirm-trust" isSubsection={true}>
+    <h2>Making people confirm trust</h2>
 
-<Image
-  src="/work/formie/decisions/title-and-description.png"
-  alt="UI for editing title & description"
-/>
+    We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting it.
 
-## Making people confirm trust
+    Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and pay.
 
-We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting it.
+    Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
 
-Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and pay.
+    <Image
+      src="/work/formie/decisions/trust.png"
+      alt="Confirmation checkbox at the end of every form"
+    />
+  </Section>
+</Section>
 
-Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
+<Section id="tradeoffs">
+  <h1>Tradeoffs</h1>
 
-<Image
-  src="/work/formie/decisions/trust.png"
-  alt="Confirmation checkbox at the end of every form"
-/>
+  Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
 
-# Tradeoffs
+  By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
-Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
+  <Section id="infinite-forms" isSubsection={true}>
+    <h2>~~Editing forms~~ Infinite forms</h2>
 
-By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
+    We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
-## <span class="line-through">Editing forms</span> Infinite forms
+    Instead of rebuilding, we decided to...
 
-We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
+    1. Let people make unlimited forms, and
+    2. Make forms permanent (for security reasons).
 
-Instead of rebuilding, we decided to...
+    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. If we learned later that people edit a lot, we could add it. Until then, disposable forms were good enough.
 
-1. Let people make unlimited forms, and
-2. Make forms permanent (for security reasons).
+    Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
-People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. If we learned later that people edit a lot, we could add it. Until then, disposable forms were good enough.
+    <Carousel
+      images={[
+        {
+          src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
+          alt: "One-time notice on list page",
+        },
+        {
+          src: "/work/formie/tradeoffs/no-editor/callout.png",
+          alt: "Callout in editor preview",
+        },
+        {
+          src: "/work/formie/tradeoffs/no-editor/new-plan.png",
+          alt: "Plan for new solution",
+        },
+      ]}
+    />
+  </Section>
 
-Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
+  <Section id="customize-title-&-description" isSubsection={true}>
+    <h2>Customize ~~everything~~ title & description</h2>
 
-<Carousel
-  images={[
-    {
-      src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
-      alt: "One-time notice on list page",
-    },
-    {
-      src: "/work/formie/tradeoffs/no-editor/callout.png",
-      alt: "Callout in editor preview",
-    },
-    {
-      src: "/work/formie/tradeoffs/no-editor/new-plan.png",
-      alt: "Plan for new solution",
-    },
-  ]}
-/>
+    We wanted every part of a form to be customizable:
 
-## Customize <span class="line-through">everything</span> title & description
+    - Field titles, descriptions, placeholders
+    - Error messages
+    - Button label, etc.
 
-We wanted every part of a form to be customizable:
+    But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
 
-- Field titles, descriptions, placeholders
-- Error messages
-- Button label, etc.
+    To simplify, we only let people customize their form’s title and description. Because top-level fields gave context to the entire form, static fields wouldn’t kill usability.
 
-But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
+    Limited customization kept form creation straightforward while offering more control than Etherscan.
 
-To simplify, we only let people customize their form’s title and description. Because top-level fields gave context to the entire form, static fields wouldn’t kill usability.
+    <Carousel
+      images={[
+        {
+          src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
+          alt: "Prototype of editor with other editable fields",
+        },
+        {
+          src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
+          alt: "Realization that only title & description would be enough",
+        },
+      ]}
+    />
+  </Section>
 
-Limited customization kept form creation straightforward while offering more control than Etherscan.
+  <Section id="limited-error-messaging" isSubsection={true}>
+    <h2>~~Perfect~~ Limited error messaging</h2>
 
-<Carousel
-  images={[
-    {
-      src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
-      alt: "Prototype of editor with other editable fields",
-    },
-    {
-      src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
-      alt: "Realization that only title & description would be enough",
-    },
-  ]}
-/>
+    We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.
 
-## <span class="line-through">Perfect</span> Limited error messaging
+    At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
 
-We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.
+    It was impossible to translate errors consistently, so we settled on...
 
-At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
+    1. Humanizing basic type errors
+    2. Wrapping unknown errors in an honest, generic message.
 
-It was impossible to translate errors consistently, so we settled on...
+    Compromising on error handling stung, but you can only do so much when working with a black box.
 
-1. Humanizing basic type errors
-2. Wrapping unknown errors in an honest, generic message.
+    <Image
+      src="/work/formie/tradeoffs/errors/research.png"
+      alt="Research for handling smart contract errors"
+    />
+  </Section>
+</Section>
 
-Compromising on error handling stung, but you can only do so much when working with a black box.
+<Section id="result">
+  <h1>Result</h1>
 
-<Image
-  src="/work/formie/tradeoffs/errors/research.png"
-  alt="Research for handling smart contract errors"
-/>
+  Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort. 
 
-# Result
+  Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
 
-Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort. 
+  Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
+</Section>
 
-Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
+<Section id="showcase">
+  <h1>Showcase</h1>
 
-Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
-
-# Showcase
-
-_Coming soon!_
+  _Coming soon!_
+</Section>

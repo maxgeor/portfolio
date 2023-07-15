@@ -1,0 +1,53 @@
+---
+import NavList from './NavList.astro';
+
+export interface Props {
+  title: string;
+  subsections?: {
+    title: string;
+    subsections?: {
+      title: string;
+    }[];
+  }[];
+  isSubitem?: boolean;
+}
+const { title, subsections = null, isSubitem = false } = Astro.props;
+---
+
+<li class={`nav-item relative ${isSubitem ? 'text-xs leading-4 py-0.5' : 'leading-5'}`}>
+  <a
+    href={`#${title.replace(/\s+/g, "-").toLowerCase()}`}
+    class="flex items-center justify-between gap-2 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0 transition"
+  >
+    {title}
+    {subsections && (
+      <div class="dots flex gap-[3px] transition">
+        {subsections.map(() => <span class="h-0.5 w-0.5 bg-[#9499a0] dark:bg-[#6d6d6d] rounded-full"></span>)}
+      </div>
+    )}
+  </a>
+  {subsections && <NavList sections={subsections} isSubsection={true} />}
+</li>
+
+<style is:inline>
+  li.nav-item.active > ol {
+    display: flex;
+    pointer-events: all;
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+  }
+  
+  li.nav-item.active > a {
+    font-weight: 500;
+    color: #282b34;
+  }
+  
+  li.nav-item.active > a > .dots {
+    opacity: 0%;
+  }
+
+  .dark li.nav-item.active > a {
+    color: #cdcdcd;
+  }
+</style>

@@ -6,16 +6,25 @@ const workCollection = defineCollection({
     year: z.number().or(z.string()),
     title: z.string(),
     tldr: z.array(z.string()),
-    sections: z.array(z.string()),
+    sections: z.object({
+      title: z.string(),
+      subsections: z.object({
+        title: z.string(),
+      }).array().optional(),
+    }).array(),
     image: z.string().optional(),
     roles: z.array(z.string()),
     link: z.string().optional(),
     company: z.string().optional(),
     tools: z.array(z.string()).optional(),
-    collaborators: z.object({ name: z.string(), role: z.string(), href: z.string()}).array().optional(),
+    collaborators: z.object({
+      name: z.string(),
+      role: z.string(), 
+      href: z.string()
+    }).array().optional(),
   }),
 });
-const writingCollection = defineCollection({ 
+const writingCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),

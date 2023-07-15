@@ -1,0 +1,21 @@
+---
+import NavList from './NavList.astro';
+
+export interface Props {
+  sections: {
+    title: string;
+    subsections?: { 
+      title: string 
+    }[];
+  }[];
+}
+
+const { sections } = Astro.props;
+
+---
+
+<nav class="lg:sticky lg:top-28 h-fit no-scrollbar col-span-full -mb-6 overflow-x-scroll scroll-smooth p-6 sm:-mb-6 sm:px-12 lg:col-span-2 lg:m-0 lg:p-0 lg:overflow-visible">
+  <NavList sections={sections} />
+  <div class="absolute top-1 left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-[#212121] lg:hidden"></div>
+  <div class="absolute top-1 right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-[#212121] lg:hidden"></div>
+</nav>
