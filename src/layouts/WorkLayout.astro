@@ -147,27 +147,20 @@ const {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         const id = entry.target.getAttribute('id');
-        if (entry.intersectionRatio > 0) {
-          document.querySelector(`nav li a[href="#${id}"]`)?.parentElement?.classList.add("active");
-        } else {
-          document.querySelector(`nav li a[href="#${id}"]`)?.parentElement?.classList.remove("active");
-        }
+        entry.intersectionRatio > 0 
+          ? document.querySelector(`nav li a[href="#${id}"]`)?.parentElement?.classList.add("active") 
+          : document.querySelector(`nav li a[href="#${id}"]`)?.parentElement?.classList.remove("active");
       });
     }, { 
       rootMargin: `-${window.innerHeight/2.21}px`
     });
 
-    document.querySelectorAll('section[id]').forEach((section) => {
-      observer.observe(section);
-    });
-    
+    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
   });
 
   // Show and hide back button when clikcing on internal links
   const links = Array.from(document.querySelectorAll("a"));
-  const internalLinks = links.filter((link) =>
-    link.getAttribute("href")?.startsWith("#")
-  );
+  const internalLinks = links.filter(link => link.getAttribute("href")?.startsWith("#"));
 
   const goBackUpButton: HTMLButtonElement = document.querySelector("#go-back-up-button") as HTMLButtonElement;
   const goBackDownButton = document.querySelector("#go-back-down-button") as HTMLButtonElement;
