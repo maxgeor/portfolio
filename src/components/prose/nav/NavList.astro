@@ -22,5 +22,11 @@ const { sections, isSubsection = false } = Astro.props;
     : 'flex leading-5 whitespace-nowrap'
   }
 `}>
-  {sections.map((section) => <NavItem title={section.title} subsections={section.subsections} isSubitem={isSubsection} />)}
+  {sections.map((section) => (
+    <NavItem
+      title={section.title} 
+      subsections={section.subsections} 
+      isSubitem={isSubsection} 
+    />
+  ))}
 </ol>
