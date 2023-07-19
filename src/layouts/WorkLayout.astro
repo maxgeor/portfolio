@@ -165,7 +165,7 @@ const {
   const links = Array.from(document.querySelectorAll("a"));
   const internalLinks = links.filter(link => link.getAttribute("href")?.startsWith("#"));
 
-  const goBackUpButton: HTMLButtonElement = document.querySelector("#go-back-up-button") as HTMLButtonElement;
+  const goBackUpButton = document.querySelector("#go-back-up-button") as HTMLButtonElement;
   const goBackDownButton = document.querySelector("#go-back-down-button") as HTMLButtonElement;
 
   const isElementInView = (element: HTMLElement) => {
