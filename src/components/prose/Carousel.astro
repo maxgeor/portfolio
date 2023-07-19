@@ -1,15 +1,17 @@
 ---
 import Image from "./Image.astro";
+import Video from "./Video.astro";
 import ChevronLeftIcon from "../icons/ChevronLeftIcon.astro";
 import ChevronRightIcon from "../icons/ChevronRightIcon.astro";
 
 export interface Props {
-  images: {
+  slides: {
+    type: 'image' | 'video';
     src: string;
     alt: string;
   }[];
 }
-const { images } = Astro.props;
+const { slides } = Astro.props;
 ---
 
 <div class="carousel relative col-span-full pt-1 pb-2 xl:col-start-2 xl:col-end-8">
@@ -18,7 +20,7 @@ const { images } = Astro.props;
     class="btn-prev group absolute top-1/2 -left-[19px] sm:-left-[23px] z-20 -translate-y-1/2 transform py-14 px-2 opacity-0 transition-opacity duration-200 -mt-1"
     >
     <div
-      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[9%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[19%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
+      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[9%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[18%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
     >
       <ChevronLeftIcon  classes="shrink-0 transform absolute top-1/2 -translate-y-1/2 left-[8px]" />
     </div>
@@ -27,22 +29,29 @@ const { images } = Astro.props;
     class="btn-next group absolute top-1/2 -right-[19px] sm:-right-[23px] z-20 -translate-y-1/2 transform py-14 px-2 transition-opacity duration-200 -mt-1"
   >
     <div
-      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[9%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[19%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
+      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] dark:shadow-[0_1px_2px_0_rgb(0,0,0,0.9)] ring-1 ring-gray-900/[9%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[18%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
     >
       <ChevronRightIcon classes="shrink-0 transform absolute top-1/2 -translate-y-1/2 right-[8px]" />
     </div>
   </button>
   <div
-    class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff2] border-b-gray-200 dark:border-[#333333]/80 dark:border-b-[#333333]/80 dark:border-t-[#2B2E35] rotate-0"
+    class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rotate-0"
   >
     {
-      images?.map((image) => (
+      slides?.map((slide) => (
         <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
-          />
+          {slide.type === 'video' ? (
+            <Video
+              src={slide.src}
+              classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
+            />
+          ) : (
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
+            />
+          )}
         </div>
       ))
     }

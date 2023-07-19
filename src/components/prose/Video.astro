@@ -1,0 +1,41 @@
+---
+import PauseIcon from '../icons/PauseIcon.astro';
+
+export interface Props {
+  src: string;
+  classes?: string;
+}
+const { src, classes = "" } = Astro.props;
+---
+<div class="text-white relative">
+  <video 
+    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rounded-lg dark:brightness-90 ${classes}`} 
+    autoplay
+    muted
+    loop
+  >
+    <source src={src} type="video/mp4">
+  </video>
+  <PauseIcon classes="pause-icon transform opacity-0 -rotate-12 -translate-x-5 z-10 absolute top-4 left-[13px] transition duration-[200ms] ease-out text-white pointer-events-none drop-shadow" />
+</div>
+
+<script>
+  const videos = document.querySelectorAll('video');
+
+  videos.forEach(video => {
+    const pause = video.parentElement?.querySelector('.pause-icon') as HTMLElement;
+
+    video.addEventListener('mouseover', () => {
+      video.pause();
+      video.classList.add('brightness-75');
+      video.classList.remove('dark:brightness-90');
+      pause.classList.remove('opacity-0', '-rotate-12', '-translate-x-5');
+    });
+    video.addEventListener('mouseout', () => {
+      video.play();
+      video.classList.add('dark:brightness-90');
+      video.classList.remove('brightness-75');
+      pause.classList.add('opacity-0', '-rotate-12', '-translate-x-5');
+    });
+  });
+</script>

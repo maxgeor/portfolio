@@ -24,8 +24,14 @@ year: 2022
 sections:
   [
     { title: "Problem" },
+    { 
+      title: "Research",
+      subsections: [
+        { title: "Raw observations" },
+        { title: "Talking to people" },
+      ]
+    },
     { title: "Idea" },
-    { title: "Research" },
     { title: "Process" },
     { 
       title: "Challenges",
@@ -39,7 +45,6 @@ sections:
       title: "Key Decisions",
       subsections: [
         { title: "One page, one action" },
-        { title: "Only supporting one-way actions" },
         { title: "Letting people write their own title and description" },
         { title: "Making people confirm trust" },
       ]
@@ -86,8 +91,68 @@ import Carousel from "../../components/prose/Carousel.astro";
   />
 </Section>
 
+<Section id="research">
+  <h1>Research</h1>
+
+  <Section id="raw-observations" isSubsection={true}>
+    <h2>Raw observations</h2>
+
+    We starting digging into how smart contracts worked. We learned that they have two kinds of actions:
+
+    <table class="text-sm" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="w-fit p-0 !pr-4 pb-4 pt-px">`One-way`</td>
+        <td class="w-fit leading-6 p-0 pb-4">These actions _trigger a change_. They're relatively simple, wrapped in straightforward, form-like layouts (ex: voting, sending money, changing ownership).</td>
+      </tr>
+      <tr>
+        <td class="w-fit p-0 !pr-4 pt-px">`Two-way`</td>
+        <td class="w-fit leading-6 p-0">These actions _return data_. They're more complex, since their data mixes with non-blockchain data, often needing unique displays (ex: showing account's balance, getting an NFT's characteristics).</td>
+      </tr>
+    </table>
+
+    Most **projects used Etherscan for one-way actions**. When one-ways had their own frontend, they were pretty basic and didn't get much of love.
+
+    <Carousel
+      slides={[
+        {
+          type: 'video',
+          src: "/work/formie/research/mloot-flow.mp4",
+        },
+        {
+          type: 'video',
+          src: "/work/formie/research/banners-flow.mp4",
+        },
+        {
+          type: 'video',
+          src: "/work/formie/research/rune-flow.mp4",
+        },
+      ]}
+    />
+  </Section>
+
+  <Section id="talking-to-people" isSubsection={true}>
+    <h2>Talking to people</h2>
+
+    Calls with teams & developers using Etherscan gave us three key insights:
+
+    <h3>They used Etherscan as a “good enough” interface</h3>
+    
+    Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
+
+    <h3>They knew Etherscan sucked</h3>
+    
+    Everyone I talked to was painfully aware of how bad the interface was. Despite it's flaws, the cost of a custom solution still outweighed the cons.
+  
+    People still valued UX and might be willing to switch if the setup was easy. Plus, the bar was low — we had lots of room to [cut scope](#tradeoffs) while shipping something better.
+  </Section>
+</Section>
+
 <Section id="idea">
   <h1>Idea</h1>
+
+  {/* - We saw people reaching for out-of-the-box UIs for one-way actions
+  - We saw the lack of alternatives
+  - We say all the one way methods basically had simple, form-like layouts */}
 
   Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
 
@@ -105,22 +170,6 @@ import Carousel from "../../components/prose/Carousel.astro";
   />
 </Section>
 
-<Section id="research">
-  <h1>Research</h1>
-
-  Talking to teams & developers using Etherscan gave us three key insights:
-
-  1. _They used Etherscan as a “good enough” interface_. Developers avoided writing code for stuff like admin actions, personal projects, and tests.
-  2. _They used Etherscan for [one-way actions](#only-supporting-one-way-actions)_ (code that triggers a change). Two-way actions almost always had their own frontend.
-  3. _They knew Etherscan sucked_ (visually & functionally) but weren't willing to invest the time & money or have the confidence to make something custom.
-
-  Takeaways:
-
-  - One-way actions were underserved
-  - People still valued UX and might be willing to switch if the setup was easy
-  - The bar was low — we had lots of room to [cut scope](#tradeoffs) while shipping something better.
-</Section>
-
 <Section id="process">
   <h1>Process</h1>
 
@@ -131,16 +180,19 @@ import Carousel from "../../components/prose/Carousel.astro";
   Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
 
   <Carousel
-    images={[
+    slides={[
       {
+        type: 'image',
         src: "/work/formie/process/chunks.png",
         alt: "Work chunks, sequenced in FigJam",
       },
       {
+        type: 'image',
         src: "/work/formie/process/flow.png",
         alt: "First breadboard flow",
       },
       {
+        type: 'image',
         src: "/work/formie/process/sketch.png",
         alt: "Sketch of form page's header",
       },
@@ -215,26 +267,6 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="only-supporting-one-way-actions" isSubsection={true}>
-    <h2>Only supporting one-way actions</h2>
-
-    Smart contracts have two kinds of actions:
-
-    - `One-way`: An action that _triggers a change_<br/>(ex: Voting, sending money, changing ownership)
-    - `Two-way`: An action that _returns data_<br/>(ex: Seeing an account's balance, getting an NFT's characteristics)
-
-    Two-way actions are complex. Different data needs different layouts, with non-blockchain data getting mixed in. These constraints make a custom UI necessary to deliver a great experience.
-
-    One-way actions are simple. They need a straightforward layout with fields and a button, which is easy to standardize. Our research also found that [they’re underserved relative to two-ways](#research).
-
-    To serve lots of actions consistently, we decided to focus only on one-way actions.
-
-    <Image
-      src="/work/formie/decisions/one-way-actions.png"
-      alt="UI for picking a form's action"
-    />
-  </Section>
-
   <Section id="letting-people-write-their-own-title-and-description" isSubsection={true}>
     <h2>Letting people write their own title and description</h2>
 
@@ -290,16 +322,19 @@ import Carousel from "../../components/prose/Carousel.astro";
     Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
     <Carousel
-      images={[
+      slides={[
         {
+          type: 'image',
           src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
           alt: "One-time notice on list page",
         },
         {
+          type: 'image',
           src: "/work/formie/tradeoffs/no-editor/callout.png",
           alt: "Callout in editor preview",
         },
         {
+          type: 'image',
           src: "/work/formie/tradeoffs/no-editor/new-plan.png",
           alt: "Plan for new solution",
         },
@@ -323,12 +358,14 @@ import Carousel from "../../components/prose/Carousel.astro";
     Limited customization kept form creation straightforward while offering more control than Etherscan.
 
     <Carousel
-      images={[
+      slides={[
         {
+          type: 'image',
           src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
           alt: "Prototype of editor with other editable fields",
         },
         {
+          type: 'image',
           src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
           alt: "Realization that only title & description would be enough",
         },
