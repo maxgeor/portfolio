@@ -15,7 +15,7 @@ export interface Props {
 const { title, subsections = null, isSubitem = false } = Astro.props;
 ---
 
-<li class={`nav-item relative ${isSubitem ? 'text-xs leading-4 py-0.5' : 'leading-5'}`}>
+<li class={`nav-item relative ${isSubitem ? 'sub-item text-xs leading-4 py-0.5' : 'leading-5'}`}>
   <a
     href={`#${toUrlSafeKebabCase(title)}`}
     class="flex items-center justify-between gap-2 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0 transition"
@@ -42,7 +42,17 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
     
     li.nav-item.active > a {
       font-weight: 500;
-      color: #2c2e35;
+      color: #101827;
+    }
+    
+    li.nav-item.sub-item.active > a {
+      font-weight: 400;
+    }
+
+    @media (min-width: 1280px) {
+      li.nav-item.sub-item.active > a {
+        font-weight: 500;
+      }
     }
     
     li.nav-item.active > a > .dots {
@@ -50,7 +60,7 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
     }
   
     .dark li.nav-item.active > a {
-      color: #cdcdcd;
+      color: #f5f5f5;
     }
   }
 </style>
