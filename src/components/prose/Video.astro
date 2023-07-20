@@ -6,19 +6,24 @@ export interface Props {
   classes?: string;
 }
 const { src, classes = "" } = Astro.props;
+
+const extensionlessSrc = src.replace(/\..*$/, ''); // video.mp4 -> video
 ---
 <div class="relative">
   <video 
     class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rounded-lg dark:brightness-90 ${classes}`} 
-    poster={src.replace('.mp4', '.png')}
+    poster={extensionlessSrc + '.png'}
     playsinline
     autoplay
     muted
     loop
   >
-    <source src={src} type="video/mp4">
+    <source src={extensionlessSrc + '-small.mp4'}  type="video/mp4"  media="all and (max-width: 480px)"> 
+    <source src={extensionlessSrc + '-small.webm'} type="video/webm" media="all and (max-width: 480px)"> 
+    <source src={extensionlessSrc + '.mp4'}        type="video/mp4"> 
+    <source src={extensionlessSrc + '.webm'}       type="video/webm">
   </video>
-  <PauseIcon classes="pause-icon transform opacity-0 -rotate-[30deg] -translate-x-5 z-10 absolute top-4 left-[13px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow" />
+  <PauseIcon classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-4 left-[13px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow" />
 </div>
 
 <script>
@@ -34,18 +39,18 @@ const { src, classes = "" } = Astro.props;
       video.pause();
       video.classList.add('brightness-75');
       video.classList.remove('dark:brightness-90');
-      pause.classList.remove('opacity-0', '-rotate-[30deg]', '-translate-x-5');
+      pause.classList.remove('opacity-0', '-rotate-[24deg]', '-translate-x-5');
     }
 
     const playVideo = () => {
       video.play();
       video.classList.add('dark:brightness-90');
       video.classList.remove('brightness-75', 'ease-in-out');
-      pause.classList.add('ease-in', 'opacity-0', 'rotate-[15deg]', '-translate-x-5');
+      pause.classList.add('ease-in', 'opacity-0', 'rotate-[12deg]', '-translate-x-5');
       
       setTimeout(() => {
-        pause.classList.remove('ease-in', 'rotate-[15deg]')
-        pause.classList.add('-rotate-[30deg]', 'ease-in-out')
+        pause.classList.remove('ease-in', 'rotate-[12deg]')
+        pause.classList.add('-rotate-[24deg]', 'ease-in-out')
       }, 200)
     }
 
