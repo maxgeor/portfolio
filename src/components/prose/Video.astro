@@ -10,6 +10,8 @@ const { src, classes = "" } = Astro.props;
 <div class="relative">
   <video 
     class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rounded-lg dark:brightness-90 ${classes}`} 
+    poster={src.replace('.mp4', '.png')}
+    playsinline
     autoplay
     muted
     loop
