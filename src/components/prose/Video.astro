@@ -24,18 +24,51 @@ const { src, classes = "" } = Astro.props;
 
   videos.forEach(video => {
     const pause = video.parentElement?.querySelector('.pause-icon') as HTMLElement;
+    
+    let isFrozen = false;
+    const isPlaying = (video: HTMLVideoElement) => !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
+    const isMobileOrTablet = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
 
-    video.addEventListener('mouseover', () => {
+    const pauseVideo = () => {
+      // if (video.paused) return;
+
       video.pause();
       video.classList.add('brightness-75');
       video.classList.remove('dark:brightness-90');
       pause.classList.remove('opacity-0', '-rotate-12', '-translate-x-5');
-    });
-    video.addEventListener('mouseout', () => {
+    }
+
+    const playVideo = () => {
+      // if (isPlaying(video)) return;
+      
       video.play();
       video.classList.add('dark:brightness-90');
       video.classList.remove('brightness-75');
       pause.classList.add('opacity-0', '-rotate-12', '-translate-x-5');
+    }
+
+    video.addEventListener('mouseover', () => {
+      if (isFrozen || isMobileOrTablet()) return;
+
+      pauseVideo();
+    });
+
+    video.addEventListener('mouseout', () => {
+      if (isFrozen || isMobileOrTablet()) return;
+
+      playVideo();
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) { 
+        if (isFrozen) {
+          isFrozen = false;
+        }
+        playVideo();
+      } else {
+        isFrozen = true;
+        pauseVideo();
+      }
     });
   });
 </script>
