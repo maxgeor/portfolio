@@ -1,5 +1,6 @@
 ---
 import NavList from './NavList.astro';
+import { toUrlSafeKebabCase } from "../../../utils/formatting"
 
 export interface Props {
   title: string;
@@ -16,13 +17,9 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
 
 <li class={`nav-item relative ${isSubitem ? 'text-xs leading-4 py-0.5' : 'leading-5'}`}>
   <a
-    href={`#${title.replace(/\s+/g, "-").toLowerCase()}`}
+    href={`#${toUrlSafeKebabCase(title)}`}
     class="flex items-center justify-between gap-2 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0 transition"
   >
-  <!-- <a
-    href={`#${title.replace(/\s+/g, "-").toLowerCase()}`}
-    class="flex items-center justify-between gap-2 text-gray-500 hover:underline focus:underline dark:text-[#888888] lg:m-0 transition"
-  > -->
     {title}
     {subsections && (
       <div class="dots flex gap-[3px] transition">

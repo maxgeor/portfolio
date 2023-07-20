@@ -27,8 +27,8 @@ sections:
     { 
       title: "Research",
       subsections: [
-        { title: "Raw observations" },
-        { title: "Talking to people" },
+        { title: "Etherscan is mostly used for one-way actions" },
+        { title: "People love saving time, but not using Etherscan" },
       ]
     },
     { title: "Idea" },
@@ -66,9 +66,7 @@ import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import Carousel from "../../components/prose/Carousel.astro";
 
-<Section id="problem">
-<h1>Problem</h1>
-
+<Section title="Problem">
   Developers make blockchain apps by...
 
   1. Writing code
@@ -91,12 +89,8 @@ import Carousel from "../../components/prose/Carousel.astro";
   />
 </Section>
 
-<Section id="research">
-  <h1>Research</h1>
-
-  <Section id="raw-observations" isSubsection={true}>
-    <h2>Raw observations</h2>
-
+<Section title="Research">
+  <Section title="Etherscan is mostly used for one-way actions" isSubsection={true}>
     We starting digging into how smart contracts worked. We learned that they have two kinds of actions:
 
     <table class="text-sm" cellspacing="0" cellpadding="0">
@@ -110,7 +104,7 @@ import Carousel from "../../components/prose/Carousel.astro";
       </tr>
     </table>
 
-    Most **projects used Etherscan for one-way actions**. When one-ways had their own frontend, they were pretty basic and didn't get much of love.
+    Most projects used Etherscan for one-way actions. When one-ways had their own frontend, they were pretty basic and didn't get much of love.
 
     <Carousel
       slides={[
@@ -130,9 +124,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="talking-to-people" isSubsection={true}>
-    <h2>Talking to people</h2>
-
+  <Section title="People love saving time, but not using Etherscan" isSubsection={true}>
     Calls with teams & developers using Etherscan gave us three key insights:
 
     <h3>They used Etherscan as a “good enough” interface</h3>
@@ -147,12 +139,10 @@ import Carousel from "../../components/prose/Carousel.astro";
   </Section>
 </Section>
 
-<Section id="idea">
-  <h1>Idea</h1>
-
-  {/* - We saw people reaching for out-of-the-box UIs for one-way actions
+<Section title="Idea">
+  - We saw people reaching for out-of-the-box UIs for one-way actions
   - We saw the lack of alternatives
-  - We say all the one way methods basically had simple, form-like layouts */}
+  - We say all the one way methods basically had simple, form-like layouts
 
   Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
 
@@ -170,9 +160,7 @@ import Carousel from "../../components/prose/Carousel.astro";
   />
 </Section>
 
-<Section id="process">
-  <h1>Process</h1>
-
+<Section title="Process">
   We worked by doing design and development at the same time.
 
   First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design & build each chunk in order.
@@ -200,12 +188,8 @@ import Carousel from "../../components/prose/Carousel.astro";
   />
 </Section>
 
-<Section id="challenges">
-  <h1>Challenges</h1>
-
-  <Section id="shooing-scammers" isSubsection={true}>
-    <h2>Shooing scammers</h2>
-
+<Section title="Challenges">
+  <Section title="Shooing scammers" isSubsection={true}>
     We knew three things from the jump:
 
     1. Scammers would use forms to misrepresent contracts
@@ -220,9 +204,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="filtering-&-framing-technical-details" isSubsection={true}>
-    <h2>Filtering & framing technical details</h2>
-
+  <Section title="Filtering & framing technical details" isSubsection={true}>
     Smart contracts have tons of strange behaviors:
 
     - Transactions cost a bit of money
@@ -238,9 +220,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="keeping-it-flexible" isSubsection={true}>
-    <h2>Keeping it flexible</h2>
-  
+  <Section title="Keeping it flexible" isSubsection={true}>
     Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
 
     It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
@@ -249,12 +229,8 @@ import Carousel from "../../components/prose/Carousel.astro";
   </Section>
 </Section>
 
-<Section id="key-decisions">
-  <h1>Key Decisions</h1>
-
-  <Section id="one-page,-one-action" isSubsection={true}>
-    <h2>One page, one action</h2>
-
+<Section title="Key Decisions">
+  <Section title="One page, one action" isSubsection={true}>
     The main departure from Etherscan was limiting forms to a single action.
 
     Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
@@ -267,9 +243,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="letting-people-write-their-own-title-and-description" isSubsection={true}>
-    <h2>Letting people write their own title and description</h2>
-
+  <Section title="Letting people write their own title and description" isSubsection={true}>
     To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
     But this wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people customize the title and description. It's a simple but effective way to keep forms flexible without adding complexity.
@@ -284,9 +258,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="making-people-confirm-trust" isSubsection={true}>
-    <h2>Making people confirm trust</h2>
-
+  <Section title="Making people confirm trust" isSubsection={true}>
     We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting it.
 
     Most people who get scammed, especially in crypto, are in a rush. They see a hot mint in Discord or Twitter, feel the FOMO, and pay.
@@ -300,15 +272,13 @@ import Carousel from "../../components/prose/Carousel.astro";
   </Section>
 </Section>
 
-<Section id="tradeoffs">
-  <h1>Tradeoffs</h1>
-
+<Section title="Tradeoffs">
   Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
 
   By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
-  <Section id="infinite-forms" isSubsection={true}>
-    <h2>~~Editing forms~~ Infinite forms</h2>
+  <Section title="Infinite forms" isSubsection={true}>
+    <h2 slot="heading">~~Editing forms~~ Infinite forms</h2>
 
     We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
 
@@ -342,8 +312,8 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="customize-title-&-description" isSubsection={true}>
-    <h2>Customize ~~everything~~ title & description</h2>
+  <Section title="Customize title & description" isSubsection={true}>
+    <h2 slot="heading">Customize ~~everything~~ title & description</h2>
 
     We wanted every part of a form to be customizable:
 
@@ -373,8 +343,8 @@ import Carousel from "../../components/prose/Carousel.astro";
     />
   </Section>
 
-  <Section id="limited-error-messaging" isSubsection={true}>
-    <h2>~~Perfect~~ Limited error messaging</h2>
+  <Section title="Limited error messaging" isSubsection={true}>
+    <h2 slot="heading">~~Perfect~~ Limited error messaging</h2>
 
     We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.
 
@@ -394,9 +364,7 @@ import Carousel from "../../components/prose/Carousel.astro";
   </Section>
 </Section>
 
-<Section id="result">
-  <h1>Result</h1>
-
+<Section title="Result">
   Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort. 
 
   Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
@@ -404,8 +372,6 @@ import Carousel from "../../components/prose/Carousel.astro";
   Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
 </Section>
 
-<Section id="showcase">
-  <h1>Showcase</h1>
-
+<Section title="Showcase">
   _Coming soon!_
 </Section>
