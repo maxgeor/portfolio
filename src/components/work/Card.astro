@@ -13,16 +13,16 @@ const { href, title, roles, description, image } = Astro.props;
 <a href={href} class="group col-span-full grid grid-cols-12 gap-6 lg:gap-12">
   <div class="col-span-3 -my-1 hidden max-w-[225px] basis-1/3 lg:block">
     <h2 class="group-hover:underline">{title}</h2>
-    <p class="text-gray-500 dark:text-[#888888]">{description || ""}</p>
+    <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
   </div>
   <img
     src={image || "/work/memiori/preview.png"}
-    class="col-span-full w-full md:col-start-3 md:col-end-11 lg:col-span-6 dark:brightness-90"
+    class="col-span-full w-full dark:brightness-90 md:col-start-3 md:col-end-11 lg:col-span-6"
   />
   <div class="col-span-3 -my-1 hidden lg:block">
     {
       roles.map((role) => (
-        <p class="hidden text-right text-gray-500 dark:text-[#888888] lg:block">
+        <p class="hidden text-right text-gray-500 dark:text-neutral-500 lg:block">
           {role}
         </p>
       ))
@@ -30,15 +30,17 @@ const { href, title, roles, description, image } = Astro.props;
   </div>
   <div class="col-span-full gap-6 lg:hidden">
     <div
-      class="flex justify-between border-y border-gray-200 py-1 dark:border-[#333333]"
+      class="dark:border-neutral-750 flex justify-between border-y border-gray-200 py-1"
     >
       <h2 class="group-hover:underline">{title}</h2>
-      <p class="whitespace-nowrap text-right text-gray-500 dark:text-[#888888]">
+      <p
+        class="whitespace-nowrap text-right text-gray-500 dark:text-neutral-500"
+      >
         {roles.join(", ")}
       </p>
     </div>
     <p
-      class="border-b border-gray-200 py-1 text-gray-500 dark:border-[#333333] dark:text-[#888888]"
+      class="dark:border-neutral-750 border-b border-gray-200 py-1 text-gray-500 dark:text-neutral-500"
     >
       {description}
     </p>

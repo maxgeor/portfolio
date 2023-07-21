@@ -63,13 +63,13 @@ const {
             alt={title}
             class="aspect-[5/3] max-h-[800px] w-full object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] lg:aspect-[5/2]"
           />
-          <span class="absolute bottom-0 left-0 right-0 h-px w-full bg-gray-900/[3%] dark:bg-white/[3%]" />
+          <span class="absolute bottom-0 left-0 right-0 h-px w-full bg-black/[3%] dark:bg-white/[3%]" />
         </div>
       ) : null
     }
     <div class="flex flex-col gap-12">
       <div
-        class="relative mx-6 grid grid-cols-1 gap-y-6 gap-x-12 border-gray-200 dark:border-[#333333] sm:mx-12 lg:grid-cols-12 lg:border-b lg:pb-12"
+        class="relative mx-6 grid grid-cols-1 gap-y-6 gap-x-12 border-gray-200 dark:border-neutral-750 sm:mx-12 lg:grid-cols-12 lg:border-b lg:pb-12"
       >
         <div class="col-span-full flex justify-between lg:col-span-2">
           <h1 class="-my-1">{title}</h1>
@@ -128,7 +128,7 @@ const {
         class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
       >
         <hr
-          class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#333333] lg:hidden"
+          class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-neutral-750 lg:hidden"
         />
         <NavBar sections={sections} />
         <div
@@ -139,9 +139,9 @@ const {
             prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
             prose-h3:italic prose-h3:font-normal  prose-h3:text-[14px] prose-h3:-mb-[14px] prose-h3:leading-5
             prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
-            prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-neutral-50
+            prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-neutral-100
             prose-a:underline
-            prose-code:bg-gray-100 dark:prose-code:bg-[#2b2b2b] prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/[24%] dark:prose-code:border-[#888888]/10 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+            prose-code:bg-gray-150/75 dark:prose-code:bg-neutral-800/75 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/20 dark:prose-code:border-neutral-800 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
             prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-5 prose-ul:m-0
             prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-5 prose-ol:m-0
             prose-li:m-0

@@ -13,8 +13,9 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
 ---
 
 <article class="col-span-3 grid grid-cols-3 gap-4">
-  <!-- <h3 class={`font-medium text-[#e2e8e8] ${titleWidth ? titleWidth : ""}`}>{title}</h3> -->
-  <h3 class={`font-medium text-gray-900 ${titleWidth ? titleWidth : ""}`}>{title}</h3>
+  <h3 class={`font-medium text-gray-900 ${titleWidth ? titleWidth : ""}`}>
+    {title}
+  </h3>
   <p>{company}</p>
   <div class="relative flex h-fit justify-self-end">
     <p class="w-[69px] shrink-0">{startDate}</p>

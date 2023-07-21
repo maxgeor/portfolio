@@ -10,18 +10,28 @@ module.exports = {
     },
 		extend: {
 			colors: {
+				yellow: '#fdfd41',
 				gray: {
+					100: '#F5F7FA',
+					150: '#eeeff2',
 					200: '#E8EBEF',
 					300: '#b8bec3',
-					400: '#868B90',
+					400: '#909499',
 					500: '#6F7786',
-					700: '*2c2f33',
-					800: '*212427',
+					700: '#3A3E47',
 				},
+				neutral: {
+					350: '#B4B4B4',
+					500: '#888888',
+					600: '#777777',
+					700: '#3b3b3b',
+					750: '#333333',
+					800: '#2E2E2E',
+					850: '#212121',
+				}
 			},
 			screens: {
 				xs: '450px',
-        'betterhover': {'raw': '(hover: hover)'},
 			},
 			boxShadow: {
 				button: '0px 1px 1px -1px rgba(0,0,0,.09), 0px 2px 2px -1px rgba(0,0,0,.09), 0px 0px 0px 1px rgba(0,0,0,.08)',

@@ -6,11 +6,11 @@ export interface Props {
   backgroundColor?: string;
 }
 
-const { 
+const {
   title = "Max Georgopoulos",
   description,
-  maxWidth = "", 
-  backgroundColor = "bg-white dark:bg-[#212121]" 
+  maxWidth = "",
+  backgroundColor = "bg-white dark:bg-neutral-850",
 } = Astro.props;
 ---
 
@@ -23,12 +23,16 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    
+
     <script is:inline>
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
     </script>
   </head>
@@ -36,7 +40,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-      text-[#3a3e47] dark:text-[#b4b4b4] min-h-screen text-sm selection:bg-[#fdfd41] dark:selection:bg-[#ffff5a] selection:text-[#000] antialiased mx-auto 
+      text-gray-700 dark:text-neutral-350 min-h-screen text-sm dark:selection:bg-yellow selection:text-black antialiased mx-auto 
     `}
   >
     <slot />
@@ -67,7 +71,7 @@ const {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
   }
-  
+
   html {
     text-rendering: optimizeLegibility;
     letter-spacing: -0.01em;
@@ -77,7 +81,7 @@ const {
     text-underline-offset: 3px;
     text-underline-thickness: 0.01em;
   }
-  
+
   tr:last-child > td {
     padding-bottom: 0;
   }
@@ -85,7 +89,7 @@ const {
   td {
     vertical-align: top;
   }
-  
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

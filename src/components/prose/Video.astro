@@ -1,5 +1,5 @@
 ---
-import PauseIcon from '../icons/PauseIcon.astro';
+import PauseIcon from "../icons/PauseIcon.astro";
 
 export interface Props {
   src: string;
@@ -7,67 +7,88 @@ export interface Props {
 }
 const { src, classes = "" } = Astro.props;
 
-const extensionlessSrc = src.replace(/\..*$/, ''); // video.mp4 -> video
+const extensionlessSrc = src.replace(/\..*$/, ""); // video.mp4 -> video
 ---
+
 <div class="relative">
-  <video 
-    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rounded-lg dark:brightness-90 ${classes}`} 
-    poster={extensionlessSrc + '.png'}
+  <video
+    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-gray-150 border-b-gray-200 dark:border-neutral-800 dark:border-b-neutral-800 dark:border-t-neutral-750 rounded-lg dark:brightness-90 ${classes}`}
+    poster={extensionlessSrc + ".png"}
     playsinline
     autoplay
     muted
     loop
   >
-    <source src={extensionlessSrc + '-small.mp4'}  type="video/mp4"  media="all and (max-width: 480px)"> 
-    <source src={extensionlessSrc + '-small.webm'} type="video/webm" media="all and (max-width: 480px)"> 
-    <source src={extensionlessSrc + '.mp4'}        type="video/mp4"> 
-    <source src={extensionlessSrc + '.webm'}       type="video/webm">
+    <source
+      src={extensionlessSrc + "-small.mp4"}
+      type="video/mp4"
+      media="all and (max-width: 480px)"
+    />
+    <source
+      src={extensionlessSrc + "-small.webm"}
+      type="video/webm"
+      media="all and (max-width: 480px)"
+    />
+    <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
+    <source src={extensionlessSrc + ".webm"} type="video/webm" />
   </video>
-  <PauseIcon classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-4 left-[13px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow" />
+  <PauseIcon
+    classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-4 left-[13px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow"
+  />
 </div>
 
 <script>
-  const videos = document.querySelectorAll('video');
+  const videos = document.querySelectorAll("video");
 
-  videos.forEach(video => {
+  videos.forEach((video) => {
     let isFrozen = false;
-    const isMobileOrTablet = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
-    
-    const pause = video.parentElement?.querySelector('.pause-icon') as HTMLElement;
+    const isMobileOrTablet = () =>
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
+    const pause = video.parentElement?.querySelector(
+      ".pause-icon"
+    ) as HTMLElement;
 
     const pauseVideo = () => {
       video.pause();
-      video.classList.add('brightness-75');
-      video.classList.remove('dark:brightness-90');
-      pause.classList.remove('opacity-0', '-rotate-[24deg]', '-translate-x-5');
-    }
+      video.classList.add("brightness-75");
+      video.classList.remove("dark:brightness-90");
+      pause.classList.remove("opacity-0", "-rotate-[24deg]", "-translate-x-5");
+    };
 
     const playVideo = () => {
       video.play();
-      video.classList.add('dark:brightness-90');
-      video.classList.remove('brightness-75', 'ease-in-out');
-      pause.classList.add('ease-in', 'opacity-0', 'rotate-[12deg]', '-translate-x-5');
-      
-      setTimeout(() => {
-        pause.classList.remove('ease-in', 'rotate-[12deg]')
-        pause.classList.add('-rotate-[24deg]', 'ease-in-out')
-      }, 200)
-    }
+      video.classList.add("dark:brightness-90");
+      video.classList.remove("brightness-75", "ease-in-out");
+      pause.classList.add(
+        "ease-in",
+        "opacity-0",
+        "rotate-[12deg]",
+        "-translate-x-5"
+      );
 
-    video.addEventListener('mouseover', () => {
+      setTimeout(() => {
+        pause.classList.remove("ease-in", "rotate-[12deg]");
+        pause.classList.add("-rotate-[24deg]", "ease-in-out");
+      }, 200);
+    };
+
+    video.addEventListener("mouseover", () => {
       if (isFrozen || isMobileOrTablet()) return;
 
       pauseVideo();
     });
 
-    video.addEventListener('mouseout', () => {
+    video.addEventListener("mouseout", () => {
       if (isFrozen || isMobileOrTablet()) return;
 
       playVideo();
     });
 
-    video.addEventListener('click', () => {
-      if (video.paused) { 
+    video.addEventListener("click", () => {
+      if (video.paused) {
         isFrozen = false;
         playVideo();
       } else {

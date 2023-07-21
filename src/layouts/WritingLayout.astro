@@ -9,7 +9,7 @@ const { frontmatter } = Astro.props;
     <Header />
     <aside class="col-span-full -my-1 pb-1 lg:col-span-3">
       <h1>{frontmatter.title}</h1>
-      <p class="mt-1 text-[12px] text-gray-500 dark:text-[#888888]">
+      <p class="mt-1 text-[12px] text-gray-500 dark:text-neutral-500">
         {frontmatter.date}
       </p>
     </aside>
@@ -17,11 +17,11 @@ const { frontmatter } = Astro.props;
       <div
         class={`
           prose-sm max-w-prose 2xl:mx-auto
-          prose-headings:text-sm prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-neutral-50 prose-headings:leading-6
+          prose-headings:text-sm prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-neutral-100 prose-headings:leading-6
           prose-h2:text-[14px] prose-h2:mt-6 prose-h2:mb-3
           prose-a:underline
-          prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-neutral-50
-          prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-300/30 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal
+          prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-neutral-100
+          prose-code:bg-gray-150/75 dark:prose-code:bg-neutral-800/75 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-gray-200 dark:prose-code:border-neutral-800 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
           prose-ul:list-disc  
           prose-ol:list-decimal
         `}

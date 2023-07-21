@@ -1,5 +1,5 @@
 ---
-import ThemeButton from "./ThemeButton.astro"
+import ThemeButton from "./ThemeButton.astro";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
 
 export interface Props {
@@ -22,7 +22,7 @@ const { link, classes = "" } = Astro.props;
   `}
 >
   <div class="col-span-3 flex items-center justify-between gap-6 sm:gap-12">
-    <a href="/" class="hover:underline col-span-3">Max Georgopoulos</a>
+    <a href="/" class="col-span-3 hover:underline">Max Georgopoulos</a>
   </div>
   <div class="col-span-3 col-end-13 flex items-center gap-6 justify-self-end">
     {
@@ -38,7 +38,7 @@ const { link, classes = "" } = Astro.props;
               <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
             ) : null}
           </a>
-          <span class="hidden sm:block h-[14px] w-px border-r border-[#d3d7da] dark:border-[#3e4145]"></span>
+          <span class="hidden h-[14px] w-px border-r border-[#d3d7da] dark:border-neutral-700 sm:block" />
         </>
       ) : null
     }

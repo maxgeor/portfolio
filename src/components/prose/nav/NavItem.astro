@@ -22,14 +22,14 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
 >
   <a
     href={`#${toUrlSafeKebabCase(title)}`}
-    class="flex items-center justify-between gap-2 text-gray-500 transition hover:underline focus:underline dark:text-[#888888] lg:m-0"
+    class="flex items-center justify-between gap-2 text-gray-500 transition hover:underline focus:underline dark:text-neutral-500 lg:m-0"
   >
     {title}
     {
       subsections && (
         <div class="dots flex gap-[3px] transition">
           {subsections.map(() => (
-            <span class="h-0.5 w-0.5 rounded-full bg-[#909499] dark:bg-[#777777]" />
+            <span class="h-0.5 w-0.5 rounded-full bg-gray-400 dark:bg-neutral-600" />
           ))}
         </div>
       )
