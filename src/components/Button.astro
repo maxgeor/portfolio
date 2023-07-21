@@ -1,0 +1,87 @@
+---
+export type Buttonable = {
+  padding?:
+    | number
+    | { x?: number; y?: number }
+    | { t?: number; r?: number; b?: number; l?: number };
+  invisiblePadding?: number | { x?: number; y?: number };
+  hasBackground?: boolean;
+  classes?: string;
+}
+
+interface Button extends Buttonable {
+  tag?: "button";
+  id?: string;
+  disabled?: boolean;
+}
+
+interface Link extends Buttonable {
+  tag: "a";
+  href: string;
+  id?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+}
+
+export type Props = Button | Link;
+
+const {
+  tag: Element = "button",
+  padding = 2,
+  invisiblePadding,
+  hasBackground = true,
+  classes = "",
+  ...props
+} = Astro.props;
+
+const tailwindifyPaddingObject = (
+  padding: { [key: string]: number },
+  withOffset = false
+) =>
+  Object.entries(padding).reduce(
+    (classes, [direction, amount]) =>
+      `${classes} p${direction}-${amount}` +
+      (withOffset ? ` -m${direction}-${amount} ` : " "),
+    ""
+  );
+
+const paddingClasses =
+  typeof padding === "number"
+    ? `p-${padding}`
+    : tailwindifyPaddingObject(padding);
+
+const invisiblePaddingClasses = invisiblePadding
+  ? typeof invisiblePadding === "number"
+    ? `p-${invisiblePadding} -m-${invisiblePadding}`
+    : `${tailwindifyPaddingObject(invisiblePadding, true)}`
+  : null;
+
+const actionClasses = invisiblePadding
+  ? "group-hover:bg-gray-100 dark:group-hover:bg-[#3b3b3b] group-active:bg-gray-100 dark:group-active:bg-[#3b3b3b]"
+  : "hover:bg-gray-100 dark:hover:bg-[#3b3b3b] active:bg-gray-100 dark:active:bg-[#3b3b3b]";
+
+const defaultClasses = `${paddingClasses}
+   ${
+     hasBackground &&
+     `bg-white dark:bg-[#2e2e2e] shadow-button dark:shadow-button-dark ${actionClasses}`
+   }
+   flex items-center gap-2 text-gray-900 dark:text-neutral-50 rounded-full transition ease-in-out w-fit
+  `;
+---
+
+<Element
+  class={`
+    ${invisiblePadding ? `group ${invisiblePaddingClasses}` : defaultClasses}
+    ${classes}
+  `}
+  {...props}
+>
+  {
+    invisiblePadding ? (
+      <div class={defaultClasses}>
+        <slot />
+      </div>
+    ) : (
+      <slot />
+    )
+  }
+</Element>

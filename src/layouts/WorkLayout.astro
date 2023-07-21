@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import Button from "../components/Button.astro";
 import NavBar from "../components/prose/nav/NavBar.astro";
 import ThemeButton from "../components/ThemeButton.astro";
 import Details from "../components/work/Details.astro";
@@ -23,45 +24,51 @@ const {
 ---
 
 <Layout title={title} description={tldr[0]} maxWidth="max-w-none">
-  <main class="relative flex flex-col gap-12 pb-24 overflow-visible">
-    <button
+  <main class="relative flex flex-col gap-12 overflow-visible pb-24">
+    <Button
       id="go-back-up-button"
-      class="fixed top-3 left-1/2 z-50 col-span-full flex w-fit -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] transform items-center gap-2 rounded-full bg-white/[85%] py-2 pl-[15px] pr-4 text-gray-900 shadow-sm ring-1 ring-gray-900/[11%] backdrop-blur-sm transition duration-[800ms] ease-in-out hover:bg-gray-50 dark:border-[#333333]/75 dark:bg-[#212121]/[85%] dark:text-neutral-50 dark:shadow-none dark:ring-white/10 dark:hover:bg-[#2e2e2e] sm:top-9 "
+      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms] pl-[15px] pr-4"
     >
       <ChevronUpIcon classes="-ml-0.5 -mb-px" />
       Go back
-    </button>
-    <button
-      class="fixed top-3 left-1/2 z-50 col-span-full flex w-fit -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] transform items-center gap-2 rounded-full bg-white/[85%] py-2 pl-[15px] pr-4 text-gray-900 shadow-sm ring-1 ring-gray-900/[11%] backdrop-blur-sm transition duration-[800ms] ease-in-out hover:bg-gray-100 dark:border-[#333333]/75 dark:bg-[#212121]/[85%] dark:text-neutral-50 dark:shadow-none dark:ring-white/10 dark:hover:bg-[#2e2e2e] sm:top-9 "
+    </Button>
+    <Button
       id="go-back-down-button"
+      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms] pl-[15px] pr-4"
     >
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
-    </button>
-    <a
-      id="home-button"
+    </Button>
+    <Button
+      tag="a"
       href="/"
-      class="fixed top-[14px] left-[12px] z-40 flex items-center gap-6 rounded-full bg-white/[85%] p-2 text-gray-900 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[11%] backdrop-blur-sm transition hover:bg-gray-100 dark:bg-[#212121]/[85%] dark:text-neutral-50 dark:shadow-none dark:ring-white/10 dark:hover:bg-[#2e2e2e] sm:top-[38px] sm:left-[33px] md:left-[36px]"
+      classes="fixed top-[14px] left-[12px] sm:top-[38px] sm:left-[33px] md:left-[36px] z-40"
     >
-      <ChevronLeftIcon classes="" />
-    </a>
-    <div class="fixed top-[14px] right-[12px] z-40 flex items-center gap-6 rounded-full bg-white/[85%] p-2 shadow-[0_1px_2px_0_rgb(0,0,0,0.07)] ring-1 ring-gray-900/[11%] backdrop-blur-sm transition hover:bg-gray-100 dark:bg-[#212121]/[85%] dark:text-neutral-50 dark:shadow-none dark:ring-white/10 dark:hover:bg-[#2e2e2e] sm:top-[38px] sm:right-[32px] md:right-[36px]">
-      <ThemeButton classes="p-6" />
-    </div>
+      <ChevronLeftIcon />
+    </Button>
+    <ThemeButton
+      padding={3}
+      hasBackground={true}
+      invisiblePadding={0}
+      classes="fixed top-[14px] sm:top-[38px] right-[12px] sm:right-[32px] md:right-[36px] z-40"
+    />
     {
       image ? (
         <div id="cover" class="relative -mb-6 w-full sm:my-0">
+          <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/[3%] from-0% to-10%" />
           <img
             src={image}
             alt={title}
-            class="max-h-[800px] w-full object-cover object-center dark:brightness-[90%] aspect-[5/3] sm:aspect-[2/1] lg:aspect-[5/2]"
+            class="aspect-[5/3] max-h-[800px] w-full object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] lg:aspect-[5/2]"
           />
           <span class="absolute bottom-0 left-0 right-0 h-px w-full bg-gray-900/[3%] dark:bg-white/[3%]" />
         </div>
       ) : null
     }
     <div class="flex flex-col gap-12">
-      <div class="relative mx-6 grid grid-cols-1 gap-y-6 gap-x-12 border-gray-200 dark:border-[#333333] sm:mx-12 lg:grid-cols-12 lg:border-b lg:pb-12">
+      <div
+        class="relative mx-6 grid grid-cols-1 gap-y-6 gap-x-12 border-gray-200 dark:border-[#333333] sm:mx-12 lg:grid-cols-12 lg:border-b lg:pb-12"
+      >
         <div class="col-span-full flex justify-between lg:col-span-2">
           <h1 class="-my-1">{title}</h1>
           {
@@ -69,7 +76,7 @@ const {
               <a
                 href={link}
                 target="_blank"
-                class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline  focus:underline lg:hidden"
+                class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline focus:underline lg:hidden"
               >
                 See it
                 <ExternalLinkIcon classes="mt-0.5" />
@@ -85,9 +92,9 @@ const {
               role="list"
               class="col-span-full -my-1 flex list-disc flex-col gap-1 pl-5 lg:col-span-4"
             >
-              {tldr.map((nugget: string) => (
+              {tldr.map((bullet: string) => (
                 <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
-                  {nugget}
+                  {bullet}
                 </li>
               ))}
             </ul>
@@ -96,7 +103,9 @@ const {
         <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
           <Details roles={roles} tools={tools} collaborators={collaborators} />
         </div>
-        <div class="flex flex-col justify-between gap-2 lg:col-span-2 lg:items-end">
+        <div
+          class="flex flex-col justify-between gap-2 lg:col-span-2 lg:items-end"
+        >
           {
             link ? (
               <a
@@ -114,9 +123,11 @@ const {
       </div>
       <article
         id="content"
-        class="overflow-visible relative mx-auto grid min-h-screen grid-cols-1 gap-12 sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12"
       >
-        <hr class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#333333] lg:hidden" />
+        <hr
+          class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-gray-200 dark:border-[#333333] lg:hidden"
+        />
         <NavBar sections={sections} />
         <div
           class={`
@@ -146,29 +157,41 @@ const {
 
 <script>
   // Highlight nav link for current section
-  window.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      entry.isIntersecting
-        ? document
-            .querySelector(`nav li a[href="#${id}"]`)
-            ?.parentElement?.classList.add("active")
-        : document
-            .querySelector(`nav li a[href="#${id}"]`)
-            ?.parentElement?.classList.remove("active");
-    }), { 
-      rootMargin: '-290px' 
-    });
+  window.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("id");
+          entry.isIntersecting
+            ? document
+                .querySelector(`nav li a[href="#${id}"]`)
+                ?.parentElement?.classList.add("active")
+            : document
+                .querySelector(`nav li a[href="#${id}"]`)
+                ?.parentElement?.classList.remove("active");
+        }),
+      {
+        rootMargin: "-290px",
+      }
+    );
 
-    document.querySelectorAll('section[id]').forEach(section => observer.observe(section));
+    document
+      .querySelectorAll("section[id]")
+      .forEach((section) => observer.observe(section));
   });
 
   // Show and hide back button when clikcing on internal links
   const links = Array.from(document.querySelectorAll("a"));
-  const internalLinks = links.filter(link => link.getAttribute("href")?.startsWith("#"));
+  const internalLinks = links.filter((link) =>
+    link.getAttribute("href")?.startsWith("#")
+  );
 
-  const goBackUpButton = document.querySelector("#go-back-up-button") as HTMLButtonElement;
-  const goBackDownButton = document.querySelector("#go-back-down-button") as HTMLButtonElement;
+  const goBackUpButton = document.querySelector(
+    "#go-back-up-button"
+  ) as HTMLButtonElement;
+  const goBackDownButton = document.querySelector(
+    "#go-back-down-button"
+  ) as HTMLButtonElement;
 
   const isElementInView = (element: HTMLElement) => {
     const rect = element.getBoundingClientRect();

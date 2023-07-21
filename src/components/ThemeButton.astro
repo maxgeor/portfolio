@@ -1,27 +1,44 @@
 ---
-export interface Props { 
-  classes?: string; 
-}
-const { classes = "" } = Astro.props;
+import type { Buttonable } from "./Button.astro";
+import Button from "./Button.astro";
+
+export type Props = Buttonable;
+const {
+  padding = 0,
+  invisiblePadding = 3,
+  hasBackground = false,
+  classes = "",
+} = Astro.props;
 ---
 
-<button id="theme-button" class={`transition group justify-self-end p-5 -m-5 ${classes}`}>
-  <div class="transition h-2 w-2 rounded-full border border-[#3a3e47] dark:border-[#B8B8B8] group-hover:bg-[#212121] group-active:bg-[#212121] group-hover:border-[#212121] group-active:border-[#212121] dark:group-hover:bg-white dark:group-active:bg-white dark:group-hover:border-white dark:group-active:border-white shrink-0"></div>
-</button>
+<Button
+  id="theme-button"
+  padding={padding}
+  invisiblePadding={invisiblePadding}
+  hasBackground={hasBackground}
+  classes={classes}
+>
+  <div
+    class="h-2 w-2 shrink-0 rounded-full border border-[#3a3e47] transition group-hover:border-[#212121] group-hover:bg-[#212121] group-active:border-[#212121] group-active:bg-[#212121] dark:border-[#B8B8B8] dark:group-hover:border-white dark:group-hover:bg-white dark:group-active:border-white dark:group-active:bg-white"
+  >
+  </div>
+</Button>
 
 <script>
-  const themeButton = document.querySelector('#theme-button') as HTMLButtonElement;
-  
-  themeButton.addEventListener('click', () => {
+  const themeButton = document.querySelector(
+    "#theme-button"
+  ) as HTMLButtonElement;
+
+  themeButton.addEventListener("click", () => {
     switch (localStorage.theme) {
       case "light":
-        localStorage.theme = 'dark'
+        localStorage.theme = "dark";
         break;
       case "dark":
-        localStorage.theme = 'light'
+        localStorage.theme = "light";
         break;
       default:
-        localStorage.theme = 'light'
+        localStorage.theme = "light";
     }
     location.reload();
   });
