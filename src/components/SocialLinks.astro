@@ -1,5 +1,6 @@
 ---
 import CopyIcon from "./icons/CopyIcon.astro";
+import CheckIcon from "./icons/CheckIcon.astro";
 import CopiedIcon from "./icons/CopiedIcon.astro";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
 
@@ -76,11 +77,14 @@ const { classes = "" } = Astro.props;
       id="email"
       class="group flex w-full cursor-pointer items-center justify-between border-y py-1 dark:border-neutral-700"
     >
-      <span class="flex gap-px group-hover:underline">
-        max123358<code>@</code>gmail.com
-      </span>
-      <CopyIcon id="copyIcon" classes="-mr-[3px]" />
-      <CopiedIcon id="copiedIcon" classes="hidden -mr-[3px]" />
+      <div class="flex items-center gap-1">
+        <span class="flex gap-px group-hover:underline">
+          max123358<code>@</code>gmail.com
+        </span>
+        <CheckIcon id="confirmation-check" classes="hidden text-green" />
+      </div>
+      <CopyIcon id="copy-icon" classes="-mr-[3px]" />
+      <CopiedIcon id="copied-icon" classes="hidden -mr-[3px]" />
     </button>
   </li>
 </ul>
@@ -92,15 +96,20 @@ const { classes = "" } = Astro.props;
     email?.addEventListener("click", () => {
       navigator.clipboard.writeText(email.innerText);
 
-      const copyIcon = document.querySelector("#copyIcon") as HTMLElement;
-      const copiedIcon = document.querySelector("#copiedIcon") as HTMLElement;
+      const copyIcon = document.querySelector("#copy-icon") as HTMLElement;
+      const copiedIcon = document.querySelector("#copied-icon") as HTMLElement;
+      const checkIcon = document.querySelector(
+        "#confirmation-check"
+      ) as HTMLElement;
       copyIcon.style.display = "none";
       copiedIcon.style.display = "inline";
+      checkIcon.style.display = "inline";
 
       setTimeout(() => {
         copyIcon.style.display = "inline";
         copiedIcon.style.display = "none";
-      }, 1000);
+        checkIcon.style.display = "none";
+      }, 2000);
     });
   });
 </script>
