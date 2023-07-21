@@ -17,14 +17,14 @@ const { link, classes = "" } = Astro.props;
 
 <header
   class={`
-    relative col-span-full flex items-center justify-between lg:grid grid-cols-12 gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
+    relative col-span-full flex items-center justify-between xl:grid grid-cols-12 gap-6 md:gap-12 pt-6 sm:pt-12 -my-1
     ${classes}
   `}
 >
-  <div class="col-span-3 flex items-center justify-between gap-6 sm:gap-12">
-    <a href="/" class="col-span-3 hover:underline">Max Georgopoulos</a>
+  <div class="col-span-4 flex items-center justify-between gap-6 sm:gap-12">
+    <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
-  <div class="col-span-3 col-end-13 flex items-center gap-6 justify-self-end">
+  <div class="col-span-4 col-end-13 flex items-center justify-between gap-6">
     {
       link ? (
         <>
@@ -38,7 +38,6 @@ const { link, classes = "" } = Astro.props;
               <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
             ) : null}
           </a>
-          <span class="dark:border-neutral-675 hidden h-[14px] w-px border-r border-[#d3d7da] sm:block" />
         </>
       ) : null
     }

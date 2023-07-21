@@ -14,7 +14,7 @@ const { type, href, title, description, externalLink = false } = Astro.props;
   href={href}
   target={externalLink ? "_blank" : "_self"}
   class={`
-		border-t first:border-t-0  group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 first:pt-0 last:pb-0  
+		border-t border-gray-150 dark:border-neutral-700 first:border-t-0  group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 first:pt-0 first:-mt-1 last:pb-0 last:-mb-1
 	`}
 >
   <p

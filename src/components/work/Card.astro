@@ -10,21 +10,31 @@ export interface Props {
 const { href, title, roles, description, image } = Astro.props;
 ---
 
-<a href={href} class="group col-span-full grid grid-cols-8 gap-6 sm:gap-12">
-  <div class="col-span-3 -my-1 flex flex-col justify-between">
-    <div>
-      <h2 class="group-hover:underline">{title}</h2>
-      <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
-    </div>
+<>
+  <a
+    href={href}
+    class="group col-span-full flex grid-cols-6 flex-col gap-y-6 gap-x-12 sm:grid xl:grid-cols-8"
+  >
+    <div
+      class="col-span-full -my-1 flex flex-wrap justify-between gap-x-6 xs:flex-nowrap sm:flex-wrap lg:flex-nowrap xl:col-span-3 xl:flex-col"
+    >
+      <div>
+        <h2 class="group-hover:underline">{title}</h2>
+        <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
+      </div>
 
-    <div class="text-gray-500 dark:text-neutral-500">
-      {roles.join(", ")}
+      <div class="whitespace-nowrap text-gray-500 dark:text-neutral-500">
+        {roles.join(", ")}
+      </div>
     </div>
-  </div>
-  <div class="col-span-5">
-    <img
-      src={image || "/work/memiori/preview.png"}
-      class="col-span-full w-full drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark md:col-start-3 md:col-end-11 lg:col-span-6"
-    />
-  </div>
-</a>
+    <div class="col-span-full xl:col-span-5">
+      <img
+        src={image || "/work/memiori/preview.png"}
+        class="col-span-3 w-full drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark xl:col-span-6"
+      />
+    </div>
+  </a>
+  <hr
+    class="col-span-full h-0 border-t border-gray-150 last:hidden dark:border-neutral-700 xl:last:block"
+  />
+</>
