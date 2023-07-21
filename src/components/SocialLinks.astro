@@ -97,19 +97,19 @@ const { classes = "" } = Astro.props;
       navigator.clipboard.writeText(email.innerText);
 
       const copyIcon = document.querySelector("#copy-icon") as HTMLElement;
-      const copiedIcon = document.querySelector("#copied-icon") as HTMLElement;
+      // const copiedIcon = document.querySelector("#copied-icon") as HTMLElement;
       const checkIcon = document.querySelector(
         "#confirmation-check"
       ) as HTMLElement;
       copyIcon.style.display = "none";
-      copiedIcon.style.display = "inline";
+      // copiedIcon.style.display = "inline";
       checkIcon.style.display = "inline";
 
       setTimeout(() => {
         copyIcon.style.display = "inline";
-        copiedIcon.style.display = "none";
+        // copiedIcon.style.display = "none";
         checkIcon.style.display = "none";
-      }, 2000);
+      }, 1750);
     });
   });
 </script>
