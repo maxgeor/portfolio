@@ -7,7 +7,7 @@ import ChevronRightIcon from "../icons/ChevronRightIcon.astro";
 
 export interface Props {
   slides: {
-    type: 'image' | 'video';
+    type: "image" | "video";
     src: string;
     alt: string;
   }[];
@@ -15,44 +15,29 @@ export interface Props {
 const { slides } = Astro.props;
 ---
 
-<div class="carousel relative col-span-full pt-1 pb-2 xl:col-start-2 xl:col-end-8">
-  <Button 
-    disabled={true} 
-    invisiblePadding={{ x: 2, y: 14 }} 
-    classes="btn-prev group absolute top-1/2 -left-[19px] sm:-left-[23px] z-20 transform -translate-y-1/2 active:scale-[97%] opacity-0 transition-opacity duration-200 -mt-1"
+<div
+  class="carousel relative col-span-full pt-1 pb-2 xl:col-start-2 xl:col-end-8"
+>
+  <Button
+    disabled={true}
+    invisiblePadding="px-2 py-14 -mx-2 -my-14"
+    classes="btn-prev group absolute top-1/2 -left-[11px] sm:-left-[15px] z-20 transform -translate-y-1/2 active:scale-[97%] opacity-0 transition-opacity duration-200 -mt-1"
   >
     <ChevronLeftIcon />
   </Button>
-  <Button 
-    invisiblePadding={{ x: 2, y: 14 }} 
-    classes="btn-next group absolute top-1/2 -right-[19px] sm:-right-[23px] z-20 transform -translate-y-1/2 active:scale-[97%] duration-200 -mt-1"
+  <Button
+    invisiblePadding="px-2 py-14 -mx-2 -my-14"
+    classes="btn-next group absolute top-1/2 -right-[11px] sm:-right-[15px] z-20 transform -translate-y-1/2 active:scale-[97%] duration-200 -mt-1"
   >
     <ChevronRightIcon />
   </Button>
-  <!-- <button
-    disabled
-    class="btn-prev group absolute top-1/2 -left-[19px] sm:-left-[23px] z-20 -translate-y-1/2 transform py-14 px-2 "
+  <div
+    class="relative aspect-[7/4] w-full rotate-0 overflow-hidden rounded-lg border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737]"
   >
-    <div
-      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow dark:shadow-dark ring-1 ring-gray-900/[7%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[12%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
-    >
-      <ChevronLeftIcon  classes="shrink-0 transform absolute top-1/2 -translate-y-1/2 left-[8px]" />
-    </div>
-  </button> -->
-  <!-- <button
-    class="btn-next group absolute top-1/2 -right-[19px] sm:-right-[23px] z-20 -translate-y-1/2 transform py-14 px-2 transition-opacity duration-200 -mt-1"
-  >
-    <div
-      class="relative h-[31px] w-[31px] shrink-0 rounded-full bg-white p-2 shadow dark:shadow-dark ring-1 ring-gray-900/[7%] transition group-active:scale-[97%] group-active:bg-gray-50 dark:bg-[#2e2e2e] dark:text-neutral-50 dark:ring-white/[12%] dark:active:bg-[#414141] lg:group-hover:bg-gray-50 dark:lg:group-hover:bg-[#414141]"
-    >
-      <ChevronRightIcon classes="shrink-0 transform absolute top-1/2 -translate-y-1/2 right-[8px]" />
-    </div>
-  </button> -->
-  <div class="relative aspect-[7/4] w-full overflow-hidden rounded-lg border border-[#eeeff2] border-b-gray-200 dark:border-[#2c2c2c] dark:border-b-[#2c2c2c] dark:border-t-[#373737] rotate-0">
     {
       slides?.map((slide) => (
         <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
-          {slide.type === 'video' ? (
+          {slide.type === "video" ? (
             <Video
               src={slide.src}
               classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
@@ -71,79 +56,58 @@ const { slides } = Astro.props;
 </div>
 
 <script>
-  const carousels: NodeListOf<HTMLElement> = document.querySelectorAll(".carousel");
+  const carousels: NodeListOf<HTMLElement> =
+    document.querySelectorAll(".carousel");
 
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
-    const captions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".caption");
 
-    slides.forEach((slide, indx) => {
-      slide.style.transform = `translateX(${indx * 100}%)`;
-    });
-
-    captions.forEach((caption, indx) => {
-      if (indx === 0) return;
-      caption.style.opacity = "0%";
-    });
+    slides.forEach(
+      (slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`)
+    );
 
     let curSlide = 0;
 
-    const prevSlide: HTMLButtonElement | null = carousel.querySelector(".btn-prev");
-    const nextSlide: HTMLButtonElement | null = carousel.querySelector(".btn-next");
+    const prevSlideBtn = carousel.querySelector(
+      ".btn-prev"
+    ) as HTMLButtonElement;
+    const nextSlideBtn = carousel.querySelector(
+      ".btn-next"
+    ) as HTMLButtonElement;
 
-    prevSlide?.addEventListener("click", function () {
+    prevSlideBtn?.addEventListener("click", function () {
       curSlide--;
 
-      if (nextSlide) {
-        if (nextSlide.disabled) {
-          nextSlide.disabled = false;
-          nextSlide.style.opacity = "100%";
-        }
+      if (nextSlideBtn && nextSlideBtn.disabled) {
+        nextSlideBtn.disabled = false;
+        nextSlideBtn.style.opacity = "100%";
+      }
 
-        if (curSlide === 0) {
-          prevSlide.disabled = true;
-          prevSlide.style.opacity = "0%";
-        }
+      if (curSlide === 0) {
+        prevSlideBtn.disabled = true;
+        prevSlideBtn.style.opacity = "0%";
       }
 
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-      });
-
-      captions?.forEach((caption, indx) => {
-        if (indx === curSlide) {
-          caption.style.opacity = "100%";
-        } else {
-          caption.style.opacity = "0%";
-        }
       });
     });
 
-    nextSlide?.addEventListener("click", function () {
+    nextSlideBtn?.addEventListener("click", function () {
       curSlide++;
 
-      if (prevSlide) {
-        if (prevSlide.disabled) {
-          prevSlide.disabled = false;
-          prevSlide.style.opacity = "100%";
-        }
+      if (prevSlideBtn && prevSlideBtn.disabled) {
+        prevSlideBtn.disabled = false;
+        prevSlideBtn.style.opacity = "100%";
+      }
 
-        if (curSlide === slides.length - 1) {
-          nextSlide.disabled = true;
-          nextSlide.style.opacity = "0%";
-        }
+      if (curSlide === slides.length - 1) {
+        nextSlideBtn.disabled = true;
+        nextSlideBtn.style.opacity = "0%";
       }
 
       slides.forEach((slide, indx) => {
         slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-      });
-
-      captions?.forEach((caption, indx) => {
-        if (indx === curSlide) {
-          caption.style.opacity = "100%";
-        } else {
-          caption.style.opacity = "0%";
-        }
       });
     });
   });

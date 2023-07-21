@@ -1,5 +1,5 @@
 ---
-import NavItem from './NavItem.astro';
+import NavItem from "./NavItem.astro";
 
 export interface Props {
   sections: {
@@ -12,21 +12,25 @@ export interface Props {
 }
 
 const { sections, isSubsection = false } = Astro.props;
-
 ---
 
-<ol class={`
+<ol
+  class={`
   nav-list lg:flex-col gap-y-2 gap-x-6 transition transform
-  ${isSubsection 
-    ? 'hidden border-l border-[#e3e4e6] dark:border-[#393939] -ml-[17px] pl-4 mt-2 mb-0.5 whitespace-normal'
-    : 'flex leading-5 whitespace-nowrap'
+  ${
+    isSubsection
+      ? "hidden border-l border-[#e3e4e6] dark:border-[#393939] -ml-[17px] pl-4 mt-2 mb-0.5 whitespace-normal"
+      : "flex leading-5 whitespace-nowrap"
   }
-`}>
-  {sections.map((section) => (
-    <NavItem
-      title={section.title} 
-      subsections={section.subsections} 
-      isSubitem={isSubsection} 
-    />
-  ))}
+`}
+>
+  {
+    sections.map((section) => (
+      <NavItem
+        title={section.title}
+        subsections={section.subsections}
+        isSubitem={isSubsection}
+      />
+    ))
+  }
 </ol>

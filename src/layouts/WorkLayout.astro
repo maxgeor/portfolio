@@ -27,14 +27,16 @@ const {
   <main class="relative flex flex-col gap-12 overflow-visible pb-24">
     <Button
       id="go-back-up-button"
-      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms] pl-[15px] pr-4"
+      padding="pl-[15px] pr-4 py-2"
+      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms]"
     >
       <ChevronUpIcon classes="-ml-0.5 -mb-px" />
       Go back
     </Button>
     <Button
       id="go-back-down-button"
-      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms] pl-[15px] pr-4"
+      padding="pl-[15px] pr-4 py-2"
+      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms]"
     >
       <ChevronDownIcon classes="-ml-0.5 -mt-px" />
       Go back
@@ -47,9 +49,9 @@ const {
       <ChevronLeftIcon />
     </Button>
     <ThemeButton
-      padding={3}
+      padding="p-3"
       hasBackground={true}
-      invisiblePadding={0}
+      invisiblePadding={undefined}
       classes="fixed top-[14px] sm:top-[38px] right-[12px] sm:right-[32px] md:right-[36px] z-40"
     />
     {
