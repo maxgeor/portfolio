@@ -7,7 +7,7 @@ import Link from "../components/Link.astro";
 
 <Layout title="Max Georgopoulos">
   <div
-    class="relative mx-auto flex flex-col gap-12 px-6 pb-12 sm:grid sm:grid-cols-12 sm:px-12"
+    class="relative mx-auto flex grid-cols-12 flex-col gap-12 px-6 pb-12 sm:px-12 lg:grid"
   >
     <Header link={{ text: "About", href: "/about" }} />
     <section class="col-span-6 grid grid-cols-8 gap-6 xl:col-span-8">
@@ -21,7 +21,7 @@ import Link from "../components/Link.astro";
         href="/work/formie"
         roles={["Product", "Brand", "Code"]}
         image="/work/formie/preview.png"
-        description="Personal project to build the universal UI for smart contracts"
+        description="Project to build a universal UI for smart contracts"
       />
       <Card
         title="Memiori (coming soon)"

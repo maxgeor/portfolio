@@ -24,7 +24,11 @@ const { link, classes = "" } = Astro.props;
   <div class="col-span-4 flex items-center justify-between gap-6 sm:gap-12">
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
-  <div class="col-span-4 col-end-13 flex items-center justify-between gap-6">
+  <div
+    class={`${
+      !link && "justify-self-end"
+    } col-span-4 col-end-13 flex items-center justify-between gap-6 `}
+  >
     {
       link ? (
         <>
