@@ -27,24 +27,24 @@ const {
   <main class="relative flex flex-col gap-12 overflow-visible pb-24">
     <Button
       id="go-back-up-button"
-      padding="pl-[15px] pr-4 py-2"
-      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms]"
+      padding="pl-[12px] pr-[14px] py-2"
+      classes="gap-1 fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[45px] sm:-translate-y-[70px] duration-[800ms]"
     >
-      <ChevronUpIcon classes="-ml-0.5 -mb-px" />
-      Go back
+      <ChevronUpIcon classes="-mb-px" />
+      <span class="leading-4">Go back</span>
     </Button>
     <Button
       id="go-back-down-button"
-      padding="pl-[15px] pr-4 py-2"
-      classes="fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[49px] sm:-translate-y-[88px] duration-[800ms]"
+      padding="pl-[12px] pr-[14px] py-2"
+      classes="gap-1 fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[45px] sm:-translate-y-[70px] duration-[800ms]"
     >
-      <ChevronDownIcon classes="-ml-0.5 -mt-px" />
-      Go back
+      <ChevronDownIcon classes="-mr-px -mt-px" />
+      <span class="leading-4">Go back</span>
     </Button>
     <Button
       tag="a"
       href="/"
-      classes="fixed top-[14px] left-[12px] sm:top-[38px] sm:left-[33px] md:left-[36px] z-40"
+      classes="fixed top-[14px] sm:top-[38px] left-[12px] sm:left-[33px] md:left-[36px] z-40"
     >
       <ChevronLeftIcon />
     </Button>
@@ -213,9 +213,9 @@ const {
 
   const goBack = () => window.history.back();
   const showBackButton = (button: HTMLButtonElement) =>
-    button.classList.remove("-translate-y-[49px]", "sm:-translate-y-[88px]");
+    button.classList.remove("-translate-y-[45px]", "sm:-translate-y-[70px]");
   const hideBackButton = (button: HTMLButtonElement) =>
-    button.classList.add("-translate-y-[49px]", "sm:-translate-y-[88px]");
+    button.classList.add("-translate-y-[45px]", "sm:-translate-y-[70px]");
 
   const showAndHideBackButton = (e: Event) => {
     hideBackButton(goBackUpButton);
