@@ -14,13 +14,13 @@ const { type, href, title, description, externalLink = false } = Astro.props;
   href={href}
   target={externalLink ? "_blank" : "_self"}
   class={`
-		group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 border-t last:border-b border-gray-200 dark:border-neutral-700 
+		border-t first:border-t-0  group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 first:pt-0 last:pb-0  
 	`}
 >
   <p
     class={`
 		${type === "writing" ? "xs:basis-1/2" : "basis-1/2"}
-		self-center group-hover:underline pr-6 sm:pr-0
+		 group-hover:underline pr-6 sm:pr-0
 	`}
   >
     {title}
@@ -28,7 +28,7 @@ const { type, href, title, description, externalLink = false } = Astro.props;
   <p
     class={`
 		${type === "writing" ? "text-[13px] xs:basis-1/2" : "basis-1/2"}
-		self-center text-gray-500 dark:text-neutral-500 
+		 text-gray-500 dark:text-neutral-500 
 	`}
   >
     {description}

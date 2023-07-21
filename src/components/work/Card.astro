@@ -10,39 +10,21 @@ export interface Props {
 const { href, title, roles, description, image } = Astro.props;
 ---
 
-<a href={href} class="group col-span-full grid grid-cols-12 gap-6 lg:gap-12">
-  <div class="col-span-3 -my-1 hidden max-w-[225px] basis-1/3 lg:block">
-    <h2 class="group-hover:underline">{title}</h2>
-    <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
-  </div>
-  <img
-    src={image || "/work/memiori/preview.png"}
-    class="col-span-full w-full drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark md:col-start-3 md:col-end-11 lg:col-span-6"
-  />
-  <div class="col-span-3 -my-1 hidden lg:block">
-    {
-      roles.map((role) => (
-        <p class="hidden text-right text-gray-500 dark:text-neutral-500 lg:block">
-          {role}
-        </p>
-      ))
-    }
-  </div>
-  <div class="col-span-full gap-6 lg:hidden">
-    <div
-      class="flex justify-between border-y border-gray-200 py-1 dark:border-neutral-700"
-    >
+<a href={href} class="group col-span-full grid grid-cols-8 gap-6 sm:gap-12">
+  <div class="col-span-3 -my-1 flex flex-col justify-between">
+    <div>
       <h2 class="group-hover:underline">{title}</h2>
-      <p
-        class="whitespace-nowrap text-right text-gray-500 dark:text-neutral-500"
-      >
-        {roles.join(", ")}
-      </p>
+      <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
     </div>
-    <p
-      class="border-b border-gray-200 py-1 text-gray-500 dark:border-neutral-700 dark:text-neutral-500"
-    >
-      {description}
-    </p>
+
+    <div class="text-gray-500 dark:text-neutral-500">
+      {roles.join(", ")}
+    </div>
+  </div>
+  <div class="col-span-5">
+    <img
+      src={image || "/work/memiori/preview.png"}
+      class="col-span-full w-full drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark md:col-start-3 md:col-end-11 lg:col-span-6"
+    />
   </div>
 </a>
