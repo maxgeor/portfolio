@@ -24,18 +24,17 @@ module.exports = {
 					350: '#B4B4B4',
 					500: '#888888',
 					600: '#777777',
-					700: '#3b3b3b',
-					750: '#333333',
-					800: '#2E2E2E',
-					850: '#212121',
+					675: '#3b3b3b',
+					700: '#333333',
+					800: '#212121',
 				}
 			},
 			screens: {
 				xs: '450px',
 			},
 			boxShadow: {
-				button: '0px 1px 1px -1px rgba(0,0,0,.09), 0px 2px 2px -1px rgba(0,0,0,.09), 0px 0px 0px 1px rgba(0,0,0,.08)',
-				'button-dark': '0px 0px 0px 0.5px rgba(0,0,0,.4), 0px 1px 1px -1px rgba(0,0,0,.12), 0px 2px 2px -1px rgba(0,0,0,.12), inset 0px 0.5px 0px hsla(0,0%,100%,.06), inset 0px 0px 1px 0px hsla(0,0%,100%,.16), inset 0px -6px 12px -4px rgba(0,0,0,.16)'
+				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.09), 0px 2px 2px -1px rgba(0,0,0,.09), 0px 0px 0px 1px rgba(0,0,0,.08)',
+				dark: '0px 0px 0px 0.5px rgba(0,0,0,.4), 0px 1px 1px -1px rgba(0,0,0,.12), 0px 2px 2px -1px rgba(0,0,0,.12), inset 0px 0.5px 0px hsla(0,0%,100%,.06), inset 0px 0px 1px 0px hsla(0,0%,100%,.16), inset 0px -6px 12px -4px rgba(0,0,0,.16)'
 			},
 		},
 	},

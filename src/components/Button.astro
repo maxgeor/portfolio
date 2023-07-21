@@ -31,12 +31,12 @@ const {
 } = Astro.props;
 
 const actionClasses = invisiblePadding
-  ? "group-hover:bg-gray-100 dark:group-hover:bg-neutral-700 group-active:bg-gray-100 dark:group-active:bg-neutral-700"
-  : "hover:bg-gray-100 dark:hover:bg-neutral-700 active:bg-gray-100 dark:active:bg-neutral-700";
+  ? "group-hover:bg-gray-100 dark:group-hover:bg-neutral-675 group-active:bg-gray-100 dark:group-active:bg-neutral-675"
+  : "hover:bg-gray-100 dark:hover:bg-neutral-675 active:bg-gray-100 dark:active:bg-neutral-675";
 
 const defaultClasses = `${
   hasBackground &&
-  `bg-white dark:bg-neutral-800 shadow-button dark:shadow-button-dark ${actionClasses}`
+  `bg-white dark:bg-neutral-700 shadow dark:shadow-dark ${actionClasses}`
 } ${padding} flex items-center gap-2 text-gray-900 dark:text-neutral-100 rounded-full transition ease-in-out w-fit`;
 ---
 
