@@ -1,21 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import CopyIcon from "../components/icons/CopyIcon.astro";
-import CopiedIcon from "../components/icons/CopiedIcon.astro";
-import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
 <Layout title="Max Georgopoulos">
-  <main class="col-span-full flex flex-col gap-12 px-6 pb-24 sm:px-12">
+  <main class="col-span-full flex flex-col gap-12 px-6 sm:px-12">
     <Header link={{ text: "Resume", href: "/resume-max-georgopoulos.pdf" }} />
     <div class="flex flex-col gap-12 lg:grid lg:grid-cols-12">
       <img
         src="/me.jpeg"
         alt="my face"
-        class="col-span-4 mx-auto aspect-square w-full max-w-sm lg:hidden xl:col-span-3"
+        class="col-start-9 col-end-13 mx-auto aspect-square w-full max-w-sm lg:order-2 lg:max-w-none"
       />
-      <div class="col-span-8 flex flex-col justify-between gap-12">
+      <div
+        class="col-span-8 flex flex-col justify-between gap-12 lg:order-first"
+      >
         <p class="mx-auto -my-1 max-w-prose lg:mx-0 xl:basis-2/3">
           Yo! I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
@@ -25,153 +25,7 @@ import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
           Homme Plissé.
         </p>
       </div>
-      <div class="flex flex-col lg:hidden xl:basis-1/3">
-        <a
-          href="https://www.are.na/max-georgopoulos"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          Arena
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <a
-          href="https://layers.to/maxgeorgopoulos"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          Layers
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <a
-          href="https://github.com/maxgeor"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          Github
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <a
-          href="https://twitter.com/maxoulos"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          Twitter
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <a
-          href="https://dribbble.com/maxgeo"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          Dribbble
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/max-georgopoulos-109095136/"
-          target="_blank"
-          class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-        >
-          LinkedIn
-          <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-        </a>
-        <button
-          id="email"
-          class="group flex w-full cursor-pointer items-center justify-between border-y py-1 dark:border-neutral-700"
-        >
-          <span class="flex gap-px group-hover:underline"
-            >max123358 <code>@</code>gmail.com</span
-          >
-          <CopyIcon id="copyIcon" classes="-mr-[3px]" />
-          <CopiedIcon id="copiedIcon" classes="hidden -mr-[3px]" />
-        </button>
-      </div>
-      <div class="col-span-4 hidden flex-col gap-12 lg:flex">
-        <img
-          src="/me.jpeg"
-          alt="my face"
-          class="col-span-4 mx-auto aspect-square w-full xl:col-span-3"
-        />
-        <div class="flex flex-col xl:basis-1/3">
-          <a
-            href="https://www.are.na/max-georgopoulos"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            Arena
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <a
-            href="https://layers.to/maxgeorgopoulos"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            Layers
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <a
-            href="https://github.com/maxgeor"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            Github
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <a
-            href="https://twitter.com/maxoulos"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            Twitter
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <a
-            href="https://dribbble.com/maxgeo"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            Dribbble
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/max-georgopoulos-109095136/"
-            target="_blank"
-            class="flex w-full items-center justify-between border-t py-1 hover:underline dark:border-neutral-700"
-          >
-            LinkedIn
-            <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
-          </a>
-          <button
-            id="email"
-            class="group flex w-full cursor-pointer items-center justify-between border-y py-1 dark:border-neutral-700"
-          >
-            <span class="flex gap-px group-hover:underline"
-              >max123358 <code>@</code>gmail.com</span
-            >
-            <CopyIcon id="copyIcon" classes="-mr-[3px]" />
-            <CopiedIcon id="copiedIcon" classes="hidden -mr-[3px]" />
-          </button>
-        </div>
-      </div>
+      <SocialLinks classes="col-start-9 col-end-13 lg:order-last" />
     </div>
   </main>
 </Layout>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const email = document.querySelector("#email") as HTMLElement;
-
-    email?.addEventListener("click", () => {
-      navigator.clipboard.writeText(email.innerText);
-
-      const copyIcon = document.querySelector("#copyIcon") as HTMLElement;
-      const copiedIcon = document.querySelector("#copiedIcon") as HTMLElement;
-      copyIcon.style.display = "none";
-      copiedIcon.style.display = "inline";
-
-      setTimeout(() => {
-        copyIcon.style.display = "inline";
-        copiedIcon.style.display = "none";
-      }, 1000);
-    });
-  });
-</script>
