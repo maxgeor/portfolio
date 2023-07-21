@@ -1,7 +1,6 @@
 ---
 import CopyIcon from "./icons/CopyIcon.astro";
 import CheckIcon from "./icons/CheckIcon.astro";
-import CopiedIcon from "./icons/CopiedIcon.astro";
 import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
 
 export interface Props {
@@ -83,8 +82,7 @@ const { classes = "" } = Astro.props;
         </span>
         <CheckIcon id="confirmation-check" classes="hidden text-green" />
       </div>
-      <CopyIcon id="copy-icon" classes="-mr-[3px]" />
-      <CopiedIcon id="copied-icon" classes="hidden -mr-[3px]" />
+      <CopyIcon id="copy-icon" classes="group-active:scale-90 -mr-[3px]" />
     </button>
   </li>
 </ul>
@@ -96,20 +94,11 @@ const { classes = "" } = Astro.props;
     email?.addEventListener("click", () => {
       navigator.clipboard.writeText(email.innerText);
 
-      const copyIcon = document.querySelector("#copy-icon") as HTMLElement;
-      // const copiedIcon = document.querySelector("#copied-icon") as HTMLElement;
-      const checkIcon = document.querySelector(
+      const confirmationCheck = document.querySelector(
         "#confirmation-check"
       ) as HTMLElement;
-      copyIcon.style.display = "none";
-      // copiedIcon.style.display = "inline";
-      checkIcon.style.display = "inline";
-
-      setTimeout(() => {
-        copyIcon.style.display = "inline";
-        // copiedIcon.style.display = "none";
-        checkIcon.style.display = "none";
-      }, 1750);
+      confirmationCheck.style.display = "inline";
+      setTimeout(() => (confirmationCheck.style.display = "none"), 1750);
     });
   });
 </script>
