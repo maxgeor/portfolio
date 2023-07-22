@@ -2,7 +2,7 @@
 layout: ../../layouts/WorkLayout.astro
 title: Formie
 type: Personal Project
-image: '/work/formie/cover.png'
+image: "/work/formie/cover.png"
 collaborators:
   [
     {
@@ -13,49 +13,56 @@ collaborators:
   ]
 roles: [Product design, frontend development, branding]
 tools: ["Next.js", "Firebase", "TailwindCSS"]
-tldr: 
+tldr:
   [
     "Solo project",
     "Built a better universal UI for smart contracts",
-    "Featured as top product by Milk Road + Smoothie"
+    "Featured as top product by Milk Road + Smoothie",
   ]
 link: https://www.formie.co/
 year: 2022
 sections:
   [
     { title: "Problem" },
-    { 
+    {
       title: "Research",
-      subsections: [
-        { title: "Etherscan is mostly used for one-way actions" },
-        { title: "People love saving time, but not using Etherscan" },
-      ]
+      subsections:
+        [
+          { title: "Smart contract actions = mini forms" },
+          { title: "Etherscan is mostly used for one-way actions" },
+          {
+            title: "People use Etherscan to save time, but aren't in love it",
+          },
+        ],
     },
     { title: "Idea" },
     { title: "Process" },
-    { 
+    {
       title: "Challenges",
-      subsections: [
-        { title: "Shooing scammers" },
-        { title: "Filtering + framing technical details" },
-        { title: "Keeping it flexible" },
-      ]
+      subsections:
+        [
+          { title: "Shooing scammers" },
+          { title: "Filtering + framing technical details" },
+          { title: "Keeping it flexible" },
+        ],
     },
-    { 
+    {
       title: "Key Decisions",
-      subsections: [
-        { title: "One page, one action" },
-        { title: "Letting people write their own title and description" },
-        { title: "Making people confirm trust" },
-      ]
+      subsections:
+        [
+          { title: "One page, one action" },
+          { title: "Letting people write their own title and description" },
+          { title: "Making people confirm trust" },
+        ],
     },
-    { 
+    {
       title: "Tradeoffs",
-      subsections: [
-        { title: "Infinite forms" },
-        { title: "Customize title + description" },
-        { title: "Limited error messaging" },
-      ]
+      subsections:
+        [
+          { title: "Infinite forms" },
+          { title: "Customize title + description" },
+          { title: "Limited error messaging" },
+        ],
     },
     { title: "Result" },
     { title: "Showcase" },
@@ -70,8 +77,8 @@ import Carousel from "../../components/prose/Carousel.astro";
   Developers make blockchain apps by...
 
   1. Writing code
-  2. Uploading it to Ethereum (or another blockchain) as `smart contracts`
-  3. Building a `frontend` for the contracts (usually an app or website) so people can use them.
+  2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+  3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
   To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
 
@@ -90,8 +97,24 @@ import Carousel from "../../components/prose/Carousel.astro";
 </Section>
 
 <Section title="Research">
+  We started looking into Etherscan, how it works with smart contracts, and why people use it.
+
+  {/* <Section title="Smart contract actions = mini forms" isSubsection={true}>
+    The first thing we noticed was how action UI in Etherscan were just mini forms. They have a couple of fields and a button that triggers the action.
+
+    Since this was working for people, despite its flaws, the optimal solution is probably just a better form.
+
+    Keeping the form metaphor
+
+    - Saying "just make a better form" seems obvious, but the core issues are unveild when comparing Etherscan to any other form:
+      - There's no copy to guide, educate, or update users
+      - Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
+      - Users have to decipher every action name to find the right one
+
+  </Section> */}
+
   <Section title="Etherscan is mostly used for one-way actions" isSubsection={true}>
-    We starting digging into how smart contracts worked. We learned that they have two kinds of actions:
+    We learned that smart contracts have two kinds of actions:
 
     <table class="text-sm" cellspacing="0" cellpadding="0">
       <tr>
@@ -122,20 +145,22 @@ import Carousel from "../../components/prose/Carousel.astro";
         },
       ]}
     />
+
   </Section>
 
-  <Section title="People love saving time, but not using Etherscan" isSubsection={true}>
+  <Section title="People use Etherscan to save time, but aren't in love it" isSubsection={true}>
     Calls with teams & developers using Etherscan gave us two key insights:
 
     <h3>They used Etherscan as a “good enough” interface</h3>
-    
+
     Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
 
     <h3>They knew Etherscan sucked</h3>
-    
+
     Everyone I talked to was painfully aware of how bad the interface was, but couldn't justify the cost of making something custom.
-  
-    Despise picking Etherscan, teams & developers still valued UX. Given a better option with easy setup, we believed they'd switch. Plus, the bar was low, so we could [cut scope](#tradeoffs) and still be step up.
+
+    Despite picking Etherscan, teams & developers still valued UX. Given a better option with easy setup, we believed they'd switch. Plus, the bar was low, so we could [cut scope](#tradeoffs) and still be step up.
+
   </Section>
 </Section>
 
@@ -144,29 +169,31 @@ import Carousel from "../../components/prose/Carousel.astro";
     Since one-way actions, we realized that they were already like forms
   */}
 
-  {/* Why did you land on the form builder itself
-  - We decided to focus on one-way actions
-    - They were underserved
-    - They were simpler
-  - We just realized that the form was the most obvious interface
-    - becasue one-way actions already had 
+{/* Why did you land on the form builder itself
 
-  - Clear one-way actions
-  - One way methods already had form-like layouts
-  - People were familiar with form builders and knew how they worked, as a creator and user
+- We decided to focus on one-way actions
+  - They were underserved
+  - They were simpler
+- We just realized that the form was the most obvious interface
 
-  - one way methods were a good segment to target and focus the product
-  - their form-like layouts made us wonder if you could make a standard form for any one-eay action */}
+  - becasue one-way actions already had
 
-  Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
+- Clear one-way actions
+- One way methods already had form-like layouts
+- People were familiar with form builders and knew how they worked, as a creator and user
 
-  Seeing actions this way made Etherscan’s shortcomings clear:
+- one way methods were a good segment to target and focus the product
+- their form-like layouts made us wonder if you could make a standard form for any one-eay action */}
 
-  - There's no copy to guide, educate, or update users
-  - Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
-  - Users have to decipher every action name to find the right one
+Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
 
-  With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
+Seeing actions this way made Etherscan’s shortcomings clear:
+
+- There's no copy to guide, educate, or update users
+- Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
+- Users have to decipher every action name to find the right one
+
+With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
 
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
@@ -177,9 +204,9 @@ import Carousel from "../../components/prose/Carousel.astro";
 <Section title="Process">
   We worked by doing design and development at the same time.
 
-  First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design + build each chunk in order.
+First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design + build each chunk in order.
 
-  Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
+Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
 
   <Carousel
     slides={[
@@ -216,6 +243,7 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/challenges/scam.png"
       alt="Thinking about how to handle bad guys"
     />
+
   </Section>
 
   <Section title="Filtering + framing technical details" isSubsection={true}>
@@ -232,6 +260,7 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/challenges/explain.png"
       alt="Thinking about out how to explain stuff"
     />
+
   </Section>
 
   <Section title="Keeping it flexible" isSubsection={true}>
@@ -240,6 +269,7 @@ import Carousel from "../../components/prose/Carousel.astro";
     It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
 
     How do we design a universal interface that serves many brands and actions?
+
   </Section>
 </Section>
 
@@ -255,6 +285,7 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/decisions/one-page.png"
       alt="Form for Uniswap's Delegate action"
     />
+
   </Section>
 
   <Section title="Letting people write their own title and description" isSubsection={true}>
@@ -270,6 +301,7 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/decisions/title-and-description.png"
       alt="UI for editing title & description"
     />
+
   </Section>
 
   <Section title="Making people confirm trust" isSubsection={true}>
@@ -283,13 +315,14 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/decisions/trust.png"
       alt="Confirmation checkbox at the end of every form"
     />
+
   </Section>
 </Section>
 
 <Section title="Tradeoffs">
   Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
 
-  By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
+By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
   <Section title="Infinite forms" isSubsection={true}>
     <h2 slot="heading">~~Editing forms~~ Infinite forms</h2>
@@ -324,6 +357,7 @@ import Carousel from "../../components/prose/Carousel.astro";
         },
       ]}
     />
+
   </Section>
 
   <Section title="Customize title + description" isSubsection={true}>
@@ -355,6 +389,7 @@ import Carousel from "../../components/prose/Carousel.astro";
         },
       ]}
     />
+
   </Section>
 
   <Section title="Limited error messaging" isSubsection={true}>
@@ -375,17 +410,17 @@ import Carousel from "../../components/prose/Carousel.astro";
       src="/work/formie/tradeoffs/errors/research.png"
       alt="Research for handling smart contract errors"
     />
+
   </Section>
 </Section>
 
 <Section title="Result">
-  Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort. 
+  Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.
 
-  Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
+Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
 
-  Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
+Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
+
 </Section>
 
-<Section title="Showcase">
-  _Coming soon!_
-</Section>
+<Section title="Showcase">_Coming soon!_</Section>
