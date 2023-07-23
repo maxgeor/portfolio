@@ -3,6 +3,7 @@ export type Buttonable = {
   padding?: string;
   invisiblePadding?: string;
   hasBackground?: boolean;
+  ariaLabel?: string;
   classes?: string;
 };
 
@@ -26,6 +27,7 @@ const {
   padding = "p-2",
   invisiblePadding,
   hasBackground = true,
+  ariaLabel = "",
   classes = "",
   ...props
 } = Astro.props;
@@ -41,6 +43,7 @@ const defaultClasses = `${
 ---
 
 <Element
+  aria-label={ariaLabel}
   class={`
     ${invisiblePadding ? `group ${invisiblePadding}` : defaultClasses}
     ${classes}

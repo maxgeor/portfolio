@@ -22,7 +22,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={description || "Designer & developer"} />
 
     <script is:inline>
       if (
