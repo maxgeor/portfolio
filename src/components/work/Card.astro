@@ -20,10 +20,10 @@ const { href, title, roles, description, image } = Astro.props;
     >
       <div>
         <h2 class="group-hover:underline">{title}</h2>
-        <p class="text-gray-500 dark:text-neutral-500">{description || ""}</p>
+        <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
       </div>
       <div
-        class="h-fit whitespace-nowrap text-gray-500 dark:text-neutral-500 sm:self-end lg:self-auto"
+        class="h-fit whitespace-nowrap text-neutral-500 dark:text-neutral-490 sm:self-end lg:self-auto"
       >
         {roles.join(", ")}
       </div>
@@ -37,6 +37,6 @@ const { href, title, roles, description, image } = Astro.props;
     </figure>
   </a>
   <hr
-    class="col-span-full h-0 border-t border-gray-150 last:hidden dark:border-neutral-700"
+    class="col-span-full h-0 border-t border-neutral-150 last:hidden dark:border-neutral-700"
   />
 </>
