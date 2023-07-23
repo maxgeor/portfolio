@@ -33,27 +33,29 @@ const { slides } = Astro.props;
   >
     <ChevronRightIcon />
   </Button>
-  <div
-    class="relative aspect-[7/4] w-full rotate-0 overflow-hidden rounded-lg border border-neutral-150/60 bg-neutral-50 dark:border-neutral-800 dark:border-t-neutral-700 dark:border-b-neutral-800 dark:bg-neutral-900"
-  >
-    {
-      slides?.map((slide) => (
-        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
-          {slide.type === "video" ? (
-            <Video
-              src={slide.src}
-              classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
-            />
-          ) : (
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
-            />
-          )}
-        </div>
-      ))
-    }
+  <div class="rounded-lg border border-neutral-150/[65%] dark:border-none dark:ring-1 dark:ring-white dark:ring-inset">
+    <div
+      class="relative aspect-[7/4] w-full rotate-0 overflow-hidden rounded-lg bg-neutral-50 dark:bg-neutral-900"
+    >
+      {
+        slides?.map((slide) => (
+          <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
+            {slide.type === "video" ? (
+              <Video
+                src={slide.src}
+                classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                classes="aspect-[7/4] object-cover w-full !m-0 !border-0 rounded-none"
+              />
+            )}
+          </div>
+        ))
+      }
+    </div>
   </div>
 </div>
 
