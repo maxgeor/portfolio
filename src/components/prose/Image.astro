@@ -6,9 +6,10 @@ export interface Props {
 }
 const { src, alt, classes = "" } = Astro.props;
 ---
-
-<img
-  src={src}
-  alt={alt}
-  class={`order-last col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover select-none	w-full border border-gray-150 border-b-gray-200 dark:border-neutral-800 dark:border-b-neutral-800 dark:border-t-neutral-700 rounded-lg bg-gray-50 dark:bg-neutral-900 dark:brightness-90 ${classes}`}
-/>
+<figure class={`relative h-0 w-full pt-[calc(4/7*100%)] object-contain order-last col-span-full xl:col-start-2 xl:col-end-8 select-none	border border-gray-150 border-b-gray-200 dark:border-neutral-800 dark:border-b-neutral-800 dark:border-t-neutral-700 rounded-lg bg-gray-50 dark:bg-neutral-900 ${classes}`}>
+  <img
+    src={src}
+    alt={alt}
+    class={`aspect-[7/4] absolute inset-0 h-full w-full object-cover rounded-[0.45rem] dark:brightness-90`}
+  />
+</figure>

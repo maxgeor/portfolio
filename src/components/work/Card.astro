@@ -28,12 +28,12 @@ const { href, title, roles, description, image } = Astro.props;
         {roles.join(", ")}
       </div>
     </div>
-    <div class="col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
+    <figure class="relative h-0 w-full pt-[calc((2/3*100%)-12px)] col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
       <img
         src={image || "/work/memiori/preview.png"}
-        class="col-span-3 w-full select-none drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark xl:col-span-6"
+        class="absolute inset-0 bottom-auto w-full h-full object-contain select-none drop-shadow-sm dark:brightness-90 dark:drop-shadow-sm-dark"
       />
-    </div>
+    </figure>
   </a>
   <hr
     class="col-span-full h-0 border-t border-gray-150 last:hidden dark:border-neutral-700"
