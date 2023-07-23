@@ -28,6 +28,7 @@ sections:
       title: "Research",
       subsections:
         [
+          { title: "Most actions just need a form" },
           { title: "Etherscan is mostly used for one-way actions" },
           {
             title: "People sacrificed good UX to save time",
@@ -71,6 +72,9 @@ sections:
 import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import Carousel from "../../components/prose/Carousel.astro";
+import Footnote from "../../components/prose/Footnote.astro";
+import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
+
 
 <Section title="Problem">
   Developers make blockchain apps by...
@@ -96,21 +100,28 @@ import Carousel from "../../components/prose/Carousel.astro";
 </Section>
 
 <Section title="Research">
-  We started looking into Etherscan, how it works with smart contracts, and why people use it.
+  <Section title="Most actions just need a form" isSubsection={true}>
+    The first thing we noticed was how Etherscan's "frontend" was a list of basic forms.
 
-  {/* <Section title="Smart contract actions = mini forms" isSubsection={true}>
-    The first thing we noticed was how action UI in Etherscan were just mini forms. They have a couple of fields and a button that triggers the action.
+    It worked for projects, but we weren't sold on a plain old form being the best layout for contract actions... but it turns out it was.
 
-    Since this was working for people, despite its flaws, the optimal solution is probably just a better form.
+    <FootnoteParagraph>
+      We learned how contract actions are radically simple<sup>1</sup>, with most actions only take 1-2 inputs and return little to no data. The straightforward, input/output nature of most action justified form-based layouts as an approrpiate pattern, not an arbitrary decision.
+      <Footnote number={1}>
+        Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper
+      </Footnote>
+    </FootnoteParagraph>
 
-    Keeping the form metaphor
-
-    - Saying "just make a better form" seems obvious, but the core issues are unveild when comparing Etherscan to any other form:
+    {/* - Saying "just make a better form" seems obvious, but the core issues are unveild when comparing Etherscan to any other form:
       - There's no copy to guide, educate, or update users
       - Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
-      - Users have to decipher every action name to find the right one
+      - Users have to decipher every action name to find the right one */}
 
-  </Section> */}
+    <Image 
+      src="/work/formie/research/forms/etherscan-form-ui.png" 
+      alt="Etherscan's UI for Uniswaps's Delegate method"
+    />
+  </Section>
 
   <Section title="Etherscan is mostly used for one-way actions" isSubsection={true}>
     We learned that smart contracts have two kinds of actions:
@@ -118,11 +129,11 @@ import Carousel from "../../components/prose/Carousel.astro";
     <table class="text-sm" cellspacing="0" cellpadding="0">
       <tr>
         <td class="w-fit p-0 !pr-4 pb-4 pt-px">`One-way`</td>
-        <td class="w-fit leading-6 p-0 pb-4">These actions _trigger a change_. They're relatively simple, wrapped in straightforward, form-like layouts (ex: voting, sending money, changing ownership).</td>
+        <td class="w-fit leading-6 p-0 pb-4">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
       </tr>
       <tr>
         <td class="w-fit p-0 !pr-4 pt-px">`Two-way`</td>
-        <td class="w-fit leading-6 p-0">These actions _return data_. They're more complex, since their data mixes with non-blockchain data, often needing unique displays (ex: showing account's balance, getting an NFT's characteristics).</td>
+        <td class="w-fit leading-6 p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
       </tr>
     </table>
 
@@ -132,15 +143,15 @@ import Carousel from "../../components/prose/Carousel.astro";
       slides={[
         {
           type: 'video',
-          src: "/work/formie/research/mloot-flow",
+          src: "/work/formie/research/one-ways/mloot-flow",
         },
         {
           type: 'video',
-          src: "/work/formie/research/rune-flow",
+          src: "/work/formie/research/one-ways/rune-flow",
         },
         {
           type: 'video',
-          src: "/work/formie/research/banners-flow",
+          src: "/work/formie/research/one-ways/banners-flow",
         },
       ]}
     />
@@ -148,7 +159,7 @@ import Carousel from "../../components/prose/Carousel.astro";
   </Section>
 
   <Section title="People sacrificed good UX to save time" isSubsection={true}>
-    Calls with teams & developers using Etherscan gave us two key insights:
+    We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
     <h3>They used Etherscan as a “good enough” interface</h3>
 
@@ -156,9 +167,7 @@ import Carousel from "../../components/prose/Carousel.astro";
 
     <h3>They knew Etherscan sucked</h3>
 
-    Everyone I talked to was painfully aware of how bad the interface was, but couldn't justify the cost of making something custom.
-
-    Despite picking Etherscan, teams & developers still valued UX. Given a better option with easy setup, we believed they'd switch. Plus, the bar was low, so we could [cut scope](#tradeoffs) and still be step up.
+    Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given a better option with easy setup, we believed they'd switch to something else.
 
   </Section>
 </Section>
