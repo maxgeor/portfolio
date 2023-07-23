@@ -21,7 +21,7 @@ module.exports = {
 					350: '#B4B4B4',
 					400: '#909090',
 					490: '#888888',
-					500: '#757575',
+					500: '#747474',
 					675: '#3b3b3b',
 					700: '#333333',
 					800: '#212121',
@@ -33,11 +33,11 @@ module.exports = {
 				xs: '450px',
 			},
 			boxShadow: {
-				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.09), 0px 2px 2px -1px rgba(0,0,0,.09), 0px 0px 0px 1px rgba(0,0,0,.08)',
+				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.085), 0px 2px 2px -1px rgba(0,0,0,.085), 0px 0px 0px 1px rgba(0,0,0,.075)',
 				dark: '0px 0px 0px 0.5px rgba(0,0,0,.4), 0px 1px 1px -1px rgba(0,0,0,.12), 0px 2px 2px -1px rgba(0,0,0,.12), inset 0px 0.5px 0px hsla(0,0%,100%,.06), inset 0px 0px 1px 0px hsla(0,0%,100%,.16), inset 0px -6px 12px -4px rgba(0,0,0,.16)'
 			},
 			dropShadow: {
-				sm: '0 1px 0 rgb(0 0 0 / 0.05)',
+				sm: '0 1px 0 rgb(0 0 0 / 0.03)',
 				'sm-dark': '0 1px 0 rgb(0 0 0 / 1)',
 			}
 		},
