@@ -14,8 +14,8 @@ module.exports = {
 				yellow: '#fdfd41',
 				neutral: {
 					100: '#F5F5F5',
-					190: '#EEEEEE',
-					200: '#E3E3E3',
+					190: '#EFEFEF',
+					200: '#e4e4e4',
 					300: '#B4B4B4',
 					400: '#909090',
 					490: '#888888',
