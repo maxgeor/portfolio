@@ -220,13 +220,10 @@ const {
   const showBackButton = (button: HTMLButtonElement) => {
     button.disabled = false;
     button.classList.remove("-translate-y-[47px]", "sm:-translate-y-[70px]");
-    setTimeout(() => button.focus(), 600);
-    
   }
   const hideBackButton = (button: HTMLButtonElement) => {
     button.disabled = true;
     button.classList.add("-translate-y-[47px]", "sm:-translate-y-[70px]");
-    button.blur();
   }
 
   const showAndHideBackButton = (e: Event) => {
