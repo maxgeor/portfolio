@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	future: {
+    hoverOnlyWhenSupported: true,
+  },
 	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
@@ -29,6 +32,7 @@ module.exports = {
 			screens: {
 				xxs: '380px',
 				xs: '450px',
+				'betterhover': {'raw': '(hover: hover)'},
 			},
 			boxShadow: {
 				sm: '0px 1px 1px -1px rgba(0,0,0,.05), 0px 2px 2px -1px rgba(0,0,0,.05), 0px 0px 0px 1px rgba(0,0,0,.075)',
