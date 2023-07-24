@@ -38,8 +38,8 @@ module.exports = {
 			},
 			dropShadow: {
 				sm: [
-					'-1px 0 0 rgb(0 0 0 / 0.022)',
-					'1px 0 0 rgb(0 0 0 / 0.022)',
+					'-1px 0 0 rgb(0 0 0 / 0.025)',
+					'1px 0 0 rgb(0 0 0 / 0.025)',
 					'0 1px 0 rgb(0 0 0 / 0.05)', 
 				],
 				'sm-dark': [
