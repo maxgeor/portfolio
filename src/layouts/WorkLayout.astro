@@ -25,12 +25,12 @@ const {
 
 <Layout title={title} description={tldr.join(". ")} maxWidth="max-w-none">
   <main class="relative flex flex-col gap-12 overflow-visible">
-    <Button tag="a" href="#content" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
+    <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
       disabled={true}
       padding="pl-[12px] pr-[14px] py-2"
-      classes="gap-1 fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
+      classes="gap-1 fixed top-3.5 sm:top-[38px] left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
     >
       <ChevronUpIcon classes="-mx-px -mb-px" />
       <span class="leading-4">Go back</span>
@@ -39,7 +39,7 @@ const {
       id="go-back-down-button"
       disabled={true}
       padding="pl-[12px] pr-[14px] py-2"
-      classes="gap-1 fixed top-3 sm:top-9 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
+      classes="gap-1 fixed top-3.5 sm:top-[38px] left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
@@ -128,7 +128,7 @@ const {
         </div>
       </div>
       <article
-        id="content"
+        id="article"
         class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12 scroll-mt-12"
       >
         <hr
@@ -220,7 +220,8 @@ const {
   const showBackButton = (button: HTMLButtonElement) => {
     button.disabled = false;
     button.classList.remove("-translate-y-[47px]", "sm:-translate-y-[70px]");
-    button.focus();
+    setTimeout(() => button.focus(), 600);
+    
   }
   const hideBackButton = (button: HTMLButtonElement) => {
     button.disabled = true;
@@ -234,7 +235,7 @@ const {
 
     const clickedLink = e.target as HTMLAnchorElement;
 
-    if (clickedLink.getAttribute("href") === "#content") return;
+    if (clickedLink.getAttribute("href") === "#article") return;
 
     setTimeout(() => {
       if (isElementInView(clickedLink)) return;

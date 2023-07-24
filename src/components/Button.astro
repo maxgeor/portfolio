@@ -33,8 +33,8 @@ const {
 } = Astro.props;
 
 const actionClasses = invisiblePadding
-  ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700 group-focus:outline-none group-focus:ring-2  group-focus:ring-blue-500"
-  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500";
+  ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700"
+  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
 
 const defaultClasses = `${
   hasBackground &&
@@ -45,7 +45,8 @@ const defaultClasses = `${
 <Element
   aria-label={ariaLabel}
   class={`
-    ${invisiblePadding ? `group focus-within:outline-none ${invisiblePadding}` : defaultClasses}
+    button 
+    ${invisiblePadding ? `group outline-none ${invisiblePadding}` : defaultClasses}
     ${classes}
   `}
   {...props}
@@ -60,3 +61,13 @@ const defaultClasses = `${
     )
   }
 </Element>
+
+<style>
+  .button.group:focus-visible {
+    outline: none;
+  }
+
+  .button.group:focus-visible div {
+    box-shadow: 0 0 0 2px #3c82f6;
+  }
+</style>
