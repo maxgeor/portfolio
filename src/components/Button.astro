@@ -11,14 +11,14 @@ interface Button extends Buttonable {
   tag?: "button";
   id?: string;
   disabled?: boolean;
-}
+};
 
 interface Link extends Buttonable {
   tag: "a";
   href: string;
   id?: string;
   target?: "_blank" | "_self" | "_parent" | "_top";
-}
+};
 
 export type Props = Button | Link;
 
@@ -33,8 +33,8 @@ const {
 } = Astro.props;
 
 const actionClasses = invisiblePadding
-  ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700"
-  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700";
+  ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700 group-focus:outline-none group-focus:ring-2  group-focus:ring-blue-500"
+  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500";
 
 const defaultClasses = `${
   hasBackground &&
@@ -45,7 +45,7 @@ const defaultClasses = `${
 <Element
   aria-label={ariaLabel}
   class={`
-    ${invisiblePadding ? `group ${invisiblePadding}` : defaultClasses}
+    ${invisiblePadding ? `group focus-within:outline-none ${invisiblePadding}` : defaultClasses}
     ${classes}
   `}
   {...props}
