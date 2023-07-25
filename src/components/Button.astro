@@ -24,11 +24,11 @@ export type Props = Button | Link;
 
 const {
   tag: Element = "button",
-  padding = "p-2",
-  invisiblePadding,
   hasBackground = true,
-  ariaLabel = "",
+  padding = "p-2",
   classes = "",
+  invisiblePadding,
+  ariaLabel,
   ...props
 } = Astro.props;
 
