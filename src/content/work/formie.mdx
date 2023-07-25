@@ -102,19 +102,14 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
 <Section title="Research">
   <Section title="Most actions just need a form" isSubsection={true}>
-    The first thing we noticed was how Etherscan's "frontend" was a list of basic forms. Despite our skeptism, a form-based layout turned out to be an appropriate pattern for smart contract actions.
+    We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms. We were skeptical that a raw, unstyled form was the optimal layout for contract actions... but it turned out to be (kinda).
 
     <FootnoteParagraph>
-      We learned how contract actions are radically simple<sup>1</sup>, with most actions only take 1-2 inputs and return little to no data. Having few steps and elements makes a focused, linear flow the perfect structure to help people call contracts.
+      Turns out, **smart contract actions are extremely simple**<sup>1</sup> — most only take 1-2 inputs and return little to no data. Having only a few steps and elements, a form's focused, linear flow made it a great interface for easing people through the murky waters of calling contracts.
       <Footnote number={1}>
         Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
       </Footnote>
     </FootnoteParagraph>
-
-    {/* - Saying "just make a better form" seems obvious, but the core issues are unveild when comparing Etherscan to any other form:
-      - There's no copy to guide, educate, or update users
-      - Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
-      - Users have to decipher every action name to find the right one */}
 
     <Image 
       src="/work/formie/research/forms/etherscan-form-ui.png" 
@@ -172,17 +167,17 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 </Section>
 
 <Section title="Idea">
-  Realizing that smart contracts worked like mini forms gave us an idea: **What if we took common patterns from form builders and applied them to smart contracts?** 
+  Realizing how smart contracts worked like mini forms gave us an idea: **What if we took common patterns from form builders and applied them to smart contracts?** 
   
   We could make huge UX improvements by...
 
-    - [Giving every action their own page](#one-page-one-action)
+    - [Giving every action a dedicated page](#one-page-one-action)
     - [Letting people write copy](#letting-people-write-their-own-title-and-description) to give context
     - Share clear, thoughtful feedback about transactions.
 
   The form builder pattern worked for a few reasons:
 
-  1. One-way actions, which covered most use cases, worked well with form-like layouts.
+  1. One-way actions (which covered most use cases) worked well with form-like layouts.
   3. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
   2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them universally intuitive.
 
