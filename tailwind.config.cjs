@@ -32,11 +32,10 @@ module.exports = {
 			screens: {
 				xxs: '380px',
 				xs: '450px',
-				'betterhover': {'raw': '(hover: hover)'},
 			},
 			boxShadow: {
-				outline: '0 0 0 1px rgba(0, 0, 0, 0.13)',
-				'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.13)',
+				outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
+				'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.15)',
 				sm: '0px 1px 1px -1px rgba(0,0,0,.05), 0px 2px 2px -1px rgba(0,0,0,.05), 0px 0px 0px 1px rgba(0,0,0,.08)',
 				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.0975), 0px 2px 2px -1px rgba(0,0,0,.0975), 0px 0px 0px 1px rgba(0,0,0,.085)',
 				dark: '0px 0px 0px 0.5px rgba(0,0,0,.4), 0px 1px 1px -1px rgba(0,0,0,.12), 0px 2px 2px -1px rgba(0,0,0,.12), inset 0px 0.5px 0px hsla(0,0%,100%,.06), inset 0px 0px 1px 0px hsla(0,0%,100%,.16), inset 0px -6px 12px -4px rgba(0,0,0,.16)',
