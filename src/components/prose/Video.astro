@@ -43,9 +43,7 @@ const extensionlessSrc = src.replace(/\..*$/, ""); // video.mp4 -> video
       navigator.userAgent
     );
 
-  const videos = document.querySelectorAll("video");
-
-  videos.forEach((video) => {
+  document.querySelectorAll("video")?.forEach((video) => {
     let isFrozen = false;
 
     const pauseIcon = video.parentElement?.querySelector(
@@ -56,7 +54,11 @@ const extensionlessSrc = src.replace(/\..*$/, ""); // video.mp4 -> video
       video.pause();
       video.classList.add("brightness-75");
       video.classList.remove("dark:brightness-90");
-      pauseIcon.classList.remove("opacity-0", "-rotate-[24deg]", "-translate-x-5");
+      pauseIcon.classList.remove(
+        "opacity-0",
+        "-rotate-[24deg]",
+        "-translate-x-5"
+      );
     };
 
     const playVideo = () => {
