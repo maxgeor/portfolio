@@ -29,7 +29,7 @@ sections:
       subsections:
         [
           { title: "Most actions just need a form" },
-          { title: "Etherscan is mostly used for one-way actions" },
+          { title: "Etherscan was mostly used for one-way actions" },
           {
             title: "Projects sacrificed UX to save time",
           },
@@ -51,6 +51,7 @@ sections:
       subsections:
         [
           { title: "One page, one action" },
+          { title: "Only supporting one-way actions" },
           { title: "Letting people write their own title and description" },
           { title: "Making people confirm trust" },
         ],
@@ -101,12 +102,10 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
 <Section title="Research">
   <Section title="Most actions just need a form" isSubsection={true}>
-    The first thing we noticed was how Etherscan's "frontend" was a list of basic forms.
-
-    While it worked for projects, we weren't sold on the best layout being a plain old form... even though it turned out to be.
+    The first thing we noticed was how Etherscan's "frontend" was a list of basic forms. Despite our skeptism, a form-based layout turned out to be an appropriate pattern for smart contract actions.
 
     <FootnoteParagraph>
-      We learned how contract actions are radically simple<sup>1</sup>, with most actions only take 1-2 inputs and return little to no data. The straightforward, input/output nature of most action justified form-based layouts as an approrpiate pattern, not an arbitrary decision.
+      We learned how contract actions are radically simple<sup>1</sup>, with most actions only take 1-2 inputs and return little to no data. Having few steps and elements makes a focused, linear flow the perfect structure to help people call contracts.
       <Footnote number={1}>
         Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
       </Footnote>
@@ -123,7 +122,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
     />
   </Section>
 
-  <Section title="Etherscan is mostly used for one-way actions" isSubsection={true}>
+  <Section title="Etherscan was mostly used for one-way actions" isSubsection={true}>
     We learned that smart contracts have two kinds of actions:
 
     <table class="text-sm" cellspacing="0" cellpadding="0">
@@ -173,45 +172,19 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 </Section>
 
 <Section title="Idea">
-  {/* How did you come to the idea for the form builder?
-  - Seeing all the actions as mini forms, we wondered realized how much better we could make them by applying patterns from form builders like Google/Airtable Forms:
-    - Give every action their own page
-    - Add clear, helpful copy
-    - Make it easy to customize
-    - Thoughtful error handling
-    - Give feedback about the transaction
+  Realizing that smart contracts worked like mini forms gave us an idea: **What if we took common patterns from form builders and applied them to smart contracts?** 
+  
+  We could make huge UX improvements by...
 
-  - This worked becasue one-way actions lent themselves to form-like layouts */}
+    - [Giving every action their own page](#one-page-one-action)
+    - [Letting people write copy](#letting-people-write-their-own-title-and-description) to give context
+    - Share clear, thoughtful feedback about transactions.
 
-  {/* Why did you go with form builder solution?
-    Since one-way actions, we realized that they were already like forms
-  */}
+  The form builder pattern worked for a few reasons:
 
-{/* Why did you land on the form builder itself
-
-- We decided to focus on one-way actions
-  - They were underserved
-  - They were simpler
-- We just realized that the form was the most obvious interface
-
-  - becasue one-way actions already had
-
-- Clear one-way actions
-- One way methods already had form-like layouts
-- People were familiar with form builders and knew how they worked, as a creator and user
-
-- one way methods were a good segment to target and focus the product
-- their form-like layouts made us wonder if you could make a standard form for any one-eay action */}
-
-Our high-level solution took shape after framing smart contract actions as _mini forms_: They have a couple of fields and a button that does something when pressed.
-
-Seeing actions this way made Etherscan’s shortcomings clear:
-
-- There's no copy to guide, educate, or update users
-- Layers of irrelevant details bury [the UI that actually matters](#one-page-one-action)
-- Users have to decipher every action name to find the right one
-
-With this, our idea formed: **A tool, like Google Forms, that creates landing pages for smart contract actions**.
+  1. One-way actions, which covered most use cases, worked well with form-like layouts.
+  3. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
+  2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them universally intuitive.
 
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
@@ -301,6 +274,24 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
     <Image
       src="/work/formie/decisions/one-page.png"
+      alt="Form for Uniswap's Delegate action"
+    />
+
+  </Section>
+  
+  <Section title="Only supporting one-way actions" isSubsection={true}>
+    We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
+    
+    1. [Most people don't use Etherscan frontends for two-way actions](etherscan-was-mostly-used-for-one-way-actions)
+    2. Supporting two-way actions would've made the product harder to use.
+    3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
+
+    Becasue we couldn't create a uniquely excellent interface for all two-way methods, we filtered them out from searches to only support one-way actions.
+
+    Ditching two-ways axed our scope, making the product easier to build and use.
+
+    <Image
+      src="/work/formie/decisions/one-way-actions.png"
       alt="Form for Uniswap's Delegate action"
     />
 
