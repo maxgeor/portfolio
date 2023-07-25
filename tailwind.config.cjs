@@ -34,7 +34,7 @@ module.exports = {
 				xs: '450px',
 			},
 			boxShadow: {
-				outline: '0 0 0 1px rgba(0, 0, 0, 0.11)',
+				outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
 				'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.15)',
 				sm: '0px 1px 1px -1px rgba(0,0,0,.05), 0px 2px 2px -1px rgba(0,0,0,.05), 0px 0px 0px 1px rgba(0,0,0,.08)',
 				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.0975), 0px 2px 2px -1px rgba(0,0,0,.0975), 0px 0px 0px 1px rgba(0,0,0,.085)',
