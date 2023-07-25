@@ -34,12 +34,12 @@ const {
 
 const actionClasses = invisiblePadding
   ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700"
-  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500";
+  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green";
 
 const defaultClasses = `${
   hasBackground &&
-  `bg-white dark:bg-neutral-700 shadow dark:shadow-dark ${actionClasses}`
-} ${padding} flex items-center gap-2 text-neutral-950 dark:text-neutral-100 !rounded-full transition ease-in-out w-fit transform`;
+  `bg-white dark:bg-neutral-800 shadow-outline dark:shadow-outline-dark  ${actionClasses}`
+} ${padding} flex items-center gap-2 text-neutral-950 dark:text-neutral-100 !rounded-full  transition ease-in-out w-fit transform`;
 ---
 
 <Element
@@ -68,6 +68,6 @@ const defaultClasses = `${
   }
 
   .button.group:focus-visible div {
-    box-shadow: 0 0 0 2px #3c82f6;
+    box-shadow: 0 0 0 2px #00A200;
   }
 </style>
