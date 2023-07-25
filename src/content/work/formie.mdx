@@ -77,6 +77,49 @@ import Footnote from "../../components/prose/Footnote.astro";
 import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
 
+<Section title="tldr">
+  <table class="text-sm flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="w-4 pr-2 pb-5"><p>Problem</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-5">Etherscan’s frontend sucked</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-5"><p>Solution</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-5">Airtable Forms, but for smart contract actions</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-5"><p>Decisions</p></td>
+      <td class="pl-0 sm:pl-6">
+        <ul>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-1">Every action has their own page</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-1">Only supported one-way actions (two-ways were annoying and not important)</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-1">Open text form title and description open text (so any action could make sense)</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-5">Made people confirm trust before submitting to deter scammers</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-5"><p>Tradeoffs</p></td>
+      <td class="pl-0 sm:pl-6">
+        <ul>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  pb-1">Cut editing, let people make unlimited forms instead</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">Only let people customize title & description to simplify flow</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  {/* - Problem: Etherscan’s frontend sucked
+  - Solution: Google Forms, but for smart contract actions
+  - Decisions:
+    - Every contract action on one page -> Every action has their own page
+    - Only supported one-way actions because two-ways were annoying and not important 
+    - Made form title and description open text so any action could make sense
+    - Made people confirm trust before submitting to deter scammers
+  - Tradeoffs:
+    - Cut editing, let people make unlimited forms instead
+    - Only let people customize title & description to simplify flow */}
+</Section>
+
 <Section title="Problem">
   Developers make blockchain apps by...
 
