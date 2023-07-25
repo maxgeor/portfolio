@@ -47,6 +47,7 @@ const {
     <Button
       tag="a"
       href="/"
+      id="home-button"
       ariaLabel="Go back home"
       classes="fixed top-[14px] sm:top-[38px] left-[12px] sm:left-[33px] md:left-[36px] z-40"
     >
@@ -63,6 +64,7 @@ const {
         <div id="cover" class="relative -mb-6 w-full sm:my-0">
           <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/[3.25%] from-0% to-10%" />
           <img
+            id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[800px] w-full select-none object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] lg:aspect-[5/2]"
@@ -162,6 +164,25 @@ const {
 </Layout>
 
 <script>
+  // Remove/Add shadows on home and theme buttons on big screens when past cover image
+  const homeButton = document.querySelector('#home-button') as HTMLAnchorElement;
+  const themeButton = document.querySelector('#theme-button > div') as HTMLElement;
+
+  const handleNavButtonShadows = () => {
+    const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
+
+    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight - 24) {
+      homeButton.classList.add('shadow-outline');
+      themeButton.classList.add('shadow-outline');
+    } else {
+      homeButton.classList.remove('shadow-outline');
+      themeButton.classList.remove('shadow-outline');
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => handleNavButtonShadows());
+  window.addEventListener('scroll', () => handleNavButtonShadows());
+
   // Highlight nav link for current section
   window.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver(

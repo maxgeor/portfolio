@@ -38,12 +38,13 @@ const actionClasses = invisiblePadding
 
 const defaultClasses = `${
   hasBackground &&
-  `bg-white dark:bg-neutral-800 shadow-outline dark:shadow-outline-dark  ${actionClasses}`
-} ${padding} flex items-center gap-2 text-neutral-950 dark:text-neutral-100 !rounded-full  transition ease-in-out w-fit transform`;
+  `shadow-outline dark:shadow-outline-dark`
+} ${padding} flex items-center gap-2 bg-white dark:bg-neutral-800 ${actionClasses} text-neutral-950 dark:text-neutral-100 !rounded-full  transition ease-in-out w-fit transform`;
 ---
 
 <Element
   aria-label={ariaLabel}
+  data-has-invisible-padding={invisiblePadding ? "true" : "false"}
   class={`
     button 
     ${invisiblePadding ? `group !outline-none ${invisiblePadding}` : defaultClasses}
