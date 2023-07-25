@@ -55,14 +55,14 @@ const {
     </Button>
     <ThemeButton
       padding="p-3"
-      hasBackground={true}
+      hasOutline={true}
       invisiblePadding={undefined}
       classes="fixed top-[14px] sm:top-[38px] right-[12px] sm:right-[32px] md:right-[36px] z-40"
     />
     {
       image ? (
         <div id="cover" class="relative -mb-6 w-full sm:my-0">
-          <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/[3.25%] from-0% to-10%" />
+          <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/[3%] from-0% to-10%" />
           <img
             id="cover-image"
             src={image}
@@ -172,11 +172,11 @@ const {
     const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
 
     if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight - 24) {
-      homeButton.classList.add('shadow-outline');
-      themeButton.classList.add('shadow-outline');
+      homeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
+      themeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
     } else {
-      homeButton.classList.remove('shadow-outline');
-      themeButton.classList.remove('shadow-outline');
+      homeButton.classList.remove('shadow-outline', 'dark:shadow-outline-dark');
+      themeButton.classList.remove('shadow-outline', 'dark:shadow-outline-dark');
     }
   }
 

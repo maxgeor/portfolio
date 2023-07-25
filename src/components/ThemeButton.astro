@@ -6,7 +6,7 @@ export type Props = Buttonable;
 const {
   padding = "p-0",
   invisiblePadding = "p-3 -m-3",
-  hasBackground = false,
+  hasOutline = false,
   classes = "",
 } = Astro.props;
 ---
@@ -16,7 +16,7 @@ const {
   ariaLabel="Toggle theme"
   padding={padding}
   invisiblePadding={invisiblePadding}
-  hasBackground={hasBackground}
+  hasOutline={hasOutline}
   classes={classes}
 >
   <div

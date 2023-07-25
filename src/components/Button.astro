@@ -2,7 +2,7 @@
 export type Buttonable = {
   padding?: string;
   invisiblePadding?: string;
-  hasBackground?: boolean;
+  hasOutline?: boolean;
   ariaLabel?: string;
   classes?: string;
 };
@@ -24,7 +24,7 @@ export type Props = Button | Link;
 
 const {
   tag: Element = "button",
-  hasBackground = true,
+  hasOutline = true,
   padding = "p-2",
   classes = "",
   invisiblePadding,
@@ -37,7 +37,7 @@ const actionClasses = invisiblePadding
   : "hover:bg-neutral-100 dark:hover:bg-[#383838] active:bg-neutral-100 dark:active:bg-[#383838] outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green";
 
 const defaultClasses = `${
-  hasBackground &&
+  hasOutline &&
   `shadow-outline dark:shadow-outline-dark`
 } ${padding} flex items-center gap-2 bg-white dark:bg-neutral-800 ${actionClasses} text-neutral-950 dark:text-neutral-100 !rounded-full  transition ease-in-out w-fit transform`;
 ---
