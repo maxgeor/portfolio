@@ -33,8 +33,8 @@ const {
 } = Astro.props;
 
 const actionClasses = invisiblePadding
-  ? "group-hover:bg-neutral-100 dark:group-hover:bg-neutral-700 group-active:bg-neutral-100 dark:group-active:bg-neutral-700"
-  : "hover:bg-neutral-100 dark:hover:bg-neutral-700 active:bg-neutral-100 dark:active:bg-neutral-700 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green";
+  ? "group-hover:bg-neutral-100 dark:group-hover:bg-[#383838] group-active:bg-neutral-100 dark:group-active:bg-[#383838]"
+  : "hover:bg-neutral-100 dark:hover:bg-[#383838] active:bg-neutral-100 dark:active:bg-[#383838] outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green";
 
 const defaultClasses = `${
   hasBackground &&
