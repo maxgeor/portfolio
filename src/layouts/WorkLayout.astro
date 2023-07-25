@@ -171,7 +171,7 @@ const {
   const handleNavButtonShadows = () => {
     const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
 
-    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight - 24) {
+    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight - 40) {
       homeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
       themeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
     } else {
