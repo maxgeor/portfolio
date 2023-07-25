@@ -59,8 +59,8 @@ sections:
       title: "Tradeoffs",
       subsections:
         [
-          { title: "Infinite forms" },
-          { title: "Customize title + description" },
+          { title: "Replacing editing with infinite forms" },
+          { title: "Only customizing title + description" },
           { title: "Limited error messaging" },
         ],
     },
@@ -342,7 +342,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
 By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
-  <Section title="Infinite forms" isSubsection={true}>
+  <Section title="Replacing editing with infinite forms" isSubsection={true}>
     <h2 slot="heading">~~Editing forms~~ Infinite forms</h2>
 
     We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
@@ -378,14 +378,14 @@ By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compa
 
   </Section>
 
-  <Section title="Customize title + description" isSubsection={true}>
+  <Section title="Only customizing title + description" isSubsection={true}>
     <h2 slot="heading">Customize ~~everything~~ title + description</h2>
 
     We wanted every part of a form to be customizable:
 
     - Field titles, descriptions, placeholders
     - Error messages
-    - Button label, etc.
+    - Button labels, etc.
 
     But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
 
