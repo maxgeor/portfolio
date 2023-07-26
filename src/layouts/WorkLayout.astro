@@ -260,7 +260,7 @@ const {
       if (isElementInView(clickedLink)) return;
 
       const backButton =
-        window.scrollY > clickedLink.offsetTop
+        window.scrollY > clickedLink.getBoundingClientRect().top
           ? goBackUpButton
           : goBackDownButton;
 

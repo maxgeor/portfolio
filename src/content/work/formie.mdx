@@ -93,8 +93,8 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
         <ul>
           <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Every action gets its own page</li>
           <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Only supported one-way actions (two-ways were annoying and not important)</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Open text form title and description open text (so any action could make sense)</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">Made people confirm trust before submitting (to deter scammers)</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Made form titles and descriptions open text (so any action could make sense)</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">Forced people to confirm trust before submitting (to deter scammers)</li>
         </ul>
       </td>
     </tr>
@@ -108,16 +108,6 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
       </td>
     </tr>
   </table>
-  {/* - Problem: Etherscan’s frontend sucked
-  - Solution: Google Forms, but for smart contract actions
-  - Decisions:
-    - Every contract action on one page -> Every action has their own page
-    - Only supported one-way actions because two-ways were annoying and not important 
-    - Made form title and description open text so any action could make sense
-    - Made people confirm trust before submitting to deter scammers
-  - Tradeoffs:
-    - Cut editing, let people make unlimited forms instead
-    - Only let people customize title & description to simplify flow */}
 </Section>
 
 <Section title="Problem">
@@ -145,10 +135,10 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
 <Section title="Research">
   <Section title="Most actions just need a form" isSubsection={true}>
-    We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms. We were skeptical that a raw, unstyled form was the optimal layout for contract actions... but it turned out to be (kinda).
+    We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms. We were skeptical that a raw, unstyled form was the optimal layout for contract actions... but it was.
 
     <FootnoteParagraph>
-      Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. With little to manage, the form's focused, linear path makes it a great interface for easing people through the unfamiliar flow of calling contracts.
+      Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
       <Footnote number={1}>
         Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
       </Footnote>
@@ -204,7 +194,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
     <h3>They knew Etherscan sucked</h3>
 
-    Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given a better option with easy setup, we believed they'd switch to something else.
+    Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
 
   </Section>
 </Section>
@@ -222,7 +212,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
   1. One-way actions (which covered most use cases) worked well with form-like layouts.
   3. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
-  2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them universally intuitive.
+  2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
 
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
@@ -235,7 +225,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
 First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design + build each chunk in order.
 
-Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after design).
+Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
 
   <Carousel
     slides={[
@@ -297,7 +287,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
     It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
 
-    How do we design a universal interface that serves many brands and actions?
+    [How do we design a universal interface](#only-supporting-oneway-actions) that serves many brands and actions?
 
   </Section>
 </Section>
@@ -320,7 +310,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
   <Section title="Only supporting one-way actions" isSubsection={true}>
     We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
     
-    1. [Most people don't use Etherscan frontends for two-way actions](etherscan-was-mostly-used-for-one-way-actions)
+    1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-oneway-actions)
     2. Supporting two-way actions would've made the product harder to use.
     3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
 
