@@ -91,10 +91,18 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
       <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Every action gets its own page.</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Only supported one-way actions (two-ways were annoying and not important).</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Made form titles and descriptions open text (so any action could be explained).</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">Forced people to confirm trust before submitting (to deter scammers).</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Every action gets its own page.
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Only supported one-way actions (two-ways were annoying and not important).
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Made form titles and descriptions open text (so any action could be explained).
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">
+            Forced people to confirm trust before submitting (to deter scammers).
+          </li>
         </ul>
       </td>
     </tr>
@@ -102,8 +110,12 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
       <td class="w-4 pr-2 pb-4"><p>Tradeoffs</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">Cut editing, let people make unlimited forms instead.</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">Only let people customize title & description to simplify flow.</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">
+            Cut editing, let people make unlimited forms instead.
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">
+            Only let people customize title & description to simplify flow.
+          </li>
         </ul>
       </td>
     </tr>
@@ -134,7 +146,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 </Section>
 
 <Section title="Research">
-  <Section title="Most contract actions just need a form" isSubsection={true}>
+  <Section title="Most actions just need a form" isSubsection={true}>
     We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
 
     <FootnoteParagraph>
