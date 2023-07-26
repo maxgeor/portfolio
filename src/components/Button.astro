@@ -4,6 +4,7 @@ export type Buttonable = {
   invisiblePadding?: string;
   hasOutline?: boolean;
   ariaLabel?: string;
+  ariaHidden?: 'true' | 'false' | undefined;
   classes?: string;
 };
 
@@ -27,6 +28,7 @@ const {
   hasOutline = true,
   padding = "p-2",
   classes = "",
+  ariaHidden = 'false',
   invisiblePadding,
   ariaLabel,
   ...props
@@ -37,12 +39,13 @@ const defaultClasses = `${
   `shadow-outline dark:shadow-outline-dark hover:shadow-outline hover:dark:shadow-outline-dark`
 } ${
   !invisiblePadding && 
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green !focus-visible:ring-offset-0"
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 !focus-visible:ring-offset-0"
 } ${padding} flex items-center gap-2 bg-white dark:bg-neutral-800 text-neutral-950 dark:text-neutral-100 !rounded-full  transition ease-in-out w-fit transform`;
 ---
 
 <Element
   aria-label={ariaLabel}
+  aria-hidden={ariaHidden}
   class={`
     button 
     ${
@@ -71,6 +74,6 @@ const defaultClasses = `${
   }
 
   .button.group:focus-visible div {
-    box-shadow: 0 0 0 2px #00a200;
+    box-shadow: 0 0 0 2px #3a7ff1;
   }
 </style>

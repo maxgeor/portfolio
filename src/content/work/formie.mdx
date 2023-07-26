@@ -52,7 +52,7 @@ sections:
         [
           { title: "One page, one action" },
           { title: "Only supporting one-way actions" },
-          { title: "Letting people write their own title and description" },
+          { title: "Letting people write their own titles and descriptions" },
           { title: "Making people confirm trust" },
         ],
     },
@@ -61,7 +61,7 @@ sections:
       subsections:
         [
           { title: "Replacing editing with infinite forms" },
-          { title: "Only customizing the title + description" },
+          { title: "Only letting people customize their title & description" },
           { title: "Limited error messaging" },
         ],
     },
@@ -81,20 +81,20 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
   <table class="text-sm leading-6 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
     <tr>
       <td class="w-4 pr-2 pb-4"><p>Problem</p></td>
-      <td class="pl-0 sm:pl-6"><p class="pb-4">Etherscan’s frontend sucked</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-4">Etherscan’s frontend sucked.</p></td>
     </tr>
     <tr>
       <td class="w-4 pr-2 pb-4"><p>Solution</p></td>
-      <td class="pl-0 sm:pl-6"><p class="pb-4">Airtable Forms, but for smart contract actions</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-4">Airtable Forms, but for smart contract actions.</p></td>
     </tr>
     <tr>
       <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Every action gets its own page</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Only supported one-way actions (two-ways were annoying and not important)</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Made form titles and descriptions open text (so any action could be explained)</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">Forced people to confirm trust before submitting (to deter scammers)</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Every action gets its own page.</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Only supported one-way actions (two-ways were annoying and not important).</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">Made form titles and descriptions open text (so any action could be explained).</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">Forced people to confirm trust before submitting (to deter scammers).</li>
         </ul>
       </td>
     </tr>
@@ -102,8 +102,8 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
       <td class="w-4 pr-2 pb-4"><p>Tradeoffs</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">Cut editing, let people make unlimited forms instead</li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">Only let people customize title & description to simplify flow</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">Cut editing, let people make unlimited forms instead.</li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">Only let people customize title & description to simplify flow.</li>
         </ul>
       </td>
     </tr>
@@ -114,7 +114,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
   Developers make blockchain apps by...
 
   1. Writing code
-  2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+  2. Uploading the code to Ethereum or another blockchain as `smart contracts`, and
   3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
   To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
@@ -123,7 +123,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
   - It's a list of technically-named forms
   - It's at the bottom of the page, behind two drawers
-  - It doesn’t give guidance, clear errors, or feedback about your transaction
+  - It doesn’t give guidance, clear errors, or feedback about your transaction.
 
   Using their frontend felt more like running an obstacle course — we knew it could be better.
 
@@ -164,7 +164,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
       </tr>
     </table>
 
-    Most projects used Etherscan for one-way actions. When one-ways had their own frontend, they were pretty basic and didn't get much of love.
+    Most projects used Etherscan for one-way actions. When one-ways had their own frontend, they were pretty basic and didn't get much love.
 
     <Carousel
       slides={[
@@ -205,7 +205,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
   We could make huge UX improvements by...
 
     - [Giving every action a dedicated page](#one-page-one-action)
-    - [Letting people write copy](#letting-people-write-their-own-title-and-description) to give context
+    - [Letting people write copy](#letting-people-write-their-own-titles-and-descriptions) to give context
     - Share clear, thoughtful feedback about transactions.
 
   The form builder pattern worked for a few reasons:
@@ -310,11 +310,11 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
   <Section title="Only supporting one-way actions" isSubsection={true}>
     We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
     
-    1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-oneway-actions)
+    1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-oneway-actions).
     2. Supporting two-way actions would've made the product harder to use.
     3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
 
-    We couldn't create a great interface for two-way methods, so we decided to focusing on our core usecase by only supportting one-way actions.
+    We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
 
     Ditching two-ways axed our scope, simplifying the product and cutting build time.
 
@@ -325,14 +325,14 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
   </Section>
 
-  <Section title="Letting people write their own title and description" isSubsection={true}>
+  <Section title="Letting people write their own titles and descriptions" isSubsection={true}>
     To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
-    But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own title and description. It's a simple but effective way to keep forms flexible without adding complexity.
+    But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
 
-    Deciding to let people edit wasn’t easy, since it would make it easier to misrepresent actions and swindle users.
+    Deciding to let people edit wasn’t easy, though, since it would make it easier to misrepresent actions and swindle users.
 
-    Having open text was essential, though, so we had to design around it.
+    But having open text was essential, so we had to design around it.
 
     <Image
       src="/work/formie/decisions/title-and-description.png"
@@ -342,7 +342,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
   </Section>
 
   <Section title="Making people confirm trust" isSubsection={true}>
-    We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted the form before submitting.
+    We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
 
     Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
 
@@ -362,16 +362,16 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
   <Section title="Replacing editing with infinite forms" isSubsection={true}>
-    <h2 slot="heading">~~Editing forms~~ Infinite forms</h2>
+    <h2 slot="heading" aria-label="Replacing editing with infinite forms">~~Editing forms~~ Infinite forms</h2>
 
-    We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewite to handle secure edits.
+    We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits.
 
     Instead of rebuilding, we decided to...
 
     1. Let people make unlimited forms, and
     2. Make forms permanent (for security reasons).
 
-    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. If we learned later that people edit a lot, we could add it. Until then, disposable forms were good enough.
+    People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
 
     Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
@@ -397,8 +397,8 @@ By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compa
 
   </Section>
 
-  <Section title="Only customizing the title + description" isSubsection={true}>
-    <h2 slot="heading">Customize ~~everything~~ title + description</h2>
+  <Section title="Only letting people customize their title & description" isSubsection={true}>
+    <h2 slot="heading" aria-label="Only letting people customize their title & description">Customize ~~everything~~ title + description</h2>
 
     We wanted every part of a form to be customizable:
 
@@ -430,7 +430,7 @@ By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compa
   </Section>
 
   <Section title="Limited error messaging" isSubsection={true}>
-    <h2 slot="heading">~~Perfect~~ Limited error messaging</h2>
+    <h2 slot="heading" aria-label="Limited error messaging">~~Perfect~~ Limited error messaging</h2>
 
     We wanted to translate every error into a clear, helpful message, but Ethereum was too limited.
 

@@ -28,6 +28,8 @@ const {
     <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
+      ariaLabel="Go back up"
+      ariaHidden="true"
       disabled={true}
       padding="pl-[12px] pr-[14px] py-2"
       classes="gap-1 fixed top-3.5 sm:top-[38px] left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
@@ -38,6 +40,8 @@ const {
     <Button
       id="go-back-down-button"
       disabled={true}
+      ariaLabel="Go back down"
+      ariaHidden="true"
       padding="pl-[12px] pr-[14px] py-2"
       classes="gap-1 fixed top-3.5 sm:top-[38px] left-1/2 z-50 transform -translate-x-1/2 -translate-y-[47px] sm:-translate-y-[70px] duration-[800ms]"
     >
@@ -173,7 +177,7 @@ const {
   const handleNavButtonShadows = () => {
     const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
 
-    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight - 40) {
+    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight + 40) {
       homeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
       themeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
     } else {
@@ -240,10 +244,12 @@ const {
 
   const showBackButton = (button: HTMLButtonElement) => {
     button.disabled = false;
+    button.ariaHidden = 'false';
     button.classList.remove("-translate-y-[47px]", "sm:-translate-y-[70px]");
   }
   const hideBackButton = (button: HTMLButtonElement) => {
     button.disabled = true;
+    button.ariaHidden = 'true';
     button.classList.add("-translate-y-[47px]", "sm:-translate-y-[70px]");
   }
 

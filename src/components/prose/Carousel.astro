@@ -21,6 +21,7 @@ const { slides } = Astro.props;
   <Button
     disabled={true}
     ariaLabel="Previous slide"
+    ariaHidden="true"
     invisiblePadding="px-2 py-14 -mx-2 -my-14"
     classes="btn-prev group absolute top-1/2 -left-[11px] sm:-left-[15px] z-20 transform -translate-y-1/2 active:scale-[97%] opacity-0 transition-opacity duration-200 -mt-1"
   >
@@ -84,11 +85,13 @@ const { slides } = Astro.props;
 
       if (nextSlideBtn && nextSlideBtn.disabled) {
         nextSlideBtn.disabled = false;
+        nextSlideBtn.ariaHidden = 'false';
         nextSlideBtn.style.opacity = "100%";
       }
 
       if (curSlide === 0) {
         prevSlideBtn.disabled = true;
+        prevSlideBtn.ariaHidden = 'true';
         prevSlideBtn.style.opacity = "0%";
       }
 
@@ -102,11 +105,13 @@ const { slides } = Astro.props;
 
       if (prevSlideBtn && prevSlideBtn.disabled) {
         prevSlideBtn.disabled = false;
+        prevSlideBtn.ariaHidden = 'false';
         prevSlideBtn.style.opacity = "100%";
       }
 
       if (curSlide === slides.length - 1) {
         nextSlideBtn.disabled = true;
+        nextSlideBtn.ariaHidden = 'true';
         nextSlideBtn.style.opacity = "0%";
       }
 
