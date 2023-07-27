@@ -126,7 +126,7 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
   Developers make blockchain apps by...
 
   1. Writing code
-  2. Uploading the code to Ethereum or another blockchain as `smart contracts`, and
+  2. Uploading the code to Ethereum or another blockchain as `smart contracts`
   3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
   To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
@@ -328,7 +328,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
     We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
 
-    Ditching two-ways axed our scope, simplifying the product and cutting build time.
+    Ditching two-ways axed our scope and got a leaner product out the door.
 
     <Image
       src="/work/formie/decisions/one-way-actions.png"
@@ -342,9 +342,9 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
 
     But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
 
-    Deciding to let people edit wasn’t easy, though, since it would make it easier to misrepresent actions and swindle users.
+    Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions.
 
-    But having open text was essential, so we had to design around it.
+    Letting people edit was essential, though, so we had to design around it.
 
     <Image
       src="/work/formie/decisions/title-and-description.png"
@@ -420,7 +420,7 @@ By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compa
 
     But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
 
-    To simplify, we only let people customize their form’s title and description. Because top-level fields gave context to the entire form, static fields wouldn’t kill usability.
+    To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they could handle 80%-90% of the clarification.
 
     Limited customization kept form creation straightforward while offering more control than Etherscan.
 
