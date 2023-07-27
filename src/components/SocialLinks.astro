@@ -54,15 +54,13 @@ const links = [
     <button
       id="email"
       aria-label="Copy email"
-      class="group flex w-full cursor-pointer items-center justify-between border-y py-1 border-neutral-190 dark:border-neutral-710 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4 ring-offset-neutral-800 rounded-sm"
+      class="group relative flex w-full cursor-pointer items-center justify-between border-y py-1 border-neutral-190 dark:border-neutral-710 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4 ring-offset-neutral-800 rounded-sm"
     >
-      <div class="flex items-center gap-1">
-        <span class="flex gap-px group-hover:underline">
-          max123358<code>@</code>gmail.com
-        </span>
-        <CheckIcon id="confirmation-check" classes="hidden text-blue-500 dark:text-blue-400" />
-      </div>
-      <CopyIcon id="copy-icon" classes="group-active:scale-90 -mr-[3px]" />
+      <span class="flex gap-px group-hover:underline">
+        max123358<code>@</code>gmail.com
+      </span>
+      <CopyIcon id="copy-icon" classes="absolute group-active:scale-90 right-0 transform -mr-[3px]" />
+      <CheckIcon id="check-icon" classes="absolute right-0 transform opacity-0 text-blue-500 dark:text-green -mr-[2px]" />
     </button>
   </li>
 </ul>
@@ -74,11 +72,16 @@ const links = [
     email?.addEventListener("click", () => {
       navigator.clipboard.writeText(email.innerText);
 
-      const confirmationCheck = document.querySelector(
-        "#confirmation-check"
-      ) as HTMLElement;
-      confirmationCheck.style.display = "inline";
-      setTimeout(() => (confirmationCheck.style.display = "none"), 2000);
+      const copyIcon = document.querySelector("#copy-icon") as HTMLElement;
+      const checkIcon = document.querySelector("#check-icon") as HTMLElement;
+
+      copyIcon.classList.add("opacity-0");
+      checkIcon.classList.remove("opacity-0");
+
+      setTimeout(() => {
+        copyIcon.classList.remove("opacity-0");
+        checkIcon.classList.add("opacity-0");
+      }, 3000);
     });
   });
 </script>

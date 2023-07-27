@@ -13,18 +13,18 @@ module.exports = {
     },
 		extend: {
 			colors: {
-				green: '#00A200',
+				green: '#0E9900',
 				yellow: '#ffff00',
 				neutral: {
 					100: '#F5F5F5',
-					190: '#EFEFEF',
-					200: '#e4e4e4',
+					190: '#F2F2F2',
+					200: '#EAEAEA',
 					300: '#B4B4B4',
 					400: '#909090',
 					490: '#888888',
 					500: '#767676',
-					700: '#434343',
-					710: '#313131',
+					700: '#3C3C3C',
+					710: '#2F2F2F',
 					800: '#212121',
 					950: '#030303',
 				}
@@ -34,8 +34,8 @@ module.exports = {
 				xs: '450px',
 			},
 			boxShadow: {
-				outline: '0 0 0 1px rgba(0, 0, 0, 0.125)',
-				'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.15)',
+				outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
+				'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.13)',
 				sm: '0px 1px 1px -1px rgba(0,0,0,.05), 0px 2px 2px -1px rgba(0,0,0,.05), 0px 0px 0px 1px rgba(0,0,0,.08)',
 				DEFAULT: '0px 1px 1px -1px rgba(0,0,0,.0975), 0px 2px 2px -1px rgba(0,0,0,.0975), 0px 0px 0px 1px rgba(0,0,0,.085)',
 				dark: '0px 0px 0px 0.5px rgba(0,0,0,.4), 0px 1px 1px -1px rgba(0,0,0,.12), 0px 2px 2px -1px rgba(0,0,0,.12), inset 0px 0.5px 0px hsla(0,0%,100%,.06), inset 0px 0px 1px 0px hsla(0,0%,100%,.16), inset 0px -6px 12px -4px rgba(0,0,0,.16)',
