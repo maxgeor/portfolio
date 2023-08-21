@@ -3,8 +3,8 @@ export interface Props {
   title: string;
   startDate: string;
   endDate: string;
-  tech: string[];
   blurb: string;
+  tech?: string[];
   titleWidth?: string;
   company?: string;
 }
@@ -24,16 +24,18 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
     >
     <p class="w-[53px] shrink-0">{endDate}</p>
   </div>
-  <ul>
-    {
-      tech.map((tool) => (
-        <li class="relative">
-          <span class="absolute -left-[17px] -top-px">-</span>
-          {tool}
-        </li>
-      ))
-    }
-  </ul>
-  <p class="col-span-2">{blurb}</p>
+  {tech && (
+    <ul>
+      {
+        tech.map((tool) => (
+          <li class="relative">
+            <span class="absolute -left-[17px] -top-px">-</span>
+            {tool}
+          </li>
+        ))
+      }
+    </ul>
+  )}
+  <p class={tech ? "col-span-2" : "col-span-3"}>{blurb}</p>
   <slot />
 </article>
