@@ -16,6 +16,7 @@ module.exports = {
 				green: '#0E9900',
 				yellow: '#ffff00',
 				neutral: {
+					50: '#FAFAFA',
 					100: '#F5F5F5',
 					190: '#f1f1f1',
 					200: '#e0e0e0',
@@ -27,7 +28,7 @@ module.exports = {
 					700: '#3c3c3c',
 					710: '#2d2d2d',
 					800: '#212121',
-					950: '#030303',
+					950: '#060606',
 				}
 			},
 			screens: {
