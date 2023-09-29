@@ -16,7 +16,7 @@ const { sections, isSubsection = false } = Astro.props;
 
 <ol
   class={`
-  nav-list lg:flex-col gap-y-2 gap-x-6 transition transform
+  nav-list lg:flex-col gap-y-2 gap-x-6 transition transform w-max md:w-auto
   ${
     isSubsection
       ? "hidden border-l border-neutral-200 dark:border-neutral-700 -ml-[17px] pl-4 mt-2 mb-0.5 whitespace-normal"
