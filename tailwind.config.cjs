@@ -34,6 +34,7 @@ module.exports = {
 			screens: {
 				xxs: '380px',
 				xs: '450px',
+				'3xl': '2000px'
 			},
 			boxShadow: {
 				outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',

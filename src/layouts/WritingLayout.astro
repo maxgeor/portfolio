@@ -5,7 +5,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="flex grid-cols-12 flex-col gap-12 px-6 sm:px-12 lg:grid">
+  <div class="flex grid-cols-12 max-w-[1900px] mx-auto flex-col gap-12 px-6 sm:px-12 lg:grid">
     <Header />
     <aside class="col-span-full -my-1 lg:col-span-3 pb-1">
       <h1>{frontmatter.title}</h1>
