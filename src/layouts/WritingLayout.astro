@@ -7,13 +7,13 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <div class="flex grid-cols-12 flex-col gap-12 px-6 sm:px-12 lg:grid">
     <Header />
-    <aside class="col-span-full -my-1 pb-1 lg:col-span-3">
+    <aside class="col-span-full -my-1 lg:col-span-3 pb-1">
       <h1>{frontmatter.title}</h1>
-      <p class="mt-1 text-[12px] text-neutral-500 dark:text-neutral-490">
+      <p class="mt-1 -mb-1 text-[12px] text-neutral-500 dark:text-neutral-490">
         {frontmatter.date}
       </p>
     </aside>
-    <main class="col-span-full -my-1.5 lg:col-span-9 xl:col-span-6">
+    <main class="col-span-full -my-1.5 lg:col-span-9 xl:col-span-6 mt-4 lg:mt-0">
       <div
         class={`
           prose-sm max-w-prose 2xl:mx-auto
