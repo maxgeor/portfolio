@@ -61,6 +61,7 @@ module.exports = {
 	variants: {
 		borderColor: ['group-hover', 'group-focus'],
 		scale: ['group-hover', 'group-focus'],
+		shadow: ['group-hover'],
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
