@@ -3,9 +3,13 @@ layout: ../../layouts/WorkLayout.astro
 title: Memiori
 type: Freelance Project
 image: memiori/cover.jpeg
-roles: [Branding, Mobile Design]
-tools: [Ruby on Rails, TailwindCSS, Figma]
-tldr: ["Freelance refresh for a memory journaling app"]
+roles: [Mobile Design, Branding]
+tools: [Figma, Next.JS]
+tldr:
+  [
+    "Concept project",
+    "Refresh for a memory journaling app",
+  ]
 year: 2023
 sections:
   [
@@ -18,40 +22,128 @@ sections:
     { title: "Result" },
   ]
 ---
+import Image from "../../components/prose/Image.astro";
+import Section from "../../components/prose/Section.astro";
+import Carousel from "../../components/prose/Carousel.astro";
+import Footnote from "../../components/prose/Footnote.astro";
+import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
-I know what you're thinking...
+{/* <Section title="tldr">
+  <table class="text-sm leading-6 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Problem</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-4">Etherscan’s frontend sucked.</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Solution</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-4">Airtable Forms, but for smart contract actions.</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
+      <td class="pl-0 sm:pl-6">
+        <ul>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Every action gets its own page.
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Only supported one-way actions (two-ways were annoying and not important).
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+            Made form titles and descriptions open text (so any action could be explained).
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">
+            Forced people to confirm trust before submitting (to deter scammers).
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Tradeoffs</p></td>
+      <td class="pl-0 sm:pl-6">
+        <ul>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">
+            Cut editing, let people make unlimited forms instead.
+          </li>
+          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">
+            Only let people customize title & description to simplify flow.
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</Section> */}
 
-"Can I really learn to code?" "I'm not good at math and it looks hard" "Most programmers start when they're 3 and I'm old".
+<Section title="Problem">
+  Developers make blockchain apps by...
 
-I’ve been learning to code for the past 7 months and I’m now convinced of one thing:
+  1. Writing code
+  2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+  3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
-**Anyone can do it**.
+  To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
 
-Yep, anyone. Even coal miners, and especially you.
+  The problem? **Etherscan's frontend sucks**.
 
-I was never the programming type. I sucked at math and typed like a senior citizen. I had a million ideas but programming always felt out of reach. So I never tried.
+  - It's a list of technically-named forms
+  - It's at the bottom of the page, behind two drawers
+  - It doesn’t give guidance, clear errors, or feedback about your transaction.
 
-But just before my 4th year of college, I decided that I had nothing to lose and dove in. I took Scrimba's courses on HTML and CSS. At first, writing code felt like asking for directions in broken Spanish. But after making a couple of crappy sites, I got the hang of it. I ended up learning vanilla JavaScript, some Node, a sprinkle of Vue, and much much more...
+  Using their frontend felt more like running an obstacle course — we knew it could be better.
 
-But as I learned to program, I kept noticing something:
+  {/* <Image
+    src="/work/formie/annotated-etherscan-page.png"
+    alt="Etherscan's interface for smart contract actions"
+  /> */}
+</Section>
 
-It wasn’t as hard as I thought it would be.
+<Section title="Research">
+  - Onboarding
+    - Show annotated onboarding flow
+  - Emotions picking is complicated
+    - Too many emotion options
+    - Don't need to set emotion for every thought
+  - Information architecture
+    - Naviation
+      - Between views
+      - Across thoughts (scrolling through thoughts)
+    - Typography
+    - Things people care about in the wrong placeholders
+      - Streaks hidden
+  - Branding
+  
+</Section>
 
-Before, coding felt cryptic and foreign. But it turned out to be no harder than learning hockey or the flute. Writing code is like writing your thoughts – “If this happens, do that”, “When this gets clicked, say ‘Beyonce’”. If you can think, you can program. Nothing's more liberating than the ability to make whatever you want.
+<Section title="Scope">
+  No new major features, just reworking the interface.
+</Section>
 
-Knowing that freedom and possibility are literally at your fingertips is spiritual. To learn programming, all you need is the desire to learn. The fact that you fear the challenge of learning to code proves that you have enough desire (if you didn’t care, you wouldn’t fear it). So you have everything you need: the ability and the desire!
+<Section title="Process">
+  Sketch ideas
+  Figma
+  Prototype interactions in code
+</Section>
 
-## Recommendations
+<Section title="Key Decisions">
+  <Section title="Dispursed onboarding" isSubsection={true}>
+    - Shortened main onboarding
+    - Added Explainer secreen to introduce funtionality
+    - Moved non-essential onboarding further down the flow
 
-1. Find the way your brain likes to learn. You’ll 5x your progress. Books didn’t work for me but follow-along videos made everything click.
-2. Sit for at least 2-hours. Two hours packed deep is better than three hours spread thin.
-3. Don't memorize. It's not a test. If you write enough code, you'll naturally remember how to do stuff. Can the cue cards and write code!
+    _Have before and after mockups of onboarding flow_
 
-## Courses I used
+    Show new onboarding flow
 
-- Scrimba HTML & CSS (free)
-- Scrimba Tailwind CSS (free)
-- Watch & Code Vanilla JS (free)
-- Wes Bos 30 Day JS (free)
-- Wes Bos ES6 (cheap)
-- Andrew Mead Node.js (cheap)
+  </Section>
+  
+  <Section title="Simplified emotions" isSubsection={true}>
+    - Cut emotions to 5
+    - Made a clear scale of emotions
+      - Easy to pick
+      - Easy for to gauage how they felt
+      - Good for data analysis
+
+  </Section>
+
+
+</Section>
+

@@ -22,19 +22,17 @@ const { roles, tools, collaborators } = Astro.props;
         <td class="pb-2"><p>{tools.join(', ')}</p></td>
       </tr>
     ) : null}
-    {collaborators ? (
-      <tr>
-        <td class="pr-5 pb-2">Team</td>
-        <td class="pb-2">
-          {collaborators.map(({ name, href, role }) => (
-            <span>
-              <a href={href} target="_blank" class="underline">{name}</a>
-              <span>({role})</span>
-            </span>
-          ))}
-        </td>
-      </tr>
-    ) : null}
+    <tr>
+      <td class="pr-5 pb-2">Team</td>
+      <td class="pb-2">
+        {collaborators ? collaborators.map(({ name, href, role }) => (
+          <span>
+            <a href={href} target="_blank" class="underline">{name}</a>
+            <span>({role})</span>
+          </span>
+        )) : '—'}
+      </td>
+    </tr>
   </table>
 </div>
 
