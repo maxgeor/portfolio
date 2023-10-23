@@ -1,4 +1,6 @@
 ---
+
+import { stripExtension } from '../../utils/formatting';
 export interface Props {
   href: string;
   title: string;
@@ -8,6 +10,8 @@ export interface Props {
 }
 
 const { href, title, roles, description, image } = Astro.props;
+
+const extensionlessImage = stripExtension(image);
 ---
 
 <>
@@ -28,13 +32,17 @@ const { href, title, roles, description, image } = Astro.props;
         {roles.join(", ")}
       </div>
     </div>
-    <figure class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
+    <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
+      <source 
+        srcset={`${extensionlessImage}-2x.png`}
+        media="(min-width: 1280px)"
+      />
       <img
-        src={image}
+        src={`${extensionlessImage}-1x.png`}
         alt={`Preview mockup of ${title}`}
         class="absolute inset-0 bottom-auto w-full h-full object-contain select-none dark:brightness-90"
       />
-    </figure>
+    </picture>
   </a>
   <hr
     class="col-span-full h-0 border-t border-neutral-190 last:hidden dark:border-neutral-710"

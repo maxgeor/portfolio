@@ -1,5 +1,6 @@
 ---
 import PauseIcon from "../icons/PauseIcon.astro";
+import { stripExtension } from "../../utils/formatting";
 
 export interface Props {
   src: string;
@@ -7,7 +8,7 @@ export interface Props {
 }
 const { src, classes = "" } = Astro.props;
 
-const extensionlessSrc = src.replace(/\..*$/, ""); // video.mp4 -> video
+const extensionlessSrc = stripExtension(src);
 ---
 
 <div class="relative">
