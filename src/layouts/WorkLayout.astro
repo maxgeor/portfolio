@@ -135,7 +135,7 @@ const {
       </div>
       <article
         id="article"
-        class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12 scroll-mt-12"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12 scroll-mt-12 w-full"
       >
         <hr
           class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-[#EEE] dark:border-[#333333] lg:hidden"
@@ -143,6 +143,7 @@ const {
         <NavBar sections={sections} />
         <div
           class={`
+          w-full
             prose-td:p-0
             prose-sm px-6 sm:px-12 lg:px-0 max-w-5xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
