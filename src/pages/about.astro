@@ -6,17 +6,23 @@ import SocialLinks from "../components/SocialLinks.astro";
 
 <Layout title="Max Georgopoulos">
   <div class="col-span-full flex flex-col gap-12 px-6 sm:px-12 max-w-[1900px] mx-auto">
-    <Header link={{ text: "Resume", href: "/resume-max-georgopoulos.pdf" }} />
+    <Header />
     <main class="flex flex-col gap-12 lg:grid lg:grid-cols-12">
+      <div class="hidden lg:flex flex-col gap-12 col-span-3 ">
+        <img
+          src="/me.jpeg"
+          alt="my face"
+          class="mx-auto aspect-square w-full max-w-sm lg:max-w-none"
+        />
+        <SocialLinks />
+      </div>
       <img
         src="/me.jpeg"
         alt="my face"
-        class="col-start-9 col-end-13 mx-auto aspect-square w-full max-w-sm lg:order-2 lg:max-w-none"
+        class="lg:hidden mx-auto aspect-square w-full max-w-sm lg:max-w-none"
       />
-      <div
-        class="col-span-8 flex flex-col justify-between gap-12 lg:order-first"
-      >
-        <p class="mx-auto -my-1 max-w-prose lg:mx-0 xl:basis-2/3">
+      <div class="col-span-9 flex flex-col justify-between gap-12 ">
+        <p class="mx-auto -my-1 max-w-prose lg:mx-0 xl:basis-3/4">
           Yo! I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
           and engineering is artificial — you get the best results by blending
@@ -25,7 +31,7 @@ import SocialLinks from "../components/SocialLinks.astro";
           Homme Plissé.
         </p>
       </div>
-      <SocialLinks classes="col-start-9 col-end-13 lg:order-last" />
+      <SocialLinks classes="lg:hidden" />
     </main>
   </div>
 </Layout>

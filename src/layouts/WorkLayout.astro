@@ -7,7 +7,7 @@ import Details from "../components/work/Details.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
 import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
-import ExternalLinkIcon from "../components/icons/ExternalLinkIcon.astro";
+import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -91,7 +91,7 @@ const {
                 class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline lg:hidden"
               >
                 See it
-                <ExternalLinkIcon classes="mt-0.5" />
+                <UpRightArrowIcon classes="mt-0.5" />
               </a>
             ) : null
           }
@@ -126,7 +126,7 @@ const {
                 class="-my-1 -mr-[3px] hidden items-center gap-[3px] hover:underline lg:flex"
               >
                 <span class="whitespace-nowrap">See it</span>
-                <ExternalLinkIcon classes="mt-0.5" />
+                <UpRightArrowIcon classes="mt-0.5" />
               </a>
             ) : null
           }

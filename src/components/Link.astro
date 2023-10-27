@@ -14,17 +14,10 @@ const { type, href, title, description, externalLink = false } = Astro.props;
   href={href}
   target={externalLink ? "_blank" : "_self"}
   class={`
-		border-t border-neutral-190 dark:border-neutral-710 first:border-t-0 group relative col-span-full lg:col-span-6 flex items-baseline justify-between sm:gap-x-12 py-1 first:pt-0 first:-mt-1 last:pb-0 last:-mb-1
+		 group relative col-span-full
 	`}
 >
-  <p
-    class={`
-		${type === "writing" ? "xs:basis-1/2" : "basis-1/2"}
-		 group-hover:underline pr-6 sm:pr-0
-	`}
-  >
-    {title}
-  </p>
+  <p class={`group-hover:underline`}>{title}</p>
   <p
     class={`
 		${type === "writing" ? "text-[13px] xs:basis-1/2" : "basis-1/2"}

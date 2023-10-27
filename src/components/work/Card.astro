@@ -17,34 +17,22 @@ const extensionlessImage = stripExtension(image);
 <>
   <a
     href={href}
-    class="group col-span-full flex grid-cols-6 flex-col gap-y-6 gap-x-12 sm:grid xl:grid-cols-8"
+    class="group col-span-full xl:col-span-3 flex flex-col gap-y-1 gap-x-12"
   >
-    <div
-      class="col-span-full -my-1 flex flex-wrap justify-between gap-y-1.5 gap-x-6 xs:flex-nowrap sm:col-span-2 sm:flex-wrap lg:col-span-full lg:flex-nowrap xl:col-span-2 sm:flex-col lg:flex-row xl:flex-col"
-    >
-      <div>
-        <h2 class="group-hover:underline">{title}</h2>
-        <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
-      </div>
-      <div
-        class="h-fit whitespace-nowrap text-neutral-500 dark:text-neutral-490 sm:justify-self-end lg:self-auto"
-      >
-        {roles.join(", ")}
-      </div>
-    </div>
-    <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
-      <source 
+    <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4  lg:col-span-full xl:col-span-6">
+      <!-- <source 
         srcset={`${extensionlessImage}-2x.png`}
         media="(min-width: 1280px)"
-      />
+      /> -->
       <img
         src={`${extensionlessImage}-1x.png`}
         alt={`Preview mockup of ${title}`}
         class="absolute inset-0 bottom-auto w-full h-full object-contain select-none dark:brightness-90"
       />
     </picture>
+    <div>
+      <h2 class="group-hover:underline">{title}</h2>
+      <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
+    </div>
   </a>
-  <hr
-    class="col-span-full h-0 border-t border-neutral-190 last:hidden dark:border-neutral-710"
-  />
 </>

@@ -7,70 +7,43 @@ import Link from "../components/Link.astro";
 
 <Layout title="Max Georgopoulos">
   <div
-    class="relative mx-auto max-w-[1900px] flex grid-cols-12 flex-col gap-12 px-6 sm:px-12 lg:grid"
+    class="relative mx-auto max-w-[1900px] flex grid-cols-12 flex-col gap-6 px-6 sm:px-6 lg:grid"
   >
     <Header link={{ text: "About", href: "/about" }} />
-    <section class="col-span-6 grid grid-cols-8 gap-6 xl:col-span-8">
-      <h2
-        class="col-span-full -mb-1 border-t border-[#e6e6e6] pt-1 dark:border-neutral-700 "
-      >
-        Work
-      </h2>
-      <Card
-        title="Formie"
-        href="/work/formie"
-        roles={["Product", "Brand", "Code"]}
-        image="/work/formie/preview"
-        description="Project to build a universal UI for smart contracts"
-      />
-      <Card
-        title="Memiori (coming soon)"
-        href="#"
-        roles={["Product", "Brand"]}
-        image="/work/memiori/preview"
-        description="Freelance refresh for a memory journaling app"
-      />
-      <!-- <Card
-        title='Wavy'
-        href='/work/wavy'
-        roles={["Product", "Code"]}
-        description='Features I built while working at Wavy'
-      /> -->
-    </section>
-    <div class="col-span-6 flex flex-col gap-12 xl:col-span-4">
+    <div class="col-span-6 flex flex-col gap-12 xl:col-span-3">
       <section class="flex flex-col gap-6">
         <h2
           class="col-span-full -mb-1 border-t border-[#e6e6e6] pt-1 dark:border-neutral-700 lg:col-span-3"
         >
           Projects
         </h2>
-        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-6">
+        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
           <Link
             type="project"
             title="Scope Todo"
             href="https://www.figma.com/community/widget/1036372982291551669"
-            description="A good ol' todo widget for Figma"
+            description="A good ol' todo widget for Figma."
             externalLink={true}
           />
           <Link
             type="project"
             title="The Quest Board"
             href="https://www.lootquestboard.com/"
-            description="Job board for the Loot community"
+            description="Job board for the Loot community."
             externalLink={true}
           />
           <Link
             type="project"
             title="Sayings, Forgotten"
             href="https://sayings-forgotten.maxgeor.repl.co/"
-            description="Collection of sayings with forgotten meanings"
+            description="Collection of sayings with forgotten meanings."
             externalLink={true}
           />
           <Link
             type="project"
             title="Dissect Design"
             href="https://dissect-design-sigma.vercel.app/"
-            description="Collection of design decisions"
+            description="Collection of design decisions."
             externalLink={true}
           />
         </div>
@@ -81,7 +54,7 @@ import Link from "../components/Link.astro";
         >
           Writing
         </h2>
-        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-6">
+        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
           <Link
             type="writing"
             title="Write it"
@@ -103,5 +76,35 @@ import Link from "../components/Link.astro";
         </div>
       </section>
     </div>
+      <div class="flex justify-between col-span-full xl:col-span-9 -mb-1 border-t border-[#e6e6e6] pt-1 h-min dark:border-neutral-700 ">
+        <h2>Work</h2>
+        <select class="text-neutral-500 -mr-0.5">
+          <option value="everything">Everything</option>
+          <option value="everything">Work</option>
+          <option value="everything">Projects</option>
+          <option value="everything">Archive</option>
+        </select>
+      </div>
+      <Card
+        title="Formie"
+        href="/work/formie"
+        roles={["Product", "Brand", "Code"]}
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        roles={["Product", "Brand"]}
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
+        roles={["Product", "Code"]}
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
   </div>
 </Layout>

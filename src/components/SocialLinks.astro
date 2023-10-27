@@ -1,7 +1,7 @@
 ---
 import CopyIcon from "./icons/CopyIcon.astro";
 import CheckIcon from "./icons/CheckIcon.astro";
-import ExternalLinkIcon from "./icons/ExternalLinkIcon.astro";
+import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
 
 export interface Props {
   classes?: string;
@@ -10,6 +10,10 @@ export interface Props {
 const { classes = "" } = Astro.props;
 
 const links = [
+  {
+    name: "CV",
+    url: "/resume-max-georgopoulos.pdf",
+  },
   {
     name: "Arena",
     url: "https://www.are.na/max-georgopoulos",
@@ -46,7 +50,7 @@ const links = [
         class="flex w-full items-center justify-between border-t py-1 hover:underline border-neutral-190 dark:border-neutral-710"
       >
         {link.name}
-        <ExternalLinkIcon classes="mt-0.5 -mr-[3px]" />
+        <UpRightArrowIcon classes="mt-0.5 -mr-[3px]" />
       </a>
     </li>
   ))}
