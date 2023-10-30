@@ -8,20 +8,19 @@ export interface Props {
       title: string;
     }[];
   }[];
+  shouldCollapse?: boolean;
   isSubsection?: boolean;
 }
 
-const { sections, isSubsection = false } = Astro.props;
+const { sections, shouldCollapse, isSubsection = false } = Astro.props;
 ---
 
 <ol
   class={`
-  nav-list lg:flex-col gap-y-2 gap-x-6 transition transform w-max md:w-auto
-  ${
-    isSubsection
-      ? "hidden border-l border-neutral-200 dark:border-neutral-700 -ml-[17px] pl-4 mt-2 mb-0.5 whitespace-normal"
-      : "flex leading-5 whitespace-nowrap"
-  }
+  nav-list lg:flex-col gap-x-6 transition transform
+  ${isSubsection ? "pl-4 whitespace-normal mt-1.5 mb-0.5" : "gap-y-2 whitespace-nowrap"}
+  ${shouldCollapse ? 'flex flex-col justify-center h-screen' : null}
+  ${shouldCollapse ? isSubsection ? "hidden" : "flex" : "flex"}
 `}
 >
   {

@@ -25,9 +25,9 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative flex flex-col gap-4 overflow-visible">
+  <main class="relative flex flex-col gap-4 overflow-visible col-span-full">
     <Header  classes="px-4" />
-    <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
+    <!-- <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
       ariaLabel="Go back up"
@@ -49,16 +49,16 @@ const {
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
-    </Button>
-    <div class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 lg:grid-cols-4 mb-4">
-      <header class="col-span-full flex justify-between gap-4 border-t h-fit">
+    </Button> -->
+    <div class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 md:gap-y-2 md:grid-cols-4 pb-2">
+      <header class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
         <h1>{title}</h1>
         {
           link ? (
             <a
               href={link}
               target="_blank"
-              class=" -mr-px flex items-center gap-[3px] hover:underline"
+              class=" -mr-0.5 flex items-center gap-[3px] hover:underline"
             >
               See it
               <UpRightArrowIcon classes="mt-0.5" />
@@ -85,49 +85,50 @@ const {
           )}
         </ul>
       </div>
-      <p class="absolute bottom-0 right-4">{year}</p>
+      <p class="md:absolute bottom-4 right-4">{year}</p>
     </div>
     {
       image ? (
-        <div id="cover" class="relative -mb-6 w-full sm:my-0 px-4">
+        <div id="cover" class="relative -mb-6 w-full sm:my-0">
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
-            class="aspect-[5/3] max-h-[800px] w-full select-none object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] lg:aspect-[5/2]"
+            class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] md:aspect-[9/4]"
           />
         </div>
       ) : null
     }
-    <div class="flex flex-col gap-4 max-w-[1900px] mx-auto w-full">
+    <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
-        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-4 scroll-mt-4"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 md:max-w-none px-4 scroll-mt-4 pt-4"
       >
-        <hr
-          class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-[#EEE] dark:border-[#333333] lg:hidden"
-        />
-        <NavBar sections={sections} />
+        <NavBar sections={sections} shouldCollapse={false} /> 
         <div
           class={`
             prose-td:p-0
-            prose-sm px-6 sm:px-4 lg:px-0 max-w-5xl mx-auto
+            prose-sm max-w-5xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
             prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0295rem] dark:prose-h1:tracking-[-0.027rem] prose-h1:mt-[48px] first:prose-h1:mt-0
             prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] dark: prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
-            prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:-mb-[14px] prose-h3:leading-5 prose-h3:text-neutral-950
+            prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:-mb-[12px] prose-h3:leading-5 prose-h3:text-neutral-950
             prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
             prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
             prose-a:underline
-            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[59%] prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700 prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[59%] prose-code:rounded-[3px] prose-code:px-[3px] prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700 prose-code:py-[1px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
             
-            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-5 prose-ul:m-0
-            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-5 prose-ol:m-0
+            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:m-0
+            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-[18px] prose-ol:m-0
             prose-li:m-0
+            prose-li:pl-1
+            prose-li:leading-5
+
             prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
             prose-img:m-0
             prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-            col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-3 gap-x-4
+            col-span-full md:col-span-3 xl:col-span-2 grid grid-cols-1 gap-y-2 gap-x-4
+            prose-p:leading-5
           `}
         >
           <slot />
@@ -136,6 +137,17 @@ const {
     </div>
   </main>
 </Layout>
+
+<style>
+  article div .prose-ol > .prose-li { counter-reset: list-counter; }
+  article div .prose-ol > .prose-li { display: block; }
+  article div .prose-ol > .prose-li:before { 
+    content: counter(item) ". ";
+    counter-increment: item;
+    width: 2em;
+    display: inline-block;
+  }
+</style>
 
 <script>
   // Add/remove shadows on home and theme buttons past the cover image on big screens

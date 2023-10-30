@@ -8,15 +8,18 @@ export interface Props {
       title: string;
     }[];
   }[];
+  shouldCollapse?: boolean;
 }
 
-const { sections } = Astro.props;
+const { sections, shouldCollapse = true } = Astro.props;
 ---
 
 <nav
-  class="no-scrollbar col-span-full -mb-6 h-fit overflow-auto scroll-smooth pt-4 pb-5 sm:py-5 px-6 sm:px-12 sm:-mb-6 lg:sticky lg:top-[108px] 3xl:top-[46px] lg:col-span-2 lg:m-0 lg:overflow-visible lg:p-0"
+  class={`
+    no-scrollbar overflow-y-scroll col-span-full -mb-6 h-screen scroll-smooth pt-4 pb-5 sm:py-5 px-6 sm:px-12 sm:-mb-6 lg:sticky  lg:col-span-1 lg:m-0 lg:p-0 lg:pb-16 lg:top-4 max-w-[220px]
+  `}
 >
-  <NavList sections={sections} />
+  <NavList sections={sections} shouldCollapse={shouldCollapse} />
   <div
     class="absolute top-px left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-neutral-800 lg:hidden"
   >
