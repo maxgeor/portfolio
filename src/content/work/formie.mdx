@@ -74,40 +74,40 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 <Section title="tldr">
   <table class="text-sm leading-6 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
     <tr>
-      <td class="w-4 pr-2 pb-4"><p>Problem</p></td>
-      <td class="pl-0 sm:pl-6"><p class="pb-4">Etherscan’s frontend sucked.</p></td>
+      <td class="w-4 pr-2 pb-3"><p>Problem</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-3">Etherscan’s frontend sucked.</p></td>
     </tr>
     <tr>
-      <td class="w-4 pr-2 pb-4"><p>Solution</p></td>
-      <td class="pl-0 sm:pl-6"><p class="pb-4">Airtable Forms, but for smart contract actions.</p></td>
+      <td class="w-4 pr-2 pb-3"><p>Solution</p></td>
+      <td class="pl-0 sm:pl-6"><p class="pb-3">Airtable Forms, but for smart contract actions.</p></td>
     </tr>
     <tr>
-      <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
+      <td class="w-4 pr-2 pb-3"><p>Decisions</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
             Every action gets its own page.
           </li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
             Only supported one-way actions (two-ways were annoying and not important).
           </li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 ">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
             Made form titles and descriptions open text (so any action could be explained).
           </li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-4">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pb-3">
             Forced people to confirm trust before submitting (to deter scammers).
           </li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td class="w-4 pr-2 pb-4"><p>Tradeoffs</p></td>
+      <td class="w-4 pr-2 pb-3"><p>Tradeoffs</p></td>
       <td class="pl-0 sm:pl-6">
         <ul>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0  ">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ">
             Cut editing, let people make unlimited forms instead.
           </li>
-          <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pl-0 pb-0">
+          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pb-0">
             Only let people customize title & description to simplify flow.
           </li>
         </ul>
@@ -159,13 +159,13 @@ import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
   <Section title="Etherscan was mostly used for one-way actions" isSubsection={true}>
     We learned that smart contracts have two kinds of actions:
 
-    <table class="text-sm" cellspacing="0" cellpadding="0">
+    <table class="text-sm mt-1" cellspacing="0" cellpadding="0">
       <tr>
-        <td class="w-fit p-0 !pr-4 pb-4 pt-px">`One-way`</td>
-        <td class="w-fit leading-6 p-0 pb-4">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
+        <td class="w-fit p-0 !pr-3 pb-3 pt-px">`One-way`</td>
+        <td class="w-fit leading-6 p-0 pb-3">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
       </tr>
       <tr>
-        <td class="w-fit p-0 !pr-4 pt-px">`Two-way`</td>
+        <td class="w-fit p-0 !pr-3 pt-px">`Two-way`</td>
         <td class="w-fit leading-6 p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
       </tr>
     </table>

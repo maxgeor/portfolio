@@ -25,8 +25,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative flex flex-col gap-4 overflow-visible col-span-full">
-    <Header  classes="px-4" />
+  <main class="relative col-span-full">
     <!-- <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
@@ -50,51 +49,56 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button> -->
-    <div class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 md:gap-y-2 md:grid-cols-4 pb-2">
-      <header class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
-        <h1>{title}</h1>
-        {
-          link ? (
-            <a
-              href={link}
-              target="_blank"
-              class=" -mr-0.5 flex items-center gap-[3px] hover:underline"
-            >
-              See it
-              <UpRightArrowIcon classes="mt-0.5" />
-            </a>
-          ) : null
-        }
-      </header>
-      <p class="col-span-1">{tldr}</p>
-      <div class="pr-4 capitalize">
-        <p>Role</p>
-        <p>{roles.join(", ")}</p>
-      </div>
-      <div class="pr-4 capitalize">
-        <p>Tools</p>
-        <p>{tools.join(", ")}</p>
-      </div>
-      <div class="pr-4 capitalize">
-        <p>Team</p>
-        <ul>
-          {collaborators.map((collaborator: { name: string, role: string }) => 
-            <li>
-              {collaborator.name} ({collaborator.role})
-            </li>
-          )}
-        </ul>
-      </div>
-      <p class="md:absolute bottom-4 right-4">{year}</p>
+    <div class="flex flex-col gap-4">
+
+      <Header  classes="px-4" />
+      <section class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 md:gap-y-2 md:grid-cols-4 pb-4">
+        <div class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
+          <h1>{title}</h1>
+          {
+            link ? (
+              <a
+                href={link}
+                target="_blank"
+                class=" -mr-0.5 flex items-center gap-[3px] hover:underline"
+              >
+                See it
+                <UpRightArrowIcon classes="mt-0.5" />
+              </a>
+            ) : null
+          }
+        </div>
+        <p class="col-span-1">{tldr}</p>
+        <div class="pr-4 capitalize">
+          <p>Role</p>
+          <p>{roles.join(", ")}</p>
+        </div>
+        <div class="pr-4 capitalize">
+          <p>Tools</p>
+          <p>{tools.join(", ")}</p>
+        </div>
+        <div class="pr-4 capitalize">
+          <p>Team</p>
+          <ul>
+            {collaborators.map((collaborator: { name: string, role: string }) => 
+              <li>
+                {collaborator.name} ({collaborator.role})
+              </li>
+            )}
+          </ul>
+        </div>
+        <p class="md:absolute bottom-4 right-4">{year}</p>
+      </section>
     </div>
     {
       image ? (
-        <div id="cover" class="relative -mb-6 w-full sm:my-0">
+        <div id="cover" class="relative w-full">
+           <div class="absolute inset-0 bg-gradient-to-b from-black/[1%] via-black/[1%] to-black/[2%] z-10"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
-            class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] md:aspect-[9/4]"
+            class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
         </div>
       ) : null
@@ -102,12 +106,13 @@ const {
     <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
-        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 md:max-w-none px-4 scroll-mt-4 pt-4"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 md:max-w-none scroll-mt-4 md:px-4"
       >
-        <NavBar sections={sections} shouldCollapse={false} /> 
+
+        <NavBar sections={sections} shouldCollapse={false}  /> 
         <div
           class={`
-            prose-td:p-0
+            prose-td:p-0 pt-8 px-4 md:px-0
             prose-sm max-w-5xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
             prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0295rem] dark:prose-h1:tracking-[-0.027rem] prose-h1:mt-[48px] first:prose-h1:mt-0
@@ -116,10 +121,10 @@ const {
             prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
             prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
             prose-a:underline
-            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[59%] prose-code:rounded-[3px] prose-code:px-[3px] prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700 prose-code:py-[1px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[50%] prose-code:rounded-[3px] prose-code:px-[3px] prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700/[52%] prose-code:py-[1px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
             
-            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:m-0
-            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-[18px] prose-ol:m-0
+            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-4 prose-ul:m-0
+            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-4 prose-ol:m-0
             prose-li:m-0
             prose-li:pl-1
             prose-li:leading-5
@@ -127,7 +132,7 @@ const {
             prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
             prose-img:m-0
             prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-            col-span-full md:col-span-3 xl:col-span-2 grid grid-cols-1 gap-y-2 gap-x-4
+            col-span-full md:col-span-3 xl:col-span-2 flex flex-col gap-y-2 gap-x-4
             prose-p:leading-5
           `}
         >

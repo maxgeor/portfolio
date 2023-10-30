@@ -28,8 +28,8 @@ const { title, subsections = null, shouldCollapse, isSubitem = false } = Astro.p
   >
     {title}
     {
-      subsections && shouldCollapse && (
-        <div class="dots flex gap-[3px] transition">
+      subsections && (
+        <div class="dots flex md:hidden gap-[3px] transition">
           {subsections.map(() => (
             <span class="h-0.5 w-0.5 rounded-full bg-neutral-400/[82%] dark:bg-neutral-500" />
           ))}

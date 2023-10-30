@@ -1,5 +1,7 @@
 ---
 import NavList from "./NavList.astro";
+import Button from "../../Button.astro";
+import ChevronLeftIcon from "../../icons/ChevronLeftIcon.astro";
 
 export interface Props {
   sections: {
@@ -9,23 +11,28 @@ export interface Props {
     }[];
   }[];
   shouldCollapse?: boolean;
+  classes?: string;
 }
 
-const { sections, shouldCollapse = true } = Astro.props;
+const { sections, shouldCollapse = true, classes = '' } = Astro.props;
 ---
 
 <nav
   class={`
-    no-scrollbar overflow-y-scroll col-span-full -mb-6 h-screen scroll-smooth pt-4 pb-5 sm:py-5 px-6 sm:px-12 sm:-mb-6 lg:sticky  lg:col-span-1 lg:m-0 lg:p-0 lg:pb-16 lg:top-4 max-w-[220px]
+    overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 md:mt-0 md:px-0 lg:pb-16 top-0 w-full md:max-w-[220px] relative lg:pt-[72px]
+    ${classes}
   `}
 >
+  <a href="/" class="hidden md:flex justify-center items-center absolute top-0 left-0 h-11 w-11 -ml-4 z-10">
+    <ChevronLeftIcon classes="-ml-0.5" />
+  </a>
   <NavList sections={sections} shouldCollapse={shouldCollapse} />
   <div
-    class="absolute top-px left-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-r from-white dark:from-neutral-800 lg:hidden"
+    class="sticky top-0 left-0 z-10 h-5 w-4 shrink-0 bg-gradient-to-r from-white dark:from-black lg:hidden"
   >
   </div>
   <div
-    class="absolute top-px right-0 z-10 h-[60px] w-6 shrink-0 bg-gradient-to-l from-white dark:from-neutral-800 lg:hidden"
+    class="sticky top-0 right-0 z-10 h-5 w-4 shrink-0 bg-gradient-to-l from-white dark:from-black lg:hidden"
   >
   </div>
 </nav>

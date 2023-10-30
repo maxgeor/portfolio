@@ -19,8 +19,7 @@ const { sections, shouldCollapse, isSubsection = false } = Astro.props;
   class={`
   nav-list lg:flex-col gap-x-6 transition transform
   ${isSubsection ? "pl-4 whitespace-normal mt-1.5 mb-0.5" : "gap-y-2 whitespace-nowrap"}
-  ${shouldCollapse ? 'flex flex-col justify-center h-screen' : null}
-  ${shouldCollapse ? isSubsection ? "hidden" : "flex" : "flex"}
+  ${isSubsection ? "hidden md:flex" : "flex"}
 `}
 >
   {
