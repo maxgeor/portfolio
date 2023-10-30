@@ -8,7 +8,7 @@ import Link from "../components/Link.astro";
 <Layout title="Max Georgopoulos">
   <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
     <Header link={{ text: "About", href: "/about" }} />
-    <section class="col-span-full xl:col-start-2 grid grid-cols-3 gap-x-4 gap-y-3 -mt-px">
+    <section class="col-span-full xl:col-start-2 grid md:grid-cols-3 gap-x-4 gap-y-3 -mt-px">
       <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min dark:border-neutral-700 ">
         <h2>Work</h2>
         <select class="bg-transparent text-neutral-500 -mr-[3px]">
@@ -21,21 +21,54 @@ import Link from "../components/Link.astro";
       <Card
         title="Formie"
         href="/work/formie"
-        roles={["Product", "Brand", "Code"]}
         image="/work/formie/preview"
         description="Universal UI for smart contracts."
       />
       <Card
         title="Memiori (coming soon)"
         href="#"
-        roles={["Product", "Brand"]}
         image="/work/memiori/preview"
         description="Refresh for mood journaling app."
       />
       <Card
         title='Wavy'
         href='/work/wavy'
-        roles={["Product", "Code"]}
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
+      <Card
+        title="Formie"
+        href="/work/formie"
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
+      <Card
+        title="Formie"
+        href="/work/formie"
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
         description='Features I built while working at Wavy'
         image="/work/memiori/preview"
       />

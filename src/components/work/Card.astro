@@ -4,12 +4,11 @@ import { stripExtension } from '../../utils/formatting';
 export interface Props {
   href: string;
   title: string;
-  roles: string[];
   description?: string;
   image: string;
 }
 
-const { href, title, roles, description, image } = Astro.props;
+const { href, title, description, image } = Astro.props;
 
 const extensionlessImage = stripExtension(image);
 ---
@@ -17,22 +16,18 @@ const extensionlessImage = stripExtension(image);
 <>
   <a
     href={href}
-    class="group flex flex-col gap-y-1 gap-x-12"
+    class="group flex flex-col gap-1"
   >
-    <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4  lg:col-span-full xl:col-span-6">
-      <!-- <source 
-        srcset={`${extensionlessImage}-2x.png`}
-        media="(min-width: 1280px)"
-      /> -->
-      <img
-        src={`${extensionlessImage}-1x.png`}
-        alt={`Preview mockup of ${title}`}
-        class="absolute inset-0 bottom-auto w-full h-full object-contain select-none dark:brightness-90"
-      />
-    </picture>
-    <div>
-      <h2 class="group-hover:underline">{title}</h2>
-      <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
-    </div>
+  <div>
+    <h2 class="group-hover:underline">{title}</h2>
+    <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
+  </div>
+  <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4  lg:col-span-full xl:col-span-6">
+    <img
+      src={`${extensionlessImage}-1x.png`}
+      alt={`Preview mockup of ${title}`}
+      class="absolute inset-0 bottom-auto w-full h-full object-contain select-none dark:brightness-90"
+    />
+  </picture>
   </a>
 </>
