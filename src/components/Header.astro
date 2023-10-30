@@ -9,15 +9,17 @@ export interface Props {
     classes?: string;
     isExternal?: boolean;
   };
+  hasBorder?: boolean;
   classes?: string;
 }
 
-const { link, classes = "" } = Astro.props;
+const { link, hasBorder = false, classes = "" } = Astro.props;
 ---
 
 <header
   class={`
-    relative col-span-full flex items-center justify-between xl:grid grid-cols-12 gap-6 md:gap-6 pt-6 sm:pt-6 -my-1
+    relative col-span-full flex items-center justify-between xl:grid grid-cols-12 gap-4 pt-4 -my-1
+    ${hasBorder ? 'border-[#D2D2D2] dark:border-neutral-700 pb-3 mb-0' : ''}
     ${classes}
   `}
 >

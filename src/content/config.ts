@@ -5,7 +5,7 @@ const workCollection = defineCollection({
     type: z.string(),
     year: z.number().or(z.string()),
     title: z.string(),
-    tldr: z.array(z.string()),
+    tldr: z.string(),
     sections: z.object({
       title: z.string(),
       subsections: z.object({

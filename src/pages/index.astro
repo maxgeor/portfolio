@@ -6,79 +6,12 @@ import Link from "../components/Link.astro";
 ---
 
 <Layout title="Max Georgopoulos">
-  <div
-    class="relative mx-auto max-w-[1900px] flex grid-cols-12 flex-col gap-6 px-6 sm:px-6 lg:grid"
-  >
+  <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
     <Header link={{ text: "About", href: "/about" }} />
-    <div class="col-span-6 flex flex-col gap-12 xl:col-span-3">
-      <section class="flex flex-col gap-6">
-        <h2
-          class="col-span-full -mb-1 border-t border-[#e6e6e6] pt-1 dark:border-neutral-700 lg:col-span-3"
-        >
-          Projects
-        </h2>
-        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
-          <Link
-            type="project"
-            title="Scope Todo"
-            href="https://www.figma.com/community/widget/1036372982291551669"
-            description="A good ol' todo widget for Figma."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="The Quest Board"
-            href="https://www.lootquestboard.com/"
-            description="Job board for the Loot community."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="Sayings, Forgotten"
-            href="https://sayings-forgotten.maxgeor.repl.co/"
-            description="Collection of sayings with forgotten meanings."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="Dissect Design"
-            href="https://dissect-design-sigma.vercel.app/"
-            description="Collection of design decisions."
-            externalLink={true}
-          />
-        </div>
-      </section>
-      <section class="flex flex-col gap-6">
-        <h2
-          class="col-span-full -mb-1 border-t border-[#e6e6e6] pt-1 dark:border-neutral-700 lg:col-span-3"
-        >
-          Writing
-        </h2>
-        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
-          <Link
-            type="writing"
-            title="Write it"
-            href="/writing/write"
-            description="Jul 2023"
-          />
-          <Link
-            type="writing"
-            title="In defence of bad writing"
-            href="/writing/bad"
-            description="Mar 2022"
-          />
-          <Link
-            type="writing"
-            title="Yes, you can learn to code"
-            href="/writing/yes"
-            description="Feb 2021"
-          />
-        </div>
-      </section>
-    </div>
-      <div class="flex justify-between col-span-full xl:col-span-9 -mb-1 border-t border-[#e6e6e6] pt-1 h-min dark:border-neutral-700 ">
+    <section class="col-span-full xl:col-start-2 grid grid-cols-3 gap-x-4 gap-y-3 -mt-px">
+      <div class="col-span-full flex justify-between border-t border-[#D2D2D2] h-min dark:border-neutral-700 ">
         <h2>Work</h2>
-        <select class="text-neutral-500 -mr-0.5">
+        <select class="bg-transparent text-neutral-500 -mr-0.5">
           <option value="everything">Everything</option>
           <option value="everything">Work</option>
           <option value="everything">Projects</option>
@@ -106,5 +39,70 @@ import Link from "../components/Link.astro";
         description='Features I built while working at Wavy'
         image="/work/memiori/preview"
       />
+    </section>
+    <section class="xl:col-start-1 xl:col-end-2 flex flex-col gap-3 -mt-px">
+      <h2
+        class="border-t border-[#D2D2D2] dark:border-neutral-700 lg:col-span-3"
+      >
+        Projects
+      </h2>
+      <div class="flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
+        <Link
+          type="project"
+          title="Scope Todo"
+          href="https://www.figma.com/community/widget/1036372982291551669"
+          description="A good ol' todo widget for Figma."
+          externalLink={true}
+        />
+        <Link
+          type="project"
+          title="The Quest Board"
+          href="https://www.lootquestboard.com/"
+          description="Job board for the Loot community."
+          externalLink={true}
+        />
+        <Link
+          type="project"
+          title="Sayings, Forgotten"
+          href="https://sayings-forgotten.maxgeor.repl.co/"
+          description="Collection of sayings with forgotten meanings."
+          externalLink={true}
+        />
+        <Link
+          type="project"
+          title="Dissect Design"
+          href="https://dissect-design-sigma.vercel.app/"
+          description="Collection of design decisions."
+          externalLink={true}
+        />
+      </div>
+    </section>
+    <section class="xl:col-start-1 xl:col-end-2 flex flex-col gap-3 -mt-px">
+      <h2
+        class="col-span-full border-t border-[#D2D2D2] dark:border-neutral-700 lg:col-span-3"
+      >
+        Writing
+      </h2>
+      <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-3">
+        <Link
+          type="writing"
+          title="Write it"
+          href="/writing/write"
+          description="Jul 2023"
+        />
+        <Link
+          type="writing"
+          title="In defence of bad writing"
+          href="/writing/bad"
+          description="Mar 2022"
+        />
+        <Link
+          type="writing"
+          title="Yes, you can learn to code"
+          href="/writing/yes"
+          description="Feb 2021"
+        />
+      </div>
+    </section>
   </div>
 </Layout>

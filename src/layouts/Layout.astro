@@ -10,7 +10,7 @@ const {
   title = "Max Georgopoulos",
   description,
   maxWidth = "",
-  backgroundColor = "bg-white dark:bg-neutral-800",
+  backgroundColor = "bg-white dark:bg-black",
 } = Astro.props;
 ---
 
@@ -41,6 +41,7 @@ const {
     class={`
       ${backgroundColor} ${maxWidth}
       text-neutral-800 dark:text-neutral-250 min-h-screen text-sm selection:bg-yellow dark:selection:bg-[#d1d120] selection:text-neutral-950 antialiased mx-auto pb-24
+
     `}
   >
     <slot />

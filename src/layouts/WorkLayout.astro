@@ -2,6 +2,7 @@
 import Layout from "./Layout.astro";
 import Button from "../components/Button.astro";
 import NavBar from "../components/prose/nav/NavBar.astro";
+import Header from "../components/Header.astro";
 import ThemeButton from "../components/ThemeButton.astro";
 import Details from "../components/work/Details.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
@@ -23,8 +24,9 @@ const {
 } = frontmatter;
 ---
 
-<Layout title={title} description={tldr.join(". ")} maxWidth="max-w-none">
-  <main class="relative flex flex-col gap-12 overflow-visible">
+<Layout title={title} description={tldr} maxWidth="max-w-none">
+  <main class="relative flex flex-col gap-4 overflow-visible">
+    <Header  classes="px-4" />
     <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
@@ -48,94 +50,59 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button>
-    <Button
-      tag="a"
-      href="/"
-      id="home-button"
-      ariaLabel="Go back home"
-      classes="fixed top-[14px] sm:top-[38px] left-[12px] sm:left-[33px] md:left-[36px] z-40"
-    >
-      <ChevronLeftIcon />
-    </Button>
-    <ThemeButton
-      padding="p-3"
-      hasOutline={true}
-      invisiblePadding={undefined}
-      classes="fixed top-[14px] sm:top-[38px] right-[12px] sm:right-[32px] md:right-[36px] z-40"
-    />
+    <div class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 lg:grid-cols-4 mb-4">
+      <header class="col-span-full flex justify-between gap-4 border-t h-fit">
+        <h1>{title}</h1>
+        {
+          link ? (
+            <a
+              href={link}
+              target="_blank"
+              class=" -mr-px flex items-center gap-[3px] hover:underline"
+            >
+              See it
+              <UpRightArrowIcon classes="mt-0.5" />
+            </a>
+          ) : null
+        }
+      </header>
+      <p class="col-span-1">{tldr}</p>
+      <div class="pr-4 capitalize">
+        <p>Role</p>
+        <p>{roles.join(", ")}</p>
+      </div>
+      <div class="pr-4 capitalize">
+        <p>Tools</p>
+        <p>{tools.join(", ")}</p>
+      </div>
+      <div class="pr-4 capitalize">
+        <p>Team</p>
+        <ul>
+          {collaborators.map((collaborator: { name: string, role: string }) => 
+            <li>
+              {collaborator.name} ({collaborator.role})
+            </li>
+          )}
+        </ul>
+      </div>
+      <p class="absolute bottom-0 right-4">{year}</p>
+    </div>
     {
       image ? (
-        <div id="cover" class="relative -mb-6 w-full sm:my-0">
-          <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/[3%] from-0% to-10%" />
+        <div id="cover" class="relative -mb-6 w-full sm:my-0 px-4">
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[800px] w-full select-none object-cover object-center dark:brightness-[90%] sm:aspect-[2/1] lg:aspect-[5/2]"
           />
-          <hr class=" border-0 h-px w-full absolute inset-0 top-auto bg-black/[3.25%] dark:bg-black/90" />
         </div>
       ) : null
     }
-    <div class="flex flex-col gap-12 max-w-[1900px] mx-auto w-full">
-      <div
-        class="relative mx-6 grid grid-cols-1 gap-y-6 gap-x-12 border-[#EEE] dark:border-[#333333] sm:mx-12 lg:grid-cols-12 lg:border-b lg:pb-12"
-      >
-        <div class="col-span-full flex justify-between lg:col-span-2">
-          <h1 class="-my-1">{title}</h1>
-          {
-            link ? (
-              <a
-                href={link}
-                target="_blank"
-                class="-my-1 -mr-[3px] flex items-center gap-[3px] hover:underline lg:hidden"
-              >
-                See it
-                <UpRightArrowIcon classes="mt-0.5" />
-              </a>
-            ) : null
-          }
-        </div>
-        {
-          tldr.length === 1 ? (
-            tldr[0]
-          ) : (
-            <ul
-              role="list"
-              class="col-span-full -my-1 flex list-disc flex-col gap-1 pl-5 lg:col-span-4"
-            >
-              {tldr.map((bullet: string) => (
-                <li class="relative block before:absolute before:-left-[22px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          )
-        }
-        <div class="col-span-full -my-1 flex flex-col lg:col-span-4">
-          <Details roles={roles} tools={tools} collaborators={collaborators} />
-        </div>
-        <div
-          class="flex flex-col justify-between gap-2 lg:col-span-2 lg:items-end"
-        >
-          {
-            link ? (
-              <a
-                href={link}
-                target="_blank"
-                class="-my-1 -mr-[3px] hidden items-center gap-[3px] hover:underline lg:flex"
-              >
-                <span class="whitespace-nowrap">See it</span>
-                <UpRightArrowIcon classes="mt-0.5" />
-              </a>
-            ) : null
-          }
-          <span class="-my-1">{year}</span>
-        </div>
-      </div>
+    <div class="flex flex-col gap-4 max-w-[1900px] mx-auto w-full">
       <article
         id="article"
-        class="relative mx-auto grid min-h-screen grid-cols-1 gap-12 overflow-visible sm:max-w-3xl md:grid-cols-12 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-12 scroll-mt-12"
+        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 lg:mx-0 lg:-mt-1 lg:max-w-none lg:px-4 scroll-mt-4"
       >
         <hr
           class="absolute top-0 left-1/2 h-px w-screen -translate-x-1/2 transform border-t border-[#EEE] dark:border-[#333333] lg:hidden"
@@ -144,7 +111,7 @@ const {
         <div
           class={`
             prose-td:p-0
-            prose-sm px-6 sm:px-12 lg:px-0 max-w-5xl mx-auto
+            prose-sm px-6 sm:px-4 lg:px-0 max-w-5xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
             prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0295rem] dark:prose-h1:tracking-[-0.027rem] prose-h1:mt-[48px] first:prose-h1:mt-0
             prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] dark: prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
@@ -160,7 +127,7 @@ const {
             prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
             prose-img:m-0
             prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-            col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-3 gap-x-12
+            col-span-full lg:col-start-3 lg:col-span-8 grid grid-cols-1 md:grid-cols-8 gap-y-3 gap-x-4
           `}
         >
           <slot />
