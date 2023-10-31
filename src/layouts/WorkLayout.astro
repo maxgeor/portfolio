@@ -97,18 +97,18 @@ const {
     {
       image ? (
         <div id="cover" class="relative w-full">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/[1%] via-black/[1.5%] to-black/[2%] z-5"></div>
-          <div class="absolute inset-0 bottom-auto h-px bg-black/[3%] z-10"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/[0.5%] to-black/[1.5%] z-5"></div>
+          <div class="absolute inset-0 bottom-auto h-px bg-black/[5%] z-10"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
-          <div class="absolute inset-0 top-auto h-px bg-black/[3%] z-10"></div>
-        </div>
-      ) : null
-    }
+          <div class="absolute inset-0 top-auto h-px bg-black/[3.25%] z-10"></div> 
+          </div>
+          ) : null
+        }
     <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
