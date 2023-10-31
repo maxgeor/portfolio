@@ -1,10 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import Button from "../components/Button.astro";
-import NavBar from "../components/prose/nav/NavBar.astro";
 import Header from "../components/Header.astro";
-import ThemeButton from "../components/ThemeButton.astro";
-import Details from "../components/work/Details.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
 import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
@@ -52,7 +48,7 @@ const {
     </Button> -->
     <div class="flex flex-col gap-5">
       <Header classes="px-4 sm:px-6" />
-      <section class="relative px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-y-4 gap-x-6 pb-5 -mt-px">
+      <section class="relative px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-y-4 gap-x-6 pb-3 sm:pb-5 -mt-px">
         <div class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
           <h1>{title}</h1>
           {
@@ -102,14 +98,14 @@ const {
       image ? (
         <div id="cover" class="relative w-full">
           <div class="absolute inset-0 bg-gradient-to-b from-black/[1%] via-black/[1.5%] to-black/[2%] z-5"></div>
-          <div class="absolute inset-0 top-auto h-px bg-gradient-to-b from:black/[7%] z-10"></div>
+          <div class="absolute inset-0 bottom-auto h-px bg-black/[3%] z-10"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
-          <div class="absolute inset-0 bottom-auto h-px bg-gradient-to-t from-black/[7%] z-10"></div>
+          <div class="absolute inset-0 top-auto h-px bg-black/[3%] z-10"></div>
         </div>
       ) : null
     }
@@ -120,7 +116,7 @@ const {
       >
         <nav
           class={`
-        flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky md:col-span-1 py-3 sm:py-5 px-4 sm:px-6 md:p-0 md:mt-0 md:pr-4 md:pb-16 top-0 w-full relative
+            flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky md:col-span-1 pt-3 sm:ptq-5 px-4 sm:px-6 md:p-0 md:mt-0 md:pr-4 md:pb-16 top-0 w-full relative
           `}
         >
           <a 
@@ -141,10 +137,10 @@ const {
         </nav>
         <div
           class={`
-            prose-td:p-0 md:pt-[52px] px-4 sm:px-6 md:px-0 
+            prose-td:p-0 pt-10 md:pt-[48px] px-4 sm:px-6 md:px-0 
             prose-sm max-w-5xl 2xl:max-w-2xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
-            prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[28px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0325rem] prose-h1:mt-12 first:prose-h1:mt-0
+            prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[24px] prose-h1:tracking-[-0.0325rem] prose-h1:mt-12 first:prose-h1:mt-0
             prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-4
             prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:-mb-[12px] prose-h3:leading-5 prose-h3:text-neutral-950
             prose-p:col-span-full xl:prose-p:col-start-2 xl:prose-p:col-end-8 prose-p:max-w-prose prose-p:m-0
