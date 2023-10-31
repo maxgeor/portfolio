@@ -158,13 +158,18 @@ const {
 
 <script>
   // Add/remove shadows on home and theme buttons past the cover image on big screens
+  const minWidthToHighlightNavButtons = 768;
+
   const homeButton = document.querySelector('#home-button') as HTMLAnchorElement;
   const themeButton = document.querySelector('#theme-button > div') as HTMLElement;
 
   const handleNavButtonShadows = () => {
     const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
 
-    if (window.innerWidth < 1024 || window.scrollY < coverImage.offsetHeight + 40) {
+    if (
+      window.innerWidth < minWidthToHighlightNavButtons || 
+      window.scrollY < coverImage.offsetHeight + 40
+    ) {
       homeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
       themeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
     } else {
