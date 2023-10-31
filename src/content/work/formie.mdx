@@ -71,7 +71,358 @@ import Carousel from "../../components/prose/Carousel.astro";
 import Footnote from "../../components/prose/Footnote.astro";
 import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
-<TldrSection 
+{/* <TldrSection 
+  problem="Etherscan's frontend sucked."
+  solution="Airtable Forms, but for smart contract actions."
+  decisions={[
+    "Every action gets its own page.",
+    "Only supported one-way actions (two-ways were annoying and not important).",
+    "Made form titles and descriptions open text (so any action could be explained).",
+    "Forced people to confirm trust before submitting (to deter scammers).",
+  ]}
+  tradeoffs={[
+    "Cut editing, let people make unlimited forms instead.",
+    "Only let people customize title & description to simplify flow.",
+  ]}
+/> */}
+
+# Problem
+
+Developers make blockchain apps by...
+
+1. Writing code
+2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
+
+To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
+
+The problem? **Etherscan's frontend sucks**.
+
+- It's a list of technically-named forms
+- It's at the bottom of the page, behind two drawers
+- It doesn’t give guidance, clear errors, or feedback about your transaction.
+
+Using their frontend felt more like running an obstacle course — we knew it could be better.
+
+<Image
+  src="/work/formie/annotated-etherscan-page.png"
+  alt="Etherscan's interface for smart contract actions"
+/>
+
+# Research
+
+## Most actions just need a form
+
+We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
+
+<FootnoteParagraph>
+  Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
+  <Footnote number={1}>
+    Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
+  </Footnote>
+</FootnoteParagraph>
+
+<Image 
+  src="/work/formie/research/forms/etherscan-form-ui.png" 
+  alt="Etherscan's UI for Uniswaps's Delegate method"
+/>
+
+## Etherscan was mostly used for one-way actions
+
+We learned that smart contracts have two kinds of actions:
+
+<table class="text-sm mt-1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="w-fit p-0 !pr-3 pb-3 pt-px">`One-way`</td>
+    <td class="w-fit leading-6 p-0 pb-3">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
+  </tr>
+  <tr>
+    <td class="w-fit p-0 !pr-3 pt-px">`Two-way`</td>
+    <td class="w-fit leading-6 p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
+  </tr>
+</table>
+
+Most projects used Etherscan for one-way actions. When one-ways had their own frontend, they were pretty basic and didn't get much love.
+
+<Carousel
+  slides={[
+    {
+      type: 'video',
+      src: "/work/formie/research/one-ways/mloot-flow",
+    },
+    {
+      type: 'video',
+      src: "/work/formie/research/one-ways/rune-flow",
+    },
+    {
+      type: 'video',
+      src: "/work/formie/research/one-ways/banners-flow",
+    },
+  ]}
+/>
+
+## Projects sacrificed UX to save time
+
+We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
+
+### They used Etherscan as a “good enough” interface
+
+Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
+
+### They knew Etherscan sucked
+
+Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
+
+# Idea
+
+Realizing how smart contracts worked like mini forms gave us an idea: **What if we took common patterns from form builders and applied them to smart contracts?**
+
+We could make huge UX improvements by...
+
+- [Giving every action a dedicated page](#one-page-one-action)
+- [Letting people write copy](#letting-people-write-their-own-titles-and-descriptions) to give context
+- Share clear, thoughtful feedback about transactions.
+
+The form builder pattern worked for a few reasons:
+
+1. One-way actions (which covered most use cases) worked well with form-like layouts.
+3. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
+2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
+
+<Image
+  src="/work/formie/first-idea-for-form-builder.png"
+  alt="First sketch of form builder UI"
+/>
+
+# Process
+
+We worked by doing design and development at the same time.
+
+First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
+
+Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
+
+<Carousel
+  slides={[
+    {
+      type: 'image',
+      src: "/work/formie/process/chunks.png",
+      alt: "Work chunks, sequenced in FigJam",
+    },
+    {
+      type: 'image',
+      src: "/work/formie/process/flow.png",
+      alt: "First breadboard flow",
+    },
+    {
+      type: 'image',
+      src: "/work/formie/process/sketch.png",
+      alt: "Sketch of form page's header",
+    },
+  ]}
+/>
+
+# Challenges
+
+## Shooing scammers
+
+We knew three things from the jump:
+
+1. Scammers would use forms to misrepresent contracts,
+2. We couldn't stop them,
+3. But we had to do something.
+
+[How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
+
+<Image
+  src="/work/formie/challenges/scam.png"
+  alt="Thinking about how to handle bad guys"
+/>
+
+## Communicating technical details
+
+Smart contracts have tons of strange behaviors:
+
+- Transactions cost a bit of money
+- Transactions take time to go through
+- Anyone can make a frontend for any contract (because they're public)
+
+The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
+
+[How do we explain challenging ideas](#letting-people-write-their-own-titles-and-descriptions) without overwhelming people? Which concepts are essential?
+
+<Image
+  src="/work/formie/challenges/explain.png"
+  alt="Thinking about out how to explain stuff"
+/>
+
+## Keeping it flexible
+
+Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
+
+It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
+
+[How do we design a universal interface](#only-supporting-oneway-actions) that serves many brands and actions?
+
+# Key Decisions
+
+## One page, one action
+
+The main departure from Etherscan was limiting forms to a single action.
+
+Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
+
+Linking straight to the action makes it impossible to miss.
+
+<Image
+  src="/work/formie/decisions/one-page.png"
+  alt="Form for Uniswap's Delegate action"
+/>
+
+## Only supporting one-way actions
+
+We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
+
+1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-oneway-actions).
+2. Supporting two-way actions would've made the product harder to use.
+3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
+
+We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
+
+Ditching two-ways axed our scope and got a leaner product out the door.
+
+<Image
+  src="/work/formie/decisions/one-way-actions.png"
+  alt="Form for Uniswap's Delegate action"
+/>
+
+## Letting people write their own titles and descriptions
+
+To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
+
+But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
+
+Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
+
+<Image
+  src="/work/formie/decisions/title-and-description.png"
+  alt="UI for editing title & description"
+/>
+
+## Making people confirm trust
+
+We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
+
+Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
+
+Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
+
+<Image
+  src="/work/formie/decisions/trust.png"
+  alt="Confirmation checkbox at the end of every form"
+/>
+
+# Tradeoffs
+
+Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
+
+By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
+
+<h2 aria-label="Replacing editing with infinite forms">
+  ~~Editing forms~~ Infinite forms
+</h2>
+
+We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits.
+
+Instead of rebuilding, we decided to...
+
+1. Let people make unlimited forms, and
+2. Make forms permanent (for security reasons).
+
+People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
+
+Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
+
+<Carousel
+  slides={[
+    {
+      type: 'image',
+      src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
+      alt: "One-time notice on list page",
+    },
+    {
+      type: 'image',
+      src: "/work/formie/tradeoffs/no-editor/callout.png",
+      alt: "Callout in editor preview",
+    },
+    {
+      type: 'image',
+      src: "/work/formie/tradeoffs/no-editor/new-plan.png",
+      alt: "Plan for new solution",
+    },
+  ]}
+/>
+
+<h2 aria-label="Only letting people customize their title & description">
+  ~~Customize everything~~ Title + description
+</h2>
+
+We wanted every part of a form to be customizable:
+
+- Field titles, descriptions, placeholders
+- Error messages
+- Button labels, etc.
+
+But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
+
+To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they could handle 80%-90% of the clarification.
+
+Limited customization kept form creation straightforward while offering more control than Etherscan.
+
+<Carousel
+  slides={[
+    {
+      type: 'image',
+      src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
+      alt: "Prototype of editor with other editable fields",
+    },
+    {
+      type: 'image',
+      src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
+      alt: "Realization that only title & description would be enough",
+    },
+  ]}
+/>
+
+<h2 aria-label="Limited error messaging">
+  ~~Perfect~~ Limited error messaging
+</h2>
+
+We also planned on translating every error into a clear, helpful message, but Ethereum was too limited.
+
+At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
+
+It was impossible to translate errors consistently, so we settled on...
+
+1. Humanizing basic type errors
+2. Wrapping unknown errors in an honest, generic message.
+
+Compromising on error handling stung, but you can only do so much when working with a black box.
+
+<Image
+  src="/work/formie/tradeoffs/errors/research.png"
+  alt="Research for handling smart contract errors"
+/>
+
+# Result
+
+Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.
+
+Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
+
+Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
+
+{/* <TldrSection 
   problem="Etherscan's frontend sucked."
   solution="Airtable Forms, but for smart contract actions."
   decisions={[
@@ -434,5 +785,5 @@ Despite the usage, we decided to put the product on auto-pilot. After launch, we
 
 Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
 
-</Section>
+</Section> */}
 
