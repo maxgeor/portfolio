@@ -19,17 +19,17 @@ const { sections, shouldCollapse = true, classes = '' } = Astro.props;
 
 <!-- <nav
   class={`
-    border-t border-[#DADADA] dark:border-neutral-700 overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 md:mt-0 md:px-0 lg:pb-16 top-0 w-full relative lg:pt-[72px]
+    border-t border-[#DADADA] dark:border-neutral-700 overflow-auto sm:overflow-scroll no-scrollbar col-span-full sm:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 sm:mt-0 sm:px-0 lg:pb-16 top-0 w-full relative lg:pt-[72px]
     ${classes}
   `}
 > -->
 <nav
   class={`
-    md:border-t border-[#DADADA] dark:border-neutral-700 overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 md:mt-0 md:pl-0 lg:pb-16 top-0 w-full relative lg:pt-[44px]
+    sm:border-t border-[#DADADA] dark:border-neutral-700 overflow-auto sm:overflow-scroll no-scrollbar col-span-full sm:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 sm:mt-0 sm:pl-0 lg:pb-16 top-0 w-full relative lg:pt-[44px]
     ${classes}
   `}
 >
-  <a href="/" class="hidden md:flex justify-center items-center absolute top-0 left-0 h-11 w-11 -ml-4 z-10">
+  <a href="/" class="hidden sm:flex justify-center items-center absolute top-0 left-0 h-11 w-11 -ml-4 z-10">
     <ChevronLeftIcon classes="-ml-0.5" />
   </a>
   <NavList sections={sections} shouldCollapse={shouldCollapse} />

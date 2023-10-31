@@ -79,13 +79,15 @@ const {
         </div>
         <div class="pr-4 capitalize">
           <p>Team</p>
-          <ul>
-            {collaborators.map((collaborator: { name: string, role: string }) => 
-              <li>
-                {collaborator.name} ({collaborator.role})
-              </li>
-            )}
-          </ul>
+          {collaborators?.length > 0 ? (
+            <ul>
+              {collaborators.map((collaborator: { name: string, role: string, href: string }) => 
+                <li>
+                  <a href={collaborator.href}></a> ({collaborator.role})
+                </li>
+              )}
+            </ul>
+          ) : "—"}
         </div>
         <p class="md:absolute bottom-4 right-4">{year}</p>
       </section>
@@ -108,14 +110,14 @@ const {
     <div class="flex flex-col gap-4 w-full md:pt-4">
       <article
         id="article"
-        class="relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible sm:max-w-3xl md:grid-cols-4 md:max-w-none scroll-mt-4 md:px-4"
+        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4"
       >
 
         <NavBar sections={sections} shouldCollapse={false}  /> 
         <div
           class={`
             prose-td:p-0 pt-8 px-4 md:px-0 md:border-t border-[#DADADA] dark:border-neutral-700
-            prose-sm max-w-5xl mx-auto
+            prose-sm max-w-5xl 2xl:max-w-2xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
             prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0325rem] prose-h1:mt-[48px] first:prose-h1:mt-0
             prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] dark: prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-3
