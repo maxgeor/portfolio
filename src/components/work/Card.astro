@@ -1,33 +1,50 @@
 ---
 
 import { stripExtension } from '../../utils/formatting';
+import RightArrowIcon from '../icons/RightArrowIcon.astro';
+import UpRightArrowIcon from '../icons/UpRightArrowIcon.astro';
+
 export interface Props {
+  link: {
+    href: string;
+    target?: '_blank' | '_self' | '_parent' | '_top';
+  }
   href: string;
   title: string;
   description?: string;
   image: string;
+  classes?: string;
 }
 
-const { href, title, description, image } = Astro.props;
+const { link, title, description, image, classes = '' } = Astro.props;
 
 const extensionlessImage = stripExtension(image);
 ---
 
-<>
-  <a
-    href={href}
-    class="group flex flex-col gap-2"
-  >
-  <div>
-    <h2 class="group-hover:underline">{title}</h2>
-    <p class="text-neutral-500 dark:text-neutral-490">{description || ""}</p>
+<a
+  href={link.href}
+  target={link.target || '_self'}
+  class={`group flex flex-col gap-1 ${classes} `}
+>
+  <div class="flex justify-between items-center gap-1">
+    <p>
+      <span class="group-hover:underline mr-1">{title}</span> 
+      <span class="group-hover:opacity-0 group-focus:opacity-0 transition ease-in-out text-neutral-500 dark:text-neutral-490">
+        {description || ""}
+      </span>
+    </p>
+    <span class="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out text-neutral-490">
+      {link.target === '_blank' 
+        ? <UpRightArrowIcon classes="transition mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-0 group-focus:translate-x-0 group-hover:translate-y-0 group-focus:translate-y-0" /> 
+        : <RightArrowIcon classes="transition -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " />
+      }
+    </span>
   </div>
-  <picture class="relative h-0 w-full pt-[calc(1495/2286*100%)] col-span-full sm:col-span-4  lg:col-span-full xl:col-span-6">
+  <picture class="relative h-auto w-full col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
     <img
-      src={`${extensionlessImage}-1x.png`}
-      alt={`Preview mockup of ${title}`}
-      class="absolute inset-0 bottom-auto w-full h-full object-contain select-none dark:brightness-90"
+    src={`${extensionlessImage}-1x.png`}
+    alt={`Preview mockup of ${title}`}
+    class=" w-full h-full object-contain object-top select-none dark:brightness-90 "
     />
   </picture>
-  </a>
-</>
+</a>

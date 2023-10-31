@@ -5,15 +5,15 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="flex grid-cols-4 max-w-[1900px] mx-auto flex-col gap-4 px-4 sm:px-6 lg:grid">
+  <div class="grid grid-cols-4 max-w-[1900px] mx-auto flex-col gap-5 px-4 sm:px-6">
     <Header />
-    <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-700">
+    <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mt-px">
       <h1>{frontmatter.title}</h1>
-      <p class="text-[12px] text-neutral-500 dark:text-neutral-490">
+      <p class="text-[13px] text-neutral-500 dark:text-neutral-490">
         {frontmatter.date}
       </p>
     </aside>
-    <main class="col-span-full lg:col-start-2 lg:col-end-4">
+    <main class="col-span-full xl:col-start-2 xl:col-end-4">
       <div
         class={`
           prose-sm max-w-prose 2xl:mx-auto leading-5 
