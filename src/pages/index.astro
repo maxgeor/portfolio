@@ -7,9 +7,13 @@ import Link from "../components/Link.astro";
 
 <Layout title="Max Georgopoulos">
   <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 lg:grid-cols-4 gap-5 px-4 sm:px-6">
-    <Header link={{ text: "About", href: "/about" }} />
-    <section class="lg:order-last col-span-full lg:col-start-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-6">
-      <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min -mt-px dark:border-neutral-700 ">
+    <Header links={[
+      { text: "Work", href: "/about" },
+      { text: "Writing", href: "/writing" },
+      { text: "About", href: "/about" },
+    ]} />
+    <section id="featured-work" class="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6">
+      <!-- <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min -mt-px dark:border-neutral-700 ">
         <h2>Work</h2>
         <select class="bg-transparent text-neutral-500 -mr-[3px]">
           <option value="everything">Everything</option>
@@ -17,44 +21,49 @@ import Link from "../components/Link.astro";
           <option value="everything">Projects</option>
           <option value="everything">Archive</option>
         </select>
-      </div>
+      </div> -->
         <Card
           title="Formie"
           link={{ href: "/work/formie" }}
           image="/work/formie/cover.png"
           description="Universal UI for smart contracts"
-          classes="col-span-2"
-        />
-        <Card
-          title='KG Handcrafted'
-          link={{ href: "/work/wavy", target: "_blank" }}
-          description='Brand + site for knifemaker'
-          image="/work/kg.png"
+          roles={['Product', 'Brand', 'Dev']}
+          year={2022}
+          featured={true}
         />
         <Card
           title="Memiori"
           link={{ href: "#" }}
           image="/work/memiori/cover-2.png"
           description="Refresh of mood journaling app"
-          classes="col-span-2"
+          year={2023}
+          featured={true}
+        />
+    </section>
+    <section id="other-work" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6"></section>
+    <Card
+          title='KG Handcrafted'
+          link={{ href: "/work/wavy", target: "_blank" }}
+          description='Brand + site for knifemaker'
+          image="/work/kg.png"
         />
         <Card
-          title="Scope Todo"
-          link={{ href: "/work/wavy", target: "_blank" }}
-          image="/work/scope-todo.png"
-          description="Todo widget for Figma"
+        title="Scope Todo"
+        link={{ href: "/work/wavy", target: "_blank" }}
+        image="/work/scope-todo.png"
+        description="Todo widget for Figma"
         />
         <Card
-          title="The Quest Board"
-          link={{ href: "/work/wavy", target: "_blank" }}
-          image="/work/the-quest-board.gif"
-          description="Job board for Loot community"
+        title="Dissect Design"
+        link={{ href: "/work/wavy", target: "_blank" }}
+        image="/work/dissect-design.png"
+        description="Collection of design decisions"
         />
         <Card
-          title="Dissect Design"
-          link={{ href: "/work/wavy", target: "_blank" }}
-          image="/work/dissect-design.png"
-          description="Collection of design decisions"
+        title="The Quest Board"
+        link={{ href: "/work/wavy", target: "_blank" }}
+        image="/work/the-quest-board.gif"
+        description="Job board for Loot community"
         />
         <Card
           title="Sayings, Forgotten"
@@ -68,9 +77,8 @@ import Link from "../components/Link.astro";
           description='Features I built while working at Wavy'
           image="/work/memiori/preview"
         />
-    </section>
-    <div class="flex flex-col gap-5 ">
-      <section class="flex flex-col gap-4">
+    <div class="col-span-1 flex flex-col gap-5 ">
+      <!-- <section class="flex flex-col gap-4">
         <h2
           class="border-t border-[#DADADA] dark:border-neutral-700 lg:col-span-3 -mt-px "
         >
@@ -106,8 +114,7 @@ import Link from "../components/Link.astro";
             externalLink={true}
           />
         </div>
-      </section>
-      <section class="xl:col-start-1 flex flex-col gap-4">
+      </section> -->
         <h2
           class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 lg:col-span-3 -mt-px "
         >
@@ -133,7 +140,6 @@ import Link from "../components/Link.astro";
             description="Feb 2021"
           />
         </div>
-      </section>
     </div>
   </div>
 </Layout>

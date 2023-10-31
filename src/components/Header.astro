@@ -8,16 +8,16 @@ export interface Props {
     href: string;
     classes?: string;
     isExternal?: boolean;
-  };
+  }[];
   classes?: string;
 }
 
-const { link, classes = "" } = Astro.props;
+const { links, classes = "" } = Astro.props;
 ---
 
 <header
   class={`
-    relative col-span-full flex items-center justify-between sm:grid grid-cols-4 gap-6 pt-3 sm:pt-5
+    relative col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 pt-3 sm:pt-5
     ${classes}
   `}
 >
@@ -25,28 +25,24 @@ const { link, classes = "" } = Astro.props;
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
 
-  <div
-    class={`${
-      !link && "justify-self-end"
-    } lg:col-start-2 col-end-5 flex items-center justify-end lg:justify-between gap-3.5 sm:gap-5`}
-  >
-    {
-      link ? (
-        <>
-          <a
-            href={link.href}
-            target={link.isExternal ? "_blank" : undefined}
-            class={`items-center gap-[3px] hover:underline lg:flex ${link.classes}`}
-          >
-            {link.text}
-            {link.isExternal ? (
-              <UpRightArrowIcon classes="mt-0.5 -mr-[3px]" />
-            ) : null}
-          </a>
-        </>
+  <select class=" col-start-3 bg-transparent w-fit -ml-1">
+    <option>Work</option>
+    <option>Writing</option>
+    <option>About</option>
+  </select>
+  <!-- {
+    links ? links.map((link) =>
+      <a
+        href={link.href}
+        target={link.isExternal ? "_blank" : undefined}
+        class={`hidden md:flex items-center gap-[3px] hover:underline ${link.classes}`}
+      >
+        {link.text}
+        {link.isExternal ? (
+          <UpRightArrowIcon classes="mt-0.5 -mr-[3px]" />
+        ) : null}
+      </a>
       ) : null
-    }
-    <ThemeButton />
-  </div> 
-  
+    } -->
+  <ThemeButton classes="absolute top-[18px] sm:top-[26px] right-0" />
 </header>

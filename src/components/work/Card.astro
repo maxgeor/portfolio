@@ -11,36 +11,65 @@ export interface Props {
   title: string;
   description?: string;
   image: string;
+  roles?: string[];
+  year?: number;
+  featured?: boolean;
   classes?: string;
 }
 
-const { link, title, description, image, classes = '' } = Astro.props;
+const { link, title, description, image, roles = [], year = 2023, featured = false, classes = '' } = Astro.props;
 ---
 
 <a
   href={link.href}
   target={link.target || '_self'}
-  class={`group flex flex-col gap-1 ${classes} `}
+  class={`
+    group relative flex flex-col gap-x-4 sm:gap-x-6
+    ${featured ? 'border-t border-neutral-600 col-span-full grid grid-cols-2 md:grid-cols-4 mb-6' : null} 
+    ${classes} 
+  `}
 >
-  <div class="flex items-start justify-between gap-1">
-    <p>
-      <span class="group-hover:underline mr-1">{title}</span> 
-      <span class="group-hover:opacity-0 group-focus:opacity-0 transition ease-in-out text-neutral-500 dark:text-neutral-490">
-        {description || ""}
+  {featured ? (
+    <>
+      <p>
+      <span class="lg:order-1 mr-1">{title}</span> 
+      </p>
+      <p class="lg:order-3 sm:w-full justify-self-end lg:justify-self-start ">
+        {roles.join(', ')}
+      </p>
+      <span class="lg:order-2  ">{description}</span>
+      <p class="self-end lg:self-start  justify-self-end lg:justify-self-start  lg:order-4 ">{year}</p>
+      <div class="z-5 absolute top-1 -right-px">
+        <RightArrowIcon />
+      </div>
+    </>
+    ) : (
+    <div class="flex items-start justify-between gap-1">
+      <p>
+        <span class="group-hover:underline mr-1">{title}</span> 
+        <span class="group-hover:opacity-0 group-focus:opacity-0 transition ease-in-out text-neutral-500 dark:text-neutral-490">
+          {description || ""}
+        </span>
+      </p>
+      <span class="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out text-neutral-490">
+        {link.target === '_blank' 
+          ? <UpRightArrowIcon classes="transition mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-0 group-focus:translate-x-0 group-hover:translate-y-0 group-focus:translate-y-0" /> 
+          : <RightArrowIcon classes="transition -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " />
+        }
       </span>
-    </p>
-    <span class="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out text-neutral-490">
-      {link.target === '_blank' 
-        ? <UpRightArrowIcon classes="transition mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-0 group-focus:translate-x-0 group-hover:translate-y-0 group-focus:translate-y-0" /> 
-        : <RightArrowIcon classes="transition -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " />
-      }
-    </span>
-  </div>
-  <picture class="relative h-auto w-full col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
+    </div>
+  )}
+  <picture class={`
+    order-last relative h-auto max-h-[550px] w-full col-span-full
+    ${featured ? 'mt-3 sm:mt-5' : ''}
+  `}>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
-      class=" w-full h-full object-contain object-top select-none dark:brightness-90 "
+      class={`
+        w-full h-full object-top select-none
+        ${featured ? 'object-cover' : 'object-contain'}
+      `}
     />
   </picture>
 </a>
