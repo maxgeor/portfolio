@@ -18,19 +18,19 @@ const { link, hasBorder = false, classes = "" } = Astro.props;
 
 <header
   class={`
-    relative col-span-full flex items-center justify-between xl:grid grid-cols-12 gap-4 pt-4
+    relative col-span-full flex items-center justify-between sm:grid grid-cols-4 gap-6 pt-5
     ${hasBorder ? 'border-[#DADADA] dark:border-neutral-700 pb-3 mb-0' : ''}
     ${classes}
   `}
 >
-  <div class="col-span-3 flex items-center justify-between gap-6 sm:gap-12">
+  <div class="flex items-center justify-between gap-4">
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
 
   <div
     class={`${
       !link && "justify-self-end"
-    } xl:col-start-4 col-end-13 flex items-center justify-between gap-3.5`}
+    } xl:col-start-2 col-end-5 flex items-center justify-between gap-3.5`}
   >
     {
       link ? (

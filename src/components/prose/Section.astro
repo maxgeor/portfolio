@@ -10,8 +10,8 @@ const { title, isSubsection = false } = Astro.props;
 <section 
   id={toUrlSafeKebabCase(title)} 
   class={`
-    ${isSubsection ? '' : 'mt-14 first:mt-0'}
-    relative flex flex-col gap-3 col-span-full lg:col-start-1 lg:col-end-9 xl:col-start-2 xl:col-end-8 scroll-mt-[72px] sm:scroll-mt-[108px]
+    ${isSubsection ? '' : 'mt-12 first:mt-0'}
+    relative flex flex-col gap-4 col-span-full lg:col-start-1 lg:col-end-9 xl:col-start-2 xl:col-end-8 scroll-mt-[72px] sm:scroll-mt-[108px]
   `}>
   <slot name="heading">
     {isSubsection ? <h2>{title}</h2> : <h1>{title}</h1>}

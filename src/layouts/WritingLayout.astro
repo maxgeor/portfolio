@@ -5,24 +5,24 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="flex grid-cols-12 max-w-[1900px] mx-auto flex-col gap-12 px-6 sm:px-12 lg:grid">
+  <div class="flex grid-cols-4 max-w-[1900px] mx-auto flex-col gap-4 px-4 lg:grid">
     <Header />
-    <aside class="col-span-full -my-1 lg:col-span-3 pb-1">
+    <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-700">
       <h1>{frontmatter.title}</h1>
-      <p class="mt-1 -mb-1 text-[12px] text-neutral-500 dark:text-neutral-490">
+      <p class="text-[12px] text-neutral-500 dark:text-neutral-490">
         {frontmatter.date}
       </p>
     </aside>
-    <main class="col-span-full -my-1.5 lg:col-span-9 xl:col-span-6 mt-1 lg:mt-0">
+    <main class="col-span-full lg:col-start-2 lg:col-end-4">
       <div
         class={`
-          prose-sm max-w-prose 2xl:mx-auto
+          prose-sm max-w-prose 2xl:mx-auto leading-5 
           prose-headings:text-sm prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:leading-6
-          prose-h2:text-[14px] prose-h2:mt-6 prose-h2:mb-3
+          prose-h2:text-[14px] prose-h2:mt-9 prose-h2:leading-5 prose-h2:mb-4
           prose-a:underline
           prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
           prose-code:bg-neutral-190/[85%] dark:prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-200/[81%] dark:prose-code:border-neutral-700/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-          prose-ul:list-disc  
+          prose-ul:list-disc
           prose-ol:list-decimal
         `}
       >

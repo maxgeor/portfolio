@@ -95,21 +95,22 @@ const {
       image ? (
         <div id="cover" class="relative w-full">
           <div class="absolute inset-0 bg-gradient-to-b from-black/[1%] via-black/[1.5%] to-black/[2%] z-5"></div>
+          <div class="absolute inset-0 top-auto h-px bg-gradient-to-b from:black/[7%] z-10"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
+          <div class="absolute inset-0 bottom-auto h-px bg-gradient-to-t from-black/[7%] z-10"></div>
         </div>
       ) : null
     }
     <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
-        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4 border-t"
+        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4 "
       >
-
         <NavBar sections={sections} shouldCollapse={false}  /> 
         <div
           class={`
@@ -133,7 +134,7 @@ const {
             prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
             prose-img:m-0
             prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-            col-span-full sm:col-start-2 lg:col-end-4 flex flex-col gap-y-2 gap-x-4
+            col-span-full sm:col-start-2 lg:col-end-4 flex flex-col gap-y-4 gap-x-4
             prose-p:leading-5
           `}
         >
