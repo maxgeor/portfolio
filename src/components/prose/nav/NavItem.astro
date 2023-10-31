@@ -17,7 +17,7 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
 
 <li
   class={`
-    nav-item relative md:text-xs ${
+    nav-item flex flex-col gap-2 relative md:text-xs ${
     isSubitem ? "sub-item text-xs" : "leading-5"
   }`}
 >

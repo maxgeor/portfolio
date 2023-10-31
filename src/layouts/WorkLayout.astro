@@ -254,29 +254,66 @@ const {
   document.addEventListener("DOMContentLoaded", () => handleNavButtonShadows());
   window.addEventListener('scroll', () => handleNavButtonShadows());
 
-  // Highlight nav link for current section
   window.addEventListener("DOMContentLoaded", () => {
+    let activeElement = null;
+
     const observer = new IntersectionObserver(
-      (entries) =>
+      (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.getAttribute("id");
-          entry.isIntersecting
-            ? document
-                .querySelector(`nav li a[href="#${id}"]`)
-                ?.parentElement?.classList.add("active")
-            : document
-                .querySelector(`nav li a[href="#${id}"]`)
-                ?.parentElement?.classList.remove("active");
-        }),
+          const navItem = document.querySelector(`nav li a[href="#${id}"]`);
+          
+          if (entry.isIntersecting && entry.intersectionRatio > 0.33) {
+            if (activeElement) {
+              activeElement.parentElement?.classList.remove("active");
+            }
+            navItem?.parentElement?.classList.add("active");
+            activeElement = navItem;
+
+            if (navItem.classList.contains('sub-item')) {
+              navItem.parentElement.parentElement.classList.add('active');
+            } else {
+              navItem.parentElement.parentElement.classList.remove('active');
+            }
+          } else if (activeElement === navItem) {
+            navItem?.parentElement?.classList.remove("active");
+            activeElement = null;
+          }
+        });
+      },
       {
-        rootMargin: "-290px",
+        rootMargin: "0px",
+        threshold: 0.33
       }
     );
 
     document
-      .querySelectorAll("section[id]")
-      .forEach((section) => observer.observe(section));
-  });
+        .querySelectorAll('h1[id], h2[id], h3[id]')
+        .forEach((header) => observer.observe(header));
+});
+
+  // window.addEventListener("DOMContentLoaded", () => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) =>
+  //       entries.forEach((entry) => {
+  //         const id = entry.target.getAttribute("id");
+  //         entry.isIntersecting
+  //           ? document
+  //               .querySelector(`nav li a[href="#${id}"]`)
+  //               ?.parentElement?.classList.add("active")
+  //           : document
+  //               .querySelector(`nav li a[href="#${id}"]`)
+  //               ?.parentElement?.classList.remove("active");
+  //       }),
+  //     {
+  //       rootMargin: "-290px",
+  //     }
+  //   );
+
+  //   document
+  //     .querySelectorAll('h1[id], h2[id], h3[id]')
+  //     .forEach((header) => observer.observe(header));
+  // });
 
   // Show and hide back button when clikcing on internal links
   const links = Array.from(document.querySelectorAll("a"));
