@@ -97,15 +97,15 @@ const {
     {
       image ? (
         <div id="cover" class="relative w-full">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/[0.5%] to-black/[1.5%] z-5"></div>
           <div class="absolute inset-0 bottom-auto h-px bg-black/[5%] z-10"></div>
+          <div class="absolute inset-0 bg-black/[1%] z-5"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
-          <div class="absolute inset-0 top-auto h-px bg-black/[3.25%] z-10"></div> 
+          <div class="absolute inset-0 top-auto h-px bg-black/[5%] z-10"></div> 
           </div>
           ) : null
         }
@@ -173,61 +173,12 @@ const {
             pt-7 md:pt-12 px-4 sm:px-6 md:px-0 mx-auto
           `}
         >
-        <!-- <div
-          class={`
-            prose-sm 
-            col-span-full md:col-start-2 xl:col-end-4 max-w-5xl 2xl:max-w-2xl 
-            pt-10 md:pt-[48px] px-4 sm:px-6 md:px-0 mx-auto
-            
-            prose-td:p-0 
-            
-            prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
-
-            prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[24px] prose-h1:tracking-[-0.0325rem] prose-h1:mt-12 first:prose-h1:mt-0
-
-            prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] prose-h2:text-[14px] prose-h2:-mb-1 prose-h2:leading-5 prose-h2:mt-4
-
-            prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:-mb-[12px] prose-h3:leading-5 prose-h3:text-neutral-950
-
-            prose-p:leading-5
-            prose-p:max-w-prose 
-
-            prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
-
-            prose-a:underline
-
-            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[50%] prose-code:rounded-[3px] prose-code:px-[3px] prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700/[52%] prose-code:py-[1px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-
-            prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[21px] prose-ul:m-0
-
-            prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-8 prose-ol:max-w-prose prose-ol:pl-[21px] prose-ol:m-0
-
-            prose-li:m-0
-            prose-li:pl-1
-            prose-li:leading-5
-
-            prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
-            prose-img:m-0
-            prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-          `}
-        > -->
           <slot />
         </div>
       </article>
     </div>
   </main>
 </Layout>
-
-<style>
-  article div .prose-ol > .prose-li { counter-reset: list-counter; }
-  article div .prose-ol > .prose-li { display: block; }
-  article div .prose-ol > .prose-li:before { 
-    content: counter(item) ". ";
-    counter-increment: item;
-    width: 2em;
-    display: inline-block;
-  }
-</style>
 
 <script>
   // Add/remove shadows on home and theme buttons past the cover image on big screens
@@ -263,7 +214,7 @@ const {
           const id = entry.target.getAttribute("id");
           const navItem = document.querySelector(`nav li a[href="#${id}"]`);
           
-          if (entry.isIntersecting && entry.intersectionRatio > 0.33) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.77) {
             if (activeElement) {
               activeElement.parentElement?.classList.remove("active");
             }
@@ -283,7 +234,7 @@ const {
       },
       {
         rootMargin: "0px",
-        threshold: 0.33
+        threshold: 0.77
       }
     );
 
