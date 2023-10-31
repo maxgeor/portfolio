@@ -50,7 +50,6 @@ const {
       <span class="leading-4">Go back</span>
     </Button> -->
     <div class="flex flex-col gap-4">
-
       <Header  classes="px-4" />
       <section class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 md:gap-y-2 md:grid-cols-4 pb-4">
         <div class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
@@ -92,31 +91,29 @@ const {
         <p class="md:absolute bottom-4 right-4">{year}</p>
       </section>
     </div>
-    <!-- <div class="absolute inset-0 bottom-auto h-px bg-black/[3.25%] z-10"></div> -->
     {
       image ? (
         <div id="cover" class="relative w-full">
-          <div class="absolute inset-0 bg-gradient-to-b from-purple-400 via-pink-500 to-red-500 z-5"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-black/[1%] via-black/[1.5%] to-black/[2%] z-5"></div>
           <img
             id="cover-image"
             src={image}
             alt={`Mockup cover image of ${title}`}
             class="aspect-[5/3] max-h-[900px] w-full select-none object-cover object-center sm:aspect-[2/1] md:aspect-[9/4]"
           />
-          </div>
-          ) : null
-        }
-        <!-- <div class="absolute inset-0 top-auto h-px bg-black/[3.25%] z-10"></div> -->
-    <div class="flex flex-col gap-4 w-full md:pt-4">
+        </div>
+      ) : null
+    }
+    <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
-        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4"
+        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4 border-t"
       >
 
         <NavBar sections={sections} shouldCollapse={false}  /> 
         <div
           class={`
-            prose-td:p-0 pt-8 px-4 md:px-0 md:border-t border-[#DADADA] dark:border-neutral-700
+            prose-td:p-0 pt-8 px-4 md:px-0 
             prose-sm max-w-5xl 2xl:max-w-2xl mx-auto
             prose-headings:col-span-full xl:prose-headings:col-start-2 xl:prose-headings:col-end-8 prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:m-0 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
             prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:tracking-[-0.0325rem] prose-h1:mt-[48px] first:prose-h1:mt-0
@@ -136,7 +133,7 @@ const {
             prose-figure:col-span-full prose-figure:mt-1 prose-figure:mb-2 prose-figure:select-none
             prose-img:m-0
             prose-video:col-span-full prose-video:mt-1 prose-video:mb-2 prose-video:select-none	
-            col-span-full md:col-span-3 xl:col-span-2 flex flex-col gap-y-2 gap-x-4
+            col-span-full sm:col-start-2 lg:col-end-4 flex flex-col gap-y-2 gap-x-4
             prose-p:leading-5
           `}
         >
