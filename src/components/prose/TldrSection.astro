@@ -1,0 +1,47 @@
+---
+import Section from './Section.astro';
+
+export interface Props {
+  problem: string, 
+  solution: string,
+  decisions: string[],
+  tradeoffs: string[],
+}
+const { problem, solution, decisions, tradeoffs } = Astro.props;
+---
+<Section title="tldr">
+  <table class="text-sm leading-6 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Problem</p></td>
+      <td class="!pl-6"><p class="pb-4">{problem}</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Solution</p></td>
+      <td class="!pl-6"><p class="pb-4">{solution}</p></td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
+      <td class="!pl-6 pb-4">
+        <ul>
+          {decisions.map((decision) => (
+            <li class="last:pb-4 relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
+              {decision}
+            </li>
+          ))}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="w-4 pr-2 pb-3"><p>Tradeoffs</p></td>
+      <td class="!pl-6">
+        <ul>
+          {tradeoffs.map((tradeoff) => (
+            <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
+              {tradeoff}
+            </li>
+          ))}
+        </ul>
+      </td>
+    </tr>
+  </table>
+</Section>

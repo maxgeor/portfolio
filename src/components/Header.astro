@@ -18,8 +18,8 @@ const { link, hasBorder = false, classes = "" } = Astro.props;
 
 <header
   class={`
-    relative col-span-full flex items-center justify-between sm:grid grid-cols-4 gap-6 pt-5
-    ${hasBorder ? 'border-[#DADADA] dark:border-neutral-700 pb-3 mb-0' : ''}
+    relative col-span-full flex items-center justify-between sm:grid grid-cols-4 gap-6 pt-3 sm:pt-5
+    ${hasBorder ? 'border-[#DADADA] dark:border-neutral-700 pb-5 mb-0' : ''}
     ${classes}
   `}
 >
@@ -30,7 +30,7 @@ const { link, hasBorder = false, classes = "" } = Astro.props;
   <div
     class={`${
       !link && "justify-self-end"
-    } xl:col-start-2 col-end-5 flex items-center justify-between gap-3.5`}
+    } lg:col-start-2 col-end-5 flex items-center justify-end lg:justify-between gap-3.5 sm:gap-5`}
   >
     {
       link ? (

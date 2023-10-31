@@ -6,9 +6,74 @@ import Link from "../components/Link.astro";
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5 px-4 sm:px-6">
+  <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 lg:grid-cols-4 gap-5 px-4 sm:px-6">
     <Header link={{ text: "About", href: "/about" }} />
-    <div class="flex flex-col gap-6 ">
+    <section class="lg:order-last col-span-full lg:col-start-2 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+      <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min -mt-px dark:border-neutral-700 ">
+        <h2>Work</h2>
+        <select class="bg-transparent text-neutral-500 -mr-[3px]">
+          <option value="everything">Everything</option>
+          <option value="everything">Work</option>
+          <option value="everything">Projects</option>
+          <option value="everything">Archive</option>
+        </select>
+      </div>
+      <Card
+        title="Formie"
+        href="/work/formie"
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
+      <Card
+        title="Formie"
+        href="/work/formie"
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
+      <Card
+        title="Formie"
+        href="/work/formie"
+        image="/work/formie/preview"
+        description="Universal UI for smart contracts."
+      />
+      <Card
+        title="Memiori (coming soon)"
+        href="#"
+        image="/work/memiori/preview"
+        description="Refresh for mood journaling app."
+      />
+      <Card
+        title='Wavy'
+        href='/work/wavy'
+        description='Features I built while working at Wavy'
+        image="/work/memiori/preview"
+      />
+    </section>
+    <div class="flex flex-col gap-5 ">
       <section class="flex flex-col gap-4">
         <h2
           class="border-t border-[#DADADA] dark:border-neutral-700 lg:col-span-3 -mt-px "
@@ -74,70 +139,5 @@ import Link from "../components/Link.astro";
         </div>
       </section>
     </div>
-    <section class="col-span-full xl:col-start-2 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
-      <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min -mt-px dark:border-neutral-700 ">
-        <h2>Work</h2>
-        <select class="bg-transparent text-neutral-500 -mr-[3px]">
-          <option value="everything">Everything</option>
-          <option value="everything">Work</option>
-          <option value="everything">Projects</option>
-          <option value="everything">Archive</option>
-        </select>
-      </div>
-      <Card
-        title="Formie"
-        href="/work/formie"
-        image="/work/formie/preview"
-        description="Universal UI for smart contracts."
-      />
-      <Card
-        title="Memiori (coming soon)"
-        href="#"
-        image="/work/memiori/preview"
-        description="Refresh for mood journaling app."
-      />
-      <Card
-        title='Wavy'
-        href='/work/wavy'
-        description='Features I built while working at Wavy'
-        image="/work/memiori/preview"
-      />
-      <Card
-        title="Formie"
-        href="/work/formie"
-        image="/work/formie/preview"
-        description="Universal UI for smart contracts."
-      />
-      <Card
-        title="Memiori (coming soon)"
-        href="#"
-        image="/work/memiori/preview"
-        description="Refresh for mood journaling app."
-      />
-      <Card
-        title='Wavy'
-        href='/work/wavy'
-        description='Features I built while working at Wavy'
-        image="/work/memiori/preview"
-      />
-      <Card
-        title="Formie"
-        href="/work/formie"
-        image="/work/formie/preview"
-        description="Universal UI for smart contracts."
-      />
-      <Card
-        title="Memiori (coming soon)"
-        href="#"
-        image="/work/memiori/preview"
-        description="Refresh for mood journaling app."
-      />
-      <Card
-        title='Wavy'
-        href='/work/wavy'
-        description='Features I built while working at Wavy'
-        image="/work/memiori/preview"
-      />
-    </section>
   </div>
 </Layout>

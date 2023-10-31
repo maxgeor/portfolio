@@ -49,9 +49,9 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button> -->
-    <div class="flex flex-col gap-4">
-      <Header  classes="px-4" />
-      <section class="relative px-4 grid grid-cols-1 gap-4 gap-y-3 md:gap-y-2 md:grid-cols-4 pb-4">
+    <div class="flex flex-col gap-5">
+      <Header classes="px-4 sm:px-6" />
+      <section class="relative px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-y-4 gap-x-6 pb-6 -mt-px">
         <div class="col-span-full flex justify-between gap-4 border-t border-[#DADADA] dark:border-neutral-700 h-min">
           <h1>{title}</h1>
           {
@@ -68,15 +68,15 @@ const {
           }
         </div>
         <p class="col-span-1">{tldr}</p>
-        <div class="pr-4 capitalize">
+        <div class="capitalize">
           <p>Role</p>
           <p>{roles.join(", ")}</p>
         </div>
-        <div class="pr-4 capitalize">
+        <div class="capitalize">
           <p>Tools</p>
           <p>{tools.join(", ")}</p>
         </div>
-        <div class="pr-4 capitalize">
+        <div class="capitalize">
           <p>Team</p>
           {collaborators?.length > 0 ? (
             <ul>
@@ -88,7 +88,7 @@ const {
             </ul>
           ) : "—"}
         </div>
-        <p class="md:absolute bottom-4 right-4">{year}</p>
+        <p class="md:absolute bottom-6 right-6">{year}</p>
       </section>
     </div>
     {

@@ -64,57 +64,27 @@ sections:
   ]
 ---
 
+import TldrSection from "../../components/prose/TldrSection.astro";
 import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import Carousel from "../../components/prose/Carousel.astro";
 import Footnote from "../../components/prose/Footnote.astro";
 import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
 
-
-<Section title="tldr">
-  <table class="text-sm leading-6 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
-    <tr>
-      <td class="w-4 pr-2 pb-3"><p>Problem</p></td>
-      <td class="!pl-4"><p class="pb-3">Etherscan’s frontend sucked.</p></td>
-    </tr>
-    <tr>
-      <td class="w-4 pr-2 pb-3"><p>Solution</p></td>
-      <td class="!pl-4"><p class="pb-3">Airtable Forms, but for smart contract actions.</p></td>
-    </tr>
-    <tr>
-      <td class="w-4 pr-2 pb-3"><p>Decisions</p></td>
-      <td class="!pl-4">
-        <ul>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
-            Every action gets its own page.
-          </li>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
-            Only supported one-way actions (two-ways were annoying and not important).
-          </li>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
-            Made form titles and descriptions open text (so any action could be explained).
-          </li>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pb-3">
-            Forced people to confirm trust before submitting (to deter scammers).
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td class="w-4 pr-2 pb-3"><p>Tradeoffs</p></td>
-      <td class="!pl-4">
-        <ul>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ">
-            Cut editing, let people make unlimited forms instead.
-          </li>
-          <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] pb-0">
-            Only let people customize title & description to simplify flow.
-          </li>
-        </ul>
-      </td>
-    </tr>
-  </table>
-</Section>
+<TldrSection 
+  problem="Etherscan's frontend sucked."
+  solution="Airtable Forms, but for smart contract actions."
+  decisions={[
+    "Every action gets its own page.",
+    "Only supported one-way actions (two-ways were annoying and not important).",
+    "Made form titles and descriptions open text (so any action could be explained).",
+    "Forced people to confirm trust before submitting (to deter scammers).",
+  ]}
+  tradeoffs={[
+    "Cut editing, let people make unlimited forms instead.",
+    "Only let people customize title & description to simplify flow.",
+  ]}
+/>
 
 <Section title="Problem">
   Developers make blockchain apps by...
