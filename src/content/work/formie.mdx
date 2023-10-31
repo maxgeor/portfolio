@@ -69,7 +69,7 @@ import Image from "../../components/prose/Image.astro";
 import Section from "../../components/prose/Section.astro";
 import Carousel from "../../components/prose/Carousel.astro";
 import Footnote from "../../components/prose/Footnote.astro";
-import FootnoteParagraph from "../../components/prose/FootnoteParagraph.astro";
+import FootnotedParagraph from "../../components/prose/FootnotedParagraph.astro";
 
 {/* <TldrSection 
   problem="Etherscan's frontend sucked."
@@ -115,12 +115,12 @@ Using their frontend felt more like running an obstacle course — we knew it co
 
 We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
 
-<FootnoteParagraph>
+<FootnotedParagraph>
   Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
   <Footnote number={1}>
     Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
   </Footnote>
-</FootnoteParagraph>
+</FootnotedParagraph>
 
 <Image 
   src="/work/formie/research/forms/etherscan-form-ui.png" 
@@ -133,12 +133,12 @@ We learned that smart contracts have two kinds of actions:
 
 <table class="text-sm mt-1" cellspacing="0" cellpadding="0">
   <tr>
-    <td class="w-fit p-0 !pr-3 pb-3 pt-px">`One-way`</td>
-    <td class="w-fit leading-6 p-0 pb-3">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
+    <td class="w-fit p-0 !pr-4 !pb-4 pt-px">`One-way`</td>
+    <td class="w-fit p-0 !pb-4">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
   </tr>
   <tr>
-    <td class="w-fit p-0 !pr-3 pt-px">`Two-way`</td>
-    <td class="w-fit leading-6 p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
+    <td class="w-fit p-0 !pr-4 pt-px">`Two-way`</td>
+    <td class="w-fit p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
   </tr>
 </table>
 
@@ -328,9 +328,10 @@ Our priority was speed-to-launch. We focused on shipping something better than t
 
 By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
 
-<h2 aria-label="Replacing editing with infinite forms">
+## ~~Editing forms~~ Infinite forms  
+{/* <h2 aria-label="Replacing editing with infinite forms">
   ~~Editing forms~~ Infinite forms
-</h2>
+</h2> */}
 
 We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits.
 
@@ -464,12 +465,12 @@ Since the improvements didn't make sense to invest time and money into, we decid
   <Section title="Most actions just need a form" isSubsection={true}>
     We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
 
-    <FootnoteParagraph>
+    <FootnotedParagraph>
       Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
       <Footnote number={1}>
         Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
       </Footnote>
-    </FootnoteParagraph>
+    </FootnotedParagraph>
 
     <Image 
       src="/work/formie/research/forms/etherscan-form-ui.png" 
