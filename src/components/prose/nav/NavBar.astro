@@ -10,23 +10,22 @@ export interface Props {
       title: string;
     }[];
   }[];
-  shouldCollapse?: boolean;
   classes?: string;
 }
 
-const { sections, shouldCollapse = true, classes = '' } = Astro.props;
+const { sections, classes = '' } = Astro.props;
 ---
 
 <nav
   class={`
-    overflow-auto sm:overflow-scroll no-scrollbar col-span-full sm:h-screen scroll-smooth lg:sticky lg:col-span-1 px-4 -mt-1 sm:mt-0 sm:pl-0 lg:pb-16 top-0 w-full relative lg:pt-[72px] 
+    flex flex-col items-start justify-start overflow-auto sm:overflow-scroll no-scrollbar col-span-full sm:h-screen scroll-smooth sm:sticky sm:col-span-1 px-4 sm:px-0 -mt-1 sm:mt-0 sm:pl-0 sm:pr-4 sm:pb-16 top-0 w-full relative
     ${classes}
   `}
 >
-  <a href="/" class="hidden sm:flex justify-center items-center absolute top-0 left-0 h-11 w-11 -ml-4 z-10">
-    <ChevronLeftIcon classes="-ml-0.5" />
+  <a href="/" class="hidden sm:flex justify-center items-center p-6 -ml-6 z-10">
+    <ChevronLeftIcon classes="-ml-[3px] -mt-[1px] -mb-[2px]" />
   </a>
-  <NavList sections={sections} shouldCollapse={shouldCollapse} />
+  <NavList sections={sections} />
   <div
     class="sticky top-0 left-0 z-10 h-5 w-4 shrink-0 bg-gradient-to-r from-white dark:from-black lg:hidden"
   >

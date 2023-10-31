@@ -6,10 +6,10 @@ export interface Props {
 const { number, classes = "" } = Astro.props;
 ---
 
-<div class={`xl:absolute top-0 -right-[14rem] xl:w-52 !text-xs flex gap-4 text-neutral-500 dark:text-neutral-490 ${classes}`}>
+<div class={`not-prose xl:absolute top-0 -right-[14rem] xl:w-52 text-xs flex gap-4 text-neutral-500 dark:text-neutral-490 ${classes}`}>
   <div class="relative">
     <div class="absolute top-0 left-0">{number}</div>
-    <div class="flex flex-col gap-3 pl-[22px]">
+    <div class="flex flex-col gap-3 pl-5 sm:pl-6">
       <slot />
     </div>
   </div>

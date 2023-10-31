@@ -12,14 +12,14 @@ export interface Props {
   isSubsection?: boolean;
 }
 
-const { sections, shouldCollapse, isSubsection = false } = Astro.props;
+const { sections, isSubsection = false } = Astro.props;
 ---
 
 <ol
   class={`
-  nav-list lg:flex-col gap-x-6 transition transform max-w-[230px]
-  ${isSubsection ? "pl-4 whitespace-normal mt-1.5 mb-0.5" : "gap-y-2 whitespace-nowrap"}
-  ${isSubsection ? "hidden sm:flex" : "flex"}
+  nav-list md:flex-col gap-x-6 transition transform max-w-[230px]
+  ${isSubsection ? "pl-4 whitespace-normal " : "gap-y-3 whitespace-nowrap"}
+  ${isSubsection ? "hidden md:flex" : "flex"}
 `}
 >
   {

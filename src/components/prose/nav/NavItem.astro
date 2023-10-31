@@ -10,15 +10,14 @@ export interface Props {
       title: string;
     }[];
   }[];
-  shouldCollapse?: boolean;
   isSubitem?: boolean;
 }
-const { title, subsections = null, shouldCollapse, isSubitem = false } = Astro.props;
+const { title, subsections = null, isSubitem = false } = Astro.props;
 ---
 
 <li
   class={`
-    nav-item relative lg:text-xs ${
+    nav-item relative sm:text-xs ${
     isSubitem ? "sub-item text-xs" : "leading-5"
   }`}
 >
@@ -41,7 +40,6 @@ const { title, subsections = null, shouldCollapse, isSubitem = false } = Astro.p
     <NavList 
       sections={subsections} 
       isSubsection={true} 
-      shouldCollapse={shouldCollapse} 
     />}
 </li>
 
