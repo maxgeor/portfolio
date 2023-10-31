@@ -83,7 +83,13 @@ const {
             <ul>
               {collaborators.map((collaborator: { name: string, role: string, href: string }) => 
                 <li>
-                  <a href={collaborator.href}></a> ({collaborator.role})
+                  <a 
+                    href={collaborator.href}
+                    target="_blank"
+                    class="underline" 
+                  >
+                    {collaborator.name}
+                  </a> ({collaborator.role})
                 </li>
               )}
             </ul>
