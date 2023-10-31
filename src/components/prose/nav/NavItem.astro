@@ -17,7 +17,7 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
 
 <li
   class={`
-    nav-item relative sm:text-xs ${
+    nav-item relative md:text-xs ${
     isSubitem ? "sub-item text-xs" : "leading-5"
   }`}
 >
@@ -28,7 +28,7 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
     {title}
     {
       subsections && (
-        <div class="dots flex sm:hidden gap-[3px] transition">
+        <div class="dots flex md:hidden gap-[3px] transition">
           {subsections.map(() => (
             <span class="h-0.5 w-0.5 rounded-full bg-neutral-400/[82%] dark:bg-neutral-500" />
           ))}
