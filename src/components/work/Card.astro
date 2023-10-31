@@ -1,6 +1,4 @@
 ---
-
-import { stripExtension } from '../../utils/formatting';
 import RightArrowIcon from '../icons/RightArrowIcon.astro';
 import UpRightArrowIcon from '../icons/UpRightArrowIcon.astro';
 
@@ -17,8 +15,6 @@ export interface Props {
 }
 
 const { link, title, description, image, classes = '' } = Astro.props;
-
-const extensionlessImage = stripExtension(image);
 ---
 
 <a
@@ -26,7 +22,7 @@ const extensionlessImage = stripExtension(image);
   target={link.target || '_self'}
   class={`group flex flex-col gap-1 ${classes} `}
 >
-  <div class="flex justify-between items-center gap-1">
+  <div class="flex items-start justify-between gap-1">
     <p>
       <span class="group-hover:underline mr-1">{title}</span> 
       <span class="group-hover:opacity-0 group-focus:opacity-0 transition ease-in-out text-neutral-500 dark:text-neutral-490">
@@ -42,9 +38,9 @@ const extensionlessImage = stripExtension(image);
   </div>
   <picture class="relative h-auto w-full col-span-full sm:col-span-4 lg:col-span-full xl:col-span-6">
     <img
-    src={`${extensionlessImage}-1x.png`}
-    alt={`Preview mockup of ${title}`}
-    class=" w-full h-full object-contain object-top select-none dark:brightness-90 "
+      src={image}
+      alt={`Preview mockup of ${title}`}
+      class=" w-full h-full object-contain object-top select-none dark:brightness-90 "
     />
   </picture>
 </a>
