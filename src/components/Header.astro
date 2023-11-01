@@ -3,21 +3,23 @@ import ThemeButton from "./ThemeButton.astro";
 import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
 
 export interface Props {
-  link?: {
-    text: string;
-    href: string;
-    classes?: string;
-    isExternal?: boolean;
-  }[];
   classes?: string;
 }
 
-const { links, classes = "" } = Astro.props;
+const { classes = "" } = Astro.props;
+
+const links = [
+  { href: "/work", text: "Work" },
+  { href: "/writing", text: "Writing" },
+  { href: "/about", text: "About" },
+];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header
   class={`
-    relative col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 pt-3 sm:pt-5
+    relative col-span-full grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4 sm:pt-6 -my-1
     ${classes}
   `}
 >
@@ -25,24 +27,22 @@ const { links, classes = "" } = Astro.props;
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
 
-  <select class=" col-start-3 bg-transparent w-fit -ml-1">
-    <option>Work</option>
-    <option>Writing</option>
-    <option>About</option>
-  </select>
-  <!-- {
-    links ? links.map((link) =>
-      <a
-        href={link.href}
-        target={link.isExternal ? "_blank" : undefined}
-        class={`hidden md:flex items-center gap-[3px] hover:underline ${link.classes}`}
-      >
-        {link.text}
-        {link.isExternal ? (
-          <UpRightArrowIcon classes="mt-0.5 -mr-[3px]" />
-        ) : null}
-      </a>
-      ) : null
-    } -->
-  <ThemeButton classes="absolute top-[18px] sm:top-[26px] right-0" />
+  <div class="lg:col-start-4 flex gap-1 text-neutral-490">
+    {links.map(({ href, text }, index) => (
+      <span>
+        <a
+          href={href}
+          class={`
+            ${currentPath.includes(href) ? "text-neutral-200" : ""}
+            hover:underline -mr-0.5
+          `}
+        >
+          {text}
+        </a>
+        {index < links.length - 1 ? <span>,</span> : null}
+      </span>
+    ))}
+  </div>
+
+  <!-- <ThemeButton classes="absolute top-[18px] sm:top-[26px] right-0" /> -->
 </header>

@@ -3,143 +3,92 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Card from "../components/work/Card.astro";
 import Link from "../components/Link.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative mx-auto max-w-[1900px] grid grid-cols-1 lg:grid-cols-4 gap-5 px-4 sm:px-6">
-    <Header links={[
-      { text: "Work", href: "/about" },
-      { text: "Writing", href: "/writing" },
-      { text: "About", href: "/about" },
-    ]} />
-    <section id="featured-work" class="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6">
-      <!-- <div class="col-span-full flex justify-between border-t border-[#DADADA] h-min -mt-px dark:border-neutral-700 ">
-        <h2>Work</h2>
-        <select class="bg-transparent text-neutral-500 -mr-[3px]">
-          <option value="everything">Everything</option>
-          <option value="everything">Client</option>
-          <option value="everything">Projects</option>
-          <option value="everything">Archive</option>
-        </select>
-      </div> -->
-        <Card
-          title="Formie"
-          link={{ href: "/work/formie" }}
-          image="/work/formie/cover.png"
-          description="Universal UI for smart contracts"
-          roles={['Product', 'Brand', 'Dev']}
-          year={2022}
-          featured={true}
-        />
-        <Card
-          title="Memiori"
-          link={{ href: "#" }}
-          image="/work/memiori/cover-2.png"
-          description="Refresh of mood journaling app"
-          year={2023}
-          featured={true}
-        />
-    </section>
-    <section id="other-work" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6"></section>
+  <div class="relative mx-auto max-w-[1900px] grid grid-cols-4 gap-6 px-4 sm:px-6">
+    <Header />
     <Card
-          title='KG Handcrafted'
-          link={{ href: "/work/wavy", target: "_blank" }}
-          description='Brand + site for knifemaker'
-          image="/work/kg.png"
-        />
-        <Card
-        title="Scope Todo"
-        link={{ href: "/work/wavy", target: "_blank" }}
-        image="/work/scope-todo.png"
-        description="Todo widget for Figma"
-        />
-        <Card
-        title="Dissect Design"
-        link={{ href: "/work/wavy", target: "_blank" }}
-        image="/work/dissect-design.png"
-        description="Collection of design decisions"
-        />
-        <Card
-        title="The Quest Board"
-        link={{ href: "/work/wavy", target: "_blank" }}
-        image="/work/the-quest-board.gif"
-        description="Job board for Loot community"
-        />
-        <Card
-          title="Sayings, Forgotten"
-          link={{ href: "/work/wavy", target: "_blank" }}
-          image="/work/sayings-forgotten.gif"
-          description="Misremembered sayings"
-        />
-        <Card
-          title='Wavy'
-          link={{ href: "/work/wavy" }}
-          description='Features I built while working at Wavy'
-          image="/work/memiori/preview"
-        />
-    <div class="col-span-1 flex flex-col gap-5 ">
-      <!-- <section class="flex flex-col gap-4">
-        <h2
-          class="border-t border-[#DADADA] dark:border-neutral-700 lg:col-span-3 -mt-px "
-        >
-          Projects
-        </h2>
-        <div class="flex flex-col lg:col-span-9 xl:col-span-3 gap-4">
-          <Link
-            type="project"
-            title="Scope Todo"
-            href="https://www.figma.com/community/widget/1036372982291551669"
-            description="A good ol' todo widget for Figma."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="The Quest Board"
-            href="https://www.lootquestboard.com/"
-            description="Job board for the Loot community."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="Sayings, Forgotten"
-            href="https://sayings-forgotten.maxgeor.repl.co/"
-            description="Collection of sayings with forgotten meanings."
-            externalLink={true}
-          />
-          <Link
-            type="project"
-            title="Dissect Design"
-            href="https://dissect-design-sigma.vercel.app/"
-            description="Collection of design decisions."
-            externalLink={true}
-          />
-        </div>
-      </section> -->
-        <h2
-          class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 lg:col-span-3 -mt-px "
-        >
-          Writing
-        </h2>
-        <div class="col-span-full flex flex-col lg:col-span-9 xl:col-span-3 gap-4">
-          <Link
-            type="writing"
-            title="Write it"
-            href="/writing/write"
-            description="Jul 2023"
-          />
-          <Link
-            type="writing"
-            title="In defence of bad writing"
-            href="/writing/bad"
-            description="Mar 2022"
-          />
-          <Link
-            type="writing"
-            title="Yes, you can learn to code"
-            href="/writing/yes"
-            description="Feb 2021"
-          />
-        </div>
+      title="Formie"
+      link={{ href: "/work/formie" }}
+      image="/work/formie/cover.png"
+      description="Universal UI for smart contracts"
+      roles={['Product', 'Brand', 'Dev']}
+      year={2022}
+      featured={true}
+    />
+    <Card
+      title="Memiori"
+      link={{ href: "#" }}
+      image="/work/memiori/cover-2.png"
+      description="Refresh of mood journaling app"
+      roles={['Product', 'Brand']}
+      year={2023}
+      featured={true}
+    />
+    <h2
+      class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mb-1"
+    >
+      Work
+    </h2>
+    <Card
+      title='KG Handcrafted'
+      link={{ href: "/work/wavy", target: "_blank" }}
+      description='Brand + site for knifemaker'
+      image="/work/kg.png"
+    />
+    <Card
+      title="Scope Todo"
+      link={{ href: "/work/wavy", target: "_blank" }}
+      image="/work/scope-todo.png"
+      description="Todo widget for Figma"
+    />
+    <Card
+      title="Dissect Design"
+      link={{ href: "/work/wavy", target: "_blank" }}
+      image="/work/dissect-design.png"
+      description="Collection of design decisions"
+    />
+    <Card
+      title="The Quest Board"
+      link={{ href: "/work/wavy", target: "_blank" }}
+      image="/work/the-quest-board.gif"
+      description="Job board for Loot community"
+    />
+    <Card
+      title="Sayings, Forgotten"
+      link={{ href: "/work/wavy", target: "_blank" }}
+      image="/work/sayings-forgotten.gif"
+      description="Misremembered sayings"
+    />
+    <Card
+      title='Wavy'
+      link={{ href: "/work/wavy" }}
+      description='Features I built while working at Wavy'
+      image="/work/memiori/preview"
+    />
+    <h2 class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mb-1">
+      Writing
+    </h2>
+    <Link
+      type="writing"
+      title="Write it"
+      href="/writing/write"
+      description="Jul 2023"
+    />
+    <Link
+      type="writing"
+      title="In defence of bad writing"
+      href="/writing/bad"
+      description="Mar 2022"
+    />
+    <Link
+      type="writing"
+      title="Yes, you can learn to code"
+      href="/writing/yes"
+      description="Feb 2021"
+    />
     </div>
   </div>
 </Layout>
