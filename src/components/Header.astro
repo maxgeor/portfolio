@@ -27,13 +27,28 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
 
-  <div class="lg:col-start-4 flex gap-1 text-neutral-490">
+  {links.map(({ href, text }, index) => (
+    <a
+      href={href}
+      class={`
+        hidden lg:inline-block hover:underline -mr-0.5
+        ${currentPath.includes(href) || currentPath === "/"  
+          ? "text-neutral-50" 
+          : "text-neutral-490"
+        }
+      `}
+    >
+      {text}
+    </a>
+  ))}
+
+  <div class="lg:hidden lg:col-start-4 flex gap-1 ">
     {links.map(({ href, text }, index) => (
       <span>
         <a
           href={href}
           class={`
-            ${currentPath.includes(href) ? "text-neutral-200" : ""}
+            ${currentPath.includes(href) ? "text-neutral-50" : "text-neutral-490"}
             hover:underline -mr-0.5
           `}
         >
