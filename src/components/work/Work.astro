@@ -10,10 +10,6 @@ export interface Props {
   title: string;
   description?: string;
   image: string;
-  roles?: string[];
-  year?: number;
-  featured?: boolean;
-  isComingSoon?: boolean;
   classes?: string;
 }
 
@@ -21,11 +17,7 @@ const {
   link, 
   title, 
   description, 
-  image, 
-  roles = [], 
-  year = 2023, 
-  featured = false, 
-  isComingSoon = false,
+  image,
   classes = '' 
 } = Astro.props;
 ---
@@ -34,79 +26,36 @@ const {
   href={link.href}
   target={link.target || '_self'}
   class={`
-    group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column
-    ${featured 
-      ? 'border-t border-neutral-700 col-span-full' 
-      : 'col-span-full sm:col-span-2 -mt-1'
-    } 
-    ${isComingSoon && 'cursor-not-allowed'}
+    group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column col-span-full sm:col-span-2
     ${classes} 
   `}
 >
-{featured ? (
-    <>
-      <p class="lg:order-1">
-        {title}
-        {isComingSoon && (
-          <span class="md:hidden ml-1 text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
-            (Coming soon)
-          </span>
-        )}
-      </p>
-      <p class="lg:order-3">{roles.join(', ')}</p>
-      <p class="lg:order-2 my-0.5 leading-4">{description}</p>
-      <p class="lg:order-4 self-end">{year}</p>
-      
-      <div 
-        class="hidden md:block z-5 absolute top-0 right-0"
-      >
-      {isComingSoon ? (
-        <span class="text-neutral-500 dark:text-neutral-490 my-0.5">
-          Coming soon
-        </span>
-      ) : (
-        <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
-      )}
-    </div>
-    </>
-  ) : (
-    <div class="lg:absolute inset-0 bottom-auto lg:opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 col-span-full bg-white dark:bg-[#111] lg:pb-1">
-      <p class="w-full">
-        <span class="mr-1">{title}</span> 
-        <span class="text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
-          {description || ""}
-        </span>
-      </p>
-      <span 
-        class="absolute top-1 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
-      >
-        {link.target === '_blank' ? (
-          <UpRightArrowIcon 
-            classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
-          /> 
-        ) : (
-          <RightArrowIcon 
-            classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
-          />
-        )}
+  <div class="lg:absolute inset-0 bottom-auto lg:opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 col-span-full bg-white dark:bg-[#131313] lg:pb-1 -mt-1 mb-1">
+    <p class="w-full">
+      <span class="mr-1">{title}</span> 
+      <span class="text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
+        {description || ""}
       </span>
-    </div>
-  )}
-  <picture class={`
-    order-last relative h-auto col-span-full
-    ${featured 
-      ? 'aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6' 
-      : 'mt-1 '
-    }
-    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
-  `}>
+    </p>
+    <span 
+      class="absolute top-1 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
+    >
+      {link.target === '_blank' ? (
+        <UpRightArrowIcon 
+          classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
+        /> 
+      ) : (
+        <RightArrowIcon 
+          classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
+        />
+      )}
+    </span>
+  </div>
+  <picture class='order-last relative h-auto col-span-full'>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
-      class={`
-        w-full h-full object-top select-none
-        ${featured ? 'object-cover' : 'object-contain'}
-      `}
+      class='w-full h-full object-top select-none object-contain'
     />
   </picture>
 </a>

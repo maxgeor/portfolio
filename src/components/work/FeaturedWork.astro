@@ -1,0 +1,70 @@
+---
+import RightArrowIcon from '../icons/RightArrowIcon.astro';
+import UpRightArrowIcon from '../icons/UpRightArrowIcon.astro';
+
+export interface Props {
+  link: {
+    href: string;
+    target?: '_blank' | '_self' | '_parent' | '_top';
+  };
+  title: string;
+  description: string;
+  image: string;
+  roles: string[];
+  year: number;
+  isComingSoon?: boolean;
+  classes?: string;
+}
+
+const { 
+  link, 
+  title, 
+  description, 
+  image, 
+  roles = [], 
+  year = 2023,
+  isComingSoon = false,
+  classes = '' 
+} = Astro.props;
+---
+
+<a
+  href={link.href}
+  target={link.target || '_self'}
+  class={`
+    group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column border-t border-neutral-700 col-span-full
+    ${isComingSoon && 'cursor-not-allowed'}
+    ${classes} 
+  `}
+>
+  <p class="lg:order-1">
+    {title}
+    {isComingSoon && (
+      <span class="md:hidden ml-1 text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
+        (Coming soon)
+      </span>
+    )}
+  </p>
+  <p class="lg:order-3">{roles.join(', ')}</p>
+  <p class="lg:order-2 my-0.5 leading-4">{description}</p>
+  <p class="lg:order-4 self-end">{year}</p>
+  <div class="hidden md:block z-5 absolute top-0 right-0">
+    {isComingSoon ? (
+      <span class="text-neutral-500 dark:text-neutral-490 my-0.5">
+        Coming soon
+      </span>
+    ) : (
+      <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
+    )}
+  </div>
+  <picture class={`
+    order-last relative h-auto col-span-full aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6
+    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
+  `}>
+    <img
+      src={image}
+      alt={`Preview mockup of ${title}`}
+      class='w-full h-full object-top select-none object-cover'
+    />
+  </picture>
+</a>
