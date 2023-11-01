@@ -25,7 +25,7 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
   class={`
     group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit
     ${featured 
-      ? 'border-t border-neutral-700 col-span-full' 
+      ? 'border-t border-neutral-600 col-span-full' 
       : 'col-span-full sm:col-span-2 lg:col-span-1 -mt-1'
     } 
     ${classes} 
@@ -65,7 +65,8 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
     </div>
   )}
   <picture class={`
-    order-last relative h-auto max-h-[550px] w-full col-span-full mt-1 
+    order-last relative h-auto max-h-[550px] w-full col-span-full
+    ${featured ? 'mt-2 lg:mt-1' : 'mt-1'}
   `}>
     <img
       src={image}

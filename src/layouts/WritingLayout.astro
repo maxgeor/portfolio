@@ -7,7 +7,7 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <div class="grid grid-cols-4 max-w-[1900px] mx-auto flex-col gap-5 px-4 sm:px-6">
     <Header />
-    <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mt-px">
+    <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-600 -mt-px">
       <h1>{frontmatter.title}</h1>
       <p class="text-[13px] text-neutral-500 dark:text-neutral-490">
         {frontmatter.date}
@@ -16,12 +16,12 @@ const { frontmatter } = Astro.props;
     <main class="col-span-full xl:col-start-2 xl:col-end-4">
       <div
         class={`
-          prose-sm max-w-prose 2xl:mx-auto leading-5 
+          prose-sm max-w-prose 2xl:mx-auto leading-5 text-neutral-250
           prose-headings:text-sm prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:leading-6
           prose-h2:text-[14px] prose-h2:mt-9 prose-h2:leading-5 prose-h2:mb-4
           prose-a:underline
           prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
-          prose-code:bg-neutral-190/[85%] dark:prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-200/[81%] dark:prose-code:border-neutral-700/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
+          prose-code:bg-neutral-190/[85%] dark:prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-200/[81%] dark:prose-code:border-neutral-600/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
           prose-ul:list-disc
           prose-ol:list-decimal
         `}
