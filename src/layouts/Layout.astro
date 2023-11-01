@@ -41,7 +41,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-      text-neutral-900 dark:text-neutral-50 min-h-screen text-sm selection:bg-yellow dark:selection:bg-[#d1d120] selection:text-neutral-950 antialiased mx-auto pb-24
+      text-neutral-900 dark:text-neutral-50 min-h-screen text-sm selection:bg-yellow dark:selection:bg-yellow selection:text-neutral-950 antialiased mx-auto pb-24
     `}
   >
     <slot />
@@ -95,8 +95,12 @@ const {
   a:focus-visible {
     outline: none;
     outline: solid 2px #3a7ff1;
-    border-radius: 1px;
+    border-radius: 0px;
     outline-offset: 4px;
+  }
+  
+  .dark a:focus-visible {
+    outline: solid 2px #ffff00;
   }
 
   tr:last-child > td {
