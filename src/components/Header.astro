@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="hover:underline">Max Georgopoulos</a>
   </div>
 
-  {links.map(({ href, text }, index) => (
+  {links.map(({ href, text }) => (
     <a
       href={href}
       class={`
@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
     </a>
   ))}
 
-  <div class="flex md:hidden justify-self-end gap-1 text-neutral-490">
+  <div class="flex sm:justify-self-end md:hidden col-start-2 gap-1 text-neutral-490">
     {links.map(({ href, text }, index) => (
       <span>
         <a
@@ -60,8 +60,8 @@ const currentPath = Astro.url.pathname;
         {index < links.length - 1 ? (
           <span class={currentPath === "/" ? "text-neutral-50" : 'text-neutral-490'}>,</span>
         ) : null}
-      </span>
-    ))}
+        </span>
+        ))}
   </div>
 
   <!-- <ThemeButton classes="absolute top-[18px] sm:top-[26px] right-0" /> -->

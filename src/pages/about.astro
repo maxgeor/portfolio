@@ -5,29 +5,21 @@ import SocialLinks from "../components/SocialLinks.astro";
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="col-span-full grid grid-cols-4 gap-6 px-4 sm:px-6 max-w-[1900px] mx-auto">
+  <div class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-6  mx-auto">
     <Header />
-      <div class="hidden lg:flex flex-col gap-6">
-        <img
-          src="/me.jpeg"
-          alt="my face"
-          class="mx-auto aspect-square w-full max-w-sm lg:max-w-none"
-        />
-        <SocialLinks />
-      </div>
-      <img
-        src="/me.jpeg"
-        alt="my face"
-        class="lg:hidden mx-auto aspect-square w-full max-w-sm lg:max-w-none"
-      />
-      <p class="md:col-start-2 md:col-end-4 mx-auto max-w-prose lg:mx-0 xl:basis-3/4">
-        Yo! I'm a designer and developer based out of Toronto, but I bum
-        around different places. I believe that the boundary between design
-        and engineering is artificial — you get the best results by blending
-        the two. Lately, I've been inspired by Ryan Singer's design
-        techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-        Homme Plissé.
-      </p>
-      <SocialLinks classes="lg:hidden" />
-    </div>
+    <img
+      src="/me.jpeg"
+      alt="my face"
+      class="col-span-full md:col-start-1 md:col-end-2 mx-auto aspect-square w-full "
+    />
+    <SocialLinks classes="col-span-full md:col-span-1 md:col-start-1 md:col-end-2 order-last" />
+    <p class="-my-1 col-span-full md:col-start-2 md:col-end-4 mx-auto max-w-prose lg:mx-0 xl:basis-3/4">
+      Yo! I'm a designer and developer based out of Toronto, but I bum
+      around different places. I believe that the boundary between design
+      and engineering is artificial — you get the best results by blending
+      the two. Lately, I've been inspired by Ryan Singer's design
+      techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+      Homme Plissé.
+    </p>
+    
 </Layout>

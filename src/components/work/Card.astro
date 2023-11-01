@@ -16,7 +16,16 @@ export interface Props {
   classes?: string;
 }
 
-const { link, title, description, image, roles = [], year = 2023, featured = false, classes = '' } = Astro.props;
+const { 
+  link, 
+  title, 
+  description, 
+  image, 
+  roles = [], 
+  year = 2023, 
+  featured = false, 
+  classes = '' 
+} = Astro.props;
 ---
 
 <a
@@ -25,8 +34,8 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
   class={`
     group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit
     ${featured 
-      ? 'border-t border-neutral-600 col-span-full' 
-      : 'col-span-full sm:col-span-2  -mt-1'
+      ? 'border-t border-neutral-700 col-span-full' 
+      : 'col-span-full sm:col-span-2 -mt-1'
     } 
     ${classes} 
   `}

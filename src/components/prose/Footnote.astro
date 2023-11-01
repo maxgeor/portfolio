@@ -7,12 +7,12 @@ const { number, classes = "" } = Astro.props;
 ---
 
 <span class={`
-  not-prose xl:absolute top-0 -right-[14rem] xl:w-52 text-xs text-neutral-500 dark:text-neutral-490 
+  flex not-prose xl:absolute top-0 -right-[233px] xl:w-52 text-xs text-neutral-490 dark:text-neutral-490 
   ${classes}
 `}>
-  <span class="relative">
+  <span class="relative flex">
     <span class="absolute top-0 left-0">{number}</div>
-    <span class="pl-4 sm:pl-6">
+    <span class="pl-4 xl:pl-6">
       <slot />
     </span>
   </span>
