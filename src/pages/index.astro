@@ -1,15 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Card from "../components/work/Card.astro";
-import Link from "../components/Link.astro";
-import SocialLinks from "../components/SocialLinks.astro";
+import Work from "../components/work/Work.astro";
+import Writing from "../components/Writing.astro";
+
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('work');
+const writings = await getCollection('writing');
 ---
 
 <Layout title="Max Georgopoulos">
   <div class="relative mx-auto  grid grid-cols-4 gap-6 px-4 sm:px-6">
     <Header />
-    <Card
+    <Work
       title="Formie"
       link={{ href: "/work/formie" }}
       image="/work/formie/cover.png"
@@ -18,7 +22,7 @@ import SocialLinks from "../components/SocialLinks.astro";
       year={2022}
       featured={true}
     />
-    <Card
+    <Work
       title="Memiori"
       link={{ href: "#" }}
       image="/work/memiori/cover-2.png"
@@ -26,18 +30,19 @@ import SocialLinks from "../components/SocialLinks.astro";
       roles={['Product', 'Brand']}
       year={2023}
       featured={true}
+      isComingSoon={true}
     />
     <h2 class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mb-1">
       Work
     </h2>
     <div class="col-span-full columns-1 md:columns-2 gap-6 space-y-5 lg:space-y-6">
-      <Card
+      <Work
         title='KG Handcrafted'
         link={{ href: "/work/wavy", target: "_blank" }}
         description='Brand + site for knifemaker'
         image="/work/kg.png"
       />
-      <Card
+      <Work
         title="Dissect Design"
         link={{ 
           href: "https://dissect-design-sigma.vercel.app/", 
@@ -46,7 +51,7 @@ import SocialLinks from "../components/SocialLinks.astro";
         image="/work/dissect-design.png"
         description="Collection of design decisions"
       />
-      <Card
+      <Work
         title="Scope Todo"
         link={{ 
           href: "https://www.figma.com/community/widget/1036372982291551669", 
@@ -55,7 +60,7 @@ import SocialLinks from "../components/SocialLinks.astro";
         image="/work/scope-todo.png"
         description="Todo widget for Figma"
       />
-      <Card
+      <Work
         title="The Quest Board"
         link={{ 
           href: "https://www.lootquestboard.com/", 
@@ -64,7 +69,7 @@ import SocialLinks from "../components/SocialLinks.astro";
         image="/work/the-quest-board.gif"
         description="Job board for Loot community"
       />
-      <Card
+      <Work
         title="Sayings, Forgotten"
         link={{ 
           href: "https://sayings-forgotten.maxgeor.repl.co/", 
@@ -74,27 +79,18 @@ import SocialLinks from "../components/SocialLinks.astro";
         description="Collection of misremembered sayings"
       />
     </div>
-    <h2 class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mb-1">
+    <h2 class="col-span-full border-t border-[#DADADA] dark:border-neutral-700 -mb-2">
       Writing
     </h2>
-    <Link
-      type="writing"
-      title="Write it"
-      href="/writing/write"
-      description="Jul 2023"
-    />
-    <Link
-      type="writing"
-      title="In defence of bad writing"
-      href="/writing/bad"
-      description="Mar 2022"
-    />
-    <Link
-      type="writing"
-      title="Yes, you can learn to code"
-      href="/writing/yes"
-      description="Feb 2021"
-    />
+    <div id="writings" class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-x-6">
+      {writings?.map(writing => (
+        <Writing
+          title={writing.data.title}
+          href={`/writing/${writing.slug}`}
+          date={writing.data.date}
+        />
+      ))}
+    </div>
     </div>
   </div>
 </Layout>
