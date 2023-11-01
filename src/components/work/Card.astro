@@ -37,7 +37,7 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
       <p class="lg:order-3">{roles.join(', ')}</p>
       <p class="lg:order-2 my-0.5 leading-4">{description}</p>
       <p class="lg:order-4 self-end">{year}</p>
-      <div class="hidden xs:block z-5 absolute top-1 right-0">
+      <div class="hidden xs:block z-5 absolute top-1 right-0 transform group-hover:translate-x-0.5 transition">
         <RightArrowIcon />
       </div>
     </>
@@ -65,7 +65,7 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
     </div>
   )}
   <picture class={`
-    order-last relative h-auto col-span-full group-hover:brightness-[96%] transition
+    order-last relative h-auto col-span-full group-hover:brightness-[95%] transition
     ${featured 
       ? 'aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6' 
       : 'mt-1'
