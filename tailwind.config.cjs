@@ -8,7 +8,6 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: ['untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
-			// sans: ['untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
 			serif: ["Times New Roman", 'Times', 'Georgia', 'Cambria', 'serif'],
 			mono: ["Berkeley Mono", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
     },
@@ -24,7 +23,7 @@ module.exports = {
 					250: '#C5C5C5',
 					300: '#B4B4B4',
 					400: '#909090',
-					490: '#757575',
+					490: '#7C7C7C',
 					500: '#767676',
 					700: '#3c3c3c',
 					710: '#2d2d2d',
