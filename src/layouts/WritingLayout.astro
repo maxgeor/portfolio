@@ -8,12 +8,12 @@ const { frontmatter } = Astro.props;
   <div class="grid grid-cols-4 max-w-[1900px] mx-auto flex-col gap-5 px-4 sm:px-6">
     <Header />
     <aside class="col-span-full border-t border-[#DADADA] dark:border-neutral-600">
-      <h1>{frontmatter.title}</h1>
+      <h1 class="basis-1/4">{frontmatter.title}</h1>
       <p class="text-[13px] text-neutral-500 dark:text-neutral-490">
         {frontmatter.date}
       </p>
     </aside>
-    <main class="col-span-full xl:col-start-2 xl:col-end-4">
+    <main class="col-span-full md:col-start-2 xl:col-end-4">
       <div
         class={`
           prose-sm max-w-prose 2xl:mx-auto leading-5 text-neutral-250
