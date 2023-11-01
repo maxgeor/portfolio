@@ -13,7 +13,7 @@ const extensionlessSrc = stripExtension(src);
 
 <div class="relative">
   <video
-    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#ebebeb] rounded-md dark:brightness-90 select-none ${classes}`}
+    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#ebebeb] select-none ${classes}`}
     poster={extensionlessSrc + ".png"}
     playsinline
     autoplay
@@ -54,7 +54,6 @@ const extensionlessSrc = stripExtension(src);
     const pauseVideo = () => {
       video.pause();
       video.classList.add("brightness-75");
-      video.classList.remove("dark:brightness-90");
       pauseIcon.classList.remove(
         "opacity-0",
         "-rotate-[24deg]",
@@ -64,7 +63,6 @@ const extensionlessSrc = stripExtension(src);
 
     const playVideo = () => {
       video.play();
-      video.classList.add("dark:brightness-90");
       video.classList.remove("brightness-75", "ease-in-out");
       pauseIcon.classList.add(
         "ease-in",
