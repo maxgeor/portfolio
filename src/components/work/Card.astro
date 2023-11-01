@@ -42,31 +42,33 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
       </div>
     </>
   ) : (
-    <p class="col-span-full w-full">
-      <span class="mr-1">{title}</span> 
-      <span class="group-hover:opacity-0 group-focus:opacity-0 transition ease-in-out text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
-        {description || ""}
+    <div class="lg:absolute inset-0 bottom-auto lg:opacity-0 z-10 group-hover:opacity-100 transition-all duration-200 col-span-full bg-white dark:bg-[#111] lg:pb-1">
+      <p class="w-full">
+        <span class="mr-1">{title}</span> 
+        <span class="text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
+          {description || ""}
+        </span>
+      </p>
+      <span 
+        class="absolute top-1 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
+      >
+        {link.target === '_blank' ? (
+          <UpRightArrowIcon 
+            classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
+          /> 
+        ) : (
+          <RightArrowIcon 
+            classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
+          />
+        )}
       </span>
-    </p>
-    <span 
-      class="absolute top-1 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
-    >
-      {link.target === '_blank' ? (
-        <UpRightArrowIcon 
-          classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
-        /> 
-      ) : (
-        <RightArrowIcon 
-          classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
-        />
-      )}
-    </span>
+    </div>
   )}
   <picture class={`
     order-last relative h-auto col-span-full group-hover:brightness-[95%] transition ease-in-out
     ${featured 
       ? 'aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6' 
-      : 'mt-1'
+      : 'mt-1 '
     }
   `}>
     <img
