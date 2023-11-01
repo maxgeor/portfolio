@@ -65,8 +65,11 @@ const { link, title, description, image, roles = [], year = 2023, featured = fal
     </div>
   )}
   <picture class={`
-    order-last relative h-auto max-h-[600px] col-span-full
-    ${featured ? 'mt-2 lg:mt-1 -mx-4 sm:-mx-6' : 'mt-1'}
+    order-last relative h-auto col-span-full
+    ${featured 
+      ? 'aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-1 -mx-4 sm:-mx-6' 
+      : 'mt-1'
+    }
   `}>
     <img
       src={image}
