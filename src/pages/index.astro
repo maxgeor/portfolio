@@ -12,7 +12,7 @@ import {
 const works = await getCollection('work', ({ 
   data: { hasStudy, isDraft } 
 }) => (
-  !hasStudy || !isDraft
+  !hasStudy && !isDraft
 ));
 const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
 const writings = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
