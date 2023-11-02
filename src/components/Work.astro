@@ -10,6 +10,7 @@ export interface Props {
     href: string;
     target?: '_blank' | '_self';
   };
+  isComingSoon?: boolean;
   classes?: string;
 }
 
@@ -18,7 +19,8 @@ const {
   title, 
   description, 
   image,
-  classes = '' 
+  classes = '',
+  isComingSoon = false,
 } = Astro.props;
 ---
 
@@ -27,30 +29,37 @@ const {
   target={link.target || '_self'}
   class={`
     group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column col-span-full sm:col-span-2
+    ${isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
     ${classes} 
   `}
 >
-  <div class="transition-all duration-200 col-span-full bg-white dark:bg-[#111] -mt-1 mb-1">
+  <div class="flex items-center transition-all duration-200 col-span-full bg-white dark:bg-[#111] -mt-1 mb-1">
     <p class="w-full leading-4 my-0.5">
       <span class="mr-1">{title}</span> 
       <span class="text-neutral-500 dark:text-neutral-400 my-0.5 leading-4">
-        {description || ""}
+        {description.replace('.', '') || ""}
       </span>
     </p>
-    <span 
-      class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
-    >
-      {link.target === '_blank' ? (
-        <UpRightArrowIcon 
-          classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
-        /> 
-      ) : (
-        <RightArrowIcon 
-          classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
-        />
-      )}
-    </span>
-  </div>
+    {isComingSoon ? (
+      <span class="mb-1 text-neutral-500 dark:text-neutral-400 whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out">
+        Coming soon…
+      </span>
+    ) : (
+      <span 
+        class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
+      >
+        {link.target === '_blank' ? (
+          <UpRightArrowIcon 
+            classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
+          /> 
+        ) : (
+          <RightArrowIcon 
+            classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
+          />
+        )}
+      </span>
+    )
+</div>}
   <picture class='order-last relative h-auto col-span-full'>
     <img
       src={image}

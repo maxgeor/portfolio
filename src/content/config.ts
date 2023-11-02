@@ -13,6 +13,7 @@ const work = defineCollection({
     }),
     hasStudy: z.boolean().optional(),
     isDraft: z.boolean().optional(),
+    isComingSoon: z.boolean().optional(),
   })
 });
 

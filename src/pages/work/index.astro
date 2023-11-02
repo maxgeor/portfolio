@@ -17,6 +17,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
           link={work.data.link}
           image={work.data.image}
           description={work.data.description}
+          isComingSoon={work.data.isComingSoon}
         />
       ))}
     </main>
