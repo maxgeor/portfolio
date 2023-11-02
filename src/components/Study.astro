@@ -71,8 +71,12 @@ const {
       <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
     )}
   </div>
-  <picture class={`
+  <!-- <picture class={`
     order-last relative h-auto col-span-full aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6
+    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
+  `}> -->
+  <picture class={`
+    order-last relative h-auto col-span-full mt-2 lg:mt-5 -mx-4 sm:-mx-6
     ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
   `}>
     <img
