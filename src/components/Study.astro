@@ -1,17 +1,17 @@
 ---
-import RightArrowIcon from '../icons/RightArrowIcon.astro';
-import UpRightArrowIcon from '../icons/UpRightArrowIcon.astro';
+
+import RightArrowIcon from './icons/RightArrowIcon.astro';
 
 export interface Props {
-  link: {
-    href: string;
-    target?: '_blank' | '_self' | '_parent' | '_top';
-  };
   title: string;
   description: string;
   image: string;
   roles: string[];
-  year: number;
+  year: string;
+  link: {
+    href: string;
+    target?: '_blank' | '_self';
+  };
   isComingSoon?: boolean;
   classes?: string;
 }
@@ -22,7 +22,7 @@ const {
   description, 
   image, 
   roles = [], 
-  year = 2023,
+  year = '2023',
   isComingSoon = false,
   classes = '' 
 } = Astro.props;
@@ -40,7 +40,7 @@ const {
   <p class="lg:order-1">
     {title}
     {isComingSoon && (
-      <span class="md:hidden ml-1 text-neutral-500 dark:text-neutral-490 my-0.5 leading-4">
+      <span class="md:hidden ml-1 text-neutral-500 dark:text-neutral-400 my-0.5 leading-4">
         (Coming soon)
       </span>
     )}
@@ -50,7 +50,7 @@ const {
   <p class="lg:order-4 self-end">{year}</p>
   <div class="hidden md:block z-5 absolute top-0 right-0">
     {isComingSoon ? (
-      <span class="text-neutral-500 dark:text-neutral-490 my-0.5">
+      <span class="text-neutral-500 dark:text-neutral-400 my-0.5">
         Coming soon
       </span>
     ) : (

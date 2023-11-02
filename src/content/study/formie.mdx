@@ -1,9 +1,9 @@
 ---
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/StudyLayout.astro
+work: formie
 title: Formie
-type: Personal Project
 image: "/work/formie/cover.jpeg"
-collaborators:
+teammates:
   [
     {
       name: Hassan Syed,
@@ -15,7 +15,7 @@ roles: [Product design, frontend development, branding]
 tools: ["Next.js", "Firebase", "TailwindCSS"]
 tldr: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
 link: https://www.formie.co/
-year: 2022
+year: '2022'
 sections:
   [
     { title: "Problem" },
@@ -64,14 +64,14 @@ sections:
   ]
 ---
 
-import TldrSection from "../../components/prose/TldrSection.astro";
-import Image from "../../components/prose/Image.astro";
-import Section from "../../components/prose/Section.astro";
-import Carousel from "../../components/prose/Carousel.astro";
-import Footnote from "../../components/prose/Footnote.astro";
-import FootnotedParagraph from "../../components/prose/FootnotedParagraph.astro";
+import Tldr from "../../components/study/Tldr.astro";
+import Image from "../../components/study/Image.astro";
+import Section from "../../components/study/Section.astro";
+import Carousel from "../../components/study/Carousel.astro";
+import Footnote from "../../components/study/Footnote.astro";
+import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro";
 
-{/* <TldrSection 
+{/* <Tldr 
   problem="Etherscan's frontend sucked."
   solution="Airtable Forms, but for smart contract actions."
   decisions={[
@@ -416,7 +416,7 @@ Despite the usage, we decided to put the product on auto-pilot. After launch, we
 
 Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.
 
-{/* <TldrSection 
+{/* <Tldr 
   problem="Etherscan's frontend sucked."
   solution="Airtable Forms, but for smart contract actions."
   decisions={[

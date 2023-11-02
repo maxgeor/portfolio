@@ -1,0 +1,11 @@
+{
+  "type": "project",
+  "title": "Dissect Design",
+  "description": "Collection of design decisions",
+  "image": "/work/dissect-design.png",
+  "link": {
+    "href": "https://dissect-design-sigma.vercel.app/",
+    "target": "_blank"
+  },
+  "hasStudy": false
+}

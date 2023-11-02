@@ -1,11 +1,28 @@
-import { z, defineCollection } from 'astro:content';
+import { z, reference, defineCollection } from 'astro:content';
 
-const workCollection = defineCollection({
+const work = defineCollection({
+  type: 'data',
   schema: z.object({
-    type: z.string(),
-    year: z.number().or(z.string()),
+    type: z.enum(['client', 'project']),
     title: z.string(),
+    description: z.string(),
+    image: z.string(),
+    hasStudy: z.boolean(),
+    link: z.object({
+      href: z.string().url(),
+      target: z.enum(['_blank', '_self']).optional(),
+    }),
+  })
+});
+
+const study = defineCollection({
+  type: 'content',
+  schema: z.object({
+    work: reference('work'),
+    year: z.string(),
     tldr: z.string(),
+    roles: z.array(z.string()),
+    tools: z.array(z.string()),
     sections: z.object({
       title: z.string(),
       subsections: z.object({
@@ -13,25 +30,21 @@ const workCollection = defineCollection({
       }).array().optional(),
     }).array(),
     image: z.string().optional(),
-    roles: z.array(z.string()),
-    link: z.string().optional(),
-    company: z.string().optional(),
-    tools: z.array(z.string()).optional(),
-    collaborators: z.object({
+    teammates: z.object({
       name: z.string(),
       role: z.string(), 
       href: z.string()
     }).array().optional(),
+    isComingSoon: z.boolean().optional(),
   }),
 });
-const writingCollection = defineCollection({
+
+const writing = defineCollection({
+  type: 'content',
   schema: z.object({
     title: z.string(),
     date: z.string(),
   }),
 });
 
-export const collections = {
-  'work': workCollection,
-  'writing': writingCollection,
-};
+export const collections = { work, study, writing };

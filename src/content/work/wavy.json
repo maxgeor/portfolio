@@ -1,0 +1,11 @@
+{
+  "type": "client",
+  "title": "Polls for Wavy",
+  "description": "Feature I built at Wavy.",
+  "image": "/work/dissect-design.png",
+  "link": {
+    "href": "https://dissect-design-sigma.vercel.app/",
+    "target": "_blank"
+  },
+  "hasStudy": true
+}

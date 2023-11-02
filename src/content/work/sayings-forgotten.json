@@ -1,0 +1,11 @@
+{
+  "type": "project",
+  "title": "Sayings, Forgotten",
+  "description": "Collection of misremembered sayings",
+  "image": "/work/sayings-forgotten.gif",
+  "link": {
+    "href": "https://sayings-forgotten.maxgeor.repl.co/",
+    "target": "_blank"
+  },
+  "hasStudy": false
+}

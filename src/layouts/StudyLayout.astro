@@ -5,7 +5,7 @@ import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
 import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
 import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
-import NavList from "../components/prose/nav/NavList.astro";
+import NavList from "../components/study/NavList.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -17,7 +17,7 @@ const {
   tools,
   sections,
   image,
-  collaborators,
+  teammates,
 } = frontmatter;
 ---
 
@@ -64,28 +64,32 @@ const {
             ) : null
           }
         </div>
-        <p class="col-span-1">{tldr}</p>
-        <div class="capitalize">
-          <p>Role</p>
+        <!-- <p class="col-span-1 text-neutral-500 dark:text-neutral-400">{tldr}</p> -->
+        <div>
+          <p class="text-neutral-500 dark:text-neutral-400">C'est quoi?</p>
+          <p>{tldr}</p>
+        </div>
+        <div class="capitalize flex flex-col">
+          <p class="text-neutral-500 dark:text-neutral-400">Role</p>
           <p>{roles.join(", ")}</p>
         </div>
         <div class="capitalize">
-          <p>Tools</p>
+          <p class="text-neutral-500 dark:text-neutral-400">Tools</p>
           <p>{tools.join(", ")}</p>
         </div>
         <div class="capitalize">
-          <p>Team</p>
-          {collaborators?.length > 0 ? (
+          <p class="text-neutral-500 dark:text-neutral-400">Team</p>
+          {teammates?.length > 0 ? (
             <ul>
-              {collaborators.map((collaborator: { name: string, role: string, href: string }) => 
+              {teammates.map((teammate: { name: string, role: string, href: string }) => 
                 <li>
                   <a 
-                    href={collaborator.href}
+                    href={teammate.href}
                     target="_blank"
                     class="underline" 
                   >
-                    {collaborator.name}
-                  </a> ({collaborator.role})
+                    {teammate.name}
+                  </a> ({teammate.role})
                 </li>
               )}
             </ul>
@@ -126,14 +130,6 @@ const {
             <ChevronLeftIcon classes="-ml-[3px]" />
           </a>
           <NavList sections={sections} />
-          <!-- <div 
-            id="left-fade-barrier"
-            class="absolute top-4 left-0 z-10 h-5 w-4 shrink-0 bg-gradient-to-r from-white dark:from-black md:hidden">
-          </div>
-          <div 
-            id="right-fade-barrier" 
-            class="absolute top-4 right-0 z-10 h-5 w-4 shrink-0 bg-gradient-to-l from-white dark:from-black md:hidden">
-          </div> -->
         </nav>
         <div
           class={`

@@ -1,5 +1,5 @@
 ---
-import { format } from 'date-fns';
+import { formatDate } from '../utils/formatting';
 
 export interface Props {
   title: string;
@@ -9,8 +9,7 @@ export interface Props {
 
 const { title, href, date } = Astro.props;
 
-const dateObject = new Date(date);
-const formattedDate = format(dateObject, 'MMM d, yyyy');
+const formattedDate = formatDate(date);
 ---
 
 <a 
@@ -18,7 +17,7 @@ const formattedDate = format(dateObject, 'MMM d, yyyy');
   class="group col-span-full grid grid-cols-2 md:grid-cols-4 gap-6 border-t last:border-y border-[#DADADA] dark:border-neutral-700"
 >
   <span class="md:col-span-2 group-hover:underline group-focus:underline">{title}</span>
-  <span class="md:col-span-2 text-neutral-500 dark:text-neutral-490">
+  <span class="md:col-span-2 text-neutral-500 dark:text-neutral-400">
     {formattedDate}
   </span>
 </a>

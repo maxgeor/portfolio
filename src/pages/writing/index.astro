@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Writing from "../../components/Writing.astro";
+import { getCollection } from 'astro:content';
+
+const writings = await getCollection('writing');
+---
+
+<Layout title="Writing">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-6">
+    <Header />
+    <main id="writings" class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-x-6">
+      {writings?.sort((a, b) => {
+        const dateA: any = new Date(a.data.date);
+        const dateB: any = new Date(b.data.date);
+        return dateB - dateA;
+      }).map(writing => (
+        <Writing
+          title={writing.data.title}
+          href={`/writing/${writing.slug}`}
+          date={writing.data.date}
+        />
+      ))}
+    </main>
+  </div>
+</Layout>

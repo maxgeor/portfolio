@@ -1,0 +1,31 @@
+---
+import NavItem from './NavItem.astro'
+
+export interface Props {
+  sections: {
+    title: string;
+    subsections?: {
+      title: string;
+    }[];
+  }[];
+  shouldCollapse?: boolean;
+  isSubsection?: boolean;
+}
+
+const { sections, isSubsection = false } = Astro.props;
+---
+
+<ol
+  class={`
+  nav-list md:flex-col gap-x-6 transition transform max-w-[230px]
+  ${isSubsection ? "hidden md:flex pl-4 whitespace-normal " : "flex gap-y-3 whitespace-nowrap"}
+`}
+>
+  {sections.map((section) => (
+    <NavItem
+      title={section.title}
+      subsections={section.subsections}
+      isSubitem={isSubsection}
+    />
+  ))}
+</ol>
