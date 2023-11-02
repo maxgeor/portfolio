@@ -33,7 +33,7 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
     <a
       href={href}
       class={`
-        hidden md:inline-block hover:underline
+        -ml-px hidden md:inline-block hover:underline
         ${doesLinkMatchCurrentPath(matchingPaths)
           ? "text-neutral-50" 
           : "text-neutral-400"
@@ -44,7 +44,7 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
     </a>
   ))}
 
-  <div class="flex sm:justify-self-end md:hidden col-start-2 gap-1 text-neutral-400">
+  <div class="-ml-px flex sm:justify-self-end md:hidden col-start-2 gap-1 text-neutral-400">
     {links.map(({ href, text, matchingPaths }, index) => (
       <span>
         <a
