@@ -7,11 +7,12 @@ const work = defineCollection({
     title: z.string(),
     description: z.string(),
     image: z.string(),
-    hasStudy: z.boolean(),
     link: z.object({
-      href: z.string().url(),
+      href: z.string(),
       target: z.enum(['_blank', '_self']).optional(),
     }),
+    hasStudy: z.boolean().optional(),
+    isDraft: z.boolean().optional(),
   })
 });
 
@@ -36,6 +37,7 @@ const study = defineCollection({
       href: z.string()
     }).array().optional(),
     isComingSoon: z.boolean().optional(),
+    isDraft: z.boolean().optional(),
   }),
 });
 
@@ -44,6 +46,7 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
+    isDraft: z.boolean().optional(),
   }),
 });
 

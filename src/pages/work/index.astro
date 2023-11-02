@@ -4,7 +4,7 @@ import Header from "../../components/Header.astro";
 import Work from "../../components/Work.astro";
 import { getCollection } from 'astro:content';
 
-const works = await getCollection('work');
+const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 
 <Layout title="Work">
@@ -19,60 +19,6 @@ const works = await getCollection('work');
           description={work.data.description}
         />
       ))}
-      <!-- <Work
-        title="Formie"
-        link={{ href: "/work/formie" }}
-        image="/work/formie/cover.png"
-        description="Universal UI for smart contracts."
-      />
-      <Work
-        title="Memiori"
-        link={{ href: "#" }}
-        image="/work/memiori/cover-2.png"
-        description="Refresh of mood journaling app."
-      />
-      <Work
-        title='KG Handcrafted'
-        link={{ href: "/work/wavy", target: "_blank" }}
-        description='Brand + site for knifemaker'
-        image="/work/kg.png"
-      />
-      <Work
-        title="Dissect Design"
-        link={{ 
-          href: "https://dissect-design-sigma.vercel.app/", 
-          target: "_blank" 
-        }}
-        image="/work/dissect-design.png"
-        description="Collection of design decisions"
-      />
-      <Work
-        title="Scope Todo"
-        link={{ 
-          href: "https://www.figma.com/community/widget/1036372982291551669", 
-          target: "_blank" 
-        }}
-        image="/work/scope-todo.png"
-        description="Todo widget for Figma"
-      />
-      <Work
-        title="The Quest Board"
-        link={{ 
-          href: "https://www.lootquestboard.com/", 
-          target: "_blank" 
-        }}
-        image="/work/the-quest-board.gif"
-        description="Job board for Loot community"
-      />
-      <Work
-        title="Sayings, Forgotten"
-        link={{ 
-          href: "https://sayings-forgotten.maxgeor.repl.co/", 
-          target: "_blank" 
-        }}
-        image="/work/sayings-forgotten.gif"
-        description="Collection of misremembered sayings"
-      /> -->
     </main>
   </div>
 </Layout>

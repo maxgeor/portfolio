@@ -3,16 +3,19 @@ import { toUrlSafeKebabCase } from "../../utils/formatting"
 export interface Props {
   title: string;
   isSubsection?: boolean;
+  classes?: string
 }
-const { title, isSubsection = false } = Astro.props;
+const { title, isSubsection = false, classes = '' } = Astro.props;
 ---
 
 <section 
   id={toUrlSafeKebabCase(title)} 
   class={`
-    ${isSubsection ? '' : 'mt-[52px] first:mt-0'}
     relative flex flex-col gap-4 col-span-full lg:col-start-1 lg:col-end-9 xl:col-start-2 xl:col-end-8 scroll-mt-[72px] sm:scroll-mt-[108px]
-  `}>
+    ${isSubsection ? '' : 'mt-[52px] first:mt-0'}
+    ${classes}
+  `}
+>
   <slot name="heading">
     {isSubsection ? <h2>{title}</h2> : <h1>{title}</h1>}
   </slot>

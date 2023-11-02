@@ -9,9 +9,13 @@ import {
   getCollection
 } from 'astro:content';
 
-const works = await getCollection('work', ({ data: { hasStudy } }) => !hasStudy);
-const studies = await getCollection('study');
-const writings = await getCollection('writing');
+const works = await getCollection('work', ({ 
+  data: { hasStudy, isDraft } 
+}) => (
+  !hasStudy && !isDraft
+));
+const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
+const writings = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
 
 const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
   const { work, roles, year, isComingSoon } = study.data;
