@@ -33,7 +33,7 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
     <a
       href={href}
       class={`
-        hidden md:inline-block hover:underline -mr-0.5
+        hidden md:inline-block hover:underline
         ${doesLinkMatchCurrentPath(matchingPaths)
           ? "text-neutral-50" 
           : "text-neutral-400"

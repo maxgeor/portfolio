@@ -29,11 +29,11 @@ const {
 ---
 
 <a
-  href={link.href}
+  href={isComingSoon ? '#' : link.href}
   target={link.target || '_self'}
   class={`
     group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column border-t border-neutral-700 col-span-full
-    ${isComingSoon && 'cursor-not-allowed'}
+    ${isComingSoon && 'cursor-not-allowed '}
     ${classes} 
   `}
 >
@@ -50,9 +50,22 @@ const {
   <p class="lg:order-4 self-end">{year}</p>
   <div class="hidden md:block z-5 absolute top-0 right-0">
     {isComingSoon ? (
-      <span class="text-neutral-500 dark:text-neutral-400 my-0.5">
-        Coming soon
-      </span>
+      <div 
+        id={`coming-soon-letters-for-${title}`} 
+        class="flex my-0.5 bg-clip-text text-transparent text-neutral-500 dark:text-neutral-400 transition ease-in-out group-hover:text-neutral-50 group-focus:text-neutral-50 group-hover:rotate-1"
+      >
+        <span class="wave">C</span>
+        <span class="wave">o</span>
+        <span class="wave">m</span>
+        <span class="wave">i</span>
+        <span class="wave">n</span>
+        <span class="wave">g</span>
+        <span class="w-1"></span>
+        <span class="wave">s</span>
+        <span class="wave">o</span>
+        <span class="wave">o</span>
+        <span class="wave">n</span>
+      </div>
     ) : (
       <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
     )}
@@ -68,3 +81,4 @@ const {
     />
   </picture>
 </a>
+
