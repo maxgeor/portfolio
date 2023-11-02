@@ -76,7 +76,7 @@ const {
           <p class="text-neutral-500 dark:text-neutral-400">Tools</p>
           <p>{tools.join(", ")}</p>
         </div>
-        <div class="capitalize">
+        <div class="capitalize sm:mr-10">
           <p class="text-neutral-500 dark:text-neutral-400">Team</p>
           {teammates?.length > 0 ? (
             <ul>
@@ -88,13 +88,15 @@ const {
                     class="underline" 
                   >
                     {teammate.name}
-                  </a> ({teammate.role})
+                  </a> 
+                  ({teammate.role})
                 </li>
               )}
             </ul>
           ) : "—"}
         </div>
-        <p class="md:absolute bottom-5 right-6">{year}</p>
+        <!-- <p class="md:absolute bottom-5 right-6">{year}</p> -->
+        <p class="md:absolute top-[57px] right-6">{year}</p>
       </section>
     </div>
     {
