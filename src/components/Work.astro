@@ -26,7 +26,7 @@ const {
 
 <a
   href={isComingSoon ? '#' : link.href}
-  target={link.target || '_self'}
+  target={!link.target || isComingSoon ? '_self' : link.target}
   class={`
     group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column col-span-full sm:col-span-2
     ${isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
@@ -34,12 +34,12 @@ const {
   `}
 >
   <div class="flex items-center transition-all duration-200 col-span-full bg-[#111] -mt-1 mb-1">
-    <p class="w-full leading-4 my-0.5">
-      <span class="mr-1">{title}</span> 
+    <div class="flex flex-col xs:flex-row xs:items-center gap-x-1 flex-wrap w-full leading-4 my-0.5">
+      <span class="whitespacs-nowrap">{title}</span> 
       <span class="text-neutral-400 my-0.5 leading-4">
-        {description.replace('.', '') || ""}
+        {description.replace('.', '') || ''}
       </span>
-    </p>
+    </div>
     {isComingSoon ? (
       <span class="text-neutral-400 whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out">
         Coming soon…
