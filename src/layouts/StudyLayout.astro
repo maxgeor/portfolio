@@ -49,7 +49,7 @@ const {
     <div class="flex flex-col gap-6">
       <Header classes="px-4 sm:px-6" />
       <section class="relative px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-y-4 gap-x-6 pb-5">
-        <div class="col-span-full flex justify-between gap-6 border-t border-[#DADADA] dark:border-neutral-700 h-min">
+        <div class="col-span-full flex justify-between gap-6 border-t border-neutral-700 h-min">
           <h1>{title}</h1>
           {
             link ? (
@@ -65,19 +65,19 @@ const {
           }
         </div>
         <div>
-          <p class="text-neutral-500 dark:text-neutral-400">In short…</p>
+          <p class="text-neutral-400">In short…</p>
           <p>{tldr}</p>
         </div>
         <div class="capitalize flex flex-col">
-          <p class="text-neutral-500 dark:text-neutral-400">Role</p>
+          <p class="text-neutral-400">Role</p>
           <p>{roles.join(", ")}</p>
         </div>
         <div class="capitalize">
-          <p class="text-neutral-500 dark:text-neutral-400">Tools</p>
+          <p class="text-neutral-400">Tools</p>
           <p>{tools.join(", ")}</p>
         </div>
         <div class="capitalize sm:mr-10">
-          <p class="text-neutral-500 dark:text-neutral-400">Team</p>
+          <p class="text-neutral-400">Team</p>
           {teammates?.length > 0 ? (
             <ul>
               {teammates.map((teammate: { name: string, role: string, href: string }) => 
@@ -136,22 +136,22 @@ const {
           class={`
             prose-sm text-neutral-250
             
-            prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-950 dark:prose-headings:text-neutral-50 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
+            prose-headings:max-w-prose prose-headings:font-medium prose-headings:text-neutral-50 prose-headings:scroll-mt-[72px] sm:prose-headings:scroll-mt-[108px]
 
-            prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:text-neutral-950 dark:prose-h1:text-neutral-50 prose-h1:tracking-[-0.0325rem] prose-h1:mt-12 first:prose-h1:mt-0 prose-h1:mb-4
+            prose-h1:text-[24px] prose-h1:leading-[28px] prose-h1:text-neutral-50 prose-h1:tracking-[-0.0325rem] prose-h1:mt-12 first:prose-h1:mt-0 prose-h1:mb-4
 
-            prose-h2:tracking-[-0.0225em] dark:prose-h2:tracking-[-0.015em] prose-h2:text-[14px] prose-h2:leading-5 
+            prose-h2:tracking-[-0.015em] prose-h2:text-[14px] prose-h2:leading-5 
 
             prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:leading-5 prose-h3:text-neutral-950
 
             prose-p:leading-5
             prose-p:max-w-prose 
 
-            prose-strong:font-medium prose-strong:text-neutral-950 dark:prose-strong:text-neutral-50
+            prose-strong:font-medium prose-strong:text-neutral-50
 
             prose-a:underline
 
-            prose-code:bg-neutral-190/[90%] dark:prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-300/[27%] dark:prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
+            prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
 
             prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[21px]
 
@@ -191,11 +191,11 @@ const {
       window.innerWidth < minWidthToHighlightNavButtons || 
       window.scrollY < coverImage.offsetHeight + 40
     ) {
-      homeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
-      themeButton.classList.add('shadow-outline', 'dark:shadow-outline-dark');
+      homeButton.classList.add('shadow-outline-dark');
+      themeButton.classList.add('shadow-outline-dark');
     } else {
-      homeButton.classList.remove('shadow-outline', 'dark:shadow-outline-dark');
-      themeButton.classList.remove('shadow-outline', 'dark:shadow-outline-dark');
+      homeButton.classList.remove('shadow-outline-dark');
+      themeButton.classList.remove('shadow-outline-dark');
     }
   }
 
@@ -203,7 +203,7 @@ const {
   window.addEventListener('scroll', () => handleNavButtonShadows());
 
   window.addEventListener("DOMContentLoaded", () => {
-    let activeElement = null;
+    let activeElement: Element | null;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -218,10 +218,10 @@ const {
             navItem?.parentElement?.classList.add("active");
             activeElement = navItem;
 
-            if (navItem.classList.contains('sub-item')) {
-              navItem.parentElement.parentElement.classList.add('active');
+            if (navItem?.classList.contains('sub-item')) {
+              navItem.parentElement?.parentElement?.classList.add('active');
             } else {
-              navItem.parentElement.parentElement.classList.remove('active');
+              navItem?.parentElement?.parentElement?.classList.remove('active');
             }
           } else if (activeElement === navItem) {
             navItem?.parentElement?.classList.remove("active");
