@@ -9,7 +9,7 @@ export interface Props {
 }
 const { problem, solution, decisions, tradeoffs } = Astro.props;
 ---
-<Section title="tldr" classes='!gap-0'>
+<Section title="Tldr" classes='!gap-0'>
   <table class="not-prose text-sm leading-5 flex flex-col w-full transition-all ease-out duration-150 " cellspacing="0" cellpadding="0">
     <tr>
       <td class="w-4 pr-2 pb-4"><p>Problem</p></td>
@@ -21,7 +21,7 @@ const { problem, solution, decisions, tradeoffs } = Astro.props;
     </tr>
     <tr>
       <td class="w-4 pr-2 pb-4"><p>Decisions</p></td>
-      <td class="pl-10 pb-4">
+      <td class="pl-8 pb-4">
         <ul class="">
           {decisions.map((decision) => (
             <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
@@ -33,7 +33,7 @@ const { problem, solution, decisions, tradeoffs } = Astro.props;
     </tr>
     <tr>
       <td class="w-4 pr-2 pb-3"><p>Tradeoffs</p></td>
-      <td class="pl-10">
+      <td class="pl-8">
         <ul>
           {tradeoffs.map((tradeoff) => (
             <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
