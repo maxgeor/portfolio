@@ -63,8 +63,8 @@ const links = [
       <span class="flex gap-px group-hover:underline">
         max123358<code>@</code>gmail<span class="hidden xs:inline-block">.com</span>
       </span>
-      <CopyIcon id="copy-icon" classes="absolute group-active:scale-90 right-0 transform" />
-      <CheckIcon id="check-icon" classes="absolute right-0 transform opacity-0 text-green" />
+      <CopyIcon id="copy-icon" classes="absolute right-0 transform transition ease-in-out duration-[250ms]" />
+      <CheckIcon id="check-icon" classes="absolute right-0 transform opacity-0 text-green scale-75 transition ease-in-out duration-[200ms]" />
     </button>
   </li>
 </ul>
@@ -79,13 +79,13 @@ const links = [
       const copyIcon = document.querySelector("#copy-icon") as HTMLElement;
       const checkIcon = document.querySelector("#check-icon") as HTMLElement;
 
-      copyIcon.classList.add("opacity-0");
-      checkIcon.classList.remove("opacity-0");
+      copyIcon.classList.add("opacity-0", 'scale-75');
+      checkIcon.classList.remove("opacity-0", 'scale-75');
 
       setTimeout(() => {
-        copyIcon.classList.remove("opacity-0");
-        checkIcon.classList.add("opacity-0");
-      }, 3000);
+        copyIcon.classList.remove("opacity-0", 'scale-75');
+        checkIcon.classList.add("opacity-0", 'scale-75');
+      }, 2500);
     });
   });
 </script>
