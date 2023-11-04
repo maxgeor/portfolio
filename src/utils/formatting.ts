@@ -6,7 +6,7 @@ const formatDate = (date: string) => {
 }
 
 const toUrlSafeKebabCase = (s: string) => 
-  s.replace(/[^a-z0-9\s]/gi, '').replace(/\s+/g, "-").toLowerCase();
+  s.replace(/[^a-z0-9\s-]/gi, '').replace(/\s+/g, "-").toLowerCase();
 
 const stripExtension = (src: string) => src.replace(/\..*$/, ""); // video.mp4 -> video
 
