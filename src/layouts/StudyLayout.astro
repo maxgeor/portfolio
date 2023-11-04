@@ -46,10 +46,10 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button> -->
-    <div class="flex flex-col gap-6">
-      <Header classes="px-4 sm:px-6" />
-      <section class="relative px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-y-4 gap-x-6 pb-5">
-        <div class="col-span-full flex justify-between gap-6 border-t border-neutral-700 h-min">
+    <div class="flex flex-col gap-4">
+      <Header classes="px-4 sm:px-4" />
+      <section class="relative px-4 sm:px-4 grid grid-cols-1 md:grid-cols-4 gap-y-3 gap-x-4 pb-4 ">
+        <div class="col-span-full flex justify-between gap-4 border-t border-neutral-700 h-min -mb-1">
           <h1>{title}</h1>
           {
             link ? (
@@ -95,8 +95,7 @@ const {
             </ul>
           ) : "—"}
         </div>
-        <!-- <p class="md:absolute bottom-5 right-6">{year}</p> -->
-        <p class="md:absolute top-[57px] right-6">{year}</p>
+        <p class="md:absolute top-[57px] right-4">{year}</p>
       </section>
     </div>
     {
@@ -117,18 +116,19 @@ const {
     <div class="flex flex-col gap-4 w-full">
       <article
         id="article"
-        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 sm:gap-6 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-6"
+        class="w-full relative mx-auto grid min-h-screen grid-cols-1 gap-4 sm:gap-4 overflow-visible md:grid-cols-4 scroll-mt-4 md:px-4"
       >
         <nav
           class={`
-            flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky top-0 md:col-span-1 p-4 pb-5 sm:px-6 md:p-0 md:mt-0 md:pr-4 md:pb-16 w-full z-50
+            flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky top-0 md:col-span-1 p-4 pb-4 sm:px-4 md:p-0 md:mt-0 md:pr-4 md:pb-16 w-full z-50 gap-4
           `}
         >
           <a 
             href="/" 
-            class="hidden md:flex justify-center items-center p-6 -ml-6"
+            class="hidden md:flex justify-center items-center p-4 -ml-4 text-xs text-neutral-490"
           >
-            <ChevronLeftIcon classes="-ml-[3px]" />
+            <ChevronLeftIcon classes="-ml-[4px]" />
+            <span class="-my-1">Back</span>
           </a>
           <NavList sections={sections} />
         </nav>
@@ -161,13 +161,13 @@ const {
             prose-li:pl-1
             prose-li:leading-5
 
-            prose-figure:w-auto prose-figure:select-none prose-figure:mt-6 prose-figure:mb-8 prose-figure:-mx-4 sm:prose-figure:-mx-6 md:prose-figure:mx-0 
-            prose-video:w-auto prose-video:select-none	prose-video:mt-6 prose-video:mb-8 prose-video:-mx-4 sm:prose-video:-mx-6 md:prose-video:mx-0
+            prose-figure:w-auto prose-figure:select-none prose-figure:mt-6 prose-figure:mb-8 prose-figure:-mx-4 sm:prose-figure:-mx-4 md:prose-figure:mx-0 
+            prose-video:w-auto prose-video:select-none	prose-video:mt-6 prose-video:mb-8 prose-video:-mx-4 sm:prose-video:-mx-4 md:prose-video:mx-0
 
             prose-td:p-0
 
             col-span-full md:col-start-2 xl:col-end-4 max-w-5xl 2xl:max-w-2xl 
-            pt-1 md:pt-12 px-4 sm:px-6 md:px-0 mx-auto
+            pt-1 md:pt-12 px-4 sm:px-4 md:px-0 mx-auto
           `}
         >
           <slot />

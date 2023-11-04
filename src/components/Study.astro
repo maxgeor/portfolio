@@ -31,7 +31,7 @@ const {
   href={isComingSoon ? '#' : link.href}
   target={link.target || '_self'}
   class={`
-    group relative gap-x-6 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column border-t border-neutral-700 col-span-full
+    group relative gap-x-4 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column border-t border-neutral-700 col-span-full
     ${isComingSoon && 'cursor-default'}
     ${classes} 
   `}
@@ -49,33 +49,15 @@ const {
   <p class="lg:order-3 capitalize leading-4 my-0.5">{roles.join(', ')}</p>
   <div class="hidden md:block z-5 absolute top-0 right-0">
     {isComingSoon ? (
-      <div 
-        id={`coming-soon-letters-for-${title}`} 
-        class="flex bg-clip-text text-transparent text-neutral-400 transition ease-in-out group-hover:text-neutral-50 group-hover:rotate-1"
-      >
-        <span class="wave">C</span>
-        <span class="wave">o</span>
-        <span class="wave">m</span>
-        <span class="wave">i</span>
-        <span class="wave">n</span>
-        <span class="wave">g</span>
-        <span class="w-1"></span>
-        <span class="wave">s</span>
-        <span class="wave">o</span>
-        <span class="wave">o</span>
-        <span class="wave">n</span>
-        <span class="wave">…</span>
-      </div>
+      <p class="flex text-neutral-400 transition ease-in-out group-hover:rotate-1">
+        Coming soon…
+      </p>
     ) : (
       <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
     )}
   </div>
-  <!-- <picture class={`
-    order-last relative h-auto col-span-full aspect-[5/3] sm:aspect-[2/1] xl:aspect-[9/4] mt-2 lg:mt-5 -mx-4 sm:-mx-6
-    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
-  `}> -->
   <picture class={`
-    order-last relative h-auto col-span-full mt-2 lg:mt-5 -mx-4 sm:-mx-6
+    order-last relative h-auto col-span-full mt-3 -mx-4 sm:-mx-4
     ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
   `}>
     <img

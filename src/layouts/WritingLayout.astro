@@ -9,9 +9,9 @@ const formattedDate = formatDate(frontmatter.date);
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="grid grid-cols-4 mx-auto flex-col gap-6 px-4 sm:px-6">
+  <div class="grid grid-cols-4 mx-auto flex-col gap-4 px-4 sm:px-4">
     <Header />
-    <aside class="col-span-full border-t border-neutral-700">
+    <aside class="col-span-full border-t border-neutral-700 -mb-1">
       <h1 class="basis-1/4">{frontmatter.title}</h1>
       <p class="text-[13px] text-neutral-400">
         {formattedDate}
@@ -28,7 +28,7 @@ const formattedDate = formatDate(frontmatter.date);
           prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-neutral-700/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
           prose-ul:list-disc
           prose-ol:list-decimal
-          pt-1 md:pt-0
+          pt-3 md:pt-0
         `}
       >
         <slot />

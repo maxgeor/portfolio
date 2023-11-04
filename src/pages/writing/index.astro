@@ -8,9 +8,9 @@ const writings = await getCollection('writing');
 ---
 
 <Layout title="Writing">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-6">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 sm:px-4">
     <Header />
-    <main id="writings" class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-x-6">
+    <main id="writings" class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-x-4">
       {writings?.sort((a, b) => {
         const dateA: any = new Date(a.data.date);
         const dateB: any = new Date(b.data.date);
