@@ -6,6 +6,7 @@ import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
 import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
 import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
 import NavList from "../components/study/NavList.astro";
+import Button from "../components/Button.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -23,7 +24,7 @@ const {
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
   <main class="relative col-span-full">
-    <!-- <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
+    <Button tag="a" href="#article" classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
       ariaLabel="Go back up"
@@ -45,7 +46,7 @@ const {
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
-    </Button> -->
+    </Button>
     <div class="flex flex-col gap-4">
       <Header classes="px-4 sm:px-4" />
       <section class="relative px-4 sm:px-4 grid grid-cols-1 md:grid-cols-4 gap-y-3 gap-x-4 pb-4 ">
@@ -120,7 +121,7 @@ const {
       >
         <nav
           class={`
-            flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky top-0 md:col-span-1 p-4 pb-4 md:p-0 md:mt-0 md:pr-4 md:pb-16 w-full z-50 gap-3
+            flex flex-col items-start justify-start overflow-auto md:overflow-scroll no-scrollbar col-span-full md:h-screen scroll-smooth md:sticky top-0 md:col-span-1 py-3 px-4 md:p-0 md:pr-4 md:pb-16 w-full z-50 gap-y-3 gap-x-4
           `}
         >
           <a 
@@ -167,7 +168,7 @@ const {
             prose-td:p-0
 
             col-span-full md:col-start-2 xl:col-end-4 max-w-5xl 2xl:max-w-2xl 
-            pt-1 md:pt-12 px-4 sm:px-4 md:px-0 mx-auto
+            pt-4 md:pt-12 px-4 sm:px-4 md:px-0 mx-auto 
           `}
         >
           <slot />
@@ -178,52 +179,28 @@ const {
 </Layout>
 
 <script>
-  // Add/remove shadows on home and theme buttons past the cover image on big screens
-  const minWidthToHighlightNavButtons = 768;
+  // window.addEventListener("DOMContentLoaded", () => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) =>
+  //       entries.forEach((entry) => {
+  //         const id = entry.target.getAttribute("id");
+  //         entry.isIntersecting
+  //           ? document
+  //               .querySelector(`nav li a[href="#${id}"]`)
+  //               ?.parentElement?.classList.add("active")
+  //           : document
+  //               .querySelector(`nav li a[href="#${id}"]`)
+  //               ?.parentElement?.classList.remove("active");
+  //       }),
+  //     {
+  //       rootMargin: "-290px",
+  //     }
+  //   );
 
-  const homeButton = document.querySelector('#home-button') as HTMLAnchorElement;
-  const themeButton = document.querySelector('#theme-button > div') as HTMLElement;
-
-  const handleNavButtonShadows = () => {
-    const coverImage = document.querySelector('#cover-image') as HTMLImageElement;
-
-    if (
-      window.innerWidth < minWidthToHighlightNavButtons || 
-      window.scrollY < coverImage.offsetHeight + 40
-    ) {
-      homeButton.classList.add('shadow-outline-dark');
-      themeButton.classList.add('shadow-outline-dark');
-    } else {
-      homeButton.classList.remove('shadow-outline-dark');
-      themeButton.classList.remove('shadow-outline-dark');
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => handleNavButtonShadows());
-  window.addEventListener('scroll', () => handleNavButtonShadows());
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute("id");
-          entry.isIntersecting
-            ? document
-                .querySelector(`nav li a[href="#${id}"]`)
-                ?.parentElement?.classList.add("active")
-            : document
-                .querySelector(`nav li a[href="#${id}"]`)
-                ?.parentElement?.classList.remove("active");
-        }),
-      {
-        rootMargin: "-290px",
-      }
-    );
-
-    document
-      .querySelectorAll('h1[id], h2[id], h3[id]')
-      .forEach((header) => observer.observe(header));
-  });
+  //   document
+  //     .querySelectorAll('h1[id], h2[id], h3[id]')
+  //     .forEach((header) => observer.observe(header));
+  // });
 
   // Show and hide back button when clikcing on internal links
   const links = Array.from(document.querySelectorAll("a"));
