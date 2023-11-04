@@ -80,7 +80,7 @@ const {
           <p class="text-neutral-400">Team</p>
           {teammates?.length > 0 ? (
             <ul>
-              {teammates.map((teammate: { name: string, role: string, href: string }) => 
+              {teammates.map((teammate: { name: string, role: string, href: string }) => (
                 <li>
                   <a 
                     href={teammate.href}
@@ -91,7 +91,7 @@ const {
                   </a> 
                   ({teammate.role})
                 </li>
-              )}
+              ))}
             </ul>
           ) : "—"}
         </div>
