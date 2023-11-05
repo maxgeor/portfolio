@@ -23,7 +23,11 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
   `}
 >
   <div class="flex items-center justify-between gap-4">
-    <a href="/" class="hover:underline">Max Georgopoulos</a>
+    {currentPath === '/' ? (
+      <p>Max Georgopoulos</p>
+    ) : (
+      <a href="/" class="hover:underline">Max Georgopoulos</a>
+    )}
   </div>
 
   {links.map(({ href, text, matchingPaths }) => (

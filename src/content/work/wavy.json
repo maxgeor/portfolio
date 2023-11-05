@@ -8,5 +8,6 @@
     "target": "_blank"
   },
   "hasStudy": true,
-  "isDraft": true
+  "isDraft": true,
+  "order": 8
 }

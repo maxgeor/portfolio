@@ -51,7 +51,9 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
       Work
     </h2>
     <div class="col-span-full columns-1 sm:columns-2 gap-4 space-y-3 -mt-1">
-      {works.sort((a, b) => a.data.order - b.data.order).map(work => (
+      {works
+        .sort((a, b) => a.data.order - b.data.order)
+        .map(work => (
         <Work
           title={work.data.title}
           link={work.data.link}

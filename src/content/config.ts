@@ -14,7 +14,7 @@ const work = defineCollection({
     hasStudy: z.boolean().optional(),
     isDraft: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
-    order: z.number().optional()
+    order: z.number()
   })
 });
 
@@ -40,7 +40,7 @@ const study = defineCollection({
     }).array().optional(),
     isComingSoon: z.boolean().optional(),
     isDraft: z.boolean().optional(),
-    order: z.number().optional()
+    order: z.number()
   }),
 });
 
