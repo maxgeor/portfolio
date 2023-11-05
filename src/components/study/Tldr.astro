@@ -24,7 +24,7 @@ const { problem, solution, decisions, tradeoffs } = Astro.props;
       <td class="pl-8 pb-4">
         <ul class="">
           {decisions.map((decision) => (
-            <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
+            <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
               {decision}
             </li>
           ))}
@@ -36,7 +36,7 @@ const { problem, solution, decisions, tradeoffs } = Astro.props;
       <td class="pl-8">
         <ul>
           {tradeoffs.map((tradeoff) => (
-            <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
+            <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•']">
               {tradeoff}
             </li>
           ))}

@@ -11,7 +11,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
   <div class="grid grid-cols-2 md:grid-cols-4 gap-y-3 gap-x-4 px-4">
     <Header />
     <main class="col-span-full columns-1 sm:columns-2 gap-x-4 space-y-3">
-      {works.map((work) => (
+      {works.sort((a, b) => a.data.order - b.data.order).map((work) => (
         <Work
           title={work.data.title}
           link={work.data.link}

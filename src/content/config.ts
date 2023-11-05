@@ -40,6 +40,7 @@ const study = defineCollection({
     }).array().optional(),
     isComingSoon: z.boolean().optional(),
     isDraft: z.boolean().optional(),
+    order: z.number().optional()
   }),
 });
 

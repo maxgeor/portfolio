@@ -18,7 +18,7 @@ const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft
 const writings = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
 
 const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
-  const { work, roles, year, isComingSoon } = study.data;
+  const { work, roles, year, isComingSoon, order } = study.data;
   const { data: { title, image, description } } = await getEntry('work', work.id);
   return { 
     slug: study.slug,
@@ -27,7 +27,8 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
     description,
     roles, 
     year,
-    isComingSoon
+    isComingSoon,
+    order
   };
 }));
 ---
@@ -35,7 +36,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 <Layout title="Max Georgopoulos">
   <div class="relative grid grid-cols-4 gap-4 px-4">
     <Header />
-    {studiesWithWorkData?.map((study) => (
+    {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
       <Study
         title={study.title}
         description={study.description}
@@ -50,7 +51,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
       Work
     </h2>
     <div class="col-span-full columns-1 sm:columns-2 gap-4 space-y-3 -mt-1">
-      {works.map(work => (
+      {works.sort((a, b) => a.data.order - b.data.order).map(work => (
         <Work
           title={work.data.title}
           link={work.data.link}
