@@ -5,12 +5,6 @@ export interface Props {
 
 const { classes = "" } = Astro.props;
 
-const links = [
-  { href: "/work", text: "Work", matchingPaths: ["/work", "/study"] },
-  { href: "/writing", text: "Writing", matchingPaths: ["/writing"] },
-  { href: "/about", text: "About", matchingPaths: ["/about"] },
-];
-
 const currentPath = Astro.url.pathname;
 const doesLinkMatchCurrentPath = (matchingPaths: string[]) => 
   matchingPaths.some((path) => currentPath.includes(path));
@@ -18,57 +12,18 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
 
 <header
   class={`
-    relative col-span-full grid grid-cols-4 gap-4 -my-1
+    col-span-full grid grid-cols-4 gap-4 -my-1 pt-4
     ${classes}
   `}
 >
-  <!-- <div class="flex items-center justify-between gap-4">
-    {currentPath === '/' ? (
-      <p>Max Georgopoulos</p>
-    ) : (
-      <a href="/" class="hover:underline">Max Georgopoulos</a>
-    )}
-  </div> -->
-  <a href="/" class="order-first no-underline h-2.5 w-2.5 bg-white rounded-full"></a>
-  <a href='/about' class='order-2 md:order-3 xl:order-4 -ml-px hover:underline'>
+  <a href="/" class="my-[5px] order-first no-underline h-2.5 w-2.5 bg-white rounded-full "></a>
+  <a href='/about' class='order-2 md:order-3 xl:order-4 hover:underline'>
     About
   </a>
-  <a href='/work' class='order-3 md:order-2 -ml-px hover:underline'>
+  <a href='/work' class='order-3 md:order-2 hover:underline'>
     Work
   </a>
-  <a href='/writing' class='order-4 xl:order-3 -ml-px hover:underline'>
+  <a href='/writing' class='order-4 xl:order-3 hover:underline'>
     Writing
   </a>
-
-  <!-- {links.map(({ href, text, matchingPaths }) => (
-    <a
-      href={href}
-      class={`
-        -ml-px hover:underline
-        ${doesLinkMatchCurrentPath(matchingPaths)
-          ? "text-neutral-50" 
-          : "text-neutral-50"
-        }
-      `}
-    >
-      {text}
-    </a>
-  ))} -->
-
-  <!-- <div class="-ml-px flex justify-self-end md:hidden col-start-2 gap-1 text-neutral-400">
-    {links.map(({ href, text, matchingPaths }, index) => (
-      <span>
-        <a
-          href={href}
-          class={`
-            hover:underline
-            ${doesLinkMatchCurrentPath(matchingPaths) ? "text-neutral-50" : null}
-          `}
-        >
-          {text}
-        </a>
-        {index !== links.length - 1 && <span class='text-neutral-400'>,</span>}
-      </span>
-      ))}
-  </div> -->
 </header>

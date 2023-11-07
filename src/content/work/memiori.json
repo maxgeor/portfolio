@@ -3,9 +3,6 @@
   "title": "Memiori",
   "description": "Refresh of mood journaling app",
   "image": "/work/memiori/cover.png",
-  "link": {
-    "href": "#"
-  },
   "hasStudy": true,
   "isComingSoon": true,
   "order": 2

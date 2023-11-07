@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import Hero from '../components/Hero.astro';
 import Header from "../components/Header.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
@@ -7,6 +8,7 @@ import ChevronLeftIcon from "../components/icons/ChevronLeftIcon.astro";
 import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
 import NavList from "../components/study/NavList.astro";
 import Button from "../components/Button.astro";
+import Image from "../components/study/Image.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -23,7 +25,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full">
+  <main class="relative col-span-full px-4">
     <Button 
       tag="a" 
       href="#article" 
@@ -51,59 +53,72 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button>
+    
     <div class="flex flex-col gap-4">
-      <Header classes="px-4 sm:px-4" />
-      <section class="relative px-4 sm:px-4 grid grid-cols-1 md:grid-cols-4 gap-y-3 gap-x-4 pb-4 ">
-        <div class="col-span-full flex justify-between gap-4 border-t border-neutral-700 h-min -mb-1 pt-1">
-          <h1>{title}</h1>
-          {
-            link ? (
-              <a
-                href={link}
-                target="_blank"
-                class=" -mr-0.5 flex items-center gap-[3px] hover:underline"
-              >
-                See it
-                <UpRightArrowIcon classes="mt-0.5" />
-              </a>
-            ) : null
-          }
+      <!-- <Header classes="px-4 sm:px-4" /> -->
+      <section 
+        class={`
+          order-first col-span-full grid grid-cols-4 gap-4 pb-10 sm:pb-[48px] xl:pb-[60px]
+        `}
+      >
+        <Header classes="lg:pb-12"/>
+        <img 
+          src={image} 
+          alt="" 
+          class="lg:order-last col-span-full lg:col-span-2 -mx-4 lg:mx-0 w-auto aspect-[7/4] object-cover" 
+        />
+        <div class="flex flex-col lg:flex-col-reverse justify-between gap-4 col-span-full lg:col-span-2 h-full">
+          <div class="flex justify-between items-end">
+            <h1 
+              class="font-medium text-5xl  xl:text-9xl  lg:leading-[36px] xl:leading-[96px] tracking-[-0.06em] col-span-full -ml-1 xl:-ml-2.5"
+            >
+              {title}
+            </h1>
+            <p class="leading-6 lg:leading-3">{year}</p>
+          </div>
+          <div 
+            class="flex flex-col gap-y-4"
+          >
+            <div class="grid grid-cols-4 gap-x-4 border-t">
+              <p class="col-span-1 lg:col-span-2">In short…</p>
+              <p class="col-span-3 lg:col-span-2">{tldr}</p>
+            </div>
+            <div class="grid grid-cols-4 gap-x-4 border-t">
+              <p class="col-span-1 lg:col-span-2">Role</p>
+              <p class="col-span-3 lg:col-span-2 capitalize">{roles.join(", ")}</p>
+            </div>
+            <div class="grid grid-cols-4 gap-x-4 border-t">
+              <p class="col-span-1 lg:col-span-2">Tools</p>
+              <p class="col-span-3 lg:col-span-2 capitalize">{tools.join(", ")}</p>
+            </div>
+            <div class="grid grid-cols-4 gap-x-4 border-t">
+              <p class="col-span-1 lg:col-span-2">Team</p>
+              {teammates?.length > 0 ? (
+                <ul class="col-span-3 lg:col-span-2 capitalize">
+                  {teammates.map((teammate: { name: string, role: string, href: string }) => (
+                    <li>
+                      <a 
+                        href={teammate.href}
+                        target="_blank"
+                        class="underline" 
+                      >
+                        {teammate.name}
+                      </a> 
+                      ({teammate.role})
+                    </li>
+                  ))}
+                </ul>
+              ) : "—"}
+            </div>
+            <!-- <div class="grid grid-cols-4 gap-x-4 border-t">
+              <p class="col-span-1 lg:col-span-2">Year</p>
+              <p class="col-span-3 lg:col-span-2 capitalize">{year}</p>
+            </div> -->
+          </div>
         </div>
-        <div>
-          <p class="text-neutral-400">In short…</p>
-          <p>{tldr}</p>
-        </div>
-        <div class="capitalize flex flex-col">
-          <p class="text-neutral-400">Role</p>
-          <p>{roles.join(", ")}</p>
-        </div>
-        <div class="capitalize">
-          <p class="text-neutral-400">Tools</p>
-          <p>{tools.join(", ")}</p>
-        </div>
-        <div class="capitalize sm:mr-10">
-          <p class="text-neutral-400">Team</p>
-          {teammates?.length > 0 ? (
-            <ul>
-              {teammates.map((teammate: { name: string, role: string, href: string }) => (
-                <li>
-                  <a 
-                    href={teammate.href}
-                    target="_blank"
-                    class="underline" 
-                  >
-                    {teammate.name}
-                  </a> 
-                  ({teammate.role})
-                </li>
-              ))}
-            </ul>
-          ) : "—"}
-        </div>
-        <p class="md:absolute top-[49px] right-4">{year}</p>
       </section>
     </div>
-    {
+    <!-- {
       image ? (
         <div id="cover" class="relative">
           <div class="absolute inset-0 bottom-auto h-px bg-black/[5%] z-10"></div>
@@ -117,7 +132,7 @@ const {
           <div class="absolute inset-0 top-auto h-px bg-black/[5%] z-10"></div> 
         </div>
       ) : null
-    }
+    } -->
     <div class="flex flex-col gap-4 w-full">
       <article
         id="article"

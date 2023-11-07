@@ -10,7 +10,7 @@ const work = defineCollection({
     link: z.object({
       href: z.string(),
       target: z.enum(['_blank', '_self']).optional(),
-    }),
+    }).optional(),
     hasStudy: z.boolean().optional(),
     isDraft: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),

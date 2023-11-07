@@ -6,7 +6,7 @@ export interface Props {
   title: string;
   description: string;
   image: string;
-  link: {
+  link?: {
     href: string;
     target?: '_blank' | '_self';
   };
@@ -25,11 +25,11 @@ const {
 ---
 
 <a
-  href={isComingSoon ? '#' : link.href}
-  target={!link.target || isComingSoon ? '_self' : link.target}
+  href={!link || isComingSoon ? '#' : link.href}
+  target={!link?.target || isComingSoon ? '_self' : link.target}
   class={`
     group relative gap-x-4 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column col-span-full sm:col-span-2
-    ${isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
+    ${!link || isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
     ${classes} 
   `}
 >
@@ -40,7 +40,7 @@ const {
         {description.replace('.', '') || ''}
       </span>
     </div>
-    {isComingSoon ? (
+    {!link || isComingSoon ? (
       <span class="text-neutral-400 whitespace-nowrap lg:opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out">
         Coming soon…
       </span>

@@ -4,7 +4,6 @@ import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import Writing from "../components/Writing.astro";
 import Study from "../components/Study.astro";
-import BloopyIcon from "../components/icons/BloopyIcon.astro";
 import { 
   getEntry,
   getCollection
@@ -20,7 +19,7 @@ const writings = await getCollection('writing', ({ data: { isDraft } }) => !isDr
 
 const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
   const { work, roles, year, isComingSoon, order } = study.data;
-  const { data: { title, image, description } } = await getEntry('work', work.id);
+  const { data: { title, image, description, link } } = await getEntry('work', work.id);
   return { 
     slug: study.slug,
     title, 
@@ -28,15 +27,16 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
     description,
     roles, 
     year,
-    isComingSoon,
-    order
+    order,
+    link,
+    isComingSoon
   };
 }));
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative grid grid-cols-4 md:grid-cols-4 gap-4 px-4 pt-4">
-    <section class="col-span-full grid grid-cols-4 md:grid-cols-4 gap-4 h-[100vh] pb-10 sm:pb-[48px] xl:pb-[60px]">
+  <div class="relative grid grid-cols-4 gap-4 px-4">
+    <section class="col-span-full grid grid-cols-4 gap-4 h-screen md:h-[85vh] pb-10 sm:pb-[48px] xl:pb-[60px]">
       <Header/>
       <p class="col-start-2 col-span-full sm:col-span-3 sm:col-start-2 md:col-start-3 md:col-span-2 xl:col-start-4 xl:col-span-1">
         I'm a designer and developer based out of Toronto, but I bum
@@ -46,22 +46,24 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
         techniques, TailwindCSS, and The 2023 Spring Summer Collection from
         Homme Plissé.
       </p>
-      <h1 class="font-medium text-[14.7vw] sm:text-[15.2vw] leading-[13vw] md:text-[11.5vw] lg:text-[11.6vw] xl:text-[11.8vw] tracking-tighter md:leading-[10vw] col-span-full -ml-[0.8vw] self-end">
+      <h1 class="font-medium text-[14.9vw] xs:text-[15.2vw] md:text-[11.5vw] lg:text-[11.6vw] xl:text-[11.8vw] tracking-[-0.06em] leading-[13.5vw] md:leading-[10vw] col-span-full -ml-[0.8vw] self-end">
         Max<br/>Georgopoulos
       </h1>
     </section>
-    <!-- <Header /> -->
-    {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
-      <Study
-        title={study.title}
-        description={study.description}
-        image={study.image}
-        roles={study.roles}
-        year={study.year}
-        link={{ href: `/study/${study.slug}` }}
-        isComingSoon={study.isComingSoon}
-      />
-    ))}
+    <section class="col-span-full grid grid-cols-4 gap-4 pt-12">
+      {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
+        <Study
+          title={study.title}
+          description={study.description}
+          image={study.image}
+          roles={study.roles}
+          year={study.year}
+          slug={study.slug}
+          link={study.link}
+          isComingSoon={study.isComingSoon}
+        />
+      ))}
+    </section>
     <h2 class="col-span-full  -ml-0.5 md:-ml-[4px] text-[29px] leading-[24px] sm:text-[42px] xl:text-[60px] sm:leading-[32px] font-medium tracking-[-0.04em] pt-20">
       Work
     </h2>

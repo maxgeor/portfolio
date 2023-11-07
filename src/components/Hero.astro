@@ -1,0 +1,31 @@
+---
+
+import Header from "../components/Header.astro";
+import Image from "./study/Image.astro";
+
+export interface Props {
+  title: string;
+  image?: string;
+  classes?: string;
+}
+
+const { title, image, classes = "" } = Astro.props;
+---
+
+<section 
+  class={`
+    order-first col-span-full grid grid-cols-4 gap-4 h-screen md:h-[85vh] pb-10 sm:pb-[48px] xl:pb-[60px]
+    ${classes}
+  `}
+>
+  <Header/>
+  {image && <Image src={image} alt="" classes="order-2 col-span-3 col-start-1 col-span-full xl:col-start-1 xl:col-end-3 order-auto -mx-4 w-auto" />}
+  <div class="order-4 col-span-full sm:col-span-3 sm:col-start-2 md:col-start-3 md:col-span-2 xl:col-start-4 xl:col-span-1">
+    <slot name="content" />
+  </div>
+  <h1 
+    class="order-3 font-medium text-[14.9vw] xs:text-[15.2vw] md:text-[11.5vw] lg:text-[11.6vw] xl:text-[11.8vw] tracking-[-0.06em] leading-[13.5vw] md:leading-[10vw] col-span-full -ml-[0.8vw] self-end"
+  >
+    {title}
+  </h1>
+</section>
