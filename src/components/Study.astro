@@ -1,5 +1,7 @@
 ---
 import RightArrowIcon from './icons/RightArrowIcon.astro';
+import ChevronRightIcon from './icons/ChevronRightIcon.astro';
+import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 
 export interface Props {
   title: string;
@@ -27,43 +29,93 @@ const {
 } = Astro.props;
 ---
 
+<!-- <a
+  href={isComingSoon ? '#' : link.href}
+  target={link.target || '_self'}
+  class={`
+    group relative gap-x-4 grid grid-cols-1 md:grid-cols-4 gap-4 h-fit break-inside-avoid-column col-span-full md:col-span-2
+    ${isComingSoon && 'cursor-default'}
+    ${classes} 
+  `}
+> -->
 <a
   href={isComingSoon ? '#' : link.href}
   target={link.target || '_self'}
   class={`
-    group relative gap-x-4 grid grid-cols-2 lg:grid-cols-4 h-fit break-inside-avoid-column border-t border-neutral-700 col-span-full
+    group relative gap-x-4 grid grid-cols-1 md:grid-cols-4 gap-4 h-fit break-inside-avoid-column col-span-full md:col-span-2
     ${isComingSoon && 'cursor-default'}
     ${classes} 
   `}
 >
-  <p class="lg:order-1">
-    {title}
-    {isComingSoon && (
-      <span class="md:hidden ml-px text-neutral-400 my-0.5 leading-4">
-        (Coming soon)
-      </span>
-    )}
-  </p>
-  <p class="lg:order-4">{year}</p>
-  <p class="lg:order-2 my-0.5 leading-4">{description}</p>
-  <p class="lg:order-3 capitalize leading-4 my-0.5">{roles.join(', ')}</p>
-  <div class="hidden md:block z-5 absolute top-0 right-0">
-    {isComingSoon ? (
-      <p class="flex text-neutral-400 transition ease-in-out group-hover:rotate-1">
-        Coming soon…
-      </p>
-    ) : (
-      <RightArrowIcon classes='transform group-hover:translate-x-px transition mt-1' />
-    )}
+  <div class="relative col-span-full grid grid-cols-2 gap-y-3 gap-x-4 h-full leading-4 ">
+    <div class="flex justify-between items-start gap-4">
+      <div class="flex flex-col gap-y-4">
+        <h2 class="-ml-0.5 md:-ml-[4px] text-[29px] leading-[24px] sm:text-[42px] xl:text-[60px] xl:leading-[48px] sm:leading-[32px] font-medium tracking-[-0.04em]">{title}</h2>
+        <p class="-ml-px">{description}</p>
+      </div>
+      <!-- <div class="hidden sm:flex gap-1 items-center ">
+        Live site
+        <UpRightArrowIcon classes='mt-px' />
+      </div> -->
+    </div>
+    <p class="sm:hidden ">{roles.join(', ')}</p>
+    <div class="hidden sm:flex justify-between items-start gap-4">
+      <div class="flex flex-col self-end">
+        {roles.map(role => (
+          <p class="capitalize">{role}</p>
+        ))}
+      </div>
+      <!-- <div class="flex items-center gap-1">
+        Case study
+        <RightArrowIcon classes='mt-px' />
+      </div> -->
+    </div>
+
+     <div class="flex  gap-1 justify-between items-center border-y">
+      Live site
+      <UpRightArrowIcon classes='mt-px' />
+    </div>
+
+    <div class="flex  justify-between items-center gap-1 border-y">
+      Case study
+      <RightArrowIcon classes='mt-px' />
+    </div>
+   
+
+    <!-- <div class="flex sm:hidden flex-col col-span-full">
+      <div class="flex gap-1 items-center border-t">
+        Live site
+        <UpRightArrowIcon classes='mt-px' />
+      </div>
+      <div class="flex items-center gap-1 border-y">
+        Case study
+        <RightArrowIcon classes='mt-px' />
+      </div>
+    </div> -->
+    
+    <!-- <div class="self-end">
+      {isComingSoon ? (
+        <p class="flex text-neutral-400 transition ease-in-out group-hover:rotate-1">
+          Coming soon…
+        </p>
+      ) : (
+        <div class="flex flex-col">
+          <div class="flex items-center -mr-1 text-neutral-400">
+            Read case study
+            <ChevronRightIcon />
+          </div>
+        </div>
+      )}
+    </div>   -->
   </div>
   <picture class={`
-    order-last relative h-auto col-span-full mt-3 -mx-4 sm:-mx-4
+    relative h-auto col-span-full 
     ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
   `}>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
-      class='w-full h-full object-top select-none object-cover'
+      class='aspect-[7/4] w-full h-full object-top select-none object-cover'
     />
   </picture>
 </a>

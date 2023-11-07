@@ -18,34 +18,44 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
 
 <header
   class={`
-    relative col-span-full grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 -my-1
+    relative col-span-full grid grid-cols-4 gap-4 -my-1
     ${classes}
   `}
 >
-  <div class="flex items-center justify-between gap-4">
+  <!-- <div class="flex items-center justify-between gap-4">
     {currentPath === '/' ? (
       <p>Max Georgopoulos</p>
     ) : (
       <a href="/" class="hover:underline">Max Georgopoulos</a>
     )}
-  </div>
+  </div> -->
+  <a href="/" class="order-first no-underline h-2.5 w-2.5 bg-white rounded-full"></a>
+  <a href='/about' class='order-2 md:order-3 xl:order-4 -ml-px hover:underline'>
+    About
+  </a>
+  <a href='/work' class='order-3 md:order-2 -ml-px hover:underline'>
+    Work
+  </a>
+  <a href='/writing' class='order-4 xl:order-3 -ml-px hover:underline'>
+    Writing
+  </a>
 
-  {links.map(({ href, text, matchingPaths }) => (
+  <!-- {links.map(({ href, text, matchingPaths }) => (
     <a
       href={href}
       class={`
-        -ml-px hidden md:inline-block hover:underline
+        -ml-px hover:underline
         ${doesLinkMatchCurrentPath(matchingPaths)
           ? "text-neutral-50" 
-          : "text-neutral-400"
+          : "text-neutral-50"
         }
       `}
     >
       {text}
     </a>
-  ))}
+  ))} -->
 
-  <div class="-ml-px flex sm:justify-self-end md:hidden col-start-2 gap-1 text-neutral-400">
+  <!-- <div class="-ml-px flex justify-self-end md:hidden col-start-2 gap-1 text-neutral-400">
     {links.map(({ href, text, matchingPaths }, index) => (
       <span>
         <a
@@ -60,5 +70,5 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
         {index !== links.length - 1 && <span class='text-neutral-400'>,</span>}
       </span>
       ))}
-  </div>
+  </div> -->
 </header>

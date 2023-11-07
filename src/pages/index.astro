@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import Writing from "../components/Writing.astro";
 import Study from "../components/Study.astro";
+import BloopyIcon from "../components/icons/BloopyIcon.astro";
 import { 
   getEntry,
   getCollection
@@ -34,8 +35,22 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative grid grid-cols-4 gap-4 px-4">
-    <Header />
+  <div class="relative grid grid-cols-4 md:grid-cols-4 gap-4 px-4 pt-4">
+    <section class="col-span-full grid grid-cols-4 md:grid-cols-4 gap-4 h-[100vh] pb-10 sm:pb-[48px] xl:pb-[60px]">
+      <Header/>
+      <p class="col-start-2 col-span-full sm:col-span-3 sm:col-start-2 md:col-start-3 md:col-span-2 xl:col-start-4 xl:col-span-1">
+        I'm a designer and developer based out of Toronto, but I bum
+        around different places. I believe that the boundary between design
+        and engineering is artificial — you get the best results by blending
+        the two. Lately, I've been inspired by Ryan Singer's design
+        techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+        Homme Plissé.
+      </p>
+      <h1 class="font-medium text-[14.7vw] sm:text-[15.2vw] leading-[13vw] md:text-[11.5vw] lg:text-[11.6vw] xl:text-[11.8vw] tracking-tighter md:leading-[10vw] col-span-full -ml-[0.8vw] self-end">
+        Max<br/>Georgopoulos
+      </h1>
+    </section>
+    <!-- <Header /> -->
     {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
       <Study
         title={study.title}
@@ -47,7 +62,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
         isComingSoon={study.isComingSoon}
       />
     ))}
-    <h2 class="col-span-full border-t border-neutral-700 -mb-1">
+    <h2 class="col-span-full  -ml-0.5 md:-ml-[4px] text-[29px] leading-[24px] sm:text-[42px] xl:text-[60px] sm:leading-[32px] font-medium tracking-[-0.04em] pt-20">
       Work
     </h2>
     <div class="col-span-full columns-1 sm:columns-2 gap-4 space-y-3 -mt-1">
@@ -63,7 +78,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
         />
       ))}
     </div>
-    <h2 class="col-span-full border-t border-neutral-700 -mb-1">
+    <h2 class="col-span-full  -ml-0.5 md:-ml-[4px] text-[29px] leading-[24px] sm:text-[42px] lg:text-[60px] sm:leading-[32px] font-medium tracking-[-0.04em] pt-20 pb-3">
       Writing
     </h2>
     <div id="writings" class="col-span-full grid grid-cols-2 md:grid-cols-4 gap-x-4">

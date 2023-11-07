@@ -14,10 +14,10 @@ const formattedDate = formatDate(date);
 
 <a 
   href={href}
-  class="group col-span-full flex justify-between sm:grid grid-cols-2 md:grid-cols-4 gap-4 border-t last:border-y border-neutral-700"
+  class="group col-span-full flex justify-between sm:grid grid-cols-2 md:grid-cols-4 gap-4 border-t last:border-y"
 >
-  <span class="leading-4 my-0.5 md:col-span-2 group-hover:underline group-focus:underline">{title}</span>
-  <span class="md:col-span-2 text-neutral-400 whitespace-nowrap">
+  <span class="md:col-span-2 group-hover:underline group-focus:underline">{title}</span>
+  <span class="md:col-span-2 whitespace-nowrap">
     {formattedDate}
   </span>
 </a>

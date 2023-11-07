@@ -54,7 +54,7 @@ const {
     <div class="flex flex-col gap-4">
       <Header classes="px-4 sm:px-4" />
       <section class="relative px-4 sm:px-4 grid grid-cols-1 md:grid-cols-4 gap-y-3 gap-x-4 pb-4 ">
-        <div class="col-span-full flex justify-between gap-4 border-t border-neutral-700 h-min -mb-1">
+        <div class="col-span-full flex justify-between gap-4 border-t border-neutral-700 h-min -mb-1 pt-1">
           <h1>{title}</h1>
           {
             link ? (
@@ -71,22 +71,22 @@ const {
         </div>
         <div>
           <p class="text-neutral-400">In short…</p>
-          <p class="my-0.5 leading-4">{tldr}</p>
+          <p>{tldr}</p>
         </div>
         <div class="capitalize flex flex-col">
           <p class="text-neutral-400">Role</p>
-          <p class="my-0.5 leading-4">{roles.join(", ")}</p>
+          <p>{roles.join(", ")}</p>
         </div>
         <div class="capitalize">
           <p class="text-neutral-400">Tools</p>
-          <p class="my-0.5 leading-4">{tools.join(", ")}</p>
+          <p>{tools.join(", ")}</p>
         </div>
         <div class="capitalize sm:mr-10">
           <p class="text-neutral-400">Team</p>
           {teammates?.length > 0 ? (
             <ul>
               {teammates.map((teammate: { name: string, role: string, href: string }) => (
-                <li class="my-0.5 leading-4">
+                <li>
                   <a 
                     href={teammate.href}
                     target="_blank"
