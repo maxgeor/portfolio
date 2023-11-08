@@ -37,30 +37,30 @@ const {
     ${classes} 
   `}
 >
-  <div class="flex flex-col gap-y-3 self-end">
+  <div class="flex flex-col gap-y-4 self-end">
     <h2 
-      class="-ml-0.5 md:-ml-[4px] text-[29px] leading-[24px] sm:text-[42px] xl:text-[60px] xl:leading-[48px] sm:leading-[32px] font-medium tracking-[-0.05em]"
+      class="-ml-0.5 md:-ml-[4px] text-4xl lg:text-5xl leading-[28px] lg:leading-[36px] font-medium tracking-[-0.05em]"
     >
       {title}
     </h2>
-    <p class="-ml-px">{description}</p>
+    <p class="-ml-px -my-1">{description}</p>
   </div>
-  <div class="col-start-2 flex flex-col self-end">
+  <div class="col-start-2 flex flex-col self-end -my-1">
     {roles.map(role => <p class="capitalize">{role}</p>)}
   </div>
   {link ? (
     <a
       href={link.href}
       target={link.target || '_self'} 
-      class="group flex gap-1 justify-between items-center border-y"
+      class="group flex gap-1 justify-between items-center border-y  col-span-full sm:col-span-1"
     >
       <span class="group-hover:underline group-focus:underline">Live site</span>
       <UpRightArrowIcon classes='mt-px' />
     </a>
   ) : null}
   <div class={`
-    flex justify-between items-center gap-1 border-y
-    ${link ? 'col-span-1' : 'col-span-2'}
+    flex justify-between items-center gap-1 border-b sm:border-y -mt-4 sm:mt-0
+    ${link ? ' col-span-full sm:col-span-1' : 'col-span-full'}
   `}>
     {isComingSoon ? (
       <p class="flex transition ease-in-out group-hover:rotate-1">
@@ -74,7 +74,7 @@ const {
     )}
   </div>
   <picture class={`
-    relative h-auto col-span-full 
+    order-last relative h-auto col-span-full 
     ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
   `}>
     <img
