@@ -1,0 +1,43 @@
+---
+import NavList from './NavList.astro';
+
+export interface Props {
+  sections: {
+    title: string;
+    subsections?: {
+      title: string;
+    }[];
+  }[];
+  classes?: string;
+}
+
+const { sections, classes = '' } = Astro.props;
+---
+<nav
+  id="expandable-sidebar-nav"
+  class={`
+    group flex flex-col items-end justify-end overflow-auto md:overflow-scroll no-scrollbar col-span-full scroll-smooth md:col-span-2 py-2 px-4 md:p-0 z-50 md:mt-1 mb-8 md:mb-0 border-t md:border-none border-neutral-600 opacity-0 focus-within:opacity-100 pointer-events-none focus-within:pointer-events-default transition-all ease-in-out 
+    ${classes}
+  `}
+>
+  <ol class='fixed top-1/2 right-0 transform -translate-y-1/2 justify-self-end pl-10 w-fit flex flex-col gap-y-3 group-hover:gap-3 group-hover:scale-[102%] tranform group-hover:-translate-x-0.5 transition-all'>
+    {sections.map(() => <span class="h-0.5 w-2 bg-neutral-600"></span>)}
+  </ol>
+  <NavList 
+    sections={sections} 
+    classes=" fixed top-1/2 right-0 transform -translate-y-1/2  overflow-scroll translate-x-2 group-hover:translate-x-0 hover:translate-x-0 scale-[98%] group-hover:scale-100 hover:scale-100 overflow-visible shadow-xl opacity-0 focus-within:opacity-100 group-hover:opacity-100 hover:opacity-100 transition-all ease-in-out p-4 bg-neutral-900/[85%] backdrop-blur-lg border-l border-neutral-700/[70%] overflow-auto h-full" 
+  />
+</nav>
+
+<script>
+  const nav = document.querySelector('#expandable-sidebar-nav');
+  
+  const shouldShowNav = () => {
+    return window.scrollY >= 300 
+      ? nav?.classList.remove('opacity-0', 'pointer-events-none')
+      : nav?.classList.add('opacity-0', 'pointer-events-none');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => shouldShowNav());
+  window.addEventListener('scroll', () => shouldShowNav());
+</script>

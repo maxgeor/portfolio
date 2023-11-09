@@ -13,7 +13,10 @@ const extensionlessSrc = stripExtension(src);
 
 <div class="relative">
   <video
-    class={`transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full border border-[#ebebeb] select-none ${classes}`}
+    class={`
+      transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full select-none 
+      ${classes}
+    `}
     poster={extensionlessSrc + ".png"}
     playsinline
     autoplay

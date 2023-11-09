@@ -23,7 +23,7 @@ const { title, subsections = null, isSubitem = false } = Astro.props;
 >
   <a
     href={`#${toUrlSafeKebabCase(title)}`}
-    class="flex items-center gap-[5px] text-neutral-400 md:text-neutral-490 transition hover:underline lg:m-0"
+    class="flex items-center gap-[5px] text-neutral-300 transition hover:underline lg:m-0"
   >
     {title}
     {subsections && (

@@ -52,14 +52,14 @@ const {
     <a
       href={link.href}
       target={link.target || '_self'} 
-      class="group flex gap-1 justify-between items-center border-y  col-span-full sm:col-span-1"
+      class="group flex gap-1 justify-between items-center border-t sm:border-y border-white/[35%] col-span-full sm:col-span-1 -mb-4 sm:mb-0"
     >
       <span class="group-hover:underline group-focus:underline">Live site</span>
       <UpRightArrowIcon classes='mt-px' />
     </a>
   ) : null}
   <div class={`
-    flex justify-between items-center gap-1 border-b sm:border-y -mt-4 sm:mt-0
+    flex justify-between items-center gap-1 border-y border-white/[35%] 
     ${link ? ' col-span-full sm:col-span-1' : 'col-span-full'}
   `}>
     {isComingSoon ? (
@@ -74,7 +74,7 @@ const {
     )}
   </div>
   <picture class={`
-    order-last relative h-auto col-span-full 
+    order-last relative h-auto col-span-full
     ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
   `}>
     <img
