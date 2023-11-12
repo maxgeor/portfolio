@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-4 gap-4 lg:gap-16">
+  <main class="relative col-span-full grid grid-cols-4 gap-4 lg:gap-y-16 px-4">
     <Button 
       tag="a" 
       href="#article" 
@@ -50,11 +50,11 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-4">Go back</span>
     </Button>
-    <Header classes="px-4" />
+    <Header />
     <section 
-      class='col-span-full grid grid-cols-4 gap-4 px-4'>
+      class='col-span-full grid grid-cols-4 gap-4'>
       <figure class={`
-        lg:order-last col-span-full lg:col-span-2 select-none -mx-4 lg:mx-0
+        lg:order-last col-span-full lg:col-span-2 select-none -mx-4 lg:ml-0
       `}>
         <img
           src={image}
@@ -65,7 +65,7 @@ const {
       <div class="flex flex-col lg:flex-col-reverse justify-between gap-4 col-span-full lg:col-span-2 h-full">
         <div class="flex justify-between items-end">
           <h1 
-            class="font-medium text-5xl lg:text-7xl  xl:text-9xl  lg:leading-[56px] xl:leading-[96px] tracking-[-0.06em] col-span-full -ml-1 xl:-ml-2.5"
+            class="font-medium text-5xl lg:text-7xl xl:text-9xl lg:leading-[56px] xl:leading-[96px] tracking-[-0.06em] col-span-full -ml-1 xl:-ml-2.5"
           >
             {title}
           </h1>
@@ -120,7 +120,7 @@ const {
     </section>
     <article
       id="article"
-      class="w-full mx-auto col-span-full grid grid-cols-1 md:grid-cols-8 gap-4 sm:gap-4 overflow-visible scroll-mt-4 pt-12 lg:pt-8 xl:pt-16 px-4"
+      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4 py-8"
     >
       <ExpandableSidebarNav sections={sections} />
       <div
@@ -129,7 +129,7 @@ const {
           
           prose-headings:font-medium
 
-          prose-h1:text-4xl prose-h1:mt-16 first:prose-h1:mt-0 prose-h1:mb-4
+          prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:leading-[32px] lg:prose-h1:leading-[44px] prose-h1:mt-16 first:prose-h1:mt-0 prose-h1:mb-4
           prose-h1:scroll-mt-[63px] md:prose-h1:scroll-mt-12 prose-h1:tracking-[-0.035em] prose-h1:-ml-0.5
 
           prose-h2:scroll-mt-14 prose-h2:tracking-[-0.03em] 
@@ -145,23 +145,64 @@ const {
 
           prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
 
-          prose-ul:list-disc prose-ul:col-span-full xl:prose-ul:col-start-2 xl:prose-ul:col-end-8 prose-ul:max-w-prose prose-ul:pl-[21px]
+          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[21px]
 
-          prose-ol:list-decimal prose-ol:col-span-full xl:prose-ol:col-start-2 xl:prose-ol:col-end-4 prose-ol:max-w-prose prose-ol:pl-[21px]
+          prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
 
           prose-li:m-0
           prose-li:pl-1
           prose-li:leading-5
+          marker:prose-li:font-mono
+          marker:prose-li:text-[0.925em]
+
+          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-4 sm:prose-figure:-mx-4 md:prose-figure:mx-0 
+          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-4 sm:prose-video:-mx-4 md:prose-video:mx-0
+
+          prose-td:p-0
+
+          grid grid-cols-1 md:grid-cols-8 gap-4 
+        `}
+      >
+      <!-- <div
+        class={`
+          prose-sm text-white w-full
+          
+          prose-headings:font-medium
+
+          prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:leading-[32px] lg:prose-h1:leading-[44px] prose-h1:mt-16 first:prose-h1:mt-0 prose-h1:mb-4
+          prose-h1:scroll-mt-[63px] md:prose-h1:scroll-mt-12 prose-h1:tracking-[-0.035em] prose-h1:-ml-0.5
+
+          prose-h2:scroll-mt-14 prose-h2:tracking-[-0.03em] 
+
+          prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:leading-5 prose-h3:text-white
+
+          prose-p:leading-5
+          prose-p:max-w-prose 
+
+          prose-strong:font-medium prose-strong:text-neutral-50
+
+          prose-a:underline
+
+          prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
+
+          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[21px]
+
+          prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
+
+          prose-li:m-0
+          prose-li:pl-1
+          prose-li:leading-5
+          marker:prose-li:font-mono
+          marker:prose-li:text-[0.925em]
 
           prose-figure:w-auto prose-figure:select-none prose-figure:mt-6 prose-figure:mb-8 prose-figure:-mx-4 sm:prose-figure:-mx-4 md:prose-figure:mx-0 
           prose-video:w-auto prose-video:select-none	prose-video:mt-6 prose-video:mb-8 prose-video:-mx-4 sm:prose-video:-mx-4 md:prose-video:mx-0
 
           prose-td:p-0
 
-          col-span-full xl:col-start-3 xl:col-end-7
-          px-4 sm:px-4 md:px-0 mx-auto 
+          grid grid-cols-1 md:grid-cols-8 gap-4 
         `}
-      >
+      > -->
         <slot />
       </div>
     </article>

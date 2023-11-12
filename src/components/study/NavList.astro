@@ -9,13 +9,15 @@ export interface Props {
     }[];
   }[];
   isSubsection?: boolean;
+  id?: string;
   classes?: string;
 }
 
-const { sections, isSubsection = false, classes = '' } = Astro.props;
+const { sections, isSubsection = false, id, classes = '' } = Astro.props;
 ---
 
 <ol
+  id={id}
   class={`
   nav-list flex flex-col transition transform max-w-[230px]
   ${isSubsection 

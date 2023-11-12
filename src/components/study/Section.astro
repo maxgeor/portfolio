@@ -11,13 +11,17 @@ const { title, isSubsection = false, classes = '' } = Astro.props;
 <section 
   id={toUrlSafeKebabCase(title)} 
   class={`
-    relative flex flex-col gap-4 col-span-full scroll-mt-[72px] sm:scroll-mt-[108px]
+    relative grid grid-cols-8 gap-4 col-span-full scroll-mt-[72px] sm:scroll-mt-[108px]
     ${isSubsection ? '' : 'mt-[52px] first:mt-0'}
     ${classes}
   `}
 >
   <slot name="heading">
-    {isSubsection ? <h2>{title}</h2> : <h1>{title}</h1>}
+    {isSubsection ? (
+      <h2 class="col-span-2">{title}</h2>
+    ) : (
+      <h1 class="tracking-[-0.035em]  col-span-2 text-4xl lg:text-5xl leading-[32px] lg:leading-[44px] font-medium">{title}</h1>
+    )}
   </slot>
   <slot/>
 </section>

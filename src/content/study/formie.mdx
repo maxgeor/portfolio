@@ -87,28 +87,79 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   ]}
 />
 
-# Problem
+<div class="mt-16 grid grid-cols-6 gap-4 col-span-full col-start-2 col-end-8">
+  <h1 class="!text-8xl col-span-3 !mt-0">Etherscan's UI kinda sucked...</h1>
+  <div class="col-span-3 mt-4">
+    Developers make blockchain apps by
 
-Developers make blockchain apps by...
+    1. Writing code
+    2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+    3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
-1. Writing code
-2. Uploading the code to Ethereum or another blockchain as `smart contracts`
-3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
+    To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
 
-To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
+    But using their frontend felt more like running an obstacle course — we knew it could be better.
+  </div>
+  <div class="flex flex-col gap-4 col-span-6">
+    <Image
+      src="/work/formie/annotated-etherscan-page.png"
+      alt="Etherscan's interface for smart contract actions"
+    />
+    <div class=" bg-black col-span-3 col-start-2 flex flex-col gap-4">
+      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
+        <span class="text-neutral-600 w-5 !leading-8 ">1</span>
+        <p class="my-0 text-neutral-500 selection:col-start-5 !leading-8">It’s a list of <span class="text-white">technically-named</span> forms</p>
+      </div>
+      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
+        <span class="text-neutral-600 w-5 !leading-8">2</span>
+        <p class=" my-0 text-neutral-500  col-start-6 !leading-8">It’s at the <span class="text-white">bottom of the page</span>, behind two drawers</p>
+      </div>
+      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
+        <span class="text-neutral-600 w-5 !leading-8">3</span>
+        <p class="my-0 text-neutral-500 col-start-7 !leading-8">They <span class="text-white">don't give guidance</span>, clear errors, or feedback about your transaction.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-The problem? **Etherscan's frontend sucks**.
 
-- It's a list of technically-named forms
-- It's at the bottom of the page, behind two drawers
-- It doesn’t give guidance, clear errors, or feedback about your transaction.
+  
+  
+<div class="mt-16 grid grid-cols-8 gap-4 col-span-full">
+  <Image
+    src="/work/formie/annotated-etherscan-page.png"
+    alt="Etherscan's interface for smart contract actions"
+    classes="col-span-4 col-start-1"
+  />
+  <div class="col-start-5  col-span-4">
+    <h1 class="col-span-3 !mt-0">Etherscan's UI kinda sucked...</h1>
+    
+    Developers make blockchain apps by...
 
-Using their frontend felt more like running an obstacle course — we knew it could be better.
+    1. Writing code
+    2. Uploading the code to Ethereum or another blockchain as `smart contracts`
+    3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
 
-<Image
-  src="/work/formie/annotated-etherscan-page.png"
-  alt="Etherscan's interface for smart contract actions"
-/>
+    To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
+
+    But using their frontend felt more like running an obstacle course — we knew it could be better.
+  </div>
+  <div class="col-span-4 text-3xl flex flex-col gap-16">
+    1. It’s a list of technically-named forms
+    2. It’s at the bottom of the page, behind two drawers
+    3. It doesn’t give guidance, clear errors, or feedback about your transaction.
+
+    {/* The problem? **Etherscan's frontend sucks**.
+
+  - It's a list of technically-named forms
+  - It's at the bottom of the page, behind two drawers
+  - It doesn’t give guidance, clear errors, or feedback about your transaction.
+
+  Using their frontend felt more like running an obstacle course — we knew it could be better. */}
+  </div>
+</div>
+
+
 
 # Research
 
