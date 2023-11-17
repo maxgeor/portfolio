@@ -11,12 +11,16 @@ export interface Props {
     src: string;
     alt: string;
   }[];
+  classes?: string;
 }
-const { slides } = Astro.props;
+const { slides, classes = "" } = Astro.props;
 ---
 
 <div
-  class="carousel relative col-span-full xl:col-start-2 xl:col-end-8 -mx-4 sm:-mx-4 md:mx-0 mt-6 mb-8"
+  class={`
+    carousel relative -mx-4 sm:-mx-4 md:mx-0 border border-neutral-900
+    ${classes}
+  `}
 >
   <Button
     disabled={true}

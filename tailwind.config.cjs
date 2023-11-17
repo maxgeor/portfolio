@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-      serif: ['romie', 'Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
+      serif: ['Romie', 'Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
     },
     extend: {
@@ -41,7 +41,7 @@ module.exports = {
       },
       boxShadow: {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
-        'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.15)',
+        'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.18)',
         contour: 'inset 0px 0px 0px rgba(255,255,255,0.5)'
       },
       dropShadow: {

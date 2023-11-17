@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-4 gap-4 lg:gap-y-16 px-4">
+  <main class="relative col-span-full grid grid-cols-8 gap-6 lg:gap-y-12 px-6">
     <Button 
       tag="a" 
       href="#article" 
@@ -34,10 +34,10 @@ const {
       ariaHidden="true"
       disabled={true}
       padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[52px] sm:-translate-y-[80px] duration-[800ms]"
+      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[52px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronUpIcon classes="-mx-px -mb-px" />
-      <span class="leading-4">Go back</span>
+      <span class="leading-6">Go back</span>
     </Button>
     <Button
       id="go-back-down-button"
@@ -45,16 +45,16 @@ const {
       ariaLabel="Go back down"
       ariaHidden="true"
       padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[52px] sm:-translate-y-[80px] duration-[800ms]"
+      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[52px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
-      <span class="leading-4">Go back</span>
+      <span class="leading-6">Go back</span>
     </Button>
     <Header />
     <section 
-      class='col-span-full grid grid-cols-4 gap-4'>
+      class='col-span-full grid grid-cols-8 gap-6'>
       <figure class={`
-        lg:order-last col-span-full lg:col-span-2 select-none -mx-4 lg:ml-0
+        lg:order-last col-span-full lg:col-span-4 select-none -mx-6 lg:ml-0
       `}>
         <img
           src={image}
@@ -62,7 +62,7 @@ const {
           class='aspect-[7/4] h-full w-full object-cover'
         />
       </figure>
-      <div class="flex flex-col lg:flex-col-reverse justify-between gap-4 col-span-full lg:col-span-2 h-full">
+      <div class="flex flex-col lg:flex-col-reverse justify-between gap-6 col-span-full lg:col-span-4 h-full">
         <div class="flex justify-between items-end">
           <h1 
             class="font-medium text-5xl lg:text-7xl xl:text-9xl lg:leading-[56px] xl:leading-[96px] tracking-[-0.06em] col-span-full -ml-1 xl:-ml-2.5"
@@ -79,23 +79,23 @@ const {
             <p class="hidden lg:inline-block leading-6 lg:leading-3 self-end">{year}</p>
           </div>
         </div>
-        <div class="flex flex-col gap-y-4">
-          <div class="grid grid-cols-4 gap-x-4 border-t border-white/[35%]">
-            <p class="col-span-1 lg:col-span-2">In short…</p>
-            <p class="col-span-3 lg:col-span-2">{tldr}</p>
+        <div class="flex flex-col gap-y-6">
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+            <p class="col-span-2 lg:col-span-4">In short…</p>
+            <p class="col-span-4">{tldr}</p>
           </div>
-          <div class="grid grid-cols-4 gap-x-4 border-t border-white/[35%]">
-            <p class="col-span-1 lg:col-span-2">Role</p>
-            <p class="col-span-3 lg:col-span-2 capitalize">{roles.join(", ")}</p>
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+            <p class="col-span-2 lg:col-span-4">Role</p>
+            <p class="col-span-4 capitalize">{roles.join(", ")}</p>
           </div>
-          <div class="grid grid-cols-4 gap-x-4 border-t border-white/[35%]">
-            <p class="col-span-1 lg:col-span-2">Tools</p>
-            <p class="col-span-3 lg:col-span-2 capitalize">{tools.join(", ")}</p>
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+            <p class="col-span-2 lg:col-span-4">Tools</p>
+            <p class="col-span-4 capitalize">{tools.join(", ")}</p>
           </div>
-          <div class="grid grid-cols-4 gap-x-4 border-t border-white/[35%]">
-            <p class="col-span-1 lg:col-span-2">Team</p>
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+            <p class="col-span-2 lg:col-span-4">Team</p>
             {teammates?.length > 0 ? (
-              <ul class="col-span-3 lg:col-span-2 capitalize">
+              <ul class="col-span-4 capitalize">
                 {teammates.map((teammate: { name: string, role: string, href: string }) => (
                   <li>
                     <a 
@@ -111,98 +111,57 @@ const {
               </ul>
             ) : "—"}
           </div>
-          <div class="lg:hidden grid grid-cols-4 gap-x-4 border-t border-white/[35%]">
-            <p class="col-span-1 lg:col-span-2">Year</p>
-            <p class="col-span-3 lg:col-span-2 capitalize">{year}</p>
+          <div class="lg:hidden grid grid-cols-8 gap-x-6 border-t border-white/[35%]">
+            <p class="col-span-2 lg:col-span-4">Year</p>
+            <p class="col-span-4 capitalize">{year}</p>
           </div>
         </div>
       </div>
     </section>
     <article
       id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4 py-8"
+      class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
     >
       <ExpandableSidebarNav sections={sections} />
       <div
         class={`
-          prose-sm text-white w-full
+           text-white w-full  
+           prose-p:text-neutral-200
           
-          prose-headings:font-medium
+          prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-auto
 
-          prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:leading-[32px] lg:prose-h1:leading-[44px] prose-h1:mt-16 first:prose-h1:mt-0 prose-h1:mb-4
-          prose-h1:scroll-mt-[63px] md:prose-h1:scroll-mt-12 prose-h1:tracking-[-0.035em] prose-h1:-ml-0.5
-
-          prose-h2:scroll-mt-14 prose-h2:tracking-[-0.03em] 
-
-          prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:leading-5 prose-h3:text-white
-
+          prose-h3:-mb-[16px]
           prose-p:leading-5
           prose-p:max-w-prose 
+          prose-p:my-0
 
           prose-strong:font-medium prose-strong:text-neutral-50
 
           prose-a:underline
 
-          prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
+          prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-[#393939] prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[21px]
+          prose-ul:my-0
 
           prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
+          prose-ol:my-0
 
           prose-li:m-0
-          prose-li:pl-1
+          prose-li:pl-0
           prose-li:leading-5
           marker:prose-li:font-mono
+          marker:prose-li:text-neutral-200
           marker:prose-li:text-[0.925em]
 
-          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-4 sm:prose-figure:-mx-4 md:prose-figure:mx-0 
-          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-4 sm:prose-video:-mx-4 md:prose-video:mx-0
+          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 md:prose-figure:mx-0 
+          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-6 sm:prose-video:-mx-6 md:prose-video:mx-0
 
           prose-td:p-0
 
-          grid grid-cols-1 md:grid-cols-8 gap-4 
+          grid grid-cols-1 lg:grid-cols-8 gap-y-12 gap-x-6 
         `}
       >
-      <!-- <div
-        class={`
-          prose-sm text-white w-full
-          
-          prose-headings:font-medium
-
-          prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:leading-[32px] lg:prose-h1:leading-[44px] prose-h1:mt-16 first:prose-h1:mt-0 prose-h1:mb-4
-          prose-h1:scroll-mt-[63px] md:prose-h1:scroll-mt-12 prose-h1:tracking-[-0.035em] prose-h1:-ml-0.5
-
-          prose-h2:scroll-mt-14 prose-h2:tracking-[-0.03em] 
-
-          prose-h3:italic prose-h3:font-normal prose-h3:text-[14px] prose-h3:leading-5 prose-h3:text-white
-
-          prose-p:leading-5
-          prose-p:max-w-prose 
-
-          prose-strong:font-medium prose-strong:text-neutral-50
-
-          prose-a:underline
-
-          prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-neutral-700 prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
-
-          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[21px]
-
-          prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
-
-          prose-li:m-0
-          prose-li:pl-1
-          prose-li:leading-5
-          marker:prose-li:font-mono
-          marker:prose-li:text-[0.925em]
-
-          prose-figure:w-auto prose-figure:select-none prose-figure:mt-6 prose-figure:mb-8 prose-figure:-mx-4 sm:prose-figure:-mx-4 md:prose-figure:mx-0 
-          prose-video:w-auto prose-video:select-none	prose-video:mt-6 prose-video:mb-8 prose-video:-mx-4 sm:prose-video:-mx-4 md:prose-video:mx-0
-
-          prose-td:p-0
-
-          grid grid-cols-1 md:grid-cols-8 gap-4 
-        `}
-      > -->
         <slot />
       </div>
     </article>

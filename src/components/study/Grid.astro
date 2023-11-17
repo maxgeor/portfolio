@@ -1,0 +1,13 @@
+---
+export interface Props {
+  classes?: string;
+}
+const { classes = '' } = Astro.props;
+---
+
+<section class={`
+  col-span-full lg:grid-span-8 lg:col-start-2 grid grid-cols-8 gap-y-16 gap-x-6
+  ${classes}
+`}>
+  <slot />
+</section>

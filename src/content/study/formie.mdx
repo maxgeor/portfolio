@@ -72,6 +72,7 @@ import Carousel from "../../components/study/Carousel.astro";
 import Footnote from "../../components/study/Footnote.astro";
 import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro";
 
+
 <Tldr 
   problem="Etherscan's frontend sucked."
   solution="Airtable Forms, but for smart contract actions."
@@ -87,143 +88,127 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   ]}
 />
 
-<div class="mt-16 grid grid-cols-1 md:grid-cols-6 gap-4 col-span-full col-start-2 col-end-8">
-  <h1 class="!text-7xl col-span-3 !mt-0">Etherscan's UI kinda sucked...</h1>
-  <div class="col-span-3 mt-4">
+<div class="col-span-full grid grid-cols-8 gap-x-6 pt-36 -my-2 xl:-my-3">
+  <h1 class="col-span-5 col-start-2 z-5 !text-7xl xl:!text-8xl max-w-[10ch] !mt-0 !mb-0 !-ml-1.5">Etherscan's UI kinda sucked...</h1>
+  <div class="col-span-1 col-start-7 -mr-2 justify-self-end !text-[104px] !leading-[96px] font-mono text-[#262626]">00</div>
+</div>
+
+<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+  <div class="text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 col-start-2 flex gap-6 max-w-[15ch]">
+    <span class="w-3.5 ">1.</span>
+    <span class="my-0 ">The UI is a list of <span class="text-white">technically-named</span> forms.</span>
+  </div>
+  <div class="text-2xl leading-7 font-medium tracking-tight  col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
+    <span class="w-3.5 ">2.</span>
+    <span class=" my-0  col-start-6 ">It’s at the <span class="text-white">bottom of the page</span>, behind two drawers.</span>
+  </div>
+  <div class="text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
+    <div class="w-3.5 ">3.</div>
+    <span class="my-0 ">They share <span class="text-white">limited feedback</span> for transactions.</span>
+  </div>
+</div>
+
+<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+  <div class=" col-span-3 xl:col-span-2 xl:col-start-2 flex flex-col gap-y-4 text-neutral-200">
     Developers make blockchain apps by
 
     1. Writing code
-    2. Uploading the code to Ethereum or another blockchain as `smart contracts`
-    3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
+    2. Uploading it to Ethereum or another blockchain as `smart contracts`
+    3. Building a `frontend` for those contracts (an app or website) so people can use them.
 
     To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
 
-    But using their frontend felt more like running an obstacle course — we knew it could be better.
+    The problem? **Their frontend was impossible to use**. After peeling back two layers of UI, all you're given is a list of techincal names. No help or hints. It's so bad, you need a [YouTube tutorial](https://www.youtube.com/results?search_query=how+to+mint+from+etherscan).
   </div>
-  <div class="flex flex-col gap-4 col-span-6">
-    <Image
-      src="/work/formie/annotated-etherscan-page.png"
-      alt="Etherscan's interface for smart contract actions"
-    />
-    <div class=" bg-black col-span-3 col-start-2 flex flex-col gap-4">
-      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
-        <span class="text-neutral-600 w-5 !leading-8 ">1</span>
-        <p class="my-0 text-neutral-500 selection:col-start-5 !leading-8">It’s a list of <span class="text-white">technically-named</span> forms</p>
-      </div>
-      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
-        <span class="text-neutral-600 w-5 !leading-8">2</span>
-        <p class=" my-0 text-neutral-500  col-start-6 !leading-8">It’s at the <span class="text-white">bottom of the page</span>, behind two drawers</p>
-      </div>
-      <div class="flex gap-4 text-3xl !leading-9 tracking-tight font-medium">
-        <span class="text-neutral-600 w-5 !leading-8">3</span>
-        <p class="my-0 text-neutral-500 col-start-7 !leading-8">They <span class="text-white">don't give guidance</span>, clear errors, or feedback about your transaction.</p>
-      </div>
+
+  <Image
+    src="/work/formie/annotated-etherscan-page.png"
+    alt="Etherscan's interface for smart contract actions"
+    classes="col-span-5 xl:col-span-4"
+  />
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-x-4 mt-36 mb-12">
+  <h1 class="col-span-5 col-start-2 z-5 !text-8xl max-w-[12ch] !mt-0 !mb-0">So we sought <br/> another path...</h1>
+  <div class="col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">01</div>
+</div>
+
+<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+  <Image 
+    src="/work/formie/research/forms/etherscan-form-ui.png" 
+    alt="Etherscan's UI for Uniswaps's Delegate method"
+    classes="col-span-5 xl:col-span-4 xl:col-start-2 "
+  />
+  <div class="flex flex-col gap-y-4 gap-x-6 col-span-3 xl:col-span-2">
+    <h2 class="col-span-full text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 max-w-[400px]">Most actions needed basic UIs</h2>
+    <div class="flex flex-col gap-4">
+      We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
+      
+      Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
+      {/* <p class="text-xs text-neutral">Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.</p> */}
     </div>
   </div>
 </div>
 
 
-  
-  
-<div class="mt-16 grid grid-cols-8 gap-4 col-span-full">
-  <Image
-    src="/work/formie/annotated-etherscan-page.png"
-    alt="Etherscan's interface for smart contract actions"
-    classes="col-span-4 col-start-1"
-  />
-  <div class="col-start-5  col-span-4">
-    <h1 class="col-span-3 !mt-0">Etherscan's UI kinda sucked...</h1>
-    
-    Developers make blockchain apps by...
+<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
+    <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">Projects used Etherscan for one-way actions</h2>
+    <div class="flex flex-col gap-4">
+      Contracts have two kinds of actions:
 
-    1. Writing code
-    2. Uploading the code to Ethereum or another blockchain as `smart contracts`
-    3. Building a `frontend` for those contracts (usually an app or website) so people can use them.
+      `One-way` actions _trigger a change, but return nothing_ (ex: voting, sending money, changing ownership).
 
-    To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
+      `Two-way` actions _return data_, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics).
 
-    But using their frontend felt more like running an obstacle course — we knew it could be better.
+      One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs.
+    </div>
   </div>
-  <div class="col-span-4 text-3xl flex flex-col gap-16">
-    1. It’s a list of technically-named forms
-    2. It’s at the bottom of the page, behind two drawers
-    3. It doesn’t give guidance, clear errors, or feedback about your transaction.
+  <Carousel
+    slides={[
+      {
+        type: 'video',
+        src: "/work/formie/research/one-ways/mloot-flow",
+      },
+      {
+        type: 'video',
+        src: "/work/formie/research/one-ways/rune-flow",
+      },
+      {
+        type: 'video',
+        src: "/work/formie/research/one-ways/banners-flow",
+      },
+    ]}
+    classes="col-span-4 "
+  />
+</div>
 
-    {/* The problem? **Etherscan's frontend sucks**.
+<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+  <Image 
+    src="/work/formie/research/forms/etherscan-form-ui.png" 
+    alt="Etherscan's UI for Uniswaps's Delegate method"
+    classes="col-span-5 xl:col-span-4 xl:col-start-2 "
+  />
+  <div class="flex flex-col gap-y-4 gap-x-6 col-span-3 xl:col-span-2">
+    <h2 class="col-span-full text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 max-w-[400px]">Projects sacrificed UX to save time</h2>
+    <div class="flex flex-col gap-4">
+      We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
-  - It's a list of technically-named forms
-  - It's at the bottom of the page, behind two drawers
-  - It doesn’t give guidance, clear errors, or feedback about your transaction.
+      ### They used Etherscan as a “good enough” interface
 
-  Using their frontend felt more like running an obstacle course — we knew it could be better. */}
+      Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
+
+      ### They knew Etherscan sucked
+
+      Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
+    </div>
   </div>
 </div>
 
 
-
-# Research
-
-## Most actions just need a form
-
-We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
-
-<FootnotedParagraph>
-  Turns out, **smart contract actions are super simple**<sup>1</sup>. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
-  <Footnote number={1}>
-    Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.
-  </Footnote>
-</FootnotedParagraph>
-
-<Image 
-  src="/work/formie/research/forms/etherscan-form-ui.png" 
-  alt="Etherscan's UI for Uniswaps's Delegate method"
-/>
-
-## Etherscan was mostly used for one-way actions
-
-We learned that smart contracts have two kinds of actions:
-
-<table class="text-sm mt-1 max-w-prose" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="w-fit p-0 !pr-4 !pb-4 pt-px">`One-way`</td>
-    <td class="w-fit p-0 !pb-4">These actions _trigger a change, but return nothing_. You only have to worry about the change going through or not, so they're easier to work with (ex: voting, sending money, changing ownership).</td>
-  </tr>
-  <tr>
-    <td class="w-fit p-0 !pr-4 pt-px">`Two-way`</td>
-    <td class="w-fit p-0">These actions _return data_, often mixing with non-blockchain data. They call for complex displays, making them harder to work with (ex: showing account's balance, getting an NFT's characteristics).</td>
-  </tr>
-</table>
-
-Most projects used Etherscan for one-way actions. When one-ways had their own frontend, they were pretty basic and didn't get much love.
-
-<Carousel
-  slides={[
-    {
-      type: 'video',
-      src: "/work/formie/research/one-ways/mloot-flow",
-    },
-    {
-      type: 'video',
-      src: "/work/formie/research/one-ways/rune-flow",
-    },
-    {
-      type: 'video',
-      src: "/work/formie/research/one-ways/banners-flow",
-    },
-  ]}
-/>
-
 ## Projects sacrificed UX to save time
 
-We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
-### They used Etherscan as a “good enough” interface
-
-Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
-
-### They knew Etherscan sucked
-
-Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
 
 # Idea
 
