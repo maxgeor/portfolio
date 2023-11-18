@@ -4,16 +4,14 @@ export interface Props {
   alt: string;
   classes?: string;
 }
-const { src, alt, classes = "" } = Astro.props;
+const { src, alt, classes = ""} = Astro.props;
 ---
-<!-- <figure class={`
-  relative h-0 w-full pt-[calc(4/7*100%)] col-span-full xl:col-start-2 xl:col-end-8 select-none 
-  ${classes}
-`}> -->
-<figure class={`
+<figure 
+  class={`
   relative h-0 w-full pt-[calc(4/7*100%)] select-none 
   ${classes}
-`}>
+`}
+>
   <img
     src={src}
     alt={alt}
