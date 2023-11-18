@@ -13,6 +13,11 @@ module.exports = {
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
     },
     extend: {
+      content: {
+        'path-1': 'url("/path-1.svg")',
+        'path-2': 'url("/path-2.svg")',
+        'path-3': 'url("/path-3.svg")',
+      },
       colors: {
         red: '#FF3D33',
         green: '#0E9900',

@@ -89,22 +89,22 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 />
 
 <div class="col-span-full grid grid-cols-8 gap-x-6 pt-36 -my-2 xl:-my-3">
-  <h1 class="col-span-5 col-start-2 z-5 !text-7xl xl:!text-8xl max-w-[10ch] !mt-0 !mb-0 !-ml-1.5">Etherscan's UI kinda sucked...</h1>
-  <div class="col-span-1 col-start-7 -mr-2 justify-self-end !text-[104px] !leading-[96px] font-mono text-[#262626]">00</div>
+  <h1 class="col-span-5 xl:col-start-2 z-5  max-w-[10ch] !mt-0 !mb-0 !-ml-1.5">Etherscan's UI kinda sucked...</h1>
+  <div class="-my-1.5 col-span-1 col-start-8 xl:col-start-7 -mr-2 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">00</div>
 </div>
 
 <div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
   <div class="text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 col-start-2 flex gap-6 max-w-[15ch]">
     <span class="w-3.5 ">1.</span>
-    <span class="my-0 ">The UI is a list of <span class="text-white">technically-named</span> forms.</span>
+    <span class="my-0 ">The UI is a list of <span>technically-named</span> forms.</span>
   </div>
   <div class="text-2xl leading-7 font-medium tracking-tight  col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
     <span class="w-3.5 ">2.</span>
-    <span class=" my-0  col-start-6 ">It’s at the <span class="text-white">bottom of the page</span>, behind two drawers.</span>
+    <span class=" my-0  col-start-6 ">It’s at the <span>bottom of the page</span>, behind two drawers.</span>
   </div>
   <div class="text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
     <div class="w-3.5 ">3.</div>
-    <span class="my-0 ">They share <span class="text-white">limited feedback</span> for transactions.</span>
+    <span class="my-0 ">They share <span>limited feedback</span> for transactions.</span>
   </div>
 </div>
 
@@ -128,12 +128,13 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
 </div>
 
-<div class="col-span-full grid grid-cols-8 gap-x-4 mt-36 mb-12">
-  <h1 class="col-span-5 col-start-2 z-5 !text-8xl max-w-[12ch] !mt-0 !mb-0">So we sought <br/> another path...</h1>
-  <div class="col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">01</div>
+<div class="relative col-span-full grid grid-cols-8 gap-x-4 mt-36 mb-24">
+  <h1 class="col-span-5 col-start-2 z-5 max-w-[10ch] !mt-0 !mb-0">So we looked for something better...</h1>
+  <div class="-my-1 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">01</div>
+  <img src="/path-l-to-r.svg" class="max-h-[60px] h-full w-[50vw] absolute -bottom-[100px] left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
 </div>
 
-<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+<div class="relative pb-24 col-span-full grid grid-cols-8 gap-6">
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
@@ -148,10 +149,11 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
       {/* <p class="text-xs text-neutral">Running code on Ethereum is expensive, so developers strip actions bare to make transactions cheaper.</p> */}
     </div>
   </div>
+  <img src="/path-r-to-l.svg" class="max-h-[60px] h-full w-[50vw] absolute -bottom-0 left-[46%] transform -translate-x-1/2 -rotate-[2.5deg]" />
 </div>
 
 
-<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+<div class="relative pb-24 col-span-full grid grid-cols-8 gap-6 ">
   <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
     <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">Projects used Etherscan for one-way actions</h2>
     <div class="flex flex-col gap-4">
@@ -181,9 +183,10 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
     ]}
     classes="col-span-4 "
   />
+  <img src="/path-l-to-r.svg" class="max-h-[60px] h-full w-[50vw] absolute -bottom-0 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
 </div>
 
-<div class="pb-12 col-span-full grid grid-cols-8 gap-6 ">
+<div class="relative pb-12 col-span-full grid grid-cols-8 gap-6 ">
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
@@ -203,43 +206,81 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
       Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
     </div>
   </div>
+  <img src="/path-r-to-c.svg" class="max-h-[190px] h-full absolute -bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
+</div>
+
+<div class="-my-1.5 col-span-full grid grid-cols-8 gap-x-4 pt-36 pb-12">
+  <div class="col-start-2 col-span-3 z-5 text-3xl  font-medium text-neutral-500">Realizing smart contracts worked like mini forms made us wonder...</div>
+  <div class="-my-1.5 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">02</div>
+</div>
+
+<h1 class="col-span-6 col-start-2 bg-yellow/25  py-4 px-6 -mx-6 -my-[24px]">What if we applied form builder patterns to smart contracts?</h1>
+
+<div class="col-span-full grid grid-cols-8 gap-x-4 pb-12">
+  <div class="-my-1 col-start-2 text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
+    <span class="my-0">Give every action a [dedicated page](#one-page-one-action).</span>
+  </div>
+  <div class="-my-1  text-2xl leading-7 font-medium tracking-tight  col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
+    <span>Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span> 
+  </div>
+  <div class="-my-1 text-2xl leading-7 font-medium tracking-tight col-span-2 text-neutral-500 flex gap-6 max-w-[15ch]">
+    <span>Share clear, thoughtful feedback.</span>
+  </div>
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-x-6 gap-y-4">
+  {/* <hr class="border-t border-[#393939] col-span-6 col-start-2" /> */}
+  <div class="col-start-2 col-span-2 flex flex-col gap-4 text-neutral-200 max-w-[200px] ">
+    The form builder pattern worked for a few reasons:
+  </div>
+  <div class=" col-span-4 col-start-4 flex flex-col gap-4 text-neutral-200 ">
+    1. One-way actions (which covered most use cases) worked well with form-like layouts.
+    2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
+    3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
+  </div>
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-x-6 gap-y-4 py-12 bg-white">
+  <Image
+    src="/work/formie/first-idea-for-form-builder.png"
+    alt="First sketch of form builder UI"
+    classes="col-span-6 col-start-2 "
+  />
+</div>
+
+<div 
+  class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-36"
+  style={`  
+    background-image: url('/dot-grid-pattern.png');
+    background-repeat: repeat;
+  `}
+>
+
+  <div class="absolute top-0 left-0 h-32 w-full bg-gradient-to-b from-black/[40%] via-black/[30%]"></div>
+  <div class="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-black/[40%] via-black/[30%]"></div>
+  <div class="relative col-span-full grid grid-cols-8 gap-x-4 -my-1.5">
+    <h1 class="col-span-5 col-start-2 z-5 max-w-[10ch] !mt-0 !mb-0">So we got to work...</h1>
+    <div class="-my-1 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-800">03</div>
+  </div>
+  <div class="col-span-2 col-start-2">
+    We worked by doing design and development at the same time.
+  </div>
+  <div class="col-span-2">
+    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
+  </div>
+  <div class="col-span-2">
+    Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
+  </div>
+  <img
+    src="/work/formie/process/lineup.png"
+    alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
+    class="col-span-full -mt-6 transform "
+  />
 </div>
 
 
-## Projects sacrificed UX to save time
 
-
-
-# Idea
-
-Realizing how smart contracts worked like mini forms gave us an idea: **What if we applied patterns from form builders to smart contracts?**
-
-We could make huge UX improvements by...
-
-- [Giving every action a dedicated page](#one-page-one-action)
-- [Letting people write copy](#letting-people-write-their-own-titles-and-descriptions) to give context
-- Share clear, thoughtful feedback about transactions.
-
-The form builder pattern worked for a few reasons:
-
-1. One-way actions (which covered most use cases) worked well with form-like layouts.
-3. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
-2. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
-
-<Image
-  src="/work/formie/first-idea-for-form-builder.png"
-  alt="First sketch of form builder UI"
-/>
-
-# Process
-
-We worked by doing design and development at the same time.
-
-First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
-
-Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
-
-<Carousel
+{/* <Carousel
   slides={[
     {
       type: 'image',
@@ -257,7 +298,7 @@ Design started with rough sketches. After breadboarding the flows and UI, I’d 
       alt: "Sketch of form page's header",
     },
   ]}
-/>
+/> */}
 
 # Challenges
 
