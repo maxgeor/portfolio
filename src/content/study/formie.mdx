@@ -232,7 +232,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <div class="col-start-2 col-span-2 flex flex-col gap-4 text-neutral-200 max-w-[200px] ">
     The form builder pattern worked for a few reasons:
   </div>
-  <div class=" col-span-4 col-start-4 flex flex-col gap-4 text-neutral-200 ">
+  <div class=" col-span-2 col-start-4 flex flex-col gap-4 text-neutral-200 ">
     1. One-way actions (which covered most use cases) worked well with form-like layouts.
     2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
     3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
@@ -337,66 +337,92 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
 </div>
 
+<div class="col-span-full grid grid-cols-8 gap-x-4 mt-36 mb-12">
+  <h1 class="col-span-5 col-start-2 z-5  !mt-0 !mb-0 max-w-[10ch]">So we made a few decisions...</h1>
+  <div class="-my-1 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-700">05</div>
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-6 ">
+  <span class="text-neutral-700 font-medium text-7xl leading-[48px] justify-self-end mr-6">1</span>
+  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
+    <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">One page, one action</h2>
+    <div class="flex flex-col gap-4">
+      The main departure from Etherscan was limiting forms to a single action.
+
+      Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
+
+      Linking straight to the action makes it impossible to miss.
+    </div>
+  </div>
+  <Image
+    src="/work/formie/decisions/one-page.png"
+    alt="Form for Uniswap's Delegate action"
+    classes="col-span-4"
+  />
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-6 ">
+  <span class="text-neutral-700 font-medium text-7xl leading-[48px] justify-self-end mr-6">2</span>
+  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
+    <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">Only supporting one-way actions</h2>
+    <div class="flex flex-col gap-4">
+      We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
+
+      1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-one-way-actions).
+      2. Supporting two-way actions would've made the product harder to use.
+      3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
+
+      We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
+
+      Ditching two-ways axed our scope and got a leaner product out the door.
+    </div>
+  </div>
+  <Image
+    src="/work/formie/decisions/one-way-actions.png"
+    alt="Form for Uniswap's Delegate action"
+    classes="col-span-4"
+  />
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-6 ">
+  <span class="text-neutral-700 font-medium text-7xl leading-[48px] justify-self-end mr-6">3</span>
+  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
+    <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">Letting people write their own titles and descriptions</h2>
+    <div class="flex flex-col gap-4">
+      To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
+
+      But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
+
+      Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
+    </div>
+  </div>
+  <Image
+    src="/work/formie/decisions/title-and-description.png"
+    alt="UI for editing title & description"
+    classes="col-span-4"
+  />
+</div>
+
+<div class="col-span-full grid grid-cols-8 gap-6 ">
+  <span class="text-neutral-700 font-medium text-7xl leading-[48px] justify-self-end mr-6">4</span>
+  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2 pb-12">
+    <h2 class="text-3xl xl:text-4xl leading-8 xl:leading-9 my-0 -mt-1.5 ">Making people confirm trust</h2>
+    <div class="flex flex-col gap-4">
+      We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
+
+      Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
+
+      Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
+    </div>
+  </div>
+  <Image
+    src="/work/formie/decisions/trust.png"
+    alt="Confirmation checkbox at the end of every form"
+    classes="col-span-4"
+  />
+</div>
 
 
-
-# Key Decisions
-
-## One page, one action
-
-The main departure from Etherscan was limiting forms to a single action.
-
-Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
-
-Linking straight to the action makes it impossible to miss.
-
-<Image
-  src="/work/formie/decisions/one-page.png"
-  alt="Form for Uniswap's Delegate action"
-/>
-
-## Only supporting one-way actions
-
-We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
-
-1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-one-way-actions).
-2. Supporting two-way actions would've made the product harder to use.
-3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
-
-We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
-
-Ditching two-ways axed our scope and got a leaner product out the door.
-
-<Image
-  src="/work/formie/decisions/one-way-actions.png"
-  alt="Form for Uniswap's Delegate action"
-/>
-
-## Letting people write their own titles and descriptions
-
-To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
-
-But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
-
-Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
-
-<Image
-  src="/work/formie/decisions/title-and-description.png"
-  alt="UI for editing title & description"
-/>
-
-## Making people confirm trust
-
-We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
-
-Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
-
-Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
-
-<Image
-  src="/work/formie/decisions/trust.png"
-  alt="Confirmation checkbox at the end of every form"
-/>
 
 # Tradeoffs
 
