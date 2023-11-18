@@ -128,7 +128,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
 </div>
 
-<div class="relative col-span-full grid grid-cols-8 gap-x-4 mt-36 mb-24">
+<div class="relative col-span-full grid grid-cols-8 gap-x-4 my-24">
   <h1 class="col-span-5 col-start-2 z-5 max-w-[10ch] !mt-0 !mb-0">So we looked for something better...</h1>
   <div class="-my-1 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-700">01</div>
   <img src="/path-l-to-r.svg" class="max-h-[60px] h-full w-[50vw] absolute -bottom-[100px] left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
@@ -210,7 +210,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 </div>
 
 <div class="-my-1.5 col-span-full grid grid-cols-8 gap-x-4 pt-36 pb-12">
-  <div class="col-start-2 col-span-3 z-5 text-3xl  font-medium text-neutral-500">Realizing smart contracts worked like mini forms made us wonder...</div>
+  <div class="col-start-2 col-span-3 z-5 text-3xl  font-medium tracking-tight text-neutral-500">Realizing smart contracts worked like mini forms made us wonder...</div>
   <div class="-my-1.5 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-700">02</div>
 </div>
 
@@ -239,11 +239,11 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   </div>
 </div>
 
-<div class="col-span-full flex items-center justify-center py-12 bg-white -mx-6 px-6">
+<div class="col-span-full grid grid-cols-8 justify-center py-12 bg-white ">
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
     alt="First sketch of form builder UI"
-    classes="col-span-full lg:col-span-6 col-start-2 "
+    classes="col-span-full lg:col-span-6 lg:col-start-2"
     
   />
 </div>
@@ -255,8 +255,8 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
     background-repeat: repeat;
   `}
 >
-  <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black/[40%] via-black/[35%]"></div>
-  <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[50%] via-black/[35%]"></div>
+  <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black/[75%] via-black/[50%]"></div>
+  <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[75%] via-black/[50%]"></div>
   <div class="relative col-span-full grid grid-cols-8 gap-x-4 -my-1.5">
     <h1 class="col-span-5 col-start-2 z-5 max-w-[10ch] !mt-0 !mb-0">So we got to work...</h1>
     <div class="-my-1 col-span-1 col-start-7 -mr-3 justify-self-end !text-[104px] !leading-[96px] font-mono text-neutral-700">03</div>
@@ -338,47 +338,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 </div>
 
 
-# Challenges
 
-## Shooing scammers
-
-We knew three things from the jump:
-
-1. Scammers would use forms to misrepresent contracts,
-2. We couldn't stop them,
-3. But we had to do something.
-
-[How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
-
-<Image
-  src="/work/formie/challenges/scam.png"
-  alt="Thinking about how to handle bad guys"
-/>
-
-## Communicating technical details
-
-Smart contracts have tons of strange behaviors:
-
-- Transactions cost a bit of money
-- Transactions take time to go through
-- Anyone can make a frontend for any contract (because they're public)
-
-The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
-
-[How do we explain challenging ideas](#letting-people-write-their-own-titles-and-descriptions) without overwhelming people? Which concepts are essential?
-
-<Image
-  src="/work/formie/challenges/explain.png"
-  alt="Thinking about out how to explain stuff"
-/>
-
-## Keeping it flexible
-
-Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
-
-It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
-
-[How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
 
 # Key Decisions
 
