@@ -65,7 +65,7 @@ const {
       <div class="flex flex-col lg:flex-col-reverse justify-between gap-6 col-span-full lg:col-span-4 h-full">
         <div class="flex justify-between items-end">
           <h1 
-            class="font-medium text-5xl lg:text-7xl xl:text-9xl lg:leading-[56px] xl:leading-[96px] tracking-[-0.06em] col-span-full -ml-1 xl:-ml-2.5"
+            class="font-medium text-5xl lg:text-7xl xl:text-9xl lg:leading-[56px] xl:leading-[96px] tracking-tight italic col-span-full font-serif"
           >
             {title}
           </h1>
@@ -128,7 +128,7 @@ const {
           text-white w-full  
           prose-p:text-neutral-200
           
-          prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-auto
+          prose-headings:italic prose-headings:font-serif prose-headings:font-medium  prose-headings:text-auto prose-headings:tracking-tight
 
           prose-h1:text-7xl xl:prose-h1:text-8xl prose-h1:leading-[68px] xl:prose-h1:leading-[92px]
           prose-h3:-mb-[16px]
@@ -140,7 +140,7 @@ const {
 
           prose-a:underline
 
-          prose-code:bg-neutral-700/[55%] prose-code:border prose-code:border-[#393939] prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-px prose-code:px-[3px] 
+          prose-code:bg-gradient-to-b from-neutral-700/[70%] to-neutral-700/[45%]   prose-code:text-white/80 prose-code:ring-1 prose-code:ring-white/[8%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:my-0
