@@ -80,19 +80,19 @@ const {
           </div>
         </div>
         <div class="flex flex-col gap-y-6">
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
             <p class="col-span-2 lg:col-span-4">In short…</p>
             <p class="col-span-4">{tldr}</p>
           </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
             <p class="col-span-2 lg:col-span-4">Role</p>
             <p class="col-span-4 capitalize">{roles.join(", ")}</p>
           </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
             <p class="col-span-2 lg:col-span-4">Tools</p>
             <p class="col-span-4 capitalize">{tools.join(", ")}</p>
           </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#393939]">
+          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
             <p class="col-span-2 lg:col-span-4">Team</p>
             {teammates?.length > 0 ? (
               <ul class="col-span-4 capitalize">
@@ -111,7 +111,7 @@ const {
               </ul>
             ) : "—"}
           </div>
-          <div class="lg:hidden grid grid-cols-8 gap-x-6 border-t border-white/[35%]">
+          <div class="lg:hidden grid grid-cols-8 gap-x-6 border-t border-[#333333]">
             <p class="col-span-2 lg:col-span-4">Year</p>
             <p class="col-span-4 capitalize">{year}</p>
           </div>
@@ -126,21 +126,23 @@ const {
       <div
         class={`
           text-white w-full  
-          prose-p:text-neutral-200
+          prose-p:text-[#ababab]
           
-          prose-headings:italic prose-headings:font-serif prose-headings:font-medium  prose-headings:text-auto prose-headings:tracking-tight
+          prose-headings:italic prose-headings:font-serif prose-headings:font-medium  prose-headings:text-auto 
+          
+          prose-h1:text-7xl xl:prose-h1:text-8xl prose-h1:leading-[68px] xl:prose-h1:leading-[92px] prose-h1:tracking-tight
 
-          prose-h1:text-7xl xl:prose-h1:text-8xl prose-h1:leading-[68px] xl:prose-h1:leading-[92px]
-          prose-h3:-mb-[16px]
+          prose-h3:tracking-wide prose-h3:text-[15px] prose-h3:-mb-[16px]
+
           prose-p:leading-5
           prose-p:max-w-prose 
           prose-p:my-0
 
-          prose-strong:font-medium prose-strong:text-neutral-50
+          prose-strong:italic prose-strong:font-serif prose-strong:text-[15px] prose-strong:text-white prose-strong:font-normal prose-strong:tracking-wide
 
           prose-a:underline
 
-          prose-code:bg-gradient-to-b from-neutral-700/[70%] to-neutral-700/[45%]   prose-code:text-white/80 prose-code:ring-1 prose-code:ring-white/[8%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          prose-code:bg-neutral-700/[55%] prose-code:text-white/80 prose-code:ring-1 prose-code:ring-white/[8%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:my-0
@@ -151,9 +153,9 @@ const {
           prose-li:m-0
           prose-li:pl-0
           prose-li:leading-5
-          prose-li:text-neutral-200
+          prose-li:text-[#ababab]
           marker:prose-li:font-mono
-          marker:prose-li:text-neutral-200
+          marker:prose-li:text-[#ababab]
           marker:prose-li:text-[0.925em]
 
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 md:prose-figure:mx-0 

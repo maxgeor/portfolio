@@ -9,16 +9,16 @@ export interface Props {
 }
 const { problem, solution, decisions, tradeoffs } = Astro.props;
 ---
-<div class=" col-span-full  bg-neutral-900 border-dashed -mx-6 p-6 text-neutral-200">
+<div class=" col-span-full  bg-neutral-900/80 border-dashed -mx-6 p-6 text-neutral-200">
   <Section title="Tldr" classes='leading-5 not-prose gap-6 col-span-full'>
     <div class="grid grid-cols-8 lg:grid-cols-6 col-span-full lg:col-span-6 gap-x-6">
-      <hr class="col-span-full border-t border-[#393939] -mr-6 pr-6"/>
+      <hr class="col-span-full border-t border-[#333333] -mr-6 pr-6"/>
       <p class="col-span-2 ">Problem</p>
       <p class="col-span-6 lg:col-span-4">{problem}</p>
-      <hr class="col-span-full border-t border-[#393939] mt-6 -mr-6 pr-6"/>
+      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
       <p class="col-span-2 ">Solution</p>
       <p class="col-span-6 lg:col-span-4">{solution}</p>
-      <hr class="col-span-full border-t border-[#393939] mt-6 -mr-6 pr-6"/>
+      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
       <p class="col-span-2 ">Decisions</p>
       <ul class="col-span-6 lg:col-span-4 ">
         {decisions.map((decision) => (
@@ -27,7 +27,7 @@ const { problem, solution, decisions, tradeoffs } = Astro.props;
           </li>
         ))}
       </ul>
-      <hr class="col-span-full border-t border-[#393939] mt-6 -mr-6 pr-6"/>
+      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
       <p class="col-span-2">Tradeoffs</p>
       <ul class="col-span-6 lg:col-span-4 list-inside">
         {tradeoffs.map((tradeoff) => (
