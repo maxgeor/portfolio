@@ -12,18 +12,24 @@ const doesLinkMatchCurrentPath = (matchingPaths: string[]) =>
 
 <header
   class={`
-    col-span-full grid grid-cols-4 gap-6 -my-1 pt-6
+    col-span-full grid grid-cols-12 gap-6 -my-1 pt-6
     ${classes}
   `}
 >
-  <a href="/" class=" h-2.5 w-2.5 rounded-full bg-white my-[5px] order-first no-underline"></a>
-  <a href='/about' class='order-2 md:order-3 xl:order-4 hover:underline -ml-px '>
-    About
-  </a>
-  <a href='/work' class='order-3 md:order-2 hover:underline -ml-px '>
-    Work
-  </a>
-  <a href='/writing' class='order-4 xl:order-3 hover:underline -ml-px '>
-    Writing
-  </a>
+  <!-- <a href="/" class=" h-2.5 w-2.5 rounded-full bg-white my-[5px] order-first no-underline"></a> -->
+    <div class="col-start-3 col-span-3 flex gap-2">
+      <a href='/work' class='col-start-3 col-span-2 hover:underline'>
+        Work
+      </a>
+      <span>/</span>
+      <a href='/writing' class='col-span-2 hover:underline'>
+        Writing
+      </a>
+      <span>/</span>
+      <a href='/about' class='col-span-2 col-start-11 hover:underline'>
+        About
+      </a>  
+    </div>
+    
+
 </header>

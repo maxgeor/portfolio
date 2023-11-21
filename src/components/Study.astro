@@ -31,36 +31,52 @@ const {
 } = Astro.props;
 ---
 
-<div
+<a
+  href={`/study/${slug}`}
   class={`
-    relative gap-x-4 grid grid-cols-2 gap-4 h-fit break-inside-avoid-column col-span-full md:col-span-2
+    relative gap-x-6 gap-y-2 col-span-full grid h-fit break-inside-avoid-column grid-cols-12 mt-auto
     ${classes} 
   `}
 >
-  <div class="flex flex-col gap-y-4 self-end">
-    <h2 
-      class="text-4xl lg:text-5xl leading-[28px] lg:leading-[36px] font-medium tracking-tight font-serif italic"
-    >
-      {title}
-    </h2>
-    <p class="-ml-px -my-1">{description}</p>
+  <div class="col-span-full md:col-span-2 flex md:flex-col justify-between">
+    <p>{title}</p>
+    <p>{roles.join(', ')}</p>
   </div>
-  <div class="col-start-2 flex flex-col self-end -my-1">
-    {roles.map(role => <p class="capitalize">{role}</p>)}
+  <picture class={`
+    relative h-auto col-span-full md:col-span-8 md:col-start-3
+    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
+  `}>
+    <img
+      src={image}
+      alt={`Preview mockup of ${title}`}
+      class='w-full h-full object-top select-none object-cover'
+    />
+  </picture>
+  <div class="text-right col-span-full md:col-span-2 flex md:flex-col justify-between items-end">
+    <p>{description}</p>
+    <p>{year}</p>
+  </div>
+  <!-- <h2 class="col-span-full pt-2 font-serif italic  text-4xl lg:text-9xl leading-[28px] lg:leading-[36px] tracking-tight">
+    {title}
+  </h2>
+  <div class="flex flex-col justify-between"> 
+    <p class="-ml-px -my-1">{description}</p>
+    <div class="flex flex-col self-end -my-1">
+      {roles.map(role => <p class="capitalize">{role}</p>)}
+    </div>
   </div>
   {link ? (
     <a
       href={link.href}
       target={link.target || '_self'} 
-      class="group flex gap-1 justify-between items-center border-t sm:border-y border-white/[35%] col-span-full sm:col-span-1 -mb-4 sm:mb-0"
+      class="col-span-3 group flex gap-1 justify-between items-center border-t sm:border-y border-white/[35%]  -mb-4 sm:mb-0"
     >
       <span class="group-hover:underline group-focus:underline">Live site</span>
       <UpRightArrowIcon classes='mt-px' />
     </a>
   ) : null}
   <div class={`
-    flex justify-between items-center gap-1 border-y border-white/[35%] 
-    ${link ? ' col-span-full sm:col-span-1' : 'col-span-full'}
+    flex justify-between items-center gap-1 border-y border-white/[35%] col-span-3
   `}>
     {isComingSoon ? (
       <p class="flex transition ease-in-out group-hover:rotate-1">
@@ -72,16 +88,7 @@ const {
         <RightArrowIcon classes='mt-0.5' />
       </a>
     )}
-  </div>
-  <picture class={`
-    order-last relative h-auto col-span-full
-    ${!isComingSoon ? 'group-hover:brightness-[95%] transition ease-in-out' : ''}
-  `}>
-    <img
-      src={image}
-      alt={`Preview mockup of ${title}`}
-      class='aspect-[7/4] w-full h-full object-top select-none object-cover'
-    />
-  </picture>
-</div>
+  </div> -->
+  
+</a>
 
