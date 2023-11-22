@@ -89,17 +89,17 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   ]}
 />
 
-<Heading title="Etherscan's UI kinda sucked..." number="00" />
-<div class="pb-0 col-span-full grid grid-cols-1 sm:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 tracking-tight">
-  <div class="text-2xl  xl:col-start-2 col-span-full md:col-span-2 text-neutral-500 flex gap-4 leading-7 ">
+<Heading title="Etherscan's UI kinda sucked..." number="00" classes="!pb-0" />
+<div class="xl:pb-12 col-span-full grid grid-cols-1 sm:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 tracking-tight">
+  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 xl:col-start-2 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
     <span class="w-3.5">1.</span>
     <span class="my-0 ">The UI is a list of <span>technically-named</span> forms.</span>
   </div>
-  <div class="text-2xl col-span-full md:col-span-2 text-neutral-500 flex gap-4 leading-7 ">
+  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
     <span class="w-3.5">2.</span>
     <span class=" my-0  col-start-6 ">It’s at the <span>bottom of the page</span>, behind two drawers.</span>
   </div>
-  <div class="text-2xl col-span-full md:col-span-2 text-neutral-500 flex gap-4 leading-7 ">
+  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4 ">
     <div class="w-3.5">3.</div>
     <span class="my-0 ">They share <span>limited feedback</span> for transactions.</span>
   </div>
@@ -121,13 +121,13 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   classes="col-span-full xl:col-span-4"
 />
 
-<Heading title="So we looked for something better..." number="01" classes="pb-24">
-  <img src="/path-l-to-r.svg" class="max-h-[48px] h-full w-[75vw]xl:w-[50vw] absolute bottom-2 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
+<Heading title="So we looked for something better..." number="01">
+  <img src="/path-l-to-r.svg" class="hidden xl:block max-h-[48px] h-full w-[50vw] absolute bottom-2 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
 </Heading>
 
-<div class="relative pb-24 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-4xl leading-9 my-0 -mt-1 xl:max-w-[400px]">Most actions needed basic UIs</h2>
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 xl:max-w-[400px]">Most actions needed basic UIs</h2>
     <div class="flex flex-col gap-4">
       We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
       
@@ -139,12 +139,12 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
     alt="Etherscan's UI for Uniswaps's Delegate method"
     classes="xl:order-first col-span-full xl:col-span-4 xl:col-start-2 !m-0"
   />
-  <img src="/path-r-to-l.svg" class="max-h-[60px] h-full xl:w-[50vw] absolute -bottom-2 left-1/2 transform -translate-x-1/2 -rotate-[2.5deg]" />
+  <img src="/path-r-to-l.svg" class="hidden xl:block max-h-[60px] h-full xl:w-[50vw] absolute -bottom-2 left-1/2 transform -translate-x-1/2 -rotate-[2.5deg]" />
 </div>
 
-<div class="relative pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2 pb-12">
-    <h2 class="text-4xl leading-9 my-0 -mt-1 ">Projects used Etherscan for one-way actions</h2>
+<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2 xl:pb-12">
+    <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 ">Projects used Etherscan for one-way actions</h2>
     <div class="flex flex-col gap-4">
       Contracts have two kinds of actions:
 
@@ -174,13 +174,13 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
   <img 
     src="/path-l-to-r.svg" 
-    class="max-h-[50px] h-full w-[50vw] absolute bottom-0 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" 
+    class="hidden xl:block max-h-[50px] h-full w-[50vw] absolute bottom-0 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" 
   />
 </div>
 
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 pb-12 ">
+<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 xl:pb-12">
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-4xl leading-9 my-0 -mt-1 max-w-[400px]">Projects sacrificed UX to save time</h2>
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 xl:max-w-[400px]">Projects sacrificed UX to save time</h2>
     <div class="flex flex-col gap-4">
       We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
@@ -196,33 +196,33 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
     alt="Etherscan's UI for Uniswaps's Delegate method"
     classes="xl:order-first xl:order-auto col-span-full xl:col-span-4 xl:col-start-2 !m-0"
   />
-  <img src="/path-r-to-c.svg" class="max-h-[190px] h-full absolute -bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
+  <img src="/path-r-to-c.svg" class="hidden xl:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
-<div class="-my-1.5 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 pt-36 ">
-  <div class="xl:col-start-2 col-span-5 z-5 text-3xl tracking-tight  text-neutral-500 max-w-md">Realizing smart contracts worked like mini forms made us wonder...</div>
-  <div class="-my-1.5 col-span-1 -mr-3 justify-self-end text-[80px] xl:text-[104px] leading-[68px] xl:leading-[96px]  text-neutral-700">02</div>
+<div class="-my-1.5 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 pt-36">
+  <div class="xl:col-start-2 col-span-5 z-5 text-2xl md:text-3xl leading-7 md:leading-8 tracking-tight  text-neutral-500 max-w-md">Realizing smart contracts worked like mini forms made us wonder...</div>
+  <div class="col-span-1 -mr-2 justify-self-end text-[56px] leading-[48px] md:text-[80px] xl:text-[104px] md:leading-[68px] xl:leading-[92px]  text-neutral-700">02</div>
 </div>
 
-<h1 class="col-span-6 xl:col-start-2 bg-yellow/[15%] py-4 px-6 -mx-6">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="col-span-6 xl:col-start-2 bg-yellow/[15%] py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 pb-12 tracking-tight">
-  <div class="-my-1 col-span-full md:col-span-2 xl:col-start-2 text-2xl leading-7 text-neutral-500 flex gap-4">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 md:pb-12 tracking-tight">
+  <div class="-my-1 col-span-full md:col-span-2 xl:col-start-2 text-xl md:text-2xl leading-6 md:leading-7 text-neutral-500 flex gap-4">
     <div class="w-3.5">1.</div>
     <span class="my-0 md:max-w-[15ch]">Give every action a [dedicated page](#one-page-one-action).</span>
   </div>
-  <div class="-my-1 text-2xl leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
+  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
     <div class="w-3.5">2.</div>
     <span class="md:max-w-[15ch]">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span> 
   </div>
-  <div class="-my-1 text-2xl leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
+  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
     <div class="w-3.5">3.</div>
     <span class="md:max-w-[15ch]">Share clear, thoughtful feedback.</span>
   </div>
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-4">
-  <div class="col-span-full md:col-span-2 xl:col-start-2 flex flex-col gap-4 text-neutral-200 max-w-[200px] ">
+  <div class="col-span-full md:col-span-2 xl:col-start-2 flex flex-col gap-4 text-neutral-200 md:max-w-[200px] ">
     The form builder pattern worked for a few reasons:
   </div>
   <div class="col-span-full md:col-span-4 max-w-prose flex flex-col gap-4 text-neutral-200 ">
@@ -232,7 +232,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   </div>
 </div>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 justify-center py-24 bg-white -mx-6">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 justify-center py-6 md:py-12 xl:py-24 bg-white -mx-6">
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
     alt="First sketch of form builder UI"
@@ -241,7 +241,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 </div>
 
 <div 
-  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-56 -my-12"
+  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-48 -my-12"
   style={`  
     background-image: url('/dot-grid-pattern.png');
     background-repeat: repeat;
@@ -269,9 +269,9 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[75%] via-black/[50%]"></div>
 </div>
 
-<Heading title="But we had some issues..." number="04" classes="!pt-0 pb-12" />
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-2 col-start-2">
-  <h2 class="col-span-full text-4xl leading-9 my-0 -mt-1 max-w-[400px]">Shooing scammers</h2>
+<Heading title="But we had some issues..." number="04" classes="!pt-0 md:pb-12" />
+<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Shooing scammers</h2>
   <div class="flex flex-col gap-4 ">
     We knew three things from the jump:
 
@@ -282,10 +282,15 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <div class="mt-auto px-4 py-3 bg-neutral-800">
     [How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
   </div>
+  <Image 
+    src="/work/formie/challenges/scam.png"
+    alt="Thinking about how to handle bad guys"
+    classes="md:hidden col-span-full !m-0"
+  />
 </div>
 
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-2">
-  <h2 class="col-span-full text-4xl leading-9 my-0 -mt-1 max-w-[400px]">Keeping it flexible</h2>
+<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Keeping it flexible</h2>
   <div class="flex flex-col gap-4 ">
     Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
 
@@ -294,10 +299,15 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <div class="mt-auto px-4 py-3 bg-neutral-800">
     [How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
   </div>
+  <Image 
+    src="/work/formie/challenges/explain.png"
+    alt="Thinking about out how to explain stuff"
+    classes="md:hidden col-span-full !m-0"
+  />
 </div>
 
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-2">
-  <h2 class="col-span-full text-4xl leading-9 my-0 -mt-1 max-w-[400px]">Communicating technical details</h2>
+<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Communicating technical details</h2>
   <div class="flex flex-col gap-4 ">
     Smart contracts have tons of strange behaviors:
 
@@ -312,7 +322,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   </div>
 </div>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 -mx-6 py-24 bg-white mt-12">
+<div class="hidden md:grid col-span-full grid-cols-6 xl:grid-cols-8 -mx-6 py-24 bg-white mt-12">
   <Image 
     src="/work/formie/challenges/scam.png"
     alt="Thinking about how to handle bad guys"
@@ -325,11 +335,14 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
 </div>
 
-<Heading title="So we made a few decisions..." number="05" classes="pb-12" />
+<Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="text-neutral-700  text-6xl justify-self-end mr-4">1</span>
-  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2">
-    <h2 class="text-4xl leading-9 my-0">One page, one action</h2>
+  <span class="hidden xl:block text-neutral-700  text-6xl leading-[52px] justify-self-end mr-4">1</span>
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <div class="flex justify-between gap-6">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">One page, one action</h2>
+      <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">1</span>
+    </div>
     <div class="flex flex-col gap-4">
       The main departure from Etherscan was limiting forms to a single action.
 
@@ -341,14 +354,17 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image
     src="/work/formie/decisions/one-page.png"
     alt="Form for Uniswap's Delegate action"
-    classes="col-span-4"
+    classes="col-span-full xl:col-span-4"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="text-neutral-700 text-6xl justify-self-end mr-4">2</span>
-  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2">
-    <h2 class="text-4xl leading-9 my-0">Only supporting one-way actions</h2>
+  <span class="hidden xl:block text-neutral-700 text-6xl leading-[52px] justify-self-end mr-4">2</span>
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <div class="flex justify-between gap-6">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Only supporting one-way actions</h2>
+      <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">2</span>
+    </div>
     <div class="flex flex-col gap-4">
       We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
 
@@ -364,14 +380,17 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image
     src="/work/formie/decisions/one-way-actions.png"
     alt="Form for Uniswap's Delegate action"
-    classes="col-span-4"
+    classes="col-span-full xl:col-span-4"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="text-neutral-700 text-6xl justify-self-end mr-5 ">3</span>
-  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2">
-    <h2 class="text-4xl leading-9 my-0">Letting people write their own titles and descriptions</h2>
+  <span class="hidden xl:block text-neutral-700 text-6xl leading-[52px] justify-self-end mr-5">3</span>
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <div class="flex justify-between gap-6">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Letting people write their own titles and descriptions</h2>
+      <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">3</span>
+    </div>
     <div class="flex flex-col gap-4">
       To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
@@ -383,14 +402,17 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image
     src="/work/formie/decisions/title-and-description.png"
     alt="UI for editing title & description"
-    classes="col-span-4"
+    classes="col-span-full xl:col-span-4"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="text-neutral-700 text-6xl justify-self-end mr-4">4</span>
-  <div class="flex flex-col gap-4 col-span-3 xl:col-span-2 xl:col-start-2">
-    <h2 class="text-4xl leading-9 my-0">Making people confirm trust</h2>
+  <span class="hidden xl:block text-neutral-700 text-6xl justify-self-end mr-4">4</span>
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <div class="flex justify-between gap-6">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Making people confirm trust</h2>
+      <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">4</span>
+    </div>
     <div class="flex flex-col gap-4">
       We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
 
@@ -402,7 +424,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image
     src="/work/formie/decisions/trust.png"
     alt="Confirmation checkbox at the end of every form"
-    classes="col-span-4"
+    classes="col-span-full xl:col-span-4"
   />
 </div>
 
