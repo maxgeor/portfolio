@@ -104,7 +104,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
     <span class="my-0 ">They share <span>limited feedback</span> for transactions.</span>
   </div>
 </div>
-<div class="col-span-full md:col-span-4 xl:col-span-2 xl:col-start-2  flex flex-col gap-y-4 !text-white">
+<div class="col-span-full lg:col-span-2 xl:col-start-2  flex flex-col gap-y-4 !text-white">
   Developers make blockchain apps by
 
   1. Writing code
@@ -118,16 +118,16 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <Image
   src="/work/formie/annotated-etherscan-page.png"
   alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full xl:col-span-4"
+  classes="col-span-full lg:col-span-4 !mx-0"
 />
 
 <Heading title="So we looked for something better..." number="01">
-  <img src="/path-l-to-r.svg" class="hidden xl:block max-h-[48px] h-full w-[50vw] absolute bottom-2 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
+  <img src="/path-l-to-r.svg" class="hidden lg:block max-h-[48px] h-full w-[50vw] absolute -bottom-4 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
 </Heading>
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 xl:max-w-[400px]">Most actions needed basic UIs</h2>
+  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full lg:col-span-2 ">
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 md:max-w-[24ch]">Most actions needed basic UIs</h2>
     <div class="flex flex-col gap-4">
       We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
       
@@ -137,14 +137,14 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="xl:order-first col-span-full xl:col-span-4 xl:col-start-2 !m-0"
+    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 !m-0"
   />
   <img src="/path-r-to-l.svg" class="hidden xl:block max-h-[60px] h-full xl:w-[50vw] absolute -bottom-2 left-1/2 transform -translate-x-1/2 -rotate-[2.5deg]" />
 </div>
 
-<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2 xl:pb-12">
-    <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0 !-mt-1">Projects used Etherscan for one-way actions</h2>
+<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 lg:pb-12">
+  <div class="flex flex-col gap-4 col-span-full lg:col-span-2 xl:col-start-2 ">
+    <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0 !-mt-1 md:max-w-[24ch]">Projects used Etherscan for one-way actions</h2>
     <div class="flex flex-col gap-4">
       Contracts have two kinds of actions:
 
@@ -170,7 +170,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
         src: "/work/formie/research/one-ways/banners-flow",
       },
     ]}
-    classes="col-span-full xl:col-span-4 "
+    classes="col-span-full lg:col-span-4 !m-0"
   />
   <img 
     src="/path-l-to-r.svg" 
@@ -178,9 +178,9 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   />
 </div>
 
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 xl:pb-12">
-  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 xl:max-w-[400px]">Projects sacrificed UX to save time</h2>
+<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 lg:pb-12">
+  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full lg:col-span-2 ">
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 md:max-w-[24ch]">Projects sacrificed UX to save time</h2>
     <div class="flex flex-col gap-4">
       We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
@@ -194,19 +194,19 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="xl:order-first xl:order-auto col-span-full xl:col-span-4 xl:col-start-2 !m-0"
+    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 !m-0"
   />
   <img src="/path-r-to-c.svg" class="hidden xl:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
 <div class="-my-1.5 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 pt-36">
   <div class="xl:col-start-2 col-span-5 z-5 text-2xl md:text-3xl leading-7 md:leading-8 tracking-tight  text-neutral-500 max-w-md">Realizing smart contracts worked like mini forms made us wonder...</div>
-  <div class="col-span-1 -mr-2 justify-self-end text-[56px] leading-[48px] md:text-[80px] xl:text-[104px] md:leading-[68px] xl:leading-[92px]  text-neutral-700">02</div>
+  <div class="col-span-1 lg:-mt-1 xl:mt-0 -mr-2 justify-self-end text-[56px] leading-[48px] md:text-[80px] lg:text-[104px] md:leading-[68px] lg:leading-[92px]  text-neutral-700">02</div>
 </div>
 
-<h1 class="col-span-6 xl:col-start-2 bg-yellow/[15%] py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 md:pb-12 tracking-tight">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 xl:pb-12 tracking-tight">
   <div class="-my-1 col-span-full md:col-span-2 xl:col-start-2 text-xl md:text-2xl leading-6 md:leading-7 text-neutral-500 flex gap-4">
     <div class="w-3.5">1.</div>
     <span class="my-0 md:max-w-[15ch]">Give every action a [dedicated page](#one-page-one-action).</span>
@@ -248,7 +248,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   `}
 > 
   <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black/[75%] via-black/[50%]"></div>
-  <Heading title="So we got to work..." number="02" classes="!pt-0" />
+  <Heading title="So we got to work..." number="02" classes="!pb-0 xl:pb-12 !pt-0" />
   <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
     <div class="col-span-full md:col-span-2 xl:col-start-2">
       We worked by doing design and development at the same time.
