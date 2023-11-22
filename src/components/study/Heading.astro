@@ -1,0 +1,20 @@
+---
+export interface Props {
+  title: string;
+  number: string;
+  classes?: string;
+}
+const { title, number, classes = ""} = Astro.props;
+---
+<div class={`
+  relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-6 gap-x-12 pt-32 md:pt-48 -my-2 xl:-my-3
+  ${classes}
+`}>
+  <h1 class="col-span-5 xl:col-start-2 z-5 max-w-[12ch] !-ml-1.5">{title}</h1>
+  <div 
+    class="-mr-2 justify-self-end text-[56px] leading-[48px] md:text-[80px] xl:text-[104px] md:leading-[68px] xl:prose-h1:leading-[92px] text-neutral-700"
+  >
+    {number}
+  </div>
+  <slot />
+</div>

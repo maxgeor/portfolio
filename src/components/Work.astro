@@ -27,13 +27,13 @@ const {
   href={!link || isComingSoon ? '#' : link.href}
   target={!link?.target || isComingSoon ? '_self' : link.target}
   class={`
-    overflow-hidden  relative gap-1 flex flex-col h-fit col-span-2 justify-self-end mt-auto
+    overflow-hidden  relative gap-1 flex flex-col h-fit col-span-2
     ${!link || isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
     ${classes} 
   `}
 >
   {isComingSoon && <ComingSoonBanner/>}
-  <picture class='justify-self-end relative h-auto col-span-full group-hover:brightness-[95%] transition'>
+  <picture class='relative h-auto col-span-full group-hover:brightness-[95%] transition'>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}

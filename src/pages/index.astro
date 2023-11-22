@@ -35,26 +35,26 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative grid grid-cols-12 gap-12 p-6 pt-0">
+  <div class="relative grid grid-cols-6 xl:grid-cols-8 gap-12 p-6 pt-0">
     <section 
-      class="col-span-full grid grid-cols-12 gap-6 gap-y-12 px-6 -mx-6  overflow-hidden " 
+      class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6  overflow-hidden " 
     >
       <Header/>
-      <p class="col-span-full lg:col-span-2">[Max Georgopoulos]</p>
-      <p class="col-span-4 lg:col-span-4">I'm a designer and developer based out of Toronto, but I bum
+      <p class="hidden xl:inline-block col-span-full xl:col-span-1">[MG]</p>
+      <p class="col-span-3">I'm a designer and developer based out of Toronto, but I bum
       around different places. I believe that the boundary between design
       and engineering is artificial — you get the best results by blending
       the two. Lately, I've been inspired by Ryan Singer's design
       techniques, TailwindCSS, and The 2023 Spring Summer Collection from
       Homme Plissé.</p>
-      <p class="col-span-4 lg:col-span-4">I'm a designer and developer based out of Toronto, but I bum
+      <p class="col-span-3">I'm a designer and developer based out of Toronto, but I bum
       around different places. I believe that the boundary between design
       and engineering is artificial — you get the best results by blending
       the two. Lately, I've been inspired by Ryan Singer's design
       techniques, TailwindCSS, and The 2023 Spring Summer Collection from
       Homme Plissé.</p>
     </section>
-    <section class="col-span-full grid grid-cols-12 gap-12">
+    <section class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-12">
       {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
         <Study
           title={study.title}

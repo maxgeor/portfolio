@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-6 gap-y-12  px-6">
+  <main class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12  px-6">
     <Button 
       tag="a" 
       href="#article" 
@@ -51,32 +51,34 @@ const {
       <span class="leading-6">Go back</span>
     </Button>
     <Header />
-    <section class='col-span-full grid grid-cols-12 gap-6'>
-      <div class="w-full col-span-full md:col-span-2 md:row-span-2 flex md:flex-col gap-6 md:justify-between">
-        <div class="flex justify-between">
-
-          <h1 class="basis-1/2 md:basis-auto">
-            <a href='/work' class='group col-start-3 col-span-2  hover:bg-white hover:text-black'>
-              <span class="group-hover:opacity-0">[</span>{title}<span class="group-hover:opacity-0">]</span>
-            </a>
+    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6'>
+      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-6 xl:justify-between">
+        <div class="flex justify-between basis-1/2 xl:basis-auto">
+          <h1>
+            {link ? (
+              <a href='/work' class='group flex items-center hover:bg-white hover:text-black pr-[3px]'>
+                <span>
+                  <span class="group-hover:opacity-0">[</span>{title}<span class="group-hover:opacity-0">]</span>
+                </span>
+                <svg class="hidden group-hover:inline-block -ml-1 -mb-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                
+              </a>
+            ) : (
+              <p>[{title}]</p>
+            )}
           </h1>
-          <!-- {link && (
-            <a href={link} target="blank" class="col-span-2 justify-self-end group flex items-center gap-1 group ">
-              [See it]
-            </a>
-          )} -->
         </div>
-        <p class="basis-1/2 md:basis-auto">{year}</p>
+        <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+      <div class="col-span-3  border-neutral-600 border-t">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-6 sm:col-span-4 border-neutral-600 border-t">
+      <div class="col-span-3  border-neutral-600 border-t">
         <h2>Role</h2>
-        <p class="col-span-4">{roles.join(", ")}</p>
+        <p>{roles.join(", ")}</p>
       </div>
-      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+      <div class="col-span-3  border-neutral-600 border-t">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
           <ul class="capitalize">
@@ -95,7 +97,7 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+      <div class="col-span-3 border-neutral-600 border-t">
         <h2>Tools</h2>
         <p class="capitalize">{tools.join(", ")}</p>
       </div>
@@ -117,47 +119,48 @@ const {
       <div
         class={`
           text-white w-full  
-          prose-p:text-white
-          
-          prose-h1:tracking-[-0.05em]
-          prose-h2:tracking-[-0.04em]
-          
-          prose-h1:text-7xl xl:prose-h1:text-8xl prose-h1:leading-[68px] xl:prose-h1:leading-[92px] prose-h1:my-0
+          prose-p:text-neutral-200
+                    
+          prose-h1:text-5xl md:prose-h1:text-7xl xl:prose-h1:text-8xl prose-h1:leading-[48px] md:prose-h1:leading-[68px] xl:prose-h1:leading-[92px] prose-h1:my-0 prose-h1:tracking-tighter
 
-          prose-h2:my-0
+          prose-h2:my-0 prose-h2:tracking-tight
 
-          prose-h3:tracking-normal prose-h3:font-medium prose-h3:text-neutral-200 prose-h3:-mb-[16px]
+          prose-h3:tracking-normal prose-h3:font-medium prose-h3:-mb-[16px]
 
           prose-p:leading-5
           prose-p:max-w-prose 
           prose-p:my-0
 
-          prose-strong:text-neutral-200 prose-strong:font-medium
+          prose-strong:font-medium
 
-          prose-a:underline
+          prose-a:underline hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
 
-          prose-code:bg-neutral-700/[55%] prose-code:text-neutral-200  prose-code:ring-1 prose-code:ring-white/10 prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          prose-code:bg-neutral-700/[55%] prose-code:ring-1 prose-code:ring-white/10 prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:my-0
+          prose-ul:text-neutral-200
 
           prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
           prose-ol:my-0
+          prose-ol:text-neutral-200
 
           prose-li:m-0
           prose-li:pl-0
           prose-li:leading-5
 
           marker:prose-li:font-mono
+          prose-li:text-neutral-200
+          marker:prose-li:text-neutral-200
 
           marker:prose-li:text-[0.925em]
 
-          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 md:prose-figure:mx-0 
-          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-6 sm:prose-video:-mx-6 md:prose-video:mx-0
+          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 xl:prose-figure:mx-0 
+          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-6 sm:prose-video:-mx-6 xl:prose-video:mx-0
 
           prose-td:p-0
 
-          grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-6 
+          grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 
         `}
       >
         <slot />

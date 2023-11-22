@@ -18,7 +18,7 @@ const { slides, classes = "" } = Astro.props;
 
 <div
   class={`
-    carousel relative -mx-4 sm:-mx-4 md:mx-0 border border-neutral-900 h-fit
+    carousel relative -mx-4 sm:-mx-4 md:mx-0 border border-neutral-800 h-fit
     ${classes}
   `}
 >
@@ -27,14 +27,14 @@ const { slides, classes = "" } = Astro.props;
     ariaLabel="Previous slide"
     ariaHidden="true"
     invisiblePadding="px-2 py-14 -mx-2 -my-14"
-    classes="btn-prev group absolute top-1/2 left-2 sm:left-4 md:-left-[11px] xl:-left-[15px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] opacity-0 transition-all duration-200 -mt-1"
+    classes="btn-prev group absolute top-1/2 left-2 sm:left-4 md:-left-[13px] xl:-left-[17px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] opacity-0 transition-all duration-200 -mt-0"
   >
     <ChevronLeftIcon />
   </Button>
   <Button
     ariaLabel="Next slide"
     invisiblePadding="px-2 py-14 -mx-2 -my-14"
-    classes="btn-next group absolute top-1/2 right-2 sm:right-4 md:-right-[11px] xl:-right-[15px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] duration-200 -mt-1"
+    classes="btn-next group absolute top-1/2 right-2 sm:right-4 md:-right-[13px] xl:-right-[17px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] duration-200 -mt-0"
   >
     <ChevronRightIcon />
   </Button>
