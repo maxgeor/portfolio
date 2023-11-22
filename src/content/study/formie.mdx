@@ -127,7 +127,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 xl:max-w-[400px]">Most actions needed basic UIs</h2>
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 xl:max-w-[400px]">Most actions needed basic UIs</h2>
     <div class="flex flex-col gap-4">
       We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
       
@@ -144,7 +144,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2 xl:pb-12">
-    <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 ">Projects used Etherscan for one-way actions</h2>
+    <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0 !-mt-1">Projects used Etherscan for one-way actions</h2>
     <div class="flex flex-col gap-4">
       Contracts have two kinds of actions:
 
@@ -180,7 +180,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 
 <div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 xl:pb-12">
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full xl:col-span-2 ">
-    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 xl:max-w-[400px]">Projects sacrificed UX to save time</h2>
+    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 xl:max-w-[400px]">Projects sacrificed UX to save time</h2>
     <div class="flex flex-col gap-4">
       We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
@@ -271,7 +271,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 
 <Heading title="But we had some issues..." number="04" classes="!pt-0 md:pb-12" />
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
-  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Shooing scammers</h2>
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 -mt-1 md:max-w-[400px]">Shooing scammers</h2>
   <div class="flex flex-col gap-4 ">
     We knew three things from the jump:
 
@@ -290,7 +290,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 </div>
 
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
-  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Keeping it flexible</h2>
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 -mt-1 md:max-w-[400px]">Keeping it flexible</h2>
   <div class="flex flex-col gap-4 ">
     Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
 
@@ -307,7 +307,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 </div>
 
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
-  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 my-0 -mt-1 md:max-w-[400px]">Communicating technical details</h2>
+  <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 -mt-1 md:max-w-[400px]">Communicating technical details</h2>
   <div class="flex flex-col gap-4 ">
     Smart contracts have tons of strange behaviors:
 
@@ -339,8 +339,8 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700  text-6xl leading-[52px] justify-self-end mr-4">1</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <div class="flex justify-between gap-6">
-      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">One page, one action</h2>
+    <div class="flex justify-between gap-6 -my-1">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9">One page, one action</h2>
       <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">1</span>
     </div>
     <div class="flex flex-col gap-4">
@@ -361,8 +361,8 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-6xl leading-[52px] justify-self-end mr-4">2</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <div class="flex justify-between gap-6">
-      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Only supporting one-way actions</h2>
+    <div class="flex justify-between gap-6 -my-1">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9">Only supporting one-way actions</h2>
       <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">2</span>
     </div>
     <div class="flex flex-col gap-4">
@@ -387,8 +387,8 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-6xl leading-[52px] justify-self-end mr-5">3</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <div class="flex justify-between gap-6">
-      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Letting people write their own titles and descriptions</h2>
+    <div class="flex justify-between gap-6 -my-1">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9">Letting people write their own titles and descriptions</h2>
       <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">3</span>
     </div>
     <div class="flex flex-col gap-4">
@@ -409,8 +409,8 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-6xl justify-self-end mr-4">4</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <div class="flex justify-between gap-6">
-      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9 my-0">Making people confirm trust</h2>
+    <div class="flex justify-between gap-6 -my-1">
+      <h2 class="text-3xl md:text-4xl leading-8 md:leading-9">Making people confirm trust</h2>
       <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">4</span>
     </div>
     <div class="flex flex-col gap-4">
