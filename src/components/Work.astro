@@ -1,6 +1,5 @@
 ---
-import RightArrowIcon from './icons/RightArrowIcon.astro';
-import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
+import ComingSoonBanner from './ComingSoonBanner.astro'
 
 export interface Props {
   title: string;
@@ -28,38 +27,12 @@ const {
   href={!link || isComingSoon ? '#' : link.href}
   target={!link?.target || isComingSoon ? '_self' : link.target}
   class={`
-    gap-1 flex flex-col h-fit break-inside-avoid-column col-span-2 justify-self-end mt-auto
+    overflow-hidden  relative gap-1 flex flex-col h-fit col-span-2 justify-self-end mt-auto
     ${!link || isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
     ${classes} 
   `}
 >
-  <!-- <div class="flex transition-all duration-200 col-span-full mb-1 gap-x-2 items-start">
-    <div class="flex flex-col md:flex-row md:items-center gap-x-1 flex-wrap w-full my-0.5 leading-4">
-      <span class="whitespacs-nowrap">{title}</span> 
-      <span class="text-neutral-400">
-        {description.replace('.', '') || ''}
-      </span>
-    </div>
-    {!link || isComingSoon ? (
-      <span class="text-neutral-400 whitespace-nowrap lg:opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out">
-        Coming soon…
-      </span>
-    ) : (
-      <span 
-        class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition ease-in-out "
-      >
-        {link.target === '_blank' ? (
-          <UpRightArrowIcon 
-            classes="transition ease-in-out mt-[3px] -mr-[3px] transform -translate-x-px translate-y-px group-hover:translate-x-px group-focus:translate-x-px group-hover:-translate-y-px group-focus:-translate-y-px" 
-          /> 
-        ) : (
-          <RightArrowIcon 
-            classes="transition ease-in-out -mr-0.5 transform -translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0 " 
-          />
-        )}
-      </span>
-    )}
-  </div> -->
+  {isComingSoon && <ComingSoonBanner/>}
   <picture class='justify-self-end relative h-auto col-span-full group-hover:brightness-[95%] transition'>
     <img
       src={image}
@@ -68,7 +41,7 @@ const {
     />
   </picture>
   <div class="col-span-full flex flex-wrap justify-between gap-x-6 ">
-    <p>{title}</p>
+    <p>[{title}]</p>
     <p>{description}</p>
   </div>
 </a>

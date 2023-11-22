@@ -37,74 +37,22 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 <Layout title="Max Georgopoulos">
   <div class="relative grid grid-cols-12 gap-12 p-6 pt-0">
     <section 
-      class="col-span-full grid grid-cols-12 gap-6 px-6 -mx-6  overflow-hidden " 
+      class="col-span-full grid grid-cols-12 gap-6 gap-y-12 px-6 -mx-6  overflow-hidden " 
     >
       <Header/>
-
-      <p class="col-span-2">Max Georgopoulos</p>
-      <p class="col-span-4">I'm a designer and developer based out of Toronto, but I bum
+      <p class="col-span-full lg:col-span-2">[Max Georgopoulos]</p>
+      <p class="col-span-4 lg:col-span-4">I'm a designer and developer based out of Toronto, but I bum
       around different places. I believe that the boundary between design
       and engineering is artificial — you get the best results by blending
       the two. Lately, I've been inspired by Ryan Singer's design
       techniques, TailwindCSS, and The 2023 Spring Summer Collection from
       Homme Plissé.</p>
-      <p class="col-span-4">I'm a designer and developer based out of Toronto, but I bum
+      <p class="col-span-4 lg:col-span-4">I'm a designer and developer based out of Toronto, but I bum
       around different places. I believe that the boundary between design
       and engineering is artificial — you get the best results by blending
       the two. Lately, I've been inspired by Ryan Singer's design
       techniques, TailwindCSS, and The 2023 Spring Summer Collection from
       Homme Plissé.</p>
-     <!-- <div class="col-start-9 col-span-3 flex flex-col self-end">
-        <p>Work</p>
-        <p>About</p>
-        <p>Writing</p>
-      </div> -->
-    
-      <!-- <Header /> -->
-      <!-- <p class="col-start-2 col-span-full sm:col-span-3 sm:col-start-2 md:col-start-3 md:col-span-2 xl:col-start-4 xl:col-span-1"> -->
-      <!-- <h1 class="uppercase  col-span-3 -ml-[0.9vw] tracking-tighter text-[11vw] leading-[9.5vw] -mb-[1.5vw]">
-        Max
-      </h1>
-       <h1 class="uppercase   -ml-[0.9vw] col-span-3  tracking-tighter text-[11vw] leading-[9.5vw] -mb-[1.5vw]">
-        Geo
-      </h1>
-      
-      
-     
-      
-      <h1 class="uppercase -ml-[0.9vw] col-span-3 tracking-tighter text-[11vw] leading-[9.5vw] -mb-[1.5vw]">
-        rgo
-      </h1>
-     
-      <h1 class="uppercase   -ml-[0.9vw] col-span-3  tracking-tighter text-[11vw] leading-[9.5vw] -mb-[1.5vw]">
-        pou
-      </h1>
-
-      
-      <h1 class="-ml-[0.9vw] text-[11vw] leading-[9.5vw] -mb-[1.5vw] col-span-3 tracking-tighter uppercase">
-        los
-      </h1> -->
-      <!-- <p class="col-span-3 col-start-4 self-end">
-            I'm a designer and developer based out of Toronto but I bum
-            around different places.
-          </p>
-      <p class="col-span-3 self-end">
-        I believe that the boundary between design
-        and engineering is artificial — you get the best results by blending
-        the two.
-      </p>
-      <p class="col-span-3 self-end">
-        Lately, I've been inspired by Ryan Singer's design
-        techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-        Homme Plissé.
-      </p> -->
-      
-
-      
-      
-      <!-- <h1 class=" text-[14.9vw] xs:text-[15.2vw] md:text-[11.5vw] lg:text-[11.6vw] xl:text-[11.8vw] leading-[13.5vw] md:leading-[10vw] col-span-full lg:col-span-3 self-end whitespace-nowrap   tracking-tighter">
-        Max<br/>Georgopoulos
-      </h1> -->
     </section>
     <section class="col-span-full grid grid-cols-12 gap-12">
       {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (

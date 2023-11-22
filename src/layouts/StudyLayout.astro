@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-8 gap-6 lg:gap-y-12 px-6">
+  <main class="relative col-span-full grid grid-cols-12 gap-6 gap-y-12  px-6">
     <Button 
       tag="a" 
       href="#article" 
@@ -51,73 +51,64 @@ const {
       <span class="leading-6">Go back</span>
     </Button>
     <Header />
-    <section 
-      class='col-span-full grid grid-cols-12 gap-6'>
-      <figure class={`
-        lg:order-last col-span-full lg:col-span-6 select-none -mx-6 lg:ml-0
-      `}>
-        <img
-          src={image}
-          alt={''}
-          class='aspect-[7/4] h-full w-full object-cover'
-        />
-      </figure>
-      <div class="flex flex-col lg:flex-col-reverse justify-between gap-6 col-span-full lg:col-span-6 h-full">
-        <div class="flex justify-between items-end">
-          <h1 
-            class=" text-5xl lg:text-7xl xl:text-9xl lg:leading-[56px] xl:leading-[96px] col-span-full tracking-[-0.05em]"
-          >
-            {title}
+    <section class='col-span-full grid grid-cols-12 gap-6'>
+      <div class="w-full col-span-full md:col-span-2 md:row-span-2 flex md:flex-col gap-6 md:justify-between">
+        <div class="flex justify-between">
+
+          <h1 class="basis-1/2 md:basis-auto">
+            <a href='/work' class='group col-start-3 col-span-2  hover:bg-white hover:text-black'>
+              <span class="group-hover:opacity-0">[</span>{title}<span class="group-hover:opacity-0">]</span>
+            </a>
           </h1>
-          <div class="h-full flex flex-col justify-end lg:justify-between">
-            {link && (
-              <a href={link} target="blank" class="group -mr-1 xl:mt-6">
-                <span class="group-hover:underline">See it</span>
-                <UpRightArrowIcon classes="inline-block ml-0.5 mb-px" />
-              </a>
-            )}
-            <p class="hidden lg:inline-block leading-6 lg:leading-3 self-end">{year}</p>
-          </div>
+          <!-- {link && (
+            <a href={link} target="blank" class="col-span-2 justify-self-end group flex items-center gap-1 group ">
+              [See it]
+            </a>
+          )} -->
         </div>
-        <div class="flex flex-col gap-y-6">
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
-            <p class="col-span-2 lg:col-span-4">In short…</p>
-            <p class="col-span-4">{tldr}</p>
-          </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
-            <p class="col-span-2 lg:col-span-4">Role</p>
-            <p class="col-span-4 capitalize">{roles.join(", ")}</p>
-          </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
-            <p class="col-span-2 lg:col-span-4">Tools</p>
-            <p class="col-span-4 capitalize">{tools.join(", ")}</p>
-          </div>
-          <div class="grid grid-cols-8 gap-x-6 border-t border-[#333333]">
-            <p class="col-span-2 lg:col-span-4">Team</p>
-            {teammates?.length > 0 ? (
-              <ul class="col-span-4 capitalize">
-                {teammates.map((teammate: { name: string, role: string, href: string }) => (
-                  <li>
-                    <a 
-                      href={teammate.href}
-                      target="_blank"
-                      class="underline" 
-                    >
-                      {teammate.name}
-                    </a> 
-                    ({teammate.role})
-                  </li>
-                ))}
-              </ul>
-            ) : "—"}
-          </div>
-          <div class="lg:hidden grid grid-cols-8 gap-x-6 border-t border-[#333333]">
-            <p class="col-span-2 lg:col-span-4">Year</p>
-            <p class="col-span-4 capitalize">{year}</p>
-          </div>
-        </div>
+        <p class="basis-1/2 md:basis-auto">{year}</p>
+      </div>
+      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+        <h2>In short...</h2>
+        <p>{tldr}</p>
+      </div>
+      <div class="col-span-6 sm:col-span-4 border-neutral-600 border-t">
+        <h2>Role</h2>
+        <p class="col-span-4">{roles.join(", ")}</p>
+      </div>
+      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+        <h2>Team</h2>
+        {teammates?.length > 0 ? (
+          <ul class="capitalize">
+            {teammates.map((teammate: { name: string, role: string, href: string }) => (
+              <li>
+                <a 
+                  href={teammate.href}
+                  target="_blank"
+                  class="underline" 
+                >
+                  {teammate.name}
+                </a> 
+                ({teammate.role})
+              </li>
+            ))}
+          </ul>
+        ) : "—"}
+      </div>
+      <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+        <h2>Tools</h2>
+        <p class="capitalize">{tools.join(", ")}</p>
       </div>
     </section>
+    <figure class={`
+      col-span-full select-none -mx-6
+    `}>
+      <img
+        src={image}
+        alt={''}
+        class='h-full w-full object-cover'
+      />
+    </figure>
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
@@ -126,7 +117,7 @@ const {
       <div
         class={`
           text-white w-full  
-          prose-p:text-[#ababab]
+          prose-p:text-white
           
           prose-h1:tracking-[-0.05em]
           prose-h2:tracking-[-0.04em]
@@ -156,9 +147,9 @@ const {
           prose-li:m-0
           prose-li:pl-0
           prose-li:leading-5
-          prose-li:text-[#ababab]
+
           marker:prose-li:font-mono
-          marker:prose-li:text-[#ababab]
+
           marker:prose-li:text-[0.925em]
 
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 md:prose-figure:mx-0 
@@ -166,7 +157,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-1 lg:grid-cols-8 gap-y-12 gap-x-6 
+          grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-6 
         `}
       >
         <slot />

@@ -9,33 +9,34 @@ export interface Props {
 }
 const { problem, solution, decisions, tradeoffs } = Astro.props;
 ---
-<div class=" col-span-full  bg-neutral-900 border-dashed -mx-6 p-6 text-[#ababab]">
-  <Section title="Tldr" classes='leading-5 not-prose gap-6 col-span-full'>
-    <div class="grid grid-cols-8 lg:grid-cols-6 col-span-full lg:col-span-6 gap-x-6">
-      <hr class="col-span-full border-t border-[#333333] -mr-6 pr-6"/>
-      <p class="col-span-2 ">Problem</p>
-      <p class="col-span-6 lg:col-span-4">{problem}</p>
-      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
-      <p class="col-span-2 ">Solution</p>
-      <p class="col-span-6 lg:col-span-4">{solution}</p>
-      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
-      <p class="col-span-2 ">Decisions</p>
-      <ul class="col-span-6 lg:col-span-4 ">
-        {decisions.map((decision) => (
-          <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
-            {decision}
-          </li>
-        ))}
-      </ul>
-      <hr class="col-span-full border-t border-[#333333] mt-6 -mr-6 pr-6"/>
-      <p class="col-span-2">Tradeoffs</p>
-      <ul class="col-span-6 lg:col-span-4 list-inside">
-        {tradeoffs.map((tradeoff) => (
-          <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
-            {tradeoff}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </Section>
+<div class="not-prose col-span-full grid grid-cols-12 gap-6">
+  <h2 class="col-span-2">[Tldr]</h2>
+  <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+    <h2>Problem</h2>
+    <p>{problem}</p>
+  </div>
+  <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+    <h2>Solution</h2>
+    <p>{solution}</p>
+  </div>
+  <div class="col-span-6 md:col-span-4 md:col-start-3 border-neutral-600 border-t">
+    <h2>Decisions</h2>
+    <ul>
+      {decisions.map((decision) => (
+        <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
+          {decision}
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="col-span-6 md:col-span-4 border-neutral-600 border-t">
+    <h2>Tradeoffs</h2>
+    <ul class="list-inside">
+      {tradeoffs.map((tradeoff) => (
+        <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
+          {tradeoff}
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>

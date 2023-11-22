@@ -1,0 +1,64 @@
+
+<div class="coming-soon-banner transform -rotate-12 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 text-white  bg-black  marquee">
+    <div class="text">
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+    </div>
+    <div class="text">
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+        <span>Coming Soon</span>
+    </div>
+</div>
+<style>
+  .coming-soon-banner {
+    width: calc(100% + 32px);
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+
+  }
+
+  .text {
+    animation: animate_text 120s linear infinite;
+  }
+  .text span {
+    margin-right: 3px;
+  }
+
+  @keyframes animate_text {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+</style>
