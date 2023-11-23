@@ -13,10 +13,16 @@ module.exports = {
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
     },
     extend: {
-      content: {
-        'path-1': 'url("/path-1.svg")',
-        'path-2': 'url("/path-2.svg")',
-        'path-3': 'url("/path-3.svg")',
+      fontSize: {
+        sm: ['14px', '20px'],
+        DEFAULT: ['16px', '24px'],
+        md: ['20px', '24px'],  
+        lg: ['28px', '32px'],  
+        xl: ['40px', '48px'],  
+        '2xl': ['56px', '60px'],  
+        '3xl': ['79px', '80px'],  
+        '4xl': ['112px', '112px'],
+        '5xl': ['158px', '152px']
       },
       colors: {
         red: '#FF3D33',

@@ -11,7 +11,9 @@ teammates:
       href: https://twitter.com/hassantsyed,
     },
   ]
-roles: [Branding, Product Design, Frontend Development]
+roles: 
+  long: [Branding, Product Design, Frontend Development]
+  short: [Dev, Brand, Product]
 tools: ["Next.js", "Firebase", "TailwindCSS"]
 tldr: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
 link: https://www.formie.co/
@@ -67,12 +69,10 @@ order: 1
 
 import Tldr from "../../components/study/Tldr.astro";
 import Heading from "../../components/study/Heading.astro";
+import OneTwoThree from "../../components/study/OneTwoThree.astro";
 import Image from "../../components/study/Image.astro";
 import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
-import Footnote from "../../components/study/Footnote.astro";
-import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro";
-
 
 <Tldr 
   problem="Etherscan's frontend sucked."
@@ -90,21 +90,12 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 />
 
 <Heading title="Etherscan's UI kinda sucked..." number="00" classes="!pb-0" />
-<div class="xl:pb-12 col-span-full grid grid-cols-1 sm:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 tracking-tight">
-  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 xl:col-start-2 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
-    <span class="w-3.5">1.</span>
-    <span class="my-0 ">The UI is a list of <span>technically-named</span> forms.</span>
-  </div>
-  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
-    <span class="w-3.5">2.</span>
-    <span class=" my-0  col-start-6 ">It’s at the <span>bottom of the page</span>, behind two drawers.</span>
-  </div>
-  <div class="-my-1 text-xl md:text-2xl leading-6 md:leading-7 col-span-full md:col-span-2 text-neutral-500 flex gap-4 ">
-    <div class="w-3.5">3.</div>
-    <span class="my-0 ">They share <span>limited feedback</span> for transactions.</span>
-  </div>
-</div>
-<div class="col-span-full lg:col-span-2 xl:col-start-2  flex flex-col gap-y-4 !text-white">
+<OneTwoThree classes="xl:pb-12">
+  <span slot="1">The UI is a list of technically-named forms.</span>
+  <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
+  <span slot="3">They share limited feedback about transactions.</span>
+</OneTwoThree>
+<div class="flex flex-col gap-y-4 col-span-full md:col-span-2 xl:col-start-2">
   Developers make blockchain apps by
 
   1. Writing code
@@ -118,7 +109,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 <Image
   src="/work/formie/annotated-etherscan-page.png"
   alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full lg:col-span-4 !mx-0"
+  classes="col-span-full md:col-span-4 !mx-0"
 />
 
 <Heading title="So we looked for something better..." number="01">
@@ -127,7 +118,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full lg:col-span-2 ">
-    <h2 class="col-span-full text-3xl md:text-4xl leading-8 md:leading-9 !-mt-1 md:max-w-[24ch]">Most actions needed basic UIs</h2>
+    <h2>Most actions needed basic UIs</h2>
     <div class="flex flex-col gap-4">
       We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
       
@@ -137,7 +128,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 "
+    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 md:!m-0"
   />
   <img src="/path-r-to-l.svg" class="hidden xl:block max-h-[60px] h-full xl:w-[50vw] absolute -bottom-2 left-1/2 transform -translate-x-1/2 -rotate-[2.5deg]" />
 </div>
@@ -194,32 +185,23 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 "
+    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 md:!m-0"
   />
   <img src="/path-r-to-c.svg" class="hidden xl:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
-<div class="-my-1.5 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 pt-36">
-  <div class="xl:col-start-2 col-span-5 z-5 text-[28px] leading-8  tracking-tight  text-neutral-500 max-w-md">Realizing smart contracts worked like mini forms made us wonder...</div>
-  <div class="col-span-1 lg:-mt-1 xl:mt-0 -mr-2 justify-self-end text-[56px] leading-[48px] md:text-[80px] lg:text-[104px] md:leading-[68px] lg:leading-[92px]  text-neutral-700">02</div>
+<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-36">
+  <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
+  <span 
+    class="absolute md:static -mr-2 right-0 top-0 z-0 justify-self-end text-2xl leading-[48px] sm:text-3xl sm:leading-[60px] xl:text-4xl xl:leading-[88px] text-[#1e1e1e] tracking-tight"
+  >02</span>
 </div>
-
 <h1 class="col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6 xl:pb-12 tracking-tight">
-  <div class="-my-1 col-span-full md:col-span-2 xl:col-start-2 text-xl leading-6 text-neutral-500 flex gap-4">
-    <div class="w-3.5">1.</div>
-    <span class="my-0 md:max-w-[15ch]">Give every action a [dedicated page](#one-page-one-action).</span>
-  </div>
-  <div class="-my-1 text-xl leading-6 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
-    <div class="w-3.5">2.</div>
-    <span class="md:max-w-[15ch]">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span> 
-  </div>
-  <div class="-my-1 text-xl leading-6 col-span-full md:col-span-2 text-neutral-500 flex gap-4">
-    <div class="w-3.5">3.</div>
-    <span class="md:max-w-[15ch]">Share clear, thoughtful feedback.</span>
-  </div>
-</div>
+<OneTwoThree classes="xl:pb-12">
+  <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
+  <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
+  <span slot="3">Share clear, thoughtful feedback.</span>
+</OneTwoThree>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-4">
   <div class="col-span-full md:col-span-2 xl:col-start-2 flex flex-col gap-4 text-neutral-200 md:max-w-[200px] ">
@@ -248,7 +230,7 @@ import FootnotedParagraph from "../../components/study/FootnotedParagraph.astro"
   `}
 > 
   <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black/[75%] via-black/[50%]"></div>
-  <Heading title="So we got to work..." number="02" classes="!pb-0 xl:pb-12 !pt-0" />
+  <Heading title="So we got to work..." number="03" classes="!pb-0 xl:pb-12 !pt-0" />
   <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
     <div class="col-span-full md:col-span-2 xl:col-start-2">
       We worked by doing design and development at the same time.

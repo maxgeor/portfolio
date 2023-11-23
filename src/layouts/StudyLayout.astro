@@ -56,29 +56,25 @@ const {
         <div class="flex justify-between basis-1/2 xl:basis-auto">
           <h1>
             {link ? (
-              <a href='/work' class='group flex items-center hover:bg-white hover:text-black pr-[3px]'>
-                <span>
-                  <span class="group-hover:opacity-0">[</span>{title}<span class="group-hover:opacity-0">]</span>
-                </span>
-                <svg class="hidden group-hover:inline-block -ml-1 -mb-0.5" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                
+              <a href='/work' class='group flex items-center hover:bg-white hover:text-black'>
+                [{title}]
               </a>
             ) : (
-              <p>[{title}]</p>
+              <p>{title}</p>
             )}
           </h1>
         </div>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-3  border-neutral-600 border-t">
+      <div class="col-span-3 border-t-[0.5px]">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-3  border-neutral-600 border-t">
+      <div class="col-span-3 border-t-[0.5px]">
         <h2>Role</h2>
-        <p>{roles.join(", ")}</p>
+        <p>{roles.long.join(", ")}</p>
       </div>
-      <div class="col-span-3  border-neutral-600 border-t">
+      <div class="col-span-3 border-t-[0.5px]">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
           <ul class="capitalize">
@@ -87,7 +83,7 @@ const {
                 <a 
                   href={teammate.href}
                   target="_blank"
-                  class="underline" 
+                  class="underline hover:bg-white hover:text-black hover:no-underline" 
                 >
                   {teammate.name}
                 </a> 
@@ -97,7 +93,7 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-3 border-neutral-600 border-t">
+      <div class="col-span-3 border-t-[0.5px]">
         <h2>Tools</h2>
         <p class="capitalize">{tools.join(", ")}</p>
       </div>
@@ -122,11 +118,11 @@ const {
           text-white w-full  
           prose-p:text-neutral-300
                     
-          prose-h1:text-[56px] prose-h1:leading-[60px] prose-h1:my-0 prose-h1:tracking-tighter
+          prose-h1:text-xl sm:prose-h1:text-2xl xl:prose-h1:text-3xl prose-h1:tracking-tighter prose-h1:my-0
 
-          prose-h2:my-0 prose-h2:tracking-tight prose-h2:text-[28px] prose-h2:leading-8
+          prose-h2:text-lg prose-h2:tracking-tight prose-h2:my-0
 
-          prose-h3: prose-h3:-mb-[16px]
+          prose-h3:-mb-[16px]
 
           prose-p:leading-5
           prose-p:max-w-prose 

@@ -4,7 +4,10 @@ export interface Props {
   title: string;
   description: string;
   image: string;
-  roles: string[];
+  roles: {
+    long: string[],
+    short: string[]
+  };
   year: string;
   slug: string;
   isComingSoon?: boolean;
@@ -19,8 +22,8 @@ const {
   link, 
   title, 
   description, 
-  image, 
-  roles = [], 
+  image,
+  roles, 
   slug,
   year = '2023',
   isComingSoon = false,
@@ -37,12 +40,10 @@ const {
 >
   {isComingSoon && <ComingSoonBanner/>}
   <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
-    <p class="group-hover:bg-white group-hover:text-black w-fit">
-      <span class="group-hover:opacity-0">[</span>
-      {title}
-      <span class="group-hover:opacity-0">]</span>
-    </p>
-    <p>{roles.join(', ')}</p>
+    <h3 class="group-hover:bg-white group-hover:text-black w-fit">
+      [{title}]
+    </h3>
+    <p>{roles.short.join(', ')}</p>
   </div>
   <picture class={`relative h-auto col-span-full xl:col-span-6 xl:col-start-2`}>
     <img

@@ -24,7 +24,10 @@ const study = defineCollection({
     work: reference('work'),
     year: z.string(),
     tldr: z.string(),
-    roles: z.array(z.string()),
+    roles: z.object({
+      long: z.array(z.string()),
+      short: z.array(z.string()),
+    }),
     tools: z.array(z.string()),
     sections: z.object({
       title: z.string(),
