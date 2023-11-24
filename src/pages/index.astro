@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
-import Writing from "../components/Writing.astro";
 import Study from "../components/Study.astro";
 import { 
   getEntry,
@@ -15,7 +14,6 @@ const works = await getCollection('work', ({
   !hasStudy && !isDraft
 ));
 const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
-const writings = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
 
 const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
   const { work, roles, year, isComingSoon, order } = study.data;
@@ -80,17 +78,6 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
           image={work.data.image}
           description={work.data.description}
           isComingSoon={work.data.isComingSoon}
-        />
-      ))}
-      {writings?.sort((a, b) => {
-        const dateA: any = new Date(a.data.date);
-        const dateB: any = new Date(b.data.date);
-        return dateB - dateA;
-      }).map(writing => (
-        <Writing
-          title={writing.data.title}
-          href={`/writing/${writing.slug}`}
-          date={writing.data.date}
         />
       ))}
     </div>
