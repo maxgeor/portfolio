@@ -8,8 +8,9 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
+      inter: ['Inter', 'sans-serif'],
       sans: ['untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-      serif: ['Romie', 'Georgia', 'Times New Roman', 'Times', 'Cambria', 'serif'],
+      serif: ['Georgia', 'Times New Roman', 'Times', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
     },
     extend: {
@@ -46,9 +47,7 @@ module.exports = {
         }
       },
       screens: {
-        xxs: '360px',
         xs: '450px',
-        '3xl': '2000px'
       },
       boxShadow: {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',

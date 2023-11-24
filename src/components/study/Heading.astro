@@ -13,11 +13,8 @@ const { title, number, classes = ""} = Astro.props;
   <div class="relative grid grid-cols-6 xl:grid-cols-8 gap-y-6 gap-x-12">
     <h1 class="z-[1] col-span-full md:col-span-5 xl:col-start-2 z-5 max-w-[12ch] !-ml-1.5 mr-16 ">{title}</h1>
     <span 
-      class="absolute md:static -mr-2 right-0 top-0 z-0 justify-self-end text-2xl leading-[48px] sm:text-3xl sm:leading-[60px] xl:text-4xl xl:leading-[88px] text-[#1e1e1e] tracking-tight "
+      class="absolute md:static -mr-2 right-0 top-0 z-0 justify-self-end text-2xl leading-[48px] sm:text-3xl sm:leading-[60px] xl:text-4xl xl:leading-[88px] text-[#252525] tracking-tight "
     >
-    <!-- <span 
-      class="absolute md:static -mr-2 right-0 top-0 z-0 justify-self-end text-2xl leading-[48px] sm:text-3xl sm:leading-[60px] xl:text-4xl xl:leading-[88px] bg-gradient-to-bl from-neutral-800 to-[#181818] text-transparent bg-clip-text tracking-tight "
-    > -->
       {number}
     </span>
   </div>

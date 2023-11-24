@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12  px-6">
+  <main class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12 px-6">
     <Button 
       tag="a" 
       href="#article" 
@@ -51,8 +51,8 @@ const {
       <span class="leading-6">Go back</span>
     </Button>
     <Header />
-    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 -my-1'>
-      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-6 xl:justify-between">
+    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6'>
+      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-6 xl:justify-between -my-1 xl:mt-0">
         <div class="flex justify-between basis-1/2 xl:basis-auto">
           <h1>
             {link ? (
@@ -70,15 +70,15 @@ const {
         </div>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px]">
+      <div class="col-span-3 border-t-[0.5px] -mb-1">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px]">
+      <div class="col-span-3 border-t-[0.5px] -mb-1">
         <h2>Role</h2>
         <p>{roles.long.join(", ")}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px]">
+      <div class="col-span-3 border-t-[0.5px] -mb-1">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
           <ul class="capitalize">
@@ -97,7 +97,7 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-3 border-t-[0.5px]">
+      <div class="col-span-3 border-t-[0.5px] -mb-1">
         <h2>Tools</h2>
         <p class="capitalize">{tools.join(", ")}</p>
       </div>
@@ -135,25 +135,21 @@ const {
 
           prose-a:underline hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
 
-          prose-code:text-white prose-code:bg-neutral-700/[55%] prose-code:ring-1 prose-code:ring-white/10 prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          prose-code:bg-neutral-700/50 prose-code:ring-1 prose-code:ring-white/[8%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
-          prose-ul:my-0
-          prose-ul:text-neutral-300
+          prose-ul:my-0 prose-ul:text-neutral-300
 
-          prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[24px]
-          prose-ol:my-0
-          prose-ol:text-neutral-300
+          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-0 prose-ol:my-0 prose-ol:text-neutral-300
 
+          prose-li:list-item
+          prose-li:list-outside
+          prose-li:pl-4
           prose-li:m-0
-          prose-li:pl-0
           prose-li:leading-5
-
-          marker:prose-li:font-mono
           prose-li:text-neutral-300
           marker:prose-li:text-neutral-300
-
-          marker:prose-li:text-[0.925em]
+          
 
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 xl:prose-figure:mx-0 
           prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-6 sm:prose-video:-mx-6 xl:prose-video:mx-0

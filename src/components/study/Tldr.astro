@@ -9,31 +9,31 @@ export interface Props {
 }
 const { problem, solution, decisions, tradeoffs } = Astro.props;
 ---
-<div class="not-prose col-span-full grid grid-cols-1 xl:grid-cols-8 gap-6 -my-1">
-  <h2 class="col-span-full xl:col-span-1">Tldr</h2>
-  <div class="col-span-3 xl:col-start-2 border-t-[0.5px]">
+<div class="not-prose col-span-full grid grid-cols-1 xl:grid-cols-8 gap-6">
+  <h2 class="col-span-full xl:col-span-1 -my-1">Tldr</h2>
+  <div class="col-span-3 xl:col-start-2 border-t-[0.5px] -mb-1">
     <h2>Problem</h2>
     <p>{problem}</p>
   </div>
-  <div class="col-span-3 border-t-[0.5px]">
+  <div class="col-span-3 border-t-[0.5px] -mb-1">
     <h2>Solution</h2>
     <p>{solution}</p>
   </div>
-  <div class="col-span-3 xl:col-start-2 border-t-[0.5px]">
+  <div class="col-span-3 xl:col-start-2 border-t-[0.5px] -mb-1">
     <h2>Decisions</h2>
     <ul>
       {decisions.map((decision) => (
-        <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
+        <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
           {decision}
         </li>
       ))}
     </ul>
   </div>
-  <div class="col-span-3 border-t-[0.5px]">
+  <div class="col-span-3 border-t-[0.5px] -mb-1">
     <h2>Tradeoffs</h2>
     <ul class="list-inside">
       {tradeoffs.map((tradeoff) => (
-        <li class="relative block before:absolute before:-left-[17px] pl-0.5 before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
+        <li class="relative block before:absolute before:-left-[17px] before:-top-0.5 before:rounded-full before:text-[24px] before:content-['•'] ml-4">
           {tradeoff}
         </li>
       ))}
