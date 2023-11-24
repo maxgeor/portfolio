@@ -18,7 +18,7 @@ module.exports = {
         DEFAULT: ['16px', '24px'],
         md: ['20px', '24px'],  
         lg: ['28px', '32px'],  
-        xl: ['40px', '48px'],  
+        xl: ['40px', '40px'],  
         '2xl': ['56px', '60px'],  
         '3xl': ['79px', '80px'],  
         '4xl': ['112px', '112px'],
