@@ -113,7 +113,7 @@ import Carousel from "../../components/study/Carousel.astro";
 />
 
 <Heading title="So we looked for something better..." number="01">
-  <img src="/path-l-to-r.svg" class="hidden lg:block max-h-[48px] h-full w-[50vw] absolute -bottom-4 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" />
+  <img src="/path-l-to-r.svg" class="hidden lg:block max-h-[48px] h-full w-[50vw] absolute -bottom-4 left-[48%] transform -translate-x-1/2" />
 </Heading>
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
@@ -130,7 +130,7 @@ import Carousel from "../../components/study/Carousel.astro";
     alt="Etherscan's UI for Uniswaps's Delegate method"
     classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 md:!m-0"
   />
-  <img src="/path-r-to-l.svg" class="hidden xl:block max-h-[60px] h-full xl:w-[50vw] absolute -bottom-2 left-1/2 transform -translate-x-1/2 -rotate-[2.5deg]" />
+  <img src="/path-r-to-l.svg" class="hidden lg:block max-h-[60px] h-full xl:w-[50vw] absolute -bottom-6 left-[48%] transform -translate-x-1/2" />
 </div>
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 lg:pb-12">
@@ -165,7 +165,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
   <img 
     src="/path-l-to-r.svg" 
-    class="hidden xl:block max-h-[50px] h-full w-[50vw] absolute bottom-0 left-[46%] transform -translate-x-1/2 rotate-[2.5deg]" 
+    class="hidden lg:block max-h-[50px] h-full w-[50vw] absolute -bottom-6 left-[48%] transform -translate-x-1/2" 
   />
 </div>
 
@@ -187,10 +187,10 @@ import Carousel from "../../components/study/Carousel.astro";
     alt="Etherscan's UI for Uniswaps's Delegate method"
     classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 md:!m-0"
   />
-  <img src="/path-r-to-c.svg" class="hidden xl:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
+  <img src="/path-r-to-c.svg" class="hidden lg:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-36">
+<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-12 md:mt-36">
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
   <span class="text-xl sm:text-2xl xl:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -mt-1 sm:-mt-2">02</span>
 </div>
@@ -212,11 +212,11 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
 </div>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 py-12 bg-white -mx-6">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 md:py-12 bg-white -mx-6">
   <Image
     src="/work/formie/first-idea-for-form-builder.png"
     alt="First sketch of form builder UI"
-    classes="col-span-4 xl:col-span-6 col-start-2 xl:col-start-2 "
+    classes="col-span-6 md:col-span-4 xl:col-span-6 md:col-start-2 xl:col-start-2 "
   />
 </div>
 
@@ -227,8 +227,26 @@ import Carousel from "../../components/study/Carousel.astro";
     background-repeat: repeat;
   `}
 >  */}
-<div 
-  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-48 -my-12"
+<Heading title="So we got to work..." number="03" classes="xl:pb-12" />
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
+  <div class="col-span-full md:col-span-2 xl:col-start-2">
+    We worked by doing design and development at the same time.
+  </div>
+  <div class="col-span-full md:col-span-2">
+    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
+  </div>
+  <div class="col-span-full md:col-span-2">
+    Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
+  </div>
+</div>
+<div class="col-span-full -mx-6 md:mx-0">
+  <img
+    src="/work/formie/process/lineup.png"
+    alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
+  />
+</div>
+{/* <div 
+  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-24 md:py-48 -my-12"
 > 
   <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black via-black/[50%]"></div>
   <Heading title="So we got to work..." number="03" classes="!pb-0 xl:pb-12 !pt-0" />
@@ -250,9 +268,9 @@ import Carousel from "../../components/study/Carousel.astro";
     />
   </div>
   <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[75%] via-black/[50%]"></div>
-</div>
+</div> */}
 
-<Heading title="But we had some issues..." number="04" classes="!pt-0 md:pb-12" />
+<Heading title="But we had some issues..." number="04" />
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
   <h2>Shooing scammers</h2>
   <div class="flex flex-col gap-4 ">
@@ -313,7 +331,7 @@ import Carousel from "../../components/study/Carousel.astro";
 <Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-2xl -my-1.5 justify-self-end mr-4">1</span>
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2">
     <h2 class="-my-1">One page, one action</h2>
     <div class="flex flex-col gap-4">
       The main departure from Etherscan was limiting forms to a single action.
