@@ -192,10 +192,10 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-12 md:mt-36">
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span class="text-xl sm:text-2xl xl:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -mt-1 sm:-mt-2">02</span>
+  <span class="text-xl sm:text-2xl xl:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -my-1 sm:-my-2">02</span>
 </div>
 <h1 class="text-xl xs:!text-2xl sm:!text-3xl col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
-<OneTwoThree classes="xl:pb-12">
+<OneTwoThree >
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
   <span slot="3">Share clear, thoughtful feedback.</span>
@@ -270,7 +270,7 @@ import Carousel from "../../components/study/Carousel.astro";
   <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[75%] via-black/[50%]"></div>
 </div> */}
 
-<Heading title="But we had some issues..." number="04" />
+<Heading title="But we had some issues..." number="04" class="mb-0" />
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
   <h2>Shooing scammers</h2>
   <div class="flex flex-col gap-4 ">
@@ -325,7 +325,7 @@ import Carousel from "../../components/study/Carousel.astro";
 <Image 
   src="/work/formie/challenges/scam-and-explain.png"
   alt="Thinking about how to handle scammers and how to explain stuff"
-  classes="hidden md:block col-span-full mt-12"
+  classes="hidden md:block col-span-full !mt-12"
 />
 
 <Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
