@@ -41,6 +41,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
     >
       <Header/>
       <p class="hidden xl:inline-block col-span-full xl:col-span-1">MG</p>
+      <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
       <p class="col-span-full sm:col-span-3">I'm a designer and developer based out of Toronto, but I bum
       around different places. I believe that the boundary between design
       and engineering is artificial — you get the best results by blending
@@ -53,6 +54,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
       the two. Lately, I've been inspired by Ryan Singer's design
       techniques, TailwindCSS, and The 2023 Spring Summer Collection from
       Homme Plissé.</p>
+      </div>
     </section>
     <section class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-12">
       {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
