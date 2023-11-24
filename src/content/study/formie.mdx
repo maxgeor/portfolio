@@ -192,11 +192,9 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-36">
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span 
-    class="absolute md:static -mr-2 right-0 top-0 z-0 justify-self-end text-2xl leading-[48px] sm:text-3xl sm:leading-[60px] xl:text-4xl xl:leading-[88px] text-[#1e1e1e] tracking-tight"
-  >02</span>
+  <span class="text-xl sm:text-2xl xl:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -mt-1 sm:-mt-2">02</span>
 </div>
-<h1 class="col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="text-xl xs:!text-2xl sm:!text-3xl col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
 <OneTwoThree classes="xl:pb-12">
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
@@ -222,14 +220,17 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<div 
+{/* <div 
   class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-48 -my-12"
   style={`  
     background-image: url('/dot-grid-pattern.png');
     background-repeat: repeat;
   `}
+>  */}
+<div 
+  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-48 -my-12"
 > 
-  <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black/[75%] via-black/[50%]"></div>
+  <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black via-black/[50%]"></div>
   <Heading title="So we got to work..." number="03" classes="!pb-0 xl:pb-12 !pt-0" />
   <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
     <div class="col-span-full md:col-span-2 xl:col-start-2">

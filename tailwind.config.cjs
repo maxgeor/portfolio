@@ -48,6 +48,7 @@ module.exports = {
       },
       screens: {
         xs: '450px',
+        lg: '1024px'
       },
       boxShadow: {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
