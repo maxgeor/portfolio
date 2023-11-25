@@ -28,7 +28,6 @@ module.exports = {
       colors: {
         red: '#FF3D33',
         green: '#0E9900',
-        red: '#FF3D33',
         neutral: {
           // 50: '#FAFAFA',
           50: '#FFFFFF',
