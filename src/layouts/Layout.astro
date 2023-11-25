@@ -28,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-      text-white min-h-screen text-sm selection:bg-yellow selection:text-black antialiased pb-24 max-w-[1600px] mx-auto
+      text-white min-h-screen text-sm selection:bg-red selection:text-black antialiased pb-24 max-w-[1600px] mx-auto
     `}
   >
     <slot />
@@ -80,8 +80,9 @@ const {
   }
   
   a:focus-visible {
-    outline: solid 2px #ffff00;
-    outline-offset-x: 3px;
+    outline: solid 2px #FF3D33;
+    outline-offset-x: 5px;
+    border-radius: 1px;
   }
 
   tr:last-child > td {
