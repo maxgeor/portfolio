@@ -6,8 +6,6 @@ export interface Props {
 const { classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const doesLinkMatchCurrentPath = (matchingPaths: string[]) => 
-  matchingPaths.some((path) => currentPath.includes(path));
 ---
 
 <header

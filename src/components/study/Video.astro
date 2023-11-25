@@ -4,17 +4,18 @@ import { stripExtension } from "../../utils/formatting";
 
 export interface Props {
   src: string;
+  gridClasses?: string;
   classes?: string;
 }
-const { src, classes = "" } = Astro.props;
+const { src, gridClasses = "", classes = "" } = Astro.props;
 
 const extensionlessSrc = stripExtension(src);
 ---
 
-<div class="relative">
+<div class=`relative ${gridClasses}`>
   <video
     class={`
-      transition duration-[250ms] ease-out col-span-full xl:col-start-2 xl:col-end-8 aspect-[7/4] object-cover w-full select-none 
+      transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full select-none
       ${classes}
     `}
     poster={extensionlessSrc + ".png"}

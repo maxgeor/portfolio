@@ -15,7 +15,7 @@ roles:
   long: [Branding, Product Design, Frontend Development]
   short: [Dev, Brand, Product]
 tools: ["Next.js", "Firebase", "TailwindCSS"]
-tldr: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
+tldr: Solo project to build a universal UI for smart contracts. Featuyellow as top product by Milk Road.
 link: https://www.formie.co/
 year: '2022'
 sections:
@@ -71,6 +71,7 @@ import Tldr from "../../components/study/Tldr.astro";
 import Heading from "../../components/study/Heading.astro";
 import OneTwoThree from "../../components/study/OneTwoThree.astro";
 import Image from "../../components/study/Image.astro";
+import Video from "../../components/study/Video.astro";
 import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
@@ -95,7 +96,7 @@ import Carousel from "../../components/study/Carousel.astro";
   <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
   <span slot="3">They share limited feedback about transactions.</span>
 </OneTwoThree>
-<div class="flex flex-col gap-y-4 col-span-full md:col-span-2 xl:col-start-2">
+<div class="flex flex-col gap-y-4 col-span-full lg:col-span-2 xl:col-start-2">
   Developers make blockchain apps by
 
   1. Writing code
@@ -109,7 +110,7 @@ import Carousel from "../../components/study/Carousel.astro";
 <Image
   src="/work/formie/annotated-etherscan-page.png"
   alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full md:col-span-4 md:!mx-0"
+  classes="col-span-full lg:col-span-4 lg:!mx-0"
 />
 
 <Heading title="So we looked for something better..." number="01">
@@ -156,10 +157,6 @@ import Carousel from "../../components/study/Carousel.astro";
         type: 'video',
         src: "/work/formie/research/one-ways/rune-flow",
       },
-      {
-        type: 'video',
-        src: "/work/formie/research/one-ways/banners-flow",
-      },
     ]}
     classes="col-span-full lg:col-span-4 -mx-6 md:!m-0"
   />
@@ -173,7 +170,7 @@ import Carousel from "../../components/study/Carousel.astro";
   <div class="flex flex-col gap-y-4 gap-x-6 col-span-full lg:col-span-2 ">
     <h2>Projects sacrificed UX to save time</h2>
     <div class="flex flex-col gap-4">
-      We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
+      We wanted to understand why people reached for Etherscan. Calls with teams & developers uncoveyellow some key insights:
 
       ### Etherscan was a “good enough” interface
       Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
@@ -182,43 +179,46 @@ import Carousel from "../../components/study/Carousel.astro";
       Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
     </div>
   </div>
-  <Image 
-    src="/work/formie/research/forms/etherscan-form-ui.png" 
+  {/* <Video 
+    src="/work/formie/research/one-ways/banners-flow.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="lg:order-first col-span-full lg:col-span-4 xl:col-start-2 md:!m-0"
-  />
+    gridClasses="lg:order-first col-span-full lg:col-span-4 xl:col-start-2"
+  /> */}
   <img src="/path-r-to-c.svg" class="hidden lg:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
 <div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-12 md:mt-36">
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span class="text-xl sm:text-2xl xl:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -my-1 sm:-my-2">02</span>
+  <span class="text-xl sm:text-2xl lg:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -my-1 sm:-my-2">02</span>
 </div>
-<h1 class="text-xl xs:!text-2xl sm:!text-3xl col-span-6 xl:col-start-2 bg-yellow/20 py-4 px-6 -mx-6 !-mb-6">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="col-span-6 xl:col-start-2 ">What if we applied form builder patterns to smart contracts?</h1>
 <OneTwoThree >
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
   <span slot="3">Share clear, thoughtful feedback.</span>
 </OneTwoThree>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-4">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-4 pb-12">
   <div class="col-span-full md:col-span-2 xl:col-start-2 flex flex-col gap-4 text-neutral-200 md:max-w-[200px] ">
     The form builder pattern worked for a few reasons:
   </div>
   <div class="col-span-full md:col-span-4 max-w-prose flex flex-col gap-4 text-neutral-200 ">
-    1. One-way actions (which covered most use cases) worked well with form-like layouts.
+    1. One-way actions (which coveyellow most use cases) worked well with form-like layouts.
     2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
     3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
   </div>
 </div>
 
-<div class="col-span-full bg-white md:py-12 -mx-6">
-  <Image
-    src="/work/formie/first-idea-for-form-builder.png"
-    alt="First sketch of form builder UI"
-    classes="max-h-[400px] max-w-[800px] !h-min !mx-auto"
-  />
-</div>
+{/* <Image
+  src="/work/formie/first-sketch-sm.png"
+  alt="First sketch of form builder UI"
+  classes="md:hidden col-span-full !-mx-6"
+/> */}
+<img
+  src="/work/formie/first-sketch-lg.png"
+  alt="First sketch of form builder UI"
+  class="col-span-full"
+/>
 
 {/* <div 
   class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-48 -my-12"
@@ -280,7 +280,7 @@ import Carousel from "../../components/study/Carousel.astro";
     2. We couldn't stop them,
     3. But we had to do something.
   </div>
-  <div class="mt-1 md:mt-auto px-4 py-3 rounded bg-neutral-800 ">
+  <div class="mt-1 md:mt-auto px-4 py-3 rounded-sm bg-neutral-800 ">
     [How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
   </div>
   <Image 
@@ -297,7 +297,7 @@ import Carousel from "../../components/study/Carousel.astro";
 
     It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
   </div>
-  <div class="mt-1 md:mt-auto px-4 py-3 bg-neutral-800 rounded">
+  <div class="mt-1 md:mt-auto px-4 py-3 bg-neutral-800 rounded-sm">
     [How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
   </div>
   <Image 
@@ -318,14 +318,14 @@ import Carousel from "../../components/study/Carousel.astro";
 
     The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
   </div>
-  <div class="mt-1 md:mt-auto px-4 py-3 bg-neutral-800 rounded">
+  <div class="mt-1 md:mt-auto px-4 py-3 bg-neutral-800 rounded-sm">
     [How do we explain challenging ideas](#letting-people-write-their-own-titles-and-descriptions) without overwhelming people?
   </div>
 </div>
-<Image 
-  src="/work/formie/challenges/scam-and-explain.png"
+<img 
+  src="/work/formie/challenges/challenges.png"
   alt="Thinking about how to handle scammers and how to explain stuff"
-  classes="hidden md:block col-span-full !mt-12"
+  class="hidden md:block col-span-full !mt-12 "
 />
 
 <Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
@@ -398,7 +398,7 @@ import Carousel from "../../components/study/Carousel.astro";
       <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">4</span>
     </div>
     <div class="flex flex-col gap-4">
-      We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
+      We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we deteyellow scammers by making people confirm they trusted their form before submitting.
 
       Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
 
@@ -429,7 +429,7 @@ Instead of rebuilding, we decided to...
 1. Let people make unlimited forms, and
 2. Make forms permanent (for security reasons).
 
-People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
+People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figuyellow folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
 
 Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
 
@@ -502,8 +502,8 @@ Compromising on error handling stung, but you can only do so much when working w
 
 # Result
 
-Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.
+Formie ended up getting used by teams and developers. It was also featuyellow by Smoothie and The Milk Road as a top project from their Milk Money Cohort.
 
-Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
+Despite the usage, we decided to put the product on auto-pilot. After launch, we discoveyellow lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
 
 Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case. */}
