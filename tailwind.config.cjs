@@ -26,7 +26,7 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#FF3D33',
+        yellow: '#fff000',
         green: '#0E9900',
         neutral: {
           // 50: '#FAFAFA',
