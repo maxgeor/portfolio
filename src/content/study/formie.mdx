@@ -91,7 +91,7 @@ import Carousel from "../../components/study/Carousel.astro";
 />
 
 <Heading title="Etherscan's UI kinda sucked..." number="00" classes="!pb-0" />
-<OneTwoThree classes="xl:pb-12">
+<OneTwoThree>
   <span slot="1">The UI is a list of technically-named forms.</span>
   <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
   <span slot="3">They share limited feedback about transactions.</span>
@@ -113,7 +113,7 @@ import Carousel from "../../components/study/Carousel.astro";
   classes="col-span-full lg:col-span-4 lg:!mx-0"
 />
 
-<Heading title="So we looked for something better..." number="01">
+<Heading title="So we looked for something better..." number="01" classes="md:pb-12">
   <img src="/path-l-to-r.svg" class="hidden lg:block max-h-[48px] h-full w-[50vw] absolute -bottom-4 left-[48%] transform -translate-x-1/2" />
 </Heading>
 
@@ -187,11 +187,11 @@ import Carousel from "../../components/study/Carousel.astro";
   <img src="/path-r-to-c.svg" class="hidden lg:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-12 md:mt-36">
+<div class="relative col-span-full xl:col-span-7 grid grid-cols-6 xl:grid-cols-8 gap-x-4 mt-12 md:mt-36">
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span class="text-xl sm:text-2xl lg:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -my-1 sm:-my-2">02</span>
+  <span class="absolute -top-1 sm:-top-2 -right-0.5 md:-right-1 xl:-right-5 text-xl sm:text-2xl lg:text-3xl justify-self-end text-neutral-600 tracking-tight ">02</span>
 </div>
-<h1 class="col-span-6 xl:col-start-2 bg-white px-6 py-4 text-black -mx-6">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="col-span-6 xl:col-start-2 bg-yellow/[17%] px-6 py-4 -mx-6">What if we applied form builder patterns to smart contracts?</h1>
 <OneTwoThree >
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
@@ -246,7 +246,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<Heading title="But we had some issues..." number="04" class="mb-0" />
+<Heading title="But we had some issues..." number="04" classes="md:pb-6"  />
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
   <h2>Shooing scammers</h2>
   <div class="flex flex-col gap-4 ">
@@ -304,9 +304,9 @@ import Carousel from "../../components/study/Carousel.astro";
   class="hidden md:block col-span-6 xl:col-start-2 !mt-12 "
 />
 
-<Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
+<Heading title="So we made a few decisions..." number="05" classes="md:pb-9" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">1</span>
+  <span class="hidden xl:block text-neutral-600 text-2xl -my-2.5 justify-self-end mr-4">1</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2">
     <h2>One page, one action</h2>
     <div class="flex flex-col gap-4">
@@ -325,7 +325,7 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl justify-self-end -my-2.5  mr-4">2</span>
+  <span class="hidden xl:block text-neutral-600 text-2xl justify-self-end -my-2.5  mr-4">2</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Only supporting one-way actions</h2>
     <div class="flex flex-col gap-4">
@@ -348,7 +348,7 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-5">3</span>
+  <span class="hidden xl:block text-neutral-600 text-2xl -my-2.5 justify-self-end mr-5">3</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Letting people write their own titles and descriptions</h2>
     <div class="flex flex-col gap-4">
@@ -367,7 +367,7 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">4</span>
+  <span class="hidden xl:block text-neutral-600 text-2xl -my-2.5 justify-self-end mr-4">4</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Making people confirm trust</h2>
     <div class="flex flex-col gap-4">
@@ -385,11 +385,11 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<Heading title="But we couldn't do everything..." number="06" classes="!pb-0" />
+<Heading title="But we couldn't do everything..." number="06" />
 <p class="col-span-2 xl:col-start-2">Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.</p>
 <p class="col-span-2">By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:</p>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pt-12">
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
     <h2   
       id="replacing-editing-with-infinite-forms" 
