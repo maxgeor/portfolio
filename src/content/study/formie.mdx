@@ -179,11 +179,11 @@ import Carousel from "../../components/study/Carousel.astro";
       Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
     </div>
   </div>
-  {/* <Video 
+  <Video 
     src="/work/formie/research/one-ways/banners-flow.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
     gridClasses="lg:order-first col-span-full lg:col-span-4 xl:col-start-2"
-  /> */}
+  />
   <img src="/path-r-to-c.svg" class="hidden lg:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
 </div>
 
@@ -191,7 +191,7 @@ import Carousel from "../../components/study/Carousel.astro";
   <span class="self-start -my-1.5 xl:col-start-2 col-span-5 z-5 text-md md:text-lg tracking-tight !text-neutral-500 max-w-xs md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
   <span class="text-xl sm:text-2xl lg:text-3xl -mr-0.5 md:-mr-2 justify-self-end text-neutral-600 tracking-tight -my-1 sm:-my-2">02</span>
 </div>
-<h1 class="col-span-6 xl:col-start-2 ">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class="col-span-6 xl:col-start-2 bg-white px-6 py-4 text-black -mx-6">What if we applied form builder patterns to smart contracts?</h1>
 <OneTwoThree >
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
@@ -245,30 +245,6 @@ import Carousel from "../../components/study/Carousel.astro";
     alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
   />
 </div>
-{/* <div 
-  class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 gap-y-12 px-6 -mx-6 py-24 md:py-48 -my-12"
-> 
-  <div class="absolute top-0 left-0 h-48 w-full bg-gradient-to-b from-black via-black/[50%]"></div>
-  <Heading title="So we got to work..." number="03" classes="!pb-0 xl:pb-12 !pt-0" />
-  <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
-    <div class="col-span-full md:col-span-2 xl:col-start-2">
-      We worked by doing design and development at the same time.
-    </div>
-    <div class="col-span-full md:col-span-2">
-      First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
-    </div>
-    <div class="col-span-full md:col-span-2">
-      Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
-    </div>
-  </div>
-  <div class="col-span-full -mx-6 md:mx-0">
-    <img
-      src="/work/formie/process/lineup.png"
-      alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
-    />
-  </div>
-  <div class="absolute bottom-0 left-0 h-48 w-full bg-gradient-to-t from-black/[75%] via-black/[50%]"></div>
-</div> */}
 
 <Heading title="But we had some issues..." number="04" class="mb-0" />
 <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
@@ -325,14 +301,14 @@ import Carousel from "../../components/study/Carousel.astro";
 <img 
   src="/work/formie/challenges/challenges.png"
   alt="Thinking about how to handle scammers and how to explain stuff"
-  class="hidden md:block col-span-full !mt-12 "
+  class="hidden md:block col-span-6 xl:col-start-2 !mt-12 "
 />
 
 <Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-1.5 justify-self-end mr-4">1</span>
+  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">1</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2">
-    <h2 class="-my-1">One page, one action</h2>
+    <h2>One page, one action</h2>
     <div class="flex flex-col gap-4">
       The main departure from Etherscan was limiting forms to a single action.
 
@@ -344,14 +320,14 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/decisions/one-page.png"
     alt="Form for Uniswap's Delegate action"
-    classes="col-span-full xl:col-span-4"
+    classes="col-span-full xl:col-span-5 -mr-6"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-1.5 justify-self-end mr-4">2</span>
+  <span class="hidden xl:block text-neutral-700 text-2xl justify-self-end -my-2.5  mr-4">2</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2 class="-my-1">Only supporting one-way actions</h2>
+    <h2>Only supporting one-way actions</h2>
     <div class="flex flex-col gap-4">
       We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
 
@@ -367,14 +343,14 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/decisions/one-way-actions.png"
     alt="Form for Uniswap's Delegate action"
-    classes="col-span-full xl:col-span-4"
+    classes="col-span-full xl:col-span-5 -mr-6"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-1.5 justify-self-end mr-5">3</span>
+  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-5">3</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2 class="-my-1">Letting people write their own titles and descriptions</h2>
+    <h2>Letting people write their own titles and descriptions</h2>
     <div class="flex flex-col gap-4">
       To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
@@ -386,17 +362,14 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/decisions/title-and-description.png"
     alt="UI for editing title & description"
-    classes="col-span-full xl:col-span-4"
+    classes="col-span-full xl:col-span-5 -mr-6"
   />
 </div>
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-1.5 justify-self-end mr-4">4</span>
+  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">4</span>
   <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
-    <div class="flex justify-between gap-6 -my-1">
-      <h2>Making people confirm trust</h2>
-      <span class="xl:hidden text-neutral-700 text-4xl md:text-5xl leading-7 md:leading-8 justify-self-end -mr-1 text-right">4</span>
-    </div>
+    <h2>Making people confirm trust</h2>
     <div class="flex flex-col gap-4">
       We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we deteyellow scammers by making people confirm they trusted their form before submitting.
 
@@ -408,50 +381,86 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/decisions/trust.png"
     alt="Confirmation checkbox at the end of every form"
-    classes="col-span-full xl:col-span-4"
+    classes="col-span-full xl:col-span-5 -mr-6"
+  />
+</div>
+
+<Heading title="But we couldn't do everything..." number="06" classes="!pb-0" />
+<p class="col-span-2 xl:col-start-2">Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.</p>
+<p class="col-span-2">By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:</p>
+
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <h2   
+      id="replacing-editing-with-infinite-forms" 
+      aria-label="Replacing editing with infinite forms"
+      class="-my-1"
+    ><span class="text-[#ababab]">~~Editing forms~~</span> <br/>Infinite forms</h2>
+    <div class="flex flex-col gap-4">
+      We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits. Instead of rebuilding, we decided to
+
+      1. Let people make unlimited forms, and
+      2. Make forms permanent (for security reasons).
+
+      People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figuyellow folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
+
+      Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
+    </div>
+  </div>
+  <img
+    src="/work/formie/tradeoffs/no-editor/no-editing.png"
+    alt="UI for editing title & description"
+    class="col-span-full xl:col-span-5 "
+  />
+</div>
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <h2 id="only-letting-people-customize-their-title-&-description" aria-label="Only letting people customize their title & description">Customize <span class="text-[#ababab]">~~everything~~</span><br/> title + description</h2>
+    <div class="flex flex-col gap-4">
+      We wanted every part of a form to be customizable:
+
+      - Field titles, descriptions, placeholders
+      - Error messages
+      - Button labels, etc.
+
+      But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
+
+      To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways.
+
+      Limited customization kept form creation straightforward while offering more control than Etherscan.
+    </div>
+  </div>
+  <img
+    src="/work/formie/tradeoffs/only-edit-title-and-description/custom-title.png"
+    alt="UI for editing title & description"
+    class="col-span-full xl:col-span-5"
+  />
+</div>
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
+  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+    <h2 id="limited-error-messaging" aria-label="Limited error messaging"><span class="text-[#ababab]">~~Perfect~~</span> Limited error messaging</h2>
+    <div class="flex flex-col gap-4">
+      We also planned on translating every error into a clear, helpful message, but Ethereum was too limited.
+
+      At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
+
+      It was impossible to translate errors consistently, so we settled on...
+
+      1. Humanizing basic type errors
+      2. Wrapping unknown errors in an honest, generic message.
+
+      Compromising on error handling stung, but you can only do so much when working with a black box.
+    </div>
+  </div>
+  <img
+    src="/work/formie/tradeoffs/errors/errors.png"
+    alt="UI for editing title & description"
+    class="col-span-full xl:col-span-5"
   />
 </div>
 
 {/* 
 
-# Tradeoffs
-
-Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.
-
-By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:
-
-<h2 id="replacing-editing-with-infinite-forms" aria-label="Replacing editing with infinite forms">~~Editing forms~~ Infinite forms</h2>
-
-We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits.
-
-Instead of rebuilding, we decided to...
-
-1. Let people make unlimited forms, and
-2. Make forms permanent (for security reasons).
-
-People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figuyellow folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
-
-Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
-
-<Carousel
-  slides={[
-    {
-      type: 'image',
-      src: "/work/formie/tradeoffs/no-editor/one-time-message.png",
-      alt: "One-time notice on list page",
-    },
-    {
-      type: 'image',
-      src: "/work/formie/tradeoffs/no-editor/callout.png",
-      alt: "Callout in editor preview",
-    },
-    {
-      type: 'image',
-      src: "/work/formie/tradeoffs/no-editor/new-plan.png",
-      alt: "Plan for new solution",
-    },
-  ]}
-/>
 
 <h2 id="only-letting-people-customize-their-title-&-description" aria-label="Only letting people customize their title & description">~~Customize everything~~ Title + description</h2>
 
