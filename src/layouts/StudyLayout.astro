@@ -70,15 +70,15 @@ const {
         </div>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
         <h2>Role</h2>
         <p>{roles.long.join(", ")}</p>
       </div>
-      <div class="col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
           <ul class="capitalize">
@@ -97,7 +97,7 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
         <h2>Tools</h2>
         <p class="capitalize">{tools.join(", ")}</p>
       </div>
@@ -123,7 +123,7 @@ const {
                     
           prose-h1:text-xl sm:prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:tracking-tighter
 
-          prose-h2:text-lg prose-h2:tracking-tight prose-h2:-my-0.5
+          prose-h2:text-md md:prose-h2:text-lg prose-h2:tracking-tight prose-h2:-my-0.5
 
           prose-h3:text-sm prose-h3:-mb-[16px]
 
@@ -153,7 +153,7 @@ const {
           marker:prose-li:font-inter
           
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 prose-figure:-mx-6 sm:prose-figure:-mx-6 xl:prose-figure:mx-0 
-          prose-video:w-auto prose-video:select-none	prose-video:my-0 prose-video:-mx-6 sm:prose-video:-mx-6 xl:prose-video:mx-0
+          prose-video:w-auto prose-video:select-none	prose-video:my-0 
 
           prose-td:p-0
 
