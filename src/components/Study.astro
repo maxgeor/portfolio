@@ -40,7 +40,15 @@ const {
 >
   {isComingSoon && <ComingSoonBanner/>}
   <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
-    <h3 class="group-hover:bg-white group-hover:text-black w-fit">[{title}]</h3>
+    <h3>
+      {isComingSoon ? `[${title}]` : (
+        <>
+        <span class="group-hover:opacity-0 group-focus:opacity-0">[</span>
+        {title}
+        <span class="group-hover:opacity-0 group-focus:opacity-0">]</span>
+        </>  
+      )}
+    </h3>
     <p class="xl:hidden">{description}</p>
     <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
   </div>
