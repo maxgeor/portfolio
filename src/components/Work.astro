@@ -27,21 +27,21 @@ const {
   href={!link || isComingSoon ? '#' : link.href}
   target={!link?.target || isComingSoon ? '_self' : link.target}
   class={`
-    overflow-hidden  relative gap-1 flex flex-col h-fit col-span-2
+    group overflow-hidden relative gap-1 flex flex-col h-fit col-span-2
     ${!link || isComingSoon ? 'cursor-default' : 'cursor-pointer'} 
     ${classes} 
   `}
 >
   {isComingSoon && <ComingSoonBanner/>}
-  <picture class='relative h-auto col-span-full group-hover:brightness-[95%] transition'>
+  <div class="col-span-full flex flex-wrap justify-between gap-x-6 ">
+    <p>[{title}]</p>
+    <p>{description}</p>
+  </div>
+  <picture class='relative h-auto col-span-full group-hover:brightness-[95%] '>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
       class='w-full h-full object-top select-none object-contain'
     />
   </picture>
-  <div class="col-span-full flex flex-wrap justify-between gap-x-6 ">
-    <p>[{title}]</p>
-    <p>{description}</p>
-  </div>
 </a>
