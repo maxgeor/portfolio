@@ -44,7 +44,10 @@ const {
     <p class="xl:hidden">{description}</p>
     <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
   </div>
-  <picture class='group-hover:brightness-[96%] relative h-auto col-span-full xl:col-span-6 xl:col-start-2'>
+  <picture class={`
+    group-hover:brightness-[96%] relative h-auto col-span-full xl:col-span-6 xl:col-start-2
+    ${isComingSoon ? 'group-hover:blur group-focus:blur transition duration-[400ms] overflow-hidden' : ''}
+  `}>
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
