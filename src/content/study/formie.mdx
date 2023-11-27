@@ -96,7 +96,7 @@ import Carousel from "../../components/study/Carousel.astro";
   <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
   <span slot="3">They share limited feedback about transactions.</span>
 </OneTwoThree>
-<div class="flex flex-col gap-y-4 col-span-full lg:col-span-2 xl:col-start-2">
+<div class="flex flex-col gap-y-6 col-span-full lg:col-span-2 xl:col-start-2">
   Developers make blockchain apps by
 
   1. Writing code
@@ -118,9 +118,9 @@ import Carousel from "../../components/study/Carousel.astro";
 </Heading>
 
 <div class="relative md:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 ">
+  <div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 ">
     <h2>Most actions needed basic UIs</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
       
       Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
@@ -135,9 +135,9 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pb-12">
-  <div class="flex flex-col gap-4 col-span-full md:col-span-2 xl:col-start-2 ">
+  <div class="flex flex-col gap-6 col-span-full md:col-span-2 xl:col-start-2 ">
     <h2>Projects used Etherscan for one-way actions</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       Contracts have two kinds of actions:
 
       `One-way` actions _trigger a change, but return nothing_ (ex: voting, sending money, changing ownership).
@@ -167,9 +167,9 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pb-12">
-  <div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 ">
+  <div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 ">
     <h2>Projects sacrificed UX to save time</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
 
       ### Etherscan was a “good enough” interface
@@ -198,11 +198,11 @@ import Carousel from "../../components/study/Carousel.astro";
   <span slot="3">Share clear, thoughtful feedback.</span>
 </OneTwoThree>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-4 md:pb-12">
-  <div class="col-span-full md:col-span-2 xl:col-start-2 flex flex-col gap-4 text-neutral-200 md:max-w-[200px] ">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-6 md:pb-12">
+  <div class="col-span-full md:col-span-2 xl:col-start-2 md:max-w-[200px] ">
     The form builder pattern worked for a few reasons:
   </div>
-  <div class="col-span-full md:col-span-4 max-w-prose flex flex-col gap-4 text-neutral-200 ">
+  <div class="col-span-full md:col-span-4 max-w-prose">
     1. One-way actions (which covered most use cases) worked well with form-like layouts.
     2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
     3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
@@ -223,7 +223,7 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <Heading title="So we got to work..." number="03" classes="!pb-0" />
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-6">
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-6 gap-x-6">
   <div class="col-span-full md:col-span-2 xl:col-start-2">
     We worked by doing design and development at the same time.
   </div>
@@ -242,9 +242,9 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <Heading title="But we had some issues..." number="04" classes="md:pb-9"  />
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
+<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
   <h2>Shooing scammers</h2>
-  <div class="flex flex-col gap-4 ">
+  <div class="flex flex-col gap-6 ">
     We knew three things from the jump:
 
     1. Scammers would use forms to misrepresent contracts,
@@ -261,9 +261,9 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
+<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2">
   <h2>Keeping it flexible</h2>
-  <div class="flex flex-col gap-4 ">
+  <div class="flex flex-col gap-6 ">
     Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
 
     It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
@@ -278,9 +278,9 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<div class="flex flex-col gap-y-4 gap-x-6 col-span-full md:col-span-2">
+<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2">
   <h2>Communicating technical details</h2>
-  <div class="flex flex-col gap-4 ">
+  <div class="flex flex-col gap-6 ">
     Smart contracts have tons of strange behaviors:
 
     - Transactions cost a bit of money
@@ -302,9 +302,9 @@ import Carousel from "../../components/study/Carousel.astro";
 <Heading title="So we made a few decisions..." number="05" classes="md:pb-12" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">1</span>
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2">
     <h2>One page, one action</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       The main departure from Etherscan was limiting forms to a single action.
 
       Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
@@ -321,9 +321,9 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-2xl justify-self-end -my-2.5  mr-4">2</span>
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Only supporting one-way actions</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
 
       1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-one-way-actions).
@@ -344,9 +344,9 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-5">3</span>
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Letting people write their own titles and descriptions</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
 
       But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
@@ -363,9 +363,9 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
   <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">4</span>
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2>Making people confirm trust</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
 
       Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
@@ -381,18 +381,18 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 
 <Heading title="But we couldn't do everything..." number="06" />
-<div class="col-span-full grid grid-cols-1 xl:grid-cols-8 gap-y-4 gap-x-6">
+<div class="col-span-full grid grid-cols-1 xl:grid-cols-8 gap-y-6 gap-x-6">
   <p class="col-span-4 lg:col-span-2 xl:col-start-2">Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.</p>
   <p class="col-span-4 lg:col-span-2">By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:</p>
 </div>
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pt-12">
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2   
       id="replacing-editing-with-infinite-forms" 
       aria-label="Replacing editing with infinite forms"
       class="-my-1"
     ><span class="text-[#ababab]">~~Editing forms~~</span> Infinite forms</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits. Instead of rebuilding, we decided to
 
       1. Let people make unlimited forms, and
@@ -411,9 +411,9 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
 </div>
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2 id="only-letting-people-customize-their-title-&-description" aria-label="Only letting people customize their title & description">Customize <span class="text-[#ababab]">~~everything~~</span><br/> title + description</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We wanted every part of a form to be customizable:
 
       - Field titles, descriptions, placeholders
@@ -435,9 +435,9 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
 </div>
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-4 col-span-full xl:col-span-2 xl:col-start-2">
+  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
     <h2 id="limited-error-messaging" aria-label="Limited error messaging"><span class="text-[#ababab]">~~Perfect~~</span> Limited error messaging</h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-6">
       We also planned on translating every error into a clear, helpful message, but Ethereum was too limited.
 
       At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
