@@ -3,7 +3,6 @@ import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
-import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
 import Button from "../components/Button.astro";
 import ExpandableSidebarNav from "../components/study/ExpandableSidebarNav.astro";
 
@@ -70,15 +69,15 @@ const {
         </div>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] border-white -mb-1">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] border-white -mb-1">
         <h2>Role</h2>
         <p>{roles.long.join(", ")}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] border-white -mb-1">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
           <ul class="capitalize">
@@ -97,7 +96,7 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-full md:col-span-3 border-t-[0.5px] -mb-1">
+      <div class="col-span-full md:col-span-3 border-t-[0.5px] border-white -mb-1">
         <h2>Tools</h2>
         <p class="capitalize">{tools.join(", ")}</p>
       </div>
