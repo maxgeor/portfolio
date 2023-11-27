@@ -16,25 +16,25 @@ const { sections, classes = '' } = Astro.props;
 <nav
   id="expandable-sidebar-nav"
   class={`
-    group flex flex-col overflow-scroll col-span-full scroll-smooth md:col-span-2 z-50 opacity-0 focus-within:opacity-100 pointer-events-none focus-within:pointer-events-default transition-all ease-in-out 
+    group flex flex-col overflow-scroll col-span-full scroll-smooth md:col-span-2 z-50 opacity-0 focus-within:opacity-100 focus-within:pointer-events-default transition-all ease-in-out 
     ${classes}
   `}
 >
   <ol 
     id="expandable-sidebar-nav-markers"
-    class='open fixed top-1/2 right-0 transform -translate-y-1/2 justify-self-end pl-10 w-fit flex flex-col gap-y-3 transition-all'
+    class='fixed top-1/2 right-0 transform -translate-y-1/2 justify-self-end pl-10 w-fit flex flex-col gap-y-3 transition-all'
   >
     {sections.map(() => <span class="h-0.5 w-2 bg-neutral-600"></span>)}
   </ol>
   <NavList 
     sections={sections} 
     id="expandable-sidebar-nav-list"
-    classes="fixed top-1/2 left-0 md:left-auto md:right-0 transform -translate-y-1/2 pointer-events-none -translate-x-2 md:translate-x-2 scale-[99%] shadow-xl opacity-0 transition-all ease-in-out p-4 bg-neutral-900 border-neutral-700 h-full border-r md:border-r-none md:border-l "
+    classes="fixed top-1/2 left-0 md:left-auto md:right-0 transform -translate-y-1/2 opacity-0 pointer-events-none border-l border-white/10 transition-all ease-in-out py-9 p-12 bg-black z-50 h-[100dvh]"
   />
 </nav>
 
 <style>
-  #expandable-sidebar-nav > #expandable-sidebar-nav-markers:not(.open) {
+  /* #expandable-sidebar-nav > #expandable-sidebar-nav-markers:not(.open) {
     transform: scale(1.01) translateX(-2px);
     pointer-events: none;
     opacity: 0;
@@ -45,7 +45,7 @@ const { sections, classes = '' } = Astro.props;
     opacity: 1;
     transform: translateX(0);
     transform: scale(1);
-  }
+  } */
 </style>
 
 <script>
@@ -58,14 +58,6 @@ const { sections, classes = '' } = Astro.props;
       ? nav?.classList.remove('opacity-0', 'pointer-events-none')
       : nav?.classList.add('opacity-0', 'pointer-events-none');
   }
-
-  const visibleNavMarkerClasses = [];
-  const visibleNavListClasses = [
-    'pointer-events-auto', 
-    'translate-x-0', 
-    'opacity-100', 
-    'scale-100'
-  ];
 
   const showNavList = () => {
     navMarkers?.classList.remove('open');
