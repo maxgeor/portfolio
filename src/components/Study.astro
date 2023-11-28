@@ -34,24 +34,25 @@ const {
 <a
   href={`/study/${slug}`}
   class={`
-    group overflow-hidden relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 -my-1
+    group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 -my-1
+    ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
     ${classes} 
   `}
 >
-  {isComingSoon && <ComingSoonBanner/>}
   <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
     <h3>{title}</h3>
     <p class="xl:hidden">{description}</p>
     <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
   </div>
-  <picture class={`
-    group-hover:brightness-[96%] relative h-auto col-span-full xl:col-span-6 xl:col-start-2
-    ${isComingSoon ? 'group-hover:blur group-focus:blur transition duration-[400ms] overflow-hidden' : ''}
-  `}>
+  <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
+  {isComingSoon && <ComingSoonBanner/>}
     <img
       src={image}
       alt={`Preview mockup of ${title}`}
-      class='w-full h-full object-top select-none object-cover'
+      class={`
+        w-full h-full object-top select-none object-cover
+        ${isComingSoon ? 'group-hover:blur-sm group-focus:blur-sm transition duration-[350ms]' : 'group-hover:brightness-[96%] '}
+      `}
     />
   </picture>
   <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end">
