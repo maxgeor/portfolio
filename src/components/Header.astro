@@ -23,8 +23,7 @@ const currentPath = Astro.url.pathname;
   ) : (
     <p class="xl:hidden">MG</p>
   )}
-  <div class="col-span-1/2 col-start-4 xl:col-start-2 flex gap-3 xs:gap-6">
-    <Link href="/work">Work</Link>
+    <Link href="/work" classes="col-start-2">Work</Link>
     <Link href="/writing">Writing</Link>
     <Link href="/info">Info</Link>
   </div>

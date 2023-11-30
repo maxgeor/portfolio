@@ -34,12 +34,12 @@ const {
 <a
   href={`/study/${slug}`}
   class={`
-    group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 -my-1
+    group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8
     ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
     ${classes} 
   `}
 >
-  <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
+  <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between -my-1">
     <h3>{title}</h3>
     <p class="xl:hidden">{description}</p>
     <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
@@ -55,7 +55,7 @@ const {
       `}
     />
   </picture>
-  <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end">
+  <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end -my-1">
     <p class="xl:hidden">{roles.short.join(', ')}</p>
     <p class="hidden xl:inline-block">{description}</p>
     <p>{year}</p>
