@@ -11,7 +11,8 @@ const formattedDate = formatDate(frontmatter.date);
 <Layout title={frontmatter.title}>
   <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 px-6">
     <Header goBackPath="/writing" />
-    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-6 border-t border-neutral-600 -my-1">
+    <!-- <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-6 border-t border-neutral-600 -my-1"> -->
+    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-6 -my-1">
       <h1 class="col-span-3 xl:col-start-2 xl:col-span-5">{frontmatter.title}</h1>
       <p class="col-span-3 md:col-span-1 text-[13px] xl:justify-self-end">
         {formattedDate}
