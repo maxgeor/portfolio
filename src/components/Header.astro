@@ -9,10 +9,9 @@ const { classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 ---
-
 <header
   class={`
-    col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 -my-1 pt-6
+    col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 -my-1 pt-6
     ${classes}
   `}
 >
@@ -23,7 +22,8 @@ const currentPath = Astro.url.pathname;
   ) : (
     <p class="xl:hidden">MG</p>
   )}
-    <Link href="/work" classes="col-start-2">Work</Link>
+  <div class="flex gap-2 xs:gap-6 col-start-4 xl:col-start-2">
+    <Link href="/work">Work</Link>
     <Link href="/writing">Writing</Link>
     <Link href="/info">Info</Link>
   </div>

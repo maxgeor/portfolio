@@ -47,7 +47,7 @@ const links = [
       <a
         href={link.url}
         target="_blank"
-        class="flex w-full items-center justify-between border-t border-neutral-600  hover:underline"
+        class="flex w-full items-center justify-between border-t border-neutral-600 hover:bg-white hover:text-black"
       >
         {link.name}
         <UpRightArrowIcon classes="" />
@@ -58,13 +58,13 @@ const links = [
     <button
       id="email"
       aria-label="Copy email"
-      class="group relative flex w-full cursor-pointer items-center justify-between border-y border-neutral-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-4 ring-offset-neutral-800 "
+      class="relative flex w-full cursor-pointer items-center justify-between border-y border-neutral-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-4 ring-offset-neutral-800 hover:bg-white hover:text-black"
     >
-      <span class="flex gap-px group-hover:underline">
+      <span class="flex gap-px">
         max123358<code>@</code>gmail<span class="hidden xs:inline-block">.com</span>
       </span>
-      <CopyIcon id="copy-icon" classes="absolute right-0 transform transition ease-in-out duration-[250ms]" />
-      <CheckIcon id="check-icon" classes="absolute right-0 transform opacity-0 text-green scale-75 transition ease-in-out duration-[200ms]" />
+      <CopyIcon id="copy-icon" classes="absolute right-0 transform " />
+      <CheckIcon id="check-icon" classes="absolute right-0 transform opacity-0 text-green scale-75" />
     </button>
   </li>
 </ul>

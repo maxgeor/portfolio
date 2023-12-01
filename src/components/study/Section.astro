@@ -18,9 +18,9 @@ const { title, isSubsection = false, classes = '' } = Astro.props;
 >
   <slot name="heading">
     {isSubsection ? (
-      <h2 class="text-[#fafafa]  tracking-tighter col-span-2">{title}</h2>
+      <h2 class="text-[#F4F4F4]  tracking-tighter col-span-2">{title}</h2>
     ) : (
-      <h1 class="text-[#fafafa] tracking-tighter  col-span-2 text-3xl xl:text-4xl -my-1 ">{title}</h1>
+      <h1 class="text-[#F4F4F4] tracking-tighter  col-span-2 text-3xl xl:text-4xl -my-1 ">{title}</h1>
     )}
   </slot>
   <slot/>

@@ -30,35 +30,58 @@ const {
   classes = '' 
 } = Astro.props;
 ---
-
-<a
-  href={`/study/${slug}`}
-  class={`
-    group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8
-    ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
-    ${classes} 
-  `}
->
-  <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between -my-1">
-    <h3>{title}</h3>
-    <p class="xl:hidden">{description}</p>
-    <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
+{isComingSoon ? (
+  <div
+    class={`
+      group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 cursor-not-allowed
+      ${classes} 
+    `}
+  >
+    <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between -my-1">
+      <h3>{title}</h3>
+      <p class="xl:hidden">{description}</p>
+      <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
+    </div>
+    <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
+      <ComingSoonBanner />
+      <img
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class='w-full h-full object-top select-none object-cover group-hover:blur-sm group-focus:blur-sm transition duration-[350ms]'
+      />
+    </picture>
+    <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end -my-1">
+      <p class="xl:hidden">{roles.short.join(', ')}</p>
+      <p class="hidden xl:inline-block">{description}</p>
+      <p>{year}</p>
+    </div>
   </div>
-  <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
-  {isComingSoon && <ComingSoonBanner/>}
-    <img
-      src={image}
-      alt={`Preview mockup of ${title}`}
-      class={`
-        w-full h-full object-top select-none object-cover
-        ${isComingSoon ? 'group-hover:blur-sm group-focus:blur-sm transition duration-[350ms]' : 'group-hover:brightness-[96%] '}
-      `}
-    />
-  </picture>
-  <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end -my-1">
-    <p class="xl:hidden">{roles.short.join(', ')}</p>
-    <p class="hidden xl:inline-block">{description}</p>
-    <p>{year}</p>
-  </div>
-</a>
+) : (
+  <a
+    href={`/study/${slug}`}
+    class={`
+      group relative gap-x-6 gap-y-1 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8
+      ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
+      ${classes} 
+    `}
+  >
+    <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between -my-1">
+      <h3>{title}</h3>
+      <p class="xl:hidden">{description}</p>
+      <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
+    </div>
+    <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
+      <img
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class='w-full h-full object-top select-none object-cover group-hover:brightness-[96%]'
+      />
+    </picture>
+    <div class="text-right col-span-full xl:col-span-1 flex xl:flex-col justify-between items-end -my-1">
+      <p class="xl:hidden">{roles.short.join(', ')}</p>
+      <p class="hidden xl:inline-block">{description}</p>
+      <p>{year}</p>
+    </div>
+  </a>
+)}
 

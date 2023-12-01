@@ -458,60 +458,10 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
 </div>
 
-{/* 
+<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 mt-36">
+  <p class="xl:col-start-2 col-span-2">Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.</p>
+  <p class="col-span-2">Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.</p>
+  <p class="col-span-2">Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.</p>
+</div>
 
 
-<h2 id="only-letting-people-customize-their-title-&-description" aria-label="Only letting people customize their title & description">~~Customize everything~~ Title + description</h2>
-
-We wanted every part of a form to be customizable:
-
-- Field titles, descriptions, placeholders
-- Error messages
-- Button labels, etc.
-
-But, because we cut editing, all customizations had to happen on the form creation page. We knew setting every option in one go would be too overwhelming.
-
-To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they could handle 80%-90% of the clarification.
-
-Limited customization kept form creation straightforward while offering more control than Etherscan.
-
-<Carousel
-  slides={[
-    {
-      type: 'image',
-      src: "/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
-      alt: "Prototype of editor with other editable fields",
-    },
-    {
-      type: 'image',
-      src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
-      alt: "Realization that only title & description would be enough",
-    },
-  ]}
-/>
-
-<h2 id="limited-error-messaging" aria-label="Limited error messaging">~~Perfect~~ Limited error messaging</h2>
-
-We also planned on translating every error into a clear, helpful message, but Ethereum was too limited.
-
-At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
-
-It was impossible to translate errors consistently, so we settled on...
-
-1. Humanizing basic type errors
-2. Wrapping unknown errors in an honest, generic message.
-
-Compromising on error handling stung, but you can only do so much when working with a black box.
-
-<Image
-  src="/work/formie/tradeoffs/errors/research.png"
-  alt="Research for handling smart contract errors"
-/>
-
-# Result
-
-Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.
-
-Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.
-
-Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case. */}
