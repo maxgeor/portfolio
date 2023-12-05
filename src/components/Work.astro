@@ -35,7 +35,7 @@ const {
       <h3 aria-label={`${title} (coming soon)`}>{title}</h3>
       <p>{description}</p>
     </div>
-    <picture class='relative h-auto col-span-full group-hover:blur-sm group-focus:blur-sm transition duration-[350ms]'>
+    <picture class='relative h-auto col-span-full'>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
@@ -53,11 +53,14 @@ const {
     `}
   >
     <div class="col-span-full flex flex-wrap gap-x-4 justify-between">
-      <h3 aria-label={title}>
+      <h3 
+        aria-label={title}
+        class="group-hover:bg-white group-hover:text-black"
+      >
         <span>{title}</span>
         {link?.target === '_blank' && (
           <svg 
-            class="inline transform group-hover:-translate-y-px group-hover:translate-x-px ml-[3px] -mt-px" 
+            class="inline ml-[3px] -mt-px" 
             width="15" 
             height="15" 
             viewBox="0 0 15 15" 
@@ -71,7 +74,7 @@ const {
       </h3>
       <p>{description}</p>
     </div>
-    <picture class='relative h-auto col-span-full group-hover:brightness-[96%]'>
+    <picture class='relative h-auto col-span-full'>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
