@@ -1,11 +1,11 @@
 {
   "type": "project",
   "title": "Scope Todo",
-  "description": "Todo widget for Figma",
+  "description": "Todo widget for Figma, 38k users",
   "image": "/work/scope-todo.png",
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",
     "target": "_blank"
   },
-  "order": 5
+  "order": 3
 }
