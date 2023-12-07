@@ -53,7 +53,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
         
       </div>
     </section>
-    <section class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-12 pb-12">
+    <section class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-12 sm:pb-12">
       {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
         <Study
           title={study.title}
