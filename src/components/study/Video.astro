@@ -15,7 +15,7 @@ const extensionlessSrc = stripExtension(src);
 <div class=`relative ${gridClasses}`>
   <video
     class={`
-      transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full select-none
+      transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full cursor-pointer select-none
       ${classes}
     `}
     poster={extensionlessSrc + ".png"}
@@ -43,14 +43,7 @@ const extensionlessSrc = stripExtension(src);
 </div>
 
 <script>
-  const isMobileOrTablet = () =>
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
-      navigator.userAgent
-    );
-
   document.querySelectorAll("video")?.forEach((video) => {
-    let isFrozen = false;
-
     const pauseIcon = video.parentElement?.querySelector(
       ".pause-icon"
     ) as HTMLElement;
@@ -81,24 +74,10 @@ const extensionlessSrc = stripExtension(src);
       }, 200);
     };
 
-    video.addEventListener("mouseover", () => {
-      if (isFrozen || isMobileOrTablet()) return;
-
-      pauseVideo();
-    });
-
-    video.addEventListener("mouseout", () => {
-      if (isFrozen || isMobileOrTablet()) return;
-
-      playVideo();
-    });
-
     video.addEventListener("click", () => {
       if (video.paused) {
-        isFrozen = false;
         playVideo();
       } else {
-        isFrozen = true;
         pauseVideo();
       }
     });
