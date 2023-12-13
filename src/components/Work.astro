@@ -39,7 +39,7 @@ const {
         />
       </picture>
     <div>
-      <h3 aria-label={`${title} (coming soon)`}>{title}</h3>
+      <h3 aria-label={`${title} (coming soon)`} class="w-fit">{title}</h3>
       <p>{description}</p>
     </div>
   </div>
@@ -60,7 +60,7 @@ const {
       />
     </picture>
     <div>
-      <h3 aria-label={title} class="group-hover:bg-white group-hover:text-black">
+      <h3 aria-label={title} class="group-hover:bg-white group-hover:text-black w-fit">
         <span>{title}</span>
         {link?.target === '_blank' && (
           <svg 
