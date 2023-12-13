@@ -26,59 +26,58 @@ const {
 {isComingSoon ? (
   <div
     class={`
-      group overflow-hidden relative flex flex-col h-fit col-span-full cursor-not-allowed
+      col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-y-1 gap-x-6 h-fit cursor-not-allowed
       ${classes} 
     `}
   >
     <ComingSoonBanner />
-    <div class="col-span-full flex flex-col md:flex-row flex-wrap gap-x-4 justify-between">
+    <picture class='relative h-auto'>
+        <img
+          src={image}
+          alt={`Preview mockup of ${title}`}
+          class='w-full h-full object-top select-none object-contain'
+        />
+      </picture>
+    <div>
       <h3 aria-label={`${title} (coming soon)`}>{title}</h3>
       <p>{description}</p>
     </div>
-    <picture class='relative h-auto col-span-full'>
-      <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain'
-      />
-    </picture>
   </div>
 ) : (
   <a
     href={link?.href || '#'}
     target={link?.target || '_self'}
     class={`
-      group overflow-hidden relative grid grid-cols-8 gap-6 h-fit col-span-full
+      col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-y-1 gap-x-6 h-fit
       ${classes} 
     `}
   >
-    <h3 
-      aria-label={title}
-      class="group-hover:bg-white group-hover:text-black"
-    >
-      <span>{title}</span>
-      {link?.target === '_blank' && (
-        <svg 
-          class="inline ml-[3px] -mt-px" 
-          width="15" 
-          height="15" 
-          viewBox="0 0 15 15" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-          </path>
-        </svg>
-      )}
-    </h3>
-    <picture class='relative h-auto col-span-6'>
+    <picture class='relative h-auto'>
       <img
-      src={image}
-      alt={`Preview mockup of ${title}`}
-      class='w-full h-full object-top select-none object-contain'
-    />
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class='w-full h-full object-top select-none object-contain'
+      />
     </picture>
-    <p>{description}</p>
+    <div>
+      <h3 aria-label={title} class="group-hover:bg-white group-hover:text-black">
+        <span>{title}</span>
+        {link?.target === '_blank' && (
+          <svg 
+            class="inline ml-[3px] -mt-px" 
+            width="15" 
+            height="15" 
+            viewBox="0 0 15 15" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+            </path>
+          </svg>
+        )}
+      </h3>
+      <p>{description}</p>
+    </div>
   </a>
 )}
 <!-- {isComingSoon ? (
