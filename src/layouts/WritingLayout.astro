@@ -9,20 +9,20 @@ const formattedDate = formatDate(frontmatter.date);
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 px-6">
+  <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 px-4">
     <Header goBackPath="/writing" />
-    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-6 -my-1">
-      <h1 class="col-span-3 xl:col-start-2 xl:col-span-5 font-medium">{frontmatter.title}</h1>
-      <p class="col-span-3 md:col-span-1 text-[13px] xl:justify-self-end">
+    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-4 -my-1">
+      <h1 class="col-span-3 xl:col-start-2 xl:col-span-5 ">{frontmatter.title}</h1>
+      <p class="col-span-3 md:col-span-1 xl:justify-self-end">
         {formattedDate}
       </p>
     </div>
     <main class="col-span-full sm:col-span-5 md:col-span-4 xl:col-start-2 -my-1">
       <div
         class={`
-          prose-sm max-w-prose leading-5 text-neutral-300
-          prose-headings:text-sm prose-headings:font-medium prose-headings:text-neutral-100 prose-headings:leading-5
-          prose-h2:text-[14px] prose-h2:mt-10 prose-h2:leading-5 prose-h2:mb-4
+          prose-xs max-w-prose leading-4 normal-case	
+          prose-headings:uppercase
+          prose-headings:mt-12 prose-headings:mb-4
           prose-a:underline
           prose-strong:font-medium prose-strong:text-neutral-100
           prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap

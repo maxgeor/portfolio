@@ -22,7 +22,7 @@ const {
 ---
 
 <Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12 px-6">
+  <main class="relative col-span-full grid grid-cols-8 gap-4 gap-y-8 px-4">
     <Button 
       tag="a" 
       href="#article" 
@@ -34,7 +34,7 @@ const {
       ariaHidden="true"
       disabled={true}
       padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
+      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronUpIcon classes="-mx-px -mb-px" />
       <span class="leading-6">Go back</span>
@@ -45,31 +45,31 @@ const {
       ariaLabel="Go back down"
       ariaHidden="true"
       padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
+      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-6">Go back</span>
     </Button>
     <Header />
-    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6'>
-      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-6 xl:justify-between -my-1 xl:mt-0">
+    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-4'>
+      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-4 xl:justify-between">
         <h1 class="basis-1/2 xl:basis-auto">
           {link ? <Link href={link} target='_blank'>{title}</Link> : `[${title}]`}
         </h1>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
+      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
         <h2>In short...</h2>
         <p>{tldr}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
+      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
         <h2>Role</h2>
         <p>{roles.long.join(", ")}</p>
       </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
+      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
         <h2>Team</h2>
         {teammates?.length > 0 ? (
-          <ul class="capitalize">
+          <ul>
             {teammates.map((teammate: { name: string, role: string, href: string }) => (
               <li>
                 <a 
@@ -85,12 +85,12 @@ const {
           </ul>
         ) : "—"}
       </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
+      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
         <h2>Tools</h2>
-        <p class="capitalize">{tools.join(", ")}</p>
+        <p>{tools.join(", ")}</p>
       </div>
     </section>
-    <figure class="col-span-full select-none -mx-6">
+    <figure class="col-span-full select-none -mx-4">
       <img
         src={image}
         alt={''}
@@ -104,7 +104,9 @@ const {
       <!-- <ExpandableSidebarNav sections={sections} /> -->
       <div
         class={`
-          text-neutral-100 w-full  
+          text-neutral-100 w-full normal-case
+
+          !prose-header:uppercase
                     
           prose-h1:text-xl sm:prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:tracking-tighter
 
@@ -112,7 +114,7 @@ const {
           
           prose-h3:text-sm prose-h3:italic prose-h3:-mt-[4px] prose-h3:-mb-[20px]
 
-          prose-p:leading-5
+          prose-p:leading-4
           prose-p:max-w-prose 
           prose-p:text-neutral-300
           prose-p:-my-1
@@ -121,7 +123,7 @@ const {
 
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
 
-          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-1 prose-ul:text-neutral-300
@@ -132,10 +134,10 @@ const {
           prose-li:list-outside
           prose-li:pl-0.5
           prose-li:m-0
-          prose-li:leading-5
+          prose-li:leading-4
           prose-li:text-neutral-300
           marker:prose-li:text-neutral-300
-          marker:prose-li:text-[13.5px]
+          marker:prose-li:text-[11.5px]
           marker:prose-li:font-inter
           
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
@@ -143,7 +145,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 
+          grid grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 
         `}
       >
         <slot />
