@@ -53,7 +53,7 @@ const {
     <Header />
     <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-4'>
       <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-4 xl:justify-between">
-        <h1 class="basis-1/2 xl:basis-auto">
+        <h1 class="basis-1/2 xl:basis-auto uppercase">
           {link ? <Link href={link} target='_blank'>{title}</Link> : `[${title}]`}
         </h1>
         <p class="basis-1/2 xl:basis-auto">{year}</p>
@@ -90,7 +90,7 @@ const {
         <p>{tools.join(", ")}</p>
       </div>
     </section>
-    <figure class="col-span-full select-none -mx-4">
+    <figure class="col-span-full select-none ">
       <img
         src={image}
         alt={''}
@@ -106,18 +106,18 @@ const {
         class={`
           text-neutral-100 w-full normal-case
 
-          !prose-header:uppercase
+          prose-headings:col-span-full prose-headings:tracking-tighter
                     
-          prose-h1:text-xl sm:prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:tracking-tighter
+          prose-h1:text-[51px] prose-h1:leading-[52px]
 
-          prose-h2:text-md sm:prose-h2:text-lg prose-h2:tracking-tight sm:prose-h2:tracking-[-0.04em] prose-h2:-my-1
+          prose-h2:text-[21px]
           
           prose-h3:text-sm prose-h3:italic prose-h3:-mt-[4px] prose-h3:-mb-[20px]
 
           prose-p:leading-4
           prose-p:max-w-prose 
           prose-p:text-neutral-300
-          prose-p:-my-1
+          prose-p:-my-0.5
 
           prose-strong:text-neutral-100 prose-strong:font-medium
 
@@ -126,9 +126,9 @@ const {
           prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
-          prose-ul:-my-1 prose-ul:text-neutral-300
+          prose-ul:-my-0.5 prose-ul:text-neutral-300
 
-          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-1 prose-ol:text-neutral-300
+          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5 prose-ol:text-neutral-300
 
           prose-li:list-item
           prose-li:list-outside
@@ -145,7 +145,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 
+          grid grid-cols-6 lg:grid-cols-8 gap-y-8 gap-x-4 
         `}
       >
         <slot />

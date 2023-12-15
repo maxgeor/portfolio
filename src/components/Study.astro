@@ -33,16 +33,18 @@ const {
 {isComingSoon ? (
   <div
     class={`
-      group relative gap-x-4 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 cursor-not-allowed
+      group relative gap-x-4 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 cursor-not-allowed border-t border-neutral-600
       ${classes} 
     `}
   >
+    <span class="absolute top-1/2 transform -translate-y-1/2 -left-[30px] -rotate-90 uppercase font-mono">Case Study</span>
+    <span class="absolute top-1/2 transform -translate-y-1/2 -right-[30px] rotate-90 uppercase font-mono">Case Study</span>
     <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
-      <h3>{title}</h3>
+      <h3 class="uppercase">{title}</h3>
       <p class="xl:hidden">{description}</p>
       <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
     </div>
-    <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
+    <picture class="xl:mt-4 relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
       <ComingSoonBanner />
       <img
         src={image}
@@ -60,17 +62,19 @@ const {
   <a
     href={`/study/${slug}`}
     class={`
-      group relative gap-x-4 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8
+      group relative gap-x-4 col-span-full grid h-fit grid-cols-6 xl:grid-cols-8 border-t border-neutral-600
       ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
       ${classes} 
     `}
   >
+      <span class="absolute top-1/2 transform -translate-y-1/2 -left-[30px] -rotate-90 uppercase font-mono">Case Study</span>
+    <span class="absolute top-1/2 transform -translate-y-1/2 -right-[30px] rotate-90 uppercase font-mono">Case Study</span>
     <div class="col-span-full xl:col-span-1 flex xl:flex-col justify-between">
-      <h3 class="group-hover:bg-white group-hover:text-black w-fit">{title}</h3>
+      <h3 class="group-hover:bg-white group-hover:text-black w-fit uppercase ">{title}</h3>
       <p class="xl:hidden">{description}</p>
       <p class="hidden xl:inline-block">{roles.short.join(', ')}</p>
     </div>
-    <picture class="relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
+    <picture class="xl:mt-4 relative overflow-hidden h-auto col-span-full xl:col-span-6 xl:col-start-2">
       <img
         src={image}
         alt={`Preview mockup of ${title}`}

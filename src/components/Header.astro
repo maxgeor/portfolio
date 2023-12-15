@@ -1,4 +1,5 @@
 ---
+import { formatTime } from "../utils/formatting.ts";
 import Link from "./Link.astro"
 
 export interface Props {
@@ -10,28 +11,28 @@ const { goBackPath = "/", classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 
-const date = new Date();
+const time = formatTime(new Date());
 ---
 <header
   class={`
-    col-span-full grid grid-cols-8 border-b -mx-4 border-neutral-600 px-4
+    col-span-full grid grid-cols-6 md:grid-cols-8 2xl:border-x border-b -mx-4 border-neutral-600 md:px-4
     ${classes}
   `}
 >
   {currentPath !== "/" ? (
     <a 
       href={goBackPath} 
-      class="group w-full flex items-center justify-center -ml-4"
+      class="col-span-2 md:col-span-1 group flex items-center justify-center border-b md:border-none border-neutral-600 md:-ml-4 order-1 md:order-none px-4 md:p-0"
     >
       MG
     </a>
   ) : (
-    <p class=" flex items-center justify-center w-full -ml-4">MG</p>
+    <p class="col-span-2 md:col-span-1 flex items-center justify-center md:-ml-4 order-1 md:order-none px-4 md:p-0 border-b md:border-b-0 border-neutral-600">MG</p>
   )}
   <Link 
     href="/work" 
     classes={`
-      border-l  flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
+      order-4 md:order-none md:border-l flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
       ${
         currentPath.includes("/work") || currentPath.includes("/study") 
           ? "border-b border-b-[#111] h-[17px] -mb-px" 
@@ -42,7 +43,7 @@ const date = new Date();
     Work
   </Link>
   <Link href="/writing" classes={`
-    border-l   flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
+    border-l  order-5 md:order-none  flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
     ${
       currentPath.includes("/writing") 
         ? "border-b border-b-[#111] h-[17px] -mb-px" 
@@ -52,7 +53,7 @@ const date = new Date();
     Writing
   </Link>
   <Link href="/info" classes={`
-      border-l flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
+      border-l order-6 md:order-none flex justify-center border-neutral-600 col-span-2 md:col-span-1 w-full
     ${
       currentPath.includes("/info") 
         ? "border-b border-b-[#111] h-[17px] -mb-px" 
@@ -61,26 +62,26 @@ const date = new Date();
   `}>
     Info
   </Link>
-  <div class="relative col-span-3  border-l border-neutral-600">
+  <div class="order-2 md:order-none relative col-span-2 md:col-span-3 border-b md:border-b-0 border-l  border-neutral-600">
     <span class="absolute z-50 top-0 left-0 h-4 bg-[#111]"></span>
     <div class="news marquee ">
     <div class="text">
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
+        <span>Available for hire</span>
     </div>
     <div class="text">
         <span>Coming Soon</span>
@@ -103,7 +104,7 @@ const date = new Date();
   </div>
     <span class="absolute z-50 top-0 right-0 h-4 bg-[#111]"></span>
   </div>
-  <div class="flex justify-center border-l border-neutral-600 -mr-4">{date.getTime()}</div>
+  <div class="order-3 col-span-2 md:col-span-1 md:order-none flex items-center justify-center !border-l border-b md:border-b-0  border-neutral-600 md:-mr-4 font-mono">{time}</div>
 </header>
 
 <style>

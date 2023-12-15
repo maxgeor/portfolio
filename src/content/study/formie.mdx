@@ -103,29 +103,19 @@ import Carousel from "../../components/study/Carousel.astro";
     "Only let people customize title & description to simplify flow.",
   ]}
 /> */}
-
-<Heading title="Etherscan's UI kinda sucked..." number="00" classes="!pb-0 -mt-1 sm:-mt-2 -mb-6 sm:-mb-2" />
-<OneTwoThree>
-  <span slot="1">The UI is a list of technically-named forms.</span>
-  <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
-  <span slot="3">They share limited feedback about transactions.</span>
-</OneTwoThree>
-<div class="flex flex-col gap-y-6 col-span-full lg:col-span-2 xl:col-start-2">
-  Developers make blockchain apps by
-
-  1. Writing code
-  2. Uploading it to Ethereum or another blockchain as `smart contracts`
-  3. Building a `frontend` for those contracts (an app or website) so people can use them.
-
-  To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
-
-  The problem? **Their frontend was impossible to use**. After peeling back two layers of UI, all you're given is a list of techincal names. No help or hints. It's so bad, you need a [YouTube tutorial](https://www.youtube.com/results?search_query=how+to+mint+from+etherscan).
+<div class="sticky top-4 col-span-full border-t border-neutral-600 grid grid-cols-6 gap-x-4">
+  <div>Problem</div>
 </div>
+<h1 class="!col-span-6">Etherscan's UI sucked / 1. The UI is a list of technically-named forms / 2. It’s at the bottom of the page, behind two drawers. / 3. They share limited feedback about transactions.</h1>
+
 <Image
   src="/work/formie/annotated-etherscan-page.png"
   alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full lg:col-span-4 -mx-4 md:!mx-0"
+  classes="col-span-full lg:col-span-5 -mx-4 md:!mx-0 lg:col-start-2"
 />
+All blockchain developers need to build frontends (websites or apps) for their code. They use `frontend generators`, like [Etherscan](https://etherscan.io/), to get a working UI out of the box.
+
+
 
 <Heading title="So we looked for something better..." number="01" classes="md:pb-12">
   <img src="/path-l-to-r.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[48px] h-full absolute -bottom-4 left-[48%] transform rotate-1 -translate-x-1/2" />

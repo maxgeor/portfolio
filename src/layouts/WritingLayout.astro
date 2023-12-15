@@ -11,13 +11,13 @@ const formattedDate = formatDate(frontmatter.date);
 <Layout title={frontmatter.title}>
   <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-8 gap-x-4 px-4">
     <Header goBackPath="/writing" />
-    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-4 -my-1">
-      <h1 class="col-span-3 xl:col-start-2 xl:col-span-5 ">{frontmatter.title}</h1>
+    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-4">
+      <h1 class="col-span-3 xl:col-start-2 xl:col-span-5 uppercase">{frontmatter.title}</h1>
       <p class="col-span-3 md:col-span-1 xl:justify-self-end">
         {formattedDate}
       </p>
     </div>
-    <main class="col-span-full sm:col-span-5 md:col-span-4 xl:col-start-2 -my-1">
+    <main class="col-span-full sm:col-span-5 md:col-span-4 xl:col-start-2">
       <div
         class={`
           prose-xs max-w-prose leading-4 normal-case	
