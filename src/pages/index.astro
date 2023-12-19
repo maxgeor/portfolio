@@ -35,24 +35,7 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 <Layout title="Max Georgopoulos">
   <div class="relative grid grid-cols-6  gap-y-8 gap-x-4 p-4 pt-0">
     <Header/>
-    <section 
-      class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-4 gap-y-8  overflow-hidden " 
-    >
-      <p class="hidden xl:inline-block col-start-1 xl:col-span-1">—</p>
-      <div class="col-span-full xl:col-span-6 xl:col-start-2 grid grid-cols-6 gap-4">
-        <p class="col-span-full sm:col-span-3">I'm a designer and developer based out of Toronto, but I bum
-        around different places. I believe that the boundary between design
-        and engineering is artificial — you get the best results by blending
-        the two. you get the best results by blending
-        the two. </p>
-        <p class="hidden sm:inline-block col-span-full sm:col-span-3">I'm a designer and developer based out of Toronto, but I bum
-        around different places. I believe that the boundary between design
-        and engineering is artificial — you get the best results by blending
-        the two. you get the best results by blending
-        the two. </p>
-        
-      </div>
-    </section>
+
     <section class="col-span-full grid grid-cols-8 gap-12 xl:pb-12">
       {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
         <Study

@@ -10,7 +10,9 @@ import ExpandableSidebarNav from "../components/study/ExpandableSidebarNav.astro
 const { frontmatter } = Astro.props;
 const {
   title,
+  type,
   tldr,
+  description,
   roles,
   year,
   link,
@@ -21,19 +23,19 @@ const {
 } = frontmatter;
 ---
 
-<Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-8 gap-4 gap-y-8 px-4">
+<Layout title={title} description={description} maxWidth="max-w-none">
+  <main class="relative col-span-full grid grid-cols-6 gap-4 gap-y-8 p-4">
     <Button 
       tag="a" 
       href="#article" 
-      padding="px-3 py-1.5"
+      padding="px-3 .5"
       classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
     <Button
       id="go-back-up-button"
       ariaLabel="Go back up"
       ariaHidden="true"
       disabled={true}
-      padding="pl-[10px] pr-3 py-1.5"
+      padding="pl-[10px] pr-3 .5"
       classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronUpIcon classes="-mx-px -mb-px" />
@@ -44,59 +46,121 @@ const {
       disabled={true}
       ariaLabel="Go back down"
       ariaHidden="true"
-      padding="pl-[10px] pr-3 py-1.5"
+      padding="pl-[10px] pr-3 .5"
       classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
     >
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-6">Go back</span>
     </Button>
-    <Header />
-    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-4'>
-      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-4 xl:justify-between">
-        <h1 class="basis-1/2 xl:basis-auto uppercase">
-          {link ? <Link href={link} target='_blank'>{title}</Link> : `[${title}]`}
-        </h1>
-        <p class="basis-1/2 xl:basis-auto">{year}</p>
+    <section class='pb-16 col-span-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4'>
+      <div class="col-span-2 grid grid-cols-2 gap-4">
+        <div class="flex flex-col gap-4">
+          <div>
+            <div class="flex gap-1.5">
+              <a href="/" class="hover:bg-white hover:text-black">MG</a>
+              <span>/</span>
+              <h1 class="uppercase">{title}</h1>
+            </div>
+            
+          </div>
+          <p>{year}</p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <p>{type}</p>
+          <p>Universal UI for smart contracts. Featured as top product by Milk Road.</p>
+          {link && <Link href={link} target='_blank'>Live site</Link>}
+        </div>
+        <div class="col-span-2 grid xl:hidden grid-cols-2 gap-4 ">
+          <p class="uppercase basis-1/2">Role</p>
+          <p class="capitalize basis-1/2">{roles.long.join(', ')}</p>
+          <p class="uppercase basis-1/2">Team</p>
+          {teammates && (
+            <ul class="basis-1/2">
+              {teammates.map((
+                teammate: { name: string, role: string, href: string }
+              ) => (
+                <li class="flex gap-1">
+                  <Link
+                    href={teammate.href}
+                    classes="hover:bg-white hover:text-black"
+                  >
+                    {teammate.name}
+                  </Link>
+                  ({teammate.role})
+                </li>
+              ))}
+            </ul>
+          )}
+          <p class="uppercase basis-1/2">Tools</p>
+          <p class="basis-1/2">{tools.join(', ')}</p>
+        </div>
       </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
-        <h2>In short...</h2>
-        <p>{tldr}</p>
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
-        <h2>Role</h2>
-        <p>{roles.long.join(", ")}</p>
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
-        <h2>Team</h2>
-        {teammates?.length > 0 ? (
-          <ul>
-            {teammates.map((teammate: { name: string, role: string, href: string }) => (
-              <li>
-                <a 
-                  href={teammate.href}
-                  target="_blank"
-                  class="underline hover:no-underline hover:bg-white hover:text-black" 
-                >
-                  {teammate.name}
-                </a> 
-                ({teammate.role})
-              </li>
-            ))}
-          </ul>
-        ) : "—"}
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 ">
-        <h2>Tools</h2>
-        <p>{tools.join(", ")}</p>
+      {tldr && (
+        <div class="col-span-2 flex flex-col gap-4 border-t md:border-none pt-4 md:p-0">
+          <div class="flex gap-4 ">
+            <p class="basis-1/2 uppercase">Problem</p>
+            <p class="basis-1/2">{tldr.problem}</p>
+          </div>
+          <div class="flex gap-4  ">
+            <p class="basis-1/2 uppercase">Solution</p>
+            <p class="basis-1/2">{tldr.solution}</p>
+          </div>
+          <div class="flex gap-4  ">
+              <p class="basis-1/2 uppercase">Decisions</p>
+              <ul class="basis-1/2">
+                {tldr.decisions.map((decision: string) => (
+                  <li class="relative before:content-['-'] before:absolute before:-left-2.5 before:top-0 ">{decision}</li>
+                ))}
+              </ul>
+          </div>
+          <div class="flex gap-4  ">
+            <p class="basis-1/2 uppercase">Tradeoffs</p>
+            <ul class="basis-1/2">
+              {tldr.tradeoffs.map((tradeoff: string) => (
+                <li class="relative before:content-['-'] before:absolute before:-left-2.5 before:top-0 ">{tradeoff}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+      <div class="hidden xl:flex flex-col gap-4 col-span-2 grid-cols-2 ">
+        <div class="flex gap-4 ">
+          <p class="basis-1/2 uppercase">Role</p>
+          <p class="basis-1/2 capitalize">{roles.long.join(', ')}</p>
+        </div>
+        <div class="flex gap-4  ">
+          <p class="basis-1/2 uppercase">Team</p>
+          {teammates && (
+            <ul class="basis-1/2">
+              {teammates.map((
+                teammate: { name: string, role: string, href: string }
+              ) => (
+                <li class="flex gap-1">
+                  <Link
+                    href={teammate.href}
+                    classes="hover:bg-white hover:text-black"
+                  >
+                    {teammate.name}
+                  </Link>
+                  ({teammate.role})
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div class="flex gap-4  ">
+          <p class="basis-1/2 uppercase">Tools</p>
+          <p class="basis-1/2">{tools.join(', ')}</p>
+        </div>
       </div>
     </section>
-    <figure class="col-span-full select-none ">
+    <!-- <figure class="col-span-full select-none ">
       <img
         src={image}
         alt={''}
         class='h-full w-full object-cover'
       />
-    </figure>
+    </figure> -->
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
@@ -104,9 +168,9 @@ const {
       <!-- <ExpandableSidebarNav sections={sections} /> -->
       <div
         class={`
-          text-neutral-100 w-full normal-case
+          
 
-          prose-headings:col-span-full prose-headings:tracking-tighter
+           prose-headings:tracking-tighter
                     
           prose-h1:text-[51px] prose-h1:leading-[52px]
 
@@ -115,11 +179,10 @@ const {
           prose-h3:text-sm prose-h3:italic prose-h3:-mt-[4px] prose-h3:-mb-[20px]
 
           prose-p:leading-4
-          prose-p:max-w-prose 
-          prose-p:text-neutral-300
+
           prose-p:-my-0.5
 
-          prose-strong:text-neutral-100 prose-strong:font-medium
+          prose-strong:font-medium
 
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
 
@@ -135,8 +198,6 @@ const {
           prose-li:pl-0.5
           prose-li:m-0
           prose-li:leading-4
-          prose-li:text-neutral-300
-          marker:prose-li:text-neutral-300
           marker:prose-li:text-[11.5px]
           marker:prose-li:font-inter
           
@@ -145,7 +206,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-6 lg:grid-cols-8 gap-y-8 gap-x-4 
+          grid grid-cols-6 gap-y-8 gap-x-4 
         `}
       >
         <slot />

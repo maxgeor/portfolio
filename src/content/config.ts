@@ -23,11 +23,16 @@ const study = defineCollection({
   schema: z.object({
     work: reference('work'),
     year: z.string(),
-    tldr: z.string(),
     roles: z.object({
       long: z.array(z.string()),
       short: z.array(z.string()),
     }),
+    tldr: z.object({
+      problem: z.string(),
+      solution: z.string(),
+      decisions: z.array(z.string()),
+      tradeoffs: z.array(z.string()),
+    }).optional(),
     tools: z.array(z.string()),
     sections: z.object({
       title: z.string(),

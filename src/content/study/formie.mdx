@@ -1,8 +1,20 @@
 ---
 layout: ../../layouts/StudyLayout.astro
 work: formie
+type: Personal Project
 title: Formie
 image: "/work/formie/cover.jpeg"
+tldr: 
+  problem: Etherscan's frontend sucked
+  solution: Airtable Forms, but for smart contract actions
+  decisions:
+    - Every action gets its own page
+    - Only supported one-way actions
+    - Made form titles and descriptions open text
+    - Forced people to confirm trust before submitting
+  tradeoffs:
+    - Cut editing, let people make unlimited forms
+    - Only let people customize title & description
 teammates:
   [
     {
@@ -14,8 +26,8 @@ teammates:
 roles: 
   long: [Branding, Product Design, Frontend Development]
   short: [Dev, Brand, Product]
-tools: ["Next.js", "Firebase", "TailwindCSS"]
-tldr: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
+tools: ["Next.Js", "Firebase", "TailwindCSS"]
+description: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
 link: https://www.formie.co/
 year: '2022'
 sections:
@@ -75,48 +87,26 @@ import Video from "../../components/study/Video.astro";
 import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
-<Tldr 
-  problem="Etherscan's frontend sucked"
-  solution="Airtable Forms, but for smart contract actions"
-  decisions={[
-    "Every action gets its own page",
-    "Only supported one-way actions",
-    "Made form titles and descriptions open text",
-    "Forced people to confirm trust before submitting",
-  ]}
-  tradeoffs={[
-    "Cut editing, let people make unlimited forms",
-    "Only let people customize title & description",
-  ]}
-/>
-{/* <Tldr 
-  problem="Etherscan's frontend sucked."
-  solution="Airtable Forms, but for smart contract actions."
-  decisions={[
-    "Every action gets its own page.",
-    "Only supported one-way actions (two-ways were annoying and not important).",
-    "Made form titles and descriptions open text (so any action could be explained).",
-    "Forced people to confirm trust before submitting (to deter scammers).",
-  ]}
-  tradeoffs={[
-    "Cut editing, let people make unlimited forms instead.",
-    "Only let people customize title & description to simplify flow.",
-  ]}
-/> */}
-<div class="sticky top-4 col-span-full border-t border-neutral-600 grid grid-cols-6 gap-x-4">
-  <div>Problem</div>
-</div>
-<h1 class="!col-span-6">Etherscan's UI sucked / 1. The UI is a list of technically-named forms / 2. It’s at the bottom of the page, behind two drawers. / 3. They share limited feedback about transactions.</h1>
+<h1 class="text-[51px] leading-[52px] sticky top-4 uppercase col-span-full">Problem:</h1>
+<h1 class="col-span-full ">Etherscan's UI sucked / 1. The UI is a list of technically-named forms / 2. It’s at the bottom of the page, behind two drawers. / 3. They share limited feedback about transactions.</h1>
 
-<Image
-  src="/work/formie/annotated-etherscan-page.png"
-  alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full lg:col-span-5 -mx-4 md:!mx-0 lg:col-start-2"
-/>
-All blockchain developers need to build frontends (websites or apps) for their code. They use `frontend generators`, like [Etherscan](https://etherscan.io/), to get a working UI out of the box.
+
+  <div class="col-span-4 col-start-2">
+    <Image
+      src="/work/formie/annotated-etherscan-page-1.png"
+      alt="Etherscan's interface for smart contract actions"
+      classes="col-span-4"
+    />
+    <p class="col-start-2 col-span-4 text-neutral-400 italic">Etherscan's interface for smart contract actions</p>
+  </div>
+  <div class="col-start-2">
+    <p class="">MAKE IT GOOD</p>
+    <p>All blockchain developers need to build frontends (websites or apps) for their code. They use `frontend generators`, like [Etherscan](https://etherscan.io/), to get a working UI out of the box.</p>
+  </div>
 
 
 
+{/* 
 <Heading title="So we looked for something better..." number="01" classes="md:pb-12">
   <img src="/path-l-to-r.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[48px] h-full absolute -bottom-4 left-[48%] transform rotate-1 -translate-x-1/2" />
 </Heading>
@@ -195,7 +185,7 @@ All blockchain developers need to build frontends (websites or apps) for their c
   <span class="self-start -my-1 col-span-4 lg:col-span-2 z-5 sm:text-md sm:tracking-tight !text-neutral-500 max-w-[225px] sm:max-w-[300px] md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
   <span class="absolute -top-1 md:-top-3 lg:-top-7 -right-0.5 md:-right-1 xl:-right-5 text-xl sm:text-2xl lg:text-3xl justify-self-end text-neutral-600 tracking-tight ">02</span>
 </div>
-<h1 class="col-span-6 xl:col-start-2 -mt-1 sm:-mt-2 -mb-6 sm:-mb-2 xl:-my-3">What if we applied form builder patterns to smart contracts?</h1>
+<h1 class=" -mt-1 sm:-mt-2 -mb-6 sm:-mb-2 xl:-my-3">What if we applied form builder patterns to smart contracts?</h1>
 <OneTwoThree >
   <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
   <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
@@ -238,7 +228,7 @@ All blockchain developers need to build frontends (websites or apps) for their c
     Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
   </div>
 </div>
-<div class="col-span-full -mx-4 md:mx-0">
+<div class="col-span- -mx-4 md:mx-0">
   <img
     src="/work/formie/process/lineup.png"
     alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
@@ -467,5 +457,5 @@ All blockchain developers need to build frontends (websites or apps) for their c
   <p class="col-span-full md:col-span-2">Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.</p>
   <p class="col-span-full md:col-span-2">Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.</p>
 </div>
-
+ */}
 
