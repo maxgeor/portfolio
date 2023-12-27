@@ -88,7 +88,7 @@ import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
 {/* <div class="col-span-full sticky flex top-0 border-b-[0.5px] border-[#ddd] bg-[#151515] pt-3 -mt-3 items-center"> */}
-<div class="sticky flex top-4 items-center">
+<div class="sticky col-span-3 flex top-4 items-center">
   
   <p class="">Problem</p>
   {/* <svg class="-mr-1 text-[#ddd]" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg> */}
@@ -96,20 +96,17 @@ import Carousel from "../../components/study/Carousel.astro";
 </div>
 <h1 class="mb-12 col-span-full indent-[8vw]">Blockchain developers use tools like Etherscan to get a basic UI for free. But <span class="text-[#ddd]">Etherscan's UI sucked</span>. \ 1. It's a list of technically-named forms \ 2. It’s at the bottom of the page, behind two drawers. \ 3. It shares barely any feedback about transactions.</h1>
 
-<div class="grid col-span-full grid-cols-12 gap-y-2 gap-x-4">
+<div class="grid col-span-full grid-cols-12 gap-x-4 mb-12 ">
   <div class="col-span-6 border-t-[0.5px] border-[#ddd] col-start-4 flex gap-4">
-    <p class="basis-1/2 col-start-4 col-span-3">P0</p>
-    <div class="basis-1/2 flex gap-1.5 col-span-6 xl:col-span-4 ">
-      <span class="xl:hidden">P0:</span>
-      <p class="">Etherscan's interface for smart contract actions</p>
-    </div>
+    <p class="basis-1/4 xl:basis-1/2 col-start-4 col-span-3">P0</p>
+    <p class="basis-3/4 xl:basis-1/2 !leading-3 my-0.5">Etherscan's interface for smart contract actions</p>
   </div>
   <Image
     src="/work/formie/annotated-etherscan-page-1.png"
     alt="Etherscan's interface for smart contract actions"
     classes="col-span-8 col-start-3"
   />
-  <p class="col-span-2 col-start-11">No help or hints. It’s so bad, you need a YouTube tutorial.</p>
+  <p class="col-span-2 col-start-11 xl:self-center" style="text-wrap: balance;">No help or hints. It’s so bad, you need a YouTube tutorial.</p>
 </div>
 {/* <div class="grid col-span-full xl:col-span-6 xl:col-start-4 grid-cols-12 xl:grid-cols-8 gap-y-2 gap-x-4">
   <Image
@@ -124,22 +121,19 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
   <p class="col-span-6 xl:col-span-3 xl:col-start-5 ">No help or hints. It’s so bad, you need a YouTube tutorial.</p>
 </div> */}
-<div class="col-span-full sticky flex top-4 mt-12 items-center">
+<div class=" sticky flex top-4 col-span-full">
   <p class="">Research</p>
 </div>
 
-<div class="col-span-full xl:col-span-2">
+<div class="col-span-full xl:col-span-2" style="text-wrap: pretty;">
   <p class="text-[#ddd]">Most actions needed basic UIs</p>
   <p class="text-[#7e7e7e]">Projects used Etherscan for one-way actions</p>
   <p class="text-[#7e7e7e]">Projects sacrificed UX to save time</p>
 </div>
-<div class="flex flex-col gap-2 col-span-full xl:col-span-6 xl:col-start-4 xl:-mt-6">
-  <div class=" border-t-[0.5px] border-[#ddd] col-start-4 flex gap-4">
-      <p class="basis-1/2 col-start-4 col-span-3">R0</p>
-      <div class="basis-1/2 flex gap-1.5 col-span-6 xl:col-span-4 ">
-        <span class="xl:hidden">P0:</span>
-        <p class="">Etherscan's interface for smart contract actions</p>
-      </div>
+<div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-4 xl:-mt-4">
+  <div class=" border-t-[0.5px] border-[#ddd] col-start-4 grid grid-cols-12 gap-4">
+      <p class="col-span-3 xl:col-span-6">R0</p>
+      <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
     </div>
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 

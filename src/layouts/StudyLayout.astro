@@ -61,12 +61,12 @@ const {
         </nav>
         {link && <Link href={link} target='_blank' classes="col-span-4">Live Site</Link>}
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full mt-64">
+      <div class="grid grid-cols-12 gap-4 col-span-full mt-48 xl:mt-64">
         <h1 class="col-span-6 sm:col-span-9 text-right order-last text-[32px] leading-[32px] sm:text-[48px] sm:leading-[44px] xl:text-[135px] xl:leading-[112px] xl:-mt-1.5 xl:-mb-0.5 self-end">
           {title}
         </h1>
         <div class="flex flex-col justify-between gap-4 col-span-6 sm:col-span-3">
-          <p>{description}</p>
+          <p style="text-wrap: balance;">{description}</p>
           <div>
             <p>{type}</p>
             <p>{year}</p>
