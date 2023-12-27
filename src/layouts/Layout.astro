@@ -10,7 +10,7 @@ const {
   title = "Max Georgopoulos",
   description,
   maxWidth = "",
-  backgroundColor = "bg-black",
+  backgroundColor = "bg-[#151515]",
 } = Astro.props;
 ---
 
@@ -28,16 +28,14 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-      text-neutral-200 min-h-screen text-sm selection:bg-yellow selection:text-black antialiased pb-24 max-w-[1600px] mx-auto
+      text-[#ddd] min-h-screen text-xs selection:bg-[#e05634] selection:text-[#111] antialiased pb-24 max-w-[1600px] mx-auto
     `}
   >
     <slot />
   </body>
 </html>
 
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-  
+<style is:global>  
   @font-face {
     font-family: Romie;
     src: url(/fonts/romie/RomieTrial-Regular-Italic.otf);
@@ -86,7 +84,7 @@ const {
   }
   
   a:focus-visible {
-    outline: solid 2px #fff000;
+    outline: solid 2px #d05f40;
     outline-offset: 2px;
     border-radius: 0.02em;
   }

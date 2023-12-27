@@ -24,12 +24,12 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-6 gap-4 gap-y-8 p-4">
+  <main class="relative col-span-full grid grid-cols-8 gap-4 gap-y-16 p-4">
     <Button 
       tag="a" 
       href="#article" 
       padding="px-3 .5"
-      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
+      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  !px-1 !rounded  ">Skip to main content</Button>
     <Button
       id="go-back-up-button"
       ariaLabel="Go back up"
@@ -52,115 +52,85 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-6">Go back</span>
     </Button>
-    <section class='pb-16 col-span-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4'>
-      <div class="col-span-2 grid grid-cols-2 gap-4">
-        <div class="flex flex-col gap-4">
-          <div>
-            <div class="flex gap-1.5">
-              <a href="/" class="hover:bg-white hover:text-black">MG</a>
-              <span>/</span>
-              <h1 class="uppercase">{title}</h1>
-            </div>
-            
+    <section class='col-span-full grid grid-cols-12 gap-4'>
+      <div class="col-span-full flex justify-between border-t border-[#ddd]">
+        <nav class="flex gap-1.5 col-span-4">
+          <a href="/">MG</a>
+          <span>/</span>
+          <a href="/">Work</a>
+        </nav>
+        {link && <Link href={link} target='_blank' classes="col-span-4">Live Site</Link>}
+      </div>
+      <div class="grid grid-cols-12 gap-4 col-span-full">
+        <h1 class="col-span-6 sm:col-span-9 text-right order-last text-[32px] leading-[32px] sm:text-[40px] sm:leading-[40px] xl:text-[135px] xl:leading-[136px] pt-64">
+          {title}
+        </h1>
+        <div class="flex flex-col justify-between gap-4 col-span-6 sm:col-span-3">
+          <p>{description}</p>
+          <div class="flex flex-col gap-4">
+            <p>{type}</p>
+            <p>{year}</p>
           </div>
-          <p>{year}</p>
-        </div>
-        <div class="flex flex-col gap-4">
-          <p>{type}</p>
-          <p>Universal UI for smart contracts. Featured as top product by Milk Road.</p>
-          {link && <Link href={link} target='_blank'>Live site</Link>}
-        </div>
-        <div class="col-span-2 grid xl:hidden grid-cols-2 gap-4 ">
-          <p class="uppercase basis-1/2">Role</p>
-          <p class="capitalize basis-1/2">{roles.long.join(', ')}</p>
-          <p class="uppercase basis-1/2">Team</p>
-          {teammates && (
-            <ul class="basis-1/2">
-              {teammates.map((
-                teammate: { name: string, role: string, href: string }
-              ) => (
-                <li class="flex gap-1">
-                  <Link
-                    href={teammate.href}
-                    classes="hover:bg-white hover:text-black"
-                  >
-                    {teammate.name}
-                  </Link>
-                  ({teammate.role})
-                </li>
-              ))}
-            </ul>
-          )}
-          <p class="uppercase basis-1/2">Tools</p>
-          <p class="basis-1/2">{tools.join(', ')}</p>
         </div>
       </div>
-      {tldr && (
-        <div class="col-span-2 flex flex-col gap-4 border-t md:border-none pt-4 md:p-0">
-          <div class="flex gap-4 ">
-            <p class="basis-1/2 uppercase">Problem</p>
-            <p class="basis-1/2">{tldr.problem}</p>
-          </div>
-          <div class="flex gap-4  ">
-            <p class="basis-1/2 uppercase">Solution</p>
-            <p class="basis-1/2">{tldr.solution}</p>
-          </div>
-          <div class="flex gap-4  ">
-              <p class="basis-1/2 uppercase">Decisions</p>
-              <ul class="basis-1/2">
-                {tldr.decisions.map((decision: string) => (
-                  <li class="relative before:content-['-'] before:absolute before:-left-2.5 before:top-0 ">{decision}</li>
-                ))}
-              </ul>
-          </div>
-          <div class="flex gap-4  ">
-            <p class="basis-1/2 uppercase">Tradeoffs</p>
-            <ul class="basis-1/2">
-              {tldr.tradeoffs.map((tradeoff: string) => (
-                <li class="relative before:content-['-'] before:absolute before:-left-2.5 before:top-0 ">{tradeoff}</li>
-              ))}
-            </ul>
-          </div>
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t border-[#ddd]">
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Roles</p>
+          <ul class="col-span-3">{roles.long.map((role: string) => <li>{role}</li>)}</ul>
         </div>
-      )}
-      <div class="hidden xl:flex flex-col gap-4 col-span-2 grid-cols-2 ">
-        <div class="flex gap-4 ">
-          <p class="basis-1/2 uppercase">Role</p>
-          <p class="basis-1/2 capitalize">{roles.long.join(', ')}</p>
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Team</p>
+          <ul class="col-span-3">
+            {teammates.map((
+              teammate: { name: string, role: string, href: string }
+            ) => (
+              <li class="flex gap-[2px]">
+                <Link
+                href={teammate.href}
+                classes="hover:bg-neutral-800 hover:text-black"
+                >
+                {teammate.name}
+                </Link> 
+                <span>({teammate.role})</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div class="flex gap-4  ">
-          <p class="basis-1/2 uppercase">Team</p>
-          {teammates && (
-            <ul class="basis-1/2">
-              {teammates.map((
-                teammate: { name: string, role: string, href: string }
-              ) => (
-                <li class="flex gap-1">
-                  <Link
-                    href={teammate.href}
-                    classes="hover:bg-white hover:text-black"
-                  >
-                    {teammate.name}
-                  </Link>
-                  ({teammate.role})
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <div class="flex gap-4  ">
-          <p class="basis-1/2 uppercase">Tools</p>
-          <p class="basis-1/2">{tools.join(', ')}</p>
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Tools</p>
+          <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
         </div>
       </div>
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t border-[#ddd]">
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Problem</p>
+          <p class="col-span-3">{tldr.problem}</p>
+        </div>
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Solution</p>
+          <p class="col-span-3">{tldr.solution}</p>
+        </div>
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Decisions</p>
+          <ul class="col-span-3">
+            {tldr.decisions.map((decision: string) => <li>{decision}</li>)}
+          </ul>
+        </div>
+        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Tradeoffs</p>
+          <ul class="col-span-3">
+            {tldr.tradeoffs.map((tradeoff: string) => <li>{tradeoff}</li>)}
+          </ul>
+        </div>
+      </div>
+      <figure class="col-span-full select-none pt-4 -mx-4">
+        <img
+          src={image}
+          alt={''}
+          class='h-full w-full object-cover'
+        />
+      </figure>
     </section>
-    <!-- <figure class="col-span-full select-none ">
-      <img
-        src={image}
-        alt={''}
-        class='h-full w-full object-cover'
-      />
-    </figure> -->
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
@@ -168,23 +138,16 @@ const {
       <!-- <ExpandableSidebarNav sections={sections} /> -->
       <div
         class={`
-          
-
            prose-headings:tracking-tighter
                     
-          prose-h1:text-[51px] prose-h1:leading-[52px]
-
-          prose-h2:text-[21px]
-          
-          prose-h3:text-sm prose-h3:italic prose-h3:-mt-[4px] prose-h3:-mb-[20px]
+          prose-h1:text-[48px] prose-h1:leading-[48px] prose-h1:max-w-prose
 
           prose-p:leading-4
 
-          prose-p:-my-0.5
 
           prose-strong:font-medium
 
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-800 hover:prose-a:text-black
 
           prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
@@ -206,7 +169,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-6 gap-y-8 gap-x-4 
+          grid grid-cols-12 gap-4
         `}
       >
         <slot />

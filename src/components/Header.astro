@@ -7,20 +7,16 @@ export interface Props {
   classes?: string;
 }
 
-const { goBackPath = "/", classes = "" } = Astro.props;
-
-const currentPath = Astro.url.pathname;
-
-const time = formatTime(new Date());
+const { classes = "" } = Astro.props;
 ---
 <header
   class={`
-    col-span-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 pt-4 pb-16
+    border-y col-span-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4 
     ${classes}
   `}
 >
-  <p class="">Max Georgopoulos</p>
-  <p>Product Designer & Frontend Developer based in Toronto.</p>
+  <Link href="/" classes="uppercase">Max Georgopoulos</Link>
+  <p>Product Designer & Frontend Developer</p>
   <div class="flex uppercase xl:col-start-4 col-span-1 gap-2">
     <Link href="/work">Work</Link>
     <Link href="/writing">Writing</Link>
@@ -28,7 +24,7 @@ const time = formatTime(new Date());
   </div>
   
   <div class="relative col-start-6 col-span-1">
-    <!-- <span class="absolute h-[5px] w-[5px] rounded-full bg-white top-[5px] -left-[21px]"></span> -->
+    <!-- <span class="absolute h-[5px] w-[5px] rounded-full bg-neutral-800 top-[5px] -left-[21px]"></span> -->
     <p>Available for hire</p>
     <p>max123358@gmail.com</p>
   </div>

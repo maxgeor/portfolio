@@ -63,10 +63,24 @@ const {
     href={`/study/${slug}`}
     class={`
       group relative gap-x-4 col-span-full grid h-fit grid-cols-6 gap-4 border-t
-      ${isComingSoon ? 'cursor-not-allowed' : 'cursor-pointer'}
       ${classes} 
     `}
   >
+
+    <p class="col-start-2 uppercase bg-black">Case Study</p>
+    <h1 class="col-span-full bg-black">FORMIE: Making a Universal interface for smart contract actions</h1>
+    <p class="col-span-2 col-start-2 bg-black">Project: Film <br/> Project: Film <br/> Project: Film<br/> Project: Film<br/> Project: Film<br/> Project: Film</p>
+    <picture class="absolute top-2 right-0 overflow-hidden h-auto col-span-3 mt-4">
+      <img
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class='w-full h-full object-top select-none object-cover'
+      />
+    </picture>
+    
+  <div class="-mx-4 grid grid-cols-6 gap-4 col-span-full bg-neutral-800 py-12 px-4">
+    <p class="col-start-2 col-span-4 italic"></p>
+  </div>
     <p>Case Study</p>
     <p class="text-[67px] tracking-tight !leading-[64px] col-span-3">FORMIE</p>
     

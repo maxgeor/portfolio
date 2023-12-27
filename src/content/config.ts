@@ -21,6 +21,7 @@ const work = defineCollection({
 const study = defineCollection({
   type: 'content',
   schema: z.object({
+    type: z.string(),
     work: reference('work'),
     year: z.string(),
     roles: z.object({
