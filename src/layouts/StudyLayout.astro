@@ -53,7 +53,7 @@ const {
       <span class="leading-6">Go back</span>
     </Button>
     <section class='col-span-full grid grid-cols-12 gap-4'>
-      <div class="col-span-full flex justify-between border-t border-[#ddd]">
+      <div class="col-span-full flex justify-between border-t-[0.5px] border-[#ddd]">
         <nav class="flex gap-1.5 col-span-4">
           <a href="/">MG</a>
           <span>/</span>
@@ -61,19 +61,19 @@ const {
         </nav>
         {link && <Link href={link} target='_blank' classes="col-span-4">Live Site</Link>}
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full">
-        <h1 class="col-span-6 sm:col-span-9 text-right order-last text-[32px] leading-[32px] sm:text-[40px] sm:leading-[40px] xl:text-[135px] xl:leading-[136px] pt-64">
+      <div class="grid grid-cols-12 gap-4 col-span-full mt-64">
+        <h1 class="col-span-6 sm:col-span-9 text-right order-last text-[32px] leading-[32px] sm:text-[48px] sm:leading-[44px] xl:text-[135px] xl:leading-[112px] xl:-mt-1.5 xl:-mb-0.5 self-end">
           {title}
         </h1>
         <div class="flex flex-col justify-between gap-4 col-span-6 sm:col-span-3">
           <p>{description}</p>
-          <div class="flex flex-col gap-4">
+          <div>
             <p>{type}</p>
             <p>{year}</p>
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t border-[#ddd]">
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#ddd]">
         <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Roles</p>
           <ul class="col-span-3">{roles.long.map((role: string) => <li>{role}</li>)}</ul>
@@ -101,7 +101,7 @@ const {
           <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
         </div>
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t border-[#ddd]">
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#ddd]">
         <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Problem</p>
           <p class="col-span-3">{tldr.problem}</p>
@@ -123,13 +123,13 @@ const {
           </ul>
         </div>
       </div>
-      <figure class="col-span-full select-none pt-4 -mx-4">
+      <!-- <figure class="col-span-full select-none pt-4 -mx-4">
         <img
           src={image}
           alt={''}
           class='h-full w-full object-cover'
         />
-      </figure>
+      </figure> -->
     </section>
     <article
       id="article"
@@ -138,9 +138,9 @@ const {
       <!-- <ExpandableSidebarNav sections={sections} /> -->
       <div
         class={`
-           prose-headings:tracking-tighter
+           prose-headings:tracking-[-0.04em]
                     
-          prose-h1:text-[48px] prose-h1:leading-[48px] prose-h1:max-w-prose
+          prose-h1:text-[32px] prose-h1:leading-[32px] sm:prose-h1:text-[48px] sm:prose-h1:leading-[48px] prose-h1:max-w-prose
 
           prose-p:leading-4
 
