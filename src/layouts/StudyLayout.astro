@@ -53,7 +53,7 @@ const {
       <span class="leading-6">Go back</span>
     </Button>
     <section class='col-span-full grid grid-cols-12 gap-4'>
-      <div class="col-span-full flex justify-between border-t-[0.5px] border-[#ddd]">
+      <div class="col-span-full flex justify-between border-t-[0.5px] border-[#C5C5C5]">
         <nav class="flex gap-1.5 col-span-4">
           <a href="/">MG</a>
           <span>/</span>
@@ -62,7 +62,8 @@ const {
         {link && <Link href={link} target='_blank' classes="col-span-4">Live Site</Link>}
       </div>
       <div class="grid grid-cols-12 gap-4 col-span-full mt-48 xl:mt-64">
-        <h1 class="col-span-6 sm:col-span-9 text-right order-last text-[32px] leading-[32px] sm:text-[48px] sm:leading-[44px] xl:text-[135px] xl:leading-[112px] xl:-mt-1.5 xl:-mb-0.5 self-end">
+
+        <h1 class="col-span-6 col-start-7 text-right order-last text-[32px] leading-[32px] sm:text-[48px] sm:leading-[44px] xl:text-[135px] xl:leading-[112px] xl:-mt-1.5 xl:-mb-0.5 self-end">
           {title}
         </h1>
         <div class="flex flex-col justify-between gap-4 col-span-6 sm:col-span-3">
@@ -73,12 +74,16 @@ const {
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#ddd]">
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#C5C5C5]">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Roles</p>
           <ul class="col-span-3">{roles.long.map((role: string) => <li>{role}</li>)}</ul>
         </div>
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+          <p>Tools</p>
+          <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
+        </div>
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Team</p>
           <ul class="col-span-3">
             {teammates.map((
@@ -96,30 +101,31 @@ const {
             ))}
           </ul>
         </div>
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Tools</p>
-          <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
-        </div>
+        
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#ddd]">
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#C5C5C5]">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Problem</p>
           <p class="col-span-3">{tldr.problem}</p>
         </div>
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Solution</p>
           <p class="col-span-3">{tldr.solution}</p>
         </div>
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Decisions</p>
           <ul class="col-span-3">
-            {tldr.decisions.map((decision: string) => <li>{decision}</li>)}
+            {tldr.decisions.map((decision: string, index: number) => 
+              <li><span class="font-mono">{index + 1}</span>/ {decision}</li>
+            )}
           </ul>
         </div>
-        <div class="col-span-full sm:col-span-3 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
           <p>Tradeoffs</p>
           <ul class="col-span-3">
-            {tldr.tradeoffs.map((tradeoff: string) => <li>{tradeoff}</li>)}
+            {tldr.tradeoffs.map((tradeoff: string, index: number) => 
+              <li><span class="font-mono">{index + 1}</span>/ {tradeoff}</li>
+            )}
           </ul>
         </div>
       </div>
@@ -131,16 +137,22 @@ const {
         />
       </figure> -->
     </section>
+    <nav class="col-span-full sticky top-4 z-50 flex justify-between">
+      <p>Formie</p>
+      <div class="flex items-center">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        <p class="font-mono">1\5</p>
+      </div>
+    </nav>
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
     >
-      <!-- <ExpandableSidebarNav sections={sections} /> -->
       <div
         class={`
-           prose-headings:tracking-[-0.04em]
+           prose-headings:tracking-[-0.0425em]
                     
-          prose-h1:text-[32px] prose-h1:leading-[32px] sm:prose-h1:text-[48px] sm:prose-h1:leading-[48px] prose-h1:max-w-prose
+          prose-h1:text-[24px] prose-h1:leading-[24px] sm:prose-h1:text-[34px] sm:prose-h1:leading-[36px] prose-h1:max-w-prose
 
           prose-p:leading-4
 
@@ -169,7 +181,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-4
+          grid grid-cols-12 gap-32
         `}
       >
         <slot />
