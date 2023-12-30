@@ -80,15 +80,14 @@ order: 1
 ---
 
 import Grid from "../../components/Grid.astro";
+import Context from "../../components/study/Context.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
-<Grid gap={16}>
-  <p class="col-span-3 col-start-3">Problem</p>
-  <h1 class="col-span-full text-[#636363]">Developers make blockchain apps by 1/ Writing code 2/ Uploading it to Ethereum or another blockchain as smart contracts 3/ Building a frontend for those contracts (an app or website) so people can use them. To save time, <span class="text-[#C5C5C5]">blockchain developers use frontend generators, like Etherscan</span> which take your code and spit out a bare-bones, working UI. Etherscan is the most popular frontend generator, powering tons of Ethereum projects. Blockchain developers use tools like Etherscan to get a basic UI for free. But <span class="text-[#C5C5C5]">Etherscan's UI sucks</span>. 1/ It's a list of  <span class="text-[#C5C5C5]">technically-worded</span> forms 2/ It’s  <span class="text-[#C5C5C5]">hard to navigate</span> 3/ It  <span class="text-[#C5C5C5]">shares little feedback</span> about transactions.</h1>
-</Grid>
+<Context title='Problem'>Developers make blockchain apps by 1/ Writing code 2/ Uploading it to Ethereum or another blockchain as smart contracts 3/ Building a frontend for those contracts (an app or website) so people can use them. To save time, <mark>blockchain developers use frontend generators, like Etherscan</mark> which take your code and spit out a bare-bones, working UI. Etherscan is the most popular frontend generator, powering tons of Ethereum projects. Blockchain developers use tools like Etherscan to get a basic UI for free. But <mark>Etherscan's UI sucks</mark>. 1/ It's a list of <mark>technically-worded</mark> forms 2/ It’s <mark>hard to navigate</mark> 3/ It <mark>shares little feedback</mark> about transactions.</Context>
+
   
 
 {/* <div class="grid col-span-full xl:col-span-6 xl:col-start-4 grid-cols-12 xl:grid-cols-8 gap-y-2 gap-x-4">
@@ -109,48 +108,43 @@ import Carousel from "../../components/study/Carousel.astro";
   <p class="font-mono">2\5</p>
 </div> */}
 <Grid> 
-  <div class="col-span-full xl:col-span-2 " style="text-wrap: pretty;">
-    <div class="flex gap-2 text-[#C5C5C5]">
+  <div class="col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
+    <div class="flex gap-4 text-[#C5C5C5]">
       <span class="font-mono">R0</span>
       <p class="">Most actions needed basic UIs</p>
     </div>
-    <div class="flex gap-2 text-[#636363]">
+    <div class="flex gap-4 text-[#636363]">
       <span class="font-mono">R1</span>
     <p class="">Projects used Etherscan for one-way actions</p>
 
     </div>
-    <div class="flex gap-2 text-[#636363]">
+    <div class="flex gap-4 text-[#636363]">
       <span class="font-mono">R2</span>
       <p class="">Projects sacrificed UX to save time</p>
 
     </div>
   </div>
-  <div class="flex flex-col">
-    <div class="border-t-[0.5px] border-[#C5C5C5] col-start-4 grid grid-cols-12 xl:grid-cols-8 gap-4">
-      <p class="col-span-3 xl:col-span-1 font-mono">R0</p>
-      <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
-    </div>
-    <div class="col-span-full xl:col-span-8 grid grid-cols-12 xl:grid-cols-8 gap-x-4 bg-neutral-800 aspect-[7/4] ">
+  <div class="col-span-full col-start-3 col-end-11 grid grid-cols-12 xl:grid-cols-8 gap-y-2 gap-x-4">
+    <p class="col-span-3 xl:col-span-1 font-mono">R0</p>
+    <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
+    <div class="grid grid-cols-12 xl:grid-cols-8 aspect-[7/4] bg-neutral-800 col-span-full gap-x-4 ">
       <Image 
         src="/work/formie/research/forms/etherscan-form-ui.png" 
         alt="Etherscan's UI for Uniswaps's Delegate method"
+        classes="col-start-2 col-end-8 aspect-[7/4] self-center"
       />
     </div>
   </div>
-  <div class="col-span-full xl:col-start-11 xl:col-span-2 flex flex-col gap-2 ">
+  <div class="col-span-full xl:col-start-11 xl:col-span-2 flex flex-col gap-2 xl:mt-6">
     We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
         
     Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
   </div>
 </Grid>
 
-<Grid gap={16}>
-  <p class="col-span-3 col-start-3">Solution</p>
-  <h1 class="col-span-full text-[#636363]">Realizing smart contracts worked like mini forms made us wonder: <span class="text-[#c5c5c5]">What if we applied form builder patterns to smart contracts?</span> / 1. Give every action a [dedicated page](#one-page-one-action) / 2. Let people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) / 3. Share clear, thoughtful feedback about transactions.</h1>
-</Grid>
+<Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark>What if we applied form builder patterns to smart contracts?</mark> / 1. Give every action a [dedicated page](#one-page-one-action) / 2. Let people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) / 3. Share clear, thoughtful feedback about transactions.</Context>
 
 <div class="p-4 bg-neutral-800 col-span-full -mx-4 grid grid-cols-12 gap-4 overflow-x-scroll">
-  
   <div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-4 gap-2">
     <div class=" border-t-[0.5px] border-[#C5C5C5] col-start-4 grid grid-cols-12 gap-4">
       <p class="col-span-3 xl:col-span-6">R0</p>

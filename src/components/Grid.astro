@@ -1,5 +1,6 @@
 ---
 export interface Props {
+  id?: string,
   cols?: number;
   start?: number;
   end?: number;
@@ -9,6 +10,7 @@ export interface Props {
 }
 
 const { 
+  id,
   cols = 12,
   start = 1,
   end = -1,
@@ -17,11 +19,11 @@ const {
   classes = ''
 } = Astro.props;
 
-const gapX = typeof gap === 'object' && `${gap.x || 0}px` || `${gap}px`
-const gapY = (typeof gap === 'object' && `${gap.y || 0}px` || `${gap}px`)
+const gapX = `${typeof gap === 'object' && (gap.x || 0) || gap}px`
+const gapY = `${typeof gap === 'object' && (gap.y || 0) || gap}px`
 ---
 
-<div class={`grid ${classes}`}>
+<div id={id} class={`grid  ${classes}`}>
   <slot />
 </div>
 
