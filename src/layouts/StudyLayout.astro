@@ -25,7 +25,7 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4 gap-y-16 p-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-4 gap-y-24 p-4">
     <Button 
       tag="a" 
       href="#article" 
@@ -53,7 +53,10 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-6">Go back</span>
     </Button>
-    <Grid id="sticky-header" classes="opacity-0 pointer-events-none transition sticky top-4 z-50 flex justify-between">
+    <Grid 
+      id="sticky-header" 
+      classes="hidden transition sticky top-3 z-50 justify-between"
+    >
       <a href="/" class="relative group col-span-2">
         <p class="absolute opacity-0 group-hover:opacity-100 transition">MG</p>
         <p class="absolute group-hover:opacity-0 transition">Formie</p>
@@ -175,7 +178,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-y-32 gap-x-4
+          grid grid-cols-12 gap-y-24 gap-x-4
         `}
       >
         <slot />
@@ -194,9 +197,11 @@ const {
       
       entries.forEach(entry => {
         if (!entry.isIntersecting) {
-          stickyHeader.classList.remove('opacity-0', 'pointer-events-none');
+          stickyHeader.classList.remove('hidden');
+          stickyHeader.classList.add('grid');
         } else {
-          stickyHeader.classList.add('opacity-0', 'pointer-events-none');
+          stickyHeader.classList.remove('grid');
+          stickyHeader.classList.add('hidden');
         }
       });
     };
