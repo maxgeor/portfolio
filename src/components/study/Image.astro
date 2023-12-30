@@ -1,10 +1,19 @@
 ---
+type Responsive<T> = {
+
+}
 export interface Props {
   src: string;
   alt: string;
   id: string;
-  span: number | { base: number, sm?: number, md?: number, lg?: number, xl?: number};
-  isPadded: boolean;
+  span: number | { 
+    base: number, 
+    sm?: number, 
+    md?: number, 
+    lg?: number, 
+    xl?: number 
+  };
+  hasPadding: boolean;
   classes?: string;
 }
 
@@ -13,12 +22,13 @@ const {
   alt,
   id,
   span = 12,
-  isPadded = false,
+  hasPadding = false,
   classes = ""
 } = Astro.props;
 
 let colClasses = '';
 let spanClasses = '';
+let paddingClasses = '';
 
 switch (typeof span) {
   case 'number':
@@ -39,6 +49,12 @@ switch (typeof span) {
 }
 ---
 
+<!-- <div
+  class={`
+    grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
+    ${colClasses} ${spanClasses} ${classes}
+  `}
+> -->
 <div
   class={`
     grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
@@ -46,11 +62,15 @@ switch (typeof span) {
   `}
 >
   <p class="col-span-1 font-mono">{id}</p>
-  <p class={`!leading-3 my-0.5 col-span-6`}>{alt}</p>
-  <div class={`grid ${colClasses} col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]`}>
+  <p class={`col-start-2 col-end-[-1]`}>{alt}</p>
+  <div class={`
+    grid col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]
+    ${colClasses}
+    ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
+    `}>
     <figure class={`
       select-none aspect-[7/4] self-center
-      ${isPadded ? `col-start-2 col-end-[-2]` : 'col-span-full'}
+      ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
     `}>
       <img
         src={src}
