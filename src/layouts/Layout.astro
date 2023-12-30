@@ -28,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-      text-[#C5C5C5] min-h-screen text-xs selection:bg-[#FF3131] selection:text-[#111] antialiased pb-24 max-w-[1600px] mx-auto
+    text-[#C5C5C5] min-h-screen text-xs selection:bg-[#9c793d] selection:text-[#151515] antialiased pb-24 max-w-[1600px] mx-auto
     `}
   >
     <slot />
@@ -36,6 +36,11 @@ const {
 </html>
 
 <style is:global>  
+  @font-face {
+    font-family: Pixel;
+    src: url(/fonts/MintsodaLimeGreen.ttf);
+  }
+
   @font-face {
     font-family: Romie;
     src: url(/fonts/romie/RomieTrial-Regular-Italic.otf);
@@ -84,7 +89,7 @@ const {
   }
   
   a:focus-visible {
-    outline: solid 2px #FF3131;
+    outline: solid 2px #9c793d;
     outline-offset: 2px;
     border-radius: 0.02em;
   }

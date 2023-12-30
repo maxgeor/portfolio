@@ -2,19 +2,61 @@
 export interface Props {
   src: string;
   alt: string;
+  id: string;
+  span: number | { base: number, sm?: number, md?: number, lg?: number, xl?: number};
+  isPadded: boolean;
   classes?: string;
 }
-const { src, alt, classes = ""} = Astro.props;
+
+const { 
+  src, 
+  alt,
+  id,
+  span = 12,
+  isPadded = false,
+  classes = ""
+} = Astro.props;
+
+let colClasses = '';
+let spanClasses = '';
+
+switch (typeof span) {
+  case 'number':
+    colClasses = `grid-cols-${span}`;
+    spanClasses = `col-span-${span}`;
+    break;
+  case 'object':
+    for (const [breakpoint, cols] of Object.entries(span)) {
+      if (breakpoint === 'base') {
+        colClasses += `grid-cols-${cols} `;
+        spanClasses += `col-span-${cols} `;
+      } else {
+        colClasses += `${breakpoint}:grid-cols-${cols} `;
+        spanClasses += `${breakpoint}:col-span-${cols} `;
+      }
+    }
+    break;
+}
 ---
-<figure 
+
+<div
   class={`
-  relative select-none  bg-neutral-800 self-center
-  ${classes}
-`}
+    grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
+    ${colClasses} ${spanClasses} ${classes}
+  `}
 >
-  <img
-    src={src}
-    alt={alt}
-    class='h-full w-full object-cover'
-  />
-</figure>
+  <p class="col-span-1 font-mono">{id}</p>
+  <p class={`!leading-3 my-0.5 col-span-6`}>{alt}</p>
+  <div class={`grid ${colClasses} col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]`}>
+    <figure class={`
+      select-none aspect-[7/4] self-center
+      ${isPadded ? `col-start-2 col-end-[-2]` : 'col-span-full'}
+    `}>
+      <img
+        src={src}
+        alt={alt}
+        class='h-full w-full object-cover'
+      />
+    </figure>
+  </div>
+</div>

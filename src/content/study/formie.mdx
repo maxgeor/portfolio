@@ -107,19 +107,16 @@ import Carousel from "../../components/study/Carousel.astro";
   <p class="">Research</p>
   <p class="font-mono">2\5</p>
 </div> */}
-<Grid> 
-  <div class="col-span-full md:col-span-9 xl:col-span-auto xl:col-start-3 xl:col-end-11 grid grid-cols-12 xl:grid-cols-8 gap-y-2 gap-x-4">
-    <p class="col-span-1 font-mono">R0</p>
-    <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
-    <div class="grid grid-cols-12 xl:grid-cols-8 aspect-[7/4] bg-neutral-800 col-span-full gap-x-4 ">
-      <Image 
-        src="/work/formie/research/forms/etherscan-form-ui.png" 
-        alt="Etherscan's UI for Uniswaps's Delegate method"
-        classes="col-start-2 col-end-12 xl:col-end-8 aspect-[7/4] self-center"
-      />
-    </div>
-  </div>
-  <div class="sm:order-last xl:order-first col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
+<Grid>
+  <Image 
+    src="/work/formie/research/forms/etherscan-form-ui.png" 
+    alt="Etherscan's UI for Uniswaps's Delegate method"
+    id='R0'
+    span={{ base: 12, md: 9, xl: 8 }}
+    isPadded={true}
+    classes="col-span-full md:col-span-9 xl:col-span-auto xl:col-start-3 xl:col-end-11"
+  />
+  <div class="md:order-last xl:order-first col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
     <div class="flex gap-4 text-[#C5C5C5]">
       <span class="font-mono">R0</span>
       <p class="">Most actions needed basic UIs</p>
@@ -135,7 +132,7 @@ import Carousel from "../../components/study/Carousel.astro";
 
     </div>
   </div>
-  <div class="col-span-full max-w-prose md:col-start-10 xl:col-start-11 xl:col-span-2 flex flex-col gap-2 sm:mt-6">
+  <div class="col-span-full max-w-prose md:col-start-10 xl:col-start-11 xl:col-span-2 flex flex-col gap-2 md:mt-6">
     We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
         
     Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
