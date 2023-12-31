@@ -5,41 +5,92 @@ import { stripExtension } from "../../utils/formatting";
 export interface Props {
   src: string;
   gridClasses?: string;
+  alt: string;
+  id: string;
+  span: number | { 
+    base: number, 
+    sm?: number, 
+    md?: number, 
+    lg?: number, 
+    xl?: number 
+  };
+  hasPadding: boolean;
   classes?: string;
 }
-const { src, gridClasses = "", classes = "" } = Astro.props;
+const {
+  src, 
+  gridClasses = "", 
+  alt,
+  id,
+  span = 12,
+  hasPadding = false,
+  classes = "" 
+} = Astro.props;
 
 const extensionlessSrc = stripExtension(src);
----
 
-<div class=`relative ${gridClasses}`>
-  <video
-    class={`
-      transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full cursor-pointer select-none
-      ${classes}
-    `}
-    poster={extensionlessSrc + ".png"}
-    playsinline
-    autoplay
-    muted
-    loop
-  >
-    <source
-      src={extensionlessSrc + "-small.mp4"}
-      type="video/mp4"
-      media="all and (max-width: 480px)"
+let colClasses = '';
+let spanClasses = '';
+
+switch (typeof span) {
+  case 'number':
+    colClasses = `grid-cols-${span}`;
+    spanClasses = `col-span-${span}`;
+    break;
+  case 'object':
+    for (const [breakpoint, cols] of Object.entries(span)) {
+      if (breakpoint === 'base') {
+        colClasses += `grid-cols-${cols} `;
+        spanClasses += `col-span-${cols} `;
+      } else {
+        colClasses += `${breakpoint}:grid-cols-${cols} `;
+        spanClasses += `${breakpoint}:col-span-${cols} `;
+      }
+    }
+    break;
+}
+---
+<div
+  class={`
+    grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
+    ${colClasses} ${spanClasses} ${classes}
+  `}
+>
+  <p class="col-span-1 font-mono">{id}</p>
+  <p class={`col-start-2 col-end-[-1]`}>{alt}</p>
+  <div class={`
+    relative grid col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]
+    ${colClasses}
+    ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
+  `}>
+    <video
+      class={`
+        transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full cursor-pointer select-none self-center
+        ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
+      `}
+      poster={extensionlessSrc + ".png"}
+      playsinline
+      autoplay
+      muted
+      loop
+    >
+      <source
+        src={extensionlessSrc + "-small.mp4"}
+        type="video/mp4"
+        media="all and (max-width: 480px)"
+      />
+      <source
+        src={extensionlessSrc + "-small.webm"}
+        type="video/webm"
+        media="all and (max-width: 480px)"
+      />
+      <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
+      <source src={extensionlessSrc + ".webm"} type="video/webm" />
+    </video>
+    <PauseIcon
+      classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-2 left-[13px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow"
     />
-    <source
-      src={extensionlessSrc + "-small.webm"}
-      type="video/webm"
-      media="all and (max-width: 480px)"
-    />
-    <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
-    <source src={extensionlessSrc + ".webm"} type="video/webm" />
-  </video>
-  <PauseIcon
-    classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-2 left-[13px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow"
-  />
+  </div>
 </div>
 
 <script>
@@ -83,3 +134,5 @@ const extensionlessSrc = stripExtension(src);
     });
   });
 </script>
+
+
