@@ -24,7 +24,7 @@ teammates:
     },
   ]
 roles: 
-  long: [Branding, Product Design, Frontend Development]
+  long: [Branding, Copywriting, Product Design, Frontend Development]
   short: [Dev, Brand, Product]
 tools: ["Next.Js", "Firebase", "TailwindCSS"]
 description: Universal UI for smart contracts. Featured as top product by Milk Road.
@@ -112,11 +112,11 @@ import Carousel from "../../components/study/Carousel.astro";
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
     id='R0'
-    span={{ base: 12, md: 9, xl: 8 }}
+    span={{ base: 12, md: 8 }}
     hasPadding={true}
-    classes="col-span-full md:col-span-9 xl:col-span-auto xl:col-start-3 xl:col-end-11"
+    classes="col-span-full md:col-span-auto md:col-start-3 md:col-end-11"
   />
-  <div class="md:order-last xl:order-first col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
+  <div class="md:order-2  md:col-start-3 md:col-span-3 xl:order-first col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
     <div class="flex gap-4 text-[#C5C5C5]">
       <span class="font-mono">R0</span>
       <p class="">Most actions needed basic UIs</p>
@@ -129,57 +129,70 @@ import Carousel from "../../components/study/Carousel.astro";
     <div class="flex gap-4 text-[#636363]">
       <span class="font-mono">R2</span>
       <p class="">Projects sacrificed UX to save time</p>
-
     </div>
   </div>
-  <div class="col-span-full max-w-prose md:col-start-10 xl:col-start-11 xl:col-span-2 flex flex-col gap-2 md:mt-6">
+  <div class="md:order-3 col-span-full md:col-span-4 max-w-prose md:col-start-7 xl:col-start-11 xl:col-span-2 flex flex-col gap-2 xl:mt-6">
     We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
         
     Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
   </div>
 </Grid>
 
-<Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark>What if we applied form builder patterns to smart contracts?</mark> / 1. Give every action a [dedicated page](#one-page-one-action) / 2. Let people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) / 3. Share clear, thoughtful feedback about transactions.</Context>
+<Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark>What if we applied form builder patterns to smart contracts?</mark> / You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</Context>
 
-<div class="p-4 bg-neutral-800 col-span-full -mx-4 grid grid-cols-12 gap-4 overflow-x-scroll">
-  <div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-4 gap-2">
-    <div class=" border-t-[0.5px] border-[#C5C5C5] col-start-4 grid grid-cols-12 gap-4">
-      <p class="col-span-3 xl:col-span-6">R0</p>
-      <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
-    </div>
-    <Image 
-      src="/work/formie/research/forms/etherscan-form-ui.png" 
-      alt="Etherscan's UI for Uniswaps's Delegate method"
-    />
-  </div>
-  <div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-4 ">
-    <div class=" border-t-[0.5px] border-[#C5C5C5] col-start-4 grid grid-cols-12 gap-4">
-        <p class="col-span-3 xl:col-span-6">R0</p>
-        <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
-      </div>
-    <Image 
-      src="/work/formie/research/forms/etherscan-form-ui.png" 
-      alt="Etherscan's UI for Uniswaps's Delegate method"
-    />
-  </div>
-  <div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-4 ">
-    <div class=" border-t-[0.5px] border-[#C5C5C5] col-start-4 grid grid-cols-12 gap-4">
-        <p class="col-span-3 xl:col-span-6">R0</p>
-        <p class="!leading-3 my-0.5 col-span-9 xl:col-span-6">Etherscan's interface for smart contract actions</p>
-      </div>
-    <Image 
-      src="/work/formie/research/forms/etherscan-form-ui.png" 
-      alt="Etherscan's UI for Uniswaps's Delegate method"
-    />
-  </div>
+<div class="col-span-full sm:col-span-8 grid grid-cols-12 sm:grid-cols-8 sm:col-start-3 gap-4">
+  <Video 
+    src="/work/formie/s1.mp4" 
+    alt="Full app walkthrough"
+    id='S1'
+    span={{ base: 12, md: 8 }}
+  />
 </div>
 
-<div class="col-span-full xl:col-start-11 xl:col-span-2 flex flex-col gap-2">
-  We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
-      
-  Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
-</div>
-
+<Carousel 
+  slides={[
+    { 
+      type: "image",
+      src: "/work/formie/s2.png",
+      alt: "Index page",
+      id: "S2",
+      orientation: 'vertical',
+      span: { base: 6, md: 4 }
+    },
+    { 
+      type: "image",
+      src: "/work/formie/s3.png",
+      alt: "Form page",
+      id: "S3",
+      orientation: 'vertical',
+      span: { base: 6, md: 4 }
+    },
+    { 
+      type: "image",
+      src: "/work/formie/s4.png",
+      alt: "New form, find contract",
+      id: "S3",
+      orientation: 'vertical',
+      span: { base: 6, md: 4 }
+    },
+    { 
+      type: "image",
+      src: "/work/formie/s5.png",
+      alt: "New form, pick action",
+      id: "S3",
+      orientation: 'vertical',
+      span: { base: 6, md: 4 }
+    },
+    { 
+      type: "image",
+      src: "/work/formie/s6.png",
+      alt: "New form, add title",
+      id: "S3",
+      orientation: 'vertical',
+      span: { base: 6, md: 4 }
+    }
+  ]}
+/>
 
 {/* 
 <Heading title="So we looked for something better..." number="01" classes="md:pb-12">

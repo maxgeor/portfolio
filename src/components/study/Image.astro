@@ -1,19 +1,17 @@
 ---
-type Responsive<T> = {
-
-}
 export interface Props {
   src: string;
   alt: string;
   id: string;
-  span: number | { 
+  span?: number | { 
     base: number, 
     sm?: number, 
     md?: number, 
     lg?: number, 
     xl?: number 
   };
-  hasPadding: boolean;
+  orientation?: 'horizontal' | 'vertical';
+  hasPadding?: boolean;
   classes?: string;
 }
 
@@ -22,13 +20,13 @@ const {
   alt,
   id,
   span = 12,
+  orientation = 'horizontal',
   hasPadding = false,
   classes = ""
 } = Astro.props;
 
 let colClasses = '';
 let spanClasses = '';
-let paddingClasses = '';
 
 switch (typeof span) {
   case 'number':
@@ -49,27 +47,23 @@ switch (typeof span) {
 }
 ---
 
-<!-- <div
-  class={`
-    grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
-    ${colClasses} ${spanClasses} ${classes}
-  `}
-> -->
 <div
   class={`
-    grid gap-y-2 gap-x-4 border-t-[0.5px] border-[#636363]
+    grid gap-y-1 gap-x-4 border-t-[0.5px] border-[#636363]
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
   <p class="col-span-1 font-mono">{id}</p>
   <p class={`col-start-2 col-end-[-1]`}>{alt}</p>
   <div class={`
-    grid col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]
+    grid col-span-full bg-neutral-800 gap-x-4
+    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
     `}>
     <figure class={`
-      select-none aspect-[7/4] self-center
+      select-none self-center
+      ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
     `}>
       <img

@@ -10,10 +10,27 @@ export interface Props {
     type: "image" | "video";
     src: string;
     alt: string;
+    id: string;
+    span?: number | { 
+      base: number, 
+      sm?: number, 
+      md?: number, 
+      lg?: number, 
+      xl?: number 
+    };
+    orientation?: 'horizontal' | 'vertical';
+    hasPadding?: boolean;
   }[];
+  span?: number | { 
+    base: number, 
+    sm?: number, 
+    md?: number, 
+    lg?: number, 
+    xl?: number 
+  };
   classes?: string;
 }
-const { slides, classes = "" } = Astro.props;
+const { slides, span = 12, classes = "" } = Astro.props;
 ---
 
 <div
@@ -47,13 +64,19 @@ const { slides, classes = "" } = Astro.props;
           {slide.type === "video" ? (
             <Video
               src={slide.src}
-              classes="aspect-[7/4] object-cover w-full !m-0 !border-none !shadow-none rounded-none"
+              alt={slide.alt}
+              id={slide.id}
+              span={slide.span || 12}
+              orientation={slide.orientation}
+              hasPadding={slide.hasPadding}
             />
           ) : (
             <Image
               src={slide.src}
               alt={slide.alt}
-              classes="aspect-[7/4] object-cover w-full !m-0 !border-none !shadow-none rounded-none"
+              id={slide.id}
+              span={slide.span}
+              hasPadding={slide.hasPadding}
             />
           )}
         </div>
