@@ -92,10 +92,13 @@ const { slides, classes = "" } = Astro.props;
       style="text-wrap: pretty;"
     >
       {slides.map((slide, index) => (
-        <button data-position={index} class={`
-          slide-title-${index} flex gap-4 hover:text-[#C5C5C5]
-          ${index === 0 ? 'active' : ''}
-        `}>
+        <button 
+          data-position={index} 
+          class={`
+            slide-title slide-title-${index} flex gap-4 hover:text-[#C5C5C5]
+            ${index === 0 ? 'active' : ''}
+          `}
+        >
           <span class="font-mono">{slide.id}</span>
           <p class="">{slide.alt}</p>
         </button>
@@ -158,8 +161,7 @@ const { slides, classes = "" } = Astro.props;
         }
       }
 
-      // highlights proper title
-      Array.from(slideTitles).forEach(slide => {
+      [...slideTitles].forEach(slide => {
         slide.classList.contains(`slide-title-${curSlide}`)
           ? slide.classList.add('active')
           : slide.classList.remove('active');
@@ -169,7 +171,8 @@ const { slides, classes = "" } = Astro.props;
     slides.forEach((slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`));
 
     slideTitles.forEach(title => title.addEventListener('click', (e) => {
-      const position = parseInt((e.target as HTMLElement)?.dataset?.postition || '0');
+      debugger;
+      const position = parseInt((e.target as HTMLElement)?.dataset?.positition || '0');
       slideTo(position);
     }));
 
