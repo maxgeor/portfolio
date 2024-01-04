@@ -39,7 +39,7 @@ const { slides, classes = "" } = Astro.props;
     ${classes}
   `}
 >
-  <span class="counter flex font-mono absolute top-6 right-0">
+  <span class="counter flex font-mono absolute bottom-4 md:top-6 right-0">
     <span class="counter-current">1</span>
     <span>\</span>
     <span class="counter-total">{slides.length}</span>
@@ -95,7 +95,7 @@ const { slides, classes = "" } = Astro.props;
         <button 
           data-position={index} 
           class={`
-            slide-title slide-title-${index} flex gap-4 hover:text-[#C5C5C5]
+            slide-title slide-title-${index} flex gap-4 hover:text-[#C5C5C5] focus:text-[#C5C5C5]
             ${index === 0 ? 'active' : ''}
           `}
         >
@@ -170,8 +170,8 @@ const { slides, classes = "" } = Astro.props;
 
     slides.forEach((slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`));
 
-    slideTitles.forEach(title => title.addEventListener('click', (e) => {
-      const position = parseInt((e.target as HTMLElement)?.dataset?.positition || '0');
+    slideTitles.forEach(title => title.addEventListener('click', () => {
+      const position = parseInt(title.dataset?.position || '0');
       slideTo(position);
     }));
 
