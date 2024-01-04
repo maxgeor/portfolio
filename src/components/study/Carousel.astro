@@ -30,119 +30,150 @@ export interface Props {
   };
   classes?: string;
 }
-const { slides, span = 12, classes = "" } = Astro.props;
+const { slides, classes = "" } = Astro.props;
 ---
 
 <div
   class={`
-    carousel relative -mx-4 md:mx-0 h-fit
+    carousel grid grid-cols-12 col-span-full  gap-4 relative  h-fit
     ${classes}
   `}
 >
-  <Button
-    disabled={true}
-    ariaLabel="Previous slide"
-    ariaHidden="true"
-    invisiblePadding="px-4 py-14 -mx-2 -my-14"
-    classes="btn-prev group absolute top-1/2 left-2 sm:left-2 xl:-left-[17px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] opacity-0 transition-all duration-200 -mt-0"
+  <span class="counter flex font-mono absolute top-6 right-0">
+    <span class="counter-current">1</span>
+    <span>\</span>
+    <span class="counter-total">{slides.length}</span>
+  </span>
+  <button 
+    disabled="true" 
+    aria-label="Previous slide" 
+    class="btn-prev absolute top-1/2 -translate-y-1/2 left-0 opacity-50"
   >
-    <ChevronLeftIcon />
-  </Button>
-  <Button
-    ariaLabel="Next slide"
-    invisiblePadding="px-4 py-14 -mx-2 -my-14"
-    classes="btn-next group absolute top-1/2 right-2 sm:right-2 xl:-right-[17px] z-20 transform -translate-y-1/2 hover:scale-[102%] active:scale-[98%] duration-200 -mt-0"
+    Previous
+  </button>
+  <button 
+    aria-label="Next slide" 
+    class="btn-next absolute top-1/2 -translate-y-1/2 right-0"
   >
-    <ChevronRightIcon />
-  </Button>
-  <div
-    class="relative aspect-[7/4] w-full rotate-0 overflow-hidden bg-neutral-900"
-  >
-    {
-      slides?.map((slide) => (
-        <div class="slide absolute h-fit w-full transition-all duration-[450ms] ease-in-out">
-          {slide.type === "video" ? (
-            <Video
-              src={slide.src}
-              alt={slide.alt}
-              id={slide.id}
-              span={slide.span || 12}
-              orientation={slide.orientation}
-              hasPadding={slide.hasPadding}
-            />
-          ) : (
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              id={slide.id}
-              span={slide.span}
-              hasPadding={slide.hasPadding}
-            />
-          )}
-        </div>
-      ))
-    }
+    Next
+  </button>
+  <div class="flex flex-col gap-4 col-span-full md:col-span-8 md:col-start-3">
+    <div class="relative aspect-[7/4] w-full rotate-0 overflow-hidden bg-neutral-900">
+      {
+        slides?.map((slide, index) => (
+          <div class={`
+            slide slide-${index} 
+            absolute h-fit w-full transition-all duration-[450ms] ease-in-out
+          `}>
+            {slide.type === "video" ? (
+              <Video
+                src={slide.src}
+                alt={slide.alt}
+                id={slide.id}
+                span={slide.span || 12}
+                orientation={slide.orientation}
+                hasPadding={slide.hasPadding}
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                id={slide.id}
+                span={slide.span}
+                hasPadding={slide.hasPadding}
+              />
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div 
+      class="slide-titles md:col-start-3 md:col-span-3 col-span-full xl:col-span-2" 
+      style="text-wrap: pretty;"
+    >
+      {slides.map((slide, index) => (
+        <button data-position={index} class={`
+          slide-title-${index} flex gap-4 hover:text-[#C5C5C5]
+          ${index === 0 ? 'active' : ''}
+        `}>
+          <span class="font-mono">{slide.id}</span>
+          <p class="">{slide.alt}</p>
+        </button>
+      ))}
+    </div>
   </div>
 </div>
 
+<style is:inline>
+  .slide-titles > * {
+    color: #636363;
+  }
+
+  .slide-titles > .active {
+    color: #C5C5C5;
+  }
+</style>
+
 <script>
-  const carousels: NodeListOf<HTMLElement> =
-    document.querySelectorAll(".carousel");
+  const carousels: NodeListOf<HTMLElement> = document.querySelectorAll(".carousel");
 
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
-
-    slides.forEach(
-      (slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`)
-    );
+    const counter: HTMLSpanElement | null = carousel.querySelector(".counter-current");
+    const slideTitles: NodeListOf<HTMLButtonElement> = carousel.querySelectorAll(".slide-title");
+    const prevSlideBtn = carousel.querySelector(".btn-prev") as HTMLButtonElement;
+    const nextSlideBtn = carousel.querySelector(".btn-next") as HTMLButtonElement;
 
     let curSlide = 0;
 
-    const prevSlideBtn = carousel.querySelector(
-      ".btn-prev"
-    ) as HTMLButtonElement;
-    const nextSlideBtn = carousel.querySelector(
-      ".btn-next"
-    ) as HTMLButtonElement;
+    const isFirstSlide = () => curSlide === 0;
+    const isLastSlide = () => curSlide === slides.length - 1;
 
-    prevSlideBtn?.addEventListener("click", function () {
-      curSlide--;
+    const slideTo = (position: number) => {
+      curSlide = position;
 
-      if (nextSlideBtn && nextSlideBtn.disabled) {
-        nextSlideBtn.disabled = false;
-        nextSlideBtn.ariaHidden = 'false';
-        nextSlideBtn.style.opacity = "100%";
+      slides.forEach((slide, indx) => 
+        slide.style.transform = `translateX(${100 * (indx - position)}%)`
+      );
+
+      if (counter) counter.innerHTML = `${curSlide + 1}`;
+
+      if (nextSlideBtn) {
+        if (!isLastSlide() && nextSlideBtn.disabled) {
+          nextSlideBtn.disabled = false;
+          nextSlideBtn.style.opacity = "100%";
+        } else if (isLastSlide() && !nextSlideBtn.disabled) {
+          nextSlideBtn.disabled = true;
+          nextSlideBtn.style.opacity = "50%";
+        }
       }
 
-      if (curSlide === 0) {
-        prevSlideBtn.disabled = true;
-        prevSlideBtn.ariaHidden = 'true';
-        prevSlideBtn.style.opacity = "0%";
+      if (prevSlideBtn) {
+        if (!isFirstSlide() && prevSlideBtn.disabled) {
+          prevSlideBtn.disabled = false;
+          prevSlideBtn.style.opacity = "100%";
+        } else if (isFirstSlide() && !prevSlideBtn.disabled) {
+          prevSlideBtn.disabled = true;
+          prevSlideBtn.style.opacity = "50%";
+        }
       }
 
-      slides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+      // highlights proper title
+      Array.from(slideTitles).forEach(slide => {
+        slide.classList.contains(`slide-title-${curSlide}`)
+          ? slide.classList.add('active')
+          : slide.classList.remove('active');
       });
-    });
+    }
 
-    nextSlideBtn?.addEventListener("click", function () {
-      curSlide++;
+    slides.forEach((slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`));
 
-      if (prevSlideBtn && prevSlideBtn.disabled) {
-        prevSlideBtn.disabled = false;
-        prevSlideBtn.ariaHidden = 'false';
-        prevSlideBtn.style.opacity = "100%";
-      }
+    slideTitles.forEach(title => title.addEventListener('click', (e) => {
+      const position = parseInt((e.target as HTMLElement)?.dataset?.postition || '0');
+      slideTo(position);
+    }));
 
-      if (curSlide === slides.length - 1) {
-        nextSlideBtn.disabled = true;
-        nextSlideBtn.ariaHidden = 'true';
-        nextSlideBtn.style.opacity = "0%";
-      }
-
-      slides.forEach((slide, indx) => {
-        slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
-      });
-    });
+    prevSlideBtn?.addEventListener("click", () => slideTo(curSlide - 1));
+    nextSlideBtn?.addEventListener("click", () => slideTo(curSlide + 1));
   });
 </script>

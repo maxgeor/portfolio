@@ -67,13 +67,10 @@ const {
       </div>
     </Grid>
     <section id="hero" class='col-span-full grid grid-cols-12 gap-4'>
-      <div class="col-span-full flex justify-between border-t-[0.5px] border-[#636363]">
-        <nav class="flex gap-1.5 col-span-4">
-          <a href="/">MG</a>
-          <span>/</span>
-          <a href="/">Work</a>
-        </nav>
-        {link && <Link href={link} target='_blank' classes="col-span-4">Live Site</Link>}
+      <div id="hero" class='border-t-[0.5px] border-[#636363] col-span-full grid grid-cols-12 gap-4'>
+        <a href="/" class="col-span-3 xl:col-span-2">MG</a>
+        <a href="/" class="col-span-3 xl:col-span-2">Work</a>
+        {link && <Link href={link} target='_blank' classes="col-span-6 xl:col-span-8 justify-self-end">Live Site</Link>}
       </div>
       <div class="grid grid-cols-12 gap-4 col-span-full mt-48 xl:mt-64">
 
@@ -178,7 +175,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-y-24 gap-x-4
+          grid grid-cols-12 gap-x-4
         `}
       >
         <slot />

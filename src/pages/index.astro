@@ -33,23 +33,24 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
 ---
 
 <Layout title="Max Georgopoulos">
-  <div class="relative grid grid-cols-6  gap-y-8 gap-x-4 p-4 pt-0">
+  <div class=" relative grid grid-cols-6 gap-x-4 p-4 pt-0">
     <Header/>
 
-    <section class="col-span-full grid grid-cols-8 gap-12 xl:pb-12">
-      {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
-        <Study
-          title={study.title}
-          description={study.description}
-          image={study.image}
-          roles={study.roles}
-          year={study.year}
-          slug={study.slug}
-          link={study.link}
-          isComingSoon={study.isComingSoon}
-        />
-      ))}
-    </section>
+    <a class="uppercase py-1 col-span-full grid grid-cols-12 gap-4 ">
+      <p class="col-span-3">Case Study</p>
+      <p class="col-span-4">Description</p>
+      <p class="col-span-4">Roles</p>
+      <p>Year</p>
+    </a>
+    {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
+      <a class="border-t-[0.5px] border-dashed border-[#333] py-1 col-span-full grid grid-cols-12 gap-4 ">
+        <p class="col-span-3">{study.title}</p>
+        <p class="col-span-4">{study.description}</p>
+        <p class="col-span-4">{study.roles.long.join(', ')}</p>
+        <p>{study.year}</p>
+        
+      </a>
+    ))}
     <div class="col-span-full columns-1 md:columns-2 gap-x-4 space-y-4">
       {works
         .sort((a, b) => a.data.order - b.data.order)

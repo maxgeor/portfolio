@@ -8,8 +8,8 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<Grid gap={{ y: 8, x: 16 }}>
-  {title && <h1 class="col-span-3 col-start-3">{title}</h1>}
+<Grid gap={{ y: 8, x: 16 }} classes="mt-24 mb-20">
+  {title && <h1 class="col-span-9 col-start-2 xl:col-start-3">{title}</h1>}
   <p class="col-span-full text-[28px] leading-[28px] lg:text-[38px] lg:leading-[40px] text-[#636363] tracking-[-0.0425em]">
     <slot />
   </p>
@@ -20,5 +20,9 @@ const { title } = Astro.props;
     background-color: transparent;
     color: #C5C5C5;
     font-weight: 400;
+  }
+  
+  p > mark.solution {
+    background-color: #282828;
   }
 </style>
