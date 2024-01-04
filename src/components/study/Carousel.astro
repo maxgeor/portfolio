@@ -171,7 +171,6 @@ const { slides, classes = "" } = Astro.props;
     slides.forEach((slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`));
 
     slideTitles.forEach(title => title.addEventListener('click', (e) => {
-      debugger;
       const position = parseInt((e.target as HTMLElement)?.dataset?.positition || '0');
       slideTo(position);
     }));
