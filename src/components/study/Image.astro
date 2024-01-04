@@ -56,7 +56,7 @@ switch (typeof span) {
 >
   <p class="col-span-1 font-mono">{id}</p>
   <p class={`col-start-2 col-end-[-1]`}>{alt}</p>
-  <div class={`
+  <figure class={`
     grid col-span-full bg-neutral-800 gap-x-4
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
@@ -72,16 +72,5 @@ switch (typeof span) {
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
     />
-    <!-- <figure class={`
-      select-none self-center
-      ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-      ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-    `}>
-      <img
-        src={src}
-        alt={alt}
-        class='h-full w-full object-cover'
-      />
-    </figure> -->
-  </div>
+  </figure>
 </div>

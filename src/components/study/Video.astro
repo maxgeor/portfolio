@@ -13,7 +13,6 @@ export interface Props {
     lg?: number, 
     xl?: number 
   };
-  orientation?: 'horizontal' | 'vertical';
   hasPadding?: boolean;
   classes?: string;
 }
@@ -23,7 +22,6 @@ const {
   id,
   span = 12,
   hasPadding = false,
-  orientation = 'horizontal',
   classes = "" 
 } = Astro.props;
 
@@ -89,7 +87,7 @@ switch (typeof span) {
       <!-- <source src={extensionlessSrc + ".webm"} type="video/webm" /> -->
     </video>
     <PauseIcon
-      classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-2 left-[13px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow"
+      classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow"
     />
   </div>
 </div>
