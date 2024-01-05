@@ -60,8 +60,8 @@ const {
       classes="hidden transition sticky top-3 z-50 justify-between"
     >
       <a href="/" class="relative group col-span-2">
-        <p class="absolute opacity-0 group-hover:opacity-100 transition">MG</p>
-        <p class="absolute group-hover:opacity-0 transition">Formie</p>
+        <p class="absolute opacity-0 group-hover:opacity-100 transition uppercase">MG</p>
+        <p class="absolute group-hover:opacity-0 transition uppercase">Formie</p>
       </a>
       <div class="flex items-center col-span-2 col-start-11 justify-self-end">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
@@ -69,35 +69,32 @@ const {
       </div>
     </Grid>
     <section id="hero" class='col-span-full grid grid-cols-12 gap-4'>
-      <div id="hero" class='border-t-[0.5px] border-[#636363] col-span-full grid grid-cols-12 gap-4'>
-        <a href="/" class="col-span-3 xl:col-span-2">MG</a>
-        <a href="/" class="col-span-3 xl:col-span-2">Work</a>
-        {link && <Link href={link} target='_blank' classes="col-span-6 xl:col-span-8 justify-self-end">Live Site</Link>}
+      <div id="hero" class='col-span-full grid grid-cols-12 gap-4'>
+        <a href="/" class="col-span-3 xl:col-span-2 uppercase">MG</a>
+        <a href="/" class="col-span-3 xl:col-span-2 uppercase">Work</a>
       </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full mt-48 xl:mt-64">
-
-        <h1 class="col-span-6 col-start-7 text-right order-last text-[32px] leading-[32px] sm:text-[48px] sm:leading-[44px] xl:text-[135px] xl:leading-[112px] xl:-mt-1.5 xl:-mb-0.5 self-end">
-          {title}
-        </h1>
-        <div class="flex flex-col justify-between gap-4 col-span-6 sm:col-span-3">
-          <p style="text-wrap: balance;">{description}</p>
-          <div>
-            <p>{type}</p>
-            <p>{year}</p>
-          </div>
+      <Grid>
+        <h1 class="col-span-full border-y uppercase">{title}</h1>
+        <div class="col-span-2">
+          <p class="col-span-2">{description}</p>
         </div>
-      </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#636363]">
+        <div class="col-span-2">
+          <p>{type}</p>
+          <p>{year}</p>
+        </div>
+        {link && <a href={link} target='_blank' class="col-span-2 underline w-fit">Live Site</a>}
+      </Grid>
+      <Grid>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Roles</p>
+          <p class="uppercase">Roles</p>
           <ul class="col-span-3">{roles.long.map((role: string) => <li>{role}</li>)}</ul>
         </div>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Tools</p>
+          <p class="uppercase">Tools</p>
           <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
         </div>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Team</p>
+          <p class="uppercase">Team</p>
           <ul class="col-span-3">
             {teammates.map((
               teammate: { name: string, role: string, href: string }
@@ -114,18 +111,18 @@ const {
             ))}
           </ul>
         </div>
-      </div>
-      <div class="grid grid-cols-12 gap-4 col-span-full border-t-[0.5px] border-[#636363]">
+      </Grid>
+      <Grid>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Problem</p>
+          <p class="uppercase">Problem</p>
           <p class="col-span-3">{tldr.problem}</p>
         </div>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Solution</p>
+          <p class="uppercase">Solution</p>
           <p class="col-span-3">{tldr.solution}</p>
         </div>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Decisions</p>
+          <p class="uppercase">Decisions</p>
           <ul class="col-span-3">
             {tldr.decisions.map((decision: string, index: number) => 
               <li><span class="font-mono">{index + 1}</span>/ {decision}</li>
@@ -133,21 +130,15 @@ const {
           </ul>
         </div>
         <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
-          <p>Tradeoffs</p>
+          <p class="uppercase">Tradeoffs</p>
           <ul class="col-span-3">
             {tldr.tradeoffs.map((tradeoff: string, index: number) => 
               <li><span class="font-mono">{index + 1}</span>/ {tradeoff}</li>
             )}
           </ul>
         </div>
-      </div>
-      <!-- <figure class="col-span-full select-none pt-4 -mx-4">
-        <img
-          src={image}
-          alt={''}
-          class='h-full w-full object-cover'
-        />
-      </figure> -->
+      </Grid>
+      <div class="border-y border-[#c5c5c5] h-4 col-span-full"></div>
     </section>
     <article
       id="article"

@@ -15,8 +15,8 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        sm: ['14px', '20px'],
         DEFAULT: ['16px', '24px'],
+        sm: ['14px', '20px'],
         md: ['20px', '24px'],  
         lg: ['28px', '32px'],  
         xl: ['40px', '40px'],  
@@ -26,8 +26,8 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#ffb235',
-        yellow: '#ffb235',
+        red: '#fff000',
+        yellow: '#fff000',
         orange: '#d05f40',
         green: '#0E9900',
         neutral: {

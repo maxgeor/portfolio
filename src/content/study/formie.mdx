@@ -84,30 +84,36 @@ import Context from "../../components/study/Context.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Section from "../../components/study/Section.astro";
+import PaginatedSection from "../../components/study/PaginatedSection.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Problem'>Developers make blockchain apps by 1/ Writing code 2/ Uploading it to Ethereum or another blockchain as smart contracts 3/ Building a frontend for those contracts (an app or website) so people can use them. To save time, <mark>blockchain developers use frontend generators, like Etherscan</mark> which take your code and spit out a bare-bones, working UI. Etherscan is the most popular frontend generator, powering tons of Ethereum projects. Blockchain developers use tools like Etherscan to get a basic UI for free. But <mark>Etherscan's UI sucks</mark>. 1/ It's a list of <mark>technically-worded</mark> forms 2/ It’s <mark>hard to navigate</mark> 3/ It <mark>shares little feedback</mark> about transactions.</Context>
 
-  
-
-{/* <div class="grid col-span-full xl:col-span-6 xl:col-start-4 grid-cols-12 xl:grid-cols-8 gap-y-2 gap-x-4">
-  <Image
-    src="/work/formie/annotated-etherscan-page-1.png"
-    alt="Etherscan's interface for smart contract actions"
-    classes="col-span-full xl:order-last"
-  />
-  <p class="col-span-1 hidden xl:inline-block">P0</p>
-  <div class="flex gap-1.5 col-span-6 xl:col-span-3 ">
-    <span class="xl:hidden">P0:</span>
-    <p class="">Etherscan's interface for smart contract actions</p>
-  </div>
-  <p class="col-span-6 xl:col-span-3 xl:col-start-5 ">No help or hints. It’s so bad, you need a YouTube tutorial.</p>
-</div> */}
-{/* <div class="mix-blend-difference	 mb-4  border-[#C5C5C5] mt-32 sticky col-span-full flex justify-between gap-4 top-4 items-center">
-  <p class="">Research</p>
-  <p class="font-mono">2\5</p>
-</div> */}
-<Grid>
+<PaginatedSection
+  sections={[
+    {
+      id: 'R0',
+      title: 'Most actions needed basic UIs',
+      details: "We started by studying what worked with Etherscan's interface. Their \"frontend\" was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.",
+      media: {
+        type: 'image',
+        src: "/work/formie/research/forms/etherscan-form-ui.png",
+        alt: "Etherscan's UI for Uniswaps's Delegate method",
+      }
+    },
+    {
+      id: 'R1',
+      title: 'Most projects used Etherscan for one-way actions',
+      details: "Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs.",
+      media: {
+        type: 'video',
+        src: "/work/formie/research/one-ways/mloot-flow",
+        alt: "Flow to mint mLoot",
+      }
+    }
+  ]}
+/>
+{/* <Grid>
   <Image 
     src="/work/formie/research/forms/etherscan-form-ui.png" 
     alt="Etherscan's UI for Uniswaps's Delegate method"
@@ -135,7 +141,7 @@ import Carousel from "../../components/study/Carousel.astro";
         
     Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
   </div>
-</Grid>
+</Grid> */}
 
 <Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> / You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</Context>
 

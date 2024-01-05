@@ -1,0 +1,137 @@
+---
+import Grid from '../Grid.astro';
+import Image from "./Image.astro";
+import Video from "./Video.astro";
+
+export interface Props {
+  sections: {
+    id: string;
+    title: string;
+    details: string[];
+    media: {
+      type: "image" | "video";
+      src: string;
+      alt: string;
+    }
+  }[];
+  classes?: string;
+}
+const { sections, classes = "" } = Astro.props;
+---
+
+<Grid classes={`paginated-section ${classes}`}>
+  {sections.map((section, index) => {
+    return section.media.type === 'video' ? (
+      <Video
+        id={section.id}
+        src={section.media.src}
+        alt={section.media.alt}
+        span={{ base: 12, sm: 10, xl: 6 }}
+        classes={`
+          section-media section-media-${index}
+          sm:col-start-2 xl:col-start-4
+          ${index > 0 ? 'hidden' : ''}
+        `}
+      />
+    ) : (
+      <Image 
+        src={section.media.src}
+        alt={section.media.alt}
+        id={section.id}
+        span={{ base: 12, sm: 10, xl: 6 }}
+        classes={`
+          section-media section-media-${index}
+          sm:col-start-2 xl:col-start-4
+          ${index > 0 ? 'hidden' : ''}
+        `}
+      />
+    )
+  })}
+  <div 
+    class="section-titles md:order-2 sm:col-start-2 xl:order-first col-span-full xl:col-span-2 xl:mt-6" 
+    style="text-wrap: pretty;"
+  >
+    {sections.map((section, index) => (
+      <button 
+        data-index={index} 
+        class={`
+          section-title section-title-${index} 
+          flex gap-4 text-left
+          ${index === 0 ? 'active' : ''}
+        `}
+      >
+        <span class="font-mono">{section.id}</span>
+        <p class="">{section.title}</p>
+      </button>
+    ))}
+  </div>
+  {sections.map((section, index) => (
+    <p class={`
+      section-detail section-detail-${index}
+      md:order-3 col-span-full max-w-prose sm:col-start-2 xl:col-start-11 xl:col-span-2 flex flex-col gap-2 xl:mt-6
+      ${index > 0 ? 'hidden' : ''}
+    `}>
+      {section.details}
+    </p>
+  ))}
+</Grid>
+
+<style>
+  .section-titles > * {
+    color: #636363;
+  }
+  .section-titles > .active {
+    color: #C5C5C5;
+  }
+</style>
+
+<script>
+  const paginatedSections: NodeListOf<HTMLElement> = 
+    document.querySelectorAll(".paginated-section");
+
+  const switchSection = (
+    titles: NodeListOf<HTMLElement>,
+    medias: NodeListOf<HTMLElement>,
+    details: NodeListOf<HTMLElement>,
+    index: number
+  ) => {
+
+    [...medias].forEach(media => {
+      media.classList.contains(`section-media-${index}`)
+        ? media.classList.remove('hidden')
+        : media.classList.add('hidden');
+    });
+
+    [...details].forEach(detail => {
+      detail.classList.contains(`section-detail-${index}`)
+        ? detail.classList.remove('hidden')
+        : detail.classList.add('hidden');
+    });
+
+    [...titles].forEach(title => {
+      title.classList.contains(`section-title-${index}`)
+        ? title.classList.add('active')
+        : title.classList.remove('active');
+    });
+  }
+
+  paginatedSections?.forEach((paginatedSection) => {
+    // debugger;
+    const medias: NodeListOf<HTMLButtonElement> = 
+      paginatedSection.querySelectorAll('.section-media');
+    const details: NodeListOf<HTMLButtonElement> = 
+      paginatedSection.querySelectorAll('.section-detail');
+    const titles: NodeListOf<HTMLButtonElement> = 
+      paginatedSection.querySelectorAll(".section-title");
+
+    titles.forEach(title => title.addEventListener('click', () => {
+      const index = parseInt(title.dataset?.index || '0');
+      switchSection(titles, medias, details, index);
+    }));
+    
+    titles.forEach(title => title.addEventListener('onmouseover', () => {
+      const index = parseInt(title.dataset?.index || '0');
+      switchSection(titles, medias, details, index);
+    }));
+  });
+</script>
