@@ -116,7 +116,6 @@ const { sections, classes = "" } = Astro.props;
   }
 
   paginatedSections?.forEach((paginatedSection) => {
-    // debugger;
     const medias: NodeListOf<HTMLButtonElement> = 
       paginatedSection.querySelectorAll('.section-media');
     const details: NodeListOf<HTMLButtonElement> = 
