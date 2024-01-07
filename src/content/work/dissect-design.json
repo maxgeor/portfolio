@@ -3,9 +3,11 @@
   "title": "Dissect Design",
   "description": "Collection of design decisions",
   "image": "/work/dissect-design.png",
+  "roles": ["Product Design", "Frontend Development"],
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",
     "target": "_blank"
   },
-  "order": 5
+  "order": 5,
+  "year": "2022"
 }

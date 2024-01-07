@@ -3,9 +3,11 @@
   "title": "Scope Todo",
   "description": "Todo widget for Figma, 38k users",
   "image": "/work/scope-todo.png",
+  "roles": ["Product Design", "Frontend Development"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",
     "target": "_blank"
   },
-  "order": 3
+  "order": 3,
+  "year": "2022"
 }

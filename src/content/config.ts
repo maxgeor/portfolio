@@ -6,6 +6,7 @@ const work = defineCollection({
     type: z.enum(['client', 'project']),
     title: z.string(),
     description: z.string(),
+    roles: z.array(z.string()),
     image: z.string(),
     link: z.object({
       href: z.string(),
@@ -14,7 +15,8 @@ const work = defineCollection({
     hasStudy: z.boolean().optional(),
     isDraft: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
-    order: z.number()
+    order: z.number(),
+    year: z.string()
   })
 });
 
@@ -23,11 +25,6 @@ const study = defineCollection({
   schema: z.object({
     type: z.string(),
     work: reference('work'),
-    year: z.string(),
-    roles: z.object({
-      long: z.array(z.string()),
-      short: z.array(z.string()),
-    }),
     tldr: z.object({
       problem: z.string(),
       solution: z.string(),

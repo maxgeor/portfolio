@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex uppercase col-span-4 gap-2">
       <Link 
         href="/work" 
-        classes={currentPath.includes('work') || currentPath.includes('study') ? 'line-through' : ''}
+        classes={currentPath === '/' || currentPath.includes('study') ? 'line-through' : ''}
       >Work</Link>
       <Link 
         href="/writing"

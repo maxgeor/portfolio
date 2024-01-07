@@ -26,34 +26,34 @@ const {
 {isComingSoon ? (
   <div
     class={`
-      col-span-full xl:col-span-4 group overflow-hidden relative  gap-x-4 h-fit cursor-not-allowed border-t 
+      group col-span-full xl:col-span-4 group overflow-hidden relative  gap-x-4 gap-y-2 h-fit cursor-not-allowed border-t-[0.5px] border-[#636363]
       ${classes} 
     `}
   >
     <ComingSoonBanner />
-    <div class="flex flex-wrap justify-between gap-2">
+    <div class="flex flex-wrap justify-between gap-2 py-1 group-hover:bg-neutral-700">
       <h3 aria-label={`${title} (coming soon)`} class="uppercase  w-fit">{title}</h3>
       <p>{description}</p>
     </div>
     <picture class='relative h-auto'>
-        <img
-          src={image}
-          alt={`Preview mockup of ${title}`}
-          class='w-full h-full object-top select-none object-contain'
-        />
-      </picture>
+      <img
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class='w-full h-full object-top select-none object-contain'
+      />
+    </picture>
   </div>
 ) : (
   <a
     href={link?.href || '#'}
     target={link?.target || '_self'}
     class={`
-      col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-x-4 h-fit border-t 
+      group col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-x-4 h-fit border-t-[0.5px] border-[#636363]
       ${classes} 
     `}
   >
-  <div class="flex justify-between gap-2 ">
-    <h3 aria-label={title} class="uppercase group-hover:bg-neutral-800 group-hover: w-fit">
+  <div class="flex justify-between gap-2 py-1 group-hover:bg-neutral-700">
+    <h3 aria-label={title} class=" w-fit">
       <span>{title}</span>
       {link?.target === '_blank' && (
         <svg 
