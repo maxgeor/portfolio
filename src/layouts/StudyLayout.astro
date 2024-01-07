@@ -6,7 +6,6 @@ import Header from "../components/Header.astro";
 import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
 import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
 import Button from "../components/Button.astro";
-import ExpandableSidebarNav from "../components/study/ExpandableSidebarNav.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -18,14 +17,12 @@ const {
   year,
   link,
   tools,
-  sections,
-  image,
   teammates,
 } = frontmatter;
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4 p-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Button 
       tag="a" 
       href="#article" 
@@ -57,43 +54,52 @@ const {
     </Button>
     <Grid 
       id="sticky-header" 
-      classes="hidden transition sticky top-3 z-50 justify-between"
+      classes="hidden transition sticky top-3 z-50 justify-between "
     >
       <a href="/" class="relative group col-span-2">
         <p class="absolute opacity-0 group-hover:opacity-100 transition uppercase">MG</p>
-        <p class="absolute group-hover:opacity-0 transition uppercase">Formie</p>
+        <p class="absolute group-hover:opacity-0 transition uppercase">{title}</p>
       </a>
       <div class="flex items-center col-span-2 col-start-11 justify-self-end">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-        <p class="font-mono">1\5</p>
+        <p class="tabular">1/5</p>
       </div>
     </Grid>
+    <Header/>
     <section id="hero" class='col-span-full grid grid-cols-12 gap-4'>
-      <div id="hero" class='col-span-full grid grid-cols-12 gap-4'>
-        <a href="/" class="col-span-3 xl:col-span-2 uppercase">MG</a>
-        <a href="/" class="col-span-3 xl:col-span-2 uppercase">Work</a>
-      </div>
-      <Grid>
-        <h1 class="col-span-full border-y uppercase">{title}</h1>
+      <h1 class="my-8 xl:my-12 col-span-full xl:col-start-3 uppercase text-2xl leading-[44px] md:text-4xl md:leading-[80px] xl:text-5xl -ml-1 md:-ml-2 xl:-ml-3 ">
+      {title}
+      </h1>
+      <div class="hidden xl:flex flex-col gap-4 col-span-3 xl:col-span-2 pr-8">
         <div class="col-span-2">
-          <p class="col-span-2">{description}</p>
+          <p class="col-span-2 text-balance">{description}</p>
         </div>
         <div class="col-span-2">
           <p>{type}</p>
           <p>{year}</p>
         </div>
         {link && <a href={link} target='_blank' class="col-span-2 underline w-fit">Live Site</a>}
-      </Grid>
-      <Grid>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-9 xl:col-start-3 gap-4 col-span-6  md:col-span-full xl:col-span-9">
+        <div class="flex xl:hidden flex-col gap-4 col-span-3 xl:col-span-2 pr-8">
+          <div class="col-span-2">
+            <p class="col-span-2 text-balance">{description}</p>
+          </div>
+          <div class="col-span-2">
+            <p>{type}</p>
+            <p>{year}</p>
+          </div>
+          {link && <a href={link} target='_blank' class="col-span-2 underline w-fit">Live Site</a>}
+        </div>
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Roles</p>
           <ul class="col-span-3">{roles.long.map((role: string) => <li>{role}</li>)}</ul>
         </div>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Tools</p>
           <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
         </div>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Team</p>
           <ul class="col-span-3">
             {teammates.map((
@@ -111,34 +117,33 @@ const {
             ))}
           </ul>
         </div>
-      </Grid>
-      <Grid>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-9 xl:col-start-3 gap-4 col-span-6  md:col-span-full xl:col-span-9">
+        <div class="pr-8 col-start-1 col-end-4 xl:col-end-3">
           <p class="uppercase">Problem</p>
           <p class="col-span-3">{tldr.problem}</p>
         </div>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Solution</p>
           <p class="col-span-3">{tldr.solution}</p>
         </div>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Decisions</p>
           <ul class="col-span-3">
             {tldr.decisions.map((decision: string, index: number) => 
-              <li><span class="font-mono">{index + 1}</span>/ {decision}</li>
+              <li><span class="tabular">{index + 1}</span>/ {decision}</li>
             )}
           </ul>
         </div>
-        <div class="col-span-full sm:col-span-3 xl:col-span-2 grid grid-cols-4 sm:grid-cols-1 gap-x-4 h-fit">
+        <div class="col-span-3 xl:col-span-2 pr-8">
           <p class="uppercase">Tradeoffs</p>
           <ul class="col-span-3">
             {tldr.tradeoffs.map((tradeoff: string, index: number) => 
-              <li><span class="font-mono">{index + 1}</span>/ {tradeoff}</li>
+              <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
             )}
           </ul>
         </div>
-      </Grid>
-      <div class="border-y border-[#c5c5c5] h-4 col-span-full"></div>
+      </div>
     </section>
     <article
       id="article"
@@ -146,9 +151,9 @@ const {
     >
       <div
         class={`
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-800 hover:prose-a:text-black
+          transition-all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-800 hover:prose-a:text-black
 
-          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:tabular prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300

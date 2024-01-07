@@ -122,17 +122,17 @@ import Carousel from "../../components/study/Carousel.astro";
     classes="sm:col-start-2 xl:col-start-4"
   />
   <div class="md:order-2 sm:col-start-2 xl:order-first col-span-full xl:col-span-2 xl:mt-6" style="text-wrap: pretty;">
-    <div class="flex gap-4 text-[#C5C5C5]">
-      <span class="font-mono">R0</span>
+    <div class="flex gap-4 text-[#b6b6b6]">
+      <span class="tabular">R0</span>
       <p class="">Most actions needed basic UIs</p>
     </div>
     <div class="flex gap-4 text-[#636363]">
-      <span class="font-mono">R1</span>
+      <span class="tabular">R1</span>
     <p class="">Projects used Etherscan for one-way actions</p>
 
     </div>
     <div class="flex gap-4 text-[#636363]">
-      <span class="font-mono">R2</span>
+      <span class="tabular">R2</span>
       <p class="">Projects sacrificed UX to save time</p>
     </div>
   </div>
@@ -213,6 +213,20 @@ import Carousel from "../../components/study/Carousel.astro";
 />
 
 <Context title='Challenge 2: Making forms flexible'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
+
+<div class="relative border border-[#636363] border-dashed col-span-full xl:col-span-8 xl:col-start-3 grid grid-cols-12 xl:grid-cols-8 gap-4 my-16 p-8 -mx-8">
+  <p class="absolute -top-2 left-8 bg-black  px-1.5 -ml-2 w-fit uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
+
+  <div class="flex flex-col gap-2 col-span-2">
+    We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc.)
+
+    But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
+
+    To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways.
+
+    Limited customization kept form creation straightforward while offering more control than Etherscan.
+  </div>
+</div>
 
 <Context title='Challenge 3: Explaining technical ideas'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 

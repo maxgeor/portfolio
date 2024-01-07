@@ -39,9 +39,9 @@ const { slides, classes = "" } = Astro.props;
     ${classes}
   `}
 >
-  <span class="counter flex font-mono absolute bottom-4 md:top-6 right-4 md:right-0 self-start">
+  <span class="counter flex tabular absolute bottom-4 md:top-6 right-4 md:right-0 self-start">
     <span class="counter-current">1</span>
-    <span>\</span>
+    <span>/</span>
     <span class="counter-total">{slides.length}</span>
   </span>
   <button 
@@ -60,7 +60,7 @@ const { slides, classes = "" } = Astro.props;
     <span class="hidden md:block">Next</span>
   </button>
   <div class="flex flex-col gap-4 col-span-full md:col-span-8 md:col-start-3">
-    <div class="relative aspect-[7/4] w-full rotate-0 overflow-hidden bg-neutral-900">
+    <div class="relative aspect-[7/4] w-full rotate-0 overflow-hidden">
       {
         slides?.map((slide, index) => (
           <div class={`
@@ -96,11 +96,11 @@ const { slides, classes = "" } = Astro.props;
         <button 
           data-position={index} 
           class={`
-            slide-title slide-title-${index} flex gap-4 text-left  hover:text-[#C5C5C5] focus:text-[#C5C5C5]
+            slide-title slide-title-${index} flex gap-4 text-left  hover:text-white focus:text-white
             ${index === 0 ? 'active' : ''}
           `}
         >
-          <span class="font-mono">{slide.id}</span>
+          <span class="tabular">{slide.id}</span>
           <p class="">{slide.alt}</p>
         </button>
       ))}
@@ -109,13 +109,18 @@ const { slides, classes = "" } = Astro.props;
 </div>
 
 <style>
+  .slide-titles > .active {
+    color: #ddd;
+  }
   .slide-titles > * {
     color: #636363;
   }
 
-  .slide-titles > .active {
-    color: #C5C5C5;
+  .slide-titles > *:hover {
+    color: #ddd;
   }
+
+  
 </style>
 
 <script>

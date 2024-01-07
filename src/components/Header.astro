@@ -8,25 +8,38 @@ export interface Props {
 }
 
 const { classes = "" } = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 <header
   class={`
-    border-y col-span-full grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4 
+    col-span-full grid grid-cols-12 gap-4
     ${classes}
   `}
 >
-  <Link href="/" classes="uppercase">Max Georgopoulos</Link>
-  <p>Product Designer & Frontend Developer</p>
-  <div class="flex uppercase xl:col-start-4 col-span-1 gap-2">
-    <Link href="/work">Work</Link>
-    <Link href="/writing">Writing</Link>
-    <Link href="/info">Info</Link>
+  <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
+    <Link href="/" classes="uppercase col-span-2">MG</Link>
+    <p class="col-span-4">Product  Designer +<br/> Frontend Developer</p>
   </div>
-  
-  <div class="relative col-start-6 col-span-1">
-    <!-- <span class="absolute h-[5px] w-[5px] rounded-full bg-neutral-800 top-[5px] -left-[21px]"></span> -->
-    <p>Available for hire</p>
-    <p>max123358@gmail.com</p>
+  <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
+    <div class="flex uppercase col-span-4 gap-2">
+      <Link 
+        href="/work" 
+        classes={currentPath.includes('work') || currentPath.includes('study') ? 'line-through' : ''}
+      >Work</Link>
+      <Link 
+        href="/writing"
+        classes={currentPath.includes('writing') ? 'line-through' : ''}
+      >Writing</Link>
+      <Link 
+        href="/info"
+        classes={currentPath.includes('info') ? 'line-through' : ''}
+      >Info</Link>
+    </div>
+    <div class="relative col-span-2">
+      <p>Available for hire</p>
+      <p>max123358<span class="font-mono">@</span>gmail.com</p>
+    </div>
   </div>
 
 </header>
@@ -121,7 +134,7 @@ const { classes = "" } = Astro.props;
   </div>
     <span class="absolute z-50 top-0 right-0 h-4 bg-[#111]"></span>
   </div>
-  <div class="order-3 col-span-2 md:col-span-1 md:order-none flex items-center justify-center !border-l border-b md:border-b-0   md:-mr-4 font-mono">{time}</div>
+  <div class="order-3 col-span-2 md:col-span-1 md:order-none flex items-center justify-center !border-l border-b md:border-b-0   md:-mr-4 tabular">{time}</div>
 </header> -->
 
 <style>

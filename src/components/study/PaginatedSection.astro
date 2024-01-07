@@ -56,11 +56,11 @@ const { sections, classes = "" } = Astro.props;
         data-index={index} 
         class={`
           section-title section-title-${index} 
-          flex gap-4 text-left
+          flex gap-4 text-left hover:text-white focus:text-white
           ${index === 0 ? 'active' : ''}
         `}
       >
-        <span class="font-mono">{section.id}</span>
+        <span class="tabular">{section.id}</span>
         <p class="">{section.title}</p>
       </button>
     ))}
@@ -80,8 +80,11 @@ const { sections, classes = "" } = Astro.props;
   .section-titles > * {
     color: #636363;
   }
+  .section-titles > *:hover {
+    color: #ddd;
+  }
   .section-titles > .active {
-    color: #C5C5C5;
+    color: #ddd;
   }
 </style>
 
@@ -128,7 +131,7 @@ const { sections, classes = "" } = Astro.props;
       switchSection(titles, medias, details, index);
     }));
     
-    titles.forEach(title => title.addEventListener('onmouseover', () => {
+    titles.forEach(title => title.addEventListener('onmouseenter', (e) => {
       const index = parseInt(title.dataset?.index || '0');
       switchSection(titles, medias, details, index);
     }));

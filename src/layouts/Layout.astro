@@ -10,7 +10,7 @@ const {
   title = "Max Georgopoulos",
   description,
   maxWidth = "",
-  backgroundColor = "bg-[#151515]",
+  backgroundColor = "bg-[#000]",
 } = Astro.props;
 ---
 
@@ -28,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-    text-[#c5c5c5] min-h-screen text-xs selection:bg-yellow selection:text-[#151515] antialiased pb-24
+    text-[#ddd] font-sans min-h-screen text-[12px] leading-[16px] selection:bg-yellow selection:text-[#151515] antialiased p-4 pb-24
     `}
   >
     <slot />
@@ -36,6 +36,16 @@ const {
 </html>
 
 <style is:global>  
+  .tabualar {
+    font-variant: small-caps;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .small-caps {
+    font-variant: small-caps;
+  }
+  
   @font-face {
     font-family: Pixel;
     src: url(/fonts/MintsodaLimeGreen.ttf);
@@ -79,8 +89,8 @@ const {
   }
 
   html {
+    letter-spacing: 0.008em;
     text-rendering: optimizeLegibility;
-    letter-spacing: -0.008em;
     -webkit-tap-highlight-color: rgba(255, 240, 0, 0.25);
   }
 
