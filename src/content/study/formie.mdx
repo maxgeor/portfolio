@@ -145,7 +145,7 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> / You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</Context>
 
-<div class="mb-20 col-span-full sm:col-span-10 md:col-span-8 grid grid-cols-12 sm:grid-cols-9 sm:col-start-2 md:grid-cols-8 md:col-start-3 gap-4">
+<div class="col-span-full sm:col-span-10 md:col-span-8 grid grid-cols-12 sm:grid-cols-9 sm:col-start-2 md:grid-cols-8 md:col-start-3 gap-4">
   <Video 
     src="/work/formie/s1.mp4" 
     alt="Full app walkthrough, desktop"
@@ -154,7 +154,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<div class="mb-20 overflow-x-scroll col-span-full grid grid-cols-12 gap-4">
+<div class="overflow-x-scroll col-span-full grid grid-cols-12 gap-4">
   <Image
     src="/work/formie/s4.png"
     alt="New form (find contract)"
@@ -214,8 +214,8 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Challenge 2: Making forms flexible'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 
-<div class="relative border border-[#636363] border-dashed col-span-full xl:col-span-8 xl:col-start-3 grid grid-cols-12 xl:grid-cols-8 gap-4 my-16 p-8 -mx-8">
-  <p class="absolute -top-2 left-8 bg-black  px-1.5 -ml-2 w-fit uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
+<div class="relative border border-[#636363] border-dashed col-span-full xl:col-span-8 xl:col-start-3 grid grid-cols-12 xl:grid-cols-8 gap-4 p-6 -mx-6">
+  <p class="absolute -top-2 left-6 bg-black  px-1.5 -ml-2 w-fit uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
 
   <div class="flex flex-col gap-2 col-span-2">
     We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc.)
