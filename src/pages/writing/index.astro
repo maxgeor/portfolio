@@ -8,9 +8,13 @@ const writings = await getCollection('writing');
 ---
 
 <Layout title="Writing">
-  <div class="grid grid-cols-6 gap-y-8 gap-x-4">
+  <div class="grid grid-cols-12 gap-y-4 gap-x-4 col-span-full">
     <Header />
-    <div class="flex flex-col col-span-full xl:col-span-4 xl:col-start-2 -my-1">
+    <div class="flex flex-col col-span-full ">
+      <div class="uppercase py-1 col-span-full grid grid-cols-12 gap-4 ">
+        <p class="col-span-6">Writing</p>
+        <p class="col-span-6">Date</p>
+      </div>
       {writings?.sort((a, b) => {
         const dateA: any = new Date(a.data.date);
         const dateB: any = new Date(b.data.date);

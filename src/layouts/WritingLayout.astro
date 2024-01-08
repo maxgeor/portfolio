@@ -9,20 +9,24 @@ const formattedDate = formatDate(frontmatter.date);
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="grid grid-cols-6 gap-y-8 gap-x-4 px-4">
+  <div class="grid grid-cols-12 gap-4">
     <Header goBackPath="/writing" />
-    <div class="grid grid-cols-6 col-span-full gap-x-4h">
-      <h1 class="col-span-3 xl:col-start-2 xl:col-span-3 uppercase">{frontmatter.title}</h1>
-      <p class="col-span-3 md:col-span-1 xl:justify-self-end">
+    <div class="col-span-full grid grid-cols-12 gap-x-4 py-1 border-y-[0.5px] border-[#636363]">
+
+      <h1 class="col-span-6">{frontmatter.title}</h1>
+      <p class="col-span-6 md:col-span-2 md:col-start-11 uppercase">
         {formattedDate}
       </p>
     </div>
-    <main class="col-span-full xl:col-span-4 xl:col-start-2">
+    <main class="md:col-start-3 xl:col-start-3 col-span-full md:col-span-6 xl:col-span-4 max-w-prose">
       <div
         class={`
           prose-xs max-w-prose leading-4 normal-case	
           prose-headings:uppercase
           prose-headings:mt-12 prose-headings:mb-4
+          prose-p:my-4
+          first:prose-p:mt-0
+          last:prose-p:mb-0
           prose-a:underline
           prose-strong:font-medium prose-strong:text-neutral-100
           prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:tabular prose-code:font-normal prose-code:whitespace-nowrap

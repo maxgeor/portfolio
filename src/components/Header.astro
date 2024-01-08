@@ -24,19 +24,19 @@ const currentPath = Astro.url.pathname;
   <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
     <div class="flex uppercase col-span-4 gap-2">
       <Link 
-        href="/work" 
-        classes={currentPath === '/' || currentPath.includes('study') ? 'line-through' : ''}
+        href="/" 
+        classes={currentPath === '/' || currentPath.includes('study') ? 'line-through hover:line-through' : ''}
       >Work</Link>
       <Link 
         href="/writing"
-        classes={currentPath.includes('writing') ? 'line-through' : ''}
+        classes={currentPath.includes('writing') ? 'line-through hover:line-through' : ''}
       >Writing</Link>
       <Link 
         href="/info"
-        classes={currentPath.includes('info') ? 'line-through' : ''}
+        classes={currentPath.includes('info') ? 'line-through hover:line-through' : ''}
       >Info</Link>
     </div>
-    <div class="relative col-span-2">
+    <div class=" relative col-span-2">
       <p>Available for hire</p>
       <p>max123358<span class="font-mono">@</span>gmail.com</p>
     </div>

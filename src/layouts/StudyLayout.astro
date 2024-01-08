@@ -66,68 +66,59 @@ const {
       </div>
     </Grid>
     <Header/>
-    <section id="hero" class='col-span-full grid grid-cols-12 gap-4'>
-      <h1 class="my-8 xl:my-12 col-span-full xl:col-start-3 uppercase text-2xl leading-[44px] md:text-4xl md:leading-[80px] xl:text-5xl -ml-1 md:-ml-2 xl:-ml-3 ">
-      {title}
-      </h1>
-      <div class="hidden xl:flex flex-col gap-4 col-span-3 xl:col-span-2 pr-8">
+    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b-[0.5px] border-[#636363]'>
+      <div class="grid grid-cols-12 col-span-full border-b-[0.5px] border-[#636363] gap-x-4 py-1">
+        <h1 class="col-span-6 uppercase">
+        {title}
+        </h1>
+        {link && <Link href={link} target='_blank' classes="col-span-6 w-fit">Live Site</Link>}
+      </div>
+      <div class="hidden xl:flex flex-col justify-between gap-4 col-span-3 xl:col-span-2 py-1 row-span-2">
         <div class="col-span-2">
           <p class="col-span-2 text-balance">{description}</p>
         </div>
         <div class="col-span-2">
-          <p>{type}</p>
           <p>{year}</p>
+          <p>{type}</p>
         </div>
-        {link && <a href={link} target='_blank' class="col-span-2 underline w-fit">Live Site</a>}
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-9 xl:col-start-3 gap-4 col-span-6  md:col-span-full xl:col-span-9">
-        <div class="flex xl:hidden flex-col gap-4 col-span-3 xl:col-span-2 pr-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 md:col-span-full">
+        <div class="order-last self-end flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <div class="col-span-2">
             <p class="col-span-2 text-balance">{description}</p>
           </div>
-          <div class="col-span-2">
-            <p>{type}</p>
-            <p>{year}</p>
-          </div>
-          {link && <a href={link} target='_blank' class="col-span-2 underline w-fit">Live Site</a>}
+          <p>{year}</p>
+          <p>{type}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 py-1">
           <p class="uppercase">Roles</p>
-          <ul class="col-span-3">{roles?.map((role: string) => <li>{role}</li>)}</ul>
+          <ul class="col-span-3">{roles?.join(', ')}</ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1 h-fit">
           <p class="uppercase">Tools</p>
-          <ul class="col-span-3">{tools.map((role: string) => <li>{role}</li>)}</ul>
+          <p class="col-span-3">{tools.join(', ')}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1 h-min">
           <p class="uppercase">Team</p>
-          <ul class="col-span-3">
-            {teammates.map((
-              teammate: { name: string, role: string, href: string }
-            ) => (
-              <li class="flex gap-[2px]">
-                <Link
-                href={teammate.href}
-                classes="hover:bg-neutral-800 hover:text-black"
-                >
-                {teammate.name}
-                </Link> 
-                <span>({teammate.role})</span>
-              </li>
+          <div>
+            {teammates.map((teammate: { name: string, role: string, href: string }) => (
+              <span>
+                <a href={teammate.href}>{teammate.name}</a> ({teammate.role})
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-9 xl:col-start-3 gap-4 col-span-6  md:col-span-full xl:col-span-9">
-        <div class="pr-8 col-start-1 col-end-4 xl:col-end-3">
+      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t-[0.5px] border-[#636363]">
+        <div class=" col-start-1 col-end-4 xl:col-end-3 py-1">
           <p class="uppercase">Problem</p>
           <p class="col-span-3">{tldr.problem}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Solution</p>
           <p class="col-span-3">{tldr.solution}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Decisions</p>
           <ul class="col-span-3">
             {tldr.decisions.map((decision: string, index: number) => 
@@ -135,7 +126,7 @@ const {
             )}
           </ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 pr-8">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Tradeoffs</p>
           <ul class="col-span-3">
             {tldr.tradeoffs.map((tradeoff: string, index: number) => 
@@ -153,7 +144,7 @@ const {
         class={`
           transition-all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-800 hover:prose-a:text-black
 
-          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[10px] prose-code:leading-4 prose-code:tabular prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
+          
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300

@@ -4,6 +4,11 @@ work: formie
 type: Personal Project
 title: Formie
 image: "/work/formie/cover.jpeg"
+roles: 
+  - Branding
+  - Copywriting
+  - Product Design
+  - Frontend Development
 tldr: 
   problem: Etherscan's frontend sucked
   solution: Airtable Forms, but for smart contract actions
@@ -76,15 +81,13 @@ sections:
 order: 1
 ---
 
-import Grid from "../../components/Grid.astro";
 import Context from "../../components/study/Context.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
-import Section from "../../components/study/Section.astro";
 import PaginatedSection from "../../components/study/PaginatedSection.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
-<Context title='Problem'>Developers make blockchain apps by 1/ Writing code 2/ Uploading it to Ethereum or another blockchain as smart contracts 3/ Building a frontend for those contracts (an app or website) so people can use them. To save time, <mark>blockchain developers use frontend generators, like Etherscan</mark> which take your code and spit out a bare-bones, working UI. Etherscan is the most popular frontend generator, powering tons of Ethereum projects. Blockchain developers use tools like Etherscan to get a basic UI for free. But <mark>Etherscan's UI sucks</mark>. 1/ It's a list of <mark>technically-worded</mark> forms 2/ It’s <mark>hard to navigate</mark> 3/ It <mark>shares little feedback</mark> about transactions.</Context>
+<Context title='Problem'>Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. Etherscan is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. 1/ It's a list of technically-worded forms 2/ It’s hard to navigate 3/ It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</Context>
 
 <PaginatedSection
   sections={[
