@@ -10,6 +10,7 @@ export interface Props {
     lg?: number, 
     xl?: number 
   };
+  hasCaption?: boolean;
   orientation?: 'horizontal' | 'vertical';
   hasPadding?: boolean;
   classes?: string;
@@ -20,6 +21,7 @@ const {
   alt,
   id,
   span = 12,
+  hasCaption = true,
   orientation = 'horizontal',
   hasPadding = false,
   classes = ""
@@ -53,9 +55,13 @@ switch (typeof span) {
     grid gap-x-4 border-t-[0.5px] border-[#636363]
     ${colClasses} ${spanClasses} ${classes}
   `}
->
-  <p class="col-span-1 tabular py-1">{id}</p>
-  <p class={`col-start-2 col-end-[-1] py-1`}>{alt}</p>
+> 
+  {hasCaption && (
+    <>
+    <p class="col-span-1 tabular py-1">{id}</p>
+    <p class={`col-start-2 col-end-[-1] py-1`}>{alt}</p>
+    </>
+  )}
   <figure class={`
     grid col-span-full bg-neutral-800 gap-x-4
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}

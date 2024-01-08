@@ -15,30 +15,45 @@ const works = await getCollection('work', ({
 }) => (
   !hasStudy && !isDraft
 ));
-const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
 
+const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
 const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
   const { work, isComingSoon, order } = study.data;
-  const { data: { type, title, image, year, roles, description, link } } = await getEntry('work', work.id);
+  const { 
+    data: { 
+      type, 
+      title, 
+      image, 
+      year, 
+      roles, 
+      description, 
+      link 
+    }
+  } = await getEntry('work', work.id);
+
   return { 
-    slug: study.slug,
-    type,
-    title, 
-    image,
-    description,
-    roles, 
-    year,
-    order,
-    link,
-    isComingSoon
+    data: {
+      slug: study.slug,
+      hasStudy: true,
+      type,
+      title, 
+      image,
+      description,
+      roles, 
+      year,
+      order,
+      link,
+      isComingSoon,
+    }
   };
 }));
+
+const allWork = [...studiesWithWorkData, ...works];
 ---
 
 <Layout title="Max Georgopoulos">
   <div class=" relative grid grid-cols-12 gap-4 ">
     <Header/>
-
     <div class="grid grid-cols-12 col-span-full gap-x-4 ">
       <div class="uppercase py-1 col-span-full grid grid-cols-12 gap-4 ">
         <p class="col-span-6 md:col-span-2">Work</p>
@@ -47,58 +62,62 @@ const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
         <p class="col-span-3 md:col-span-1">Type</p>
         <p class="col-span-3 md:col-span-1 justify-self-end">Year</p>
       </div>
-      {studiesWithWorkData?.sort((a, b) => a.order - b.order).map((study) => (
-        <a href={`study/${study.slug}`} class="hover:bg-neutral-700 border-t-[0.5px] border-[#636363] py-1 col-span-full grid grid-cols-12 gap-x-4 gap-y-1">
+      {allWork?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }) => (
+        <a 
+          href={work.slug ? `study/${work.slug}` : work.link?.href} 
+          target={!work.link?.target || work.slug ? '_self' : work.link?.target}
+          class="hover:bg-neutral-700 border-t-[0.5px] border-[#636363] py-1 col-span-full grid grid-cols-12 gap-x-4 gap-y-1"
+        >
           <div class="order-1 md:order-none flex gap-1 items-center col-span-6 md:col-span-2">
-            <svg 
-              class="shrink-0"
-              width="14" 
-              height="14" 
-              viewBox="0 0 15 15" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            ><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-            <p>{study.title}</p>
+            {work.slug ? (
+              <svg 
+                class="shrink-0"
+                width="14" 
+                height="14" 
+                viewBox="0 0 15 15" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+              </svg>
+            ) : (
+              <svg 
+                class="shrink-0"
+                width="14" 
+                height="14" 
+                viewBox="0 0 15 15" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                </path>
+              </svg>
+            )}
+            <p>{work.title}</p>
           </div>
-          <p class="order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">{study.description}</p>
-          <p class="order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">{study.roles.join(', ')}</p>
-          <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">{study.type}</p>
-          <p class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">{study.year}</p>
-        </a>
-      ))}
-      {works?.map((work) => (
-        <a href={work.data.link?.href} class="hover:bg-neutral-700 border-t-[0.5px] border-[#636363] py-1 col-span-full grid grid-cols-12 gap-4 ">
-          <div class="flex gap-1 items-center col-span-2">
-            <svg 
-              class="shrink-0"
-              width="14" 
-              height="14" 
-              viewBox="0 0 15 15" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-              </path>
-            </svg>
-            <p>{work.data.title}</p>
-          </div>
-          <p class="col-span-4">{work.data.description}</p>
-          <p class="col-span-4">{work.data.roles.join(', ')}</p>
-          <p class="capitalize">{work.data.type}</p>
-          <p class="justify-self-end">{work.data.year}</p>
+          <p class="order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">
+            {work.description}
+          </p>
+          <p class="order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
+            {work.roles.join(', ')}
+          </p>
+          <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">
+            {work.type}
+          </p>
+          <p class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
+            {work.year}
+          </p>
         </a>
       ))}
     </div>
-    <div class="col-span-full columns-1 md:columns-2 gap-x-4 space-y-4">
-      {works
-        .sort((a, b) => a.data.order - b.data.order)
-        .map(work => (
+    <div class="columns-1 md:columns-2 col-span-full  gap-x-4 space-y-4">
+      {allWork?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }) => (
         <Work
-          title={work.data.title}
-          link={work.data.link}
-          image={work.data.image}
-          description={work.data.description}
-          isComingSoon={work.data.isComingSoon}
+          title={work.title}
+          link={work.link}
+          image={work.image}
+          description={work.description}
+          isComingSoon={work.isComingSoon}
         />
       ))}
     </div>

@@ -68,9 +68,7 @@ const {
     <Header/>
     <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b-[0.5px] border-[#636363]'>
       <div class="grid grid-cols-12 col-span-full border-b-[0.5px] border-[#636363] gap-x-4 py-1">
-        <h1 class="col-span-6 uppercase">
-        {title}
-        </h1>
+        <h1 class="col-span-6 uppercase">{title}</h1>
         {link && <Link href={link} target='_blank' classes="col-span-6 w-fit">Live Site</Link>}
       </div>
       <div class="hidden xl:flex flex-col justify-between gap-4 col-span-3 xl:col-span-2 py-1 row-span-2">
@@ -82,45 +80,49 @@ const {
           <p>{type}</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 md:col-span-full">
-        <div class="order-last self-end flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
+      <div class="flex flex-col md:grid md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 md:col-span-full">
+        <div class="mb-auto md:mt-0  flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 py-1">
           <div class="col-span-2">
             <p class="col-span-2 text-balance">{description}</p>
           </div>
-          <p>{year}</p>
-          <p>{type}</p>
+          <hr class="border-t-[0.5px] border-[#636363] border-dashed"/>
+          <div class="flex items-center gap-1.5">
+            <p>{year}</p>
+            <span class="w-px h-2.5 bg-[#ccc]"></span>
+            <p>{type}</p>
+          </div>
         </div>
-        <div class="col-span-3 xl:col-span-2 py-1">
+        <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Roles</p>
-          <ul class="col-span-3">{roles?.join(', ')}</ul>
+          <ul class="col-span-3 text-balance">{roles?.join(', ')}</ul>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1 h-fit">
           <p class="uppercase">Tools</p>
-          <p class="col-span-3">{tools.join(', ')}</p>
+          <p class="col-span-3 text-balance">{tools.join(', ')}</p>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1 h-min">
           <p class="uppercase">Team</p>
-          <div>
+          <div class="text-balance">
             {teammates.map((teammate: { name: string, role: string, href: string }) => (
-              <span>
+              <div>
                 <a href={teammate.href}>{teammate.name}</a> ({teammate.role})
-              </span>
+              </div>
             ))}
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t-[0.5px] border-[#636363]">
+      <div class="flex flex-col md:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t-[0.5px] border-[#636363]">
         <div class=" col-start-1 col-end-4 xl:col-end-3 py-1">
           <p class="uppercase">Problem</p>
-          <p class="col-span-3">{tldr.problem}</p>
+          <p class="col-span-3 text-balance">{tldr.problem}</p>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Solution</p>
-          <p class="col-span-3">{tldr.solution}</p>
+          <p class="col-span-3 text-balance">{tldr.solution}</p>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Decisions</p>
-          <ul class="col-span-3">
+          <ul class="col-span-3 text-balance">
             {tldr.decisions.map((decision: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {decision}</li>
             )}
@@ -128,7 +130,7 @@ const {
         </div>
         <div class="col-span-3 xl:col-span-2 border-t-[0.5px] md:border-none border-[#636363] py-1">
           <p class="uppercase">Tradeoffs</p>
-          <ul class="col-span-3">
+          <ul class="col-span-3 text-balance">
             {tldr.tradeoffs.map((tradeoff: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
             )}
@@ -143,8 +145,6 @@ const {
       <div
         class={`
           transition-all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-800 hover:prose-a:text-black
-
-          
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300

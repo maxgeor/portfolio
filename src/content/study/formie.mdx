@@ -216,8 +216,15 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <div class="relative border border-[#636363] border-dashed col-span-full xl:col-span-8 xl:col-start-3 grid grid-cols-12 xl:grid-cols-8 gap-4 p-6 -mx-6">
   <p class="absolute -top-2 left-6 bg-black  px-1.5 -ml-2 w-fit uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
-
-  <div class="flex flex-col gap-2 col-span-2">
+  <Image
+    src="/work/formie/tradeoffs/only-edit-title-and-description/realization.png"
+    alt="Form page, mobile"
+    id='T1'
+    span={{ base: 12, md: 8, xl: 6 }}
+    hasCaption={false}
+    classes="md:order-last"
+  />
+  <div class="md:order-first flex flex-col gap-2 col-span-full md:col-span-4 xl:col-span-2 max-w-prose text-balance">
     We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc.)
 
     But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
