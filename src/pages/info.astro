@@ -7,24 +7,68 @@ import SocialLinks from "../components/SocialLinks.astro";
 <Layout title="Max Georgopoulos">
   <div class="col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <p class="col-span-2 uppercase">Max Georgopoulos</p>
-    <p class="xl:col-span-4 ">
-      Yo! I'm a designer and developer based out of Toronto, but I bum
-      around different places. I believe that the boundary between design
-      and engineering is artificial — you get the best results by blending
-      the two. Lately, I've been inspired by Ryan Singer's design
-      techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-      Homme Plissé.
-    </p>
-    <div class="grid grid-cols-1 xl:grid-cols-5 gap-y-8 gap-x-4">
-      <p class=" hidden xl:inline-block">Links</p>
-      <SocialLinks classes="xl:col-span-4" />
-    </div>
-    <div class="col-span-full xl:col-start-6 xs:bg-neutral-900/70 xs:px-12 xs:pt-12 xs:pb-24 xl:p-0 xs:-mx-4 xs:-mb-24 xl:m-0">
-      <img
-        src="/me.jpeg"
-        alt="my face"
-        class="w-full"
-      />
+    <div class="col-span-full grid grid-cols-12 gap-x-4">
+      <div class="order-first uppercase pb-1 col-span-full grid grid-cols-12 gap-4 border-b border-neutral-700">
+        <p class="col-span-full sm:hidden">Who</p>
+        <p class="hidden sm:inline-block col-span-2">Who?</p>
+        <p class="hidden sm:inline-block col-span-8">Bio</p>
+        <p class="hidden sm:inline-block col-span-2">Links</p>
+      </div>
+      <div class="flex flex-col gap-0 col-span-6 sm:col-span-2">
+        <img src="/me.jpeg" alt="my face" class="hidden sm:block w-full col-span-6 py-1"/>
+        <div>
+          <p class="py-1">
+            <span class="mr-[3px]">
+              <span class="font-mono">F</span>:
+            </span> 
+            Max
+          </p>
+          <p class="py-1 border-t border-neutral-700">
+            <span class="mr-[3px]">
+              <span class="font-mono">M</span>:
+            </span> 
+            Kevin
+          </p>
+          <p class="py-1 border-t border-neutral-700">
+            <span class="mr-[3px]">
+              <span class="font-mono">L</span>:
+            </span> 
+            <span class="cursor-help underline underline-offset-2 decoration-dotted decoration-neutral-500">
+              Crapper
+            </span>
+          </p>
+          <p class="py-1 border-y border-neutral-700">
+            <span class="mr-[3px]">
+              <span class="font-mono">L</span>:
+            </span> 
+            Georgopoulos
+          </p>
+        </div>
+      </div>
+      <img src="/me.jpeg" alt="my face" class="sm:hidden order-first w-full col-span-6 py-1"/>
+      <div class="flex flex-col col-span-full sm:col-span-4 py-1">
+        <p>
+          Yo! I'm a designer and developer based out of Toronto, but I bum
+          around different places. I believe that the boundary between design
+          and engineering is artificial — you get the best results by blending
+          the two. Lately, I've been inspired by Ryan Singer's design
+          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+          Homme Plissé.
+        </p>
+        <p class="indent-4">
+          Yo! I'm a designer and developer based out of Toronto, but I bum
+          around different places. I believe that the boundary between design
+          and engineering is artificial — you get the best results by blending
+          the two. Lately, I've been inspired by Ryan Singer's design
+          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+          Homme Plissé.
+        </p>
+      </div>
+      <div class="col-span-full sm:col-span-2 sm:col-start-11 ">
+        <div class="sm:hidden w-full border-b border-neutral-700 pb-1 mt-4">
+          <p class="uppercase">Links</p>
+        </div>
+        <SocialLinks classes="w-full" />
+      </div>
     </div>
 </Layout>

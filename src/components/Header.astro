@@ -1,6 +1,6 @@
 ---
-import { formatTime } from "../utils/formatting.ts";
 import Link from "./Link.astro"
+import CopyEmailButton from "./CopyEmailButton.astro";
 
 export interface Props {
   goBackPath?: string;
@@ -38,7 +38,9 @@ const currentPath = Astro.url.pathname;
     </div>
     <div class=" relative col-span-2">
       <p>Available for hire</p>
-      <p>max123358<span class="font-mono">@</span>gmail.com</p>
+      <CopyEmailButton showIcon={false} classes="w-min">
+        max123358<span class="font-mono">@</span>gmail.com
+      </CopyEmailButton>
     </div>
   </div>
 

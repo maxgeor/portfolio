@@ -1,0 +1,54 @@
+---
+import CopyIcon from "./icons/CopyIcon.astro";
+import CheckIcon from "./icons/CheckIcon.astro";
+
+export interface Props {
+  showIcon?: boolean;
+  classes?: string;
+}
+
+const { showIcon = true, classes = "" } = Astro.props;
+---
+<button
+  aria-label="Copy email"
+  class={`
+    copy-email-button relative flex gap-1 w-full items-center border-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-4 ring-offset-neutral-700 hover:bg-neutral-700 cursor-default
+    ${classes}
+  `}
+>
+  {showIcon ? (
+    <>
+    <CopyIcon id="copy-icon" classes="absolute left-0 transform " />
+    <CheckIcon id="check-icon" classes="absolute left-0 transform opacity-0 text-green scale-75" />
+    </>
+  ) : (
+    <CheckIcon id="check-icon" classes="absolute -left-[18px] transform opacity-0 text-green scale-75" />
+  )}
+  <span class={showIcon ? 'flex gap-px pl-[19px]' : ''}>
+    <slot />
+  </span>
+</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailButtons: NodeListOf<HTMLButtonElement> = 
+      document.querySelectorAll('.copy-email-button');
+
+    emailButtons.forEach((button) => {
+      button?.addEventListener("click", () => {
+        navigator.clipboard.writeText('max123358@gmail.com');
+  
+        const copyIcon: HTMLElement | null = button.querySelector("#copy-icon");
+        const checkIcon: HTMLElement | null = button.querySelector("#check-icon");
+  
+        copyIcon?.classList.add("opacity-0", 'scale-75');
+        checkIcon?.classList.remove("opacity-0", 'scale-75');
+  
+        setTimeout(() => {
+          copyIcon?.classList.remove("opacity-0", 'scale-75');
+          checkIcon?.classList.add("opacity-0", 'scale-75');
+        }, 2500);
+      });
+    })
+  });
+</script>

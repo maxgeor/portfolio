@@ -2,8 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
-import Study from "../components/Study.astro";
-import Grid from '../components/study/Grid.astro';
 
 import { 
   getEntry,
@@ -55,7 +53,7 @@ const allWork = [...studiesWithWorkData, ...works];
   <div class=" relative grid grid-cols-12 gap-4 ">
     <Header/>
     <div class="grid grid-cols-12 col-span-full gap-x-4 ">
-      <div class="uppercase py-1 col-span-full grid grid-cols-12 gap-4 ">
+      <div class="uppercase pb-1 col-span-full grid grid-cols-12 gap-4 ">
         <p class="col-span-6 md:col-span-2">Work</p>
         <p class="hidden md:inline-block col-span-4">Description</p>
         <p class="hidden md:inline-block col-span-4">Roles</p>
@@ -66,12 +64,12 @@ const allWork = [...studiesWithWorkData, ...works];
         <a 
           href={work.slug ? `study/${work.slug}` : work.link?.href} 
           target={!work.link?.target || work.slug ? '_self' : work.link?.target}
-          class="hover:bg-neutral-700 border-t-[0.5px] border-[#636363] py-1 col-span-full grid grid-cols-12 gap-x-4 gap-y-1"
+          class="hover:bg-neutral-700 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4"
         >
           <div class="order-1 md:order-none flex gap-1 items-center col-span-6 md:col-span-2">
             {work.slug ? (
               <svg 
-                class="shrink-0"
+                class="shrink-0 -ml-px"
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 
@@ -82,7 +80,7 @@ const allWork = [...studiesWithWorkData, ...works];
               </svg>
             ) : (
               <svg 
-                class="shrink-0"
+                class="shrink-0 -ml-px"
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 
