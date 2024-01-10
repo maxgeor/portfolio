@@ -214,8 +214,8 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Challenge 2: Making forms flexible'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 
-<div class="relative border border-neutral-600 border-dashed col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 gap-3 p-4 pt-0  md:-mx-4">
-  <p class="xl:order-1 -mt-2 -mb-1 -ml-2 bg-neutral-900 pl-[7px] xs:pl-1.5 pr-2 col-span-full w-fit uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
+<div class="bg-[#1a1a1a] md:bg-neutral-900 relative border border-neutral-600 border-dashed col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 gap-4 p-4 md:p-6 -mx-4 md:-mx-6 md:bg-transparent mt-3">
+  <p class="absolute -top-[18px] md:-top-2 left-2 md:left-[17px]  border md:border-none border-neutral-600 border-dashed border-b-0 px-2 pr-[7px] w-fit uppercase pt-1 md:pt-0 bg-[#1a1a1a] md:bg-neutral-900">Tradeoff:</p>
   <Image
     src="/work/formie/tradeoffs/only-edit-title-and-description/realization.png"
     alt="Form page, mobile"
@@ -224,14 +224,17 @@ import Carousel from "../../components/study/Carousel.astro";
     hasCaption={false}
     classes="xl:order-last"
   />
-  <div class="xl:order-2 flex flex-col gap-2 col-span-full xl:col-span-2 max-w-prose">
-    We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc).
+  <div class="xl:order-2 col-span-full xl:col-span-2 flex flex-col gap-2">
+    <p class=" uppercase">Customize <strike>everything</strike> title + description</p>
+    <div class=" flex flex-col gap-2 max-w-prose">
+      We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc).
 
-    But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
+      But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
 
-    To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways.
+      To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways.
 
-    Limited customization kept form creation straightforward while offering more control than Etherscan.
+      Limited customization kept form creation straightforward while offering more control than Etherscan.
+    </div>
   </div>
 </div>
 
