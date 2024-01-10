@@ -85,7 +85,6 @@ const {
           <div class="col-span-2">
             <p class="col-span-2 text-balance">{description}</p>
           </div>
-          <!-- <hr class="border-t border-neutral-700 border-dashed"/> -->
           <div class="flex items-center gap-1.5">
             <p>{year}</p>
             <span class="w-px h-2.5 bg-[#ccc]"></span>
@@ -105,7 +104,7 @@ const {
           <div class="text-balance">
             {teammates.map((teammate: { name: string, role: string, href: string }) => (
               <div>
-                <a href={teammate.href}>{teammate.name}</a> ({teammate.role})
+                <Link classes="w-fit" href={teammate.href}>{teammate.name}</Link> ({teammate.role})
               </div>
             ))}
           </div>

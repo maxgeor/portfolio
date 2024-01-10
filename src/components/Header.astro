@@ -18,22 +18,33 @@ const currentPath = Astro.url.pathname;
   `}
 >
   <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
-    <Link href="/" classes="uppercase col-span-2">MG</Link>
+    <Link href="/" classes="uppercase col-span-2 focus:h-fit">MG</Link>
     <p class="col-span-4">Product  Designer +<br/> Frontend Developer</p>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
     <div class="flex uppercase col-span-4 gap-2">
       <Link 
         href="/" 
-        classes={currentPath === '/' || currentPath.includes('study') ? 'line-through hover:line-through' : ''}
-      >Work</Link>
+        classes={`
+          focus:h-fit
+          ${currentPath === '/' || currentPath.includes('study') ? 'line-through hover:line-through' : ''}
+        `}
+      >
+        Work
+      </Link>
       <Link 
         href="/writing"
-        classes={currentPath.includes('writing') ? 'line-through hover:line-through' : ''}
+        classes={`
+          focus:h-fit
+          ${currentPath.includes('writing') ? 'line-through hover:line-through' : ''}
+        `}
       >Writing</Link>
       <Link 
         href="/info"
-        classes={currentPath.includes('info') ? 'line-through hover:line-through' : ''}
+        classes={`
+          focus:h-fit
+          ${currentPath.includes('info') ? 'line-through hover:line-through' : ''}
+        `}
       >Info</Link>
     </div>
     <div class=" relative col-span-2">
