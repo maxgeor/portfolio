@@ -64,12 +64,12 @@ const allWork = [...studiesWithWorkData, ...works];
         <a 
           href={work.slug ? `study/${work.slug}` : work.link?.href} 
           target={!work.link?.target || work.slug ? '_self' : work.link?.target}
-          class="hover:bg-neutral-700 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4"
+          class="hover:bg-neutral-750 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4"
         >
-          <div class="order-1 md:order-none flex gap-1 items-center col-span-6 md:col-span-2">
+          <div class="order-1 md:order-none flex gap-1 col-span-6 md:col-span-2 h-fit">
             {work.slug ? (
               <svg 
-                class="shrink-0 -ml-px"
+                class="shrink-0 -ml-px my-px"
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 
@@ -80,7 +80,7 @@ const allWork = [...studiesWithWorkData, ...works];
               </svg>
             ) : (
               <svg 
-                class="shrink-0 -ml-px"
+                class="shrink-0 -ml-px my-px"
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 

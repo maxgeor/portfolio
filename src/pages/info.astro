@@ -9,13 +9,14 @@ import SocialLinks from "../components/SocialLinks.astro";
     <Header />
     <div class="col-span-full grid grid-cols-12 gap-x-4">
       <div class="order-first uppercase pb-1 col-span-full grid grid-cols-12 gap-4 border-b border-neutral-700">
-        <p class="col-span-full sm:hidden">Who</p>
+        <p class="col-span-full sm:hidden">Who?</p>
         <p class="hidden sm:inline-block col-span-2">Who?</p>
-        <p class="hidden sm:inline-block col-span-8">Bio</p>
+        <p class="hidden sm:inline-block col-span-4">Bio</p>
+        <p class="hidden sm:inline-block col-span-4">Heros</p>
         <p class="hidden sm:inline-block col-span-2">Links</p>
       </div>
       <div class="flex flex-col gap-0 col-span-6 sm:col-span-2">
-        <img src="/me.jpeg" alt="my face" class="hidden sm:block w-full col-span-6 py-1"/>
+        <img src="/me.jpg" alt="my face" class="hidden sm:block w-full col-span-6 py-1"/>
         <div>
           <p class="py-1">
             <span class="mr-[3px]">
@@ -46,7 +47,7 @@ import SocialLinks from "../components/SocialLinks.astro";
         </div>
       </div>
       <img src="/me.jpeg" alt="my face" class="sm:hidden order-first w-full col-span-6 py-1"/>
-      <div class="flex flex-col col-span-full sm:col-span-4 py-1">
+      <div class="flex flex-col col-span-full sm:col-span-8 md:col-span-4 gap-2 py-1 pt-2 sm:pt-1">
         <p>
           Yo! I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
@@ -55,7 +56,7 @@ import SocialLinks from "../components/SocialLinks.astro";
           techniques, TailwindCSS, and The 2023 Spring Summer Collection from
           Homme Plissé.
         </p>
-        <p class="indent-4">
+        <p >
           Ho! I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
           and engineering is artificial — you get the best results by blending
@@ -63,6 +64,52 @@ import SocialLinks from "../components/SocialLinks.astro";
           techniques, TailwindCSS, and The 2023 Spring Summer Collection from
           Homme Plissé.
         </p>
+      </div>
+      <div class="flex flex-col col-span-full sm:col-span-8 md:col-span-4 gap-2">
+        <ul class={`flex flex-col`}>
+          <li class="border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="before:content-none flex w-full justify-between items-center gap-4 "
+            >
+              <summary>Steve Jobs</summary>
+            </details>
+          </li>
+          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="flex w-full justify-between items-center gap-4 "
+            >
+              <summary>Gunpei Yokoi</summary>
+            </details>
+          </li>
+          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="flex w-full justify-between items-center gap-4 "
+            >
+              <summary>Massimo Vigneli</summary>
+            </details>
+          </li>
+          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="flex w-full justify-between items-center gap-4 "
+            >
+              <summary>Dieter Rams</summary>
+            </details>
+          </li>
+          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="flex w-full justify-between items-center gap-4 "
+            >
+              <summary>Ryan Singer</summary>
+            </details>
+          </li>
+          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+            <details
+              class="flex w-full justify-between items-center gap-4 "
+            >
+              <summary class="pl-0 bg-none appearance-none">Hayao Miyazaki</summary>
+            </details>
+          </li>
+        </ul>
       </div>
       <div class="col-span-full sm:col-span-2 sm:col-start-11 ">
         <div class="sm:hidden w-full border-b border-neutral-700 pb-1 mt-4">
