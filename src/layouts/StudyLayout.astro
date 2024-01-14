@@ -52,9 +52,10 @@ const {
       <ChevronDownIcon classes="-mx-px -mt-px" />
       <span class="leading-6">Go back</span>
     </Button>
+    <Header/>
     <Grid 
       id="sticky-header" 
-      classes="hidden transition sticky top-4 z-50 justify-between "
+      classes="hidden transition fixed top-4 left-4 right-4 z-50"
     >
       <a href="/" class="relative group col-span-2">
         <p class="absolute opacity-0 group-hover:opacity-100 transition uppercase">MG</p>
@@ -65,7 +66,6 @@ const {
         <p class="font-mono">1/5</p>
       </div>
     </Grid>
-    <Header/>
     <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b border-neutral-700'>
       <div class="grid grid-cols-12 col-span-full border-b border-neutral-700 gap-x-4 pb-1">
         <h1 class="col-span-6 uppercase">{title}</h1>
@@ -87,7 +87,7 @@ const {
           </div>
           <div class="flex items-center gap-1.5">
             <p>{year}</p>
-            <span class="w-px h-2.5 bg-[#ccc]"></span>
+            <span class="w-px h-2.5 bg-[#b0b0b0]"></span>
             <p>{type}</p>
           </div>
         </div>
@@ -137,6 +137,7 @@ const {
         </div>
       </div>
     </section>
+    
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"

@@ -17,11 +17,11 @@ const currentPath = Astro.url.pathname;
     ${classes}
   `}
 >
-  <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
-    <Link href="/" classes="uppercase col-span-2 focus:h-fit">MG</Link>
-    <p class="col-span-4">Product  Designer +<br/> Frontend Developer</p>
+  <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
+    <Link href="/" classes="uppercase col-span-2 h-min">MG</Link>
+    <p class="col-span-4 mt-2 md:mt-0">Product Designer +<br/> Frontend Developer</p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-6 gap-x-4 col-span-6">
+  <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
     <div class="flex uppercase col-span-4 gap-2">
       <Link 
         href="/" 
@@ -47,133 +47,11 @@ const currentPath = Astro.url.pathname;
         `}
       >Info</Link>
     </div>
-    <div class=" relative col-span-2">
-      <p>Available for hire</p>
+    <div class=" relative col-span-2 mt-2 md:mt-0">
+      <p>Available for work</p>
       <CopyEmailButton showIcon={false} classes="w-min">
         max123358<span class="font-mono">@</span>gmail.com
       </CopyEmailButton>
     </div>
   </div>
-
 </header>
-<!-- <header
-  class={`
-    col-span-full grid grid-cols-6 2xl:border-x border-b -mx-4  md:px-4
-    ${classes}
-  `}
->
-  {currentPath !== "/" ? (
-    <a 
-      href={goBackPath} 
-      class="col-span-2 md:col-span-1 group flex items-center justify-center border-b md:border-none  md:-ml-4 order-1 md:order-none px-4 md:p-0"
-    >
-      MG
-    </a>
-  ) : (
-    <p class="col-span-2 md:col-span-1 flex items-center justify-center md:-ml-4 order-1 md:order-none px-4 md:p-0 border-b md:border-b-0 ">MG</p>
-  )}
-  <Link 
-    href="/work" 
-    classes={`
-      order-4 md:order-none md:border-l flex justify-center  col-span-2 md:col-span-1 w-full
-      ${
-        currentPath.includes("/work") || currentPath.includes("/study") 
-          ? "border-b border-b-[#111] h-[17px] -mb-px" 
-          : ""
-      }
-    `}
-  >
-    Work
-  </Link>
-  <Link href="/writing" classes={`
-    border-l  order-5 md:order-none  flex justify-center  col-span-2 md:col-span-1 w-full
-    ${
-      currentPath.includes("/writing") 
-        ? "border-b border-b-[#111] h-[17px] -mb-px" 
-        : ""
-    }
-  `}>
-    Writing
-  </Link>
-  <Link href="/info" classes={`
-      border-l order-6 md:order-none flex justify-center  col-span-2 md:col-span-1 w-full
-    ${
-      currentPath.includes("/info") 
-        ? "border-b border-b-[#111] h-[17px] -mb-px" 
-        : ""
-    }
-  `}>
-    Info
-  </Link>
-  <div class="order-2 md:order-none relative col-span-2 md:col-span-3 border-b md:border-b-0 border-l  ">
-    <span class="absolute z-50 top-0 left-0 h-4 bg-[#111]"></span>
-    <div class="news marquee ">
-    <div class="text">
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-        <span>Available for hire</span>
-    </div>
-    <div class="text">
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-    </div>
-  </div>
-    <span class="absolute z-50 top-0 right-0 h-4 bg-[#111]"></span>
-  </div>
-  <div class="order-3 col-span-2 md:col-span-1 md:order-none flex items-center justify-center !border-l border-b md:border-b-0   md:-mr-4 tabular">{time}</div>
-</header> -->
-
-<style>
-  .news {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    white-space: nowrap;
-  }
-
-  .text {
-    animation: animate_text 120s linear infinite;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .text span {
-    margin-right: 3px;
-  }
-
-  @keyframes animate_text {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-</style>

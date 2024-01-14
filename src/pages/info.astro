@@ -9,113 +9,117 @@ import SocialLinks from "../components/SocialLinks.astro";
     <Header />
     <div class="col-span-full grid grid-cols-12 gap-x-4">
       <div class="order-first uppercase pb-1 col-span-full grid grid-cols-12 gap-4 border-b border-neutral-700">
-        <p class="col-span-full sm:hidden">Who?</p>
-        <p class="hidden sm:inline-block col-span-2">Who?</p>
-        <p class="hidden sm:inline-block col-span-4">Bio</p>
-        <p class="hidden sm:inline-block col-span-4">Heros</p>
+        <p class="col-span-2">Who?</p>
+        <p class="hidden sm:inline-block col-span-8 lg:col-span-4">Bio</p>
+        <p class="hidden lg:inline-block col-span-4">Heros</p>
         <p class="hidden sm:inline-block col-span-2">Links</p>
       </div>
-      <div class="flex flex-col gap-0 col-span-6 sm:col-span-2">
-        <img src="/me.jpg" alt="my face" class="hidden sm:block w-full col-span-6 py-1"/>
-        <div>
-          <p class="py-1">
-            <span class="mr-[3px]">
-              <span class="font-mono">F</span>:
-            </span> 
-            Max
-          </p>
-          <p class="py-1 border-t border-neutral-700">
-            <span class="mr-[3px]">
-              <span class="font-mono">M</span>:
-            </span> 
-            Kevin
-          </p>
-          <p class="py-1 border-t border-neutral-700">
-            <span class="mr-[3px]">
-              <span class="font-mono">L</span>:
-            </span> 
-            <span class="cursor-help underline underline-offset-2 decoration-dotted decoration-neutral-500">
-              Crapper
-            </span>
-          </p>
-          <p class="py-1 border-y border-neutral-700">
-            <span class="mr-[3px]">
-              <span class="font-mono">L</span>:
-            </span> 
-            Georgopoulos
-          </p>
+      <div class="col-span-full grid grid-cols-12 gap-x-4">
+
+        <div class="grid grid-cols-12 sm:grid-cols-1 col-span-full sm:col-span-2 gap-x-4 h-fit">
+          <img src="/me.jpg" alt="my face" class="w-full col-span-6 xs:col-span-4 sm:col-span-full pt-2 pb-1"/>
+          <div class="col-span-6 xs:col-span-8 sm:col-span-full">
+            <p class="py-1">
+              <span class="mr-[3px]">
+                <span class="font-mono">F</span>:
+              </span> 
+              Max
+            </p>
+            <p class="py-1 border-t border-neutral-700">
+              <span class="mr-[3px]">
+                <span class="font-mono">M</span>:
+              </span> 
+              Kevin
+            </p>
+            <p class="py-1 border-t border-neutral-700">
+              <span class="mr-[3px]">
+                <span class="font-mono">L</span>:
+              </span> 
+              <span class="cursor-help underline underline-offset-2 decoration-dotted decoration-neutral-500">
+                Crapper
+              </span>
+            </p>
+            <p class="py-1 border-y border-neutral-700">
+              <span class="mr-[3px]">
+                <span class="font-mono">L</span>:
+              </span> 
+              Georgopoulos
+            </p>
+          </div>
         </div>
-      </div>
-      <img src="/me.jpeg" alt="my face" class="sm:hidden order-first w-full col-span-6 py-1"/>
-      <div class="flex flex-col col-span-full sm:col-span-8 md:col-span-4 gap-2 py-1 pt-2 sm:pt-1">
-        <p>
-          Yo! I'm a designer and developer based out of Toronto, but I bum
-          around different places. I believe that the boundary between design
-          and engineering is artificial — you get the best results by blending
-          the two. Lately, I've been inspired by Ryan Singer's design
-          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-          Homme Plissé.
-        </p>
-        <p >
-          Ho! I'm a designer and developer based out of Toronto, but I bum
-          around different places. I believe that the boundary between design
-          and engineering is artificial — you get the best results by blending
-          the two. Lately, I've been inspired by Ryan Singer's design
-          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-          Homme Plissé.
-        </p>
-      </div>
-      <div class="flex flex-col col-span-full sm:col-span-8 md:col-span-4 gap-2">
-        <ul class={`flex flex-col`}>
-          <li class="border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="before:content-none flex w-full justify-between items-center gap-4 "
-            >
-              <summary>Steve Jobs</summary>
-            </details>
-          </li>
-          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="flex w-full justify-between items-center gap-4 "
-            >
-              <summary>Gunpei Yokoi</summary>
-            </details>
-          </li>
-          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="flex w-full justify-between items-center gap-4 "
-            >
-              <summary>Massimo Vigneli</summary>
-            </details>
-          </li>
-          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="flex w-full justify-between items-center gap-4 "
-            >
-              <summary>Dieter Rams</summary>
-            </details>
-          </li>
-          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="flex w-full justify-between items-center gap-4 "
-            >
-              <summary>Ryan Singer</summary>
-            </details>
-          </li>
-          <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
-            <details
-              class="flex w-full justify-between items-center gap-4 "
-            >
-              <summary class="pl-0 bg-none appearance-none">Hayao Miyazaki</summary>
-            </details>
-          </li>
-        </ul>
-      </div>
-      <div class="col-span-full sm:col-span-2 sm:col-start-11 ">
-        <div class="sm:hidden w-full border-b border-neutral-700 pb-1 mt-4">
-          <p class="uppercase">Links</p>
+        <div class="grid grid-cols-1 lg:grid-cols-8 gap-4 col-span-full sm:col-span-8">
+          <div class="col-span-4 flex flex-col pt-1">
+            <p>
+              Yo! I'm a designer and developer based out of Toronto, but I bum
+              around different places. I believe that the boundary between design
+              and engineering is artificial — you get the best results by blending
+              the two. Lately, I've been inspired by Ryan Singer's design
+              techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+              Homme Plissé.
+            </p>
+            <p >
+              Ho! I'm a designer and developer based out of Toronto, but I bum
+              around different places. I believe that the boundary between design
+              and engineering is artificial — you get the best results by blending
+              the two. Lately, I've been inspired by Ryan Singer's design
+              techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+              Homme Plissé.
+            </p>
+          </div>
+          <div class="col-span-4  flex flex-col">
+            <p class="lg:hidden uppercase border-b border-neutral-700 pb-1">Heros</p>
+            <ul class="flex flex-col">
+              <li class="border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="before:content-none flex w-full justify-between items-center gap-4 "
+                >
+                  <summary>Steve Jobs</summary>
+                </details>
+              </li>
+              <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="flex w-full justify-between items-center gap-4 "
+                >
+                  <summary>Gunpei Yokoi</summary>
+                </details>
+              </li>
+              <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="flex w-full justify-between items-center gap-4 "
+                >
+                  <summary>Massimo Vigneli</summary>
+                </details>
+              </li>
+              <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="flex w-full justify-between items-center gap-4 "
+                >
+                  <summary>Dieter Rams</summary>
+                </details>
+              </li>
+              <li class="border-t first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="flex w-full justify-between items-center gap-4 "
+                >
+                  <summary>Ryan Singer</summary>
+                </details>
+              </li>
+              <li class="border-y first:border-none border-neutral-700 py-1 hover:bg-neutral-750">
+                <details
+                  class="flex w-full justify-between items-center gap-4 "
+                >
+                  <summary class="pl-0 bg-none appearance-none">Hayao Miyazaki</summary>
+                </details>
+              </li>
+            </ul>
+          </div>
         </div>
-        <SocialLinks classes="w-full" />
+        <div class="col-span-full sm:col-span-2 sm:col-start-11 ">
+          <div class="sm:hidden w-full border-b border-neutral-700 pb-1 mt-4">
+            <p class="uppercase">Links</p>
+          </div>
+          <SocialLinks classes="w-full" />
+        </div>
       </div>
     </div>
 </Layout>

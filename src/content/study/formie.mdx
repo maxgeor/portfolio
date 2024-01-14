@@ -214,9 +214,9 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Challenge 2: Making forms flexible'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 
-<div class="rounded-sm border border-neutral-600 border-dashed col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 gap-4 p-4 md:p-6 md:pt-4 -mx-4 md:-mx-6">
+<div class="col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8">
 {/* <div class="bg-[#1a1a1a] md:bg-transparent border border-neutral-700 border-dashed col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 gap-4 p-4 md:p-6 md:pt-4 -mx-4 md:-mx-6"> */}
-  <div class="col-span-full xl:col-span-2  flex flex-col gap-2">
+  <div class="col-span-full xl:col-span-2  flex flex-col gap-2 p-4 -mx-4 border border-neutral-600 border-dashed ">
     <p class=" uppercase">Tradeoff: Customize <strike>everything</strike> title + description</p>
     <div class=" flex flex-col gap-2 text-balance">
       We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc). But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
