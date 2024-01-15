@@ -1,0 +1,34 @@
+---
+import { marked } from 'marked';
+import Image from './Image.astro';
+
+export interface Props {
+  title: string;
+  image?: {
+    src: string;
+    alt: string;
+    id: string;
+  }
+}
+
+const { title, image } = Astro.props;
+---
+
+<div class="col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 -mx-4 xl:-ml-4 border border-neutral-600 border-dashed">
+  <div class="col-span-full xl:col-span-2  flex flex-col gap-2 p-4 xl:pr-4 ">
+    <h3 class="uppercase" set:html={marked.parse(title)}></h3>
+    <div class=" flex flex-col gap-2 text-balance max-w-xl">
+      <slot />
+    </div>
+  </div>
+  {image && (
+    <Image
+      id='T1'
+      src={image.src}
+      alt={image.src}
+      span={{ base: 12, xl: 6 }}
+      hasCaption={false}
+      classes="p-4 pt-0 xl:p-0 self-center"
+    />
+  )}
+</div>
