@@ -29,7 +29,7 @@ module.exports = {
         red: '#0E9900',
         yellow: '#0E9900',
         orange: '#d05f40',
-        green: 'green',
+        green: '#0E9900',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
