@@ -14,6 +14,7 @@ export interface Props {
     xl?: number 
   };
   hasPadding?: boolean;
+  orientation: 'vertical' | 'horizontal';
   classes?: string;
 }
 const {
@@ -22,6 +23,7 @@ const {
   id,
   span = 12,
   hasPadding = false,
+  orientation = 'horizontal',
   classes = "" 
 } = Astro.props;
 
@@ -57,26 +59,17 @@ switch (typeof span) {
 >
   <p class="col-span-1 tabular uppercase ">{id}</p>
   <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
-<!-- <div
-  id={id}
-  class={`
-    grid gap-y-1 gap-x-4 pt-1 border-t border-neutral-700
-    ${colClasses} ${spanClasses} ${classes}
-  `}
->
-  <div class="flex gap-4 col-span-full"> 
-    <p class="tabular uppercase">{id}</p> 
-    <p>{alt}</p> 
-  </div> -->
   <div class={`
-    relative grid col-span-full bg-neutral-800 gap-x-4 aspect-[7/4]
+    relative grid col-span-full bg-neutral-800 gap-x-4
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
+    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
   `}>
     <video
       class={`
-        transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full cursor-pointer select-none self-center
+        transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
+        ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}
       poster={extensionlessSrc + ".png"}
       playsinline
