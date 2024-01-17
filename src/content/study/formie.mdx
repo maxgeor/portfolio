@@ -155,43 +155,65 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </div>
 
-<div class="overflow-x-scroll col-span-full grid grid-cols-12 gap-4">
+<div class="hidden md:grid overflow-x-scroll col-span-full grid-cols-12 gap-4">
   <Image
     src="/work/formie/s4.png"
     alt="New form (find contract)"
-    id='S4'
+    id='S2'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
   />
   <Image
     src="/work/formie/s5.png"
     alt="New form (pick action)"
-    id='S5'
+    id='S3'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
   />
   <Image
     src="/work/formie/s6.png"
     alt="New form (add title & description)"
-    id='S6'
+    id='S4'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
   />
 </div>
 
-<div class="overflow-x-scroll col-span-full grid grid-cols-12 md:grid-cols-8 sm:col-start-3 sm:col-end-11 gap-4">
+<Carousel
+  orientation="vertical"
+  slides={[
+    {
+      src: "/work/formie/s4.png",
+      alt: "New form (find contract)",
+      id: 'S2'
+    },
+    {
+      src: "/work/formie/s5.png",
+      alt: "New form (pick action)",
+      id: 'S3'
+    },
+    {
+      src: "/work/formie/s6.png",
+      alt: "New form (add title & description)",
+      id: 'S4'
+    },
+  ]}
+  classes="md:hidden"
+/>
+
+<div class="overflow-x-scroll col-span-full grid grid-cols-12 md:grid-cols-8 md:col-start-3 md:col-end-11 gap-4">
   <Image
     src="/work/formie/s2.png"
     alt="Index page, mobile"
-    id='S2'
-    span={{ base: 12, sm: 6, md: 4 }}
+    id='S5'
+    span={{ base: 6, md: 4 }}
     orientation="vertical"
   />
   <Image
     src="/work/formie/s3.png"
     alt="Form page, mobile"
-    id='S3'
-    span={{ base: 12, sm: 6, md: 4 }}
+    id='S6'
+    span={{ base: 6, md: 4 }}
     orientation="vertical"
   />
 </div>

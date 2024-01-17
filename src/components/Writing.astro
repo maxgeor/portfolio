@@ -14,8 +14,8 @@ const formattedDate = formatDate(date);
 
 <a 
   href={href}
-  class="col-span-full hover:bg-neutral-750 flex justify-between xs:justify-auto gap-4 border-t last:border-y border-neutral-700 py-1 "
+  class="grid grid-cols-12 md:grid-cols-10 hover:bg-neutral-750 gap-4 border-t last:border-y border-neutral-700 py-1 "
 >
-  <span class="basis-1/2 ">{title}</span>
-  <span class="basis-1/2">{formattedDate}</span>
+  <span class="col-span-6 md:col-span-4">{title}</span>
+  <span class="col-span-6">{formattedDate}</span>
 </a>
