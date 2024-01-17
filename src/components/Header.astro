@@ -1,5 +1,6 @@
 ---
 import Link from "./Link.astro"
+import Logo from "./Logo.astro";
 import CopyEmailButton from "./CopyEmailButton.astro";
 
 export interface Props {
@@ -10,32 +11,10 @@ export interface Props {
 const { classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-
-const gifs = [
-  'kill-bill',
-  'akira-falling',
-  '912',
-  '812',
-  'twin-peaks',
-  'worm',
-];
 ---
-<header
-  class={`
-    col-span-full grid grid-cols-12 gap-4
-    ${classes}
-  `}
->
+<header class={`col-span-full grid grid-cols-12 gap-4 ${classes}`}>
   <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
-    <Link href="/" classes="col-span-2  group">
-      <div class="flex gap-[7px] items-center">
-        <span class="h-[9px] w-[10px] bg-[#0E9900] mb-px"></span>
-        <span class="uppercase  mix-blend-difference flex gap-px left-0 right-0 ">
-          MKCG
-        </span>
-        <!-- <img src={`/gifs/${gifs[Math.floor(Math.random() * gifs.length)]}.gif`} class="hidden brightness-80  w-full h-full object-cover" /> -->
-      </div>
-    </Link>
+    <Logo classes="col-span-2" />
     <p class="col-span-4 mt-2 md:mt-0">Product Designer +<br/> Frontend Developer</p>
   </div>
   <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">

@@ -1,0 +1,38 @@
+---
+export type Props = {
+  link?: string | false;
+  classes?: string;
+};
+
+const { link = '/', classes = "" } = Astro.props;
+
+// const gifs = [
+//   'kill-bill',
+//   'akira-falling',
+//   '912',
+//   '812',
+//   'twin-peaks',
+//   'worm',
+// ];
+---
+
+{link ? (
+  <a href="/" class={`mix-blend-difference focus:h-fit ${classes}`}>
+    <div class="flex gap-[7px] items-center">
+      <span class="h-[9px] w-[10px] bg-[#0E9900] mb-px"></span>
+      <span class="uppercase flex gap-px left-0 right-0 ">
+        MKCG
+      </span>
+      <!-- <img src={`/gifs/${gifs[Math.floor(Math.random() * gifs.length)]}.gif`} class="hidden brightness-80  w-full h-full object-cover" /> -->
+    </div>
+  </a>
+) : (
+  <div class={`flex gap-[7px] items-center mix-blend-difference ${classes}`}>
+    <span class="h-[9px] w-[10px] bg-[#0E9900] mb-px"></span>
+    <span class="uppercase flex gap-px left-0 right-0 ">
+      MKCG
+    </span>
+  </div>
+)}
+
+<!-- <img src={`/gifs/${gifs[Math.floor(Math.random() * gifs.length)]}.gif`} class="hidden brightness-80  w-full h-full object-cover" /> -->
