@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
+import DancingLetters from "../components/DancingLetters.astro";
 
 import { 
   getEntry,
@@ -69,7 +70,7 @@ const allWork = [...studiesWithWorkData, ...works];
           <div class="order-1 md:order-none flex gap-1 col-span-6 md:col-span-2 h-fit">
             {work.slug ? (
               <svg 
-                class="shrink-0 -ml-px my-px"
+                class={`shrink-0 -ml-px my-px ${work.isComingSoon ?  "opacity-50" : ""}`}
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 
@@ -80,7 +81,7 @@ const allWork = [...studiesWithWorkData, ...works];
               </svg>
             ) : (
               <svg 
-                class="shrink-0 -ml-px my-px"
+                class={`shrink-0 -ml-px my-px ${work.isComingSoon ?  "opacity-50" : ""}`}
                 width="14" 
                 height="14" 
                 viewBox="0 0 15 15" 
@@ -102,9 +103,9 @@ const allWork = [...studiesWithWorkData, ...works];
           <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">
             {work.type}
           </p>
-          <p class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
-            {work.year}
-          </p>
+          <div class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
+            {work.isComingSoon ? <DancingLetters title="Coming Soon" /> : work.year}
+          </div>
         </a>
       ))}
     </div>

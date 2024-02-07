@@ -1,0 +1,40 @@
+---
+export interface Props {
+  title: string;
+  classes?: string;
+}
+
+const { title, classes = "" } = Astro.props;
+---
+<div class={`flex ${classes}`}>
+  {title.split('').map(((character, index) => 
+    <span 
+      class={`wave-letter ${character === " " ? "w-[2px]" : ""}`} 
+      style={`animation-delay: ${index * 0.1}s;`}
+    >
+      {character}
+    </span>
+  ))}
+</div>
+
+<style>
+@keyframes do-the-wave {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-0.05em); /* Adjusted for a more noticeable wave */
+  }
+  
+  150% {
+    transform: translateY(0.05em); /* Adjusted for a more noticeable wave */
+  }
+}
+
+.wave-letter {
+  display: inline-block; /* Ensure transform applies correctly */
+  animation: do-the-wave 0.8s infinite;
+  /* The animation-delay will be set inline for each letter, creating the staggered effect */
+}
+
+</style>
