@@ -103,37 +103,37 @@ const {
         <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1 h-min">
           <p class="uppercase">Team</p>
           <div class="text-balance">
-            {teammates.map((teammate: { name: string, role: string, href: string }) => (
+            {teammates?.map((teammate: { name: string, role: string, href: string }) => (
               <div>
                 <Link classes="w-fit" href={teammate.href} classes="underline">{teammate.name}</Link> ({teammate.role})
               </div>
-            ))}
+            )) || "—"}
           </div>
         </div>
       </div>
       <div class="flex flex-col md:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t border-neutral-700">
         <div class=" col-start-1 col-end-4 xl:col-end-3 py-1">
           <p class="uppercase">Problem</p>
-          <p class="col-span-3 text-balance">{tldr.problem}</p>
+          <p class="col-span-3 text-balance">{tldr?.problem || "—"}</p>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
           <p class="uppercase">Solution</p>
-          <p class="col-span-3 text-balance">{tldr.solution}</p>
+          <p class="col-span-3 text-balance">{tldr?.solution || "—"}</p>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
           <p class="uppercase">Decisions</p>
           <ul class="col-span-3 text-balance">
-            {tldr.decisions.map((decision: string, index: number) => 
+            {tldr?.decisions?.map((decision: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {decision}</li>
-            )}
+            ) || "—"}
           </ul>
         </div>
         <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
           <p class="uppercase">Tradeoffs</p>
           <ul class="col-span-3 text-balance">
-            {tldr.tradeoffs.map((tradeoff: string, index: number) => 
+            {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
-            )}
+            ) || "—"}
           </ul>
         </div>
       </div>
@@ -179,7 +179,7 @@ const {
     const hero: HTMLElement | null = document.getElementById('hero');
     const stickyHeader: HTMLElement | null = document.getElementById('sticky-header');
 
-    const callback = (entries) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
       if (!stickyHeader) return;
       
       entries.forEach(entry => {
