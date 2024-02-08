@@ -89,8 +89,7 @@ const upRightArrowIconClasses =
           aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}
           class="whitespace-nowrap"
         >
-          <span class="group-hover:hidden">{title}</span>
-          <DancingLetters title={title} classes='hidden group-hover:inline'/>
+          {title}
         </h3>
       </div>
       <div class="flex justify-between gap-4 col-span-6 md:col-start-3 md:col-span-4">
@@ -136,8 +135,7 @@ const upRightArrowIconClasses =
         ? <RightArrowIcon classes={rightArrowIconClasses} /> 
         : <UpRightArrowIcon classes={upRightArrowIconClasses} />
       }
-      <p class="group-hover:hidden whitespace-nowrap">{title}</p>
-      <DancingLetters title={title} classes='hidden group-hover:inline whitespace-nowrap'/>
+      {title}
     </div>
     <p class=" order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">
       {description}
