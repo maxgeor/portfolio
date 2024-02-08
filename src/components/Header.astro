@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
 ---
 <header class={`col-span-full grid grid-cols-12 gap-4 ${classes}`}>
   <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
-    <Logo classes="col-span-2" />
+    <Logo classes="col-span-2" isHome={currentPath === '/'} />
     <p class="col-span-4 mt-2 md:mt-0">Product Designer +<br/> Frontend Developer</p>
   </div>
   <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">

@@ -18,7 +18,7 @@ const { title, classes = "" } = Astro.props;
   <span 
     class="sparkle h-[1px] w-[1px]"
     style={`
-      animation-delay: 0.5s;
+      animation-delay: 0.25s;
       bottom: ${Math.floor(Math.random() * 5) - 1}px;
       left: ${Math.floor(Math.random() * 26) - 2}px;
     `} 
@@ -26,7 +26,7 @@ const { title, classes = "" } = Astro.props;
   <span 
     class="sparkle h-[2px] w-[2px]"
     style={`
-      animation-delay: 1.5s;
+      animation-delay: 0.5s;
       top: ${Math.floor(Math.random() * 5) - 1}px;
       left: ${Math.floor(Math.random() * 26) - 2}px;
     `} 
@@ -34,7 +34,7 @@ const { title, classes = "" } = Astro.props;
   <span 
     class="sparkle h-[1px] w-[1px]"
     style={`
-      animation-delay: 1s;
+      animation-delay: 0.75s;
       top: ${Math.floor(Math.random() * 5) - 1}px;
       right: ${Math.floor(Math.random() * 26) - 2}px;
     `} 
@@ -50,7 +50,7 @@ const { title, classes = "" } = Astro.props;
   <span 
     class="sparkle h-[2px] w-[2px]"
     style={`
-      animation-delay: 2s;
+      animation-delay: 1.25s;
       bottom: ${Math.floor(Math.random() * 5) - 1}px;
       right: ${Math.floor(Math.random() * 26) - 2}px;
     `} 
@@ -60,9 +60,9 @@ const { title, classes = "" } = Astro.props;
 <style>
   @keyframes do-the-wave {
     0%, 100% { transform: translateY(0); color: #ccc; }
-    25%      { transform: translateY(-0.025em); color: #aeaeae; }
-    50%      { transform: translateY(0.025em); color: #ccc; }
-    75%      { transform: translateY(-0.025em); color: #aeaeae; }
+    25%      { transform: translateY(-0.035em); color: #999999; }
+    50%      { transform: translateY(0.035em); color: #ccc; }
+    75%      { transform: translateY(-0.035em); color: #999999; }
   }
 
 
