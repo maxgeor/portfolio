@@ -1,7 +1,7 @@
 {
   "type": "project",
   "title": "Sayings, Forgotten",
-  "description": "Collection of misremembered sayings",
+  "description": "Some misinterpreted sayings",
   "image": "/work/sayings-forgotten.gif",
   "roles": {
     "long": ["Web Design", "Frontend Development"],

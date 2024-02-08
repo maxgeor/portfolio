@@ -6,7 +6,7 @@ export interface Props {
 
 const { title, classes = "" } = Astro.props;
 ---
-<span class={`relative inline ${classes}`}>
+<span class={`relative inline whitespace-nowrap ${classes}`}>
   {title.split('').map(((character, index) => 
     <span 
       class={`wave-letter ${character === " " ? "w-[2px]" : ""}`} 

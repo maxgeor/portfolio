@@ -12,13 +12,13 @@ type Roles = {
 type Work = {
   title: string;
   description: string;
+  roles: Roles;
   link?: {
     href: string;
     target?: '_blank' | '_self';
   };
   year?: string;
   image?: string;
-  roles?: Roles;
   type?: string;
   studySlug?: string;
   isComingSoon?: boolean;
@@ -34,7 +34,6 @@ type WorkRow = {
   variant: 'row';
   type: string;
   year: string;
-  roles: Roles;
 } & Work;
 
 export type Props = WorkCard | WorkRow;
@@ -77,17 +76,19 @@ const upRightArrowIconClasses =
       ${classes} 
     `}
   >
-    {isComingSoon && <ComingSoonBanner classes='transform -rotate-12' />}
     <div class={`
-      grid grid-cols-12 md:grid-cols-6 gap-x-4 py-1
-      ${isComingSoon ? '' : 'group-hover:bg-neutral-750'}
+      flex flex-wrap justify-between xs:grid sm:flex md:grid grid-cols-12 md:grid-cols-6 gap-x-4 py-1
+      ${!isComingSoon && 'group-hover:bg-neutral-750'}
     `}>
-      <div class="flex gap-0.5 items-center  h-fit col-span-6 md:col-span-2">
+      <div class="flex gap-0.5 items-center h-fit col-span-6 md:col-span-2">
         {studySlug 
           ? <RightArrowIcon classes={rightArrowIconClasses} /> 
           : <UpRightArrowIcon classes={upRightArrowIconClasses} />
         }
-        <h3 aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}>
+        <h3 
+          aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}
+          class="whitespace-nowrap"
+        >
           {title}
         </h3>
       </div>
@@ -95,13 +96,16 @@ const upRightArrowIconClasses =
     </div>
     <picture class={`
       relative h-auto
-      ${isComingSoon ? 'group-hover:blur-[1px] group-hover:scale-[104%] transition duration-[275ms]' : ''}
     `}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain '
+        class={`
+          w-full h-full object-top select-none object-contain
+          ${isComingSoon ? 'group-hover:blur-[0.1em] transition duration-[275ms]' : ''}
+        `}
       />
+      {isComingSoon && <ComingSoonBanner classes='transform -rotate-12' />}
     </picture>
   </Element>
 ) : (
@@ -123,7 +127,7 @@ const upRightArrowIconClasses =
     <p class=" order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">
       {description}
     </p>
-    <div class="text-[#aaa] md:text-inherit flex gap-1 order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
+    <div class="flex gap-1 order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
       <span>{roles.long.join(', ')}</span>
     </div>
     <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">

@@ -1,7 +1,7 @@
 {
   "type": "project",
   "title": "The Quest Board",
-  "description": "Job board for the Loot community",
+  "description": "Job board for Loot",
   "image": "/work/the-quest-board.gif",
   "roles": {
     "long": ["Product Design", "Frontend Development"],

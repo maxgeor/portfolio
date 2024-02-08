@@ -1,7 +1,7 @@
 {
   "type": "project",
   "title": "Dissect Design",
-  "description": "Collection of design decisions",
+  "description": "Some design decisions",
   "image": "/work/dissect-design.png",
   "roles": {
     "long": ["Product Design", "Frontend Development"],
