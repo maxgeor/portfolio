@@ -6,13 +6,16 @@ const work = defineCollection({
     type: z.enum(['client', 'project']),
     title: z.string(),
     description: z.string(),
-    roles: z.array(z.string()),
+    roles: z.object({
+      long: z.array(z.string()),
+      short: z.array(z.string())
+    }),
     image: z.string(),
     link: z.object({
       href: z.string(),
       target: z.enum(['_blank', '_self']).optional(),
     }).optional(),
-    hasStudy: z.boolean().optional(),
+    studySlug: z.string().optional(),
     isDraft: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
     order: z.number(),

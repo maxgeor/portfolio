@@ -7,8 +7,11 @@
     "href": "https://dissect-design-sigma.vercel.app/",
     "target": "_blank"
   },
-  "roles": ["Product Design", "Full-Stack Development"],
-  "hasStudy": true,
+  "roles": {
+    "long": ["Product Design", "Full-Stack Development"],
+    "short": ["Design", "Dev"]
+  },
+  "studySlug": "polls",
   "isDraft": true,
   "order": 8,
   "year": "2023"

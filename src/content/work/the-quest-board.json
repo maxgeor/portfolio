@@ -3,7 +3,10 @@
   "title": "The Quest Board",
   "description": "Job board for the Loot community",
   "image": "/work/the-quest-board.gif",
-  "roles": ["Product Design", "Frontend Development"],
+  "roles": {
+    "long": ["Product Design", "Frontend Development"],
+    "short": ["Design", "Dev"]
+  },
   "link": {
     "href": "https://www.lootquestboard.com/",
     "target": "_blank"

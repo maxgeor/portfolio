@@ -6,7 +6,7 @@ export interface Props {
 
 const { title, classes = "" } = Astro.props;
 ---
-<div class={`flex ${classes}`}>
+<span class={`relative inline ${classes}`}>
   {title.split('').map(((character, index) => 
     <span 
       class={`wave-letter ${character === " " ? "w-[2px]" : ""}`} 
@@ -15,26 +15,87 @@ const { title, classes = "" } = Astro.props;
       {character}
     </span>
   ))}
-</div>
+  <span 
+    class="sparkle h-[1px] w-[1px]"
+    style={`
+      animation-delay: 0.5s;
+      bottom: ${Math.floor(Math.random() * 5) - 1}px;
+      left: ${Math.floor(Math.random() * 26) - 2}px;
+    `} 
+  ></span>
+  <span 
+    class="sparkle h-[2px] w-[2px]"
+    style={`
+      animation-delay: 1.5s;
+      top: ${Math.floor(Math.random() * 5) - 1}px;
+      left: ${Math.floor(Math.random() * 26) - 2}px;
+    `} 
+  ></span>
+  <span 
+    class="sparkle h-[1px] w-[1px]"
+    style={`
+      animation-delay: 1s;
+      top: ${Math.floor(Math.random() * 5) - 1}px;
+      right: ${Math.floor(Math.random() * 26) - 2}px;
+    `} 
+  ></span>
+  <span 
+    class="sparkle h-[1px] w-[1px]"
+    style={`
+      animation-delay: 1s;
+      top: ${Math.floor(Math.random() * 5) - 1}px;
+      right: ${Math.floor(Math.random() * 26) - 2}px;
+    `} 
+  ></span>
+  <span 
+    class="sparkle h-[2px] w-[2px]"
+    style={`
+      animation-delay: 2s;
+      bottom: ${Math.floor(Math.random() * 5) - 1}px;
+      right: ${Math.floor(Math.random() * 26) - 2}px;
+    `} 
+  ></span>
+    </span>
 
 <style>
-@keyframes do-the-wave {
-  0%, 100% {
-    transform: translateY(0px);
+  @keyframes do-the-wave {
+    0%, 100% { transform: translateY(0); color: #ccc; }
+    25%      { transform: translateY(-0.025em); color: #aeaeae; }
+    50%      { transform: translateY(0.025em); color: #ccc; }
+    75%      { transform: translateY(-0.025em); color: #aeaeae; }
   }
-  50% {
-    transform: translateY(-0.05em); /* Adjusted for a more noticeable wave */
-  }
-  
-  150% {
-    transform: translateY(0.05em); /* Adjusted for a more noticeable wave */
-  }
-}
 
-.wave-letter {
-  display: inline-block; /* Ensure transform applies correctly */
-  animation: do-the-wave 0.8s infinite;
-  /* The animation-delay will be set inline for each letter, creating the staggered effect */
-}
 
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0; 
+      transform: scale(0.8);
+    }
+    50% { 
+      opacity: 1; 
+      transform: scale3d(1);
+    }
+    180% {
+      opacity: 1; 
+      transform: scale3d(1);
+    }
+  }
+
+  @keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .wave-letter {
+    display: inline-block;
+    animation: do-the-wave 2.1s ease-in-out infinite;
+    will-change: transform, opacity, color;
+  }
+
+  .sparkle {
+    opacity: 0;
+    background-color: #ccc;
+    position: absolute;
+    animation: twinkle 2s infinite ease-out, spin 3s linear infinite;
+  }
 </style>

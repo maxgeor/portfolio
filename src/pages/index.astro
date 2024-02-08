@@ -3,51 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import DancingLetters from "../components/DancingLetters.astro";
+import { getCollection } from 'astro:content';
 
-import { 
-  getEntry,
-  getCollection
-} from 'astro:content';
-
-const works = await getCollection('work', ({ 
-  data: { hasStudy, isDraft } 
-}) => (
-  !hasStudy && !isDraft
-));
-
-const studies = await getCollection('study', ({ data: { isDraft } }) => !isDraft);
-const studiesWithWorkData = await Promise.all(studies.map(async (study) => {
-  const { work, isComingSoon, order } = study.data;
-  const { 
-    data: { 
-      type, 
-      title, 
-      image, 
-      year, 
-      roles, 
-      description, 
-      link 
-    }
-  } = await getEntry('work', work.id);
-
-  return { 
-    data: {
-      slug: study.slug,
-      hasStudy: true,
-      type,
-      title, 
-      image,
-      description,
-      roles, 
-      year,
-      order,
-      link,
-      isComingSoon,
-    }
-  };
-}));
-
-const allWork = [...studiesWithWorkData, ...works];
+const works = await getCollection('work', (
+  { data: { isDraft } }
+) => !isDraft);
 ---
 
 <Layout title="Max Georgopoulos">
@@ -61,14 +21,14 @@ const allWork = [...studiesWithWorkData, ...works];
         <p class="col-span-3 md:col-span-1">Type</p>
         <p class="col-span-3 md:col-span-1 justify-self-end">Year</p>
       </div>
-      {allWork?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }) => (
+      {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }) => (
         <a 
-          href={work.slug ? `study/${work.slug}` : work.link?.href} 
-          target={!work.link?.target || work.slug ? '_self' : work.link?.target}
+          href={work.studySlug ? `study/${work.studySlug}` : work.link?.href} 
+          target={!work.link?.target || work.studySlug ? '_self' : work.link?.target}
           class="hover:bg-neutral-750 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4"
         >
           <div class="order-1 md:order-none flex gap-1 col-span-6 md:col-span-2 h-fit">
-            {work.slug ? (
+            {work.studySlug ? (
               <svg 
                 class="shrink-0 -ml-px my-px"
                 width="14" 
@@ -98,24 +58,25 @@ const allWork = [...studiesWithWorkData, ...works];
             {work.description}
           </p>
           <div class="text-[#aaa] md:text-inherit flex gap-1 order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
-            <span>{work.roles.join(', ')}</span>
+            <span>{work.roles.long.join(', ')}</span>
           </div>
           <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">
             {work.type}
           </p>
           <div class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
-            {work.isComingSoon ? <span class="whitespace-nowrap">Coming Soon</span> : work.year}
+            {work.isComingSoon ? <DancingLetters title="Coming Soon" /> : work.year}
           </div>
         </a>
       ))}
     </div>
-    <div class="columns-1 md:columns-2 col-span-full  gap-x-4 space-y-4">
-      {allWork?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }) => (
+    <div class="columns-1 md:columns-2 col-span-full gap-x-4 space-y-4">
+      {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }) => (
         <Work
           title={work.title}
           link={work.link}
           image={work.image}
           description={work.description}
+          studySlug={work.studySlug}
           isComingSoon={work.isComingSoon}
         />
       ))}
