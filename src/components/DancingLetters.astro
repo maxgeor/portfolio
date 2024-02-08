@@ -9,7 +9,7 @@ const { title, classes = "" } = Astro.props;
 <span class={`relative inline whitespace-nowrap ${classes}`}>
   {title.split('').map(((character, index) => 
     <span 
-      class={`wave-letter ${character === " " ? "w-[2px]" : ""}`} 
+      class={`wave-letter ${character === " " ? "w-[0.25em]" : ""}`} 
       style={`animation-delay: ${index * 0.1}s;`}
     >
       {character}
