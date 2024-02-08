@@ -2,17 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
-import DancingLetters from "../components/DancingLetters.astro";
 import { getCollection } from 'astro:content';
 
-const works = await getCollection('work', (
-  { data: { isDraft } }
-) => !isDraft);
+const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
-
 <Layout title="Max Georgopoulos">
   <div class="col-span-full relative grid grid-cols-12 gap-4 ">
-    <Header/>
+    <Header />
     <div class="grid grid-cols-12 col-span-full gap-x-4 ">
       <div class="uppercase pb-1 col-span-full grid grid-cols-12 gap-4 ">
         <p class="col-span-6 md:col-span-2">Work</p>
@@ -22,63 +18,12 @@ const works = await getCollection('work', (
         <p class="col-span-3 md:col-span-1 justify-self-end">Year</p>
       </div>
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }) => (
-        <a 
-          href={work.studySlug ? `study/${work.studySlug}` : work.link?.href} 
-          target={!work.link?.target || work.studySlug ? '_self' : work.link?.target}
-          class="hover:bg-neutral-750 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4"
-        >
-          <div class="order-1 md:order-none flex gap-1 col-span-6 md:col-span-2 h-fit">
-            {work.studySlug ? (
-              <svg 
-                class="shrink-0 -ml-px my-px"
-                width="14" 
-                height="14" 
-                viewBox="0 0 15 15" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-              </svg>
-            ) : (
-              <svg 
-                class="shrink-0 -ml-px my-px"
-                width="14" 
-                height="14" 
-                viewBox="0 0 15 15" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-                </path>
-              </svg>
-            )}
-            <p class="whitespace-nowrap">{work.title}</p>
-          </div>
-          <p class=" order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">
-            {work.description}
-          </p>
-          <div class="text-[#aaa] md:text-inherit flex gap-1 order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
-            <span>{work.roles.long.join(', ')}</span>
-          </div>
-          <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">
-            {work.type}
-          </p>
-          <div class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
-            {work.isComingSoon ? <DancingLetters title="Coming Soon" /> : work.year}
-          </div>
-        </a>
+        <Work variant="row" {...work} />
       ))}
     </div>
-    <div class="columns-1 md:columns-2 col-span-full gap-x-4 space-y-4">
+    <div class="columns-1 sm:columns-2 col-span-full gap-x-4 space-y-4">
       {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }) => (
-        <Work
-          title={work.title}
-          link={work.link}
-          image={work.image}
-          description={work.description}
-          studySlug={work.studySlug}
-          isComingSoon={work.isComingSoon}
-        />
+        <Work variant="card" {...work} />
       ))}
     </div>
   </div>

@@ -1,85 +1,140 @@
 ---
-import RightArrowIcon from './icons/UpRightArrowIcon.astro';
+import DancingLetters from './DancingLetters.astro';
+import RightArrowIcon from './icons/RightArrowIcon.astro';
 import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 import ComingSoonBanner from './ComingSoonBanner.astro'
 
-export interface Props {
+type Roles = {
+  long: string[],
+  short: string[];
+}
+
+type Work = {
   title: string;
   description: string;
-  image: string;
   link?: {
     href: string;
     target?: '_blank' | '_self';
   };
+  year?: string;
+  image?: string;
+  roles?: Roles;
+  type?: string;
   studySlug?: string;
   isComingSoon?: boolean;
   classes?: string;
 }
 
+type WorkCard = {
+  variant: 'card';
+  image: string;
+} & Work;
+
+type WorkRow = {
+  variant: 'row';
+  type: string;
+  year: string;
+  roles: Roles;
+} & Work;
+
+export type Props = WorkCard | WorkRow;
+
 const { 
-  link,
   title, 
   description, 
+  variant,
+  type,
   image,
+  year,
+  link = {},
+  roles,
   studySlug,
   classes = '',
   isComingSoon = false,
 } = Astro.props;
 
-const rightArrowIconClasses = `inline shrink-0 mr-[4px] -ml-px mb-0.5 ${isComingSoon ? 'opacity-50' : ''}`;
-const upRightArrowIconClasses = `inline -ml-px mr-[4px] mb-0.5 ${isComingSoon ? 'opacity-50' : ''}`;
+const Element = isComingSoon ? 'div' : 'a';
+const props = 
+  isComingSoon 
+    ? {} 
+    : studySlug 
+      ? { href: `study/${studySlug}`, target: '_self' } 
+      : link 
+
+const rightArrowIconClasses = 
+  `inline shrink-0 mr-[4px] -ml-px  ${isComingSoon ? 'opacity-60' : ''}`;
+
+const upRightArrowIconClasses = 
+  `inline shrink-0 -ml-px mr-[4px] ${isComingSoon ? 'opacity-60' : ''}`;
+
 ---
-{isComingSoon ? (
-  <div
+{variant === 'card' ? (
+  <Element
+    {...props}
     class={`
-      group col-span-full xl:col-span-1 group overflow-hidden relative  gap-x-4 h-fit cursor-not-allowed border-t border-neutral-700
+      transition-all duration-75 group col-span-1 overflow-hidden block group relative gap-x-4 h-fit border-t border-neutral-700
+      ${isComingSoon ? 'cursor-not-allowed' : ''}
       ${classes} 
     `}
   >
-    <ComingSoonBanner classes='transform -rotate-12' />
-    <div class="grid grid-cols-12 md:grid-cols-6 gap-x-4 py-1">
-      <h3 aria-label={`${title} (coming soon)`} class="col-span-6 md:col-span-2">
+    {isComingSoon && <ComingSoonBanner classes='transform -rotate-12' />}
+    <div class={`
+      grid grid-cols-12 md:grid-cols-6 gap-x-4 py-1
+      ${isComingSoon ? '' : 'group-hover:bg-neutral-750'}
+    `}>
+      <div class="flex gap-0.5 items-center  h-fit col-span-6 md:col-span-2">
         {studySlug 
           ? <RightArrowIcon classes={rightArrowIconClasses} /> 
           : <UpRightArrowIcon classes={upRightArrowIconClasses} />
         }
-        <span>{title}</span>
-      </h3>
+        <h3 aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}>
+          {title}
+        </h3>
+      </div>
       <p class="col-span-6 md:col-start-3 md:col-span-4">{description}</p>
     </div>
-    <picture class='relative h-auto group-hover:blur-[2px] transition duration-300'>
+    <picture class={`
+      relative h-auto
+      ${isComingSoon ? 'group-hover:blur-[1px] group-hover:scale-[104%] transition duration-[275ms]' : ''}
+    `}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
         class='w-full h-full object-top select-none object-contain '
       />
     </picture>
-  </div>
+  </Element>
 ) : (
-  <a
-    href={link?.href || '#'}
-    target={link?.target || '_self'}
+  <Element
+    {...props}
     class={`
-      group col-span-full xl:col-span-1 group overflow-hidden relative flex flex-col gap-x-4 h-fit border-t border-neutral-700
-      ${classes} 
+      transition-all duration-75 border-t border-neutral-700 py-1 col-span-full grid grid-cols-12 gap-x-4
+      ${isComingSoon ? 'cursor-not-allowed' : 'hover:bg-neutral-750'}
+      ${classes}
     `}
   >
-  <div class="grid grid-cols-12 md:grid-cols-6 gap-4 py-1 group-hover:bg-neutral-750">
-    <h3 aria-label={title} class="col-span-6 md:col-span-2">
+    <div class="order-1 md:order-none flex gap-0.5 items-center col-span-6 md:col-span-2 h-fit">
       {studySlug 
-          ? <RightArrowIcon classes={rightArrowIconClasses} /> 
-          : <UpRightArrowIcon classes={upRightArrowIconClasses} />
-        }
-      <span>{title}</span>
-    </h3>
-    <p class="col-span-6 md:col-start-3 md:col-span-4">{description}</p>
-  </div>
-    <picture class='relative h-auto'>
-      <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain'
-      />
-    </picture>
-  </a>
+        ? <RightArrowIcon classes={rightArrowIconClasses} /> 
+        : <UpRightArrowIcon classes={upRightArrowIconClasses} />
+      }
+      <p class="whitespace-nowrap">{title}</p>
+    </div>
+    <p class=" order-4 md:order-none col-span-full xs:col-span-6 md:col-span-4">
+      {description}
+    </p>
+    <div class="text-[#aaa] md:text-inherit flex gap-1 order-5 md:order-none col-span-full xs:col-span-5  md:col-span-4 ml-4.5">
+      <span>{roles.long.join(', ')}</span>
+    </div>
+    <p class="col-span-3 md:col-span-1 order-2 md:order-none capitalize">
+      {type}
+    </p>
+    <div class="col-span-3 md:col-span-1 order-3 md:order-none justify-self-end">
+      {isComingSoon ? (
+        <DancingLetters 
+          title="Coming Soon" 
+        />
+      ) : year}
+    </div>
+  </Element>
 )}

@@ -1,4 +1,6 @@
 ---
+import DancingLetters from './DancingLetters.astro';
+
 export interface Props {
   classes?: string;
 }
@@ -12,42 +14,12 @@ const {
   coming-soon-banner absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 text-[#ddd] bg-[#000] marquee
   ${classes}
 `}>
-    <div class="text">
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-    </div>
-    <div class="text">
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-        <span>Coming Soon</span>
-    </div>
+  <div class="text">
+    {Array.from({ length: 10 }, (_) => <DancingLetters title="Coming Soon" classes="mr-0.5" />)}
+  </div>
+  <div class="text">
+    {Array.from({ length: 10 }, (_) => <DancingLetters title="Coming Soon" classes="mr-0.5" />)}
+  </div>
 </div>
 <style>
   .coming-soon-banner {
