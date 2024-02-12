@@ -67,7 +67,7 @@ switch (typeof span) {
   `}>
     <video
       class={`
-        transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center
+        transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-90 focus:brightness-90
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}
@@ -105,16 +105,24 @@ switch (typeof span) {
     const pauseVideo = () => {
       video.pause();
       video.classList.add("brightness-75");
+      video.classList.remove(
+        'hover:brightness-90',
+        'focus:brightness-90'
+      );
       pauseIcon.classList.remove(
         "opacity-0",
         "-rotate-[24deg]",
-        "-translate-x-5"
+        "-translate-x-5",
       );
     };
 
     const playVideo = () => {
       video.play();
       video.classList.remove("brightness-75", "ease-in-out");
+      video.classList.add(
+        'hover:brightness-90',
+        'focus:brightness-90'
+      );
       pauseIcon.classList.add(
         "ease-in",
         "opacity-0",
