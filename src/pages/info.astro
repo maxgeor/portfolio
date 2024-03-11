@@ -51,7 +51,7 @@ const heros = [
   <Header />
   <div class="col-span-full grid grid-cols-12 gap-x-4">
     
-    <div class="order-first uppercase pb-1 col-span-full grid grid-cols-12 gap-4 border-b border-neutral-700">
+    <div class="order-first uppercase pb-1 col-span-full grid grid-cols-12 gap-4 border-b border-neutral-750">
       <p class="col-span-2">Who?</p>
       <p class="hidden sm:inline-block col-span-8 lg:col-span-4">Bio</p>
       <p class="hidden lg:inline-block col-span-4">Heros</p>
@@ -66,17 +66,17 @@ const heros = [
             <span>=</span> 
             <span>Max</span> 
           </div>
-          <div class="py-1 border-t flex gap-1.5 border-neutral-700">
+          <div class="py-1 border-t flex gap-1.5 border-neutral-750">
             <span class="w-[9px]">K</span> 
             <span>=</span> 
             <span>Kevin</span> 
           </div>
-          <div class="py-1 border-t flex gap-1.5 border-neutral-700">
+          <div class="py-1 border-t flex gap-1.5 border-neutral-750">
             <span class="w-[9px]">C</span> 
             <span>=</span> 
             <span>Crapper</span> 
           </div>
-          <div class="py-1 border-y flex gap-1.5 border-neutral-700">
+          <div class="py-1 border-y flex gap-1.5 border-neutral-750">
             <span class="w-[9px]">G</span> 
             <span>=</span> 
             <span>Georgopoulos</span> 
@@ -103,10 +103,10 @@ const heros = [
           </p>
         </div>
         <div class="col-span-4  flex flex-col">
-          <p class="lg:hidden uppercase border-b border-neutral-700 pb-1">Heros</p>
+          <p class="lg:hidden uppercase border-b border-neutral-750 pb-1">Heros</p>
           <ul class="flex flex-col">
             {heros.map((hero) => (
-              <li class="border-t first:border-none last:border-y border-neutral-700  ">
+              <li class="border-t first:border-none last:border-y border-neutral-750  ">
                 <details
                   class="before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent "
                 >
@@ -122,7 +122,7 @@ const heros = [
         </div>
       </div>
       <div class="col-span-full sm:col-span-2 sm:col-start-11 ">
-        <div class="sm:hidden w-full border-b border-neutral-700 pb-1 mt-4">
+        <div class="sm:hidden w-full border-b border-neutral-750 pb-1 mt-4">
           <p class="uppercase">Links</p>
         </div>
         <SocialLinks classes="w-full" />

@@ -21,7 +21,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
         <Work variant="row" {...work} />
       ))}
     </div>
-    <div class="columns-1 sm:columns-2 col-span-full gap-x-4 space-y-4">
+    <div class="columns-1 sm:columns-2  col-span-full gap-x-4 space-y-4">
       {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }) => (
         <Work variant="card" {...work} />
       ))}

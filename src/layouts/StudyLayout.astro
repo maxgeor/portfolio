@@ -23,7 +23,7 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-4 pb-24">
     <Button 
       tag="a" 
       href="#article" 
@@ -63,8 +63,8 @@ const {
         <Logo classes="hidden group-hover:flex" />
       </a>
     </Grid>
-    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b border-neutral-700'>
-      <div class="grid grid-cols-12 col-span-full border-b border-neutral-700 gap-x-4 pb-1">
+    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b border-neutral-750'>
+      <div class="grid grid-cols-12 col-span-full border-b border-neutral-750 gap-x-4 pb-1">
         <h1 class="col-span-6 uppercase">{title}</h1>
         {link && <Link href={link} target='_blank' classes="col-span-6 w-fit">Live Site</Link>}
       </div>
@@ -88,15 +88,15 @@ const {
             <p>{type}</p>
           </div>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
           <p class="uppercase">Roles</p>
           <ul class="col-span-3 text-balance">{roles?.join(', ')}</ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1 h-fit">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1 h-fit">
           <p class="uppercase">Tools</p>
           <p class="col-span-3 text-balance">{tools.join(', ')}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1 h-min">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1 h-min">
           <p class="uppercase">Team</p>
           <div class="text-balance">
             {teammates?.map((teammate: { name: string, role: string, href: string }) => (
@@ -107,16 +107,16 @@ const {
           </div>
         </div>
       </div>
-      <div class="flex flex-col md:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t border-neutral-700">
+      <div class="flex flex-col md:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t border-neutral-750">
         <div class=" col-start-1 col-end-4 xl:col-end-3 py-1">
           <p class="uppercase">Problem</p>
           <p class="col-span-3 text-balance">{tldr?.problem || "—"}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
           <p class="uppercase">Solution</p>
           <p class="col-span-3 text-balance">{tldr?.solution || "—"}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
           <p class="uppercase">Decisions</p>
           <ul class="col-span-3 text-balance">
             {tldr?.decisions?.map((decision: string, index: number) => 
@@ -124,7 +124,7 @@ const {
             ) || "—"}
           </ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-700 py-1">
+        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
           <p class="uppercase">Tradeoffs</p>
           <ul class="col-span-3 text-balance">
             {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
@@ -167,6 +167,9 @@ const {
         <slot />
       </div>
     </article>
+    <footer class=" border-neutral-750 pt-12 col-span-full mt-48">
+      READ MORE
+    </footer>
   </main>
 </Layout>
 

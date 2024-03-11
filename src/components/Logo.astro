@@ -15,6 +15,23 @@ const props = isHome ? { id: "logo-button" } : { href: '/', target: '_self' }
 <Element 
   {...props} 
   class={`
+    h-fit group flex gap-[8px] items-center  
+    ${Element === 'a' ? 'cursor-pointer' : 'cursor-default'}
+    ${classes}
+  `}
+>
+  <span class="h-[10px] w-[10px] bg-[#7b7b7b] mb-[1px]"></span>
+  <DancingLetters 
+    title="MKCG" 
+    classes="hidden group-hover:inline-block group-focus:inline-block" 
+  />
+  <span class="non-dancing-letters lg:group-hover:hidden lg:group-focus:hidden">
+    MKCG
+  </span>
+</Element>
+<!-- <Element 
+  {...props} 
+  class={`
     h-fit group flex gap-[8px] items-center mix-blend-difference 
     ${Element === 'a' ? 'cursor-pointer' : 'cursor-default'}
     ${classes}
@@ -28,6 +45,6 @@ const props = isHome ? { id: "logo-button" } : { href: '/', target: '_self' }
   <span class="non-dancing-letters lg:group-hover:hidden lg:group-focus:hidden">
     MKCG
   </span>
-</Element>
+</Element> -->
 
 
