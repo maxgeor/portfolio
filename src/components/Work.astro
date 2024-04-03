@@ -127,7 +127,7 @@ const upRightArrowIconClasses =
     {...props}
     class={`
       relative group col-span-full
-      ${isComingSoon ? 'line-through' : 'hover:bg-neutral-750'}
+      ${isComingSoon ? 'opacity-[60%]' : 'hover:bg-neutral-750'}
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes}
     `}
