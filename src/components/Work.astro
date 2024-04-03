@@ -79,13 +79,13 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-      duration-75 group col-span-1 overflow-hidden block group relative gap-x-4 h-fit 
+       group col-span-1 overflow-hidden block group relative gap-x-4 h-fit 
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes} 
     `}
   >
     <div class={`
-      flex justify-between xs:grid grid-cols-12 sm:grid-cols-6 gap-x-4 
+      flex justify-between xs:grid grid-cols-12 sm:grid-cols-6 gap-x-4
       ${!isComingSoon && 'group-hover:bg-neutral-750'}
     `}>
       <div class="flex gap-0.5 items-center h-fit col-span-4 sm:col-span-2">
@@ -126,8 +126,8 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-      relative group col-span-full 
-      ${isComingSoon ? '' : 'hover:bg-neutral-750'}
+      relative group col-span-full
+      ${isComingSoon ? 'line-through' : 'hover:bg-neutral-750'}
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes}
     `}

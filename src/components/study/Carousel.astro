@@ -37,8 +37,8 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
   `}
 >
   <div class={`
-    counter justify-self-center flex tabular absolute bottom-4 right-4 font-mono self-start
-    ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-6 md:right-0'}
+     justify-self-center flex tabular absolute bottom-4 right-4  self-start
+    ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-3.5 md:right-0'}
   `}>
     <span class="counter-current">1</span>
     <span>/</span>
@@ -48,7 +48,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     disabled="true" 
     aria-label="Previous slide" 
     class={`
-      btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4
+      btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4 -mr-[19px]
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2 xs:right-auto xs:left-0'
       ) : (
@@ -115,7 +115,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     </div>
     <div 
       class={`
-        slide-titles col-span-full xl:col-span-2 mr-16
+        mt-1 slide-titles col-span-full xl:col-span-2 mr-16
         ${orientation === 'vertical' ? (
           'xs:col-start-3 xs:col-span-3 '
         ) : (
@@ -128,12 +128,12 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
         <button 
           data-position={index} 
           class={`
-            slide-title slide-title-${index} flex gap-4 text-left  hover:text-white focus:text-white
+            lowercase slide-title slide-title-${index} flex gap-4 text-left  hover:text-white focus:text-white
             ${index === 0 ? 'active' : ''}
           `}
         >
           <span class="tabular">{slide.id}</span>
-          <p class="">{slide.alt}</p>
+          <p>{slide.alt}</p>
         </button>
       ))}
     </div>

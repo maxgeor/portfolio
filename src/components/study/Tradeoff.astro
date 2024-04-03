@@ -15,8 +15,8 @@ const { title, image } = Astro.props;
 ---
 
 <div class="col-span-full md:col-span-8 md:col-start-3 flex flex-col gap-3">
-  <div class="col-span-full flex flex-col gap-0.5 ">
-    <h3 class="border-b border-neutral-100" set:html={marked.parse(title)}></h3>
+  <div class="col-span-full flex flex-col gap-0.5  ">
+    <h3 class="shadow-border" set:html={marked.parse(title)}></h3>
     <div class=" flex flex-col gap-2 max-w-xl">
       <slot />
     </div>
