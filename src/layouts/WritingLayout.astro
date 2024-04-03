@@ -10,16 +10,16 @@ const formattedDate = formatDate(frontmatter.date);
 <Layout title={frontmatter.title}>
   <div class="col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <div class="grid grid-cols-12 gap-4 col-span-full ">
-      <span class="sm:order-last col-span-10">{frontmatter.title}</span>
-      <span class="sm:order-first flex col-span-2 justify-self-end sm:justify-self-auto text-[11px]">{formattedDate}</span>
+    <div class="grid grid-cols-12 gap-4 col-span-full border-b sm:border-none">
+      <h1 class="sm:order-last col-span-10 ">{frontmatter.title}</h1>
+      <span class="sm:order-first flex justify-self-end sm:justify-self-auto col-span-2 text-[11px]">{formattedDate}</span>
     </div>  
     <main class="sm:col-start-3 xl:col-start-3 col-span-full sm:col-span-8 xl:col-span-4 max-w-prose">
       <div
         class={`
-          prose-xs max-w-prose leading-4 
+          prose-xs max-w-prose leading-4 text-pretty
           prose-headings:uppercase
-          prose-headings:mt-6 prose-headings:mb-2
+          prose-headings:mt-4 prose-headings:mb-2
           prose-p:my-2
           first:prose-p:mt-0
           last:prose-p:mb-0
