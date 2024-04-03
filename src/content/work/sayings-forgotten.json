@@ -4,7 +4,7 @@
   "description": "Some misinterpreted sayings",
   "image": "/work/sayings-forgotten.gif",
   "roles": {
-    "long": ["Web Design", "Frontend Development"],
+    "long": ["Web", "Dev"],
     "short": ["Design", "Dev"]
   },
   "link": {

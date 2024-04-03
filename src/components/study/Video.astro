@@ -53,12 +53,12 @@ switch (typeof span) {
 <div
   id={id}
   class={`
-    grid gap-y-1 gap-x-4 border-t border-neutral-750 pt-1
+    grid gap-x-4
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
-  <p class="col-span-1 uppercase">{id}</p>
-  <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
+  <p class="col-span-1 lowercase">{id}</p>
+  <p class={`col-start-2 col-end-[-1] lowercase`}>{alt}</p>
   <div class={`
     relative grid col-span-full bg-neutral-750 gap-x-4
     ${colClasses}

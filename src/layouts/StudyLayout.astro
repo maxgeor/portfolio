@@ -56,19 +56,160 @@ const {
     <Header />
     <Grid 
       id="sticky-header" 
-      classes="hidden transition fixed top-4 left-4 right-4 z-50 mix-blend-difference"
+      classes="hidden  fixed top-4 left-4 right-4 z-50 mix-blend-difference"
     >
       <a href="/" class="relative group mix-blend-difference col-span-2">
-        <p class="absolute group-hover:hidden uppercase">{title}</p>
+        <p class="absolute group-hover:hidden ">{title}</p>
         <Logo classes="hidden group-hover:flex" />
       </a>
     </Grid>
-    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4 border-b border-neutral-750'>
-      <div class="grid grid-cols-12 col-span-full border-b border-neutral-750 gap-x-4 pb-1">
-        <h1 class="col-span-6 uppercase">{title}</h1>
+    <section id="hero" class=' col-span-full grid grid-cols-12 gap-x-4 border-neutral-750'>
+      
+      <div class="grid grid-cols-12  col-span-full  gap-x-4  pb-4">
+        <h1 class="col-span-4 sm:col-span-2">
+          {link ? <Link href={link} target='_blank' classes="whitespace-nowrap justify-self-end w-fit">{title}</Link> : title}
+        </h1>
+        <span class="col-span-8">
+          <p class="col-span-full col-start-5">{description}</p>
+        </span>
+      </div>
+      <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750">Year</p>
+        <p class="col-span-8 ">{year}</p>
+      </div>
+      <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750">Type</p>
+        <p class="col-span-8 ">{type}</p>
+      </div>
+      <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750">Roles</p>
+        <p class="col-span-8 ">{roles?.join(', ')}</p>
+      </div>
+      <div class="col-span-full  grid grid-cols-12  gap-4 ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750">Tools</p>
+        <p class="col-span-8 ">{tools?.join(', ')}</p>
+      </div>
+      <div class="col-span-full  grid grid-cols-12  gap-4 ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750">Team</p>
+        <ul class="flex flex-col col-span-8">
+          {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
+            <li>
+              <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
+            </li>
+          )) : "—"}
+        </ul>
+      </div>
+      <span class="h-4 col-span-full"></span>
+      <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+        <p class="col-span-4 sm:col-span-2 border-neutral-750sm:">Problem</p>
+        <p class="col-span-8 text-balance">{tldr?.problem || "—"}</p>
+      </div>
+      <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+        <p class="col-span-4 sm:col-span-2">Solution</p>
+        <p class="col-span-8 text-balance">{tldr?.solution || "—"}</p>
+      </div>
+      <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+        <p class="col-span-4 sm:col-span-2">Decisions</p>
+        <ul class="col-span-8 text-balance">
+          {tldr?.decisions?.map((decision: string, index: number) => 
+            <li><span class="tabular">{index + 1}</span>/ {decision}</li>
+          ) || "—"}
+        </ul>
+      </div>
+      <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+        <p class="col-span-4 sm:col-span-2">Tradeoffs</p>
+        <ul class="col-span-8 text-balance">
+          {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
+            <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
+          ) || "—"}
+        </ul>
+      </div>
+    </section>
+    
+    <article
+      id="article"
+      class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
+    >
+      <div
+        class={`
+          -all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
+
+          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
+          prose-ul:-my-0.5 prose-ul:text-neutral-300
+
+          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5 prose-ol:text-neutral-300
+
+          prose-li:list-item
+          prose-li:list-outside
+          prose-li:pl-0.5
+          prose-li:m-0
+          prose-li:leading-4
+          marker:prose-li:text-[11.5px]
+          marker:prose-li:font-inter
+          
+          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
+          prose-video:w-auto prose-video:select-none	prose-video:my-0 
+
+          prose-td:p-0
+
+          grid grid-cols-12 gap-x-4 gap-y-8 mt-5
+        `}
+      >
+        <slot />
+      </div>
+    </article>
+    <footer class=" border-neutral-750 pt-12 col-span-full mt-48">
+      READ MORE
+    </footer>
+  </main>
+</Layout>
+<!-- <Layout title={title} description={description} maxWidth="max-w-none">
+  <main class="relative col-span-full grid grid-cols-12 gap-4 pb-24">
+    <Button 
+      tag="a" 
+      href="#article" 
+      padding="px-3 .5"
+      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  !px-1 !rounded  ">
+      Skip to main content
+    </Button>
+    <Button
+      id="go-back-up-button"
+      ariaLabel="Go back up"
+      ariaHidden="true"
+      disabled={true}
+      padding="pl-[10px] pr-3 .5"
+      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
+    >
+      <ChevronUpIcon classes="-mx-px -mb-px" />
+      <span class="leading-6">Go back</span>
+    </Button>
+    <Button
+      id="go-back-down-button"
+      disabled={true}
+      ariaLabel="Go back down"
+      ariaHidden="true"
+      padding="pl-[10px] pr-3 .5"
+      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
+    >
+      <ChevronDownIcon classes="-mx-px -mt-px" />
+      <span class="leading-6">Go back</span>
+    </Button>
+    <Header />
+    <Grid 
+      id="sticky-header" 
+      classes="hidden  fixed top-4 left-4 right-4 z-50 mix-blend-difference"
+    >
+      <a href="/" class="relative group mix-blend-difference col-span-2">
+        <p class="absolute group-hover:hidden ">{title}</p>
+        <Logo classes="hidden group-hover:flex" />
+      </a>
+    </Grid>
+    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4  border-neutral-750'>
+      <div class="grid grid-cols-12 col-span-full  border-neutral-750 gap-x-4 ">
+        <h1 class="col-span-6 ">{title}</h1>
         {link && <Link href={link} target='_blank' classes="col-span-6 w-fit">Live Site</Link>}
       </div>
-      <div class="hidden xl:flex flex-col justify-between gap-4 col-span-3 xl:col-span-2 py-1 row-span-2">
+      <div class="hidden xl:flex flex-col justify-between gap-4 col-span-3 xl:col-span-2  row-span-2">
         <div class="col-span-2">
           <p class="col-span-2 text-balance">{description}</p>
         </div>
@@ -77,8 +218,8 @@ const {
           <p>{type}</p>
         </div>
       </div>
-      <div class="flex flex-col md:grid md:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 md:col-span-full">
-        <div class="mb-auto md:mt-0  flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 py-1">
+      <div class="flex flex-col sm:grid sm:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 sm:col-span-full">
+        <div class="mb-auto sm:mt-0  flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 ">
           <div class="col-span-2">
             <p class="col-span-2 text-balance">{description}</p>
           </div>
@@ -88,16 +229,16 @@ const {
             <p>{type}</p>
           </div>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
-          <p class="uppercase">Roles</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
+          <p class="">Roles</p>
           <ul class="col-span-3 text-balance">{roles?.join(', ')}</ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1 h-fit">
-          <p class="uppercase">Tools</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750  h-fit">
+          <p class="">Tools</p>
           <p class="col-span-3 text-balance">{tools.join(', ')}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1 h-min">
-          <p class="uppercase">Team</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750  h-min">
+          <p class="">Team</p>
           <div class="text-balance">
             {teammates?.map((teammate: { name: string, role: string, href: string }) => (
               <div>
@@ -107,25 +248,25 @@ const {
           </div>
         </div>
       </div>
-      <div class="flex flex-col md:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  md:col-span-full xl:col-span-10 md:border-t border-neutral-750">
-        <div class=" col-start-1 col-end-4 xl:col-end-3 py-1">
-          <p class="uppercase">Problem</p>
+      <div class="flex flex-col sm:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  sm:col-span-full xl:col-span-10 border-neutral-750">
+        <div class=" col-start-1 col-end-4 xl:col-end-3 ">
+          <p class="">Problem</p>
           <p class="col-span-3 text-balance">{tldr?.problem || "—"}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
-          <p class="uppercase">Solution</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
+          <p class="">Solution</p>
           <p class="col-span-3 text-balance">{tldr?.solution || "—"}</p>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
-          <p class="uppercase">Decisions</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
+          <p class="">Decisions</p>
           <ul class="col-span-3 text-balance">
             {tldr?.decisions?.map((decision: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {decision}</li>
             ) || "—"}
           </ul>
         </div>
-        <div class="col-span-3 xl:col-span-2 border-t md:border-none border-neutral-750 py-1">
-          <p class="uppercase">Tradeoffs</p>
+        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
+          <p class="">Tradeoffs</p>
           <ul class="col-span-3 text-balance">
             {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
               <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
@@ -141,7 +282,7 @@ const {
     >
       <div
         class={`
-          transition-all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
+          -all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300
@@ -171,7 +312,7 @@ const {
       READ MORE
     </footer>
   </main>
-</Layout>
+</Layout> -->
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

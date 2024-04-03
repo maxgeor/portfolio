@@ -3,20 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
+import DancingLetters from "../components/DancingLetters.astro";
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout title="Max Georgopoulos">
-  <div class="col-span-full relative grid grid-cols-12 gap-4 ">
+  <div class="col-span-full relative grid grid-cols-12 gap-4">
     <Header />
     <div class="grid grid-cols-12 col-span-full gap-x-4 ">
-      <div class="uppercase pb-1 col-span-full grid grid-cols-12 gap-4 ">
+      <!-- <div class="uppercase pb-1 col-span-full grid grid-cols-12 gap-4 ">
         <p class="col-span-6 md:col-span-2">Work</p>
         <p class="hidden md:inline-block col-span-4">Description</p>
         <p class="hidden md:inline-block col-span-4">Roles</p>
         <p class="col-span-3 md:col-span-1">Type</p>
         <p class="col-span-3 md:col-span-1 justify-self-end">Year</p>
-      </div>
+    </div> -->
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }) => (
         <Work variant="row" {...work} />
       ))}

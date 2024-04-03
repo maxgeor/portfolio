@@ -16,20 +16,20 @@ const { sections, classes = '' } = Astro.props;
 <nav
   id="expandable-sidebar-nav"
   class={`
-    group flex flex-col overflow-scroll col-span-full scroll-smooth md:col-span-2 z-50 opacity-0 focus-within:opacity-100 focus-within:pointer-events-default transition-all ease-in-out 
+    group flex flex-col overflow-scroll col-span-full scroll-smooth md:col-span-2 z-50 opacity-0 focus-within:opacity-100 focus-within:pointer-events-default -all ease-in-out 
     ${classes}
   `}
 >
   <ol 
     id="expandable-sidebar-nav-markers"
-    class='fixed top-1/2 right-0 transform -translate-y-1/2 justify-self-end pl-10 w-fit flex flex-col gap-y-3 transition-all'
+    class='fixed top-1/2 right-0 transform -translate-y-1/2 justify-self-end pl-10 w-fit flex flex-col gap-y-3 -all'
   >
     {sections.map(() => <span class="h-0.5 w-2 bg-[#242424]"></span>)}
   </ol>
   <NavList 
     sections={sections} 
     id="expandable-sidebar-nav-list"
-    classes="fixed top-1/2 left-0 md:left-auto md:right-0 transform -translate-y-1/2 opacity-0 pointer-events-none border-l border-white/10 transition-all ease-in-out py-9 p-12 bg-[#111] z-50 h-[100dvh]"
+    classes="fixed top-1/2 left-0 md:left-auto md:right-0 transform -translate-y-1/2 opacity-0 pointer-events-none border-l border-white/10 -all ease-in-out py-9 p-12 bg-[#111] z-50 h-[100dvh]"
   />
 </nav>
 

@@ -15,19 +15,21 @@ const props = isHome ? { id: "logo-button" } : { href: '/', target: '_self' }
 <Element 
   {...props} 
   class={`
-    h-fit group flex gap-[8px] items-center  
+    h-fit group flex gap-[8px] items-start  
     ${Element === 'a' ? 'cursor-pointer' : 'cursor-default'}
     ${classes}
   `}
 >
-  <span class="rounded-full bg-orange h-[10px] w-[10px] mb-[1px]"></span>
-  <DancingLetters 
+  <!-- <span class="bg-orange rounded-[1px] h-[10px] w-[10px] mb-[1px]"></span> -->
+  <!-- <span class="font-flowers text-[23px] h-3">></span> -->
+  <span>MKCG (Design + Dev)</span>
+  <!-- <DancingLetters 
     title="MKCG" 
     classes="hidden group-hover:inline-block group-focus:inline-block" 
   />
-  <span class="non-dancing-letters lg:group-hover:hidden lg:group-focus:hidden">
+  <span class="non-dancing-letters lg:group-hover:hidden lg:group-focus:hidden uppercase">
     MKCG
-  </span>
+  </span> -->
 </Element>
 <!-- <Element 
   {...props} 
@@ -37,7 +39,7 @@ const props = isHome ? { id: "logo-button" } : { href: '/', target: '_self' }
     ${classes}
   `}
 >
-  <span class="h-[10px] w-[10px] bg-[#776355] mb-[1px]"></span>
+  <span class="h-[10px] w-[10px] bg-[#1F9A3E] mb-[1px]"></span>
   <DancingLetters 
     title="MKCG" 
     classes="hidden group-hover:inline-block group-focus:inline-block" 

@@ -8,7 +8,9 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
+      flowers: ['Flowers'],
       pixel: ['Pixel'],
+      gothic: ['Gothic'],
       sans: ['Arial', 'untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
       serif: ['Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
@@ -26,11 +28,11 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#776355',
-        yellow: '#776355',
+        red: '#1F9A3E',
+        yellow: '#1F9A3E',
         // orange: '#CA6C2B',
-        orange: '#776355',
-        green: '#776355',
+        orange: '#1F9A3E',
+        green: '#1F9A3E',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',

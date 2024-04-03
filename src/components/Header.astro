@@ -13,41 +13,10 @@ const { classes = "" } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 <header class={`col-span-full grid grid-cols-12 gap-4 ${classes}`}>
-  <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
-    <Logo classes="col-span-2" isHome={currentPath === '/'} />
-    <p class="col-span-4 mt-2 md:mt-0">Product Designer +<br/> Frontend Developer</p>
-  </div>
-  <div class="flex flex-col md:grid grid-cols-6 gap-x-4 col-span-6">
-    <div class="flex uppercase col-span-4 gap-2">
-      <Link 
-        href="/" 
-        classes={`
-          focus:h-fit
-          ${currentPath === '/' || currentPath.includes('study') ? 'line-through hover:line-through' : ''}
-        `}
-      >
-        Work
-      </Link>
-      <Link 
-        href="/writing"
-        classes={`
-          focus:h-fit
-          ${currentPath.includes('writing') ? 'line-through hover:line-through' : ''}
-        `}
-      >Writing</Link>
-      <Link 
-        href="/info"
-        classes={`
-          focus:h-fit
-          ${currentPath.includes('info') ? 'line-through hover:line-through' : ''}
-        `}
-      >Info</Link>
-    </div>
-    <div class=" relative col-span-2 mt-2 md:mt-0">
-      <p>Available for work</p>
-      <CopyEmailButton showIcon={false} classes="w-min">
-        max123358<span class="font-mono">@</span>gmail.com
-      </CopyEmailButton>
-    </div>
-  </div>
+  <a href="/" class="col-span-4 sm:col-span-2">mkcg</a>
+
+  <p class="col-span-6 sm:col-span-8 ">
+    <a href="/">Work</a>, <a href="/writing">Writing</a>
+  </p>
+  <a href="/info" class={`col-span-2 justify-self-end`}>Info</a>
 </header>

@@ -14,10 +14,10 @@ export interface Props {
 const { title, image } = Astro.props;
 ---
 
-<div class="col-span-full md:col-span-8 md:col-start-3 grid grid-cols-12 md:grid-cols-8 md:-mx-4 xl:mr-0 border border-neutral-750 border-dashed">
-  <div class="col-span-full xl:col-span-2  flex flex-col gap-2 pt-3 p-4 xl:pr-4 ">
-    <h3 class="uppercase" set:html={marked.parse(title)}></h3>
-    <div class=" flex flex-col gap-2 text-balance max-w-xl">
+<div class="col-span-full md:col-span-8 md:col-start-3 flex flex-col gap-3">
+  <div class="col-span-full flex flex-col  ">
+    <h3 class="border-b border-neutral-100" set:html={marked.parse(title)}></h3>
+    <div class=" flex flex-col gap-2 max-w-xl">
       <slot />
     </div>
   </div>
@@ -28,7 +28,7 @@ const { title, image } = Astro.props;
       alt={image.src}
       span={{ base: 12, xl: 6 }}
       hasCaption={false}
-      classes="p-4 pt-0 xl:p-0 self-center"
+      classes="self-center"
     />
   )}
 </div>

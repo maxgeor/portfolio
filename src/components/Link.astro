@@ -8,16 +8,14 @@ export interface Props {
 }
 
 const { href, target = '_self', classes = "" } = Astro.props;
-
-const hasContent = Astro.slots.has('default');
 ---
 <a 
   href={href} 
   target={target}
-  class={`group hover:no-underline ${classes}`}
+  class={`group hover:no-underline w-fit ${classes}`}
 >
   <span class="w-fit group-hover:bg-neutral-750">
     <slot />
-    {target === '_blank' && <UpRightArrowIcon classes="inline -ml-px mb-px" />}
+    {target === '_blank' && <UpRightArrowIcon classes="inline -ml-[3px] mb-px" />}
   </span>
 </a>
