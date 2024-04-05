@@ -10,18 +10,17 @@ const writings = await getCollection('writing');
 <Layout title="Writing">
   <div class="grid grid-cols-12 gap-y-4 gap-x-4 col-span-full">
     <Header />
-
     <div class="flex flex-col col-span-full ">
-
       {writings?.sort((a, b) => {
         const dateA: any = new Date(a.data.date);
         const dateB: any = new Date(b.data.date);
         return dateB - dateA;
-      }).map(writing => (
+      }).map((writing, index) => (
         <Writing
           title={writing.data.title}
           href={`/writing/${writing.slug}`}
           date={writing.data.date}
+          index={index}
         />
       ))}
     </div>

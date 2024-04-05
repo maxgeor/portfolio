@@ -9,9 +9,10 @@ module.exports = {
   theme: {
     fontFamily: {
       flowers: ['Flowers'],
+      london: ['London'],
       pixel: ['Pixel'],
       gothic: ['Gothic'],
-      sans: ['Arial', 'untitled', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+      sans: ['Helvetica Neue', 'Arial', 'untitled',    'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
       serif: ['Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
     },
@@ -59,7 +60,7 @@ module.exports = {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
         'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.18)',
         contour: 'inset 0px 0px 0px rgba(255,255,255,0.5)',
-        border: '0 1px 0 -0.055em rgba(255, 255, 255, 1)',
+        border: '0 1px 0 -0.08em rgba(255, 255, 255, 1)',
       },
       dropShadow: {
         sm: [

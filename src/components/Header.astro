@@ -1,8 +1,4 @@
 ---
-import Link from "./Link.astro"
-import Logo from "./Logo.astro";
-import CopyEmailButton from "./CopyEmailButton.astro";
-
 export interface Props {
   goBackPath?: string;
   classes?: string;
@@ -12,11 +8,11 @@ const { classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 ---
-<header class={`col-span-full grid grid-cols-12 gap-4 ${classes}`}>
-  <a href="/" class="col-span-4 sm:col-span-2">mkcg</a>
+<header class={` fixed left-4 right-4 top-3 bottom-auto z-50 mix-blend-exclusion col-span-full grid grid-cols-12 gap-4 ${classes}`}>
+  <a href="/" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 col-span-4 md:col-span-2 uppercase font-black">mkcg</a>
 
-  <p class="col-span-6 sm:col-span-8 ">
+  <p class="col-span-6 ">
     <a href="/">Work</a>, <a href="/writing">Writing</a>
   </p>
-  <a href="/info" class={`col-span-2 justify-self-end`}>Info</a>
+  <a href="/info" class={`col-span-6 justify-self-end text-right`}>Info</a>
 </header>

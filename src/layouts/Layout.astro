@@ -6,6 +6,8 @@ export interface Props {
   backgroundColor?: string;
 }
 
+// 21213f fff
+
 const {
   title = "Max Georgopoulos",
   description,
@@ -29,14 +31,14 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex flex-col lowercase gap-4 text-[#fff] font-sans min-h-screen text-[12px] leading-[16px] selection:bg-neutral-700 antialiased py-3 px-4 pb-24 h-min max-w-[1480px] mx-auto
+     flex  flex-col uppercase font-black gap-4 text-[#fff]  min-h-screen text-[10px] leading-[16px] selection:bg-neutral-700 antialiased p-4 pt-11 pb-8  h-min max-w-[1480px] mx-auto
     `}
   >
   <!-- <body
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex flex-col lowercase gap-4 text-[#9c9c9c] font-sans min-h-screen text-[12px] leading-[16px] selection:bg-neutral-700 antialiased py-3 px-4 pb-24 h-min
+     flex flex-col  gap-4 text-[#9c9c9c] font-sans min-h-screen text-[12px] leading-[16px] selection:bg-neutral-700 antialiased py-3 px-4 pb-24 h-min
     `}
   > -->
     <slot />
@@ -58,6 +60,11 @@ const {
   @font-face {
     font-family: Flowers;
     src: url(/fonts/bodoni-ornaments.ttf);
+  }
+  
+  @font-face {
+    font-family: London;
+    src: url(/fonts/london.ttf);
   }
   
   @font-face {

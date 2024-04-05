@@ -23,74 +23,39 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4 pb-24">
-    <Button 
-      tag="a" 
-      href="#article" 
-      padding="px-3 .5"
-      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  !px-1 !rounded  ">
-      Skip to main content
-    </Button>
-    <Button
-      id="go-back-up-button"
-      ariaLabel="Go back up"
-      ariaHidden="true"
-      disabled={true}
-      padding="pl-[10px] pr-3 .5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
-    >
-      <ChevronUpIcon classes="-mx-px -mb-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
-    <Button
-      id="go-back-down-button"
-      disabled={true}
-      ariaLabel="Go back down"
-      ariaHidden="true"
-      padding="pl-[10px] pr-3 .5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
-    >
-      <ChevronDownIcon classes="-mx-px -mt-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
+  <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <Grid 
-      id="sticky-header" 
-      classes="hidden  fixed top-4 left-4 right-4 z-50 mix-blend-difference"
-    >
-      <a href="/" class="relative group mix-blend-difference col-span-2">
-        <p class="absolute group-hover:hidden ">{title}</p>
-        <Logo classes="hidden group-hover:flex" />
-      </a>
-    </Grid>
-    <section id="hero" class=' col-span-full grid grid-cols-12 gap-x-4 border-neutral-750'>
-      
-      <div class="grid grid-cols-12  col-span-full  gap-x-4  pb-4">
-        <h1 class="col-span-4 sm:col-span-2">
-          {link ? <Link href={link} target='_blank' classes="whitespace-nowrap justify-self-end w-fit">{title}</Link> : title}
-        </h1>
+    <section id="hero" class='text-center  col-span-full grid grid-cols-12 gap-x-4 border-neutral-500'>
+      <div class="mt-12 mb-16 relative flex items-center justify-center col-span-full">
+        <p class="mix-blend-difference absolute top-0 left-0">W1</p>
+        <h1 class="font-black uppercase text-center text-[clamp(24px,23.5vw,100px)] leading-[0.753] col-span-full">{title}</h1>
+      </div>
+      <div class="grid grid-cols-12  col-span-full  gap-x-4  mb-4">
+        <p class="col-span-4 md:col-span-2 text-left">
+          tldr
+        </p>
         <span class="col-span-8">
-          <p class="col-span-full col-start-5">{description}</p>
+          <p class="col-span-full col-start-5 text-balance">{description}</p>
         </span>
       </div>
       <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750">Year</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
         <p class="col-span-8 ">{year}</p>
       </div>
       <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750">Type</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Type</p>
         <p class="col-span-8 ">{type}</p>
       </div>
       <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750">Roles</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Roles</p>
         <p class="col-span-8 ">{roles?.join(', ')}</p>
       </div>
       <div class="col-span-full  grid grid-cols-12  gap-4 ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750">Tools</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Tools</p>
         <p class="col-span-8 ">{tools?.join(', ')}</p>
       </div>
       <div class="col-span-full  grid grid-cols-12  gap-4 ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750">Team</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Team</p>
         <ul class="flex flex-col col-span-8">
           {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
             <li>
@@ -101,26 +66,26 @@ const {
       </div>
       <span class="h-4 col-span-full"></span>
       <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-        <p class="col-span-4 sm:col-span-2 border-neutral-750sm:">Problem</p>
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500md:">Problem</p>
         <p class="col-span-8 text-balance">{tldr?.problem || "—"}</p>
       </div>
       <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-        <p class="col-span-4 sm:col-span-2">Solution</p>
+        <p class="text-left col-span-4 md:col-span-2">Solution</p>
         <p class="col-span-8 text-balance">{tldr?.solution || "—"}</p>
       </div>
       <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-        <p class="col-span-4 sm:col-span-2">Decisions</p>
+        <p class="text-left col-span-4 md:col-span-2">Decisions</p>
         <ul class="col-span-8 text-balance">
           {tldr?.decisions?.map((decision: string, index: number) => 
-            <li><span class="tabular">{index + 1}</span>/ {decision}</li>
+            <li>[<span class="tabular">{index + 1}</span>] {decision}</li>
           ) || "—"}
         </ul>
       </div>
       <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-        <p class="col-span-4 sm:col-span-2">Tradeoffs</p>
+        <p class="text-left col-span-4 md:col-span-2">Tradeoffs</p>
         <ul class="col-span-8 text-balance">
           {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-            <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
+            <li>[<span class="tabular">{index + 1}</span>] {tradeoff}</li>
           ) || "—"}
         </ul>
       </div>
@@ -158,259 +123,9 @@ const {
         <slot />
       </div>
     </article>
-    <footer class=" border-neutral-750 pt-12 col-span-full mt-48">
+    <hr class="h-px border-t border-neutral-500 col-span-full my-24"/>
+    <footer class="col-span-full mb-24">
       READ MORE
     </footer>
   </main>
 </Layout>
-<!-- <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4 pb-24">
-    <Button 
-      tag="a" 
-      href="#article" 
-      padding="px-3 .5"
-      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  !px-1 !rounded  ">
-      Skip to main content
-    </Button>
-    <Button
-      id="go-back-up-button"
-      ariaLabel="Go back up"
-      ariaHidden="true"
-      disabled={true}
-      padding="pl-[10px] pr-3 .5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
-    >
-      <ChevronUpIcon classes="-mx-px -mb-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
-    <Button
-      id="go-back-down-button"
-      disabled={true}
-      ariaLabel="Go back down"
-      ariaHidden="true"
-      padding="pl-[10px] pr-3 .5"
-      classes="gap-1 fixed top-4 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
-    >
-      <ChevronDownIcon classes="-mx-px -mt-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
-    <Header />
-    <Grid 
-      id="sticky-header" 
-      classes="hidden  fixed top-4 left-4 right-4 z-50 mix-blend-difference"
-    >
-      <a href="/" class="relative group mix-blend-difference col-span-2">
-        <p class="absolute group-hover:hidden ">{title}</p>
-        <Logo classes="hidden group-hover:flex" />
-      </a>
-    </Grid>
-    <section id="hero" class='col-span-full grid grid-cols-12 gap-x-4  border-neutral-750'>
-      <div class="grid grid-cols-12 col-span-full  border-neutral-750 gap-x-4 ">
-        <h1 class="col-span-6 ">{title}</h1>
-        {link && <Link href={link} target='_blank' classes="col-span-6 w-fit">Live Site</Link>}
-      </div>
-      <div class="hidden xl:flex flex-col justify-between gap-4 col-span-3 xl:col-span-2  row-span-2">
-        <div class="col-span-2">
-          <p class="col-span-2 text-balance">{description}</p>
-        </div>
-        <div class="col-span-2">
-          <p>{year}</p>
-          <p>{type}</p>
-        </div>
-      </div>
-      <div class="flex flex-col sm:grid sm:grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6 sm:col-span-full">
-        <div class="mb-auto sm:mt-0  flex xl:hidden flex-col col-span-3 gap-1 xl:col-span-2 ">
-          <div class="col-span-2">
-            <p class="col-span-2 text-balance">{description}</p>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <p>{year}</p>
-            <span class="w-px h-2.5 bg-[#b0b0b0]"></span>
-            <p>{type}</p>
-          </div>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
-          <p class="">Roles</p>
-          <ul class="col-span-3 text-balance">{roles?.join(', ')}</ul>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750  h-fit">
-          <p class="">Tools</p>
-          <p class="col-span-3 text-balance">{tools.join(', ')}</p>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750  h-min">
-          <p class="">Team</p>
-          <div class="text-balance">
-            {teammates?.map((teammate: { name: string, role: string, href: string }) => (
-              <div>
-                <Link classes="w-fit" href={teammate.href} classes="underline">{teammate.name}</Link> ({teammate.role})
-              </div>
-            )) || "—"}
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col sm:grid grid-cols-12 xl:grid-cols-10 xl:col-start-3 gap-x-4 col-span-6  sm:col-span-full xl:col-span-10 border-neutral-750">
-        <div class=" col-start-1 col-end-4 xl:col-end-3 ">
-          <p class="">Problem</p>
-          <p class="col-span-3 text-balance">{tldr?.problem || "—"}</p>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
-          <p class="">Solution</p>
-          <p class="col-span-3 text-balance">{tldr?.solution || "—"}</p>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
-          <p class="">Decisions</p>
-          <ul class="col-span-3 text-balance">
-            {tldr?.decisions?.map((decision: string, index: number) => 
-              <li><span class="tabular">{index + 1}</span>/ {decision}</li>
-            ) || "—"}
-          </ul>
-        </div>
-        <div class="col-span-3 xl:col-span-2  sm:border-none border-neutral-750 ">
-          <p class="">Tradeoffs</p>
-          <ul class="col-span-3 text-balance">
-            {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-              <li><span class="tabular">{index + 1}</span>/ {tradeoff}</li>
-            ) || "—"}
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-    <article
-      id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
-    >
-      <div
-        class={`
-          -all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
-
-          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
-          prose-ul:-my-0.5 prose-ul:text-neutral-300
-
-          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5 prose-ol:text-neutral-300
-
-          prose-li:list-item
-          prose-li:list-outside
-          prose-li:pl-0.5
-          prose-li:m-0
-          prose-li:leading-4
-          marker:prose-li:text-[11.5px]
-          marker:prose-li:font-inter
-          
-          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
-          prose-video:w-auto prose-video:select-none	prose-video:my-0 
-
-          prose-td:p-0
-
-          grid grid-cols-12 gap-x-4 gap-y-12 mt-4
-        `}
-      >
-        <slot />
-      </div>
-    </article>
-    <footer class=" border-neutral-750 pt-12 col-span-full mt-48">
-      READ MORE
-    </footer>
-  </main>
-</Layout> -->
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hero: HTMLElement | null = document.getElementById('hero');
-    const stickyHeader: HTMLElement | null = document.getElementById('sticky-header');
-
-    const callback = (entries: IntersectionObserverEntry[]) => {
-      if (!stickyHeader) return;
-      
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          stickyHeader.classList.remove('hidden');
-          stickyHeader.classList.add('grid');
-        } else {
-          stickyHeader.classList.remove('grid');
-          stickyHeader.classList.add('hidden');
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback);
-
-    if (hero) {
-      observer.observe(hero);
-    }
-  });
-
-  const links = Array.from(document.querySelectorAll("a"));
-  const internalLinks = links.filter((link) =>
-    link.getAttribute("href")?.startsWith("#")
-  );
-
-  const goBackUpButton = document.querySelector(
-    "#go-back-up-button"
-  ) as HTMLButtonElement;
-  const goBackDownButton = document.querySelector(
-    "#go-back-down-button"
-  ) as HTMLButtonElement;
-
-  const isElementInView = (element: HTMLElement) => {
-    const rect = element.getBoundingClientRect();
-    const viewportWidth =
-      window.innerWidth || document.documentElement.clientWidth;
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
-    const isInView =
-      rect.right >= 0 &&
-      rect.bottom >= 0 &&
-      rect.left <= viewportWidth &&
-      rect.top <= viewportHeight;
-
-    return isInView;
-  };
-
-  const showBackButton = (button: HTMLButtonElement) => {
-    button.disabled = false;
-    button.ariaHidden = 'false';
-    button.classList.remove("-translate-y-[64px]", "sm:-translate-y-[80px]");
-  }
-  const hideBackButton = (button: HTMLButtonElement) => {
-    button.disabled = true;
-    button.ariaHidden = 'true';
-    button.classList.add("-translate-y-[64px]", "sm:-translate-y-[80px]");
-  }
-
-  const showAndHideBackButton = (e: Event) => {
-    hideBackButton(goBackUpButton);
-    hideBackButton(goBackDownButton);
-
-    const clickedLink = e.target as HTMLAnchorElement;
-
-    if (clickedLink.getAttribute("href") === "#article") return;
-
-    setTimeout(() => {
-      if (isElementInView(clickedLink)) return;
-
-      const backButton =
-        window.scrollY > clickedLink.getBoundingClientRect().top
-          ? goBackUpButton
-          : goBackDownButton;
-
-      showBackButton(backButton);
-      setTimeout(() => hideBackButton(backButton), 8000);
-    }, 550);
-  };
-
-  internalLinks.forEach((internalLink) => {
-    internalLink.addEventListener("click", (e) => showAndHideBackButton(e));
-  });
-
-  goBackUpButton.addEventListener("click", () => {
-    window.history.back();
-    hideBackButton(goBackUpButton);
-  });
-
-  goBackDownButton.addEventListener("click", () => {
-    window.history.back();
-    hideBackButton(goBackDownButton);
-  });
-</script>

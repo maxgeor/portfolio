@@ -1,0 +1,16 @@
+{
+  "type": "client",
+  "title": "Wavy/Messaging",
+  "description": "pre-event messaging feature",
+  "image": "/work/thesys.png",
+  "roles": {
+    "long": ["Product", "Brand", "Dev"],
+    "short": ["Design", "Brand", "Dev"]
+  },
+  "link": {
+    "href": "https://www.figma.com/community/widget/1036372982291551669",
+    "target": "_blank"
+  },
+  "order": 1,
+  "year": "2024"
+}

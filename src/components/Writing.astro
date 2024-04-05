@@ -5,17 +5,28 @@ export interface Props {
   title: string;
   href: string;
   date: string;
+  index?: number;
 }
 
-const { title, href, date } = Astro.props;
+const { title, href, date, index } = Astro.props;
 
 const formattedDate = formatDate(date);
 ---
 
 <a 
   href={href}
-  class="grid grid-cols-12 hover:bg-neutral-750 gap-4 "
+  class="flex justify-between  hover:bg-neutral-750 gap-4"
 >
-  <span class="flex col-span-4 sm:col-span-2 text-[11px]">{formattedDate}</span>
-  <span class="col-span-8 sm:col-span-10">{title}</span>
+  <div class="flex justify-between">
+    <span class="w-[34px] font-bold">W{index}</span>
+    <span>{title}</span>
+  </div>
+  <span class="text-[11px] font-bold">{formattedDate}</span>
 </a>
+<!-- <a 
+  href={href}
+  class="grid grid-cols-12 hover:bg-neutral-750 gap-4"
+>
+  <span class="flex col-span-4 md:col-span-2 text-[11px] font-bold">{formattedDate}</span>
+  <span class="col-span-8 md:col-span-10">{title}</span>
+</a> -->

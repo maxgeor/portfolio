@@ -21,7 +21,11 @@ const work = defineCollection({
     isDraft: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
     order: z.number(),
-    year: z.string()
+    year: z.string(),
+    images: z.array(z.object({
+      src: z.string(),
+      alt: z.string()
+    })).optional(),
   })
 });
 

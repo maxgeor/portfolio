@@ -23,6 +23,7 @@ type Work = {
   studySlug?: string;
   isComingSoon?: boolean;
   classes?: string;
+  index?: number;
 }
 
 type WorkCard = {
@@ -53,6 +54,7 @@ const {
   studySlug,
   classes = '',
   isComingSoon = false,
+  index
 } = Astro.props;
 
 const Element = isComingSoon ? 'div' : 'a';
@@ -79,37 +81,17 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-       group col-span-1 overflow-hidden block group relative gap-x-4 h-fit 
+       group overflow-hidden block group relative gap-x-4 h-fit 
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes} 
     `}
   >
     <div class={`
-      flex justify-between xs:grid grid-cols-12 sm:grid-cols-6 gap-x-4
+      flex justify-center
       ${!isComingSoon && 'group-hover:bg-neutral-750'}
     `}>
-      <div class="flex gap-0.5 items-center h-fit col-span-4 sm:col-span-2">
-        <h3 
-          aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}
-          class="whitespace-nowrap"
-        >
-          {title}
-        </h3>
-      </div>
-      <div class="flex justify-between col-span-8 sm:col-span-4 gap-4 ">
-        <p class="truncate">{description}</p>
-        <div class="hidden xs:flex items-center gap-[2px] lowercase">
-          <div class={`${roles.short.includes('Design') ? '' : 'opacity-50'}`}>
-            D
-          </div>
-          <div class={` ${roles.short.includes('Brand') ? '' : 'opacity-50'}`}>
-            B
-          </div>
-          <div class={`  ${roles.short.includes('Dev') ? '' : 'opacity-50'}`}>
-            D
-          </div>
-        </div>
-      </div>
+      <span class="absolute left-0  shrink-0">W{index}</span> 
+      <h3 aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}>{title}</h3>
     </div>
     <picture class="relative h-auto">
       <img
@@ -126,8 +108,8 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-      relative group col-span-full
-      ${isComingSoon ? 'opacity-[60%]' : 'hover:bg-neutral-750'}
+      relative group col-span-full 
+      ${isComingSoon ? 'text-white/50' : 'hover:bg-neutral-750'}
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes}
     `}
@@ -136,19 +118,21 @@ const upRightArrowIconClasses =
       grid grid-cols-12 gap-x-4
       ${isComingSoon ? 'group-hover:hidden group-focus:hidden' : ''}
     `}>
-      <div class="flex justify-between gap-0.5  col-span-4 sm:col-span-2 h-fit">
-        <span class="whitespace-nowrap">{title}</span> 
+
+      <div class="shrink-0 whitespace-nowrap font-black uppercase flex  col-span-4 md:col-span-2 h-fit">
+        <span class="w-[34px] shrink-0">W{index}</span> 
+        <span class="whitespace-nowrap font-black uppercase">{title}</span> 
       </div>
-      <p class="inline-block col-span-7 sm:col-span-4 truncate">
+      <p class="text-right  inline-block col-span-8 sm:col-span-7 md:col-span-4 truncate">
         {description}
       </p>
-      <div class="hidden sm:inline-block col-span-2 ">
+      <div class="hidden md:inline-block col-span-2 ">
         {type}
       </div>
-      <div class="hidden sm:flex gap-1 col-span-full xs:col-span-3  sm:col-span-3 ml-4.5">
+      <div class="hidden md:flex gap-1 col-span-full sm:col-span-3  md:col-span-3 ml-4.5">
         <span>{roles.long.join(', ')}</span>
       </div>
-      <div class="col-span-1 justify-self-end ">
+      <div class="hidden text-[11px] sm:block col-span-1 justify-self-end ">
         {isComingSoon ? "—" : year}
       </div>
     </div>

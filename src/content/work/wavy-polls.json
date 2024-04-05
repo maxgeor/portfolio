@@ -1,7 +1,7 @@
 {
   "type": "client",
-  "title": "Polls for Wavy",
-  "description": "Feature I built at Wavy.",
+  "title": "Wavy/Polls",
+  "description": "event polling feature",
   "image": "/work/dissect-design.png",
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",
@@ -11,8 +11,8 @@
     "long": ["Product", "Dev"],
     "short": ["Design", "Dev"]
   },
-  "studySlug": "polls",
-  "isDraft": true,
+  "studySlug": "wavy-polls",
+  "isDraft": false,
   "order": 8,
   "year": "2023"
 }

@@ -1,0 +1,16 @@
+{
+  "type": "client",
+  "title": "Wavy/Website",
+  "description": "wavy's landing page",
+  "image": "/work/thesys.png",
+  "roles": {
+    "long": ["Dev"],
+    "short": ["Dev"]
+  },
+  "link": {
+    "href": "https://www.figma.com/community/widget/1036372982291551669",
+    "target": "_blank"
+  },
+  "order": 1,
+  "year": "2024"
+}

@@ -50,7 +50,7 @@ const heros = [
 <Layout title="Max Georgopoulos">
   <Header />
   <div class="col-span-full grid grid-cols-12 gap-x-4">
-    <div class="flex flex-col gap-4 col-span-4 sm:col-span-2 ">
+    <div class="flex flex-col gap-4 col-span-4 md:col-span-2 ">
       <!-- <img src="/me.jpg" alt="my face" class="object-cover h-full w-full aspect-[4/3]"/> -->
       <div class="w-full">
         <div class="flex gap-[4px]">
@@ -77,10 +77,10 @@ const heros = [
       <SocialLinks classes="w-full" />
     </div>
 
-    <div class="col-end-[-1] sm:col-start-3 col-span-8 flex flex-col gap-4">
+    <div class="text-balance md:col-start-3 col-span-full  flex flex-col gap-4">
       <div class="flex flex-col">
-        <h3 class="shadow-border">Bio</h3>
-        <div class="flex flex-col">
+        <h3>Bio</h3>
+        <div class="flex flex-col text-[12px] font-medium normal-case">
           <p>
             Yo! I'm a designer and developer based out of Toronto, but I bum
             around different places. I believe that the boundary between design
@@ -100,14 +100,14 @@ const heros = [
         </div>  
       </div>  
       <div class="flex flex-col">
-        <h3 class="shadow-border">Heros</h3>
+        <h3>Heros</h3>
         <ul class="flex flex-col">
           {heros.map((hero) => (
             <li class="">
-              <details class="open:pb-1 before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent ">
+              <details class="before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent ">
                 <summary class="hover:bg-neutral-750 hover:cursor-zoom-in">{hero.name}</summary>
                 <div class="flex justify-between gap-6">
-                  <p>{hero.description}</p>
+                  <p class="text-neutral-400">{hero.description}</p>
                   {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 p-4 -m-4"></Link>}
                 </div>
               </details>
