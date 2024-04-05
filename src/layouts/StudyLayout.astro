@@ -21,14 +21,15 @@ const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
 <Layout title={title} description={description} maxWidth="max-w-none">
   <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <section id="hero" class='text-center  col-span-full grid grid-cols-12 gap-x-4 border-neutral-500'>
-      <div class="mt-12 mb-16 relative flex items-center justify-center col-span-full">
+    <section id="hero" class='md:text-center  col-span-full grid grid-cols-12 gap-x-4 border-neutral-500'>
+      <div class=" pt-16 md:pt-12 pb-16 relative flex items-center justify-center col-span-full">
         <p class="mix-blend-difference absolute top-0 left-0">W1</p>
+        <p class="mix-blend-difference absolute top-0 right-0">{year}</p>
         <h1 
           id="study-title" 
           class="font-black uppercase text-center col-span-full"
           style={{ 
-            fontSize: `clamp(24px, ${titleLength}, 132px)`,
+            fontSize: `clamp(24px, ${titleLength}, 144px)`,
             lineHeight: "0.753",
           }}
         >
@@ -43,10 +44,10 @@ const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
           <p class="col-span-full col-start-5 text-balance">{description}</p>
         </span>
       </div>
-      <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+      <!-- <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
         <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
         <p class="col-span-8 ">{year}</p>
-      </div>
+      </div> -->
       <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
         <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Type</p>
         <p class="col-span-8 ">{type}</p>
