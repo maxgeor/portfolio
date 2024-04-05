@@ -1,12 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import Logo from "../components/Logo.astro";
-import Link from "../components/Link.astro";
-import Grid from "../components/Grid.astro";
 import Header from "../components/Header.astro";
-import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
-import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
-import Button from "../components/Button.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -20,6 +14,8 @@ const {
   tools,
   teammates,
 } = frontmatter;
+
+const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
@@ -28,7 +24,16 @@ const {
     <section id="hero" class='text-center  col-span-full grid grid-cols-12 gap-x-4 border-neutral-500'>
       <div class="mt-12 mb-16 relative flex items-center justify-center col-span-full">
         <p class="mix-blend-difference absolute top-0 left-0">W1</p>
-        <h1 class="font-black uppercase text-center text-[clamp(24px,23.5vw,100px)] leading-[0.753] col-span-full">{title}</h1>
+        <h1 
+          id="study-title" 
+          class="font-black uppercase text-center col-span-full"
+          style={{ 
+            fontSize: `clamp(24px, ${titleLength}, 132px)`,
+            lineHeight: "0.753",
+          }}
+        >
+          {title}
+        </h1>
       </div>
       <div class="grid grid-cols-12  col-span-full  gap-x-4  mb-4">
         <p class="col-span-4 md:col-span-2 text-left">
