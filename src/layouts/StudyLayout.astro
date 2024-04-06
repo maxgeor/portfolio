@@ -21,8 +21,8 @@ const titleLength = `${22.5 - title.length}vw`;
 <Layout title={title} description={description} maxWidth="max-w-none">
   <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <section id="hero" class=' border-wavy col-span-full grid grid-cols-12 gap-x-4 border-neutral-white'>
-      <div class="md:pt-8 pb-8 relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
+    <section id="hero" class='border-t-4 border-b-2 pb-4 md:py-8 border-wavy col-span-full grid grid-cols-12 gap-8 border-neutral-white'>
+      <div class="relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
         <p class="mix-blend-difference col-span-full md:col-span-1 ">W1</p>
         <h1 
           id="study-title" 
@@ -34,13 +34,7 @@ const titleLength = `${22.5 - title.length}vw`;
         >
           {title}
         </h1>
-        <p class="text-center text-balance">{description}</p>
       </div>
-      
-      <!-- <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
-        <p class="col-span-8 ">{year}</p>
-      </div> -->
       <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
