@@ -9,16 +9,9 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout title="Max Georgopoulos">
   <div class="col-span-full relative grid grid-cols-12 gap-4">
-    <!-- <h1 class="font-black uppercase text-[clamp(0px,100vw,200px)] -ml-2.5">MKCG</h1> -->
     <Header />
+    <!-- <h1 class="text-center text-[clamp(24px,34vw,1000px)] leading-[0.75] -ml-[5vw] col-span-full ">MKCG</h1> -->
     <div class="grid grid-cols-12 col-span-full gap-x-4 ">
-      <!-- <div class="uppercase pb-1 col-span-full grid grid-cols-12 gap-4 ">
-        <p class="col-span-6 md:col-span-2">Work</p>
-        <p class="hidden md:inline-block col-span-4">Description</p>
-        <p class="hidden md:inline-block col-span-4">Roles</p>
-        <p class="col-span-3 md:col-span-1">Type</p>
-        <p class="col-span-3 md:col-span-1 justify-self-end">Year</p>
-    </div> -->
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}

@@ -60,7 +60,7 @@ module.exports = {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
         'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.18)',
         contour: 'inset 0px 0px 0px rgba(255,255,255,0.5)',
-        border: '0 1px 0 -0.08em rgba(255, 255, 255, 1)',
+        border: '0 1px 0 -0.02em rgba(255, 255, 255, 1)',
       },
       dropShadow: {
         sm: [
