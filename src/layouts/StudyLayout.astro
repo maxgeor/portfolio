@@ -15,22 +15,20 @@ const {
   teammates,
 } = frontmatter;
 
-const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
+const titleLength = `${22.5 - title.length}vw`;
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
   <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <section id="hero" class='border-t col-span-full grid grid-cols-12 gap-y-2 gap-x-4'>
-      <div class="mb-4 relative flex flex-col items-center justify-center col-span-full">
-        <p class="mix-blend-difference absolute top-0 left-0">W1</p>
-        <p class="mix-blend-difference absolute top-0 right-0">{year}</p>
-
+    <section id="hero" class=' border-wavy col-span-full grid grid-cols-12 gap-x-4 border-neutral-white'>
+      <div class="md:pt-8 pb-8 relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
+        <p class="mix-blend-difference col-span-full md:col-span-1 ">W1</p>
         <h1 
           id="study-title" 
-          class="mt-8 mb-4 text-center font-black uppercase col-span-full "
+          class="font-black uppercase  col-span-full md:col-start-3 md:col-span-9 -ml-[0.6vw]"
           style={{ 
-            fontSize: `clamp(24px, ${titleLength}, 132px)`,
+            fontSize: `clamp(36px, ${titleLength}, 100px)`,
             lineHeight: "0.753",
           }}
         >
@@ -38,21 +36,38 @@ const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
         </h1>
         <p class="text-center text-balance">{description}</p>
       </div>
-      <div class="col-span-full grid grid-cols-12 gap-y-2 gap-x-4">
-        <div class="jusitfy-self-start h-fit col-span-full md:col-span-3    gap-x-4 ">
-          <p class="shadow-border  text-left col-span-4 md:col-span-2 ">Type</p>
+      
+      <!-- <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+        <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
+        <p class="col-span-8 ">{year}</p>
+      </div> -->
+      <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
+        <div class="grid grid-cols-12  col-span-full  gap-x-4">
+          <p class="col-span-4 md:col-span-2 text-left">
+            tldr
+          </p>
+          <span class="col-span-8">
+            <p class="col-span-full col-start-5 text-balance">{description}</p>
+          </span>
+        </div>
+        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
+          <p class="col-span-8 ">{year}</p>
+        </div>
+        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Type</p>
           <p class="col-span-8 ">{type}</p>
         </div>
-        <div class="jusitfy-self-start h-fit col-span-full md:col-span-3  gap-x-4 ">
-          <p class="shadow-border text-left col-span-4 md:col-span-2 ">Roles</p>
+        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Roles</p>
           <p class="col-span-8 ">{roles?.join(', ')}</p>
         </div>
-        <div class="col-span-full md:col-span-3  gap-4 ">
-          <p class="shadow-border text-left col-span-4 md:col-span-2 ">Tools</p>
+        <div class="col-span-full  grid grid-cols-12  gap-4 ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Tools</p>
           <p class="col-span-8 ">{tools?.join(', ')}</p>
         </div>
-        <div class="col-span-full md:col-span-3  gap-4 ">
-          <p class="shadow-border text-left col-span-4 md:col-span-2 ">Team</p>
+        <div class="col-span-full  grid grid-cols-12  gap-4 ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Team</p>
           <ul class="flex flex-col col-span-8">
             {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
               <li>
@@ -61,26 +76,24 @@ const titleLength = `${24 - title.length < 8 ? 8 : 24 - title.length}vw`;
             )) : "—"}
           </ul>
         </div>
-      </div>
-      <div class="col-span-full grid grid-cols-12 gap-y-2 gap-x-4">
-        <div class="gap-x-4 col-span-full md:col-span-3">
-          <p class="shadow-border text-left col-span-4 md:col-span-2 md:">Problem</p>
+        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+          <p class="text-left col-span-4 md:col-span-2 border-neutral-500md:">Problem</p>
           <p class="col-span-8 text-balance">{tldr?.problem || "—"}</p>
         </div>
-        <div class="gap-x-4 col-span-full md:col-span-3">
-          <p class="shadow-border text-left col-span-4 md:col-span-2">Solution</p>
+        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+          <p class="text-left col-span-4 md:col-span-2">Solution</p>
           <p class="col-span-8 text-balance">{tldr?.solution || "—"}</p>
         </div>
-        <div class="gap-x-4 col-span-full md:col-span-3">
-          <p class="shadow-border text-left col-span-4 md:col-span-2">Decisions</p>
+        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+          <p class="text-left col-span-4 md:col-span-2">Decisions</p>
           <ul class="col-span-8 text-balance">
             {tldr?.decisions?.map((decision: string, index: number) => 
               <li>[<span class="tabular">{index + 1}</span>] {decision}</li>
             ) || "—"}
           </ul>
         </div>
-        <div class="gap-x-4 col-span-full md:col-span-3">
-          <p class="shadow-border text-left col-span-4 md:col-span-2">Tradeoffs</p>
+        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
+          <p class="text-left col-span-4 md:col-span-2">Tradeoffs</p>
           <ul class="col-span-8 text-balance">
             {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
               <li>[<span class="tabular">{index + 1}</span>] {tradeoff}</li>
