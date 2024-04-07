@@ -21,9 +21,9 @@ const titleLength = `${22.5 - title.length}vw`;
 <Layout title={title} description={description} maxWidth="max-w-none">
   <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <section id="hero" class='border-t-2 md:pt-8 border-wavy col-span-full grid grid-cols-12 gap-8 border-neutral-white'>
-      <div class="relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
-        <p class="mix-blend-difference col-span-full md:col-span-1 ">W1</p>
+    <section id="hero" class=' col-span-full grid grid-cols-12 gap-4 border-neutral-white'>
+      <div class="border-t-4 border-b py-4 relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
+        <p class="absolute top-2 right-0 md:left-0 mix-blend-difference col-span-full md:col-span-1 ">W1</p>
         <h1 
           id="study-title" 
           class="font-black uppercase  col-span-full md:col-start-3 md:col-span-9 -ml-[0.6vw]"
@@ -35,7 +35,7 @@ const titleLength = `${22.5 - title.length}vw`;
           {title}
         </h1>
       </div>
-      <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
+      <div class="border-b pb-4 grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
             tldr
