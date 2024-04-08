@@ -11,9 +11,8 @@ const formattedDate = formatDate(frontmatter.date);
   <div class="col-span-full grid grid-cols-12 gap-4">
     <Header />
     <div class="grid grid-cols-12 gap-4 col-span-full ">
-      <span class="col-span-2">W1</span>
-      <h1 class="col-span-8 ">{frontmatter.title}</h1>
-      <span class="flex justify-self-end  col-span-2 text-[11px]">{formattedDate}</span>
+      <h1 class="md:order-last col-span-8 md:col-span-10">{frontmatter.title}<sup>W1</sup></h1>
+      <span class="md:order-first text-right md:text-left col-span-4 md:col-span-2 text-[11px] font-bold">{formattedDate}</span>
     </div>  
     <main class="text-[12px] normal-case font-medium sm:col-start-3 xl:col-start-3 col-span-full sm:col-span-8 xl:col-span-4 max-w-prose">
       <div

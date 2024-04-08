@@ -29,11 +29,11 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#fcf150',
-        yellow: '#fcf150',
+        red: '#dc50fc',
+        yellow: '#dc50fc',
         // orange: '#CA6C2B',
-        orange: '#fcf150',
-        green: '#fcf150',
+        orange: '#dc50fc',
+        green: '#dc50fc',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',

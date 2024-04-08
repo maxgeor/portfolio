@@ -15,24 +15,20 @@ const {
   teammates,
 } = frontmatter;
 
-const titleLength = `${22 - title.length}vw`;
+const titleLength = `${18 - title.length}vw`;
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-y-8 gap-x-4">
     <Header />
-    <section id="hero" class='md:my-12 col-span-full grid grid-cols-12 gap-4'>
-      <div class="relative grid grid-cols-12 gap-4 col-span-full">
-        <p class="hidden md:block col-span-full md:col-span-1">Work</p>
+    <section id="hero" class='mt-4 md:mt-8 md:mb-4 col-span-full grid grid-cols-12 gap-y-4  gap-x-4'>
+      <div class="border-y border-black py-4 relative grid grid-cols-12 gap-4 col-span-full">
+        <p class="hidden md:block col-span-full md:col-span-2">Work</p>
         <h1 
           id="study-title" 
-          class="font-black uppercase col-span-full md:col-start-3 md:col-span-9 -ml-[0.4vw]"
-          style={{ 
-            fontSize: `clamp(36px, ${titleLength}, 80px)`,
-            lineHeight: "0.753",
-          }}
+          class="text-[36px] leading-[28px] sm:text-[60px] sm:leading-[48px] lg:text-[72px] lg:leading-[56px] font-black uppercase col-span-full md:col-span-10 -ml-[0.4vw]"
         >
-          {title}<sup>W1</sup>
+          {title}<sup class="align-super	text-[14px] sm:text-[24px] lg:text-[30px]">W1</sup>
         </h1>
       </div>
       <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
