@@ -79,18 +79,9 @@ const heros = [
 
     <div class="text-balance col-span-8 md:col-span-10  flex flex-col gap-4">
       <div class="flex flex-col">
-        <h3>Bio</h3>
         <div class="flex flex-col text-[12px] font-medium normal-case">
           <p>
-            Yo! I'm a designer and developer based out of Toronto, but I bum
-            around different places. I believe that the boundary between design
-            and engineering is artificial — you get the best results by blending
-            the two. Lately, I've been inspired by Ryan Singer's design
-            techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-            Homme Plissé.
-          </p>
-          <p >
-            Ho! I'm a designer and developer based out of Toronto, but I bum
+            I'm a designer and developer based out of Toronto, but I bum
             around different places. I believe that the boundary between design
             and engineering is artificial — you get the best results by blending
             the two. Lately, I've been inspired by Ryan Singer's design
@@ -99,6 +90,22 @@ const heros = [
           </p>
         </div>  
       </div>  
+      <div class="flex flex-col">
+        <h3>Interests</h3>
+        <ul class="flex flex-col">
+          {heros.map((hero) => (
+            <li class="">
+              <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent ">
+                <summary class="hover:bg-black hover:text-white open:group-hover:text-black  hover:cursor-zoom-in">{hero.name}</summary>
+                <div class="flex justify-between gap-6">
+                  <p class="text-xs normal-case font-medium">{hero.description}</p>
+                  {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 p-4 -m-4"></Link>}
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div class="flex flex-col">
         <h3>Heros</h3>
         <ul class="flex flex-col">
@@ -116,7 +123,7 @@ const heros = [
         </ul>
       </div>
     </div>
-    <div class="col-span-full -mx-4 -mb-4 ">
+    <div class="col-span-full -mx-4 -mb-4">
       <img src="/public/me.png" class="grayscale" />
     </div>
   </div>

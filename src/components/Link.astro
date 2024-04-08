@@ -14,7 +14,7 @@ const { href, target = '_self', classes = "" } = Astro.props;
   target={target}
   class={`group hover:no-underline w-fit ${classes}`}
 >
-  <span class="w-fit group-hover:bg-neutral-750">
+  <span class="w-fit group-hover:bg-black">
     <slot />
     {target === '_blank' && <UpRightArrowIcon classes="inline -ml-[3px] mb-px" />}
   </span>

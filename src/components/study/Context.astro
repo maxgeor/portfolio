@@ -12,7 +12,7 @@ const { title } = Astro.props;
   <!-- {title && <h1 class=" col-span-9 col-start-1 mb-1 col-end-[-1] text-balance">{title}</h1>} -->
   {title && <h1 class=" col-span-full border-y md:border-none border-black md:col-span-2 mb-1 text-balance">{title}</h1>}
   <!-- <p class="normal-case	font-medium lg:tracking-[-0.015em] col-span-10 text-[28px] leading-[28px] lg:text-[37px] lg:leading-[37px] 2xl:text-[48px] 2xl:leading-[48px] "> -->
-  <p class="normal-case	font-medium lg:tracking-[-0.015em] col-span-full md:col-span-9 max-w-prose text-[24px] md:text-[28px] leading-6 md:leading-[28px]  ">
+  <p class="normal-case	font-medium lg:tracking-[-0.015em] col-span-full md:col-span-9 max-w-prose text-[24px] md:text-[28px] lg:text-[32px] lg:leading-[32px] leading-6 md:leading-[28px]  ">
     <slot />
   </p>
 </Grid>
@@ -26,8 +26,8 @@ const { title } = Astro.props;
   p > mark.solution::before {
     content: '';
     display: inline-block;
-    height: 18px;
-      width: 18px;
+    height: 23px;
+      width: 23px;
     /* border-radius: 9999px; */
     margin-right: 10px;
     vertical-align: baseline;

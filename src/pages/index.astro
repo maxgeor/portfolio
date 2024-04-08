@@ -9,9 +9,12 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout title="Max Georgopoulos">
   <div class="col-span-full relative grid grid-cols-12 gap-4">
+    <hr class="h-px col-span-full border-t border-black -mt-2"/>
+    <div class="flex items-center justify-center pt-8  col-span-full overflow-hidden -mx-4 ">
+      <h1 class="font-london tracking-tighter text-[48vw] -mt-[1.5vw] -mb-[4vw] leading-[40vw] text-center text-black ">MKCG</h1>
+    </div>
     <Header />
-    <!-- <h1 class="text-center text-[clamp(24px,34vw,1000px)] leading-[0.75] -ml-[5vw] col-span-full ">MKCG</h1> -->
-    <div class="my-4 grid grid-cols-12 col-span-full gap-x-4 ">
+    <div class="my-12 grid grid-cols-12 col-span-full gap-x-4 ">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}

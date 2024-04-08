@@ -8,11 +8,11 @@ const { classes = "" } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 ---
-<header class={`top-2  fixed left-4 right-4 border-dotted bottom-auto z-50 col-span-full grid grid-cols-12 gap-4 ${classes}`}>
-  <a href="/" class="mix-blend-difference  col-span-4 md:col-span-2 uppercase ">mkcg</a>
+<header class={`top-2  fixed left-4 right-4 bottom-auto z-50 col-span-full grid grid-cols-12 gap-4 ${classes}`}>
+  <a href="/" class="hover:bg-black hover:text-white w-fit col-span-4 md:col-span-2 uppercase mix-blend-difference">mkcg</a>
 
-  <p class="whitespace-nowrap col-span-4 md:col-span-6 mix-blend-difference ">
-    <a href="/" class="x ">Work</a>, <a href="/writing" class="col-span-2 ">Writing</a>
+  <p class="whitespace-nowrap col-span-4 md:col-span-6 ">
+    <a href="/" class="hover:bg-black hover:text-white w-fit">Work</a>, <a href="/writing" class="w-fit hover:bg-black hover:text-white col-span-2 ">Writing</a>
   </p>
-  <a href="/info" class={`col-span-4 justify-self-end mix-blend-difference `}>Info</a>
+  <a href="/info" class={`col-span-4 justify-self-end hover:bg-black hover:text-white w-fit`}>Info</a>
 </header>

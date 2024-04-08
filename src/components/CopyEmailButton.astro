@@ -12,14 +12,14 @@ const { showIcon = true, classes = "" } = Astro.props;
 <button
   aria-label="Copy email"
   class={`
-    copy-email-button relative flex gap-1 w-full items-center border-neutral-500 ring-offset-2 ring-offset-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange hover:bg-neutral-750  focus:rounded-[1px] cursor-default
+    copy-email-button relative flex gap-1 w-full items-center  ring-offset-2 ring-offset-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange hover:bg-black hover:text-white focus:rounded-[1px] cursor-default
     ${classes}
   `}
 >
   {showIcon ? (
     <>
     <CopyIcon id="copy-icon" classes="absolute left-0 transform " />
-    <CheckIcon id="check-icon" classes="absolute left-0 transform opacity-0 text-orange scale-75" />
+    <CheckIcon id="check-icon" classes="absolute left-0 transform opacity-0 scale-75" />
     </>
   ) : (
     <CheckIcon id="check-icon" classes="absolute -left-[18px] transform opacity-0 text-orange scale-75" />

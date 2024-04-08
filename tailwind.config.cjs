@@ -34,6 +34,9 @@ module.exports = {
         // orange: '#CA6C2B',
         orange: '#dc50fc',
         green: '#dc50fc',
+        gray: {
+          // 200: '#E3E6EB',
+        },
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
