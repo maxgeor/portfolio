@@ -21,18 +21,18 @@ const titleLength = `${22 - title.length}vw`;
 <Layout title={title} description={description} maxWidth="max-w-none">
   <main class="relative col-span-full grid grid-cols-12 gap-4">
     <Header />
-    <section id="hero" class='mb-8 col-span-full grid grid-cols-12 gap-4 border-neutral-white'>
-      <div class=" pb-8 pt-8 md:py-8 relative grid grid-cols-12 gap-y-4 gap-x-4  col-span-full">
-        <p class="hidden md:block mix-blend-difference col-span-full md:col-span-1">W1</p>
+    <section id="hero" class='md:my-12 col-span-full grid grid-cols-12 gap-4'>
+      <div class="relative grid grid-cols-12 gap-4 col-span-full">
+        <p class="hidden md:block col-span-full md:col-span-1">Work</p>
         <h1 
           id="study-title" 
-          class="font-black uppercase  col-span-full md:col-start-3 md:col-span-9 -ml-[0.6vw]"
+          class="font-black uppercase col-span-full md:col-start-3 md:col-span-9 -ml-[0.4vw]"
           style={{ 
-            fontSize: `clamp(36px, ${titleLength}, 96px)`,
+            fontSize: `clamp(36px, ${titleLength}, 80px)`,
             lineHeight: "0.753",
           }}
         >
-          {title}<sup class="md:hidden">W1</sup>
+          {title}<sup>W1</sup>
         </h1>
       </div>
       <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
@@ -99,7 +99,7 @@ const titleLength = `${22 - title.length}vw`;
     
     <article
       id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
+      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4"
     >
       <div
         class={`

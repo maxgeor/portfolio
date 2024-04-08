@@ -57,8 +57,12 @@ switch (typeof span) {
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
-  <p class="col-span-1 ">{id}</p>
-  <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
+  <div class="flex gap-4 col-span-full">
+    <p>{id}</p>
+    <p>{alt}</p>
+  </div>
+  <!-- <p class="col-span-1 ">{id}</p>
+  <p class={`col-start-2 col-end-[-1] `}>{alt}</p> -->
   <div class={`
     relative grid col-span-full bg-neutral-750 gap-x-4
     ${colClasses}
@@ -67,7 +71,7 @@ switch (typeof span) {
   `}>
     <video
       class={`
-        transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-90 focus:brightness-90
+        border transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-90 focus:brightness-90
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}

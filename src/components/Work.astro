@@ -81,24 +81,24 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-       group overflow-hidden block group relative gap-x-4 h-fit 
+       group overflow-hidden block group relative gap-x-4 h-fit
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes} 
     `}
   >
     <div class={`
-      flex justify-center
-      ${!isComingSoon && 'group-hover:bg-neutral-750'}
+      flex gap-4
+      ${!isComingSoon && 'group-hover:bg-black'}
     `}>
-      <span class="absolute left-0  shrink-0">W{index}</span> 
-      <h3 aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}>{title}</h3>
+    <h3 aria-label={`${title} ${isComingSoon ? '(coming soon)' : ''}`}>{title}<sup class="">W{index}</sup> </h3>
+    
     </div>
-    <picture class="relative h-auto">
+    <picture class="relative h-auto ">
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
         class={`
-          w-full h-full object-top select-none object-contain
+          w-full h-full object-top select-none object-contain border
         `}
       />
       {isComingSoon && <ComingSoonBanner classes="-rotate-[12deg]" />}
@@ -108,8 +108,8 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-      relative group col-span-full 
-      ${isComingSoon ? 'text-white/50' : 'hover:bg-neutral-750'}
+      relative  group col-span-full 
+      ${isComingSoon ? 'text-black/50' : 'hover:bg-black'}
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes}
     `}
@@ -119,26 +119,26 @@ const upRightArrowIconClasses =
       ${isComingSoon ? 'group-hover:hidden group-focus:hidden' : ''}
     `}>
 
-      <div class="shrink-0 whitespace-nowrap font-black uppercase flex  col-span-4 md:col-span-2 h-fit">
-        <span class="w-[34px] shrink-0">W{index}</span> 
-        <span class="whitespace-nowrap font-black uppercase">{title}</span> 
+      <div class="shrink-0 whitespace-nowrap font-black uppercase  col-span-4 md:col-span-2 h-fit">
+        {title}<sup>W{index}</sup>
       </div>
-      <p class="text-right  inline-block col-span-8 sm:col-span-7 md:col-span-4 truncate">
+      <p class=" inline-block col-span-8 sm:col-span-7 md:col-span-4 truncate">
         {description}
       </p>
+      <div class="hidden md:flex gap-1 col-span-full sm:col-span-3 ml-4.5">
+        <span>{roles.long.join(', ')}</span>
+      </div>
       <div class="hidden md:inline-block col-span-2 ">
         {type}
-      </div>
-      <div class="hidden md:flex gap-1 col-span-full sm:col-span-3  md:col-span-3 ml-4.5">
-        <span>{roles.long.join(', ')}</span>
       </div>
       <div class="hidden text-[11px] sm:block col-span-1 justify-self-end ">
         {isComingSoon ? "—" : year}
       </div>
+      
     </div>
     {isComingSoon && (
       <div class="h-4 hidden group-hover:flex group-focus:block">
-        <ComingSoonBanner classes="text-white opacity-1" />
+        <ComingSoonBanner classes="text-black opacity-1" />
       </div>
     )}
   </Element>

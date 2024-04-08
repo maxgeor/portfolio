@@ -37,7 +37,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
   `}
 >
   <div class={`
-     justify-self-center flex tabular absolute bottom-4 right-4  self-start
+    justify-self-center flex tabular absolute bottom-4 right-4  self-start
     ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-3.5 md:right-0'}
   `}>
     <span class="counter-current">1</span>
@@ -48,7 +48,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     disabled="true" 
     aria-label="Previous slide" 
     class={`
-      btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4 -mr-[23px]
+       btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4 -mr-[23px]
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2 xs:right-auto xs:left-0'
       ) : (
@@ -89,7 +89,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
         slides?.map((slide, index) => (
           <div class={`
             slide slide-${index} 
-            absolute h-fit w-full transition-all duration-[450ms] ease-in-out
+            absolute h-fit w-full transition-all duration-[450ms] ease-in-out 
           `}>
             {slide.type === "video" ? (
               <Video
@@ -128,7 +128,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
         <button 
           data-position={index} 
           class={`
-            uppercase slide-title slide-title-${index} flex gap-4 text-left  hover:text-white focus:text-white
+            !text-black uppercase slide-title slide-title-${index} flex gap-4 text-left  hover:text-black focus:text-black
             ${index === 0 ? 'active' : ''}
           `}
         >

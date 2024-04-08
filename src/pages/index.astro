@@ -11,12 +11,12 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
   <div class="col-span-full relative grid grid-cols-12 gap-4">
     <Header />
     <!-- <h1 class="text-center text-[clamp(24px,34vw,1000px)] leading-[0.75] -ml-[5vw] col-span-full ">MKCG</h1> -->
-    <div class="grid grid-cols-12 col-span-full gap-x-4 ">
+    <div class="my-4 grid grid-cols-12 col-span-full gap-x-4 ">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}
     </div>
-    <div class="columns-1 sm:columns-2 md:columns-3 col-span-full gap-x-4 space-y-2">
+    <div class="columns-1 sm:columns-2 md:columns-3 col-span-full  space-y-2 gap-x-4">
       {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }, index) => (
         <Work variant="card" {...work} index={index} />
       ))}

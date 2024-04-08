@@ -14,7 +14,7 @@ export interface Props {
 const { title, image } = Astro.props;
 ---
 
-<div class="col-span-full md:col-span-6 md:col-start-4 flex flex-col gap-3">
+<div class="col-span-full md:col-span-8 md:col-start-3 flex flex-col gap-3">
   <div class="col-span-full flex flex-col  ">
     <h3 class="shadow-border" set:html={marked.parse(title)}></h3>
     <div class=" flex flex-col gap-2 text-balance font-medium text-[12px] normal-case">
@@ -26,7 +26,7 @@ const { title, image } = Astro.props;
       id='T1'
       src={image.src}
       alt={image.src}
-      span={{ base: 12, xl: 6 }}
+      span={{ base: 12 }}
       hasCaption={false}
       classes="self-center"
     />

@@ -58,13 +58,17 @@ switch (typeof span) {
   `}
 >
   {hasCaption && (
-    <>
-      <p class="col-span-1 ">{id}</p>
-      <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
-    </>
+    <div class="flex gap-4 col-span-full">
+      <p>{id}</p>
+      <p>{alt}</p>
+    </div>
+    // <>
+    //   <p class="col-span-1 ">{id}</p>
+    //   <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
+    // </>
   )}
   <figure class={`
-    grid col-span-full bg-neutral-750 gap-x-4
+    grid col-span-full gap-x-4
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
@@ -73,7 +77,7 @@ switch (typeof span) {
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover
+        h-full w-full object-cover border
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}

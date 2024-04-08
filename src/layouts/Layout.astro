@@ -1,4 +1,5 @@
 ---
+import Header from '../components/Header.astro';
 export interface Props {
   title: string;
   description?: string;
@@ -13,7 +14,7 @@ const {
   description,
   maxWidth = "",
   // backgroundColor = "bg-[#111]",
-  backgroundColor = "bg-[#000]",
+  backgroundColor = "bg-[#fff]",
 } = Astro.props;
 ---
 
@@ -31,16 +32,9 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex  flex-col uppercase font-black gap-4 text-[#fff]  min-h-screen text-[10px] leading-[16px] selection:bg-neutral-700 antialiased p-4 pt-11 pb-8  h-min max-w-[1480px] mx-auto
+     flex flex-col uppercase font-black gap-4 text-[#000]  min-h-screen text-[10px] leading-[16px] selection:bg-neutral-700 antialiased p-4 pt-9  h-min max-w-[1480px] mx-auto
     `}
   >
-  <!-- <body
-    style="text-rendering: optimizeLegibility;"
-    class={`
-      ${backgroundColor} ${maxWidth}
-     flex flex-col  gap-4 text-[#9c9c9c] font-sans min-h-screen text-[12px] leading-[16px] selection:bg-neutral-700 antialiased py-3 px-4 pb-24 h-min
-    `}
-  > -->
     <slot />
   
   </body>
@@ -122,6 +116,10 @@ const {
   html {
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+  }
+
+  body {
+    cursor: url('/public/dorito.png'), auto;
   }
 
   a {
