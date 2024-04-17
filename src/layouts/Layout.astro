@@ -1,19 +1,15 @@
 ---
-import Header from '../components/Header.astro';
 export interface Props {
   title: string;
   description?: string;
-  maxWidth?: string;
+  maxWidth?: string | null;
   backgroundColor?: string;
 }
-
-// 21213f fff
 
 const {
   title = "Max Georgopoulos",
   description,
   maxWidth = "",
-  // backgroundColor = "bg-[#111]",
   backgroundColor = "bg-[#fff]",
 } = Astro.props;
 ---
@@ -32,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex flex-col uppercase font-black gap-4 text-[#000]  min-h-screen text-[10px] leading-[16px] selection:bg-[#dc50fc] antialiased p-4 pt-10  h-min max-w-[1480px] mx-auto
+     flex flex-col uppercase font-black gap-4 text-[#000]  min-h-screen text-[10px] leading-[16px] selection:bg-[#FF58F4] antialiased p-4 pt-10  h-min  mx-auto
     `}
   >
     <slot />
@@ -52,8 +48,8 @@ const {
   }
   
   @font-face {
-    font-family: Flowers;
-    src: url(/fonts/bodoni-ornaments.ttf);
+    font-family: Romie;
+    src: url(/fonts/RomieTrial-Regular-Italic.otf);
   }
   
   @font-face {
@@ -115,19 +111,14 @@ const {
 
   html {
     text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: #dc50fc;
+    -webkit-tap-highlight-color: #FF58F4;
   }
-
-  body {
-    cursor: url('/public/dorito.png'), auto;
-  }
-
   a {
     text-underline-offset: 2px;
   }
   
   a:focus-visible {
-    outline: solid 2px #dc50fc;
+    outline: solid 2px #FF58F4;
     outline-offset: 1px;
   }
 

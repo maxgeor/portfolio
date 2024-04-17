@@ -8,7 +8,7 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      flowers: ['Flowers'],
+      romie: ['Romie'],
       london: ['London'],
       pixel: ['Pixel'],
       gothic: ['Gothic'],
@@ -29,20 +29,17 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#dc50fc',
-        yellow: '#dc50fc',
-        // orange: '#CA6C2B',
-        orange: '#dc50fc',
-        green: '#dc50fc',
+        red: '#FF58F4',
+        yellow: '#FF58F4',
+        orange: '#FF58F4',
+        green: '#FF58F4',
         gray: {
-          // 200: '#E3E6EB',
         },
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
           190: '#f1f1f1',
           200: '#e0e0e0',
-          // 200: '#e0e0e0',
           250: '#b6b6b6',
           300: '#B4B4B4',
           400: '#909090',
@@ -58,6 +55,9 @@ module.exports = {
       screens: {
         xs: '450px',
         lg: '1024px'
+      },
+      maxWidth: {
+        '3xl': '1480px',
       },
       boxShadow: {
         outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',

@@ -17,19 +17,21 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-y-8 gap-x-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-y-4 md:gap-y-12 gap-x-4">
     <Header />
-    <section id="hero" class='mt-4 md:mt-8 md:mb-4 col-span-full grid grid-cols-12 gap-y-4  gap-x-4'>
-      <div class="border-y border-black py-4 relative grid grid-cols-12 gap-4 col-span-full">
+    <!-- <section id="hero" class=' pt-4 md:pb-4 md:border-b border-black col-span-full grid grid-cols-12 gap-y-4  gap-x-4'> -->
+    <section id="hero" class=' col-span-full grid grid-cols-12 gap-y-8 md:gap-y-8  gap-x-4 pt-4 md:pt-8'>
+      <!-- <div class="border-y border-black py-4 relative grid grid-cols-12 gap-4 col-span-full"> -->
+      <div class="relative grid grid-cols-12 gap-4 col-span-full">
         <p class="hidden md:block col-span-full md:col-span-2">Work</p>
         <h1 
           id="study-title" 
-          class="text-[36px] leading-[28px] sm:text-[60px] sm:leading-[48px] lg:text-[72px] lg:leading-[56px] font-black uppercase col-span-full md:col-span-10 -ml-[0.4vw]"
+          class="text-[28px] leading-5 xs:text-[36px] xs:leading-[28px] sm:text-[60px] sm:leading-[48px] font-black uppercase col-span-full md:col-span-10 -ml-[0.4vw]"
         >
-          {title}<sup class="align-super	text-[14px] sm:text-[24px] lg:text-[30px]">W1</sup>
+          {title}<sup class="align-super	text-[12px] xs:text-[14px] sm:text-[24px]">W1</sup>
         </h1>
       </div>
-      <div class="grid grid-cols-12 gap-y-2 gap-x-4 col-span-full">
+      <div class="grid grid-cols-12 gap-x-4 col-span-full">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
             tldr
@@ -90,6 +92,12 @@ const {
         </div>
       </div>
     </section>
+    <!-- <hr class="hidden md:block h-px border-t border-black col-span-full col-start-3 " /> -->
+    <!-- <div class="flex gap-[3px] md:col-start-3">
+      <span class="h-[3px] w-[3px] bg-black"></span>
+      <span class="h-[3px] w-[3px] bg-black"></span>
+      <span class="h-[3px] w-[3px] bg-black"></span>
+    </div> -->
     
     <article
       id="article"
@@ -97,7 +105,7 @@ const {
     >
       <div
         class={`
-          -all prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300
@@ -123,7 +131,7 @@ const {
         <slot />
       </div>
     </article>
-    <footer class="col-span-full mt-20 mb-24 border-y border-black">
+    <footer class="col-span-full mt-12 mb-24 border-t border-black/40">
       READ MORE
     </footer>
   </main>

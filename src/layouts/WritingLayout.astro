@@ -14,23 +14,22 @@ const formattedDate = formatDate(frontmatter.date);
       <h1 class="md:order-last col-span-8 md:col-span-10">{frontmatter.title}<sup>W1</sup></h1>
       <span class="md:order-first text-right md:text-left col-span-4 md:col-span-2 text-[11px] font-bold">{formattedDate}</span>
     </div>  
-    <main class="text-[12px] normal-case font-medium sm:col-start-3 xl:col-start-3 col-span-full sm:col-span-8 xl:col-span-4 max-w-prose">
+    <main class="text-[12px] normal-case font-medium md:col-start-3 xl:col-start-3 col-span-full sm:col-span-8 xl:col-span-4 max-w-prose">
       <div
         class={`
           prose-xs max-w-prose leading-4 text-pretty
           prose-headings:uppercase
           prose-headings:font-bold
-          prose-headings:text-[10px]
-          prose-headings:mt-4 prose-headings:mb-1.5
+          prose-headings:text-[10px] prose-headings:leading-3
+          prose-headings:mt-5 prose-headings:mb-2
           prose-p:my-2
           first:prose-p:mt-0
           last:prose-p:mb-0
           prose-a:underline
-          prose-strong:text-[#eee] prose-strong:font-bold
           prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:tabular prose-code:font-normal prose-code:whitespace-nowrap
-          prose-ul:list-disc
-          prose-ol:list-decimal 
-          prose-li:marker:text-neutral-500
+          prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
+          prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0
+          prose-li:marker:text-black  
 
         `}
       >

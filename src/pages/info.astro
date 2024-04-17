@@ -79,6 +79,7 @@ const heros = [
 
     <div class="text-balance col-span-8 md:col-span-10  flex flex-col gap-4">
       <div class="flex flex-col">
+        <h3 class="">Bio</h3>
         <div class="flex flex-col text-[12px] font-medium normal-case">
           <p>
             I'm a designer and developer based out of Toronto, but I bum
@@ -91,7 +92,36 @@ const heros = [
         </div>  
       </div>  
       <div class="flex flex-col">
-        <h3>Interests</h3>
+        <h3 class="">Serious skillz assessment</h3>
+        <table class="w-fit">
+          <tr>
+            <td style="padding-right: 4px;">Product Thinking:</td>
+            <td>95<sup>th</sup> percentile</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 4px;">Product Design:</td>
+            <td>89<sup>th</sup> percentile</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 4px;">Copywriting:</td>
+            <td>84<sup>th</sup> percentile</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 4px;">Frontend Dev:</td>
+            <td>60<sup>th</sup> percentile</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 4px;">Graphic Design:</td>
+            <td>32<sup>nd</sup> percentile</td>
+          </tr>
+          <tr>
+            <td style="padding-right: 4px;">Backend Dev:</td>
+            <td>20<sup>th</sup> percentile</td>
+          </tr>
+        </table>
+      </div>
+      <div class="flex flex-col">
+        <h3 class="">Interests</h3>
         <ul class="flex flex-col">
           {heros.map((hero) => (
             <li class="">
@@ -107,7 +137,7 @@ const heros = [
         </ul>
       </div>
       <div class="flex flex-col">
-        <h3>Heros</h3>
+        <h3 class="">Heros</h3>
         <ul class="flex flex-col">
           {heros.map((hero) => (
             <li class="">
@@ -123,8 +153,8 @@ const heros = [
         </ul>
       </div>
     </div>
-    <div class="col-span-full -mx-4 -mb-4">
-      <img src="/public/me.png" class="grayscale" />
+    <div class="col-span-full -mx-4 -mb-4 mt-2">
+      <img src="/me.png" class="grayscale" />
     </div>
   </div>
 </Layout>

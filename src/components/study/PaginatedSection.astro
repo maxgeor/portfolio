@@ -27,10 +27,9 @@ const { sections, classes = "" } = Astro.props;
         id={section.id}
         src={section.media.src}
         alt={section.media.alt}
-        span={{ base: 12, md: 8, xl: 6}}
+        span={{ base: 12, md: 8, xl: 7}}
         classes={`
-          section-media section-media-${index}
-          md:col-start-3  xl:col-start-4
+          section-media section-media-${index} md:col-start-3
           ${index > 0 ? 'hidden' : ''}
         `}
       />
@@ -39,17 +38,17 @@ const { sections, classes = "" } = Astro.props;
         id={section.id}
         src={section.media.src}
         alt={section.media.alt}
-        span={{ base: 12, md: 8, xl: 6 }}
+        span={{ base: 12, md: 8, xl: 7 }}
         classes={`
           section-media section-media-${index}
-          md:col-start-3 xl:col-start-4
+          md:col-start-3
           ${index > 0 ? 'hidden' : ''}
         `}
       />
     )
   })}
   <div 
-    class="xl:mt-4  xl:order-first xl:col-span-2 section-titles md:order-2 md:col-start-3 col-span-full " 
+    class="mt-0.5 xl:mt-4  xl:order-first xl:col-span-2 section-titles md:order-2 md:col-start-3 col-span-full " 
     style="text-wrap: pretty;"
   >
     {sections.map((section, index) => (
@@ -57,7 +56,7 @@ const { sections, classes = "" } = Astro.props;
         data-index={index} 
         class={`
           section-title section-title-${index} 
-          !text-black uppercase flex gap-4 text-left hover:text-black focus:text-black 
+          !text-black uppercase flex gap-4 text-left hover:text-black focus:text-black
           ${index === 0 ? 'active' : ''}
         `}
       >
@@ -68,7 +67,7 @@ const { sections, classes = "" } = Astro.props;
   </div>
   {sections.map((section, index) => (
     <p class={`
-      xl:col-start-10 xl:mt-4 xl:order-last xl:col-span-2 section-detail section-detail-${index}
+      xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
       normal-case font-medium text-[12px] md:order-3 col-span-full  md:col-start-3 md:col-span-6  flex flex-col gap-y-2 gap-x-4
       ${index > 0 ? 'hidden' : ''}
     `}>

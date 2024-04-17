@@ -16,6 +16,7 @@ export interface Props {
       xl?: number 
     };
     hasPadding?: boolean;
+    classes?: string;
   }[];
   span?: number | { 
     base: number, 
@@ -98,6 +99,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 id={slide.id}
                 span={slide.span || 12}
                 hasPadding={slide.hasPadding}
+                classes={slide.classes}
               />
             ) : (
               <Image
@@ -107,6 +109,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 span={slide.span}
                 hasPadding={slide.hasPadding}
                 orientation={orientation}
+                classes={slide.classes}
               />
             )}
           </div>

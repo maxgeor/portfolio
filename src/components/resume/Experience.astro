@@ -12,20 +12,20 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
   Astro.props;
 ---
 
-<article class="col-span-3 grid grid-cols-3 gap-4">
-  <h3 class={` text-neutral-950 ${titleWidth ? titleWidth : ""}`}>
+<article class="col-span-2 grid grid-cols-4 gap-x-4 gap-y-2 ">
+  <h3 class={`col-span-2  text-neutral-950`}>
     {title}
   </h3>
-  <p>{company}</p>
-  <div class="relative flex h-fit justify-self-end">
-    <p class="w-[69px] shrink-0">{startDate}</p>
-    <span class="absolute top-1/2 left-[58px] -translate-y-1/2 transform"
-      >-</span
-    >
-    <p class="w-[53px] shrink-0">{endDate}</p>
+
+  <div class="col-span-2 flex justify-between">
+    <p><span class="font-mono mr-px">@</span>{company} </p>
+
+    <p >{startDate} - {endDate}</p>
   </div>
+  <p class={`text-xs font-medium normal-case col-span-3`}>{blurb}</p>
+  <slot />
   {tech && (
-    <ul>
+    <ul class="col-span-full">
       {
         tech.map((tool) => (
           <li class="relative">
@@ -36,6 +36,4 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
       }
     </ul>
   )}
-  <p class={tech ? "col-span-2" : "col-span-3"}>{blurb}</p>
-  <slot />
 </article>
