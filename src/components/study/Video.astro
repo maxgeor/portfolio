@@ -14,6 +14,7 @@ export interface Props {
     xl?: number 
   };
   hasPadding?: boolean;
+  hasBorder?: boolean;
   orientation?: 'vertical' | 'horizontal';
   classes?: string;
 }
@@ -23,6 +24,7 @@ const {
   id,
   span = 12,
   hasPadding = false,
+  hasBorder = false,
   orientation = 'horizontal',
   classes = "" 
 } = Astro.props;
@@ -71,9 +73,10 @@ switch (typeof span) {
   `}>
     <video
       class={`
-        rounded  bg-[#f5f6f8] border border-[#ececec] transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
+        rounded  bg-[#f5f6f8] transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
+        ${hasBorder && 'border border-[#ececec]'}
       `}
       poster={extensionlessSrc + ".png"}
       playsinline

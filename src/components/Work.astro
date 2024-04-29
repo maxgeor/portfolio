@@ -18,6 +18,7 @@ type Work = {
   };
   year?: string;
   image?: string;
+  hasBorder?: boolean;
   type?: string;
   studySlug?: string;
   isComingSoon?: boolean;
@@ -28,6 +29,7 @@ type Work = {
 type WorkCard = {
   variant: 'card';
   image: string;
+  hasBorder?: boolean
 } & Work;
 
 type WorkRow = {
@@ -51,6 +53,7 @@ const {
   },
   roles,
   studySlug,
+  hasBorder = false,
   classes = '',
   isComingSoon = false,
   index
@@ -75,8 +78,8 @@ const upRightArrowIconClasses =
   <Element
     {...props}
     class={`
-      group overflow-hidden block group relative gap-x-4 h-fit p-1 pt-0.5 -m-1 -mt-0.5
-      ${!isComingSoon && 'rounded-[3px] transition duration-75 hover:bg-[#ececec]'}
+      group overflow-hidden block group relative gap-x-4 h-fit 
+      ${!isComingSoon && 'p-1 pt-0.5 -m-1 -mt-0.5 rounded-[3px] transition duration-75 hover:bg-[#f0f0f0]'}
       ${isComingSoon ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
       ${classes} 
     `}
@@ -93,12 +96,14 @@ const upRightArrowIconClasses =
         )}
       </span>
     </div>
-    <picture id={`work-pic`} class="relative h-auto">
+    <picture id={`work-pic`} class="relative h-auto overflow-hidden">
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
-        class={`w-full h-full object-top select-none object-contain border border-[#ececec]`}
-        // class={`w-full h-full object-top select-none object-contain border border-[#ececec]`}
+        class={`
+          w-full h-full object-top select-none object-contain rounded-[3px] 
+          ${hasBorder ? 'border border-[#ececec]' : ''}
+        `}
       />
       {isComingSoon && <ComingSoonBanner classes="-rotate-[12deg]" />}
     </picture>

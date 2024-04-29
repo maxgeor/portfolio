@@ -8,6 +8,7 @@ export interface Props {
     src: string;
     alt: string;
     id: string;
+    hasBorder?: boolean;
   }
 }
 
@@ -28,6 +29,7 @@ const { title, image } = Astro.props;
       alt={image.src}
       span={{ base: 12, lg: 7, xl: 6 }}
       hasCaption={false}
+      hasBorder={image.hasBorder}
       classes="self-center xl:order-first"
     />
   )}

@@ -11,6 +11,7 @@ export interface Props {
     xl?: number 
   };
   hasCaption?: boolean;
+  hasBorder?: boolean;
   orientation?: 'horizontal' | 'vertical';
   hasPadding?: boolean;
   classes?: string;
@@ -23,6 +24,7 @@ const {
   span = 12,
   hasCaption = true,
   orientation = 'horizontal',
+  hasBorder = false,
   hasPadding = false,
   classes = ""
 } = Astro.props;
@@ -77,8 +79,9 @@ switch (typeof span) {
       src={src}
       alt={alt}
       class={`
-        rounded border border-[#ececec] h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
+        rounded h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
         select-none self-center
+        ${hasBorder && 'border border-[#ececec]'}
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}

@@ -52,7 +52,7 @@ const links: {
       <a
         href={link.url}
         target={link.target}
-        class="flex w-full items-center gap-1 transition duration-75 hover:bg-[#e1e1e1]  px-[3px] -mx-[3px] rounded-[3px]"
+        class="flex w-full items-center gap-1 transition duration-75 hover:bg-[#e1e1e1]  px-[2px] -mx-[2px] rounded-[3px]"
       >
         {link.target === "_self" ? (
           <RightArrowIcon classes="shrink-0" />
@@ -63,5 +63,5 @@ const links: {
       </a>
     </li>
   ))}
-  <li class="-ml-[3px] "><CopyEmailButton>email</CopyEmailButton></li>
+  <li class="-ml-[2px] "><CopyEmailButton>email</CopyEmailButton></li>
 </ul

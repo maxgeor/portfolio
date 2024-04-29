@@ -16,6 +16,7 @@ export interface Props {
       xl?: number 
     };
     hasPadding?: boolean;
+    hasBorder?: boolean;
     classes?: string;
   }[];
   span?: number | { 
@@ -28,7 +29,10 @@ export interface Props {
   orientation?: 'horizontal' | 'vertical';
   classes?: string;
 }
+
 const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
+
+const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
 ---
 
 <div
@@ -87,8 +91,9 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     )}
   `}>
     <div class={`
-      relative w-full rotate-0 overflow-hidden border-b border-[#ececec] rounded
+      relative w-full rotate-0 overflow-hidden  rounded
       ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+      ${someSlidesHaveBorders && 'border-b border-[#ececec]'}
     `}>
       {
         slides?.map((slide, index) => (
@@ -103,6 +108,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 id={slide.id}
                 span={slide.span || 12}
                 hasPadding={slide.hasPadding}
+                hasBorder={slide.hasBorder}
                 classes={slide.classes}
               />
             ) : (
@@ -112,6 +118,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 id={slide.id}
                 span={slide.span}
                 hasPadding={slide.hasPadding}
+                hasBorder={slide.hasBorder}
                 orientation={orientation}
                 classes={slide.classes}
               />
