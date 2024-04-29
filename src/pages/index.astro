@@ -34,7 +34,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
       <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
       <div class="sm:h-full z-1 sm:z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div> -->
     </div>
-    <div class="mt-3 mb-4 grid grid-cols-12 col-span-full gap-x-4 ">
+    <div class="mb-4 grid grid-cols-12 col-span-full gap-x-4 ">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}
