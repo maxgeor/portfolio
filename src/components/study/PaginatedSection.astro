@@ -48,26 +48,28 @@ const { sections, classes = "" } = Astro.props;
     )
   })}
   <div 
-    class="mt-0.5 xl:mt-4  xl:order-first xl:col-span-2 section-titles md:order-2 md:col-start-3 col-span-full " 
+    class="section-titles flex flex-col -mt-1 xl:mt-4 xl:max-w-[40ch]  xl:order-first xl:col-span-2  md:order-2 md:col-start-3 col-span-full " 
     style="text-wrap: pretty;"
   >
     {sections.map((section, index) => (
       <button 
         data-index={index} 
         class={`
-          section-title section-title-${index} 
-          !text-black uppercase flex gap-4 text-left hover:text-black focus:text-black
+          group section-title section-title-${index} 
+          w-fit px-[3px] -mx-[3px] rounded-[3px] focus:outline-none focus:ring-2 focus:ring-green
           ${index === 0 ? 'active' : ''}
         `}
       >
-        <span class="tabular">{section.id}</span>
-        <p class="">{section.title}</p>
+        <div class="!text-black uppercase flex gap-4 text-left group-hover:text-black group-focus:text-black">
+          <span class="tabular">{section.id}</span>
+          <p class="">{section.title}</p>
+        </div>
       </button>
     ))}
   </div>
   {sections.map((section, index) => (
     <p class={`
-      xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
+      break-words hyphens-auto xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
       normal-case font-medium text-[12px] md:order-3 col-span-full  md:col-start-3 md:col-span-6  flex flex-col gap-y-2 gap-x-4
       ${index > 0 ? 'hidden' : ''}
     `}>
@@ -77,14 +79,14 @@ const { sections, classes = "" } = Astro.props;
 </Grid>
 
 <style>
-  .section-titles > * {
-     color: #fff;
+  .section-titles > * > div {
+    color: #fff;
     opacity: 40%;
   }
-  .section-titles > *:hover {
+  .section-titles > *:hover > div {
     opacity: 100%;
   }
-  .section-titles > .active {
+  .section-titles > .active > div {
    opacity: 100%;
   }
 </style>

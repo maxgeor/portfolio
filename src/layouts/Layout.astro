@@ -1,13 +1,13 @@
 ---
 export interface Props {
-  title: string;
+  title?: string;
   description?: string;
   maxWidth?: string | null;
   backgroundColor?: string;
 }
 
 const {
-  title = "Max Georgopoulos",
+  title = "MAX GEORGOPOULOS",
   description,
   maxWidth = "",
   backgroundColor = "bg-[#fff]",
@@ -28,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex flex-col uppercase font-black gap-4 text-[#000]  min-h-screen text-[10px] leading-[16px] selection:bg-[#FF58F4] antialiased p-4 pt-10  h-min  mx-auto
+     flex flex-col uppercase font-bold gap-4 text-[#000] min-h-screen text-[10px] leading-[16px] selection:bg-[#e1e1e1] antialiased p-4 pt-10  h-min  mx-auto
     `}
   >
     <slot />
@@ -111,15 +111,16 @@ const {
 
   html {
     text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: #FF58F4;
+    -webkit-tap-highlight-color: #e1e1e1;
   }
   a {
     text-underline-offset: 2px;
   }
   
   a:focus-visible {
-    outline: solid 2px #FF58F4;
+    outline: solid 2px green;
     outline-offset: 1px;
+    border-radius: 2px;
   }
 
   tr:last-child > td {

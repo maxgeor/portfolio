@@ -45,13 +45,29 @@ const heros = [
     link: "https://en.wikipedia.org/wiki/Maria_Montessori" 
   }
 ];
+
+const interests = [
+  { 
+    title: "Education reform",
+    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
+  },
+  { 
+    title: "Electronic music", 
+    description: "Contraints make you creative + make fun things", 
+    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
+  },
+  {
+    title: "Toy design", 
+    description: "Semantics are everything + elegance elegance elegance", 
+    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
+  },
+];
 ---
 
-<Layout title="Max Georgopoulos">
+<Layout>
   <Header />
   <div class="col-span-full grid grid-cols-12 gap-4">
     <div class="flex flex-col gap-4 col-span-4 md:col-span-2 ">
-      <!-- <img src="/me.jpg" alt="my face" class="object-cover h-full w-full aspect-[4/3]"/> -->
       <div class="w-full">
         <div class="flex gap-[4px]">
           <span class="w-[9px]">M</span> 
@@ -76,7 +92,6 @@ const heros = [
       </div>
       <SocialLinks classes="w-full" />
     </div>
-
     <div class="text-balance col-span-8 md:col-span-10  flex flex-col gap-4">
       <div class="flex flex-col">
         <h3 class="">Bio</h3>
@@ -92,44 +107,44 @@ const heros = [
         </div>  
       </div>  
       <div class="flex flex-col">
-        <h3 class="">Serious skillz assessment</h3>
-        <table class="w-fit">
+        <h3 class="">Skillz</h3>
+        <table class="w-fit" cellpadding="0" cellspacing="0">
           <tr>
-            <td style="padding-right: 4px;">Product Thinking:</td>
-            <td>95<sup>th</sup> percentile</td>
+            <td style="padding-right: 16px;">Product Thinking:</td>
+            <td>Great</td>
           </tr>
           <tr>
-            <td style="padding-right: 4px;">Product Design:</td>
-            <td>89<sup>th</sup> percentile</td>
+            <td style="padding-right: 16px;">Product Design:</td>
+            <td>Great</td>
           </tr>
           <tr>
-            <td style="padding-right: 4px;">Copywriting:</td>
-            <td>84<sup>th</sup> percentile</td>
+            <td style="padding-right: 16px;">Copywriting:</td>
+            <td>Good</td>
           </tr>
           <tr>
-            <td style="padding-right: 4px;">Frontend Dev:</td>
-            <td>60<sup>th</sup> percentile</td>
+            <td style="padding-right: 16px;">Frontend Dev:</td>
+            <td>Ok</td>
           </tr>
           <tr>
-            <td style="padding-right: 4px;">Graphic Design:</td>
-            <td>32<sup>nd</sup> percentile</td>
+            <td style="padding-right: 16px;">Graphic Design:</td>
+            <td>Ok</td>
           </tr>
           <tr>
-            <td style="padding-right: 4px;">Backend Dev:</td>
-            <td>20<sup>th</sup> percentile</td>
+            <td style="padding-right: 16px;">Backend Dev:</td>
+            <td>Meh</td>
           </tr>
         </table>
       </div>
       <div class="flex flex-col">
-        <h3 class="">Interests</h3>
+        <h3>Interests</h3>
         <ul class="flex flex-col">
-          {heros.map((hero) => (
+          {interests.map((interest) => (
             <li class="">
-              <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent ">
-                <summary class="hover:bg-black hover:text-white open:group-hover:text-black  hover:cursor-zoom-in">{hero.name}</summary>
+              <details class="group before:content-none  flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in ">{interest.title}</summary>
                 <div class="flex justify-between gap-6">
-                  <p class="text-xs normal-case font-medium">{hero.description}</p>
-                  {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 p-4 -m-4"></Link>}
+                  <p class="text-xs normal-case font-medium">{interest.description}</p>
+                  {interest.link && <Link href={interest.link} target="_blank" classes="ml-1 gap-0 shrink-0"></Link>}
                 </div>
               </details>
             </li>
@@ -141,11 +156,11 @@ const heros = [
         <ul class="flex flex-col">
           {heros.map((hero) => (
             <li class="">
-              <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out [&_summary]:open:hover:bg-transparent ">
-                <summary class="hover:bg-black hover:text-white open:group-hover:text-black  hover:cursor-zoom-in">{hero.name}</summary>
+              <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in">{hero.name}</summary>
                 <div class="flex justify-between gap-6">
                   <p class="text-xs normal-case font-medium">{hero.description}</p>
-                  {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 p-4 -m-4"></Link>}
+                  {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 "></Link>}
                 </div>
               </details>
             </li>

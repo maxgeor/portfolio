@@ -1,4 +1,5 @@
 ---
+import Link from "../components/Link.astro";
 import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
 
@@ -17,19 +18,30 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-y-4 md:gap-y-12 gap-x-4">
-    <Header />
-    <!-- <section id="hero" class=' pt-4 md:pb-4 md:border-b border-black col-span-full grid grid-cols-12 gap-y-4  gap-x-4'> -->
-    <section id="hero" class=' col-span-full grid grid-cols-12 gap-y-8 md:gap-y-8  gap-x-4 pt-4 md:pt-8'>
-      <!-- <div class="border-y border-black py-4 relative grid grid-cols-12 gap-4 col-span-full"> -->
-      <div class="relative grid grid-cols-12 gap-4 col-span-full">
-        <p class="hidden md:block col-span-full md:col-span-2">Work</p>
-        <h1 
-          id="study-title" 
-          class="text-[28px] leading-5 xs:text-[36px] xs:leading-[28px] sm:text-[60px] sm:leading-[48px] font-black uppercase col-span-full md:col-span-10 -ml-[0.4vw]"
-        >
-          {title}<sup class="align-super	text-[12px] xs:text-[14px] sm:text-[24px]">W1</sup>
-        </h1>
+  <main class="relative col-span-full grid grid-cols-12 gap-y-4 md:gap-y-8 gap-x-4">
+    <Header />    
+    <!-- <section id="hero" class='-mt-4 col-span-full grid grid-cols-12 gap-y-6 md:gap-y-8  gap-x-4 mt-2 md:mt-4 '> -->
+    <section id="hero" class=' col-span-full grid grid-cols-12 gap-y-6 md:gap-y-8  gap-x-4 '>
+      <div class="h-[60vh] relative flex items-center justify-center gap-4 col-span-full">
+        <p class="absolute -top-2 left-0  col-span-full md:col-span-2">Work</p>
+        <span class="relative col-span-full md:col-span-10">
+          <h1 
+            id="study-title" 
+            class="italic mb-8 flex items-center justify-center text-[#111] bg-transparent text-[120px] xs:text-[37px] xs:leading-[28px] md:text-[46px] md:leading-[36px] 2xl:text-[66px] 2xl:leading-[54px] font-black uppercase -ml-[0.4vw] md:-ml-[0.25vw] xl:-ml-[0.18vw] mr-[52px]"
+          >
+            <span sr-only>{title}</span>
+            {Array.from({ length: 30 }, (_, index) => (
+              <span style={{ 
+                transform: `translateZ(-${index}px)`, 
+                // backgroundColor: "#76ee62",
+                padding: "0.5rem ",
+              }}>
+                {title}<sup class="w-fit align-super text-[14px] xs:text-[16px] md:text-[22px] 2xl:text-[30px]">W1</sup>
+              </span>
+            ))}
+          </h1>
+        </span>
+        <Link href={link.href} target="_blank" classes="absolute -top-2 right-0">See it</Link>
       </div>
       <div class="grid grid-cols-12 gap-x-4 col-span-full">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
@@ -92,20 +104,15 @@ const {
         </div>
       </div>
     </section>
-    <!-- <hr class="hidden md:block h-px border-t border-black col-span-full col-start-3 " /> -->
-    <!-- <div class="flex gap-[3px] md:col-start-3">
-      <span class="h-[3px] w-[3px] bg-black"></span>
-      <span class="h-[3px] w-[3px] bg-black"></span>
-      <span class="h-[3px] w-[3px] bg-black"></span>
-    </div> -->
-    
+    <!-- <hr class=" hidden md:block h-px border-t border-black/50 col-span-full col-start-3 xl:col-end-[-2]" /> -->
+    <hr class=" hidden md:block h-px border-t border-black/50 col-span-full " />
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-4"
     >
       <div
         class={`
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-neutral-700
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-green prose-a:rounded md:prose-a:rounded-md prose-a:px-1 prose-a:-mx-1 prose-a:transition prose-a:duration-75
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300
@@ -125,14 +132,108 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-x-4 gap-y-8 md:gap-y-12
+          grid grid-cols-12 gap-x-4 gap-y-8 2xl:gap-y-12
         `}
       >
         <slot />
       </div>
     </article>
-    <footer class="col-span-full mt-12 mb-24 border-t border-black/40">
-      READ MORE
+    <footer class="col-span-full my-8 mt-44">
+      <h2 class="">READ MORE</h2>
     </footer>
   </main>
 </Layout>
+
+<style>
+  #study-title {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform-style: preserve-3d;
+    animation: spin 20s infinite 0s;
+    z-index: 100;
+  }
+
+  #study-title span {
+    position: absolute;
+    background-color: black;
+    transition: all 1s;
+    animation: shimmer 10s infinite;
+    font-style: italic;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateX(37deg) rotateY(123deg) rotateZ(45deg);
+    }
+    50% {
+      transform: rotateX(82deg) rotateY(275deg) rotateZ(19deg);
+    }
+    100% {
+      transform: rotateX(14deg) rotateY(93deg) rotateZ(27deg);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    5% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    10% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    15% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    20% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    25% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    30% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    35% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    40% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    45% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    50% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    55% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    60% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    65% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    70% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    75% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    80% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    85% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+    90% {
+      background: linear-gradient(#FF5733, #900C3F);
+    }
+    95% {
+      background: linear-gradient(#FFC300, #FF5733);
+    }
+    100% {
+      background: linear-gradient(#900C3F, #FFC300);
+    }
+  }
+</style>

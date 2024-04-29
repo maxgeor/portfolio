@@ -1,15 +1,19 @@
 ---
+import Link from "./Link.astro";
 import RightArrowIcon from "./icons/RightArrowIcon.astro";
 import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
 import CopyEmailButton from "./CopyEmailButton.astro";
-
 export interface Props {
   classes?: string;
 }
 
 const { classes = "" } = Astro.props;
 
-const links = [
+const links: {
+  name: string;
+  url: string;
+  target?: "_self" | "_blank";
+}[] = [
   {
     name: "CV",
     url: "/resume-max-georgopoulos.pdf",
@@ -44,11 +48,11 @@ const links = [
 
 <ul class={`flex flex-col  ${classes}`}>
   {links.map((link) => (
-    <li class="-ml-[3px] hover:bg-black hover:text-white">
-      <a
+    <li class="-ml-[3px] ">
+      <Link
         href={link.url}
-        target={link.target || "_blank"}
-        class="flex w-full items-center gap-1 "
+        target={link.target}
+        classes="!flex w-full items-center gap-1 "
       >
         {link.target === "_self" ? (
           <RightArrowIcon classes="shrink-0" />
@@ -56,7 +60,7 @@ const links = [
           <UpRightArrowIcon classes="shrink-0" />
         )}
         {link.name}
-      </a>
+      </Link>
     </li>
   ))}
   <li class="-ml-[3px] "><CopyEmailButton>email</CopyEmailButton></li>

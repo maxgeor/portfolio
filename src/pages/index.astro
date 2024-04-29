@@ -3,23 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
-import DancingLetters from "../components/DancingLetters.astro";
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
-<Layout title="Max Georgopoulos" maxWidth={null}>
+<Layout maxWidth={null}>
   <div class="col-span-full relative grid grid-cols-12 gap-4">
-    <div class="pb-8 -mt-12 -mx-4 px-4 bg-center bg-[url(/cloud.gif)] col-span-full h-[61vh] max-h-[500px]  relative grid grid-cols-12 gap-4 overflow-visible ">
-      <Header classes="border-t pt-0.5 -mt-[3px]  border-black/[40%] " />
-      <h1 class="-ml-[0.5vw] z-0 absolute mt-6 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 leading-[364px] border-black font-london tracking-tighter  text-[38vw] xl:text-[456px] text-white">MKCG</h1>
-      <!-- <div class="sm:h-full z-1 col-span-4 sm:col-span-2  border-x border-black/[30%]"></div>
-      <div class="sm:h-full z-0 col-span-4 sm:col-span-2  border-x border-black/[30%]"></div>
-      <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[30%]"></div>
-      <div class="sm:h-full  z-0 hidden sm:block col-span-2 border-x border-black/[30%]"></div>
-      <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[30%]"></div>
-      <div class="sm:h-full z-1 sm:z-0 col-span-4 sm:col-span-2  border-x border-black/[30%]"></div> -->
+    <!-- <div class="-mt-12 -mx-4 px-4 bg-center bg-[url(/cloud.gif)] col-span-full h-[40vh] xs:h-[50vh] md:h-[61vh] max-h-[500px]  relative grid grid-cols-12 gap-4 overflow-visible "> -->
+    <!-- <div class="-mt-12  col-span-full  relative grid grid-cols-12 gap-4 overflow-visible "> -->
+    <div class="min-h-[60vh] flex justify-center items-center  col-span-full  relative gap-4 overflow-visible ">
+      <Header />
+      <h1 
+        id="study-title" 
+        class="z-[-1] mb-8 flex items-center justify-center text-[#111] bg-transparent text-[20vw] leading-[18vw] font-black uppercase -ml-[0.4vw] md:-ml-[0.25vw] xl:-ml-[0.18vw] mr-[52px]"
+      >
+        {Array.from({ length: 100 }, (_, index) => (
+          <span style={{ 
+            transform: `translateZ(-${index}px)`, 
+            // backgroundColor: "#76ee62",
+            padding: "0.5rem ",
+          }}>
+            MKCG
+          </span>
+        ))}
+      </h1>
+      <!-- <h1 class="-ml-[0.5vw] z-0 absolute mt-6 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 leading-[364px] border-black font-london tracking-tighter  text-[38vw] xl:text-[456px] text-white">MKCG</h1>
+      <div class="sm:h-full z-1 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div>
+      <div class="sm:h-full z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div>
+      <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
+      <div class="sm:h-full  z-0 hidden sm:block col-span-2 border-x border-black/[20%] "></div>
+      <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
+      <div class="sm:h-full z-1 sm:z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div> -->
     </div>
-    <div class="my-4  grid grid-cols-12 col-span-full gap-x-4 ">
+    <div class="mt-3 mb-4 grid grid-cols-12 col-span-full gap-x-4 ">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}
@@ -33,18 +48,39 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 </Layout>
 
 <style>
-  @keyframes rotateText {
-  from {
-    transform: rotate3d(0deg);
+  #study-title {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform-style: preserve-3d;
+    animation: spin 20s infinite linear 0s;
+    z-index: 100;
   }
-  to {
-    transform: rotate3d(0, 1, 0, 4rad);
+
+  #study-title span {
+    position: absolute;
+    background-color: green;
+    color: white;
+    /* background: url('/cloud.gif'); */
+    /* animation: shimmer 100s infinite 0s linear; */
   }
-}
 
-.rotating-text {
-  display: inline-block;
-  animation: rotateText 4s linear infinite;
-}
-
+  @keyframes spin {
+    0% {
+      transform: rotateX(37deg) rotateY(123deg) rotateZ(45deg);
+    }
+    50% {
+      transform: rotateX(82deg) rotateY(275deg) rotateZ(19deg);
+    }
+    100% {
+      transform: rotateX(14deg) rotateY(93deg) rotateZ(27deg);
+    }
+    /* 0% {
+      transform: rotateX(10deg) rotateY(10deg);
+    }
+    50% {
+      transform: rotateX(60deg) rotateY(360deg);
+    }
+    100% {
+      transform: rotateX(10deg) rotateY(10deg);
+    } */
+  }
 </style>

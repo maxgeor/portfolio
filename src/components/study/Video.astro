@@ -64,16 +64,16 @@ switch (typeof span) {
   <!-- <p class="col-span-1 ">{id}</p>
   <p class={`col-start-2 col-end-[-1] `}>{alt}</p> -->
   <div class={`
-    relative grid col-span-full bg-black gap-x-4
+    relative grid col-span-full bg-black gap-x-4 overflow-visible rounded 
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
   `}>
     <video
       class={`
-        bg-[#f5f6f8] border transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
-        ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
+        rounded  bg-[#f5f6f8] border border-[#ececec] transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+        ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
       poster={extensionlessSrc + ".png"}
       playsinline

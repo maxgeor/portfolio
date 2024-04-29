@@ -8,10 +8,6 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      romie: ['Romie'],
-      london: ['London'],
-      pixel: ['Pixel'],
-      gothic: ['Gothic'],
       sans: ['Helvetica Neue', 'Arial', 'untitled',    'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
       serif: ['Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
@@ -29,12 +25,7 @@ module.exports = {
         '5xl': ['158px', '152px']
       },
       colors: {
-        red: '#FF58F4',
-        yellow: '#FF58F4',
-        orange: '#FF58F4',
-        green: '#FF58F4',
-        gray: {
-        },
+        green: '#008000',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
@@ -58,24 +49,6 @@ module.exports = {
       },
       maxWidth: {
         '3xl': '1480px',
-      },
-      boxShadow: {
-        outline: '0 0 0 1px rgba(0, 0, 0, 0.12)',
-        'outline-dark': '0 0 0 1px rgba(255, 255, 255, 0.18)',
-        contour: 'inset 0px 0px 0px rgba(255,255,255,0.5)',
-        border: '0 1px 0 -0.02em rgba(255, 255, 255, 1)',
-      },
-      dropShadow: {
-        sm: [
-          '-1px 0 0 rgb(0 0 0 / 0.025)',
-          '1px 0 0 rgb(0 0 0 / 0.025)',
-          '0 1px 0 rgb(0 0 0 / 0.05)'
-        ],
-        'sm-dark': [
-          '-1px 0 0 rgb(0 0 0 / 0.6)',
-          '1px 0 0 rgb(0 0 0 / 0.6)',
-          '0 1px 0 rgb(0 0 0 / 1)'
-        ]
       }
     }
   },
