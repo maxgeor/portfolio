@@ -49,7 +49,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     disabled="true" 
     aria-label="Previous slide" 
     class={`
-      group btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4 -mr-[23px] rounded focus:outline-none focus:ring-2 focus:ring-green
+      group btn-prev absolute bottom-4 right-[39px] opacity-[40%] p-4 -m-4 -mr-[23px] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2 xs:right-auto xs:left-0'
       ) : (
@@ -65,7 +65,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
   <button 
     aria-label="Next slide" 
     class={`
-      btn-next absolute bottom-4 right-0 p-4 -m-4 rounded-[3px] group disabled:group-hover:bg-current focus:outline-none focus:ring-2 focus:ring-green
+      btn-next absolute bottom-4 right-0 p-4 -m-4 rounded-[3px] group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2'
       ) : (
@@ -136,7 +136,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
           data-position={index} 
           class={`
             slide-title slide-title-${index}
-            group w-fit px-[3px] -mx-[3px] rounded-[3px] focus:outline-none focus:ring-2 focus:ring-green
+            group w-fit px-[3px] -mx-[3px] rounded-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
             ${index === 0 ? 'active' : ''}
           `}
         >
