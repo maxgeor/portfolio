@@ -18,10 +18,10 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-y-4 md:gap-y-8 gap-x-4">
+  <main class="relative col-span-full grid grid-cols-12 gap-y-8 gap-x-4">
     <Header />    
     <section id="hero" class=' col-span-full grid grid-cols-12 gap-4'>
-      <div class="h-[60vh] relative flex items-center justify-center gap-4 col-span-full">
+      <div class="h-[448px] relative flex items-center justify-center gap-4 col-span-full">
         <p class="absolute -top-2 left-0  col-span-full md:col-span-2">Work</p>
         <span class="relative col-span-full md:col-span-10">
           <h1 
@@ -32,7 +32,6 @@ const {
             {Array.from({ length: 30 }, (_, index) => (
               <span style={{ 
                 transform: `translateZ(-${index}px)`, 
-                // backgroundColor: "#76ee62",
                 padding: "0.5rem ",
               }}>
                 {title}<sup class="w-fit align-super text-[14px] xs:text-[16px] md:text-[22px] 2xl:text-[30px]">W1</sup>
@@ -42,7 +41,7 @@ const {
         </span>
         <Link href={link.href} target="_blank" classes="absolute -top-2 right-0">See it</Link>
       </div>
-      <div class="grid grid-cols-12 gap-x-4 col-span-full">
+      <div class="grid grid-cols-12 gap-x-4 col-span-full pt-4 md:pb-8 border-t md:border-y border-black/50">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
             tldr
@@ -78,7 +77,7 @@ const {
           </ul>
         </div>
         <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500md:">Problem</p>
+          <p class="text-left col-span-4 md:col-span-2">Problem</p>
           <p class="col-span-8 text-balance">{tldr?.problem || "—"}</p>
         </div>
         <div class="grid grid-cols-12  gap-x-4 col-span-full ">
@@ -103,8 +102,6 @@ const {
         </div>
       </div>
     </section>
-    <!-- <hr class=" hidden md:block h-px border-t border-black/50 col-span-full col-start-3 xl:col-end-[-2]" /> -->
-    <hr class=" hidden md:block h-px border-t border-black/50 col-span-full " />
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-4"
@@ -149,13 +146,16 @@ const {
     transform-style: preserve-3d;
     animation: spin 20s infinite 0s;
     z-index: 100;
+    scale: 1
   }
 
   #study-title span {
     position: absolute;
-    background-color: black;
+    background-color: rgb(0, 131, 239);
+    color: white;
     transition: all 1s;
-    animation: shimmer 10s infinite;
+    border-radius: 10%;
+    /* animation: shimmer 10s infinite; */
     font-style: italic;
   }
 

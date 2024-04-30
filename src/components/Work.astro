@@ -68,10 +68,10 @@ const props =
       : link 
 
 const rightArrowIconClasses = 
-  `inline shrink-0 mr-[4px] -ml-px  ${isComingSoon ? 'opacity-50' : ''}`;
+  `inline-block shrink-0 -mt-px mr-[4px] -ml-px  ${isComingSoon ? 'opacity-50' : ''}`;
 
 const upRightArrowIconClasses = 
-  `inline shrink-0 -ml-px mr-[4px] ${isComingSoon ? 'opacity-50' : ''}`;
+  `inline-block shrink-0 -mt-px  -ml-px mr-[4px] ${isComingSoon ? 'opacity-50' : ''}`;
 ---
 
 {variant === 'card' ? (
@@ -136,7 +136,7 @@ const upRightArrowIconClasses =
           {type}
         </div>
         <div class="flex gap-4 text-[11px] col-span-1 justify-self-end ">
-          <span class="hidden xs:block">{isComingSoon ? "—" : year}</span>
+          <span class="hidden xs:inline-block">{isComingSoon ? "—" : year}</span>
           <span class="-mr-1.5 -ml-0.5">
             {studySlug ? (
               <RightArrowIcon classes={rightArrowIconClasses} />
