@@ -1,4 +1,5 @@
 ---
+import Divider from "../components/Divider.astro";
 import Link from "../components/Link.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
@@ -11,37 +12,37 @@ const heros = [
   },
   { 
     name: "Gunpei Yokoi", 
-    description: "Contraints make you creative + make fun things", 
+    description: "Contraints make you creative + make fun things.", 
     link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
   },
   {
     name: "Massimo & Lella Vignelli", 
-    description: "Semantics are everything + elegance elegance elegance", 
+    description: "Semantics are everything + elegance elegance elegance.", 
     link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
   },
   { 
     name: "Dieter Rams", 
-    description: "Radical simplicity, understanding engineering makes you a better designer", 
+    description: "Radical simplicity, understanding engineering makes you a better designer.", 
     link: "https://www.google.com/search?q=dieter+rams+products&tbm=isch&ved=2ahUKEwi37cjNy5mEAxXMPlkFHcp6CxkQ2-cCegQIABAA&oq=dieter+rams+products&gs_lp=EgNpbWciFGRpZXRlciByYW1zIHByb2R1Y3RzMgUQABiABDIFEAAYgAQyBRAAGIAEMgYQABgFGB4yBBAAGB4yBhAAGAgYHkjIEFD6AliEEHAAeACQAQCYAdMBoAGMCaoBBTMuNS4xuAEDyAEA-AEBigILZ3dzLXdpei1pbWfCAgQQIxgnwgIKEAAYgAQYigUYQ4gGAQ&sclient=img&ei=96fDZfeVBsz95NoPyvWtyAE&bih=779&biw=1440" 
   },
   { 
     name: "Ryan Singer", 
-    description: "All roads lead to Rome", 
+    description: "All roads lead to Rome.", 
     link: "https://www.feltpresence.com/" 
   },
   { 
     name: "Hayao Miyazaki", 
-    description: "You can make your work more beautiful and emotive", 
+    description: "You can make your work more beautiful and emotive.", 
     link: "https://en.wikipedia.org/wiki/Hayao_Miyazaki" 
   },
   { 
     name: "Christopher Alexander", 
-    description: "Beauty can be objective", 
+    description: "Beauty can be objective.", 
     link: "https://en.wikipedia.org/wiki/Christopher_Alexander" 
   },
   { 
     name: "Maria Montessori", 
-    description: "It's possible to make a dent in the education system", 
+    description: "It's possible to make a dent in the education system.", 
     link: "https://en.wikipedia.org/wiki/Maria_Montessori" 
   }
 ];
@@ -49,16 +50,16 @@ const heros = [
 const interests = [
   { 
     title: "Education reform",
-    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
+    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen." 
   },
   { 
     title: "Electronic music", 
-    description: "Contraints make you creative + make fun things", 
+    description: "Contraints make you creative + make fun things.", 
     link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
   },
   {
     title: "Toy design", 
-    description: "Semantics are everything + elegance elegance elegance", 
+    description: "Semantics are everything + elegance elegance elegance.", 
     link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
   },
 ];
@@ -66,103 +67,101 @@ const interests = [
 
 <Layout>
   <Header />
-  <div class="col-span-full grid grid-cols-12 gap-4">
-    <div class="flex flex-col gap-4 col-span-4 md:col-span-2 ">
-      <div class="w-full">
-        <div class="flex gap-[4px]">
-          <span class="w-[9px]">M</span> 
-          <span>=</span> 
+  <div class="relative col-span-full grid grid-cols-12 gap-4">
+    <div class="flex flex-col gap-4 md:h-0  md:col-start-11 col-span-full md:col-span-2 md:row-span-full">
+      <h1 class="sr-only">Max Kevin Crapper Georgopoulos</h1>
+      <div aria-hidden="true">
+        <div class="flex justify-between gap-[4px]">
           <span>Max</span> 
+          <span class="w-[10px] text-center ">M</span> 
         </div>
-        <div class="flex gap-[4px]">
-          <span class="w-[9px]">K</span> 
-          <span>=</span> 
+        <Divider />
+        <div class="flex justify-between gap-[4px]">
           <span>Kevin</span> 
+          <span class="w-[10px] text-center ">K</span> 
         </div>
-        <div class="flex gap-[4px]">
-          <span class="w-[9px]">C</span> 
-          <span>=</span> 
+        <Divider />
+        <div class="flex justify-between gap-[4px]">
           <span>Crapper</span> 
+          <span class="w-[10px] text-center ">C</span> 
         </div>
-        <div class="flex gap-[4px]">
-          <span class="w-[9px]">G</span> 
-          <span>=</span> 
+        <Divider />
+        <div class="flex justify-between gap-[4px]">
           <span>Georgopoulos</span> 
+          <span class="w-[10px] text-center ">G</span> 
         </div>
       </div>
-      <SocialLinks classes="w-full" />
+      <SocialLinks  />
     </div>
-    <div class="text-balance col-span-8 md:col-span-4  flex flex-col gap-4">
-      <div class="flex flex-col">
-        <h3 class="">Bio</h3>
-        <div class="flex flex-col text-[12px] font-medium normal-case max-w-prose">
-          <p>
-            I'm a designer and developer based out of Toronto, but I bum
-            around different places. I believe that the boundary between design
-            and engineering is artificial — you get the best results by blending
-            the two. Lately, I've been inspired by Ryan Singer's design
-            techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-            Homme Plissé.
-          </p>
-        </div>  
+    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
+      <h3 class="col-span-full md:col-span-2 border-b md:border-none border-black">Bio</h3>
+      <div class="flex flex-col col-span-full md:col-span-8 text-[12px] font-medium normal-case  break-words hyphens-auto md:mr-12">
+        <p class="">
+          I'm a designer and developer based out of Toronto, but I bum
+          around different places. I believe that the boundary between design
+          and engineering is artificial — you get the best results by blending
+          the two. Lately, I've been inspired by Ryan Singer's design
+          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+          Homme Plissé.
+        </p>
       </div>  
-      <div class="flex flex-col">
-        <h3 class="">Skillz</h3>
-        <table class="w-fit" cellpadding="0" cellspacing="0">
-          <tr>
-            <td style="padding-right: 16px;">Product Thinking:</td>
-            <td>Great</td>
-          </tr>
-          <tr>
-            <td style="padding-right: 16px;">Product Design:</td>
-            <td>Great</td>
-          </tr>
-          <tr>
-            <td style="padding-right: 16px;">Copywriting:</td>
-            <td>Good</td>
-          </tr>
-          <tr>
-            <td style="padding-right: 16px;">Frontend Dev:</td>
-            <td>Ok</td>
-          </tr>
-          <tr>
-            <td style="padding-right: 16px;">Graphic Design:</td>
-            <td>Ok</td>
-          </tr>
-          <tr>
-            <td style="padding-right: 16px;">Backend Dev:</td>
-            <td>Meh</td>
-          </tr>
-        </table>
-      </div>
-      <div class="flex flex-col">
-        <h3 class="">Interests</h3>
-        <ul class="flex flex-col">
-          {interests.map((interest) => (
-            <li class="">
-              <details class="group before:content-none  flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
-                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in ">{interest.title}</summary>
-                <p class="text-xs normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline uppercase text-[10px] leading-4 font-bold py-0.5 -my-0.5">[Learn]</Link>}</p>  
-              </details>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="flex flex-col">
-        <h3 class="">Heros</h3>
-        <ul class="flex flex-col">
-          {heros.map((hero) => (
-            <li class="">
-              <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
-                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in">{hero.name}</summary>
-                <p class="text-xs normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline text-[10px] uppercase  leading-4 font-bold py-0.5 -my-0.5">[Learn]</Link>}</p>
-              </details>
-            </li>
-          ))}
-        </ul>
-      </div>
+    </div>  
+    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
+      <h3 class="col-span-full md:col-span-2 border-b md:border-none border-black">Skillz</h3>
+      <table class="w-fit flex flex-col col-span-full md:col-span-8" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="pr-4">Product Thinking:</td>
+          <td>Great</td>
+        </tr>
+        <tr>
+          <td class="pr-4">Product Design:</td>
+          <td>Great</td>
+        </tr>
+        <tr>
+          <td class="pr-4">Copywriting:</td>
+          <td>Good</td>
+        </tr>
+        <tr>
+          <td class="pr-4">Frontend Dev:</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td class="pr-4">Graphic Design:</td>
+          <td>Ok</td>
+        </tr>
+        <tr>
+          <td class="pr-4">Backend Dev:</td>
+          <td>Meh</td>
+        </tr>
+      </table>
     </div>
-    <div class="col-span-full -mx-4 -mb-4 mt-2">
+    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
+      <h3 class="col-span-full md:col-span-2 border-b md:border-none border-black">Interests</h3>
+      <ul class="flex flex-col col-span-full md:col-span-8">
+        {interests.map((interest) => (
+          <li class="">
+            <details class="group before:content-none  flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
+              <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in ">{interest.title}</summary>
+              <p class="pl-[0.65rem] text-xs normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>  
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
+      <h3 class="col-span-full md:col-span-2 border-b md:border-none border-black">Heros</h3>
+      <ul class="flex flex-col col-span-full md:col-span-8">
+        {heros.map((hero) => (
+          <li class="">
+            <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
+              <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in">{hero.name}</summary>
+              <p class="pl-[0.65rem] text-xs normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="col-span-full -mx-4 -mb-4 mt-2 order-last">
       <img src="/me.png"  />
     </div>
   </div>

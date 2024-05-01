@@ -2,6 +2,7 @@
 import Link from "../components/Link.astro";
 import Layout from "./Layout.astro";
 import Header from "../components/Header.astro";
+import Divider from "../components/Divider.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -22,7 +23,7 @@ const {
     <Header />    
     <section id="hero" class=' col-span-full grid grid-cols-12 gap-4'>
       <div class="h-[512px] relative flex items-center justify-center gap-4 col-span-full">
-        <p class="absolute -top-2 left-0  col-span-full md:col-span-2">Work</p>
+        <p class="absolute -top-0 left-0  col-span-full md:col-span-2">Work</p>
         <span class="relative col-span-full md:col-span-10">
           <h1 
             id="study-title" 
@@ -39,9 +40,9 @@ const {
             ))}
           </h1>
         </span>
-        <Link href={link.href} target="_blank" classes="absolute -top-2 right-0">See it</Link>
+        <Link href={link.href} target="_blank" classes="absolute -top-0 right-0">See it</Link>
       </div>
-      <div class="grid grid-cols-12 gap-x-4 col-span-full pt-4 md:pb-8 border-t md:border-y border-black">
+      <div class="grid grid-cols-12 gap-x-4 col-span-full ">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
             Tldr
@@ -102,6 +103,7 @@ const {
         </div>
       </div>
     </section>
+    <Divider classes="hidden md:block" />
     <article
       id="article"
       class="w-full mx-auto col-span-full overflow-visible scroll-mt-4"
@@ -135,7 +137,7 @@ const {
       </div>
     </article>
     <footer class="col-span-full my-32 mb-64">
-      <h2 class=" border-b border-black">READ MORE</h2>
+      <h2 class=" border-b border-black">Read more</h2>
     </footer>
   </main>
 </Layout>
@@ -154,8 +156,6 @@ const {
     background-color: rgb(0, 131, 239);
     color: white;
     transition: all 1s;
-    border-radius: 10%;
-    /* animation: shimmer 10s infinite; */
     font-style: italic;
   }
 
@@ -168,71 +168,6 @@ const {
     }
     100% {
       transform: rotateX(14deg) rotateY(93deg) rotateZ(27deg);
-    }
-  }
-  @keyframes shimmer {
-    0% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    5% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    10% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    15% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    20% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    25% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    30% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    35% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    40% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    45% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    50% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    55% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    60% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    65% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    70% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    75% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    80% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    85% {
-      background: linear-gradient(#900C3F, #FFC300);
-    }
-    90% {
-      background: linear-gradient(#FF5733, #900C3F);
-    }
-    95% {
-      background: linear-gradient(#FFC300, #FF5733);
-    }
-    100% {
-      background: linear-gradient(#900C3F, #FFC300);
     }
   }
 </style>

@@ -10,7 +10,7 @@ const { title } = Astro.props;
 
 <Grid classes="!gap-x-4 !gap-y-0" >
   {title && <h1 class="md:max-w-[35ch] 2xl:max-w-[40ch] col-span-full border-b md:border-none border-black md:col-span-2 mb-1 text-pretty">{title}</h1>}
-  <p class="break-words hyphens-auto normal-case	font-medium md:tracking-[-0.005em] 2xl:tracking-[-0.015em] col-span-full md:col-span-10 xl:col-span-9 max-w-[80ch] text-[24px] leading-6 md:text-[27px] md:leading-[28px] 2xl:text-[39px] 2xl:leading-[40px]">
+  <p class="break-words hyphens-auto tracking-[-0.005em] 2xl:tracking-[-0.015em] col-span-full md:col-span-10 xl:col-span-9 max-w-[80ch] text-[24px] leading-6 md:text-[27px] md:leading-[28px] 2xl:text-[39px] 2xl:leading-[40px]">
     <slot />
   </p>
 </Grid>
@@ -25,8 +25,7 @@ const { title } = Astro.props;
     content: '';
     display: inline-block;
     height: 28px;
-      width: 28px;
-    border-radius: 3px;
+    width: 28px;
     margin-right: 12px;
     vertical-align: baseline;
     background-color: #39AC39;
@@ -36,7 +35,6 @@ const { title } = Astro.props;
     p > mark.solution::before {
       height: 20px;
       width: 20px;
-      border-radius: 2px;
       margin-right: 8px;
     }
   }
@@ -45,7 +43,6 @@ const { title } = Astro.props;
     p > mark.solution::before {
       height: 18px;
       width: 18px;
-      border-radius: 1px;
       margin-right: 8px;
     }
   }

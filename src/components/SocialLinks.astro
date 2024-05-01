@@ -1,5 +1,5 @@
 ---
-import Link from "./Link.astro";
+import Divider from "./Divider.astro";
 import RightArrowIcon from "./icons/RightArrowIcon.astro";
 import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
 import CopyEmailButton from "./CopyEmailButton.astro";
@@ -48,20 +48,28 @@ const links: {
 
 <ul class={`flex flex-col  ${classes}`}>
   {links.map((link) => (
-    <li class="-ml-[3px] ">
+    <li>
+    {/* <li class="-mx-[3px]" > */}
       <a
         href={link.url}
         target={link.target}
-        class="flex w-full items-center gap-1 transition duration-75 hover:bg-[#e1e1e1]  px-[2px] -mx-[2px] rounded-[3px]"
+        class="flex w-full items-center justify-between gap-1 transition duration-75 hover:bg-[#e1e1e1]"
+        // class="flex w-full items-center justify-between gap-1 transition duration-75 hover:bg-[#e1e1e1] px-[3px] rounded-[3px]"
       >
-        {link.target === "_self" ? (
-          <RightArrowIcon classes="shrink-0" />
-        ) : (
-          <UpRightArrowIcon classes="shrink-0" />
-        )}
         {link.name}
+        {link.target === "_self" ? (
+          <RightArrowIcon classes="shrink-0 -mr-0.5" />
+        ) : (
+          <UpRightArrowIcon classes="shrink-0 -mr-0.5" />
+        )}
       </a>
+      <Divider />
     </li>
   ))}
-  <li class="-ml-[2px] "><CopyEmailButton>email</CopyEmailButton></li>
+  <li>
+    <CopyEmailButton>email</CopyEmailButton>
+  </li>
+  <!-- <li class="-mx-[3px]">
+    <CopyEmailButton classes="transition duration-75 hover:bg-[#e1e1e1] px-[3px] rounded-[3px] w-full">email</CopyEmailButton>
+  </li> -->
 </ul

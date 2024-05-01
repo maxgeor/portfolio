@@ -12,21 +12,19 @@ const { showIcon = true, classes = "" } = Astro.props;
 <button
   aria-label="Copy email"
   class={`
-    copy-email-button relative flex gap-1 w-full items-center  ring-offset-2 ring-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green  cursor-default transition duration-75 hover:bg-[#e1e1e1]  px-[2px] -mx-[2px] rounded-[3px]
+    copy-email-button relative flex justify-between gap-1 w-full items-center ring-offset-2 ring-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green  cursor-default transition duration-75 hover:bg-[#e1e1e1]
     ${classes}
   `}
 >
-  {showIcon ? (
-    <>
-    <CopyIcon id="copy-icon" classes="absolute left-[2px] transform " />
-    <CheckIcon id="check-icon" classes="absolute left-[2px] transform opacity-0 scale-75" />
-    </>
-  ) : (
-    <CheckIcon id="check-icon" classes="absolute -left-[18px] transform opacity-0 text-orange scale-75" />
-  )}
-  <span class={showIcon ? 'flex gap-px pl-[18px] capitalize' : ''}>
+  <span class={showIcon ? 'flex gap-px capitalize' : ''}>
     <slot />
   </span>
+  {showIcon && (
+    <>
+      <CopyIcon id="copy-icon" classes="-mr-px" />
+      <CheckIcon id="check-icon" classes="hidden -mr-0.5" />
+    </>
+  )}
 </button>
 
 <script>
@@ -41,12 +39,12 @@ const { showIcon = true, classes = "" } = Astro.props;
         const copyIcon: HTMLElement | null = button.querySelector("#copy-icon");
         const checkIcon: HTMLElement | null = button.querySelector("#check-icon");
   
-        copyIcon?.classList.add("opacity-0", 'scale-75');
-        checkIcon?.classList.remove("opacity-0", 'scale-75');
+        copyIcon?.classList.add("hidden");
+        checkIcon?.classList.remove("hidden");
   
         setTimeout(() => {
-          copyIcon?.classList.remove("opacity-0", 'scale-75');
-          checkIcon?.classList.add("opacity-0", 'scale-75');
+          copyIcon?.classList.remove("hidden");
+          checkIcon?.classList.add("hidden");
         }, 2500);
       });
     })

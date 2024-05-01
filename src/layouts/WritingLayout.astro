@@ -21,12 +21,14 @@ const formattedDate = formatDate(frontmatter.date);
           grid grid-cols-12 gap-4 col-span-full
           prose-xs leading-4 text-pretty
           [&>*]:col-span-full
-          [&>*]:max-w-prose
+          sm:[&>*]:col-end-10
+          lg:[&>*]:col-end-9
+          xl:[&>*]:col-end-8
+          2xl:[&>*]:col-end-7
           md:[&>*]:col-start-3
-          md:[&>*]:col-span-6
 
           prose-headings:-mb-2 prose-headings:!col-start-1
-          prose-headings:!max-w-none
+          prose-headings:!col-span-full
           md:prose-headings:!col-end-3
           prose-headings:border-b md:prose-headings:border-none prose-headings:border-black
           

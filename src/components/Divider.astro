@@ -1,1 +1,11 @@
-<hr class="col-span-full h-px border-t border-black" />
+---
+export interface Props {
+  classes?: string;
+}
+
+const { 
+  classes = ''
+} = Astro.props;
+---
+
+<hr class={`col-span-full h-px border-t border-black ${classes}`} />

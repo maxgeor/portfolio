@@ -18,6 +18,7 @@ export interface Props {
   orientation?: 'vertical' | 'horizontal';
   classes?: string;
 }
+
 const {
   src, 
   alt,
@@ -54,17 +55,12 @@ switch (typeof span) {
 ---
 <div
   id={id}
-  class={`
-    grid gap-x-4
-    ${colClasses} ${spanClasses} ${classes}
-  `}
+  class={`grid gap-x-4 ${colClasses} ${spanClasses} ${classes}`}
 >
   <div class="flex gap-4 col-span-full">
     <p>{id}</p>
     <p>{alt}</p>
   </div>
-  <!-- <p class="col-span-1 ">{id}</p>
-  <p class={`col-start-2 col-end-[-1] `}>{alt}</p> -->
   <div class={`
     relative grid col-span-full gap-x-4 overflow-visible rounded 
     ${colClasses}
@@ -76,7 +72,7 @@ switch (typeof span) {
         rounded  bg-[#f5f6f8] transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-[#ececec]'}
+        ${hasBorder && 'shadow-outline'}
       `}
       poster={extensionlessSrc + ".png"}
       playsinline
@@ -84,24 +80,26 @@ switch (typeof span) {
       muted
       loop
     >
-      <!-- <source
-        src={extensionlessSrc + "-small.mp4"}
-        type="video/mp4"
-        media="all and (max-width: 480px)"
-      />
-      <source
-        src={extensionlessSrc + "-small.webm"}
-        type="video/webm"
-        media="all and (max-width: 480px)"
-      /> -->
       <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
-      <!-- <source src={extensionlessSrc + ".webm"} type="video/webm" /> -->
     </video>
     <PauseIcon
       classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow-md"
     />
   </div>
 </div>
+
+<style>
+  .with-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.04);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-radius: 4px;
+  }
+</style>
 
 <script>
   document.querySelectorAll("video")?.forEach((video) => {
