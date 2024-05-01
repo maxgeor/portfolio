@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Divider from "../components/Divider.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
@@ -10,7 +11,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
   <div class="col-span-full relative grid grid-cols-12 gap-4">
     <!-- <div class="-mt-12 -mx-4 px-4 bg-center bg-[url(/cloud.gif)] col-span-full h-[40vh] xs:h-[60vh] md:h-[61vh] max-h-[500px]  relative grid grid-cols-12 gap-4 overflow-visible "> -->
     <!-- <div class="-mt-12  col-span-full  relative grid grid-cols-12 gap-4 overflow-visible "> -->
-    <div class="h-[448px] flex justify-center items-center  col-span-full  relative gap-4 overflow-visible ">
+    <div class="h-[512px] flex justify-center items-center  col-span-full  relative gap-4 overflow-visible ">
       <Header />
       <!-- <h1 
         id="study-title" 
@@ -34,11 +35,13 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
       <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
       <div class="sm:h-full z-1 sm:z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div> -->
     </div>
-    <div class="mb-4 grid grid-cols-12 col-span-full gap-x-4 border-t border-black/50 pt-4">
+    <Divider />
+    <div class="grid grid-cols-12 col-span-full gap-x-4 ">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}
     </div>
+    <Divider />
     <div class="columns-1 sm:columns-2 md:columns-3 col-span-full  space-y-2 gap-x-4">
       {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }, index) => (
         <Work variant="card" {...work} index={index} />

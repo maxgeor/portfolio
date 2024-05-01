@@ -96,13 +96,12 @@ const upRightArrowIconClasses =
         )}
       </span>
     </div>
-    <picture id={`work-pic`} class="relative h-auto overflow-hidden">
+    <picture id="work-pic" class={`relative h-auto with-border`}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
         class={`
-          w-full h-full object-top select-none object-contain rounded-[3px] 
-          ${hasBorder ? 'border border-[#ececec]' : ''}
+          w-full h-full object-top select-none object-contain rounded-[3px]
         `}
       />
       {isComingSoon && <ComingSoonBanner classes="-rotate-[12deg]" />}
@@ -122,8 +121,7 @@ const upRightArrowIconClasses =
         grid grid-cols-12 gap-x-4
         ${isComingSoon ? 'group-hover:hidden group-focus:hidden' : ''}
       `}>
-
-        <div class="shrink-0 whitespace-nowrap font-black uppercase  col-span-4 md:col-span-2 h-fit">
+        <div class="shrink-0 whitespace-nowrap col-span-4 md:col-span-2 h-fit">
           {title}<sup>W{index}</sup>
         </div>
         <p class=" inline-block text-right xs:text-left col-span-7 md:col-span-4 truncate -mr-3 xs:mr-0">
@@ -132,10 +130,10 @@ const upRightArrowIconClasses =
         <div class="hidden md:flex gap-1 col-span-full sm:col-span-3 ml-4.5">
           <span>{roles.long.join(', ')}</span>
         </div>
-        <div class="hidden md:inline-block col-span-2 ">
+        <div class="hidden md:inline-block col-span-2 capitalize">
           {type}
         </div>
-        <div class="flex gap-4 text-[11px] col-span-1 justify-self-end ">
+        <div class="flex gap-4 col-span-1 justify-self-end ">
           <span class="hidden xs:inline-block">{isComingSoon ? "—" : year}</span>
           <span class="-mr-1.5 -ml-0.5">
             {studySlug ? (
@@ -145,12 +143,6 @@ const upRightArrowIconClasses =
             )}
           </span>
         </div>
-        {/* <div class="col-span-full flex gap-1 my-1">
-          <img src="/work/formie/s3.png" class="h-full max-h-[92px]" />
-          <img src="/work/formie/s3.png" class="h-full max-h-[92px]" />
-          <img src="/work/formie/s3.png" class="h-full max-h-[92px]" />
-          <img src="/work/formie/s3.png" class="h-full max-h-[92px]" />
-        </div> */}
       </div>
       {isComingSoon && (
         <div class="h-4 hidden group-hover:flex group-focus:block">
@@ -160,3 +152,16 @@ const upRightArrowIconClasses =
     </div>
   </Element>
 )}
+
+<style>
+  .with-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.04);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-radius: 3px;
+  }
+</style>

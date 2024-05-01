@@ -4,10 +4,11 @@ import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 export interface Props {
   href: string;
   target?: '_self' | '_blank';
+  hasIcon?: boolean;
   classes?: string;
 }
 
-const { href, target = '_self', classes = "" } = Astro.props;
+const { href, target = '_self', hasIcon = true, classes = "" } = Astro.props;
 ---
 <a 
   href={href} 
@@ -16,6 +17,6 @@ const { href, target = '_self', classes = "" } = Astro.props;
 >
   <span class="w-fit ">
     <slot />
-    {target === '_blank' && <UpRightArrowIcon classes="inline -ml-[3px] -mr-px mb-px" />}
+    {hasIcon && target === '_blank' && <UpRightArrowIcon classes="inline -ml-[3px] -mr-px mb-px" />}
   </span>
 </a>

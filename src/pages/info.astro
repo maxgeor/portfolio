@@ -26,7 +26,7 @@ const heros = [
   },
   { 
     name: "Ryan Singer", 
-    description: "All roads lead to Rome.", 
+    description: "All roads lead to Rome", 
     link: "https://www.feltpresence.com/" 
   },
   { 
@@ -36,7 +36,7 @@ const heros = [
   },
   { 
     name: "Christopher Alexander", 
-    description: "Beauty can be objective.", 
+    description: "Beauty can be objective", 
     link: "https://en.wikipedia.org/wiki/Christopher_Alexander" 
   },
   { 
@@ -92,10 +92,10 @@ const interests = [
       </div>
       <SocialLinks classes="w-full" />
     </div>
-    <div class="text-balance col-span-8 md:col-span-10  flex flex-col gap-4">
+    <div class="text-balance col-span-8 md:col-span-4  flex flex-col gap-4">
       <div class="flex flex-col">
         <h3 class="">Bio</h3>
-        <div class="flex flex-col text-[12px] font-medium normal-case">
+        <div class="flex flex-col text-[12px] font-medium normal-case max-w-prose">
           <p>
             I'm a designer and developer based out of Toronto, but I bum
             around different places. I believe that the boundary between design
@@ -136,16 +136,13 @@ const interests = [
         </table>
       </div>
       <div class="flex flex-col">
-        <h3>Interests</h3>
+        <h3 class="">Interests</h3>
         <ul class="flex flex-col">
           {interests.map((interest) => (
             <li class="">
               <details class="group before:content-none  flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in ">{interest.title}</summary>
-                <div class="flex justify-between gap-6">
-                  <p class="text-xs normal-case font-medium">{interest.description}</p>
-                  {interest.link && <Link href={interest.link} target="_blank" classes="ml-1 gap-0 shrink-0"></Link>}
-                </div>
+                <p class="text-xs normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline uppercase text-[10px] leading-4 font-bold py-0.5 -my-0.5">[Learn]</Link>}</p>  
               </details>
             </li>
           ))}
@@ -158,10 +155,7 @@ const interests = [
             <li class="">
               <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1] rounded-[3px] hover:cursor-zoom-in">{hero.name}</summary>
-                <div class="flex justify-between gap-6">
-                  <p class="text-xs normal-case font-medium">{hero.description}</p>
-                  {hero.link && <Link href={hero.link} target="_blank" classes="ml-1 gap-0 shrink-0 "></Link>}
-                </div>
+                <p class="text-xs normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline text-[10px] uppercase  leading-4 font-bold py-0.5 -my-0.5">[Learn]</Link>}</p>
               </details>
             </li>
           ))}
