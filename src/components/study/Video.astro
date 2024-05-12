@@ -62,17 +62,17 @@ switch (typeof span) {
     <p>{alt}</p>
   </div>
   <div class={`
-    relative grid col-span-full gap-x-4 overflow-visible rounded 
+    relative grid col-span-full gap-x-4 overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+    ${hasBorder ? 'with-border' : ''}
   `}>
     <video
       class={`
-        rounded  bg-[#f5f6f8] transition duration-[250ms] ease-out object-cover w-full cursor-pointer select-none self-center hover:brightness-[95%] focus:brightness-[95%]
+         bg-[#f5f6f8] object-cover w-full select-none self-center 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'shadow-outline'}
       `}
       poster={extensionlessSrc + ".png"}
       playsinline
@@ -83,36 +83,35 @@ switch (typeof span) {
       <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
     </video>
     <PauseIcon
-      classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow-md"
+      classes="pause-icon transform opacity-0 brightness-100 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow-md"
     />
   </div>
 </div>
 
 <style>
   .with-border::after {
-    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.04);
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.075);
     content: '';
     display: block;
     height: 100%;
     position: absolute;
     top: 0;
     width: 100%;
-    border-radius: 4px;
   }
+
 </style>
 
 <script>
   document.querySelectorAll("video")?.forEach((video) => {
-    const pauseIcon = video.parentElement?.querySelector(
-      ".pause-icon"
-    ) as HTMLElement;
+    const videoTarget = video.parentElement;
+    const pauseIcon = videoTarget?.querySelector(".pause-icon") as HTMLElement;
 
     const pauseVideo = () => {
       video.pause();
-      video.classList.add("brightness-90");
-      video.classList.remove(
-        'hover:brightness-[95%]',
-        'focus:brightness-[95%]'
+      videoTarget?.classList.add("brightness-[95%]");
+      videoTarget?.classList.remove(
+        'hover:brightness-[98%]',
+        'focus:brightness-[99%]'
       );
       pauseIcon.classList.remove(
         "opacity-0",
@@ -123,10 +122,10 @@ switch (typeof span) {
 
     const playVideo = () => {
       video.play();
-      video.classList.remove("brightness-90", "ease-in-out");
-      video.classList.add(
-        'hover:brightness-[95%]',
-        'focus:brightness-[95%]'
+      videoTarget?.classList.remove("brightness-[95%]", "ease-in-out");
+      videoTarget?.classList.add(
+        'hover:brightness-[98%]',
+        'focus:brightness-[98%]'
       );
       pauseIcon.classList.add(
         "ease-in",
@@ -141,7 +140,7 @@ switch (typeof span) {
       }, 200);
     };
 
-    video.addEventListener("click", () => {
+    videoTarget?.addEventListener("click", () => {
       if (video.paused) {
         playVideo();
       } else {

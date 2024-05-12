@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Divider from "../components/Divider.astro";
 import Header from "../components/Header.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
@@ -8,10 +7,10 @@ import { getCollection } from 'astro:content';
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout maxWidth={null}>
-  <div class="col-span-full relative grid grid-cols-12 gap-4">
+  <div class="col-span-full relative grid grid-cols-12 gap-y-4 gap-x-4">
     <!-- <div class="-mt-12 -mx-4 px-4 bg-center bg-[url(/cloud.gif)] col-span-full h-[40vh] xs:h-[60vh] md:h-[61vh] max-h-[500px]  relative grid grid-cols-12 gap-4 overflow-visible "> -->
     <!-- <div class="-mt-12  col-span-full  relative grid grid-cols-12 gap-4 overflow-visible "> -->
-    <div class="h-[512px] flex justify-center items-center  col-span-full  relative gap-4 overflow-visible ">
+    <div class="h-[416px] flex justify-center items-center  col-span-full  relative gap-4 overflow-visible ">
       <Header />
       <!-- <h1 
         id="study-title" 
@@ -27,7 +26,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
           </span>
         ))}
       </h1> -->
-      <!-- <h1 class="-ml-[0.5vw] z-0 absolute mt-6 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 leading-[364px] border-black font-london tracking-tighter  text-[38vw] xl:text-[456px] text-white">MKCG</h1>
+      <!-- <h1 class="-ml-[0.5vw] z-0 absolute mt-6 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 leading-[364px] border-black/80 font-london tracking-tighter  text-[38vw] xl:text-[456px] text-white">MKCG</h1>
       <div class="sm:h-full z-1 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div>
       <div class="sm:h-full z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div>
       <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
@@ -35,12 +34,25 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
       <div class="sm:h-full z-1 hidden sm:block col-span-2  border-x border-black/[20%] "></div>
       <div class="sm:h-full z-1 sm:z-0 col-span-4 sm:col-span-2  border-x border-black/[20%] "></div> -->
     </div>
-    <div class="grid grid-cols-12 col-span-full gap-x-4 pb-8">
+    <div class="flex gap-4 justify-between col-span-full ">
+      <div class="flex gap-4 ">
+        <span class="col-span-3 w-fit flex items-center justify-center ">Everything</span>
+        <div class="col-span-3 w-fit opacity-50">Case Studies</div>
+        <div class="col-span-3 w-fit opacity-50">Client</div>
+        <div class="col-span-3 w-fit opacity-50">Projects</div>
+      </div>
+      <div>
+        <span>T</span>
+        <span>/</span>
+        <span class="opacity-40">I</span>
+      </div>
+    </div>
+    <div class="grid grid-cols-12 col-span-full gap-x-4 pb-8  gap-y-4">
       {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
         <Work variant="row" {...work} index={index} />
       ))}
     </div>
-    <div class="columns-1 sm:columns-2 md:columns-3 col-span-full  space-y-2 gap-x-4">
+    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 col-span-full gap-x-4 -my-1">
       {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }, index) => (
         <Work variant="card" {...work} index={index} />
       ))}

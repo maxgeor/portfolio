@@ -1,0 +1,51 @@
+---
+export interface Props {
+  title: string;
+  classes?: string;
+}
+
+const { title, classes = '' } = Astro.props;
+---
+
+<div class={`
+  scrolling-banner absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 bg-white marquee
+  ${classes}
+`}>
+  <div class="text">
+    {Array.from({ length: 20 }, (_) => (
+      <span>{title}</span>
+    ))}
+  </div>
+  <div class="text">
+    {Array.from({ length: 20 }, (_) => (
+      <span>{title}</span>
+    ))}
+  </div>
+</div>
+<style>
+  .scrolling-banner {
+    width: calc(100% + 32px);
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .text {
+    animation: animate_text 150s linear infinite;
+    font-size: inherit;
+    line-height: 12px;
+  }
+
+  .text span {
+    margin-right: 4px;
+  }
+
+  @keyframes animate_text {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+</style>

@@ -19,6 +19,7 @@ const work = defineCollection({
     }).optional(),
     studySlug: z.string().optional(),
     isDraft: z.boolean().optional(),
+    isPrivate: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
     order: z.number(),
     year: z.string(),

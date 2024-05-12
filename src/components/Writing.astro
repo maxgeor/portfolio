@@ -14,7 +14,7 @@ const { title, href, date, index } = Astro.props;
 const formattedDate = formatDate(date);
 ---
 
-<a href={href} class="grid grid-cols-12 gap-4 transition duration-75 hover:bg-[#e1e1e1]  px-[3px] -mx-[3px] rounded-[3px]">
+<a href={href} class="grid grid-cols-12 gap-4 transition duration-75 hover:bg-[#e1e1e1]  px-[3px] -mx-[3px] ">
   <span class="col-span-4 md:col-span-2">{formattedDate}</span>
   <h2 class="col-span-8 md:col-span-10">{title}<sup>W{index}</sup></h2>
 </a>

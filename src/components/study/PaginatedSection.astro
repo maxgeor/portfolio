@@ -48,7 +48,7 @@ const { sections, classes = "" } = Astro.props;
     )
   })}
   <div 
-    class="section-titles flex flex-col -mt-1 xl:mt-4 xl:max-w-[40ch]  xl:order-first xl:col-span-2  md:order-2 md:col-start-3 col-span-full " 
+    class="section-titles flex flex-col xl:mt-4 xl:max-w-[40ch]  xl:order-first xl:col-span-2  md:order-2 md:col-start-3 col-span-full " 
     style="text-wrap: pretty;"
   >
     {sections.map((section, index) => (
@@ -56,11 +56,11 @@ const { sections, classes = "" } = Astro.props;
         data-index={index} 
         class={`
           group section-title section-title-${index} 
-          w-fit px-[3px] -mx-[3px] rounded-[3px] focus:outline-none focus:ring-2 focus:ring-green
+          w-fit px-[3px] -mx-[3px]  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
           ${index === 0 ? 'active' : ''}
         `}
       >
-        <div class="!text-black flex gap-4 text-left group-hover:text-black group-focus:text-black">
+        <div class="!text-black flex gap-2 text-left group-hover:text-black group-focus-visible:text-black">
           <span class="tabular">{section.id}</span>
           <p class="">{section.title}</p>
         </div>
@@ -69,7 +69,7 @@ const { sections, classes = "" } = Astro.props;
   </div>
   {sections.map((section, index) => (
     <p class={`
-      break-words hyphens-auto xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
+      break-words hyphens-auto -mt-0.5 xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
       normal-case font-medium text-[12px] md:order-3 col-span-full  md:col-start-3 md:col-span-6  flex flex-col gap-y-2 gap-x-4
       ${index > 0 ? 'hidden' : ''}
     `}>

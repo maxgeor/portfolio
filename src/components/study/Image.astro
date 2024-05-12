@@ -70,7 +70,7 @@ switch (typeof span) {
     // </>
   )}
   <figure class={`
-    image grid col-span-full gap-x-4 relat
+    image grid col-span-full gap-x-4 
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
@@ -79,11 +79,11 @@ switch (typeof span) {
       src={src}
       alt={alt}
       class={`
-        rounded h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
+         h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-[#ebebeb]'}
+        ${hasBorder && 'border border-[#eaeaea]'}
       `}
     />
   </figure>

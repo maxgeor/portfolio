@@ -28,7 +28,7 @@ const {
     style="text-rendering: optimizeLegibility;"
     class={`
       ${backgroundColor} ${maxWidth}
-     flex flex-col   gap-4 text-[#000] normal-case  min-h-screen text-[12px] leading-4 font-medium selection:bg-[#e1e1e1] antialiased p-4 pb-8 pt-10  h-min  mx-auto
+     flex flex-col gap-4 text-[#000]  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-4 pb-8 pt-[34px]  h-min  mx-auto
     `}
   >
     <slot />
@@ -120,7 +120,11 @@ const {
   a:focus-visible {
     outline: solid 2px green;
     outline-offset: 1px;
-    border-radius: 2px;
+  }
+
+  a:hover {
+    background-color: #eaeaea;
+    text-decoration: none;
   }
 
   tr:last-child > td {

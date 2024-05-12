@@ -22,12 +22,15 @@ const {
   <main class="relative col-span-full grid grid-cols-12 gap-y-8 gap-x-4">
     <Header />    
     <section id="hero" class=' col-span-full grid grid-cols-12 gap-4'>
-      <div class="h-[512px] relative flex items-center justify-center gap-4 col-span-full">
-        <p class="absolute -top-0 left-0  col-span-full md:col-span-2">Work</p>
-        <span class="relative col-span-full md:col-span-10">
+      <div class="-mt-2 border-t border-black/80 col-span-full flex justify-between gap-4">
+        <p class="col-span-full md:col-span-2">Work</p>
+        <Link href={link.href} target="_blank">See it</Link>
+      </div>
+      <div class="h-[416px] relative flex items-center justify-center gap-4 col-span-full">
+        <span class="relative col-span-full ">
           <h1 
             id="study-title" 
-            class="italic mb-8 flex items-center justify-center text-[#111] bg-transparent text-[120px] xs:text-[37px] xs:leading-[28px] md:text-[46px] md:leading-[36px] 2xl:text-[66px] 2xl:leading-[54px] font-black uppercase -ml-[0.4vw] md:-ml-[0.25vw] xl:-ml-[0.18vw] mr-[52px]"
+            class="-mt-4 font-bold flex items-center justify-center uppercase text-[37px] xs:leading-[28px] md:text-[46px] md:leading-[36px] 2xl:text-[66px] 2xl:leading-[54px] "
           >
             <span sr-only>{title}</span>
             {Array.from({ length: 30 }, (_, index) => (
@@ -40,9 +43,8 @@ const {
             ))}
           </h1>
         </span>
-        <Link href={link.href} target="_blank" classes="absolute -top-0 right-0">See it</Link>
       </div>
-      <div class="grid grid-cols-12 gap-x-4 col-span-full ">
+      <div class="grid grid-cols-12 gap-2 col-span-full border-t border-black/80 pt-1 ">
         <div class="grid grid-cols-12  col-span-full  gap-x-4">
           <p class="col-span-4 md:col-span-2 text-left">
             Tldr
@@ -63,11 +65,11 @@ const {
           <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Roles</p>
           <p class="col-span-8 ">{roles?.join(', ')}</p>
         </div>
-        <div class="col-span-full  grid grid-cols-12  gap-4 ">
+        <div class="col-span-full  grid grid-cols-12  gap-x-4 ">
           <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Tools</p>
           <p class="col-span-8 ">{tools?.join(', ')}</p>
         </div>
-        <div class="col-span-full  grid grid-cols-12  gap-4 ">
+        <div class="col-span-full  grid grid-cols-12  gap-x-4 ">
           <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Team</p>
           <ul class="flex flex-col col-span-8">
             {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
@@ -106,11 +108,11 @@ const {
     <Divider classes="hidden md:block" />
     <article
       id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4"
+      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4 mt-4"
     >
       <div
         class={`
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-green prose-a:rounded md:prose-a:rounded-md prose-a:px-1 prose-a:-mx-1 prose-a:transition prose-a:duration-75
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-green prose-a:px-1 prose-a:-mx-1 prose-a:transition prose-a:duration-75
 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
           prose-ul:-my-0.5 prose-ul:text-neutral-300
@@ -130,7 +132,7 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-x-4 gap-y-8 2xl:gap-y-12
+          grid grid-cols-12 gap-x-4 gap-y-12
         `}
       >
         <slot />
@@ -146,20 +148,30 @@ const {
   #study-title {
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
     transform-style: preserve-3d;
-    animation: spin 20s infinite 0s;
+    animation: spin 120s infinite 0s linear;
     z-index: 100;
     scale: 1
   }
 
   #study-title span {
     position: absolute;
-    background-color: rgb(0, 131, 239);
+    background-color: green;
     color: white;
     transition: all 1s;
-    font-style: italic;
   }
 
   @keyframes spin {
+    0% {
+      transform: rotateX(40deg) rotateY(0deg) ;
+    }
+    50% {
+      transform: rotateX(80deg) rotateY(360deg) ;
+    }
+    100% {
+      transform: rotateX(10deg) rotateY(0deg) ;
+    }
+  }
+  /* @keyframes spin {
     0% {
       transform: rotateX(37deg) rotateY(123deg) rotateZ(45deg);
     }
@@ -169,5 +181,5 @@ const {
     100% {
       transform: rotateX(14deg) rotateY(93deg) rotateZ(27deg);
     }
-  }
+  } */
 </style>
