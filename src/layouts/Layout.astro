@@ -32,39 +32,37 @@ const {
      text-gray-900  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 
     `}
   >
-    <aside class="border-transparent z-50 flex flex-col justify-between gap-3 w-[108px] h-[calc(100vh-24px)] fixed top-3 left-3 ">
-      <div class="grid grid-cols-12 md:flex flex-col gap-3">
-        <a href="/" class="uppercase">MKCG</a>
-        <div>
-          <div class="col-span-3 flex items-center justify-between gap-1 ">
-            Everything
-            <div class="flex">
-              <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#ff32b0]"></span>
-              <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#39c239] -ml-0.5"></span>
-              <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[blue] -ml-0.5"></span>
-            </div>
-          </div>
-          <div class="flex items-center justify-between gap-1 col-span-3 ">
-            Case Study
-            <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#ff32b0]"></span>
-          </div>
-          <div class="flex items-center justify-between gap-1 col-span-3 ">
-            Client
-            <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#39c239]"></span>
-          </div>
-          <div class="flex items-center justify-between gap-1 col-span-3 ">
-            Projects
-            <span class="h-[6px] w-[6px] border border-white rounded-full bg-[blue]"></span>
-          </div>
-          <div class="flex items-center justify-between gap-1 col-span-3 ">
-            Writing
-            <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#ab5cff]"></span>
+    <aside class="border-transparent z-50 grid grid-cols-12 md:flex flex-col border-l gap-3 md:w-[108px] md:h-[calc(100vh-24px)] md:fixed top-3 left-3 ">
+      <a href="/" class="uppercase">MKCG</a>
+      <div>
+        <div class="col-span-3 flex items-center justify-between gap-1 ">
+          Everything
+          <div class="flex">
+            <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#ff32b0]"></span>
+            <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#39c239] -ml-0.5"></span>
+            <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[blue] -ml-0.5"></span>
           </div>
         </div>
+        <div class="flex items-center justify-between gap-1 col-span-3 ">
+          Case Study
+          <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#ff32b0]"></span>
+        </div>
+        <div class="flex items-center justify-between gap-1 col-span-3 ">
+          Client
+          <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#39c239]"></span>
+        </div>
+        <div class="flex items-center justify-between gap-1 col-span-3 ">
+          Projects
+          <span class="h-[6px] w-[6px] border border-white rounded-full bg-[blue]"></span>
+        </div>
+        <div class="flex items-center justify-between gap-1 col-span-3 ">
+          Writing
+          <span class="h-[6px] w-[6px] border border-white rounded-full bg-[#ab5cff]"></span>
+        </div>
       </div>
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center self-end md:self-start md:justify-self-end">
         <a href="/info" class="uppercase">Info</a>
-        <span class="h-1.5 w-1.5 border border-transparent rounded-full"></span>
+        <!-- <span class="h-1.5 w-1.5 border border-black rounded-full"></span> -->
       </div>
     </aside>
     <slot />

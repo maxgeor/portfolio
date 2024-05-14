@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout maxWidth={null}>
-  <div class="col-span-full relative grid grid-cols-12 gap-3 ml-[132px]">
+  <div class="col-span-full relative grid grid-cols-12 gap-3 md:ml-[132px]">
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}
