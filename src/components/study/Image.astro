@@ -10,6 +10,7 @@ export interface Props {
     lg?: number, 
     xl?: number 
   };
+  description?: string;
   hasCaption?: boolean;
   hasBorder?: boolean;
   orientation?: 'horizontal' | 'vertical';
@@ -23,6 +24,7 @@ const {
   id,
   span = 12,
   hasCaption = true,
+  description = '',
   orientation = 'horizontal',
   hasBorder = false,
   hasPadding = false,
@@ -64,10 +66,6 @@ switch (typeof span) {
       <p>{id}</p>
       <p>{alt}</p>
     </div>
-    // <>
-    //   <p class="col-span-1 ">{id}</p>
-    //   <p class={`col-start-2 col-end-[-1] `}>{alt}</p>
-    // </>
   )}
   <figure class={`
     image grid col-span-full gap-x-3 
@@ -87,4 +85,5 @@ switch (typeof span) {
       `}
     />
   </figure>
+  {description && <p class="col-span-full mt-1">{description}</p>}
 </div>

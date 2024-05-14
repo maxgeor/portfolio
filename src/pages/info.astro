@@ -67,7 +67,7 @@ const interests = [
 
 <Layout>
   <h1 class="sr-only">Max Kevin Crapper Georgopoulos</h1>
-  <div class="grid grid-cols-12 gap-3 gap-y-6 ml-[132px]">
+  <div class="grid grid-cols-12 gap-3 gap-y-6 md:ml-[108px]">
     <div class="col-span-6">
         <div class="flex flex-col col-span-full gap-3  break-words hyphens-auto ">
           <p>Max Kevin Crapper Georgopoulos</p>
@@ -81,8 +81,6 @@ const interests = [
           </p>
         </div>  
       </div>  
-     
-      
       <div class="col-start-1 col-span-3 border-t border-transparent">
         <h3 class="col-span-full md:col-span-2 uppercase">Heros</h3>
         <ul class="flex flex-col col-span-full ">
@@ -97,41 +95,6 @@ const interests = [
         </ul>
       </div>
       <div class="col-span-3 border-t border-transparent">
-        <h3 class="col-span-full md:col-span-2 uppercase">Skillz</h3>
-        <div class="flex flex-col col-span-full  " >
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Product Thinking</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Great</p>
-          </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Product Design</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Great</p>
-          </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Copywriting</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Good</p>
-          </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Frontend Dev</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Ok</p>
-          </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Graphic Design</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Ok</p>
-          </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
-            <p class="whitespace-nowrap">Backend Dev</p>
-            <hr class="border-t h-px border-transparent border-dotted  w-full" />
-            <p>Meh</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-span-3 border-t border-transparent">
         <h3 class="col-span-full md:col-span-2 uppercase">Interests</h3>
         <ul class="flex flex-col col-span-full ">
           {interests.map((interest) => (
@@ -143,6 +106,41 @@ const interests = [
             </li>
           ))}
         </ul>
+      </div>
+      <div class="col-span-3">
+        <h3 class="col-span-full md:col-span-2 uppercase">Skillz</h3>
+        <div class="flex flex-col col-span-full  " >
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Product Thinking</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Great</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Product Design</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Great</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Copywriting</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Good</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Frontend Dev</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Ok</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Graphic Design</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Ok</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Backend Dev</p>
+            <hr class="border-t h-px border-black border-dotted  w-full" />
+            <p>Meh</p>
+          </div>
+        </div>
       </div>
       <div class="col-start-1 col-span-3 border-t border-transparent">
         <p class="uppercase">Links</p>

@@ -19,7 +19,7 @@ const { showIcon = true, classes = "" } = Astro.props;
   <span class={showIcon ? 'flex gap-px capitalize' : ''}>
     <slot />
   </span>
-  <!-- <hr class="border-t h-px border-black border-dotted  w-full" /> -->
+  <hr class="border-t h-px border-black border-dotted  w-full" />
   {showIcon && (
     <>
       <CopyIcon id="copy-icon" classes="-mx-px shrink-0" />
