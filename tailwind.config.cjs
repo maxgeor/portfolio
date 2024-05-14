@@ -11,7 +11,6 @@ module.exports = {
       sans: ['Helvetica Neue',  'untitled', 'Arial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
       serif: ['Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-      london: ['London']
     },
     extend: {
       fontSize: {
@@ -27,11 +26,12 @@ module.exports = {
       },
       colors: {
         green: 'green',
+        pink: 'rgb(255, 49, 207)',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
           190: '#f1f1f1',
-          200: '#e0e0e0',
+          200: '#eaeaea',
           250: '#b6b6b6',
           300: '#B4B4B4',
           400: '#909090',

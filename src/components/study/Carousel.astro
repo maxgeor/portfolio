@@ -42,7 +42,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
   `}
 >
   <div class={`
-    justify-self-center flex tabular absolute bottom-3 right-3  self-start
+    justify-self-center flex absolute bottom-3 right-3  self-start
     ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-3.5 md:right-0'}
   `}>
     <span class="counter-current">1</span>
@@ -149,7 +149,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
           `}
         >
           <div class="!text-black  flex gap-3 text-left group-hover:text-black group-focus:text-black">
-            <span class="tabular">{slide.id}</span>
+            <span>{slide.id}</span>
             <p>{slide.alt}</p>
           </div>
         </button>

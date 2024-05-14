@@ -20,14 +20,13 @@ const {
 
 <Layout title={title} description={description} maxWidth="max-w-none">
   <div class="relative col-span-full grid grid-cols-12 gap-y-3 gap-x-3 md:ml-[108px]"> 
-    <!-- <aside id="hero" class='border-y md:border-y-0 md:border-x border-[#e8eaed] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3)-12px)] col-span-full md:col-span-3 p-3 -mx-3 md:m-0 md:px-[11px]  md:h-screen   flex flex-col gap-3 '> -->
-    <aside id="hero" class='md:max-w-[320px] bg-[#f6f6f6] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 p-3 -mx-3 md:m-0   md:h-screen   flex flex-col gap-3 '>
+    <aside id="hero" class=' md:max-w-[320px] border-t md:border-t-0 border-gray-900 md:bg-[#f7f7f7] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 pb-3 md:p-3   md:h-screen   flex flex-col gap-3 '>
       <div class="col-span-3">
         <div class="flex justify-between gap-3 ">
           <p class="uppercase">{title}</p>
-          <!-- <a href={link.href} target="_blank">[See]</a> -->
+          {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
-        <p class="text-balance">{description}</p>
+        <p class="text-pretty">{description}</p>
         <p class="col-span-8 ">{year}</p>
       </div>
       <div class="col-span-3">
@@ -38,7 +37,6 @@ const {
         <p class="uppercase">Tools</p>
         <p class="col-span-8 ">{tools?.join(', ')}</p>
       </div>
-      
       <div class="col-span-3">
         <p class="uppercase">Team</p>
         <ul>
@@ -61,7 +59,7 @@ const {
         <p class="uppercase">Decisions</p>
         <ul class="text-balance">
           {tldr?.decisions?.map((decision: string, index: number) => 
-            <li>[<span class="tabular">{index + 1}</span>] {decision}</li>
+            <li>[<span>{index + 1}</span>] {decision}</li>
           ) || "—"}
         </ul>
       </div>
@@ -69,12 +67,10 @@ const {
         <p class="uppercase">Tradeoffs</p>
         <ul class="col-span-8 text-balance">
           {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-            <li>[<span class="tabular">{index + 1}</span>] {tradeoff}</li>
+            <li>[<span>{index + 1}</span>] {tradeoff}</li>
           ) || "—"}
         </ul>
       </div>
-      <span>—</span>
-      <Link href={link.href} target="_blank">Live Site</Link>
     </aside>
     <article
       id="article"

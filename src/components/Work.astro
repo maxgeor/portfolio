@@ -51,7 +51,7 @@ const props =
 <Element
   {...props}
   class={`
-    relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent
+    relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent border-t border-gray-900 md:-mt-px
     ${isComingSoon || isPrivate ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
     ${classes}
   `}
@@ -76,7 +76,7 @@ const props =
       <p class="capitalize">{type}</p>
       <p>{year}</p>
     </div>
-    <picture id="work-pic" class={`relative h-auto  opacity-0 hover:opacity-100`}>
+    <picture id="work-pic" class={`relative h-auto  opacity-0 group-hover:opacity-100`}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
@@ -86,7 +86,7 @@ const props =
       />
       {isComingSoon && <ScrollingBanner title='Coming Soon' classes="text-black -rotate-[12deg]" />}
       {isPrivate && <ScrollingBanner title='Private' classes="text-black -rotate-[12deg]" />}
-    </picture>
+    </picture> 
     <!-- {(isPrivate || isComingSoon) && (
       <div class="h-3 hidden group-hover:flex items-center justify-center group-focus:block">
         <ScrollingBanner title={ isPrivate ? 'Private' : 'Coming Soon'} classes="text-black opacity-1" />
