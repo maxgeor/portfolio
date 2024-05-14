@@ -37,12 +37,12 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
 
 <div
   class={`
-    carousel grid grid-cols-12 col-span-full gap-4 relative h-fit
+    carousel grid grid-cols-12 col-span-full gap-3 relative h-fit
     ${classes}
   `}
 >
   <div class={`
-    justify-self-center flex tabular absolute bottom-4 right-4  self-start
+    justify-self-center flex tabular absolute bottom-3 right-3  self-start
     ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-3.5 md:right-0'}
   `}>
     <span class="counter-current">1</span>
@@ -53,7 +53,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
     disabled="true" 
     aria-label="Previous slide" 
     class={`
-      group btn-prev absolute bottom-4 right-[42px] opacity-[40%] p-4 -m-4 -mr-[23px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
+      group btn-prev absolute bottom-3 right-[42px] opacity-[40%] p-3 -m-3 -mr-[23px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2 xs:right-auto xs:left-0'
       ) : (
@@ -69,7 +69,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
   <button 
     aria-label="Next slide" 
     class={`
-      btn-next absolute bottom-4 right-0 p-4 -m-4  group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
+      btn-next absolute bottom-3 right-0 p-3 -m-3  group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
       ${orientation === 'vertical' ? (
         'xs:top-1/2 xs:-translate-y-1/2'
       ) : (
@@ -148,7 +148,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
             ${index === 0 ? 'active' : ''}
           `}
         >
-          <div class="!text-black  flex gap-4 text-left group-hover:text-black group-focus:text-black">
+          <div class="!text-black  flex gap-3 text-left group-hover:text-black group-focus:text-black">
             <span class="tabular">{slide.id}</span>
             <p>{slide.alt}</p>
           </div>

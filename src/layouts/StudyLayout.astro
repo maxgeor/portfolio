@@ -19,96 +19,64 @@ const {
 ---
 
 <Layout title={title} description={description} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-12 gap-y-8 gap-x-4">
-    <Header />    
-    <section id="hero" class=' col-span-full grid grid-cols-12 gap-4'>
-      <div class="-mt-2 border-t border-black/80 col-span-full flex justify-between gap-4">
-        <p class="col-span-full md:col-span-2">Work</p>
-        <Link href={link.href} target="_blank">See it</Link>
+  <div class="relative col-span-full grid grid-cols-12 gap-y-3 gap-x-3 ml-[132px]"> 
+    <!-- <aside id="hero" class='md:order-last col-span-full md:col-span-3 xl:col-span-2 md:col-start-10 xl:col-start-11  flex flex-col gap-3 h-fit  border-transparent/80 '> -->
+    <aside id="hero" class='md:order-last col-span-full md:col-span-3 xl:col-span-2 md:col-start-10 xl:col-start-11  flex flex-col gap-3 h-fit  border-transparent/80 '>
+      <div class="col-span-3">
+        <div class="flex justify-between gap-3">
+          <p class="uppercase">{title}</p>
+          <a href={link.href} target="_blank">[See]</a>
+        </div>
+        <p class="">{description}</p>
+        <p class="col-span-8 ">{year}</p>
       </div>
-      <div class="h-[416px] relative flex items-center justify-center gap-4 col-span-full">
-        <span class="relative col-span-full ">
-          <h1 
-            id="study-title" 
-            class="-mt-4 font-bold flex items-center justify-center uppercase text-[37px] xs:leading-[28px] md:text-[46px] md:leading-[36px] 2xl:text-[66px] 2xl:leading-[54px] "
-          >
-            <span sr-only>{title}</span>
-            {Array.from({ length: 30 }, (_, index) => (
-              <span style={{ 
-                transform: `translateZ(-${index}px)`, 
-                padding: "0.5rem ",
-              }}>
-                {title}<sup class="w-fit align-super text-[14px] xs:text-[16px] md:text-[22px] 2xl:text-[30px]">W1</sup>
-              </span>
-            ))}
-          </h1>
-        </span>
+      <div class="col-span-3">
+        <p class="uppercase">Roles</p>
+        <p class="col-span-8 ">{roles?.join(', ')}</p>
       </div>
-      <div class="grid grid-cols-12 gap-2 col-span-full border-t border-black/80 pt-1 ">
-        <div class="grid grid-cols-12  col-span-full  gap-x-4">
-          <p class="col-span-4 md:col-span-2 text-left">
-            Tldr
-          </p>
-          <span class="col-span-8">
-            <p class="col-span-full col-start-5 text-balance">{description}</p>
-          </span>
-        </div>
-        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Year</p>
-          <p class="col-span-8 ">{year}</p>
-        </div>
-        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Type</p>
-          <p class="col-span-8 ">{type}</p>
-        </div>
-        <div class="jusitfy-self-start h-fit col-span-full  grid grid-cols-12  gap-x-4 ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Roles</p>
-          <p class="col-span-8 ">{roles?.join(', ')}</p>
-        </div>
-        <div class="col-span-full  grid grid-cols-12  gap-x-4 ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Tools</p>
-          <p class="col-span-8 ">{tools?.join(', ')}</p>
-        </div>
-        <div class="col-span-full  grid grid-cols-12  gap-x-4 ">
-          <p class="text-left col-span-4 md:col-span-2 border-neutral-500">Team</p>
-          <ul class="flex flex-col col-span-8">
-            {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
-              <li>
-                <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
-              </li>
-            )) : "—"}
-          </ul>
-        </div>
-        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-          <p class="text-left col-span-4 md:col-span-2">Problem</p>
-          <p class="col-span-8 text-balance">{tldr?.problem || "—"}</p>
-        </div>
-        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-          <p class="text-left col-span-4 md:col-span-2">Solution</p>
-          <p class="col-span-8 text-balance">{tldr?.solution || "—"}</p>
-        </div>
-        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-          <p class="text-left col-span-4 md:col-span-2">Decisions</p>
-          <ul class="col-span-8 text-balance">
-            {tldr?.decisions?.map((decision: string, index: number) => 
-              <li>[<span class="tabular">{index + 1}</span>] {decision}</li>
-            ) || "—"}
-          </ul>
-        </div>
-        <div class="grid grid-cols-12  gap-x-4 col-span-full ">
-          <p class="text-left col-span-4 md:col-span-2">Tradeoffs</p>
-          <ul class="col-span-8 text-balance">
-            {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-              <li>[<span class="tabular">{index + 1}</span>] {tradeoff}</li>
-            ) || "—"}
-          </ul>
-        </div>
+      <div class="col-span-3">
+        <p class="uppercase">Tools</p>
+        <p class="col-span-8 ">{tools?.join(', ')}</p>
       </div>
-    </section>
-    <Divider classes="hidden md:block" />
+      <div class="col-span-3">
+        <p class="uppercase">Team</p>
+        <ul>
+          {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
+            <li>
+              <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
+            </li>
+          )) : "—"}
+        </ul>
+      </div>
+      <hr class="border-black border-dotted "/>
+      <div class=" border-transparent col-span-3  ">
+        <p class="uppercase">Problem</p>
+        <p class="text-balance">{tldr?.problem || "—"}</p>
+      </div>
+      <div class=" border-transparent col-span-3  ">
+        <p class="uppercase">Solution</p>
+        <p class="text-balance">{tldr?.solution || "—"}</p>
+      </div>
+      <div class=" border-transparent col-span-3  ">
+        <p class="uppercase">Decisions</p>
+        <ul class="text-balance">
+          {tldr?.decisions?.map((decision: string, index: number) => 
+            <li>[<span class="tabular">{index + 1}</span>] {decision}</li>
+          ) || "—"}
+        </ul>
+      </div>
+      <div class=" border-transparent col-span-3  ">
+        <p class="uppercase">Tradeoffs</p>
+        <ul class="col-span-8 text-balance">
+          {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
+            <li>[<span class="tabular">{index + 1}</span>] {tradeoff}</li>
+          ) || "—"}
+        </ul>
+      </div>
+    </aside>
     <article
       id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-4 mt-4"
+      class="mt-6 w-full col-span-full md:col-span-8 xl:col-start-2  overflow-visible scroll-mt-3 mx-auto max-w-[900px]"
     >
       <div
         class={`
@@ -123,7 +91,7 @@ const {
           prose-li:list-outside
           prose-li:pl-0.5
           prose-li:m-0
-          prose-li:leading-4
+          prose-li:leading-3
           marker:prose-li:text-[11.5px]
           marker:prose-li:font-inter
           
@@ -132,16 +100,14 @@ const {
 
           prose-td:p-0
 
-          grid grid-cols-12 gap-x-4 gap-y-12
+          flex flex-col gap-x-3 gap-y-9
         `}
       >
         <slot />
       </div>
     </article>
-    <footer class="col-span-full my-32 mb-64">
-      <h2 class=" border-b border-black">Read more</h2>
-    </footer>
-  </main>
+    
+  </div>
 </Layout>
 
 <style>

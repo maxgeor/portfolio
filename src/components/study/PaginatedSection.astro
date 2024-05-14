@@ -20,16 +20,16 @@ export interface Props {
 const { sections, classes = "" } = Astro.props;
 ---
 
-<Grid gap={{y: 8, x: 16}} classes={`paginated-section ${classes}`}>
+<div class={`paginated-section flex flex-col gap-2 ${classes}`}>
   {sections.map((section, index) => {
     return section.media.type === 'video' ? (
       <Video
         id={section.id}
         src={section.media.src}
         alt={section.media.alt}
-        span={{ base: 12, md: 8, xl: 7}}
+        span={12}
         classes={`
-          section-media section-media-${index} md:col-start-3
+          section-media section-media-${index}
           ${index > 0 ? 'hidden' : ''}
         `}
       />
@@ -38,17 +38,16 @@ const { sections, classes = "" } = Astro.props;
         id={section.id}
         src={section.media.src}
         alt={section.media.alt}
-        span={{ base: 12, md: 8, xl: 7 }}
+        span={12}
         classes={`
           section-media section-media-${index}
-          md:col-start-3
           ${index > 0 ? 'hidden' : ''}
         `}
       />
     )
   })}
   <div 
-    class="section-titles flex flex-col xl:mt-4 xl:max-w-[40ch]  xl:order-first xl:col-span-2  md:order-2 md:col-start-3 col-span-full " 
+    class="section-titles flex flex-col col-span-full " 
     style="text-wrap: pretty;"
   >
     {sections.map((section, index) => (
@@ -69,8 +68,8 @@ const { sections, classes = "" } = Astro.props;
   </div>
   {sections.map((section, index) => (
     <p class={`
-      break-words hyphens-auto -mt-0.5 xl:mt-4  xl:col-span-2 section-detail section-detail-${index}
-      normal-case font-medium text-[12px] md:order-3 col-span-full  md:col-start-3 md:col-span-6  flex flex-col gap-y-2 gap-x-4
+      section-detail section-detail-${index} break-words hyphens-auto -mt-0.5 max-w-[80ch]
+      normal-case col-span-full  flex flex-col gap-y-2
       ${index > 0 ? 'hidden' : ''}
     `}>
       {section.details}

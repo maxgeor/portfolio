@@ -66,112 +66,90 @@ const interests = [
 ---
 
 <Layout>
-  <Header />
-  <div class="relative col-span-full grid grid-cols-12 gap-4 ">
-    <div class="flex flex-col gap-4 md:h-0  md:col-start-11 col-span-full md:col-span-2 md:row-span-full">
-      <h1 class="sr-only">Max Kevin Crapper Georgopoulos</h1>
-      <div aria-hidden="true">
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <span>Max</span> 
-          <div class="border-t h-px border-black/80  w-full"></div>
-          <span class="w-[10px] text-center ">M</span> 
-        </div>
-        <!-- <Divider /> -->
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <span>Kevin</span> 
-          <div class="border-t h-px border-black/80  w-full"></div>
-          <span class="w-[10px] text-center ">K</span> 
-        </div>
-        <!-- <Divider /> -->
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <span>Crapper</span> 
-          <div class="border-t h-px border-black/80  w-full"></div>
-          <span class="w-[10px] text-center ">C</span> 
-        </div>
-        <!-- <Divider /> -->
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <span>Georgopoulos</span> 
-          <div class="border-t h-px border-black/80  w-full"></div>
-          <span class="w-[10px] text-center ">G</span> 
-        </div>
-      </div>
-      <SocialLinks  />
-    </div>
-    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
-      <h3 class="col-span-full md:col-span-2">Bio</h3>
-      <div class="flex flex-col col-span-full md:col-span-7 text-[12px] font-medium normal-case  break-words hyphens-auto ">
-        <p class="">
-          I'm a designer and developer based out of Toronto, but I bum
-          around different places. I believe that the boundary between design
-          and engineering is artificial — you get the best results by blending
-          the two. Lately, I've been inspired by Ryan Singer's design
-          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-          Homme Plissé.
-        </p>
+  <h1 class="sr-only">Max Kevin Crapper Georgopoulos</h1>
+  <div class="grid grid-cols-12 gap-3 gap-y-6 ml-[132px]">
+    <div class="col-span-6">
+        <div class="flex flex-col col-span-full gap-3  break-words hyphens-auto ">
+          <p>Max Kevin Crapper Georgopoulos</p>
+          <p>
+            I'm a designer and developer based out of Toronto, but I bum
+            around different places. I believe that the boundary between design
+            and engineering is artificial — you get the best results by blending
+            the two. Lately, I've been inspired by Ryan Singer's design
+            techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+            Homme Plissé.
+          </p>
+        </div>  
       </div>  
-    </div>  
-    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
-      <h3 class="col-span-full md:col-span-2">Skillz</h3>
-      <div class="flex flex-col col-span-full md:col-span-7 " >
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Product Thinking</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Great</p>
-        </div>
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Product Design</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Great</p>
-        </div>
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Copywriting</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Good</p>
-        </div>
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Frontend Dev</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Ok</p>
-        </div>
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Graphic Design</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Ok</p>
-        </div>
-        <div class="flex items-baseline justify-between gap-[4px]">
-          <p class="whitespace-nowrap">Backend Dev</p>
-          <hr class="border-t h-px border-black/80  w-full" />
-          <p>Meh</p>
+     
+      
+      <div class="col-start-1 col-span-3 border-t border-transparent">
+        <h3 class="col-span-full md:col-span-2 uppercase">Heros</h3>
+        <ul class="flex flex-col col-span-full ">
+          {heros.map((hero) => (
+            <li class="pl-px">
+              <details class="group before:content-none flex w-full justify-between items-center gap-3 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1]  hover:cursor-zoom-in">{hero.name}</summary>
+                <p class="pl-[0.65rem]  normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="col-span-3 border-t border-transparent">
+        <h3 class="col-span-full md:col-span-2 uppercase">Skillz</h3>
+        <div class="flex flex-col col-span-full  " >
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Product Thinking</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Great</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Product Design</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Great</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Copywriting</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Good</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Frontend Dev</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Ok</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Graphic Design</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Ok</p>
+          </div>
+          <div class="flex items-baseline justify-between gap-[4px]">
+            <p class="whitespace-nowrap">Backend Dev</p>
+            <!-- <hr class="border-t h-px border-transparent/80  w-full" /> -->
+            <p>Meh</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
-      <h3 class="col-span-full md:col-span-2">Interests</h3>
-      <ul class="flex flex-col col-span-full md:col-span-7">
-        {interests.map((interest) => (
-          <li class="">
-            <details class="group before:content-none  flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
-              <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1]  hover:cursor-zoom-in ">{interest.title}</summary>
-              <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>  
-            </details>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div class="md:col-start-1 grid grid-cols-12 md:grid-cols-10 col-span-full md:col-span-10 gap-y-0 gap-x-4 ">
-      <h3 class="col-span-full md:col-span-2">Heros</h3>
-      <ul class="flex flex-col col-span-full md:col-span-7">
-        {heros.map((hero) => (
-          <li class="">
-            <details class="group before:content-none flex w-full justify-between items-center gap-4 [&_summary]:open:cursor-zoom-out ">
-              <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1]  hover:cursor-zoom-in">{hero.name}</summary>
-              <p class="pl-[0.65rem]  normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>
-            </details>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div class="col-span-full -mx-4 -mb-8 mt-2">
+      <div class="col-span-3 border-t border-transparent">
+        <h3 class="col-span-full md:col-span-2 uppercase">Interests</h3>
+        <ul class="flex flex-col col-span-full ">
+          {interests.map((interest) => (
+            <li class="pl-px">
+              <details class="group before:content-none  flex w-full justify-between items-center gap-3 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75 px-[4px] -mx-[4px] hover:bg-[#e1e1e1]  hover:cursor-zoom-in ">{interest.title}</summary>
+                <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline  py-0.5 -my-0.5">[Learn]</Link>}</p>  
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="col-start-1 col-span-3 border-t border-transparent">
+        <p class="uppercase">Links</p>
+        <SocialLinks classes="col-span-3" />
+      </div> 
+      
+    <div class="col-span-full ">
       <img src="/me.png"  />
     </div>
   </div>

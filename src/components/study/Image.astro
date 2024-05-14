@@ -54,13 +54,13 @@ switch (typeof span) {
 <div
   id={id}
   class={`
-    grid gap-x-4
+    grid gap-x-3 gap-y-1
     ${hasCaption ? '' : ''}
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
   {hasCaption && (
-    <div class="flex gap-4 col-span-full">
+    <div class="flex gap-3 col-span-full">
       <p>{id}</p>
       <p>{alt}</p>
     </div>
@@ -70,10 +70,10 @@ switch (typeof span) {
     // </>
   )}
   <figure class={`
-    image grid col-span-full gap-x-4 
+    image grid col-span-full gap-x-3 
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
-    ${hasPadding ? '-mx-4 px-4 xs:mx-0 xs:px-0' : ''}
+    ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
   `}>
     <img
       src={src}
