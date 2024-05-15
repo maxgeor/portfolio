@@ -16,8 +16,7 @@ const {
 
 <Layout title={title} description={description}>
   <div class="relative col-span-full grid grid-cols-12 gap-y-3 gap-x-3 md:ml-[108px]"> 
-    <!-- <aside id="hero" class='md:max-w-[320px] border-t md:border-t-0 border-t-gray-900 md:bg-[#f7f7f7] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 pb-3 md:p-3 md:h-screen flex flex-col gap-3 '> -->
-    <aside id="hero" class='md:max-w-[320px] bg-[#f6f6f6] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 p-3 -m-3 -mt-1 md:m-0 md:h-screen flex flex-col gap-3 '>
+    <aside id="hero" class=' bg-[#f6f6f6] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] 2xl:w-[calc((100vw-108px-12px)/(12/2))] col-span-full md:col-span-3 p-3 -m-3 -mt-1 md:m-0 md:h-screen flex flex-col gap-3 '>
       <div class="col-span-3 ">
         <div class="flex justify-between gap-3 ">
           <p class="uppercase">{title}</p>
@@ -71,7 +70,7 @@ const {
     </aside>
     <article
       id="article"
-      class="pb-[84px] w-full col-span-full md:col-span-9 md:col-start-4 2xl:max-w-[875px] overflow-visible scroll-mt-3 mx-auto "
+      class="pb-[84px] w-full col-span-full md:col-span-9 2xl:col-span-6 md:col-start-4 2xl:col-start-5  overflow-visible scroll-mt-3 mx-auto "
     >
       <div
         class={`

@@ -71,7 +71,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     )}
   `}>
     <div class={`
-      relative w-full rotate-0 overflow-hidden  
+      relative w-full rotate-0 overflow-hidden  border-b border-neutral-150
       ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     `}>
       {
@@ -88,7 +88,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 
                 span={slide.span || 12}
                 hasPadding={slide.hasPadding}
-                hasBorder={slide.hasBorder}
+                hasBorder={true}
                 classes={slide.classes}
               />
             ) : (
@@ -98,7 +98,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                 id={slide.id}
                 span={slide.span}
                 hasPadding={slide.hasPadding}
-                hasBorder={slide.hasBorder}
+                hasBorder={true}
                 orientation={orientation}
                 classes={slide.classes}
               />

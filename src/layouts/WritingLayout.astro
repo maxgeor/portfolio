@@ -8,13 +8,12 @@ const formattedDate = formatDate(frontmatter.date);
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="col-span-full grid grid-cols-12 gap-3">
-    <Header />
-    <div class="grid grid-cols-12 gap-3 col-span-full ">
-      <h1 class="md:order-last col-span-8 md:col-span-10 uppercase">{frontmatter.title}</h1>
-      <span class="md:order-first text-right md:text-left col-span-3 md:col-span-2 ">{formattedDate}</span>
+  <div class="col-span-full grid grid-cols-12 gap-3 md:ml-[132px]">
+    <div class="flex flex-col gap-3 col-span-full ">
+      <h1 class="col-span-8 md:col-span-10 uppercase">{frontmatter.title}</h1>
+      <span class="text-right md:text-left col-span-3 md:col-span-2 ">{formattedDate}</span>
     </div>  
-    <main class="normal-case font-medium col-span-full">
+    <main class="normal-case font-medium col-span-full md:col-span-8">
       <div
         class={`
           grid grid-cols-12 gap-3 col-span-full
@@ -47,6 +46,38 @@ const formattedDate = formatDate(frontmatter.date);
       >
         <slot />
       </div>
+      <!-- <div
+        class={`
+          grid grid-cols-12 gap-3 col-span-full
+          prose-xs leading-3 text-pretty
+          [&>*]:col-span-full
+          sm:[&>*]:col-end-11
+          lg:[&>*]:col-end-10
+          xl:[&>*]:col-end-8
+          2xl:[&>*]:col-end-6
+          md:[&>*]:col-start-3
+
+          prose-headings:!col-start-1
+          prose-headings:relative
+          prose-headings:before:content-[''] prose-headings:before:w-[7px] prose-headings:before:h-[1px] prose-headings:before:bg-black prose-headings:before:absolute prose-headings:before:-left-3 prose-headings:before:top-[7px] md:prose-headings:before:hidden
+          prose-headings:!col-span-full
+          md:prose-headings:!col-end-3
+          
+          prose-p:my-0
+          first:prose-p:mt-0
+          last:prose-p:mb-0
+          prose-a:underline hover:prose-a:bg-black hover:prose-a:text-white
+          prose-code:bg-neutral-700/50 prose-code: prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-medium prose-code:whitespace-nowrap
+          prose-ul:my-0
+          prose-ol:my-0
+          prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
+          prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0
+          prose-li:marker:text-black  
+
+        `}
+      >
+        <slot />
+      </div> -->
     </main>
   </div>
 </Layout>

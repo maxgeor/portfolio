@@ -7,9 +7,9 @@ export interface Props {
 
 const { title } = Astro.props;
 ---
-<div class="relative grid grid-cols-9 col-span-full !gap-x-3 !gap-y-0 border-t border-neutral-250 first:border-none pt-3 md:first:pt-0 -mx-3 px-3" >
-  {title && <h1 class="col-span-full  uppercase  text-pretty mb-1 ">{title}</h1>}
-  <p class="break-words hyphens-auto tracking-[-0.0125em] col-span-full text-[20px] leading-5">
+<div class="relative flex flex-col col-span-full gap-y-1 gap-x-3 border-t border-neutral-250 first:border-none pt-3 md:first:pt-0 -mx-3 2xl:mx-0 px-3 2xl:px-0" >
+  {title && <h1 class="uppercase text-pretty">{title}</h1>}
+  <p class="break-words hyphens-auto tracking-[-0.0125em] text-[20px] leading-5">
     <slot />
   </p>
 </div>

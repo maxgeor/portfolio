@@ -30,9 +30,9 @@ module.exports = {
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
-          190: '#f1f1f1',
+          150: '#f0f0f0',
           200: '#eaeaea',
-          250: '#e5e5e5',
+          250: '#E6E6E6',
           300: '#dadada',
           400: '#909090',
           490: '#7D7D7D',
@@ -49,7 +49,7 @@ module.exports = {
         lg: '1024px'
       },
       maxWidth: {
-        '3xl': '1480px',
+        '2xl': '1480px',
       },
       boxShadow: {
         '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
