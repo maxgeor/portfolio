@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 <div class="relative flex flex-col col-span-full gap-y-1 gap-x-3 border-t  first:border-none pt-3 md:first:pt-0 -mx-3 2xl:mx-0 px-3 2xl:px-0" >
   {title && <h1 class="uppercase text-pretty">{title}</h1>}
-  <p class="break-words hyphens-auto tracking-[-0.0125em] text-[20px] leading-5">
+  <p class="break-words hyphens-auto tracking-[-0.0125em] text-[20px] leading-5 max-w-[80ch]">
     <slot />
   </p>
 </div>
