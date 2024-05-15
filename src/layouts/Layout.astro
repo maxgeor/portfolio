@@ -12,9 +12,9 @@ const {
 } = Astro.props;
 
 const filters = {
-  "case-study": "red",
-  "client": "lime",
-  "project": "blue",
+  "case-study": "blue",
+  "client": "red",
+  "project": "#65bf4e",
   "writing": "violet",
 };
 
@@ -67,33 +67,11 @@ const filter = Astro.url.searchParams.get('filter') || '';
       <div class="flex flex-col gap-3">
         <a href="/" class="uppercase">MKCG</a>
         <div>
-          <a 
-            href="/" 
-            class={`group relative group flex items-center justify-between gap-1 capitalize hover:bg-transparent`}
-          >
-            <div class={`
-              absolute -left-[12px] h-px w-[4px] bg-gray-900 shrink-0
-              ${filter === '' ? '' : "hidden group-hover:block"}
-            `}></div>
-            Everything
-            <div class="flex mt-px">
-              {Object.entries(filters).map(([_, color]) => (
-                <span 
-                  class="shrink-0 border border-white border-box h-[6px] w-[6px]  rounded-full -ml-0.5 first:ml-0 last:-mr-px" 
-                  style={{ backgroundColor: color,}}
-                ></span>
-              ))}
-            </div>
-          </a>
           {Object.entries(filters).map(([name, color]) => (
             <a 
               href={`/?filter=${name}`} 
               class={`group relative flex items-center justify-between gap-1 capitalize hover:bg-transparent`}
             >
-              <div class={`
-                absolute -left-[12px] h-px w-[4px] bg-gray-900 shrink-0
-                ${filter === name ? '' : "hidden group-hover:block"}
-              `}></div>
               {name.replace('-', ' ')}
               <span 
                 class="h-[4px] w-[4px] rounded-full mt-0.5"
