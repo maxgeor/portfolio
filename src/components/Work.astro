@@ -48,10 +48,18 @@ const props =
       ? { href: `study/${studySlug}`, target: '_self' } 
       : link 
 ---
-<Element
+<!-- <Element
   {...props}
   class={`
     relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent border-t border-gray-900 md:-mt-px
+    ${isComingSoon || isPrivate ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
+    ${classes}
+  `}
+> -->
+<Element
+  {...props}
+  class={`
+    relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent
     ${isComingSoon || isPrivate ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
     ${classes}
   `}
