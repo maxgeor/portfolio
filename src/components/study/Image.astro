@@ -81,9 +81,19 @@ switch (typeof span) {
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-[#eaeaea]'}
       `}
     />
+    <!-- <img
+      src={src}
+      alt={alt}
+      class={`
+         h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
+        select-none self-center
+        ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+        ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
+        ${hasBorder && 'border border-[#eaeaea]'}
+      `}
+    /> -->
   </figure>
   {description && <p class="col-span-full mt-1">{description}</p>}
 </div>

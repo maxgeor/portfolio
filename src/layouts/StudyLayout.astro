@@ -1,13 +1,9 @@
 ---
-import Link from "../components/Link.astro";
 import Layout from "./Layout.astro";
-import Header from "../components/Header.astro";
-import Divider from "../components/Divider.astro";
 
 const { frontmatter } = Astro.props;
 const {
   title,
-  type,
   tldr,
   description,
   roles,
@@ -18,15 +14,15 @@ const {
 } = frontmatter;
 ---
 
-<Layout title={title} description={description} maxWidth="max-w-none">
+<Layout title={title} description={description}>
   <div class="relative col-span-full grid grid-cols-12 gap-y-3 gap-x-3 md:ml-[108px]"> 
-    <aside id="hero" class=' md:max-w-[320px] border-t md:border-t-0 border-gray-900 md:bg-[#f7f7f7] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 pb-3 md:p-3   md:h-screen   flex flex-col gap-3 '>
+    <aside id="hero" class='md:max-w-[320px] border-t md:border-t-0 border-t-gray-900 md:bg-[#f7f7f7] md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] col-span-full md:col-span-3 pb-3 md:p-3 md:h-screen flex flex-col gap-3 '>
       <div class="col-span-3">
         <div class="flex justify-between gap-3 ">
           <p class="uppercase">{title}</p>
           {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
-        <p class="text-pretty">{description}</p>
+        <p class="text-balance md:text-pretty">{description}</p>
         <p class="col-span-8 ">{year}</p>
       </div>
       <div class="col-span-3">
@@ -74,17 +70,14 @@ const {
     </aside>
     <article
       id="article"
-      class="pb-24  w-full col-span-full md:col-span-9 md:col-start-4  max-w-[875px] overflow-visible scroll-mt-3 mx-auto "
+      class="pb-[84px] w-full col-span-full md:col-span-9 md:col-start-4 2xl:max-w-[875px] overflow-visible scroll-mt-3 mx-auto "
     >
       <div
         class={`
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-green prose-a:px-1 prose-a:-mx-1 prose-a:transition prose-a:duration-75
-
-          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
-          prose-ul:-my-0.5 prose-ul:text-neutral-300
-
-          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5 prose-ol:text-neutral-300
-
+          flex flex-col gap-x-3 gap-y-6 
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-pink
+          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
+          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
           prose-li:list-item
           prose-li:list-outside
           prose-li:pl-0.5
@@ -92,13 +85,9 @@ const {
           prose-li:leading-3
           marker:prose-li:text-[11.5px]
           marker:prose-li:font-inter
-          
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
           prose-video:w-auto prose-video:select-none	prose-video:my-0 
-
           prose-td:p-0
-
-          flex flex-col gap-x-3 gap-y-6 
         `}
       >
         <slot />

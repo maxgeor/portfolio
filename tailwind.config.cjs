@@ -26,14 +26,14 @@ module.exports = {
       },
       colors: {
         green: 'green',
-        pink: 'rgb(255, 49, 207)',
+        pink: '#eb47ca',
         neutral: {
           50: '#FFFFFF',
           100: '#F5F5F5',
           190: '#f1f1f1',
           200: '#eaeaea',
           250: '#b6b6b6',
-          300: '#B4B4B4',
+          300: '#ddd',
           400: '#909090',
           490: '#7D7D7D',
           500: '#7F7F7F',

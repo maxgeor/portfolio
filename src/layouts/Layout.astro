@@ -2,14 +2,12 @@
 export interface Props {
   title?: string;
   description?: string;
-  maxWidth?: string | null;
   backgroundColor?: string;
 }
 
 const {
   title = "Max Georgopoulos",
   description,
-  maxWidth = "",
   backgroundColor = "bg-[#fff]",
 } = Astro.props;
 
@@ -36,8 +34,8 @@ const filter = Astro.url.searchParams.get('filter') || '';
   <body
     style="text-rendering: optimizeLegibility;"
     class={`
-      ${backgroundColor} ${maxWidth}
-     text-gray-900  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased py-8 md:py-3 px-3 
+      ${backgroundColor}
+     text-gray-900  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 pt-8 md:pt-3
     `}
   >
     <header class="fixed top-0 left-0 right-0 flex justify-between md:hidden gap-3 z-50 py-2 px-3">
@@ -48,7 +46,7 @@ const filter = Astro.url.searchParams.get('filter') || '';
       </div>
       <a 
         href="/" 
-        class={`filter-link group flex items-center justify-between gap-1 capitalize font-medium`}
+        class={`filter-link relative pr-[11px] group flex items-center justify-between gap-1 capitalize font-medium`}
       >
         <div class="flex">
           {Object.entries(filters).map(([_, color]) => (
@@ -62,7 +60,7 @@ const filter = Astro.url.searchParams.get('filter') || '';
           ))}
         </div>
         Everything
-        <svg class="-ml-[3px] -mr-1" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        <svg class="absolute -right-1" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
       </a>
     </header>
     <aside class="hidden md:flex flex-col justify-between  gap-3 md:w-[84px] md:h-[calc(100vh-24px)] md:fixed top-3 left-3 ">
@@ -74,11 +72,11 @@ const filter = Astro.url.searchParams.get('filter') || '';
             class={`group relative group flex items-center justify-between gap-1 capitalize hover:bg-transparent`}
           >
             <div class={`
-              absolute -left-[12px] h-px w-[5px] bg-gray-900 shrink-0
+              absolute -left-[12px] h-px w-[4px] bg-gray-900 shrink-0
               ${filter === '' ? '' : "hidden group-hover:block"}
             `}></div>
             Everything
-            <div class="flex">
+            <div class="flex mt-px">
               {Object.entries(filters).map(([_, color]) => (
                 <span 
                   class="shrink-0 border border-white border-box h-[6px] w-[6px]  rounded-full -ml-0.5 first:ml-0 last:-mr-px" 
@@ -93,12 +91,12 @@ const filter = Astro.url.searchParams.get('filter') || '';
               class={`group relative flex items-center justify-between gap-1 capitalize hover:bg-transparent`}
             >
               <div class={`
-                absolute -left-[12px] h-px w-[5px] bg-gray-900 shrink-0
+                absolute -left-[12px] h-px w-[4px] bg-gray-900 shrink-0
                 ${filter === name ? '' : "hidden group-hover:block"}
               `}></div>
               {name.replace('-', ' ')}
               <span 
-                class="h-[4px] w-[4px] rounded-full"
+                class="h-[4px] w-[4px] rounded-full mt-0.5"
                 style={{ backgroundColor: color }}
               ></span>
             </a>
@@ -108,38 +106,6 @@ const filter = Astro.url.searchParams.get('filter') || '';
       <a href="/info" class="uppercase">Info</a>
     </aside>
     <slot />
-    <nav class=" md:hidden fixed bottom-0 left-0 right-0 flex justify-between col-span-full  py-2 px-3 ">
-      <a 
-        href="/" 
-        class={`filter-link group flex items-center justify-between gap-1 capitalize whitespace-nowrap ${!filter ? 'active' : ''}`}
-      >
-        <div class="flex">
-          {Object.entries(filters).map(([_, color]) => (
-            <span 
-              class="shrink-0 border border-box h-[6px] w-[6px] group-hover:bg-neutral-200 rounded-full -ml-0.5 first:ml-0" 
-              style={{ 
-                backgroundColor: color,
-                borderColor: !filter ? '#eaeaea' : "white",
-              }}
-            ></span>
-          ))}
-        </div>
-        Everything
-        
-      </a>
-      {Object.entries(filters).map(([name, color]) => (
-        <a 
-          href={`/?filter=${name}`} 
-          class={`filter-link flex items-center justify-between gap-[3px] capitalize ${filter === name ? 'active' : ''}`}
-        >
-          <span 
-            class="h-[6px] w-[6px] border border-white group-hover:bg-neutral-200 rounded-full"
-            style={{ backgroundColor: color }}
-          ></span>
-          {name.replace('-', ' ')}
-        </a>
-      ))}
-    </nav>
   </body>
 </html>
 
@@ -147,7 +113,6 @@ const filter = Astro.url.searchParams.get('filter') || '';
   .text-balance {
     text-wrap: balance;
   }
-  
   
   @font-face {
     font-family: Gothic;
@@ -161,14 +126,19 @@ const filter = Astro.url.searchParams.get('filter') || '';
 
   html {
     text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: #e1e1e1;
+    -webkit-tap-highlight-color: #eaeaea;
   }
   a {
     text-underline-offset: 2px;
   }
   
   a:focus-visible {
-    outline: solid 2px green;
+    outline: solid 2px rgb(255, 49, 207);
+    outline-offset: 1px;
+  }
+  
+  summary:focus-visible {
+    outline: solid 2px rgb(255, 49, 207);
     outline-offset: 1px;
   }
 

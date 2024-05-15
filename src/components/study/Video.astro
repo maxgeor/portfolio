@@ -63,12 +63,18 @@ switch (typeof span) {
     <p>{id}</p>
     <p>{alt}</p>
   </div>
-  <div class={`
+  <!-- <div class={`
     relative grid col-span-full gap-x-3 overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${hasBorder ? 'with-border' : ''}
+  `}> -->
+  <div class={`
+    relative grid col-span-full gap-x-3 overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    ${colClasses}
+    ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
+    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
   `}>
     <video
       class={`

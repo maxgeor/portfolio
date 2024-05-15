@@ -31,55 +31,35 @@ export interface Props {
 }
 
 const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
-
-const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
 ---
 
-<div
-  class={`
-    carousel grid grid-cols-12 col-span-full gap-3 relative h-fit
-    ${classes}
-  `}
->
-  <div class={`
-    justify-self-center flex absolute bottom-3 right-3  self-start
-    ${orientation === 'vertical' ? 'xs:top-1 xs:right-0' : 'md:top-3.5 md:right-0'}
-  `}>
+<div class={`carousel grid grid-cols-12 col-span-full gap-3 relative h-fit ${classes}`}>
+  <button 
+    disabled="true" 
+    aria-label="Previous slide" 
+    class={`
+      group hidden btn-prev opacity-[40%] absolute left-0 top-1/2 -translate-y-1/2 p-3 -m-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink
+      ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
+    `}
+  >
+    <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-200 transition duration-75">
+      Back
+    </div>
+  </button>
+  <div class={`hidden absolute top-0 right-0 justify-self-center ${orientation === 'vertical' ? 'xs:flex' : 'md:flex'}`}>
     <span class="counter-current">1</span>
     <span>/</span>
     <span class="counter-total">{slides.length}</span>
   </div>
   <button 
-    disabled="true" 
-    aria-label="Previous slide" 
-    class={`
-      group btn-prev absolute bottom-3 right-[42px] opacity-[40%] p-3 -m-3 -mr-[23px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
-      ${orientation === 'vertical' ? (
-        'xs:top-1/2 xs:-translate-y-1/2 xs:right-auto xs:left-0'
-      ) : (
-        'md:top-1/2 md:-translate-y-1/2 md:right-auto md:left-0'
-      )}
-    `}
-  >
-    <div class="disabled:group-hover:bg-transparent md:group-hover:bg-[#eee] px-1 -mx-1 transition duration-75">
-      <svg class={orientation === 'vertical' ? 'xs:hidden' : 'md:hidden'} width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      <span class={`hidden  ${orientation === 'vertical' ? 'xs:block' : 'md:block'}`}>Back</span>
-    </div>
-  </button>
-  <button 
     aria-label="Next slide" 
     class={`
-      btn-next absolute bottom-3 right-0 p-3 -m-3  group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
-      ${orientation === 'vertical' ? (
-        'xs:top-1/2 xs:-translate-y-1/2'
-      ) : (
-        'md:top-1/2 md:-translate-y-1/2'
-      )}
+      btn-next hidden absolute top-1/2 -translate-y-1/2 right-0 p-3 -m-3  group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink
+      ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
     `}
   >
-    <div class="disabled:group-hover:bg-transparent md:group-hover:bg-[#eee] px-1 -mx-1  transition duration-75">
-      <svg class={orientation === 'vertical' ? 'xs:hidden' : 'md:hidden'} width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      <span class={`hidden  ${orientation === 'vertical' ? 'xs:block' : 'md:block'}`}>Next</span>
+    <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-200 transition duration-75">
+      Next
     </div>
   </button>
   <div class={`
@@ -93,7 +73,6 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
     <div class={`
       relative w-full rotate-0 overflow-hidden  
       ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-      ${someSlidesHaveBorders && 'border-b border-[#eaeaea]'}
     `}>
       {
         slides?.map((slide, index) => (
@@ -130,12 +109,8 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
     </div>
     <div 
       class={`
-        slide-titles flex flex-col col-span-full xl:col-span-2 mr-16 
-        ${orientation === 'vertical' ? (
-          'xs:col-start-3 xs:col-span-3 '
-        ) : (
-          'md:col-start-3 md:col-span-3 '
-        )}
+        slide-titles relative flex flex-col col-span-full xl:col-span-2 pr-[56px]
+        ${orientation === 'vertical' ? 'xs:col-start-3 xs:col-span-3 ' : 'md:col-start-3 md:col-span-3'}
       `}
       style="text-wrap: pretty;"
     >
@@ -144,7 +119,7 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
           data-position={index} 
           class={`
             slide-title slide-title-${index}
-            group w-fit px-[3px] -mx-[3px]  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green
+            group w-fit px-[3px] -mx-[3px]  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink
             ${index === 0 ? 'active' : ''}
           `}
         >
@@ -154,20 +129,47 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
           </div>
         </button>
       ))}
+      <div class={`absolute -top-0.5 right-0 flex items-center gap-0.5 ${orientation === 'vertical' ? 'xs:hidden' : 'md:hidden'}`}>
+        <button 
+          disabled="true" 
+          aria-label="Previous slide" 
+          class={`
+            group btn-prev opacity-[40%] p-3 -m-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink
+            ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
+          `}
+        >
+          <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-200 transition duration-75">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </div>
+        </button>
+        <div class="flex opacity-100 text-black">
+          <span class="counter-current">1</span>
+          <span>/</span>
+          <span class="counter-total">{slides.length}</span>
+        </div>
+        <button 
+          aria-label="Next slide" 
+          class={`btn-next p-3 -m-3  group disabled:group-hover:bg-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink`}
+        >
+          <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-200 transition duration-75">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  .slide-titles > * > div {
+  .slide-titles > button > div {
     color: #fff;
     opacity: 0.4;
   }
-  .slide-titles > .active > div {
+  .slide-titles > button.active > div {
     opacity: 1;
   }
   
-  .slide-titles > *:hover > div {
+  .slide-titles > button:hover > div {
     opacity: 1;
   }
 </style>
@@ -177,10 +179,10 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
 
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
-    const counter: HTMLSpanElement | null = carousel.querySelector(".counter-current");
+    const counters = carousel.querySelectorAll(".counter-current") as NodeListOf<HTMLElement>;
     const slideTitles: NodeListOf<HTMLButtonElement> = carousel.querySelectorAll(".slide-title");
-    const prevSlideBtn = carousel.querySelector(".btn-prev") as HTMLButtonElement;
-    const nextSlideBtn = carousel.querySelector(".btn-next") as HTMLButtonElement;
+    const prevSlideBtns = carousel.querySelectorAll(".btn-prev") as NodeListOf<HTMLButtonElement>;
+    const nextSlideBtns = carousel.querySelectorAll(".btn-next") as NodeListOf<HTMLButtonElement>;
 
     let curSlide = 0;
 
@@ -194,26 +196,32 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
         slide.style.transform = `translateX(${100 * (indx - position)}%)`
       );
 
-      if (counter) counter.innerHTML = `${curSlide + 1}`;
-
-      if (nextSlideBtn) {
-        if (!isLastSlide() && nextSlideBtn.disabled) {
-          nextSlideBtn.disabled = false;
-          nextSlideBtn.style.opacity = "100%";
-        } else if (isLastSlide() && !nextSlideBtn.disabled) {
-          nextSlideBtn.disabled = true;
-          nextSlideBtn.style.opacity = "40%";
-        }
+      if (counters.length > 0) {
+        counters.forEach(counter => counter.innerHTML = `${curSlide + 1}`)
       }
 
-      if (prevSlideBtn) {
-        if (!isFirstSlide() && prevSlideBtn.disabled) {
-          prevSlideBtn.disabled = false;
-          prevSlideBtn.style.opacity = "100%";
-        } else if (isFirstSlide() && !prevSlideBtn.disabled) {
-          prevSlideBtn.disabled = true;
-          prevSlideBtn.style.opacity = "40%";
-        }
+      if (nextSlideBtns.length > 0) {
+        nextSlideBtns.forEach(btn => {
+          if (!isLastSlide() && btn.disabled) {
+            btn.disabled = false;
+            btn.style.opacity = "100%";
+          } else if (isLastSlide() && !btn.disabled) {
+            btn.disabled = true;
+            btn.style.opacity = "40%";
+          }
+        });
+      }
+
+      if (prevSlideBtns.length > 0) {
+        prevSlideBtns.forEach(btn => {
+          if (!isFirstSlide() && btn.disabled) {
+            btn.disabled = false;
+            btn.style.opacity = "100%";
+          } else if (isFirstSlide() && !btn.disabled) {
+            btn.disabled = true;
+            btn.style.opacity = "40%";
+          }
+        });
       }
 
       slideTitles.forEach(slide => {
@@ -230,7 +238,16 @@ const someSlidesHaveBorders = slides.some(slide => slide.hasBorder);
       slideTo(position);
     }));
 
-    prevSlideBtn?.addEventListener("click", () => slideTo(curSlide - 1));
-    nextSlideBtn?.addEventListener("click", () => slideTo(curSlide + 1));
+    if (prevSlideBtns.length > 0) {
+      prevSlideBtns.forEach(btn => {
+        btn.addEventListener("click", () => slideTo(curSlide - 1));
+      });
+    }
+
+    if (nextSlideBtns.length > 0) {
+      nextSlideBtns.forEach(btn => {
+        btn.addEventListener("click", () => slideTo(curSlide + 1));
+      });
+    }
   });
 </script>
