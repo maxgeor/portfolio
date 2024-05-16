@@ -19,24 +19,20 @@ const {
 <Layout title={title} description={description}>
   <Nav activeTabs={["case-study", type]} />
   <div class="relative col-span-full grid grid-cols-8 gap-y-[15px] gap-x-[15px] md:ml-[104px]"> 
-    <aside id="hero" class=' border-y md:border-y-0 md:border-x md:fixed left-[104px] top-0 bottom-0 md:w-[calc((100vw-104px-15px)/(8/2))] 2xl:w-[calc((100vw-104px-12px)/(12/2))] col-span-full md:col-span-3 p-[15px] md:px-[14px] -m-[15px] -mt-[5px] md:m-0 md:h-screen flex flex-col gap-[15px] '>
-      <div class="col-span-3 ">
+    <aside id="hero" class='[&>div]:h-min grid grid-cols-2 md:flex flex-col border-y md:border-y-0 md:border-x md:fixed left-[104px] top-0 bottom-0 md:w-[calc((100vw-104px-15px)/(8/2))] 2xl:w-[calc((100vw-104px-12px)/(12/2))] col-span-full md:col-span-3 p-[15px] md:px-[14px] -m-[15px] -mt-[5px] md:m-0 md:h-screen gap-[15px] '>
+      <div>
         <div class="flex justify-between gap-[15px] ">
           <p class="uppercase">{title}</p>
           {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
         <p class="text-balance md:text-pretty">{description}</p>
-        <p class="col-span-8 ">{year}</p>
+        <p class="lg:hidden">{year}</p>
       </div>
-      <div class="col-span-3 ">
+      <div>
         <p class="uppercase">Roles</p>
-        <p class="col-span-8 ">{roles?.join(', ')}</p>
+        <p>{roles?.join(', ')}</p>
       </div>
-      <div class="col-span-3 ">
-        <p class="uppercase">Tools</p>
-        <p class="col-span-8 ">{tools?.join(', ')}</p>
-      </div>
-      <div class="col-span-3 ">
+      <div>
         <p class="uppercase">Team</p>
         <ul>
           {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
@@ -46,15 +42,24 @@ const {
           )) : "—"}
         </ul>
       </div>
-      <div class="col-span-3  ">
+      <div>
+        <p class="uppercase">Tools</p>
+        <p>{tools?.join(', ')}</p>
+      </div>
+      <div class="hidden lg:block">
+        <p class="uppercase">Year</p>
+        <p>{year}</p>
+      </div>
+      <hr class="col-span-full -mx-[15px]" />
+      <div class="col-start-1 col-span-full">
         <p class="uppercase">Problem</p>
         <p class="text-balance">{tldr?.problem || "—"}</p>
       </div>
-      <div class="col-span-3  ">
+      <div class="col-span-full">
         <p class="uppercase">Solution</p>
         <p class="text-balance">{tldr?.solution || "—"}</p>
       </div>
-      <div class=" col-span-3  ">
+      <div class="col-span-full">
         <p class="uppercase">Decisions</p>
         <ul class="text-balance">
           {tldr?.decisions?.map((decision: string, index: number) => 
@@ -62,7 +67,7 @@ const {
           ) || "—"}
         </ul>
       </div>
-      <div class="col-span-3  ">
+      <div class="col-span-full">
         <p class="uppercase">Tradeoffs</p>
         <ul class="col-span-8 text-balance">
           {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
