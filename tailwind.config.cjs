@@ -27,6 +27,7 @@ module.exports = {
       colors: {
         gray: {
           200: "#DBDEE6",
+          // 200: "#DCDCDC",
         },
         green: 'green',
         pink: '#eb47ca',

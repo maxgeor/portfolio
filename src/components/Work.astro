@@ -1,4 +1,6 @@
 ---
+import RightArrowIcon from './icons/RightArrowIcon.astro';
+import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 import ScrollingBanner from './ScrollingBanner.astro'
 
 type Roles = {
@@ -40,6 +42,13 @@ const {
   isComingSoon = false,
 } = Astro.props;
 
+const filters = {
+  "case-study": "blue",
+  "client": "red",
+  "project": "#65bf4e",
+  "writing": "#F5C000",
+};
+
 const Element = isComingSoon ? 'div' : 'a';
 const props = 
   isComingSoon || isPrivate
@@ -48,35 +57,52 @@ const props =
       ? { href: `study/${studySlug}`, target: '_self' } 
       : link 
 ---
-<!-- <Element
-  {...props}
-  class={`
-    relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent border-t border-gray-900 md:-mt-px
-    ${isComingSoon || isPrivate ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
-    ${classes}
-  `}
-> -->
 <Element
   {...props}
   class={`
     relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent
-    ${isComingSoon || isPrivate ? 'cursor-not-allowed' : props.target === '_blank' ? 'cursor-alias' : 'cursor-pointer'}
+    ${isComingSoon || isPrivate ? 'cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
 >
-  <div class={`overflow-hidden ${isComingSoon || isPrivate ? 'text-black/40  hover:text-black' : ''}`}>
+  <div class={`overflow-hidden ${isComingSoon || isPrivate ? 'text-gray-800/40  hover:text-gray-800' : ''}`}>
     <div>
       <div class="flex justify-between">
         <h2 class="uppercase shrink-0 whitespace-nowrap">
           {title}
         </h2>
-        <div class="flex items-center gap-1">
+        <div class="relative flex items-center gap-[3px] ">
           <div class="flex">
-            {studySlug ? <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#ff32b0]"></span> : null}
-            {type === "client" ? <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[#39c239] -ml-0.5 first:m-0"></span> : null}
-            {type === "project" ? <span class="shrink-0 border border-white border-box h-[6px] w-[6px] rounded-full bg-[blue] -ml-0.5 first:m-0"></span> : null}
+            {studySlug ? (
+              <span 
+                class="shrink-0 border border-white rounded-full h-[6px] w-[6px]"
+                style={`background-color: ${filters["case-study"]}`}
+              ></span>
+            ) : null}
+            {type === "client" ? (
+              <span 
+                class="shrink-0 border border-white rounded-full h-[6px] w-[6px] -ml-0.5 first:m-0"
+                style={`background-color: ${filters["client"]}`}
+              ></span>
+            ) : null}
+            {type === "project" ? (
+              <span 
+                class="shrink-0 border border-white rounded-full h-[6px] w-[6px] -ml-0.5 first:m-0"
+                style={`background-color: ${filters["project"]}`}
+              ></span>
+            ) : null}
           </div>
-          <span>{isPrivate ? "Private" : isComingSoon ? "Coming Soon" : studySlug ? "More" : "See"}</span>
+          <span>
+            {isPrivate ? (
+              "Private"
+            ) : isComingSoon ? (
+              "Coming Soon"
+            ) : studySlug ? (
+              <RightArrowIcon size='tiny' classes="opacity-75 group-hover:translate-x-px" />
+            ) : (
+              <UpRightArrowIcon size='tiny' classes="opacity-75 group-hover:-translate-y-px group-hover:translate-x-px" />
+            )}
+          </span>
         </div>
       </div>
       <p>{description}</p>
@@ -92,12 +118,12 @@ const props =
           w-full h-full object-top select-none object-contain 
         `}
       />
-      {isComingSoon && <ScrollingBanner title='Coming Soon' classes="text-black -rotate-[12deg]" />}
-      {isPrivate && <ScrollingBanner title='Private' classes="text-black -rotate-[12deg]" />}
+      {isComingSoon && <ScrollingBanner title='Coming Soon' classes="-rotate-[12deg]" />}
+      {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
     </picture> 
     <!-- {(isPrivate || isComingSoon) && (
       <div class="h-3 hidden group-hover:flex items-center justify-center group-focus:block">
-        <ScrollingBanner title={ isPrivate ? 'Private' : 'Coming Soon'} classes="text-black opacity-1" />
+        <ScrollingBanner title={ isPrivate ? 'Private' : 'Coming Soon'} classes="text-gray-800 opacity-1" />
       </div>
     )} -->
   </div>

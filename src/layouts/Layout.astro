@@ -2,28 +2,25 @@
 export interface Props {
   title?: string;
   description?: string;
-  backgroundColor?: string;
 }
 
 const {
   title = "Max Georgopoulos",
   description,
-  backgroundColor = "bg-[#fff]",
 } = Astro.props;
 
 const filters = {
   "case-study": "blue",
   "client": "red",
   "project": "#65bf4e",
-  "writing": "violet",
+  "writing": "#F5C000",
 };
 
 const filter = Astro.url.searchParams.get('filter') || '';
 ---
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth ">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -34,8 +31,7 @@ const filter = Astro.url.searchParams.get('filter') || '';
   <body
     style="text-rendering: optimizeLegibility;"
     class={`
-      ${backgroundColor}
-     text-gray-900  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 pt-8 md:pt-3
+     bg-white text-gray-800  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 pt-8 md:pt-3
     `}
   >
     <header class="fixed top-0 left-0 right-0 flex justify-between md:hidden gap-3 z-50 p-3 pt-2">
@@ -51,7 +47,7 @@ const filter = Astro.url.searchParams.get('filter') || '';
         <div class="flex">
           {Object.entries(filters).map(([_, color]) => (
             <span 
-              class="shrink-0 border border-box h-[6px] w-[6px] group-hover:bg-neutral-200 rounded-full -ml-0.5 first:ml-0" 
+              class="shrink-0 border border-box h-[6px] w-[6px] rounded-full group-hover:bg-neutral-200  -ml-0.5 first:ml-0" 
               style={{ 
                 backgroundColor: color,
                 borderColor: "white",
@@ -74,7 +70,7 @@ const filter = Astro.url.searchParams.get('filter') || '';
             >
               {name.replace('-', ' ')}
               <span 
-                class="h-[4px] w-[4px] rounded-full mt-0.5"
+                class="border border-white rounded-full h-[6px] w-[6px] mt-px -mr-px"
                 style={{ backgroundColor: color }}
               ></span>
             </a>
