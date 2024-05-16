@@ -1,21 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
-<Layout maxWidth={null}>
+<Layout>
+  <Nav />
   <div class="col-span-full relative grid grid-cols-12 gap-3 md:ml-[108px]">
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}
-    <!-- <div class="columns-1 sm:columns-2 md:columns-3 xl:columns-3 col-span-full gap-x-3 ">
-      {works?.sort((a, b) => a.data.order - b.data.order).map(({ data: work }, index) => (
-        <Work variant="card" {...work} index={index} />
-      ))}
-    </div> -->
   </div>
 </Layout>
 

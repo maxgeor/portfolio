@@ -1,6 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import Header from "../components/Header.astro";
+import Nav from "../components/Nav.astro";
 import { formatDate } from '../utils/formatting';
 
 const { frontmatter } = Astro.props;
@@ -8,6 +8,7 @@ const formattedDate = formatDate(frontmatter.date);
 ---
 
 <Layout title={frontmatter.title}>
+  <Nav activeTabs={['writing']} />
   <div class="col-span-full grid grid-cols-12 gap-3 md:ml-[132px]">
     <div class="flex flex-col gap-3 col-span-full ">
       <h1 class="col-span-8 md:col-span-10 uppercase">{frontmatter.title}</h1>

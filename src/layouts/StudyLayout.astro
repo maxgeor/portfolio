@@ -1,9 +1,11 @@
 ---
 import Layout from "./Layout.astro";
+import Nav from "../components/Nav.astro";
 
 const { frontmatter } = Astro.props;
 const {
   title,
+  type,
   tldr,
   description,
   roles,
@@ -15,6 +17,7 @@ const {
 ---
 
 <Layout title={title} description={description}>
+  <Nav activeTabs={["case-study", type]} />
   <div class="relative col-span-full grid grid-cols-12 gap-y-3 gap-x-3 md:ml-[108px]"> 
     <aside id="hero" class=' border-y md:border-y-0 md:border-x md:fixed left-[108px] top-0 bottom-0 md:w-[calc((100vw-108px-12px)/(12/3))] 2xl:w-[calc((100vw-108px-12px)/(12/2))] col-span-full md:col-span-3 p-3 md:px-[11px] -m-3 -mt-1 md:m-0 md:h-screen flex flex-col gap-3 '>
       <div class="col-span-3 ">

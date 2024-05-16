@@ -8,15 +8,6 @@ const {
   title = "Max Georgopoulos",
   description,
 } = Astro.props;
-
-const filters = {
-  "case-study": "blue",
-  "client": "red",
-  "project": "#65bf4e",
-  "writing": "#F5C000",
-};
-
-const filter = Astro.url.searchParams.get('filter') || '';
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth ">
@@ -34,51 +25,6 @@ const filter = Astro.url.searchParams.get('filter') || '';
      bg-white text-gray-800  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 pt-8 md:pt-3
     `}
   >
-    <header class="fixed top-0 left-0 right-0 flex justify-between md:hidden gap-3 z-50 p-3 pt-2">
-      <div class="flex items-center gap-1.5">
-        <a href="/" class="uppercase col-span-6">MKCG</a>  
-        /
-        <a href="/info" class="uppercase col-span-6 justify-self-end">Info</a>
-      </div>
-      <a 
-        href="/" 
-        class={`filter-link relative pr-[11px] group flex items-center justify-between gap-1 capitalize font-medium`}
-      >
-        <div class="flex">
-          {Object.entries(filters).map(([_, color]) => (
-            <span 
-              class="shrink-0 border border-box h-[6px] w-[6px] rounded-full group-hover:bg-neutral-200  -ml-0.5 first:ml-0" 
-              style={{ 
-                backgroundColor: color,
-                borderColor: "white",
-              }}
-            ></span>
-          ))}
-        </div>
-        Everything
-        <svg class="absolute -right-1" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-      </a>
-    </header>
-    <aside class="hidden md:flex flex-col justify-between  gap-3 md:w-[84px] md:h-[calc(100vh-24px)] md:fixed top-3 left-3 ">
-      <div class="flex flex-col gap-3">
-        <a href="/" class="uppercase">MKCG</a>
-        <div>
-          {Object.entries(filters).map(([name, color]) => (
-            <a 
-              href={`/?filter=${name}`} 
-              class={`group relative flex items-center justify-between gap-1 capitalize hover:bg-transparent`}
-            >
-              {name.replace('-', ' ')}
-              <span 
-                class="border border-white rounded-full h-[6px] w-[6px] mt-px -mr-px"
-                style={{ backgroundColor: color }}
-              ></span>
-            </a>
-          ))}
-        </div>
-      </div>
-      <a href="/info" class="uppercase">Info</a>
-    </aside>
     <slot />
   </body>
 </html>
