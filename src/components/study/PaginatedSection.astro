@@ -20,7 +20,7 @@ export interface Props {
 const { sections, classes = "" } = Astro.props;
 ---
 
-<div class={`paginated-section flex flex-col gap-3 ${classes}`}>
+<div class={`paginated-section flex flex-col gap-[15px] ${classes}`}>
   {sections.map((section, index) => {
     return section.media.type === 'video' ? (
       <Video
@@ -59,7 +59,7 @@ const { sections, classes = "" } = Astro.props;
           ${index === 0 ? 'active' : ''}
         `}
       >
-        <div class="!text-gray-800 flex gap-3 text-left group-hover:text-gray-800 group-focus-visible:text-gray-800">
+        <div class="!text-gray-800 flex gap-[15px] text-left group-hover:text-gray-800 group-focus-visible:text-gray-800">
           <span>{section.id}</span>
           <p class="">{section.title}</p>
         </div>
@@ -69,7 +69,7 @@ const { sections, classes = "" } = Astro.props;
   {sections.map((section, index) => (
     <p class={`
       section-detail section-detail-${index} break-words hyphens-auto -mt-0.5 max-w-[80ch]
-      normal-case col-span-full  flex flex-col gap-y-3
+      normal-case col-span-full  flex flex-col gap-y-[15px]
       ${index > 0 ? 'hidden' : ''}
     `}>
       {section.details}

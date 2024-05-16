@@ -57,21 +57,21 @@ switch (typeof span) {
 ---
 <div
   id={id}
-  class={`grid gap-x-3 gap-y-1 ${colClasses} ${spanClasses} ${classes}`}
+  class={`grid gap-x-[15px] gap-y-[5px] h-fit ${colClasses} ${spanClasses} ${classes}`}
 >
-  <div class="flex gap-3 col-span-full">
-    <p>{id}</p>
-    <p>{alt}</p>
+  <div class="flex gap-[15px] col-span-full h-fit">
+    <p class="leading-[15px]">{id}</p>
+    <p class="leading-[15px]">{alt}</p>
   </div>
   <!-- <div class={`
-    relative grid col-span-full gap-x-3 overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    relative grid col-span-full gap-x-[15px] overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${hasBorder ? 'with-border' : ''}
   `}> -->
   <div class={`
-    relative grid col-span-full gap-x-3 overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    relative grid col-span-full gap-x-[15px] overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
@@ -95,7 +95,7 @@ switch (typeof span) {
       classes="pause-icon transform opacity-0 brightness-100 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow-md"
     />
   </div>
-  {description && <p class="col-span-full mt-1">{description}</p>}
+  {description && <p class="col-span-full mt-[5px]">{description}</p>}
 </div>
 
 <style>

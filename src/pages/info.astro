@@ -2,7 +2,46 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Link from "../components/Link.astro";
-import SocialLinks from "../components/SocialLinks.astro";
+import CopyIcon from "../components/icons/CopyIcon.astro";
+import CheckIcon from "../components/icons/CheckIcon.astro";
+import RightArrowIcon from "../components/icons/RightArrowIcon.astro";
+import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
+
+const links: {
+  name: string;
+  url: string;
+  target?: "_self" | "_blank";
+}[] = [
+  {
+    name: "CV",
+    url: "/resume-max-georgopoulos.pdf",
+    target: '_self'
+  },
+  {
+    name: "Arena",
+    url: "https://www.are.na/max-georgopoulos",
+  },
+  {
+    name: "Layers",
+    url: "https://layers.to/maxgeorgopoulos",
+  },
+  {
+    name: "Github",
+    url:  "https://github.com/maxgeor",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/maxoulos",
+  },
+  {
+    name: "Dribbble",
+    url: "https://dribbble.com/maxgeo",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/max-georgopoulos-109095136/",
+  },
+];
 
 const heros = [
   { 
@@ -67,9 +106,9 @@ const interests = [
 <Layout>
   <h1 class="sr-only">Max Kevin Crapper Georgopoulos</h1>
   <Nav />
-  <div class="grid grid-cols-12 gap-3 md:ml-[108px]">
-    <div class="flex flex-col col-span-full sm:col-span-6 lg:col-span-3 gap-3  break-words hyphens-auto ">
-      <p>Max Kevin Crapper Georgopoulos</p>
+  <div class="grid grid-cols-8 gap-[15px] md:ml-[104px]">
+    <div class="flex flex-col col-span-full gap-[15px] sm:col-span-4 lg:col-span-2 gap-[15px]15px]15px]  break-words hyphens-auto ">
+      <p >Max Kevin Crapper Georgopoulos</p>
       <p>
         I'm a designer and developer based out of Toronto, but I bum
         around different places. I believe that the boundary between design
@@ -79,38 +118,67 @@ const interests = [
         Homme Plissé.
       </p>
     </div>  
-    <div class="col-span-full lg:col-span-3 lg:col-start-1 grid grid-cols-12 gap-3">
-      <div class="col-span-full sm:col-span-6 lg:col-span-full  ">
-        <SocialLinks />
+    <div class="col-span-full lg:col-span-2 lg:col-start-1 flex flex-col sm:flex-row lg:flex-col gap-[15px]">
+      <div class="sm:basis-1/2 lg:basis-1">
+        <ul>
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target={link.target}
+                class=" flex w-full items-center justify-between gap-[5px] transition duration-75 hover:bg-[#e1e1e1]"
+              >
+                {link.name}
+                <hr class="border-t h-px border-black border-dotted  w-full" />
+                {link.target === "_self" ? (
+                  <RightArrowIcon  classes="shrink-0 opacity-80 -ml-[3px]" />
+                ) : (
+                  <UpRightArrowIcon classes="shrink-0 opacity-80 -ml-[3px]" />
+                )}
+              </a>
+            </li>
+          ))}
+          <li>
+            <button
+              aria-label="Copy email"
+              class={`copy-email-button relative flex justify-between gap-[5px] w-full items-center ring-offset-2 ring-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink  cursor-default transition duration-75 hover:bg-[#e1e1e1]`}
+            >
+              <span class="capitalize">Email</span>
+              <hr class="border-t h-px border-black border-dotted w-full" />
+              <CopyIcon id="copy-icon" classes="shrink-0 opacity-80 " />
+              <CheckIcon id="check-icon" classes="hidden shrink-0 opacity-80" />
+            </button>
+          </li>
+        </ul>
       </div> 
-      <div class="lg:order-first col-span-full sm:col-span-6 lg:col-span-full ">
+      <div class="sm:basis-1/2 lg:basis-1">
         <div class="flex flex-col col-span-full  " >
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Product Thinking</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Great</p>
           </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Product Design</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Great</p>
           </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Copywriting</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Good</p>
           </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Frontend Dev</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Ok</p>
           </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Graphic Design</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Ok</p>
           </div>
-          <div class="flex items-baseline justify-between gap-[4px]">
+          <div class="flex items-baseline justify-between gap-[5px]">
             <p class="whitespace-nowrap">Backend Dev</p>
             <hr class="border-t h-px border-black border-dotted  w-full" />
             <p>Meh</p>
@@ -118,13 +186,13 @@ const interests = [
         </div>
       </div>  
     </div>
-    <div class="col-span-full lg:col-span-3 lg:col-start-1 grid grid-cols-12 gap-3">
-      <div class="col-start-1 col-span-full sm:col-span-6 lg:col-span-full">
+    <div class="col-span-full lg:col-span-2 lg:col-start-1 flex flex-col sm:flex-row lg:flex-col  gap-[15px]">
+      <div class="sm:basis-1/2 lg:basis-1">
         <h3 class="col-span-full lg:col-span-2 uppercase">Heros</h3>
         <ul class="flex flex-col col-span-full ">
           {heros.map((hero) => (
             <li class="pl-px">
-              <details class="group before:content-none flex w-full justify-between items-center gap-3 [&_summary]:open:cursor-zoom-out ">
+              <details class="group before:content-none flex w-full justify-between items-center gap-[15px] [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75  hover:bg-neutral-200  hover:cursor-zoom-in">{hero.name}</summary>
                 <p class="pl-[0.53rem]  normal-case font-medium">{hero.description} {hero.link && <Link href={hero.link} target="_blank" hasIcon={false} classes="inline  underline">Learn</Link>}</p>
               </details>
@@ -132,12 +200,12 @@ const interests = [
           ))}
         </ul>
       </div>
-      <div class="lg:col-start-1 col-span-full sm:col-span-6 lg:col-span-full">
+      <div class="sm:basis-1/2 lg:basis-1">
         <h3 class="col-span-full lg:col-span-2 uppercase">Interests</h3>
         <ul class="flex flex-col col-span-full ">
           {interests.map((interest) => (
             <li class="pl-px">
-              <details class="group before:content-none  flex w-full justify-between items-center gap-3 [&_summary]:open:cursor-zoom-out ">
+              <details class="group before:content-none  flex w-full justify-between items-center gap-[15px] [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75  hover:bg-neutral-200  hover:cursor-zoom-in ">{interest.title}</summary>
                 <p class="pl-[0.53rem]  normal-case font-medium">{interest.description} {interest.link && <Link href={interest.link} target="_blank" hasIcon={false} classes="inline  underline">Learn</Link>}</p>  
               </details>
@@ -146,8 +214,32 @@ const interests = [
         </ul>
       </div>
     </div>
-    <div class="justify-self-end pt-3 lg:pt-0 order-last col-span-full lg:col-span-9 lg:row-start-1 lg:col-start-4 h-0 -mb-3 lg:-my-3 -mr-3  -ml-3 md:ml-0 lg:ml-3">
+    <div class="justify-self-end pt-[5px] lg:pt-0 order-last col-span-full lg:col-span-6 lg:row-start-1 lg:col-start-3 h-0 -mb-[15px] lg:-my-[15px] -mr-[15px]  -ml-[15px] md:ml-0 lg:ml-[15px]">
       <img src="/me.png" class="lg:h-screen min-h-[450px] object-cover"  />
     </div>
   </div>
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailButtons: NodeListOf<HTMLButtonElement> = 
+      document.querySelectorAll('.copy-email-button');
+
+    emailButtons.forEach((button) => {
+      button?.addEventListener("click", () => {
+        navigator.clipboard.writeText('max123358@gmail.com');
+  
+        const copyIcon: HTMLElement | null = button.querySelector("#copy-icon");
+        const checkIcon: HTMLElement | null = button.querySelector("#check-icon");
+  
+        copyIcon?.classList.add("hidden");
+        checkIcon?.classList.remove("hidden");
+  
+        setTimeout(() => {
+          copyIcon?.classList.remove("hidden");
+          checkIcon?.classList.add("hidden");
+        }, 2500);
+      });
+    })
+  });
+</script>

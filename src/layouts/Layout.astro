@@ -19,10 +19,16 @@ const {
     <title>{title}</title>
     <meta name="description" content={description || "Designer & developer"} />
   </head>
-  <body
+  <!-- <body
     style="text-rendering: optimizeLegibility;"
     class={`
      bg-white text-gray-800  min-h-screen text-[10px] leading-3 font-medium selection:bg-[#e1e1e1] antialiased p-3 pt-8 md:pt-3
+    `}
+  > -->
+  <body
+    style="text-rendering: optimizeLegibility;"
+    class={`
+     bg-white text-gray-800 min-h-screen text-[12px] leading-[15px] font-medium selection:bg-[#e1e1e1] antialiased p-[15px] pt-10 md:pt-[15px]
     `}
   >
     <slot />
@@ -32,11 +38,6 @@ const {
 <style is:global> 
   .text-balance {
     text-wrap: balance;
-  }
-  
-  @font-face {
-    font-family: Gothic;
-    src: url(/fonts/gothic.ttf);
   }
 
   @font-face {

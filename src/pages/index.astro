@@ -8,7 +8,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout>
   <Nav />
-  <div class="col-span-full relative grid grid-cols-12 gap-3 md:ml-[108px]">
+  <div class="col-span-full relative grid grid-cols-8 gap-[15px] md:ml-[104px]">
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}

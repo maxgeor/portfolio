@@ -2,7 +2,8 @@
 import Divider from "./Divider.astro";
 import RightArrowIcon from "./icons/RightArrowIcon.astro";
 import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
-import CopyEmailButton from "./CopyEmailButton.astro";
+import CopyIcon from "./icons/CopyIcon.astro";
+import CheckIcon from "./icons/CheckIcon.astro";
 export interface Props {
   classes?: string;
 }
@@ -52,19 +53,51 @@ const links: {
       <a
         href={link.url}
         target={link.target}
-        class=" flex w-full items-center justify-between gap-1 transition duration-75 hover:bg-[#e1e1e1]"
+        class=" flex w-full items-center justify-between gap-[5px] transition duration-75 hover:bg-[#e1e1e1]"
       >
         {link.name}
         <hr class="border-t h-px border-black border-dotted  w-full" />
         {link.target === "_self" ? (
-          <RightArrowIcon classes="shrink-0 -mx-0.5" />
+          <RightArrowIcon  classes="shrink-0 opacity-80 -ml-[3px]" />
         ) : (
-          <UpRightArrowIcon classes="shrink-0 -mx-0.5" />
+          <UpRightArrowIcon classes="shrink-0 opacity-80 -ml-[3px]" />
         )}
       </a>
     </li>
   ))}
   <li>
-    <CopyEmailButton>email</CopyEmailButton>
+    <button
+      aria-label="Copy email"
+      class={`copy-email-button relative flex justify-between gap-[5px] w-full items-center ring-offset-2 ring-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink  cursor-default transition duration-75 hover:bg-[#e1e1e1]`}
+    >
+      <span class="capitalize">Email</span>
+      <hr class="border-t h-px border-black border-dotted w-full" />
+      <CopyIcon id="copy-icon" classes="shrink-0 opacity-80 " />
+      <CheckIcon id="check-icon" classes="hidden shrink-0 opacity-80" />
+    </button>
   </li>
-</ul
+</ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailButtons: NodeListOf<HTMLButtonElement> = 
+      document.querySelectorAll('.copy-email-button');
+
+    emailButtons.forEach((button) => {
+      button?.addEventListener("click", () => {
+        navigator.clipboard.writeText('max123358@gmail.com');
+  
+        const copyIcon: HTMLElement | null = button.querySelector("#copy-icon");
+        const checkIcon: HTMLElement | null = button.querySelector("#check-icon");
+  
+        copyIcon?.classList.add("hidden");
+        checkIcon?.classList.remove("hidden");
+  
+        setTimeout(() => {
+          copyIcon?.classList.remove("hidden");
+          checkIcon?.classList.add("hidden");
+        }, 2500);
+      });
+    })
+  });
+</script>

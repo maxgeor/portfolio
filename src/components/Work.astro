@@ -2,6 +2,7 @@
 import RightArrowIcon from './icons/RightArrowIcon.astro';
 import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 import ScrollingBanner from './ScrollingBanner.astro'
+import { filters } from '../lib/filters.ts';
 
 type Roles = {
   long: string[],
@@ -42,13 +43,6 @@ const {
   isComingSoon = false,
 } = Astro.props;
 
-const filters = {
-  "case-study": "blue",
-  "client": "red",
-  "project": "#65bf4e",
-  "writing": "#F5C000",
-};
-
 const Element = isComingSoon ? 'div' : 'a';
 const props = 
   isComingSoon || isPrivate
@@ -60,47 +54,47 @@ const props =
 <Element
   {...props}
   class={`
-    relative group col-span-full sm:col-span-4 md:col-span-3 hover:bg-transparent
+    relative group col-span-full xs:col-span-4 lg:col-span-2 hover:bg-transparent
     ${isComingSoon || isPrivate ? 'cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
 >
   <div class={`overflow-hidden ${isComingSoon || isPrivate ? 'text-gray-800/40  hover:text-gray-800' : ''}`}>
     <div>
-      <div class="flex justify-between">
+      <div class="flex justify-between gap-[5px]">
         <h2 class="uppercase shrink-0 whitespace-nowrap">
           {title}
         </h2>
-        <div class="relative flex items-center gap-[3px] ">
+        <div class="relative flex items-center gap-[4px] ">
           <div class="flex">
             {studySlug ? (
               <span 
-                class="shrink-0 border border-white rounded-full h-[6px] w-[6px]"
+                class="shrink-0 border border-white rounded-full h-[7px] w-[7px]"
                 style={`background-color: ${filters["case-study"]}`}
               ></span>
             ) : null}
             {type === "client" ? (
               <span 
-                class="shrink-0 border border-white rounded-full h-[6px] w-[6px] -ml-0.5 first:m-0"
+                class="shrink-0 border border-white rounded-full h-[7px] w-[7px] -ml-0.5 first:m-0"
                 style={`background-color: ${filters["client"]}`}
               ></span>
             ) : null}
             {type === "project" ? (
               <span 
-                class="shrink-0 border border-white rounded-full h-[6px] w-[6px] -ml-0.5 first:m-0"
+                class="shrink-0 border border-white rounded-full h-[7px] w-[7px] -ml-0.5 first:m-0"
                 style={`background-color: ${filters["project"]}`}
               ></span>
             ) : null}
           </div>
-          <span>
+          <span class="truncate">
             {isPrivate ? (
               "Private"
             ) : isComingSoon ? (
               "Coming Soon"
             ) : studySlug ? (
-              <RightArrowIcon size='tiny' classes="opacity-75 group-hover:translate-x-px" />
+              <RightArrowIcon classes="group-hover:translate-x-px -mr-[2px]" />
             ) : (
-              <UpRightArrowIcon size='tiny' classes="opacity-75 group-hover:-translate-y-px group-hover:translate-x-px" />
+              <UpRightArrowIcon classes="group-hover:-translate-y-px group-hover:translate-x-px -mr-[2px]" />
             )}
           </span>
         </div>
