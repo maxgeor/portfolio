@@ -54,7 +54,7 @@ const props =
 <Element
   {...props}
   class={`
-    relative group col-span-full xs:col-span-4 lg:col-span-2 hover:bg-transparent
+    work-card relative group col-span-full xs:col-span-4 lg:col-span-2 hover:bg-transparent
     ${isComingSoon || isPrivate ? 'cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
@@ -104,7 +104,7 @@ const props =
       <p class="capitalize">{type}</p>
       <p>{year}</p>
     </div>
-    <picture id="work-pic" class={`relative h-auto  opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity`}>
+    <picture class={`work-card-picture relative h-auto opacity-0 group-focus:opacity-100 transition-opacity duration-300`}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
@@ -117,3 +117,49 @@ const props =
     </picture> 
   </div>
 </Element>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const workCards = document.querySelectorAll('.work-card');
+
+    const showInterdactingCards = (cards) => {
+      cards.forEach(card => {
+          const picture = card.querySelector('.work-card-picture');
+          const rect = card.getBoundingClientRect();
+          const middleOfScreen = window.innerHeight / 2;
+          const cardMiddle = rect.top + (rect.height / 2);
+  
+          if (cardMiddle > (middleOfScreen - (middleOfScreen * 0.8)) &&
+              cardMiddle < (middleOfScreen + (middleOfScreen * 0.8))) {
+              picture.style.opacity = '1';
+              picture.style.textOpacity = '1';
+          } else {
+              picture.style.opacity = '0';
+          }
+      });
+    }
+
+    if (window.innerWidth >= 1040) {
+      workCards.forEach(card => {
+        let timer;
+
+        card.addEventListener('mouseenter', () => {
+            const picture = card.querySelector('.work-card-picture');
+            picture.style.opacity = '1';
+
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+              picture.style.opacity = '0';
+            }, 4000);
+        });
+      });
+    }
+
+    if (window.innerWidth < 1040) {
+      showInterdactingCards(workCards);
+      window.addEventListener('scroll', () => {
+        showInterdactingCards(workCards);
+      });
+    }
+  });
+</script>
