@@ -6,7 +6,6 @@ import { formatDate } from '../utils/formatting';
 const { frontmatter } = Astro.props;
 const formattedDate = formatDate(frontmatter.date);
 ---
-
 <Layout title={frontmatter.title}>
   <Nav activeTabs={['writing']} />
   <main class="flex flex-col gap-[15px] col-span-full md:ml-[104px]">
@@ -16,7 +15,7 @@ const formattedDate = formatDate(frontmatter.date);
     </div>  
     <article
       class={`
-        flex flex-col gap-[15px] max-w-[80ch] col-span-full lg:col-span-full
+        flex flex-col gap-[15px] max-w-[80ch] col-span-full lg:col-span-full pb-[45px]
         prose-xs leading-[15px]
         prose-headings:uppercase
         prose-p:my-0

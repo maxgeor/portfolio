@@ -19,12 +19,14 @@ const writings = await getCollection('writing');
         const dateB: any = new Date(b.data.date);
         return dateB - dateA;
       }).map((writing) => (
-        <Writing
-          title={writing.data.title}
-          href={`/writing/${writing.slug}`}
-          date={writing.data.date}
-        />
-      ))}
+          <Writing
+            title={writing.data.title}
+            href={`/writing/${writing.slug}`}
+            date={writing.data.date}
+            preview={writing.data.preview}
+          />
+        )
+      )}
   </div>
 </Layout>
 
