@@ -1,15 +1,13 @@
 ---
-import Grid from '../Grid.astro';
-
 export interface Props {
   title?: string
 }
 
 const { title } = Astro.props;
 ---
-<div class="relative flex flex-col col-span-full gap-y-[5px] gap-x-[15px] border-t first:border-none pt-[15px] md:first:pt-0 -mx-[15px] 2xl:mx-0 px-[15px] 2xl:px-0" >
-  {title && <h1 class="uppercase text-pretty leading-[10px]">{title}</h1>}
-  <p class="text-[#303947] break-words hyphens-auto tracking-[-0.0125em] text-[20px] leading-[20px] xl:text-[24px] xl:leading-[25px]  ">
+<div class="relative flex flex-col col-span-full gap-y-[5px] gap-x-[15px] border-t first:border-none pt-[15px] lg:first:pt-0 -mx-[15px] 3xl:mx-0 px-[15px] 3xl:px-0" >
+  {title && <h1 class="uppercase text-pretty ">{title}</h1>}
+  <p class="max-w-[80ch] text-[#303947] break-words hyphens-auto tracking-[-0.01em] text-[20px] leading-[20px] xl:text-[24px] xl:leading-[25px]  ">
     <slot />
   </p>
 </div>

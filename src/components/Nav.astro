@@ -68,17 +68,17 @@ const {
         <li>
           <a 
             href={`/?filter=${name}`} 
-            class={`group relative flex items-center  gap-1 capitalize hover:bg-transparent -ml-px`}
+            class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent`}
           >
             <span 
               class={`
-                border border-white rounded-full h-[7px] w-[7px] mt-px
+                border border-white rounded-full h-[7px] w-[7px] mt-px -mx-px
                 ${activeTabs.includes(name) ? '' : 'hidden group-hover:block'}
               `}
               style={{ backgroundColor: color }}
             ></span>
             {!activeTabs.includes(name) && (
-              <span class="group-hover:hidden bg-[#d1d1d1] border border-white rounded-full h-[7px] w-[7px] mt-px"></span>
+              <span class="group-hover:hidden bg-[#d1d1d1] border border-white rounded-full h-[7px] w-[7px] mt-px -mx-px"></span>
             )}
             <p class={activeTabs.includes(name) ? 'opacity-100' : 'opacity-40 group-hover:opacity-100'}>
               {name.replace('-', ' ')}

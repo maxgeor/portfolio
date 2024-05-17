@@ -1,4 +1,6 @@
 ---
+import Caption from './Caption.astro';
+
 export interface Props {
   src: string;
   alt: string;
@@ -57,16 +59,10 @@ switch (typeof span) {
   id={id}
   class={`
     grid gap-x-[15px] gap-y-[5px] h-fit
-    ${hasCaption ? '' : ''}
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
-  {hasCaption && (
-    <div class="flex gap-[15px] col-span-full">
-      <p>{id}</p>
-      <p>{alt}</p>
-    </div>
-  )}
+  {hasCaption && <Caption id={id} text={alt} />}
   <figure class={`
     image grid col-span-full gap-x-[15px] 
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
@@ -81,7 +77,7 @@ switch (typeof span) {
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-[#e9ebee]'}
+        ${hasBorder && 'border border-gray-150'}
       `}
     />
   </figure>

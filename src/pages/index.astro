@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Work from "../components/Work.astro";
+import Writing from "../components/Writing.astro";
 import { getCollection } from 'astro:content';
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
+const writings = await getCollection('writing');
 ---
 <Layout>
   <Nav />
@@ -12,6 +14,17 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}
+    {writings?.sort((a, b) => {
+        const dateA: any = new Date(a.data.date);
+        const dateB: any = new Date(b.data.date);
+        return dateB - dateA;
+      }).map((writing) => (
+        <Writing
+          title={writing.data.title}
+          href={`/writing/${writing.slug}`}
+          date={writing.data.date}
+        />
+      ))}
   </div>
 </Layout>
 
@@ -27,8 +40,6 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
     position: absolute;
     background-color: green;
     color: white;
-    /* background: url('/cloud.gif'); */
-    /* animation: shimmer 100s infinite 0s linear; */
   }
 
   @keyframes spin {

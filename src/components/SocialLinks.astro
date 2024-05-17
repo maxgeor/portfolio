@@ -1,5 +1,4 @@
 ---
-import Divider from "./Divider.astro";
 import RightArrowIcon from "./icons/RightArrowIcon.astro";
 import UpRightArrowIcon from "./icons/UpRightArrowIcon.astro";
 import CopyIcon from "./icons/CopyIcon.astro";
@@ -47,7 +46,7 @@ const links: {
 ];
 ---
 
-<ul class={`flex flex-col  ${classes}`}>
+<ul>
   {links.map((link) => (
     <li>
       <a

@@ -1,4 +1,5 @@
 ---
+import Caption from "./Caption.astro";
 import PauseIcon from "../icons/PauseIcon.astro";
 import { stripExtension } from "../../utils/formatting";
 
@@ -16,6 +17,7 @@ export interface Props {
   description?: string;
   hasPadding?: boolean;
   hasBorder?: boolean;
+  hasCaption?: boolean;
   orientation?: 'vertical' | 'horizontal';
   classes?: string;
 }
@@ -28,6 +30,7 @@ const {
   description = "",
   hasPadding = false,
   hasBorder = false,
+  hasCaption = true,
   orientation = 'horizontal',
   classes = "" 
 } = Astro.props;
@@ -59,17 +62,7 @@ switch (typeof span) {
   id={id}
   class={`grid gap-x-[15px] gap-y-[5px] h-fit ${colClasses} ${spanClasses} ${classes}`}
 >
-  <div class="flex gap-[15px] col-span-full h-fit">
-    <p class="leading-[15px]">{id}</p>
-    <p class="leading-[15px]">{alt}</p>
-  </div>
-  <!-- <div class={`
-    relative grid col-span-full gap-x-[15px] overflow-visible cursor-pointer transition duration-[250ms] ease-out
-    ${colClasses}
-    ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
-    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${hasBorder ? 'with-border' : ''}
-  `}> -->
+  {hasCaption && <Caption id={id} text={alt} />}
   <div class={`
     relative grid col-span-full gap-x-[15px] overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
@@ -100,7 +93,7 @@ switch (typeof span) {
 
 <style>
   .with-border::after {
-    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.065);
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.08);
     content: '';
     display: block;
     height: 100%;

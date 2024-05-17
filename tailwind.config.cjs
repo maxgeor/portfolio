@@ -26,8 +26,8 @@ module.exports = {
       },
       colors: {
         gray: {
+          150: "#E6E9ED",
           200: "#DBDEE6",
-          // 200: "#DCDCDC",
         },
         green: 'green',
         pink: '#eb47ca',
@@ -50,7 +50,8 @@ module.exports = {
       },
       screens: {
         xs: '450px',
-        lg: '1024px'
+        lg: '1024px',
+        '3xl': '1600px',
       },
       maxWidth: {
         '2xl': '1480px',

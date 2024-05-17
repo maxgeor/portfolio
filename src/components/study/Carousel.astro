@@ -1,6 +1,7 @@
 ---
 import Image from "./Image.astro";
 import Video from "./Video.astro";
+import Caption from "./Caption.astro";
 
 export interface Props {
   slides: {
@@ -58,54 +59,64 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
       ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
     `}
   >
-    <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-200 transition duration-75">
+    <div class="md:disabled:group-hover:bg-transparent md:group-hover:bg-neutral-150 transition duration-75">
       Next
     </div>
   </button>
   <div class={`
     flex flex-col gap-2 col-span-full 
     ${orientation === 'vertical' ? (
-      'xs:col-span-8 xs:col-start-3'
+      'xs:col-span-10 xs:col-start-2'
     ) : (
-      'md:col-span-8 md:col-start-3'
+      'md:col-span-10 md:col-start-2'
     )}
   `}>
-    <div class={`
-      relative w-full rotate-0 overflow-hidden  border-b border-neutral-150
-      ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    `}>
-      {
-        slides?.map((slide, index) => (
-          <div class={`
-            slide slide-${index} 
-            absolute h-fit w-full transition-all duration-[450ms] ease-in-out 
-          `}>
-            {slide.type === "video" ? (
-              <Video
-                src={slide.src}
-                alt={slide.alt}
-                id={slide.id}
-                
-                span={slide.span || 12}
-                hasPadding={slide.hasPadding}
-                hasBorder={true}
-                classes={slide.classes}
-              />
-            ) : (
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                id={slide.id}
-                span={slide.span}
-                hasPadding={slide.hasPadding}
-                hasBorder={true}
-                orientation={orientation}
-                classes={slide.classes}
-              />
-            )}
+    <div class="flex flex-col gap-[5px]">
+      <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
+        {slides?.map((slide, index) => (
+          <div class={`slide-caption slide-caption-${index} absolute h-fit w-full transition-all duration-[450ms] ease-in-out`}>
+            <Caption id={slide.id} text={slide.alt} />
           </div>
-        ))
-      }
+        ))}
+      </div>
+      <div class={`
+        relative w-full rotate-0 overflow-hidden border border-gray-150
+        ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+      `}>
+        {
+          slides?.map((slide, index) => (
+            <div class={`
+              slide slide-${index} 
+              absolute h-fit w-full transition-all duration-[450ms] ease-in-out
+            `}>
+              {slide.type === "video" ? (
+                <Video
+                  src={slide.src}
+                  alt={slide.alt}
+                  id={slide.id}
+                  span={slide.span || 12}
+                  hasPadding={slide.hasPadding}
+                  hasBorder={false}
+                  hasCaption={false}
+                  classes={slide.classes}
+                />
+              ) : (
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  id={slide.id}
+                  span={slide.span}
+                  hasPadding={slide.hasPadding}
+                  hasBorder={false}
+                  orientation={orientation}
+                  hasCaption={false}
+                  classes={slide.classes}
+                />
+              )}
+            </div>
+          ))
+        }
+      </div>
     </div>
     <div 
       class={`
@@ -129,7 +140,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
           </div>
         </button>
       ))}
-      <div class={`absolute -top-0.5 right-0 flex items-center gap-0.5 ${orientation === 'vertical' ? 'xs:hidden' : 'md:hidden'}`}>
+      <div class={`absolute -top-0.5 -right-1.5 flex items-center gap-0 ${orientation === 'vertical' ? 'xs:hidden' : 'md:hidden'}`}>
         <button 
           disabled="true" 
           aria-label="Previous slide" 
@@ -179,6 +190,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
 
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
+    const slideCaptions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide-caption");
     const counters = carousel.querySelectorAll(".counter-current") as NodeListOf<HTMLElement>;
     const slideTitles: NodeListOf<HTMLButtonElement> = carousel.querySelectorAll(".slide-title");
     const prevSlideBtns = carousel.querySelectorAll(".btn-prev") as NodeListOf<HTMLButtonElement>;
@@ -192,9 +204,10 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
     const slideTo = (position: number) => {
       curSlide = position;
 
-      slides.forEach((slide, indx) => 
-        slide.style.transform = `translateX(${100 * (indx - position)}%)`
-      );
+      slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(${100 * (index - position)}%)`;
+        slideCaptions[index].style.transform = `translateX(${100 * (index - position)}%)`;
+      });
 
       if (counters.length > 0) {
         counters.forEach(counter => counter.innerHTML = `${curSlide + 1}`)
@@ -231,7 +244,10 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
       });
     }
 
-    slides.forEach((slide, indx) => (slide.style.transform = `translateX(${indx * 100}%)`));
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${index * 100}%)`
+      slideCaptions[index].style.transform = `translateX(${index * 100}%)`
+    });
 
     slideTitles.forEach(title => title.addEventListener('click', () => {
       const position = parseInt(title.dataset?.position || '0');
