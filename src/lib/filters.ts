@@ -1,6 +1,7 @@
 export const filters = {
-  "case-study": "blue",
-  "client": "red",
-  "project": "#65bf4e",
+  "case-study": "#0067FF",
+  "client": "#FF0074",
+  // "project": "#65bf4e",
+  "project": "#30C335",
   "writing": "#E8B600",
 };

@@ -1,5 +1,4 @@
 ---
-import ScrollingBanner from './ScrollingBanner.astro';
 import RightArrowIcon from './icons/RightArrowIcon.astro';
 import { filters } from '../lib/filters.ts';
 import { formatDate } from '../utils/formatting';
@@ -25,15 +24,15 @@ const formattedDate = formatDate(date);
     </div>
     <div class="flex items-center gap-[4px] ">
       <span 
-        class="shrink-0 border border-white group-hover:border-neutral-200 rounded-full h-[7px] w-[7px]"
+        class="shrink-0 border border-white dark:border-black  h-[7px] w-[7px]"
         style={{ backgroundColor: filters["writing"] }}
       ></span>
       <RightArrowIcon classes=" -mr-[2px]" />
     </div>
   </div>
-  <div class="writing-card-preview opacity-0 group-focus:opacity-100 transition-opacity duration-300 relative h-[210px] overflow-hidden text-gray-400">
+  <div class="writing-card-preview opacity-0 group-focus:opacity-100 !group-hover:opacity-100  duration-300 relative h-[210px] overflow-hidden text-gray-800/40 dark:text-neutral-300/40">
     {preview}
-    <div class="absolute inset-0 top-auto h-[75px] bg-gradient-to-t from-white"></div>
+    <div class="absolute inset-0 top-auto h-[75px] bg-gradient-to-t from-white dark:from-black "></div>
   </div>
 </a>
 
@@ -62,14 +61,14 @@ const formattedDate = formatDate(date);
       workCards.forEach(card => {
         let timer;
 
-        card.addEventListener('mouseenter', () => {
+        card.addEventListener('mousemove', () => {
             const picture = card.querySelector('.writing-card-preview');
             picture.style.opacity = '1';
 
             clearTimeout(timer);
             timer = setTimeout(() => {
               picture.style.opacity = '0';
-            }, 4000);
+            }, 3000);
         });
       });
     }

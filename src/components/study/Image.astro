@@ -73,11 +73,11 @@ switch (typeof span) {
       src={src}
       alt={alt}
       class={`
-         h-full w-full object-cover ring-1 ring-inset ring-black/10 bg-[#f5f6f8]
+        h-full w-full object-cover bg-neutral-100 dark:bg-neutral-900
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-gray-150'}
+        ${hasBorder && 'border border-gray-150 dark:border-black'}
       `}
     />
   </figure>

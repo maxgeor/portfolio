@@ -18,8 +18,9 @@ const {
 
 <Layout title={title} description={description}>
   <Nav activeTabs={["case-study", type]} />
-  <div class="relative col-span-full grid grid-cols-8 gap-y-[15px] gap-x-[15px] md:ml-[103px]"> 
-    <aside id="hero" class='[&>div]:h-min grid grid-cols-2 lg:flex flex-col border-y md:border-t-0 md:border-l md:-ml-[15px] md:-mt-[15px] lg:m-0 lg:border-x lg:border-y-0 lg:fixed left-[103px] top-0 bottom-0 lg:w-[calc((100vw-104px-15px)/(8/2))] col-span-full lg:col-span-3 p-[15px] lg:pr-[14px] -m-[15px] -mt-[5px] lg:h-screen gap-[15px] 3xl:max-w-[320px]'>
+  <div class="relative col-span-full grid grid-cols-8 gap-y-[15px] gap-x-[15px] md:ml-[104px]"> 
+    <!-- <aside id="hero" class='border-gray-200 dark:border-neutral-800 [&>div]:h-min grid grid-cols-2 lg:flex flex-col border-y md:border-t-0 md:border-l md:-ml-[15px] md:-mt-[15px] lg:m-0 lg:border-x lg:border-y-0 lg:fixed left-[104px] top-0 bottom-0 lg:w-[calc((100vw-104px-15px)/(8/2))] col-span-full lg:col-span-3 p-[15px] lg:pr-[14px] -m-[15px] -mt-[5px] lg:h-screen gap-[15px] 3xl:max-w-[320px]'> -->
+    <aside id="hero" class='border-gray-200 dark:border-neutral-800 [&>div]:h-min grid grid-cols-2 lg:flex flex-col border-y md:-mt-[15px] lg:m-0 lg:border-y-0 lg:fixed left-[104px] top-0 bottom-0 lg:w-[calc((100vw-104px-15px)/(8/2))] col-span-full lg:col-span-3 p-[15px] lg:pr-[14px] -m-[15px] -mt-[5px] lg:h-screen gap-[15px] 3xl:max-w-[320px]'>
       <div>
         <div class="flex justify-between gap-[15px] ">
           <p class="uppercase">{title}</p>
@@ -50,7 +51,8 @@ const {
         <p class="uppercase">Year</p>
         <p>{year}</p>
       </div>
-      <hr class="col-span-full -mx-[15px]" />
+      <!-- <hr class="col-span-full -mx-[15px] border-gray-200 dark:border-neutral-800" /> -->
+      <hr class="col-span-full border-gray-200 dark:border-neutral-800 " />
       <div class="col-start-1 col-span-full md:col-span-1">
         <p class="uppercase">Problem</p>
         <p class="text-balance">{tldr?.problem || "—"}</p>
@@ -78,11 +80,11 @@ const {
     </aside>
     <article
       id="article"
-      class="md:border-l md:-mx-[15px] md:-mb-[15px] lg:ml-0 md:pl-[15px] lg:pl-0 lg:border-0 pb-[84px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[320px] 3xl:max-w-[1400px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
+      class="border-gray-200 dark:border-black md:border-l md:-mx-[15px] md:-mb-[15px] lg:ml-0 md:pl-[15px] lg:pl-0 lg:border-0 pb-[84px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[320px] 3xl:max-w-[1400px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
     >
       <div
         class={`
-          flex flex-col gap-x-[15px] gap-y-[25px]
+          flex flex-col gap-x-[15px] gap-y-[30px]
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-pink
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5

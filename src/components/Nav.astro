@@ -18,14 +18,13 @@ const {
     <a href="/info" class="uppercase col-span-6 justify-self-end py-[10px]">Info</a>
   </div>
   <div class="relative">
-    <button id="filter-dropdown-button" class={`mix-blend-difference	 relative py-[10px] pr-[14px] group flex items-center justify-between gap-[5px] capitalize font-medium`}>
+    <button id="filter-dropdown-button" class={`relative py-[10px] pr-[14px] group flex items-center justify-between gap-[5px] capitalize font-medium`}>
       <div class="flex">
         {(activeTabs.length === 4 ? Object.keys(filters) : activeTabs).map((name: NavTab) => (
           <span 
-            class="shrink-0 border border-box h-[7px] w-[7px] rounded-full group-hover:bg-neutral-200  -ml-0.5 first:ml-0" 
+            class="shrink-0 border border-white dark:border-black border-box h-[7px] w-[7px] " 
             style={{ 
               backgroundColor: filters[name],
-              borderColor: "white",
             }}
           ></span>
         ))}
@@ -39,7 +38,7 @@ const {
       </svg>
     </button>
     <div id="filter-dropdown-menu" class="hidden absolute -right-[15px] top-[20px] p-[15px]">
-      <ul class="w-28 ring-1 ring-gray-800/15  py-[5px] p-[10px] bg-white">
+      <ul class="w-28 ring-1 ring-gray-800/15 dark:ring-white/15  py-[5px] p-[10px] bg-white dark:bg-black">
         {Object.entries(filters).map(([name, color]) => (
           <li>
             <a 
@@ -47,7 +46,7 @@ const {
               class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent`}
             >
               <span 
-                class="rounded-full border border-white h-[7px] w-[7px] mt-px -ml-px"
+                class=" border border-white dark:border-black h-[7px] w-[7px] mt-px -ml-px"
                 style={{ 
                   backgroundColor: color,
                 }}
@@ -60,7 +59,7 @@ const {
     </div>
   </div>
 </nav>
-<nav class="hidden md:flex flex-col justify-between  gap-[15px] md:w-[74px] md:h-[calc(100vh-32px)] md:fixed top-[15px] left-[15px] ">
+<nav class="hidden md:flex flex-col justify-between  gap-[15px] md:w-[75px] md:h-[calc(100vh-32px)] md:fixed top-[15px] left-[15px] ">
   <div class="flex flex-col gap-[15px]">
     <a href="/" class="uppercase">MKCG</a>
     <ul>
@@ -68,17 +67,17 @@ const {
         <li>
           <a 
             href={`/?filter=${name}`} 
-            class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent`}
+            class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent whitespace-nowrap`}
           >
             <span 
               class={`
-                border border-white rounded-full h-[7px] w-[7px] mt-px -mx-px
+                border border-white dark:border-black h-[7px] w-[7px] mt-px shrink-0
                 ${activeTabs.includes(name) ? '' : 'hidden group-hover:block'}
               `}
               style={{ backgroundColor: color }}
             ></span>
             {!activeTabs.includes(name) && (
-              <span class="group-hover:hidden bg-[#d1d1d1] border border-white rounded-full h-[7px] w-[7px] mt-px -mx-px"></span>
+              <span class="group-hover:hidden bg-[#d1d1d1] dark:bg-neutral-700 border border-white dark:border-black  h-[7px] w-[7px] mt-px shrink-0"></span>
             )}
             <p class={activeTabs.includes(name) ? 'opacity-100' : 'opacity-40 group-hover:opacity-100'}>
               {name.replace('-', ' ')}
