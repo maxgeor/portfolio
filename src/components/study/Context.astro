@@ -5,10 +5,10 @@ export interface Props {
 
 const { title } = Astro.props;
 ---
-<!-- <div class="relative flex flex-col col-span-full gap-y-[5px] gap-x-[15px] border-t border-gray-200 dark:border-black first:border-none pt-[15px] lg:first:pt-0 -mx-[15px] 3xl:mx-0 px-[15px] 3xl:px-0" > -->
-<div class="relative flex flex-col col-span-full gap-y-[5px] gap-x-[15px] border-t border-gray-200 dark:border-black first:border-none  lg:first:pt-0 -mx-[15px] 3xl:mx-0 px-[15px] 3xl:px-0" >
+<!-- <div class="relative flex flex-col col-span-full gap-y-5 gap-x-5 border-t border-neutral-200 dark:border-black first:border-none pt-15 lg:first:pt-0 -mx-15 3xl:mx-0 px-15 3xl:px-0" > -->
+<div class="relative flex flex-col col-span-full gap-y-5" >
   {title && <h1 class="uppercase text-pretty ">{title}</h1>}
-  <p class="break-words hyphens-auto tracking-[-0.0075em] text-[20px] leading-[20px] xl:text-[24px] xl:leading-[25px]  ">
+  <p class="max-w-[80ch] break-words hyphens-auto tracking-[-0.01em] dark:tracking-[-0.0025em] text-[19px] leading-[20px] xl:text-[24px] xl:leading-[25px] 3xl:text-30">
     <slot />
   </p>
 </div>
@@ -22,18 +22,26 @@ const { title } = Astro.props;
   p > mark.solution::before {
     content: '';
     display: inline-block;
-    height: 18px;
-    width: 18px;
-    margin-right: 6px;
+    height: 20px;
+    width: 20px;
+    margin-right: 7px;
     vertical-align: baseline;
-    background-color: rgb(255, 49, 207);
+    background-color: var(--accent-color);
   }
 
-@media (max-width: 1279px) {
-  p > mark.solution::before {
-    height: 15px;
-    width: 15px;
-    margin-right: 5px;
+  @media (max-width: 1649px) {
+    p > mark.solution::before {
+      height: 17px;
+      width: 17px;
+      margin-right: 6px;
+    }
   }
-}
+
+  @media (max-width: 1279px) {
+    p > mark.solution::before {
+      height: 14px;
+      width: 14px;
+      margin-right: 5px;
+    }
+  }
 </style>

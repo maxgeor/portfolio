@@ -7,27 +7,21 @@ const { frontmatter } = Astro.props;
 const formattedDate = formatDate(frontmatter.date);
 ---
 <Layout title={frontmatter.title}>
-  <Nav activeTabs={['writing']} />
-  <main class="flex flex-col gap-[15px] col-span-full md:ml-[105px]">
+  <Nav activeCategories={['writing']} />
+  <main class="flex flex-col gap-15 col-span-full md:ml-[var(--nav-offset)]">
     <div class="flex justify-between">
       <h1 class="uppercase">{frontmatter.title}</h1>
       <p>{formattedDate}</p>
     </div>  
     <article
       class={`
-        flex flex-col gap-[15px] max-w-[80ch] col-span-full lg:col-span-full pb-[45px]
-        prose-xs leading-[15px]
+        flex flex-col gap-15 max-w-[80ch] col-span-full lg:col-span-full pb-[45px]
+        text-12
         prose-headings:uppercase
         prose-p:my-0
-        first:prose-p:mt-0
-        last:prose-p:mb-0
-        prose-a:underline hover:prose-a:bg-black hover:prose-a:text-white
-        prose-code:bg-neutral-700/50 prose-code: prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-medium prose-code:whitespace-nowrap
-        prose-ul:my-0
-        prose-ol:my-0
-        prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
-        prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0
-        prose-li:marker:text-gray-800  
+        prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
+        prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0
+        prose-li:marker:text-inherit
 
       `}
     >

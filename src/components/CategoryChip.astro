@@ -1,0 +1,16 @@
+---
+import { categories } from '../lib/categories.ts';
+
+type Props = {
+  category: 'case-study' | 'client' | 'project' | 'writing';
+  classes?: string;
+}
+
+const { category, classes = "" } = Astro.props;
+---
+<span 
+  class={`${classes} shrink-0 h-[6px] w-[6px] ml-[2px] first:ml-0`} 
+  style={{ 
+    backgroundColor: categories[category],
+  }}
+></span>

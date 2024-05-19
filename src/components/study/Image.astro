@@ -58,28 +58,28 @@ switch (typeof span) {
 <div
   id={id}
   class={`
-    grid gap-x-[15px] gap-y-[5px] h-fit
+    grid gap-x-5 gap-y-5 h-fit
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
   {hasCaption && <Caption id={id} text={alt} />}
   <figure class={`
-    image grid col-span-full gap-x-[15px] 
+    image relative grid col-span-full gap-x-5 
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
+    ${hasBorder ? 'dark-border dark:light-border' : ''}
   `}>
     <img
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover bg-neutral-100 dark:bg-neutral-900
+        h-full w-full object-cover bg-gray-100 dark:bg-neutral-800
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
-        ${hasBorder && 'border border-gray-150 dark:border-black'}
       `}
     />
   </figure>
-  {description && <p class="col-span-full mt-[5px]">{description}</p>}
+  {description && <p class="col-span-full">{description}</p>}
 </div>

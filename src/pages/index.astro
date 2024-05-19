@@ -10,7 +10,7 @@ const writings = await getCollection('writing');
 ---
 <Layout>
   <Nav />
-  <div class="col-span-full relative grid grid-cols-8 gap-[15px] md:ml-[105px]">
+  <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[60px]">
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}

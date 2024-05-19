@@ -19,7 +19,7 @@ export interface Props {
 const { sections, classes = "" } = Astro.props;
 ---
 
-<div class={`paginated-section flex flex-col gap-[15px] ${classes}`}>
+<div class={`paginated-section flex flex-col gap-15 ${classes}`}>
   {sections.map((section, index) => {
     return section.media.type === 'video' ? (
       <Video
@@ -54,11 +54,11 @@ const { sections, classes = "" } = Astro.props;
         data-index={index} 
         class={`
           group section-title section-title-${index} 
-          w-fit px-[3px] -mx-[3px]  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink
+          w-fit px-[3px] -mx-[3px]  
           ${index === 0 ? 'active' : ''}
         `}
       >
-        <div class="!text-gray-800 flex gap-[15px] text-left group-hover:text-gray-800 group-focus-visible:text-gray-800">
+        <div class="!text-gray-800 flex gap-15 text-left group-hover:text-gray-800 group-focus-visible:text-gray-800">
           <span>{section.id}</span>
           <p class="">{section.title}</p>
         </div>
@@ -68,7 +68,7 @@ const { sections, classes = "" } = Astro.props;
   {sections.map((section, index) => (
     <p class={`
       section-detail section-detail-${index} break-words hyphens-auto -mt-0.5 max-w-[80ch]
-      normal-case col-span-full  flex flex-col gap-y-[15px]
+      normal-case col-span-full  flex flex-col gap-y-15
       ${index > 0 ? 'hidden' : ''}
     `}>
       {section.details}

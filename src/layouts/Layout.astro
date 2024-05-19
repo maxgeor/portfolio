@@ -22,50 +22,60 @@ const {
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class={`
-     relative bg-white dark:bg-black text-gray-800 dark:text-neutral-300 min-h-screen text-[12px] leading-[15px] font-medium selection:bg-[#e1e1e1] p-[15px] pt-10 md:pt-[15px]
-    `}
+    class="relative bg-white dark:bg-black text-gray-800 dark:text-neutral-300 min-h-screen text-12 selection:bg-[var(--highlight-color)] font-medium p-15 pt-[40px] md:pt-15"
   >
-  <!-- <body
-    style="text-rendering: optimizeLegibility;"
-    class={`
-     relative bg-white dark:bg-black text-gray-800 dark:text-neutral-300 min-h-screen text-[12px] leading-[15px] font-medium selection:bg-[#e1e1e1] p-[15px] pt-10 md:pt-[15px]
-    `}
-  > -->
     <slot />
     <ThemeToggle />
   </body>
 </html>
 
 <style is:global> 
-  .text-balance {
-    text-wrap: balance;
-  }
-
   @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
   }
 
+  :root {
+    --nav-width: 75px;  
+    --nav-offset: calc(var(--nav-width) + (15px * 2));
+    --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
+    --highlight-color: #eaeaea;
+    --accent-color: rgb(255, 49, 207);
+  }
+
+  ::-moz-selection { 
+    background-color: var(--highlight-color);
+  }
+
+  ::selection {
+    background-color: var(--highlight-color);
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: #eaeaea;
+    -webkit-tap-highlight-color: var(--accent-color);
   }
+
+  html.dark {
+    --highlight-color: #323232;
+  }
+
   a {
     text-underline-offset: 2px;
   }
   
-  a:focus-visible, 
-  button:focus-visible,
-  summary:focus-visible {
-    outline: solid 2px rgb(255, 49, 207);
+  a, button, summary {
+    transition: background-color 0.075s ease-in-out;
+  }
+  
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: solid 2px var(--accent-color);
     outline-offset: 1px;
   }
 
-
-  a:hover {
-    background-color: #eaeaea;
+  a:hover, button:hover, summary:hover {
+    background-color: var(--highlight-color);
     text-decoration: none;
   }
 
@@ -81,21 +91,27 @@ const {
     text-decoration-thickness: 0.08em;
   }
 
-  sup {
-    margin-left: 1px;
+  .light-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(255,255,255,0.09);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 
-  select::-ms-expand {
-    display: none;
-  } 
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .dark-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.09);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .text-balance {
+    text-wrap: balance;
   }
-
 </style>

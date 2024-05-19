@@ -1,8 +1,9 @@
 ---
+import CategoryChip from './CategoryChip.astro';
 import RightArrowIcon from './icons/RightArrowIcon.astro';
 import UpRightArrowIcon from './icons/UpRightArrowIcon.astro';
 import ScrollingBanner from './ScrollingBanner.astro'
-import { filters } from '../lib/filters.ts';
+import { categories } from '../lib/categories.ts';
 
 type Roles = {
   long: string[],
@@ -55,36 +56,21 @@ const props =
   {...props}
   class={`
     work-card relative group col-span-full xs:col-span-4 lg:col-span-2 hover:bg-transparent
-    ${isComingSoon || isPrivate ? 'cursor-not-allowed' : 'cursor-pointer'}
+    ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
 >
-  <div class={`overflow-hidden ${isComingSoon || isPrivate ? 'text-gray-800/40 dark:text-neutral-200/40  hover:text-gray-800 dark:hover:text-neutral-200' : ''}`}>
-    <div>
-      <div class="flex justify-between gap-[5px]">
+  <div class='overflow-hidden'>
+    <div class="work-card-content transition-all duration-300">
+      <div class="flex justify-between gap-5">
         <h2 class="uppercase shrink-0 whitespace-nowrap">
           {title}
         </h2>
-        <div class="relative flex items-center gap-[4px] ">
+        <div class="relative flex items-center gap-5 ">
           <div class="flex">
-            {studySlug ? (
-              <span 
-                class="shrink-0 border border-white dark:border-black h-[7px] w-[7px]"
-                style={`background-color: ${filters["case-study"]}`}
-              ></span>
-            ) : null}
-            {type === "client" ? (
-              <span 
-                class="shrink-0 border border-white dark:border-black h-[7px] w-[7px]"
-                style={`background-color: ${filters["client"]}`}
-              ></span>
-            ) : null}
-            {type === "project" ? (
-              <span 
-                class="shrink-0 border border-white dark:border-black h-[7px] w-[7px]"
-                style={`background-color: ${filters["project"]}`}
-              ></span>
-            ) : null}
+            {studySlug && <CategoryChip category="case-study" />}
+            {type === "client" && <CategoryChip category="client" />} 
+            {type === "project" && <CategoryChip category="project" />} 
           </div>
           <span class="truncate">
             {isPrivate ? (
@@ -92,7 +78,7 @@ const props =
             ) : isComingSoon ? (
               "Soon"
             ) : studySlug ? (
-              <RightArrowIcon classes="-mr-[4px]" />
+              <RightArrowIcon classes="-mr-[3px]" />
             ) : (
               <UpRightArrowIcon classes="-mr-[4px]" />
             )}
@@ -104,7 +90,7 @@ const props =
       <p class="capitalize">{type}</p>
       <p>{year}</p>
     </div>
-    <picture class={`work-card-picture relative h-auto opacity-0 group-hover:opacity-100 group-focus:opacity-100  duration-300`}>
+    <picture class={`work-card-picture relative h-auto group-focus:opacity-100  transition-all duration-300`}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
@@ -118,23 +104,39 @@ const props =
   </div>
 </Element>
 
+<style>
+  .work-card.disabled .work-card-content {
+    opacity: 0.4;
+  }
+  .work-card.disabled.active .work-card-content {
+    opacity: 1;
+  }
+
+  .work-card .work-card-picture {
+    opacity: 0;
+  }
+
+  .work-card.active .work-card-picture {
+    opacity: 1;
+  }
+</style>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const workCards = document.querySelectorAll('.work-card');
 
     const showIntersectingCards = (cards) => {
       cards.forEach(card => {
-          const picture = card.querySelector('.work-card-picture');
-          const rect = card.getBoundingClientRect();
-          const middleOfScreen = window.innerHeight / 2;
-          const cardMiddle = rect.top + (rect.height / 2);
-  
-          if (cardMiddle > (middleOfScreen - (middleOfScreen * 0.8)) &&
-              cardMiddle < (middleOfScreen + (middleOfScreen * 0.8))) {
-              picture.style.opacity = '1';
-          } else {
-              picture.style.opacity = '0';
-          }
+        const rect = card.getBoundingClientRect();
+        const middleOfScreen = window.innerHeight / 2;
+        const cardMiddle = rect.top + (rect.height / 2);
+
+        if (cardMiddle > (middleOfScreen - (middleOfScreen * 0.8)) &&
+          cardMiddle < (middleOfScreen + (middleOfScreen * 0.8))) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
       });
     }
 
@@ -143,13 +145,12 @@ const props =
         let timer;
 
         card.addEventListener('mouseenter', () => {
-            const picture = card.querySelector('.work-card-picture');
-            picture.style.opacity = '1';
+          card.classList.add('active');
 
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-              picture.style.opacity = '0';
-            }, 3000);
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            card.classList.remove('active');
+          }, 3000);
         });
       });
     }

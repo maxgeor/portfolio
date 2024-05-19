@@ -60,19 +60,19 @@ switch (typeof span) {
 ---
 <div
   id={id}
-  class={`grid gap-x-[15px] gap-y-[5px] h-fit ${colClasses} ${spanClasses} ${classes}`}
+  class={`grid gap-x-5 gap-y-5 h-fit ${colClasses} ${spanClasses} ${classes}`}
 >
   {hasCaption && <Caption id={id} text={alt} />}
   <div class={`
-    relative grid col-span-full gap-x-[15px] overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    relative grid col-span-full gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${hasBorder ? 'with-border' : ''}
+    ${hasBorder ? 'dark-border dark:light-border' : ''}
   `}>
     <video
       class={`
-        bg-neutral-100 dark:bg-neutral-900 object-cover w-full select-none self-center 
+        bg-gray-100 dark:bg-gray-900 object-cover w-full select-none self-center 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
@@ -88,21 +88,8 @@ switch (typeof span) {
       classes="pause-icon transform opacity-0 brightness-100 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow-md"
     />
   </div>
-  {description && <p class="col-span-full mt-[5px]">{description}</p>}
+  {description && <p class="col-span-full">{description}</p>}
 </div>
-
-<style>
-  .with-border::after {
-    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.08);
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-</style>
 
 <script>
   document.querySelectorAll("video")?.forEach((video) => {

@@ -1,93 +1,82 @@
 ---
-import { filters } from '../lib/filters.ts';
+import CategoryChip from './CategoryChip.astro';
+import { categories } from '../lib/categories.ts';
 
-type NavTab = 'case-study' | 'client' | 'project' | 'writing';
+type Category = 'case-study' | 'client' | 'project' | 'writing';
 
-type Nav = {
-  activeTabs: NavTab[];
+type Props = {
+  activeCategories?: Category[];
 }
 
 const { 
-  activeTabs = ['case-study', 'client', 'project', 'writing'],
+  activeCategories = ['case-study', 'client', 'project', 'writing'],
 } = Astro.props;
 ---
-<nav class="bg-transparent fixed top-0 left-0 right-0 flex justify-between md:hidden gap-[15px] z-50 px-[15px] pb-[5px]">
-  <div class="flex items-center gap-[5px]">
+<nav class="bg-transparent fixed top-0 left-0 right-0 flex justify-between md:hidden gap-15 z-50 px-15 pb-[5px]">
+  <div class="flex items-center gap-5">
     <a href="/" class="uppercase col-span-6 py-[10px]">MKCG</a>
-    <span class="text-gray-800/30 w-[5px] text-center">/</span>
+    <span class="opacity-30 w-[5px] text-center">/</span>
     <a href="/info" class="uppercase col-span-6 justify-self-end py-[10px]">Info</a>
   </div>
   <div class="relative">
-    <button id="filter-dropdown-button" class={`relative py-[10px] pr-[14px] group flex items-center justify-between gap-[5px] capitalize font-medium`}>
+    <button id="filter-dropdown-button" class={`group relative py-10 px-15 -mr-15 group flex items-center justify-between gap-5 capitalize font-medium`}>
       <div class="flex">
-        {(activeTabs.length === 4 ? Object.keys(filters) : activeTabs).map((name: NavTab) => (
-          <span 
-            class="shrink-0 border border-white dark:border-black border-box h-[7px] w-[7px] " 
-            style={{ 
-              backgroundColor: filters[name],
-            }}
-          ></span>
-        ))}
+        {activeCategories.map((category: Category) => <CategoryChip category={category} /> )}
       </div>
-      <span>{activeTabs.length === 4 ? "Everything" : activeTabs.join(', ').replace('-' ,' ')}</span>
-      <!-- <svg class="absolute -right-1" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.5 6.5L7.5 4L10.5 6.5M4.5 9.5L7.5 12L10.5 9.5" stroke="black"/>
-      </svg> -->
-      <svg class="absolute -right-[3px]" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 5.75L7.5 9.25L11 5.75" stroke="black" stroke-width="1.2"/>
+      <span>{activeCategories.length === 4 ? "Everything" : activeCategories.join(', ').replace('-' ,' ')}</span>
+      <svg class="-ml-[4px] -mr-[3px]" width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4.5 6.5L7.5 4L10.5 6.5M4.5 9.5L7.5 12L10.5 9.5" stroke="currentColor"/>
       </svg>
     </button>
-    <div id="filter-dropdown-menu" class="hidden absolute -right-[15px] top-[20px] p-[15px]">
-      <ul class="w-28 ring-1 ring-gray-800/15 dark:ring-white/15  py-[5px] p-[10px] bg-white dark:bg-black">
-        {Object.entries(filters).map(([name, color]) => (
-          <li>
-            <a 
-              href={`/?filter=${name}`} 
-              class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent`}
-            >
-              <span 
-                class=" border border-white dark:border-black h-[7px] w-[7px] mt-px -ml-px"
-                style={{ 
-                  backgroundColor: color,
-                }}
-              ></span>
-              {name.replace('-', ' ')}
-            </a>
-          </li>
-        ))}
+    <div id="filter-dropdown-menu" class="hidden absolute -right-[15px] top-[21px] p-15 ">
+      <ul class="w-[116px] ring-1 ring-neutral-800/15 dark:ring-white/15  py-[5px] p-[10px] bg-white dark:bg-neutral-900">
+        {Object.keys(categories).map(categoryKey => {
+          const category = categoryKey as Category;
+          return (
+            <li>
+              <a 
+                href={`/?filter=${category}`} 
+                class={`group relative flex items-center  gap-5 capitalize hover:bg-transparent`}
+              >
+                <CategoryChip category={category} />
+                {category.replace('-', ' ')}
+              </a>
+            </li>
+          )
+        })}
       </ul>
     </div>
   </div>
 </nav>
-<nav class="hidden md:flex flex-col justify-between  gap-[15px] md:w-[75px] md:h-[calc(100vh-32px)] md:fixed top-[15px] left-[15px] ">
-  <div class="flex flex-col gap-[15px]">
-    <a href="/" class="uppercase">MKCG</a>
+<nav class="hidden md:flex flex-col justify-between  gap-15 md:w-[var(--nav-width)] md:h-[calc(100vh-32px)] md:fixed top-15 left-[15px] ">
+  <div class="flex flex-col gap-15">
+    <a href="/" class="uppercase w-fit">MKCG</a>
     <ul>
-      {Object.entries(filters).map(([name, color]) => (
-        <li>
-          <a 
-            href={`/?filter=${name}`} 
-            class={`group relative flex items-center  gap-[5px] capitalize hover:bg-transparent whitespace-nowrap`}
-          >
-            <span 
-              class={`
-                border border-white dark:border-black h-[7px] w-[7px] mt-px shrink-0
-                ${activeTabs.includes(name) ? '' : 'hidden group-hover:block'}
-              `}
-              style={{ backgroundColor: color }}
-            ></span>
-            {!activeTabs.includes(name) && (
-              <span class="group-hover:hidden bg-[#d1d1d1] dark:bg-neutral-700 border border-white dark:border-black  h-[7px] w-[7px] mt-px shrink-0"></span>
-            )}
-            <p class={activeTabs.includes(name) ? 'opacity-100' : 'opacity-40 group-hover:opacity-100'}>
-              {name.replace('-', ' ')}
-            </p>
-          </a>
-        </li>
-      ))}
+      {Object.keys(categories).map(categoryKey => {
+        const category = categoryKey as Category;
+        return (
+          <li>
+            <a 
+              href={`/?filter=${category}`} 
+              class={`group relative flex items-center gap-5 capitalize hover:bg-transparent whitespace-nowrap`}
+            >
+              <CategoryChip 
+                category={category} 
+                classes={`mt-px ${activeCategories.includes(category) ? '' : 'hidden group-hover:block'}`} 
+              />
+              {!activeCategories.includes(category) && (
+                <span class="group-hover:hidden bg-[#d1d1d1] dark:bg-gray-700 h-[6px] w-[6px] mt-px shrink-0"></span>
+              )}
+              <p class={activeCategories.includes(category) ? 'opacity-100' : 'opacity-40 group-hover:opacity-100'}>
+                {category.replace('-', ' ')}
+              </p>
+            </a>
+          </li>
+        )
+      })}
     </ul>
   </div>
-  <a href="/info" class="uppercase">Info</a>
+  <a href="/info" class="uppercase w-fit">Info</a>
 </nav>
 
 <script>
