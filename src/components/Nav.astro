@@ -12,14 +12,14 @@ const {
   activeCategories = ['case-study', 'client', 'project', 'writing'],
 } = Astro.props;
 ---
-<nav class="bg-transparent fixed top-0 left-0 right-0 flex justify-between md:hidden gap-15 z-50 px-15 pb-[5px]">
+<nav class="bg-transparent fixed top-0 left-0 right-0 flex justify-between md:hidden gap-15 z-50 p-5">
   <div class="flex items-center gap-5">
-    <a href="/" class="uppercase col-span-6 py-[10px]">MKCG</a>
+    <a href="/" class="uppercase col-span-6 ml-0.5">MKCG</a>
     <span class="opacity-30 w-[5px] text-center">/</span>
-    <a href="/info" class="uppercase col-span-6 justify-self-end py-[10px]">Info</a>
+    <a href="/info" class="uppercase col-span-6 justify-self-end ">Info</a>
   </div>
   <div class="relative">
-    <button id="filter-dropdown-button" class={`group relative py-10 px-15 -mr-15 group flex items-center justify-between gap-5 capitalize font-medium`}>
+    <button id="filter-dropdown-button" class={`group relative group flex items-center justify-between gap-5 capitalize font-medium`}>
       <div class="flex">
         {activeCategories.map((category: Category) => <CategoryChip category={category} /> )}
       </div>
@@ -28,7 +28,7 @@ const {
         <path d="M4.5 6.5L7.5 4L10.5 6.5M4.5 9.5L7.5 12L10.5 9.5" stroke="currentColor"/>
       </svg>
     </button>
-    <div id="filter-dropdown-menu" class="hidden absolute -right-[15px] top-[21px] p-15 ">
+    <div id="filter-dropdown-menu" class="hidden absolute -right-[15px] top-[21px] p-10">
       <ul class="w-[116px] ring-1 ring-neutral-800/15 dark:ring-white/15  py-[5px] p-[10px] bg-white dark:bg-neutral-900">
         {Object.keys(categories).map(categoryKey => {
           const category = categoryKey as Category;
@@ -48,7 +48,7 @@ const {
     </div>
   </div>
 </nav>
-<nav class="hidden md:flex flex-col justify-between  gap-15 md:w-[var(--nav-width)] md:h-[calc(100vh-32px)] md:fixed top-15 left-[15px] ">
+<nav class="hidden md:flex flex-col justify-between  gap-5 md:w-[var(--nav-width)] md:h-[calc(100vh-32px)] md:fixed top-5 left-5 ">
   <div class="flex flex-col gap-15">
     <a href="/" class="uppercase w-fit">MKCG</a>
     <ul>
@@ -65,7 +65,7 @@ const {
                 classes={`mt-px ${activeCategories.includes(category) ? '' : 'hidden group-hover:block'}`} 
               />
               {!activeCategories.includes(category) && (
-                <span class="group-hover:hidden bg-[#d1d1d1] dark:bg-gray-700 h-[6px] w-[6px] mt-px shrink-0"></span>
+                <span class="rounded-[2px] group-hover:hidden bg-[#d1d1d1] dark:bg-gray-700 h-[6px] w-[6px] mt-px shrink-0"></span>
               )}
               <p class={activeCategories.includes(category) ? 'opacity-100' : 'opacity-40 group-hover:opacity-100'}>
                 {category.replace('-', ' ')}

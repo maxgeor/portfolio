@@ -34,12 +34,12 @@ export interface Props {
 const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
 ---
 
-<div class={`carousel grid grid-cols-12 col-span-full gap-15 relative h-fit ${classes}`}>
+<div class={`carousel grid grid-cols-12 col-span-full gap-15 p-15 bg-neutral-100 dark:bg-neutral-800 rounded-xl relative ${classes}`}>
   <button 
     disabled="true" 
     aria-label="Previous slide" 
     class={`
-      group hidden btn-prev opacity-40 absolute left-0 top-1/2 -translate-y-1/2 p-15 -m-3 hover:bg-transparent
+      group hidden btn-prev opacity-40 absolute left-[15px] top-1/2 -translate-y-1/2 p-15 -ml-15 hover:bg-transparent
       ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
     `}
   >
@@ -48,7 +48,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
       Back
     </div>
   </button>
-  <div class={`hidden text-inherit absolute top-0 right-0 justify-self-center ${orientation === 'vertical' ? 'xs:flex' : 'md:flex'}`}>
+  <div class={`hidden text-inherit absolute top-0 right-15 justify-self-center ${orientation === 'vertical' ? 'xs:flex' : 'md:flex'}`}>
     <span class="counter-current">1</span>
     <span>/</span>
     <span class="counter-total">{slides.length}</span>
@@ -56,7 +56,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
   <button 
     aria-label="Next slide" 
     class={`
-      btn-next hidden absolute top-1/2 -translate-y-1/2 right-0 p-15 -m-3  group disabled:group-hover:bg-current hover:bg-transparent
+      btn-next hidden absolute top-1/2 -translate-y-1/2 right-[15px] p-15 -mr-15  group disabled:group-hover:bg-current hover:bg-transparent
       ${orientation === 'vertical' ? 'xs:block' : 'md:block'}
     `}
   >
@@ -82,14 +82,14 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
         ))}
       </div>
       <div class={`
-        relative w-full rotate-0 overflow-hidden border text-gray-150 dark:border-neutral-800
+        relative w-full rotate-0 overflow-hidden border border-gray-100 dark:border-neutral-800 rounded-xl
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}>
         {
           slides?.map((slide, index) => (
             <div class={`
               slide slide-${index} 
-              absolute h-fit w-full transition-all duration-[450ms] ease-in-out
+              absolute h-fit w-full transition-all duration-[450ms] ease-in-out rounded-xl
             `}>
               {slide.type === "video" ? (
                 <Video
@@ -112,6 +112,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
                   hasBorder={false}
                   orientation={orientation}
                   hasCaption={false}
+                  hasPadding={false}
                   classes={slide.classes}
                 />
               )}

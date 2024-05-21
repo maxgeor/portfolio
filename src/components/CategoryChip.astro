@@ -9,7 +9,7 @@ type Props = {
 const { category, classes = "" } = Astro.props;
 ---
 <span 
-  class={`${classes} shrink-0 h-[6px] w-[6px] ml-[2px] first:ml-0`} 
+  class={`${classes} shrink-0 h-[6px] w-[6px] ml-[2px] first:ml-0 rounded-[2px]`} 
   style={{ 
     backgroundColor: categories[category],
   }}

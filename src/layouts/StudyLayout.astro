@@ -19,71 +19,139 @@ const {
 <Layout title={title} description={description}>
   <Nav activeCategories={["case-study", type]} />
   <div class="relative col-span-full grid grid-cols-8 gap-y-15 gap-x-5 md:ml-[var(--nav-offset)]"> 
-    <aside class='lg:fixed left-[var(--nav-offset)] top-15 bottom-15 grid grid-cols-2 lg:flex flex-col gap-15 col-span-full lg:col-span-3 border-y md:border-t-0 lg:border-b-0 border-gray-150 dark:border-[#2a2a2a] [&>div]:h-min lg:h-screen lg:w-[calc((100vw-104px-15px)/(8/2))] 3xl:max-w-[360px] p-15 md:pt-0 md:pl-0 lg:px-15 lg:pr-15 -mx-15 -mt-[5px] md:m-0 md:-mr-15 lg:mr-0'>
-      <div>
-        <div class="flex justify-between gap-15 ">
-          <p class="uppercase">{title}</p>
-          {link.href && <a href={link.href} target="_blank">[See]</a>}
+    <aside class='lg:fixed left-[var(--nav-offset)] top-15 bottom-15 flex flex-col gap-5 col-span-full lg:col-span-3 border-y md:border-t-0 lg:border-b-0 border-neutral-200 dark:border-[#2a2a2a] lg:h-[calc(100vh-30px)] lg:w-[calc((100vw-104px-15px)/(8/2))] 3xl:max-w-[360px] p-15 md:pt-0 md:pl-0 lg:px-15 lg:pb-0 -mx-15 -mt-[5px] md:m-0 md:-mr-15 lg:mr-0'>
+      <div class="p-15 md:-mx-15 rounded-xl bg-neutral-100 dark:bg-neutral-800 grid grid-cols-2 lg:flex flex-col gap-15 ">
+        <div>
+          <div class="flex justify-between gap-15 ">
+            <p class="uppercase">{title}</p>
+            {link.href && <a href={link.href} target="_blank">[See]</a>}
+          </div>
+          <p class="text-balance">{description}</p>
+          <p class="lg:hidden">{year}</p>
         </div>
-        <p class="text-balance">{description}</p>
-        <p class="lg:hidden">{year}</p>
+        <div>
+          <p class="uppercase">Roles</p>
+          <p>{roles?.join(', ')}</p>
+        </div>
+        <div>
+          <p class="uppercase">Team</p>
+          <ul>
+            {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
+              <li>
+                <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
+              </li>
+            )) : "—"}
+          </ul>
+        </div>
+        <div>
+          <p class="uppercase">Tools</p>
+          <p>{tools?.join(', ')}</p>
+        </div>
+        <div class="hidden lg:block">
+          <p class="uppercase">Year</p>
+          <p>{year}</p>
+        </div>
       </div>
-      <div>
-        <p class="uppercase">Roles</p>
-        <p>{roles?.join(', ')}</p>
+      <div class="p-15 -mx-15 rounded-xl bg-neutral-100 dark:bg-neutral-800 grid grid-cols-2 lg:flex flex-col gap-15 [&>div]:h-min">
+        <div class="col-start-1 col-span-full md:col-span-1">
+          <p class="uppercase">Problem</p>
+          <p class="text-balance">{tldr?.problem || "—"}</p>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Solution</p>
+          <p class="text-balance">{tldr?.solution || "—"}</p>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Decisions</p>
+          <ul class="text-balance">
+            {tldr?.decisions?.map((decision: string, index: number) => 
+              <li>[<span>{index + 1}</span>] {decision}</li>
+            ) || "—"}
+          </ul>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Tradeoffs</p>
+          <ul class="col-span-8 text-balance">
+            {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
+              <li>[<span>{index + 1}</span>] {tradeoff}</li>
+            ) || "—"}
+          </ul>
+        </div>
       </div>
-      <div>
-        <p class="uppercase">Team</p>
-        <ul>
-          {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
-            <li>
-              <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
-            </li>
-          )) : "—"}
-        </ul>
-      </div>
-      <div>
-        <p class="uppercase">Tools</p>
-        <p>{tools?.join(', ')}</p>
-      </div>
-      <div class="hidden lg:block">
-        <p class="uppercase">Year</p>
-        <p>{year}</p>
-      </div>
-      <hr class="col-span-full text-gray-150 dark:border-[#2a2a2a] " />
-      <div class="col-start-1 col-span-full md:col-span-1">
-        <p class="uppercase">Problem</p>
-        <p class="text-balance">{tldr?.problem || "—"}</p>
-      </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Solution</p>
-        <p class="text-balance">{tldr?.solution || "—"}</p>
-      </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Decisions</p>
-        <ul class="text-balance">
-          {tldr?.decisions?.map((decision: string, index: number) => 
-            <li>[<span>{index + 1}</span>] {decision}</li>
-          ) || "—"}
-        </ul>
-      </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Tradeoffs</p>
-        <ul class="col-span-8 text-balance">
-          {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-            <li>[<span>{index + 1}</span>] {tradeoff}</li>
-          ) || "—"}
-        </ul>
+      <!-- <div class="grid grid-cols-2 lg:flex flex-col gap-15 [&>div]:h-min">
+        <div>
+          <div class="flex justify-between gap-15 ">
+            <p class="uppercase">{title}</p>
+            {link.href && <a href={link.href} target="_blank">[See]</a>}
+          </div>
+          <p class="text-balance">{description}</p>
+          <p class="lg:hidden">{year}</p>
+        </div>
+        <div>
+          <p class="uppercase">Roles</p>
+          <p>{roles?.join(', ')}</p>
+        </div>
+        <div>
+          <p class="uppercase">Team</p>
+          <ul>
+            {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
+              <li>
+                <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
+              </li>
+            )) : "—"}
+          </ul>
+        </div>
+        <div>
+          <p class="uppercase">Tools</p>
+          <p>{tools?.join(', ')}</p>
+        </div>
+        <div class="hidden lg:block">
+          <p class="uppercase">Year</p>
+          <p>{year}</p>
+        </div>
+        <hr class="col-span-full text-gray-150 dark:border-[#2a2a2a] " />
+        <div class="col-start-1 col-span-full md:col-span-1">
+          <p class="uppercase">Problem</p>
+          <p class="text-balance">{tldr?.problem || "—"}</p>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Solution</p>
+          <p class="text-balance">{tldr?.solution || "—"}</p>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Decisions</p>
+          <ul class="text-balance">
+            {tldr?.decisions?.map((decision: string, index: number) => 
+              <li>[<span>{index + 1}</span>] {decision}</li>
+            ) || "—"}
+          </ul>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <p class="uppercase">Tradeoffs</p>
+          <ul class="col-span-8 text-balance">
+            {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
+              <li>[<span>{index + 1}</span>] {tradeoff}</li>
+            ) || "—"}
+          </ul>
+        </div>
+      </div> -->
+      <div class="hidden lg:flex gap-15 -mb-15 mt-auto">
+        <span class="w-full flex items-center justify-center py-15 px-15 rounded-xl  bg-neutral-100 dark:bg-neutral-800  ">Story</span>
+        <span class="w-full flex items-center justify-center py-15 px-15 rounded-xl ">Gallery</span>
       </div>
     </aside>
     <article
       id="article"
-      class="pb-[120px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[360px] 3xl:max-w-[1550px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
+      class="flex flex-col gap-25 pb-[120px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[360px] 3xl:max-w-[1550px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
     >
+      <div class="flex gap-15 lg:hidden ">
+        <span class="w-full flex items-center justify-center py-10 px-15 rounded-xl bg-neutral-100 dark:bg--neutral-800  ">Story</span>
+        <span class="w-full flex items-center justify-center py-10 px-15 rounded-xl  ">Shots</span>
+      </div>
       <div
         class={`
-          flex flex-col gap-x-5 gap-y-30
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-pink
+          flex flex-col gap-x-5 gap-y-5
+          prose-a:underline 
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
           prose-li:list-item
@@ -99,6 +167,88 @@ const {
         `}
       >
         <slot />
+        <div class="p-15 flex flex-col gap-15 bg-neutral-100 dark:bg-neutral-800 rounded-xl [&>*]:max-w-prose">
+          PROBLEM
+          <p>Lots of smart contract developers hate building frontends. Instead, many use “frontend generators” to get a free, working UI in minutes. Etherscan is the most popular one, powering tons of Ethereum projects. The problem? Etherscan’s UI sucks. [1] It’s a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It’s bad enough that beginners need a Youtube tutorial.</p>
+
+          <p>R0</p>
+
+          <p>Etherscan's UI for Uniswap's Delegate method</p>
+
+          <p>We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.</p>
+
+          <p>R1</p>
+
+          <p>Flow to mint mLoot</p>
+
+          <p>Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs.</p>
+
+          <p>SOLUTION</p>
+
+          <p>Realizing smart contracts worked like mini forms made us wonder: What if we applied form builder patterns to smart contracts? / You could solve most of the UX issues by [1] giving every action a dedicated page, [2] letting people write their own copy [3] sharing clear, thoughtful feedback about transactions.</p>
+
+          <p>S1</p>
+
+          <p>Full app walkthrough, desktop</p>
+
+          <p>S2</p>
+
+          <p>New form (find)</p>
+
+          <p>S3</p>
+
+          <p>New form (pick action)</p>
+
+          <p>S4</p>
+
+          <p>New form (titles)</p>
+
+          <p>S5</p>
+
+          <p>Index page, mobile</p>
+
+          <p>S6</p>
+
+          <p>Form page, mobile</p>
+
+          <p>CHALLENGE: SHOOING SCAMMERS</p>
+
+          <p>From the start, we knew scammers could use forms to misrepresent contracts. We couldn’t stop them, but we needed some way to protect users. So we made people confirm they trust a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+
+          <p>Back</p>
+
+          <p>1 / 2</p>
+
+          <p>Next</p>
+
+          <p>C1.1</p>
+
+          <p>Trust confirmation checkbox on form page</p>
+
+          <p>C1.2</p>
+
+          <p>Notes on handling scammers</p>
+
+          <p>C1.1</p>
+
+          <p>Trust confirmation checkbox on form page</p>
+
+          <p>C1.2</p>
+
+          <p>Notes on handling scammers</p>
+
+          <p>CHALLENGE: MAKING FORMS FLEXIBLE</p>
+
+          <p>From the start, we knew scammers could use forms to misrepresent contracts. We couldn’t stop them, but we needed some way to protect users. So we made people confirm they trust a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+
+          <p>TRADEOFF: CUSTOMIZE EVERYTHING TITLE + DESCRIPTION</p>
+
+          <p>We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc). But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming. Since top-level fields do 80-90% of the communicating, we only let people customize their form’s title and description. Limited customization kept form creation straightforward while offering more control than Etherscan.</p>
+
+          <p>CHALLENGE: EXPLAINING TECHNICAL IDEAS</p>
+
+          <p>From the start, we knew scammers could use forms to misrepresent contracts. We couldn’t stop them, but we needed some way to protect users. So we made people confirm they trust a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+        </div>
       </div>
     </article>
     
