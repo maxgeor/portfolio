@@ -58,8 +58,8 @@ switch (typeof span) {
 <div
   id={id}
   class={`
-    grid gap-y-15 h-fit rounded-xl
-    ${colClasses} ${spanClasses} ${classes} ${hasPadding ? 'p-15 bg-neutral-100 dark:bg-neutral-800 ' : ''}
+    grid gap-y-15 h-fit 
+    ${colClasses} ${spanClasses} ${classes} ${hasPadding ? 'p-15 bg-neutral-100 dark:bg-neutral-900 ' : ''}
   `}
 >
   {hasCaption && <Caption id={id} text={alt}  />}
@@ -73,7 +73,7 @@ switch (typeof span) {
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover bg-neutral-100 dark:bg-neutral-800 rounded-xl select-none self-center col-span-full
+        h-full w-full object-cover bg-neutral-100 dark:bg-neutral-900  select-none self-center col-span-full
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}
     />

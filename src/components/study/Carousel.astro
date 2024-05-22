@@ -34,7 +34,7 @@ export interface Props {
 const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
 ---
 
-<div class={`carousel grid grid-cols-12 col-span-full gap-15 p-15 bg-neutral-100 dark:bg-neutral-800 rounded-xl relative ${classes}`}>
+<div class={`carousel grid grid-cols-12 col-span-full gap-15 p-15 bg-neutral-100 dark:bg-neutral-900  relative ${classes}`}>
   <button 
     disabled="true" 
     aria-label="Previous slide" 
@@ -82,14 +82,14 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
         ))}
       </div>
       <div class={`
-        relative w-full rotate-0 overflow-hidden border border-gray-100 dark:border-neutral-800 rounded-xl
+        relative w-full rotate-0 overflow-hidden border border-gray-100 dark:border-neutral-900 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
       `}>
         {
           slides?.map((slide, index) => (
             <div class={`
               slide slide-${index} 
-              absolute h-fit w-full transition-all duration-[450ms] ease-in-out rounded-xl
+              absolute h-fit w-full transition-all duration-[450ms] ease-in-out 
             `}>
               {slide.type === "video" ? (
                 <Video

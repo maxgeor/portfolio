@@ -20,7 +20,7 @@ const {
   <Nav activeCategories={["case-study", type]} />
   <div class="relative col-span-full grid grid-cols-8 gap-y-15 gap-x-5 md:ml-[var(--nav-offset)]"> 
     <aside class='lg:fixed left-[var(--nav-offset)] top-15 bottom-15 flex flex-col gap-5 col-span-full lg:col-span-3 border-y md:border-t-0 lg:border-b-0 border-neutral-200 dark:border-[#2a2a2a] lg:h-[calc(100vh-30px)] lg:w-[calc((100vw-104px-15px)/(8/2))] 3xl:max-w-[360px] p-15 md:pt-0 md:pl-0 lg:px-15 lg:pb-0 -mx-15 -mt-[5px] md:m-0 md:-mr-15 lg:mr-0'>
-      <div class="p-15 md:-mx-15 rounded-xl bg-neutral-100 dark:bg-neutral-800 grid grid-cols-2 lg:flex flex-col gap-15 ">
+      <div class="p-15 md:-mx-15  bg-neutral-100 dark:bg-neutral-900 grid grid-cols-2 lg:flex flex-col gap-15 ">
         <div>
           <div class="flex justify-between gap-15 ">
             <p class="uppercase">{title}</p>
@@ -52,7 +52,7 @@ const {
           <p>{year}</p>
         </div>
       </div>
-      <div class="p-15 -mx-15 rounded-xl bg-neutral-100 dark:bg-neutral-800 grid grid-cols-2 lg:flex flex-col gap-15 [&>div]:h-min">
+      <div class="p-15 -mx-15  bg-neutral-100 dark:bg-neutral-900 grid grid-cols-2 lg:flex flex-col gap-15 [&>div]:h-min">
         <div class="col-start-1 col-span-full md:col-span-1">
           <p class="uppercase">Problem</p>
           <p class="text-balance">{tldr?.problem || "—"}</p>
@@ -136,8 +136,8 @@ const {
         </div>
       </div> -->
       <div class="hidden lg:flex gap-15 -mb-15 mt-auto">
-        <span class="w-full flex items-center justify-center py-15 px-15 rounded-xl  bg-neutral-100 dark:bg-neutral-800  ">Story</span>
-        <span class="w-full flex items-center justify-center py-15 px-15 rounded-xl ">Gallery</span>
+        <span class="w-full flex items-center justify-center py-15 px-15   bg-neutral-100 dark:bg-neutral-900  ">Story</span>
+        <span class="w-full flex items-center justify-center py-15 px-15  ">Gallery</span>
       </div>
     </aside>
     <article
@@ -145,8 +145,8 @@ const {
       class="flex flex-col gap-25 pb-[120px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[360px] 3xl:max-w-[1550px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
     >
       <div class="flex gap-15 lg:hidden ">
-        <span class="w-full flex items-center justify-center py-10 px-15 rounded-xl bg-neutral-100 dark:bg--neutral-800  ">Story</span>
-        <span class="w-full flex items-center justify-center py-10 px-15 rounded-xl  ">Shots</span>
+        <span class="w-full flex items-center justify-center py-10 px-15  bg-neutral-100 dark:bg--neutral-900  ">Story</span>
+        <span class="w-full flex items-center justify-center py-10 px-15   ">Shots</span>
       </div>
       <div
         class={`
@@ -167,7 +167,7 @@ const {
         `}
       >
         <slot />
-        <div class="p-15 flex flex-col gap-15 bg-neutral-100 dark:bg-neutral-800 rounded-xl [&>*]:max-w-prose">
+        <div class="p-15 flex flex-col gap-15 bg-neutral-100 dark:bg-neutral-900  [&>*]:max-w-prose">
           PROBLEM
           <p>Lots of smart contract developers hate building frontends. Instead, many use “frontend generators” to get a free, working UI in minutes. Etherscan is the most popular one, powering tons of Ethereum projects. The problem? Etherscan’s UI sucks. [1] It’s a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It’s bad enough that beginners need a Youtube tutorial.</p>
 

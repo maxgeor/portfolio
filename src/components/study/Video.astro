@@ -60,15 +60,15 @@ switch (typeof span) {
 ---
 <div
   id={id}
-  class={`grid gap-y-15 p-15 bg-neutral-100 dark:bg-neutral-800 rounded-xl [&>*]:h-justify-self-start  ${colClasses} ${spanClasses} ${classes}`}
+  class={`grid gap-y-15 p-15 bg-neutral-100 dark:bg-neutral-900  [&>*]:h-justify-self-start  ${colClasses} ${spanClasses} ${classes}`}
 >
   {hasCaption && <Caption id={id} text={alt} />}
   <div class={`
-    relative grid col-span-full gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out rounded-xl
+    relative grid col-span-full gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out 
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${hasBorder ? 'border border-gray-100 dark:border-neutral-800' : ''}
+    ${hasBorder ? 'border border-gray-100 dark:border-neutral-900' : ''}
   `}>
   <!-- <div class={`
     relative grid col-span-full gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out
@@ -79,7 +79,7 @@ switch (typeof span) {
   `}> -->
     <video
       class={`
-        bg-gray-100 dark:bg-gray-900 object-cover w-full select-none self-center rounded-xl
+        bg-gray-100 dark:bg-gray-900 object-cover w-full select-none self-center 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
