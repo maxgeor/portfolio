@@ -10,14 +10,14 @@ const formattedDate = formatDate(frontmatter.date);
   <Nav activeCategories={['writing']} />
   <main class="flex flex-col gap-15 col-span-full md:ml-[var(--nav-offset)]">
     <div class="flex justify-between">
-      <h1 class="uppercase">{frontmatter.title}</h1>
+      <h1 class="">{frontmatter.title}</h1>
       <p>{formattedDate}</p>
     </div>  
     <article
       class={`
         flex flex-col gap-15 max-w-[80ch] col-span-full lg:col-span-full pb-[45px]
         text-12
-        prose-headings:uppercase
+        prose-headings:
         prose-p:my-0
         prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
         prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0

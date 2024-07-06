@@ -4,13 +4,213 @@ import Nav from "../components/Nav.astro";
 import Work from "../components/Work.astro";
 import Writing from "../components/Writing.astro";
 import { getCollection } from 'astro:content';
+import CheckIcon from "../components/icons/CheckIcon.astro";
+import CopyIcon from "../components/icons/CopyIcon.astro";
+import RightArrowIcon from "../components/icons/RightArrowIcon.astro";
+import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
+
+const links: {
+  name: string;
+  url: string;
+  target?: "_self" | "_blank";
+}[] = [
+  {
+    name: "CV",
+    url: "/resume-max-georgopoulos.pdf",
+    target: '_self'
+  },
+  {
+    name: "Arena",
+    url: "https://www.are.na/max-georgopoulos",
+  },
+  {
+    name: "Layers",
+    url: "https://layers.to/maxgeorgopoulos",
+  },
+  {
+    name: "Github",
+    url:  "https://github.com/maxgeor",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/maxoulos",
+  },
+  {
+    name: "Dribbble",
+    url: "https://dribbble.com/maxgeo",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/max-georgopoulos-109095136/",
+  },
+];
+
+const heros = [
+  { 
+    name: "Steve Jobs",
+    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
+  },
+  { 
+    name: "Gunpei Yokoi", 
+    description: "Contraints make you creative + make fun things.", 
+    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
+  },
+  {
+    name: "Massimo & Lella Vignelli", 
+    description: "Semantics are everything + elegance elegance elegance.", 
+    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
+  },
+  { 
+    name: "Dieter Rams", 
+    description: "Radical simplicity, understanding engineering makes you a better designer.", 
+    link: "https://www.google.com/search?q=dieter+rams+products&tbm=isch&ved=2ahUKEwi37cjNy5mEAxXMPlkFHcp6CxkQ2-cCegQIABAA&oq=dieter+rams+products&gs_lp=EgNpbWciFGRpZXRlciByYW1zIHByb2R1Y3RzMgUQABiABDIFEAAYgAQyBRAAGIAEMgYQABgFGB4yBBAAGB4yBhAAGAgYHkjIEFD6AliEEHAAeACQAQCYAdMBoAGMCaoBBTMuNS4xuAEDyAEA-AEBigILZ3dzLXdpei1pbWfCAgQQIxgnwgIKEAAYgAQYigUYQ4gGAQ&sclient=img&ei=96fDZfeVBsz95NoPyvWtyAE&bih=779&biw=1440" 
+  },
+  { 
+    name: "Ryan Singer", 
+    description: "All roads lead to Rome.", 
+    link: "https://www.feltpresence.com/" 
+  },
+  { 
+    name: "Hayao Miyazaki", 
+    description: "You can make your work more beautiful and emotive.", 
+    link: "https://en.wikipedia.org/wiki/Hayao_Miyazaki" 
+  },
+  { 
+    name: "Christopher Alexander", 
+    description: "Beauty can be objective.", 
+    link: "https://en.wikipedia.org/wiki/Christopher_Alexander" 
+  },
+  { 
+    name: "Maria Montessori", 
+    description: "It's possible to make a dent in the education system.", 
+    link: "https://en.wikipedia.org/wiki/Maria_Montessori" 
+  }
+];
+
+const interests = [
+  { 
+    title: "Education reform",
+    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen." 
+  },
+  { 
+    title: "Electronic music", 
+    description: "Contraints make you creative + make fun things.", 
+    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
+  },
+  {
+    title: "Toy design", 
+    description: "Semantics are everything + elegance elegance elegance.", 
+    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
+  },
+];
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 const writings = await getCollection('writing');
 ---
 <Layout>
-  <Nav />
-  <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[60px]">
+  <!-- <Nav /> -->
+  <!-- <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[45px]"> -->
+  <div class="col-span-full relative grid grid-cols-8 gap-15 ">
+    <div class="grid grid-cols-16 gap-15 col-span-full pb-[75px] border-t border-neutral-800">
+      <div class="flex flex-col justify-between gap-[45px] col-span-8 md:col-span-4 pr-[75px] ">
+        <h1>Max Kevin Crapper Georgopoulos</h1>
+        <p class="hyphens-auto">I'm a designer and developer based out of Toronto, but I bum
+          around different places. I believe that the boundary between design
+          and engineering is artificial — you get the best results by blending
+          the two. Lately, I've been inspired by Ryan Singer's design
+          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
+          Homme Plissé.
+        </p>
+      </div>
+      <div class="lg:col-start-5 flex flex-col justify-between gap-15 border-l border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+        <p>Skills</p>
+        <div class="flex flex-col">
+          <div class="flex items-baseline gap-5">
+            <p class="whitespace-nowrap">Product Thinking</p>
+            <p>(Great)</p>
+          </div>
+          <div class="flex items-baseline  gap-5">
+            <p class="whitespace-nowrap">Product Design</p>
+            <p>(Great)</p> 
+          </div>
+          <div class="flex items-baseline gap-5">
+            <p class="whitespace-nowrap">Copywriting</p>
+            <p>(Good)</p>
+          </div>
+          <div class="flex items-baseline gap-5">
+            <p class="whitespace-nowrap">Frontend Dev</p>
+            <p>(Ok)</p>
+          </div>
+          <div class="flex items-baseline gap-5">
+            <p class="whitespace-nowrap">Graphic Design</p>
+            <p>(Ok)</p>
+          </div>
+          <div class="flex items-baseline gap-5">
+            <p class="whitespace-nowrap">Backend Dev</p>
+            <p>(Meh)</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col justify-between gap-15 border-l border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+        <p>Links</p>
+        <ul>
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target={link.target}
+                class=" flex w-full items-center justify-between gap-5 transition duration-75 "
+              >
+                {link.name}
+                {/* <hr class="border-t h-px border-current border-dotted w-full" />
+                {link.target === "_self" ? (
+                  <RightArrowIcon  classes="shrink-0 opacity-80 -mx-[3px]" />
+                ) : (
+                  <UpRightArrowIcon classes="shrink-0 opacity-80 -mx-[3px]" />
+                )} */}
+              </a>
+            </li>
+          ))}
+          <li>
+            <button
+              aria-label="Copy email"
+              class={`copy-email-button relative flex justify-between gap-5 w-full items-center cursor-default `}
+            >
+              <span class="capitalize">Email</span>
+              <!-- <hr class="border-t h-px border-current border-dotted w-full" />
+              <CopyIcon id="copy-icon" classes="shrink-0" />
+              <CheckIcon id="check-icon" classes="hidden shrink-0 -ml-px -mr-0.5" /> -->
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="border-l border-neutral-800 pl-5 col-span-2 col-start-12 justify-between flex flex-col">
+        <h3 class="col-span-full lg:col-span-2 ">Heros</h3>
+        <ul class="flex flex-col col-span-full ">
+          {heros.map((hero) => (
+            <li class="pl-px">
+              <details class="group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
+                <p class="pl-[0.65rem] normal-case font-medium">{hero.description} {hero.link && <a href={hero.link} target="_blank" class="inline underline">Learn</a>}</p>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="border-l border-neutral-800 pl-5 col-span-2 justify-between flex flex-col">
+        <h3 class="col-span-full lg:col-span-2 ">Interests</h3>
+        <ul class="flex flex-col col-span-full ">
+          {interests.map((interest) => (
+            <li class="pl-px">
+              <details class="group before:content-none  flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+                <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
+                <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}

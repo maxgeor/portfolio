@@ -15,10 +15,11 @@ export interface Props {
 const { title, image } = Astro.props;
 ---
 
-<div class="col-span-full md:col-span-9 md:col-start-3 flex flex-col lg:flex-row gap-y-15 gap-x-5">
-  <div class="col-span-full  flex flex-col  lg:basis-1/4 lg:order-last">
-    <h3 class="text-pretty uppercase" set:html={marked.parse(title)}></h3>
-    <div class=" flex flex-col gap-2 text-balance  normal-case">
+<div class="!col-span-full grid grid-cols-16 gap-15 lg:mt-30">
+  <h3 class="col-span-full lg:col-span-2 text-balance hidden lg:block lg:max-w-[20ch]" set:html={marked.parse(title)}></h3>
+  <div class="col-span-full lg:col-span-3 flex flex-col gap-5">
+    <h3 class="text-pretty lg:hidden" set:html={marked.parse(title)}></h3>
+    <div class=" flex flex-col text-balance normal-case">
       <slot />
     </div>
   </div>
@@ -30,7 +31,7 @@ const { title, image } = Astro.props;
       span={{ base: 12 }}
       hasCaption={false}
       hasBorder={image.hasBorder}
-      classes="self-center lg:basis-3/4 "
+      classes="self-center col-span-full lg:col-span-8"
     />
   )}
 </div>

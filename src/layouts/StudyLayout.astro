@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import Nav from "../components/Nav.astro";
+import ScrollingBanner from '../components/ScrollingBanner.astro';
 
 const { frontmatter } = Astro.props;
 const {
@@ -17,23 +18,35 @@ const {
 ---
 
 <Layout title={title} description={description}>
-  <Nav activeCategories={["case-study", type]} />
-  <div class="relative col-span-full grid grid-cols-8 gap-y-15 gap-x-5 md:ml-[var(--nav-offset)]"> 
-    <aside class='lg:fixed left-[var(--nav-offset)] top-15 bottom-15 grid grid-cols-2 lg:flex flex-col gap-15 col-span-full lg:col-span-3 border-y md:border-t-0 lg:border-b-0 border-gray-150 dark:border-[#2a2a2a] [&>div]:h-min lg:h-screen lg:w-[calc((100vw-104px-15px)/(8/2))] 3xl:max-w-[360px] p-15 md:pt-0 md:pl-0 lg:px-15 lg:pr-15 -mx-15 -mt-[5px] md:m-0 md:-mr-15 lg:mr-0'>
-      <div>
-        <div class="flex justify-between gap-15 ">
-          <p class="uppercase">{title}</p>
+  <!-- <Nav activeCategories={["case-study", type]} /> -->
+  <div class="border-t border-neutral-800 relative grid grid-cols-16 gap-x-15 gap-y-30 lg:gap-y-[40px] "> 
+    <aside class='grid col-span-full grid-cols-16 gap-15 divide-x divide-neutral-800'>
+      <div class="flex lg:flex-col justify-between gap-15 col-span-full lg:col-span-2">
+        <div>
+          <h1>{title}</h1>
+          <p class="text-balance">{description}</p>
+        </div>
+        <div>
+          <p class="capitalize">{type}</p>
+          <p>{year}</p>
           {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
-        <p class="text-balance">{description}</p>
-        <p class="lg:hidden">{year}</p>
       </div>
-      <div>
-        <p class="uppercase">Roles</p>
-        <p>{roles?.join(', ')}</p>
+      <div class="col-start-1 lg:col-start-auto flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-4 lg:col-span-2 ">
+        <p class="">Roles</p>
+        <ul>
+          {roles?.map(role => <li>{role}</li>)}
+        </ul>
+        <!-- <p>{roles?.join(', ')}</p> -->
       </div>
-      <div>
-        <p class="uppercase">Team</p>
+      <div class="flex flex-col justify-between gap-15 border-neutral-800 pl-5 col-span-4 lg:col-span-2 pr-15">
+        <p class="">Tools</p>
+        <ul>
+          {tools?.map(tool => <li>{tool}</li>)}
+        </ul>
+      </div>
+      <div class="flex flex-col justify-between gap-15 border-neutral-800 pl-5 col-span-4 lg:col-span-2 pr-15">
+        <p class="">Team</p>
         <ul>
           {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
             <li>
@@ -42,33 +55,27 @@ const {
           )) : "—"}
         </ul>
       </div>
-      <div>
-        <p class="uppercase">Tools</p>
-        <p>{tools?.join(', ')}</p>
-      </div>
-      <div class="hidden lg:block">
-        <p class="uppercase">Year</p>
-        <p>{year}</p>
-      </div>
-      <hr class="col-span-full text-gray-150 dark:border-[#2a2a2a] " />
-      <div class="col-start-1 col-span-full md:col-span-1">
-        <p class="uppercase">Problem</p>
+      <div class="col-start-1 lg:col-start-auto flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+        <p class="">Problem</p>
         <p class="text-balance">{tldr?.problem || "—"}</p>
       </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Solution</p>
+      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+        <p class="">Solution</p>
         <p class="text-balance">{tldr?.solution || "—"}</p>
       </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Decisions</p>
+      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+        <p class="">Decisions</p>
         <ul class="text-balance">
           {tldr?.decisions?.map((decision: string, index: number) => 
-            <li>[<span>{index + 1}</span>] {decision}</li>
+            <li>
+              <span>[{index + 1}]</span>
+              <span>{decision}</span>
+            </li>
           ) || "—"}
         </ul>
       </div>
-      <div class="col-span-full md:col-span-1">
-        <p class="uppercase">Tradeoffs</p>
+      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+        <p class="">Tradeoffs</p>
         <ul class="col-span-8 text-balance">
           {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
             <li>[<span>{index + 1}</span>] {tradeoff}</li>
@@ -76,13 +83,17 @@ const {
         </ul>
       </div>
     </aside>
+    <!-- <article
+      id="article"
+      class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto border-l border-neutral-800 pl-5"
+    > -->
     <article
       id="article"
-      class="pb-[120px] w-full col-span-full lg:col-span-6 lg:col-start-3 3xl:col-span-full 3xl:pl-[360px] 3xl:max-w-[1550px] 3xl:mx-auto overflow-visible scroll-mt-3 mx-auto "
+      class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto"
     >
       <div
         class={`
-          flex flex-col gap-x-5 gap-y-30
+          grid grid-cols-16 gap-x-15 gap-y-30
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-pink
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
@@ -96,6 +107,7 @@ const {
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
           prose-video:w-auto prose-video:select-none	prose-video:my-0 
           prose-td:p-0
+          [&>*]:col-span-full lg:[&>*]:col-start-3 lg:[&>*]:col-span-12
         `}
       >
         <slot />

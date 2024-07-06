@@ -58,17 +58,16 @@ switch (typeof span) {
 <div
   id={id}
   class={`
-    grid gap-x-5 gap-y-5 h-fit
+    grid gap-5 h-fit
     ${colClasses} ${spanClasses} ${classes}
   `}
 >
   {hasCaption && <Caption id={id} text={alt} />}
   <figure class={`
-    image relative grid col-span-full gap-x-5 
+    image relative grid col-span-full gap-x-5 border border-neutral-200 
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
-    ${hasBorder ? 'dark-border dark:light-border' : ''}
   `}>
     <img
       src={src}

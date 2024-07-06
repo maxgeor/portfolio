@@ -68,11 +68,10 @@ switch (typeof span) {
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${hasBorder ? 'dark-border dark:light-border' : ''}
   `}>
     <video
       class={`
-        bg-gray-100 dark:bg-gray-900 object-cover w-full select-none self-center 
+       object-cover w-full select-none self-center 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
