@@ -19,22 +19,27 @@ const {
 <Layout title={title} description={description}>
   <!-- <Nav activeCategories={["case-study", type]} /> -->
   <div class=" relative grid grid-cols-16 gap-x-15 gap-y-30"> 
+    <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
+      <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
+    </a>
     <aside class='grid col-span-full grid-cols-16 gap-15 divide-x divide-neutral-800 dark:divide-neutral-300'>
-      <div class="border-neutral-800 dark:border-neutral-300 border-l pl-5 flex flex-col lg:justify-between gap-15 col-span-full lg:col-span-2">
-        <div>
+      <div class="border-neutral-800 dark:border-neutral-300 border-l pl-5 flex flex-col justify-between gap-15 col-span-8 lg:col-span-2">
+        <div class="flex flex-col justify-between lg:justify-start h-full">
           <h1>{title}</h1>
           <p class="text-balance">{description}</p>
         </div>
-        <div>
+        <div class="hidden lg:flex flex-col justify-between lg:justify-normal">
           <p class="capitalize hidden lg:inline-block">{type}</p>
           <p>{year}</p>
-          {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
-        <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
-          <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
-        </a>
+        {link && <a href={link.href} target="_blank" class="md:hidden lg:block underline">Live site</a>}
       </div>
-      <div class="flex lg:hidden flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 ">
+      <div class="col-start-9 flex lg:hidden flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-4 lg:col-span-2 ">
+        <p class="">Year</p>
+        <p>{year}</p>
+      </div>
+      {link && <a href={link.href} target="_blank" class="hidden md:block lg:hidden border-none underline col-span-4">Live site</a>}
+      <div class="flex lg:hidden flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-start-1 md:col-start-1 col-span-8 md:col-span-4 lg:col-span-2 ">
         <p class="">Type</p>
         <p class="capitalize">{type}</p>
       </div>

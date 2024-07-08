@@ -1,21 +1,23 @@
 ---
 import Layout from "./Layout.astro";
-import Nav from "../components/Nav.astro";
+import XIcon from "../components/icons/XIcon.astro";
 import { formatDate } from '../utils/formatting';
 
 const { frontmatter } = Astro.props;
 const formattedDate = formatDate(frontmatter.date);
 ---
 <Layout title={frontmatter.title}>
-  <Nav activeCategories={['writing']} />
-  <main class="flex flex-col gap-15 col-span-full md:ml-[var(--nav-offset)]">
-    <div class="flex justify-between">
+  <main class="flex flex-col md:grid grid-cols-16 gap-15 col-span-full border-l md:border-none pl-5 md:pl-0 border-neutral-800 dark:border-neutral-300">
+    <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
+      <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
+    </a>
+    <div class="md:border-l md:pl-5 border-neutral-800 dark:border-neutral-300 flex flex-col justify-between xl:gap-15 col-span-full md:col-span-3 xl:col-span-2 pr-15">
       <h1 class="">{frontmatter.title}</h1>
-      <p>{formattedDate}</p>
-    </div>  
+      <p class="hidden xl:block">{formattedDate}</p>
+    </div>
     <article
       class={`
-        flex flex-col gap-15 max-w-[80ch] col-span-full lg:col-span-full pb-[45px]
+        flex flex-col gap-15 md:col-start-4 col-span-full max-w-[80ch] pl-10 xl:pl-0 mb-15 md:mb-0 h-full 
         text-12
         prose-headings:
         prose-p:my-0
@@ -27,6 +29,7 @@ const formattedDate = formatDate(frontmatter.date);
     >
       <slot />
     </article>
+    <p class="xl:hidden justify-self-end">{formattedDate}</p>
   </main>
 </Layout>
 
