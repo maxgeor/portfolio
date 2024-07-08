@@ -1,10 +1,11 @@
-<button id="theme-toggle" class="flex items-center justify-center group fixed bottom-0 right-0 z-[100] p-15 hover:bg-white focus:bg-white dark:hover:bg-black dark:focus:bg-black">
+<button class="theme-toggle flex items-center justify-center group fixed bottom-0 right-0 z-[100] p-15 hover:bg-white focus:bg-white dark:hover:bg-black dark:focus:bg-black">
   <span class="h-[7px] w-[7px] shrink-0 border border-neutral-800 group-hover:bg-black dark:border-neutral-300 dark:group-hover:bg-white rounded-full "></span>
 </button>
 
 <script>
   function toggleTheme() {
     document.documentElement.classList.toggle('dark');
+
     if (document.documentElement.classList.contains('dark')) {
       localStorage.setItem('theme', 'dark');
     } else {
@@ -15,9 +16,6 @@
   function loadThemePreference() {
     const theme = localStorage.getItem('theme');
 
-    if (!theme) {
-      
-    }
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -25,7 +23,6 @@
     }
   }
 
-  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-
+  document.querySelectorAll('.theme-toggle')?.forEach((toggle) => toggle.addEventListener('click', toggleTheme));
   loadThemePreference();
 </script>

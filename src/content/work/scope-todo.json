@@ -1,7 +1,7 @@
 {
   "type": "project",
   "title": "Scope Todo",
-  "description": "Product work, in Figma",
+  "description": "Product work, in Figma (50k users)",
   "image": "/work/scope-todo.png",
   "roles": {
     "long": ["Product", "Dev"],

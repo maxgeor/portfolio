@@ -64,10 +64,11 @@ switch (typeof span) {
 >
   {hasCaption && <Caption id={id} text={alt} />}
   <figure class={`
-    image relative grid col-span-full gap-x-5 border border-neutral-200 dark:border-transparent
+    image relative grid col-span-full gap-x-5
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
+    ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
   `}>
     <img
       src={src}

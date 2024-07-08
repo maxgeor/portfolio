@@ -17,7 +17,10 @@ const { title, image } = Astro.props;
 
 <div class="!col-span-full grid grid-cols-16 gap-x-15 ">
   <h3 class="col-span-full lg:col-span-2 text-balance hidden lg:block lg:max-w-[20ch] mb-5" set:html={marked.parse(title)}></h3>
-  <div class="col-span-full lg:col-span-3 flex flex-col gap-5 mb-15">
+  <div class={`
+    col-span-full flex flex-col gap-5 mb-15
+    ${image ? 'lg:col-span-3' : 'md:col-span-8 lg:col-span-6'}
+  `}>
     <h3 class="text-pretty lg:hidden" set:html={marked.parse(title)}></h3>
     <div class=" flex flex-col text-balance normal-case">
       <slot />

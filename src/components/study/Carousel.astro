@@ -28,17 +28,18 @@ export interface Props {
     xl?: number 
   };
   orientation?: 'horizontal' | 'vertical';
+  hasBorder?: boolean
   classes?: string;
 }
 
-const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
+const { slides, orientation = 'horizontal', hasBorder, classes = "" } = Astro.props;
 ---
 
 <div class={`carousel grid grid-cols-12 col-span-full gap-15 relative h-fit ${classes}`}>
-  <div class={`flex gap-[4px] text-inherit absolute top-[5px] right-0`}>
+  <div class={`flex gap-[4px] text-inherit absolute top-[6px] right-0`}>
     {slides?.map((_, index) => (
       <span 
-        class={`dot h-[6px] w-[6px] bg-neutral-700 dark:bg-neutral-300 rounded-full ${index === 0 ? 'active' : 'opacity-[30%]'}`}
+        class={`dot h-[6px] w-[6px] border-box border border-neutral-700 dark:border-neutral-300 rounded-full ${index === 0 ? 'active ' : 'opacity-[45%]'}`}
       ></span>
     ))}
   </div>
@@ -56,6 +57,7 @@ const { slides, orientation = 'horizontal', classes = "" } = Astro.props;
       <div class={`
         relative w-full rotate-0 overflow-hidden 
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+        ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
       `}>
         <button aria-label="Next slide" class={`btn-next absolute inset-0 opacity-0`}></button>
         {
