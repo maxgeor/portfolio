@@ -5,12 +5,9 @@ export interface Props {
 
 const { title } = Astro.props;
 ---
-<!-- <div class="relative grid grid-cols-16 !col-span-full gap-y-5 lg:mt-30 first:mt-0" > -->
-<div class="relative grid grid-cols-16 !col-span-full gap-y-5" >
+<div class="relative grid grid-cols-16 !col-span-full gap-y-5 lg:mt-30" >
   {title && <h1 class=" text-pretty col-span-full lg:col-span-2 lg:pr-[45px]">{title}</h1>}
-  <!-- <p class="max-w-[80ch] break-words hyphens-auto tracking-[-0.01em] dark:tracking-[-0.0025em] text-[19px] leading-[20px] xl:text-[24px] xl:leading-[25px] 3xl:text-30"> -->
-  <!-- <p class="max-w-[80ch] text-justify break-words hyphens-auto tracking-[-0.0025em] text-[19px] leading-[20px] xl:text-[24px] xl:leading-[25px] 3xl:text-30"> -->
-  <p class="col-span-full lg:col-span-12  break-words hyphens-auto tracking-[-0.005em] text-[20px] leading-[20px] lg:text-[25px] lg:leading-[25px] 2xl:text-30 2xl:leading-[30px]">
+  <p class="col-span-full lg:col-span-12 break-words hyphens-auto tracking-[-0.008em] text-[19px] leading-[20px] lg:text-[24px] lg:leading-[25px] 2xl:text-[35px] 2xl:leading-[35px]">
     <slot />
   </p>
 </div>

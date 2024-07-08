@@ -1,7 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import Nav from "../components/Nav.astro";
-import ScrollingBanner from '../components/ScrollingBanner.astro';
+import XIcon from "../components/icons/XIcon.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -19,33 +18,39 @@ const {
 
 <Layout title={title} description={description}>
   <!-- <Nav activeCategories={["case-study", type]} /> -->
-  <div class="border-t border-neutral-800 relative grid grid-cols-16 gap-x-15 gap-y-30 lg:gap-y-[40px] "> 
-    <aside class='grid col-span-full grid-cols-16 gap-15 divide-x divide-neutral-800'>
-      <div class="flex lg:flex-col justify-between gap-15 col-span-full lg:col-span-2">
+  <div class=" relative grid grid-cols-16 gap-x-15 gap-y-30"> 
+    <aside class='grid col-span-full grid-cols-16 gap-15 divide-x divide-neutral-800 dark:divide-neutral-300'>
+      <div class="border-neutral-800 dark:border-neutral-300 border-l pl-5 flex flex-col lg:justify-between gap-15 col-span-full lg:col-span-2">
         <div>
           <h1>{title}</h1>
           <p class="text-balance">{description}</p>
         </div>
         <div>
-          <p class="capitalize">{type}</p>
+          <p class="capitalize hidden lg:inline-block">{type}</p>
           <p>{year}</p>
           {link.href && <a href={link.href} target="_blank">[See]</a>}
         </div>
+        <a href="/" class="group fixed top-[0px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-green focus:bg-green">
+          <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-700' />
+        </a>
       </div>
-      <div class="col-start-1 lg:col-start-auto flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-4 lg:col-span-2 ">
+      <div class="flex lg:hidden flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 ">
+        <p class="">Type</p>
+        <p class="capitalize">{type}</p>
+      </div>
+      <div class="flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 ">
         <p class="">Roles</p>
         <ul>
           {roles?.map(role => <li>{role}</li>)}
         </ul>
-        <!-- <p>{roles?.join(', ')}</p> -->
       </div>
-      <div class="flex flex-col justify-between gap-15 border-neutral-800 pl-5 col-span-4 lg:col-span-2 pr-15">
+      <div class="flex flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <p class="">Tools</p>
         <ul>
           {tools?.map(tool => <li>{tool}</li>)}
         </ul>
       </div>
-      <div class="flex flex-col justify-between gap-15 border-neutral-800 pl-5 col-span-4 lg:col-span-2 pr-15">
+      <div class="flex flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <p class="">Team</p>
         <ul>
           {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
@@ -55,15 +60,15 @@ const {
           )) : "—"}
         </ul>
       </div>
-      <div class="col-start-1 lg:col-start-auto flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+      <div class="order-1 col-start-1 lg:col-start-auto flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <p class="">Problem</p>
         <p class="text-balance">{tldr?.problem || "—"}</p>
       </div>
-      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+      <div class="order-2 flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <p class="">Solution</p>
         <p class="text-balance">{tldr?.solution || "—"}</p>
       </div>
-      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+      <div class="order-3 flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <p class="">Decisions</p>
         <ul class="text-balance">
           {tldr?.decisions?.map((decision: string, index: number) => 
@@ -74,7 +79,7 @@ const {
           ) || "—"}
         </ul>
       </div>
-      <div class="flex flex-col justify-between gap-15  border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+      <div class="order-4 flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
         <p class="">Tradeoffs</p>
         <ul class="col-span-8 text-balance">
           {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
@@ -83,9 +88,10 @@ const {
         </ul>
       </div>
     </aside>
+    <!-- <hr class="border-neutral-800 dark:border-neutral-300 border-dashed col-span-full" /> -->
     <!-- <article
       id="article"
-      class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto border-l border-neutral-800 pl-5"
+      class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto border-l border-neutral-800 dark:border-neutral-300 pl-5"
     > -->
     <article
       id="article"
@@ -94,7 +100,7 @@ const {
       <div
         class={`
           grid grid-cols-16 gap-x-15 gap-y-30
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-pink
+          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-[#e1e1e1] focus:prose-a:ring-2 focus:prose-a:ring-green
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
           prose-li:list-item

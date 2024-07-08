@@ -61,7 +61,7 @@ module.exports = {
           150: "#E6E9ED",
           // 200: "#DBDEE6",
         },
-        green: 'green',
+        green: '#23FF27',
         pink: '#eb47ca',
         neutral: {
           50: '#FFFFFF',
@@ -83,7 +83,8 @@ module.exports = {
       screens: {
         xs: '450px',
         lg: '1024px',
-        '3xl': '1600px',
+        '2xl': '1600px',
+        '3xl': '1900px',
       },
       maxWidth: {
         '2xl': '1480px',
@@ -95,6 +96,7 @@ module.exports = {
         '16': 'repeat(16, minmax(0, 1fr))',
       },
       gridColumn: {
+        'span-13': 'span 13 / span 13',
         'span-14': 'span 14 / span 14',
       }
     }

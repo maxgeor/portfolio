@@ -7,7 +7,8 @@ const formatTime = (date: string) => {
 
 const formatDate = (date: string) => {
   const dateObject = new Date(date);
-  return format(dateObject, 'MM/dd/yyyy');
+  // return format(dateObject, 'MM/dd/yyyy');
+  return format(dateObject, 'MM/y');
 }
 
 const toUrlSafeKebabCase = (s: string) => 

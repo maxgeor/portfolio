@@ -1,13 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
 import Work from "../components/Work.astro";
 import Writing from "../components/Writing.astro";
 import { getCollection } from 'astro:content';
-import CheckIcon from "../components/icons/CheckIcon.astro";
-import CopyIcon from "../components/icons/CopyIcon.astro";
-import RightArrowIcon from "../components/icons/RightArrowIcon.astro";
-import UpRightArrowIcon from "../components/icons/UpRightArrowIcon.astro";
+import { formatDate } from '../utils/formatting';
 
 const links: {
   name: string;
@@ -111,9 +107,9 @@ const writings = await getCollection('writing');
   <!-- <Nav /> -->
   <!-- <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[45px]"> -->
   <div class="col-span-full relative grid grid-cols-8 gap-15 ">
-    <div class="grid grid-cols-16 gap-15 col-span-full pb-[75px] border-t border-neutral-800">
-      <div class="flex flex-col justify-between gap-[45px] col-span-8 md:col-span-4 pr-[75px] ">
-        <h1>Max Kevin Crapper Georgopoulos</h1>
+    <div class="grid grid-cols-16 gap-15 col-span-full pb-[45px]">
+      <div class="border-l pl-5  border-neutral-800 dark:border-neutral-300 flex flex-col justify-between gap-15 md:gap-[30px] col-span-full md:col-span-8 lg:col-span-4 pr-[45px] ">
+        <h1 class="whitespcae-nowrap">Max Kevin Crapper Georgopoulos</h1>
         <p class="hyphens-auto">I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
           and engineering is artificial — you get the best results by blending
@@ -122,36 +118,7 @@ const writings = await getCollection('writing');
           Homme Plissé.
         </p>
       </div>
-      <div class="lg:col-start-5 flex flex-col justify-between gap-15 border-l border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
-        <p>Skills</p>
-        <div class="flex flex-col">
-          <div class="flex items-baseline gap-5">
-            <p class="whitespace-nowrap">Product Thinking</p>
-            <p>(Great)</p>
-          </div>
-          <div class="flex items-baseline  gap-5">
-            <p class="whitespace-nowrap">Product Design</p>
-            <p>(Great)</p> 
-          </div>
-          <div class="flex items-baseline gap-5">
-            <p class="whitespace-nowrap">Copywriting</p>
-            <p>(Good)</p>
-          </div>
-          <div class="flex items-baseline gap-5">
-            <p class="whitespace-nowrap">Frontend Dev</p>
-            <p>(Ok)</p>
-          </div>
-          <div class="flex items-baseline gap-5">
-            <p class="whitespace-nowrap">Graphic Design</p>
-            <p>(Ok)</p>
-          </div>
-          <div class="flex items-baseline gap-5">
-            <p class="whitespace-nowrap">Backend Dev</p>
-            <p>(Meh)</p>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col justify-between gap-15 border-l border-neutral-800 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+      <div class="flex flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
         <p>Links</p>
         <ul>
           {links.map((link) => (
@@ -162,12 +129,6 @@ const writings = await getCollection('writing');
                 class=" flex w-full items-center justify-between gap-5 transition duration-75 "
               >
                 {link.name}
-                {/* <hr class="border-t h-px border-current border-dotted w-full" />
-                {link.target === "_self" ? (
-                  <RightArrowIcon  classes="shrink-0 opacity-80 -mx-[3px]" />
-                ) : (
-                  <UpRightArrowIcon classes="shrink-0 opacity-80 -mx-[3px]" />
-                )} */}
               </a>
             </li>
           ))}
@@ -177,14 +138,22 @@ const writings = await getCollection('writing');
               class={`copy-email-button relative flex justify-between gap-5 w-full items-center cursor-default `}
             >
               <span class="capitalize">Email</span>
-              <!-- <hr class="border-t h-px border-current border-dotted w-full" />
-              <CopyIcon id="copy-icon" classes="shrink-0" />
-              <CheckIcon id="check-icon" classes="hidden shrink-0 -ml-px -mr-0.5" /> -->
             </button>
           </li>
         </ul>
       </div>
-      <div class="border-l border-neutral-800 pl-5 col-span-2 col-start-12 justify-between flex flex-col">
+      <div class="flex flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
+        <p>Skills</p>
+        <ul>
+          <li>Product Thinking (Great)</li>
+          <li>Product Design (Great)</li>
+          <li>Copywriting (Good)</li>
+          <li>Frontend Dev (Ok)</li>
+          <li>Graphic Design (Ok)</li>
+          <li>Backend Dev (Meh)</li>
+        </ul>
+      </div>
+      <div class="border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 justify-between flex flex-col">
         <h3 class="col-span-full lg:col-span-2 ">Heros</h3>
         <ul class="flex flex-col col-span-full ">
           {heros.map((hero) => (
@@ -197,7 +166,7 @@ const writings = await getCollection('writing');
           ))}
         </ul>
       </div>
-      <div class="border-l border-neutral-800 pl-5 col-span-2 justify-between flex flex-col">
+      <div class="border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-8 md:col-span-4 lg:col-span-2 justify-between flex flex-col">
         <h3 class="col-span-full lg:col-span-2 ">Interests</h3>
         <ul class="flex flex-col col-span-full ">
           {interests.map((interest) => (
@@ -210,23 +179,27 @@ const writings = await getCollection('writing');
           ))}
         </ul>
       </div>
+      <div class="border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full md:col-span-8 lg:col-span-4 justify-between flex flex-col gap-15">
+        <h3 class="col-span-full lg:col-span-2 ">Writing</h3>
+        <ol>
+          {writings?.sort((a, b) => {
+            const dateA: any = new Date(a.data.date);
+            const dateB: any = new Date(b.data.date);
+            return dateB - dateA;
+          }).map((writing) => (
+            <li>
+              <a href={`/writing/${writing.slug}`} class="flex gap-5">
+                <span>{formatDate(writing.data.date)}</span>
+                {writing.data.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}
-    {writings?.sort((a, b) => {
-        const dateA: any = new Date(a.data.date);
-        const dateB: any = new Date(b.data.date);
-        return dateB - dateA;
-      }).map((writing) => (
-          <Writing
-            title={writing.data.title}
-            href={`/writing/${writing.slug}`}
-            date={writing.data.date}
-            preview={writing.data.preview}
-          />
-        )
-      )}
   </div>
 </Layout>
 
