@@ -42,7 +42,7 @@ const links: {
   },
 ];
 
-const heros = [
+const influences = [
   { 
     name: "Steve Jobs",
     description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
@@ -187,9 +187,9 @@ const interests = [
     </div>
     <div class="col-span-full lg:col-span-2 lg:col-start-1 flex flex-col sm:flex-row lg:flex-col  gap-15">
       <div class="sm:basis-1/2 lg:basis-1">
-        <h3 class="col-span-full lg:col-span-2 ">Heros</h3>
+        <h3 class="col-span-full lg:col-span-2 ">influences</h3>
         <ul class="flex flex-col col-span-full ">
-          {heros.map((hero) => (
+          {influences.map((hero) => (
             <li class="pl-px">
               <details class="group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>

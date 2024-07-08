@@ -41,7 +41,7 @@ const links: {
   },
 ];
 
-const heros = [
+const influences = [
   { 
     name: "Steve Jobs",
     description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
@@ -52,24 +52,14 @@ const heros = [
     link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
   },
   {
-    name: "Massimo & Lella Vignelli", 
+    name: "Massimo/Lella Vignelli", 
     description: "Semantics are everything + elegance elegance elegance.", 
     link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
-  },
-  { 
-    name: "Dieter Rams", 
-    description: "Radical simplicity, understanding engineering makes you a better designer.", 
-    link: "https://www.google.com/search?q=dieter+rams+products&tbm=isch&ved=2ahUKEwi37cjNy5mEAxXMPlkFHcp6CxkQ2-cCegQIABAA&oq=dieter+rams+products&gs_lp=EgNpbWciFGRpZXRlciByYW1zIHByb2R1Y3RzMgUQABiABDIFEAAYgAQyBRAAGIAEMgYQABgFGB4yBBAAGB4yBhAAGAgYHkjIEFD6AliEEHAAeACQAQCYAdMBoAGMCaoBBTMuNS4xuAEDyAEA-AEBigILZ3dzLXdpei1pbWfCAgQQIxgnwgIKEAAYgAQYigUYQ4gGAQ&sclient=img&ei=96fDZfeVBsz95NoPyvWtyAE&bih=779&biw=1440" 
   },
   { 
     name: "Ryan Singer", 
     description: "All roads lead to Rome.", 
     link: "https://www.feltpresence.com/" 
-  },
-  { 
-    name: "Hayao Miyazaki", 
-    description: "You can make your work more beautiful and emotive.", 
-    link: "https://en.wikipedia.org/wiki/Hayao_Miyazaki" 
   },
   { 
     name: "Christopher Alexander", 
@@ -166,9 +156,9 @@ const writings = await getCollection('writing');
         </ul>
       </div>
       <div class="border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 justify-between flex flex-col pr-15 gap-15">
-        <h3 class="col-span-full lg:col-span-2 ">Heros</h3>
+        <h3 class="col-span-full lg:col-span-2 ">Influences</h3>
         <ul class="flex flex-col col-span-full">
-          {heros.map((hero) => (
+          {influences.map((hero) => (
             <li class="pl-px">
               <details class="group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
