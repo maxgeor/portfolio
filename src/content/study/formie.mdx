@@ -236,7 +236,12 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Tradeoff 
   title="Tradeoff: Customize ~everything~ title + description"
-  
+  image={{ 
+    id: "T1", 
+    src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
+    alt: "Form page, mobile",
+    hasBorder: true
+  }}
 >
   We wanted every part of a form to be customizable (field titles, descriptions, placeholders, error messages, button labels, etc). But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming. Since top-level fields do 80-90% of the communicating, we only let people customize their form’s title and description. Limited customization kept form creation straightforward while offering more control than Etherscan.
 </Tradeoff>
