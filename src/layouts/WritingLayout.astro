@@ -7,29 +7,37 @@ const { frontmatter } = Astro.props;
 const formattedDate = formatDate(frontmatter.date);
 ---
 <Layout title={frontmatter.title}>
-  <main class="flex flex-col md:grid grid-cols-16 gap-15 col-span-full border-l md:border-none pl-5 md:pl-0 border-neutral-800 dark:border-neutral-300">
+  <main class="flex flex-col md:grid grid-cols-16 gap-15 col-span-full pb-[45px]">
     <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
       <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
     </a>
-    <div class="md:border-l md:pl-5 border-neutral-800 dark:border-neutral-300 flex flex-col justify-between xl:gap-15 col-span-full md:col-span-3 xl:col-span-2 pr-15">
+    <div class="h-min md:h-full border-l pl-5 border-neutral-800 dark:border-neutral-300 flex flex-col justify-between xl:gap-15 col-span-full md:col-span-4 lg:col-span-3 pr-15">
       <h1 class="">{frontmatter.title}</h1>
-      <p class="hidden xl:block">{formattedDate}</p>
+      <p>{formattedDate}</p>
     </div>
+    <!-- <article
+      class={`
+        flex flex-col gap-15 md:col-start-5 col-span-full md:col-span-10 lg:col-span-8 xl:col-span-6 h-full 
+        text-12
+        !prose-headings:max-w-none prose-headings:border-b  prose-headings:border-neutral-800 dark:prose-headings:border-neutral-300
+        prose-p:my-0
+        prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[12px]
+        prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[12px]
+        prose-li:marker:text-inherit
+      `}
+    > -->
     <article
       class={`
-        flex flex-col gap-15 md:col-start-4 col-span-full max-w-[80ch] pl-10 xl:pl-0 mb-15 md:mb-0 h-full 
+        flex flex-col gap-15 md:col-start-5 col-span-full md:col-span-10 lg:col-span-8 xl:col-span-6 h-full 
         text-12
-        prose-headings:
         prose-p:my-0
-        prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[13px] md:prose-ul:pl-0
-        prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[13px] md:prose-ol:pl-0
+        prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[12px] md:prose-ul:pl-0
+        prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[12px] md:prose-ol:pl-0
         prose-li:marker:text-inherit
-
       `}
     >
       <slot />
     </article>
-    <p class="xl:hidden justify-self-end">{formattedDate}</p>
   </main>
 </Layout>
 
