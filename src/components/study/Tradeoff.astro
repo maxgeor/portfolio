@@ -19,7 +19,7 @@ const { title, image } = Astro.props;
   <h3 class="col-span-full lg:col-span-2 text-balance hidden lg:block lg:max-w-[20ch] mb-5" set:html={marked.parse(title)}></h3>
   <div class={`
     col-span-full flex flex-col gap-5 mb-15
-    ${image ? 'lg:col-span-3' : 'md:col-span-8 lg:col-span-6'}
+    ${image ? 'md:col-span-4 lg:col-span-3' : 'md:col-span-12 lg:col-span-8'}
   `}>
     <h3 class="text-pretty lg:hidden" set:html={marked.parse(title)}></h3>
     <div class=" flex flex-col text-balance normal-case">
@@ -34,7 +34,7 @@ const { title, image } = Astro.props;
       span={{ base: 12 }}
       hasCaption={false}
       hasBorder={image.hasBorder}
-      classes="self-center col-span-full lg:col-span-9"
+      classes="self-center col-span-full md:col-span-12 lg:col-span-9"
     />
   )}
 </div>
