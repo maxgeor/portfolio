@@ -35,20 +35,18 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
 ---
 
 <div class={`carousel grid grid-cols-12 gap-15 relative h-fit ${classes} ${span}`}>
-  <div class={`flex gap-1 text-inherit absolute top-[7px] right-0`}>
-    {slides?.map((_, index) => (
+  <div class={`flex items-center gap-1 text-inherit absolute top-[7px] right-0 bg-white dark:bg-black z-10`}>
+    {slides?.map(() => (
       <span 
-        class={`dot h-[5px] w-[5px] bg-neutral-600 dark:bg-neutral-300 rounded-full ${index === 0 ? 'active ' : 'opacity-[35%]'}`}
+        class={`dot h-[5px] w-[5px] bg-neutral-600 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
       ></span>
     ))}
   </div>
-  <div class={`
-    flex flex-col gap-2 col-span-full 
-  `}>
+  <div class={`flex flex-col gap-2 col-span-full `}>
     <div class="flex flex-col gap-5">
       <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
         {slides?.map((slide, index) => (
-          <div class={`slide-caption slide-caption-${index} absolute h-fit w-full transition-all duration-[450ms] ease-in-out`}>
+          <div class={`caption caption-${index} absolute h-fit w-full transition-opacity duration-[450ms] ease-in-out`}>
             <p>{slide.alt}</p>
           </div>
         ))}
@@ -58,7 +56,7 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
         ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
       `}>
-        <button aria-label="Next slide" class={`btn-next absolute inset-0 opacity-0`}></button>
+        <button aria-label="Next slide" class="next-slide-btn absolute inset-0 opacity-0 z-40"></button>
         {
           slides?.map((slide, index) => (
             <div class={`
@@ -96,6 +94,28 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
 </div>
 
 <style>
+  .caption {
+    opacity: 0;
+  }
+
+  .caption.current {
+    opacity: 1;
+  }
+  .dot {
+    opacity: 0.35;
+  }
+
+  .dot.current {
+    opacity: 1;
+  }
+
+  .notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+
   .light-border::after {
     box-shadow: inset 0 0 0 1px RGBA(255,255,255,0.09);
     content: '';
@@ -115,18 +135,6 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
     top: 0;
     width: 100%;
   }
-  
-  .slide-titles > button > div {
-    opacity: 0.4;
-  }
-
-  .slide-titles > button.active > div {
-    opacity: 1;
-  }
-  
-  .slide-titles > button:hover > div {
-    opacity: 1;
-  }
 </style>
 
 <script>
@@ -134,75 +142,33 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
 
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
-    const slideCaptions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide-caption");
-    const counters = carousel.querySelectorAll(".counter-current") as NodeListOf<HTMLElement>;
-    const slideTitles: NodeListOf<HTMLButtonElement> = carousel.querySelectorAll(".slide-title");
-    const prevSlideBtns = carousel.querySelectorAll(".btn-prev") as NodeListOf<HTMLButtonElement>;
-    const nextSlideBtns = carousel.querySelectorAll(".btn-next") as NodeListOf<HTMLButtonElement>;
+    const captions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".caption");
+    const dots = carousel.querySelectorAll(".dot") as NodeListOf<HTMLElement>;
+    const nextSlideBtns = carousel.querySelectorAll(".next-slide-btn") as NodeListOf<HTMLButtonElement>;
 
     let curSlide = 0;
 
-    const isFirstSlide = () => curSlide === 0;
-    const isLastSlide = () => curSlide === slides.length - 1;
-
     const slideTo = (position: number) => {
-      curSlide = position;
+      curSlide = position > slides.length - 1 ? 0 : position;
 
       slides.forEach((slide, index) => {
-        slide.style.transform = `translateX(${100 * (index - position)}%)`;
-        slideCaptions[index].style.transform = `translateX(${100 * (index - position)}%)`;
+        slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
       });
 
-      if (counters.length > 0) {
-        counters.forEach(counter => counter.innerHTML = `${curSlide + 1}`)
-      }
-
-      if (nextSlideBtns.length > 0) {
-        nextSlideBtns.forEach(btn => {
-          if (!isLastSlide() && btn.disabled) {
-            btn.disabled = false;
-            btn.style.opacity = "100%";
-          } else if (isLastSlide() && !btn.disabled) {
-            btn.disabled = true;
-            btn.style.opacity = "40%";
-          }
-        });
-      }
-
-      if (prevSlideBtns.length > 0) {
-        prevSlideBtns.forEach(btn => {
-          if (!isFirstSlide() && btn.disabled) {
-            btn.disabled = false;
-            btn.style.opacity = "100%";
-          } else if (isFirstSlide() && !btn.disabled) {
-            btn.disabled = true;
-            btn.style.opacity = "40%";
-          }
-        });
-      }
-
-      slideTitles.forEach(slide => {
-        slide.classList.contains(`slide-title-${curSlide}`)
-          ? slide.classList.add('active')
-          : slide.classList.remove('active');
+      captions.forEach((caption, index) => {
+        index === curSlide
+          ? caption.classList.add('current')
+          : caption.classList.remove('current');
+      });
+      
+      dots.forEach((dot, index) => {
+        index === curSlide
+          ? dot.classList.add('current')
+          : dot.classList.remove('current');
       });
     }
 
-    slides.forEach((slide, index) => {
-      slide.style.transform = `translateX(${index * 100}%)`
-      slideCaptions[index].style.transform = `translateX(${index * 100}%)`
-    });
-
-    slideTitles.forEach(title => title.addEventListener('click', () => {
-      const position = parseInt(title.dataset?.position || '0');
-      slideTo(position);
-    }));
-
-    if (prevSlideBtns.length > 0) {
-      prevSlideBtns.forEach(btn => {
-        btn.addEventListener("click", () => slideTo(curSlide - 1));
-      });
-    }
+    slideTo(curSlide);
 
     if (nextSlideBtns.length > 0) {
       nextSlideBtns.forEach(btn => {

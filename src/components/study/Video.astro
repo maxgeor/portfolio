@@ -57,7 +57,7 @@ switch (typeof span) {
 <div class={`flex flex-col gap-5 h-fit ${colClasses} ${spanClasses} ${classes}`}>
   {hasCaption && <p>{alt}</p>}
   <div class={`
-    relative grid gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    relative grid gap-x-5 overflow-visible
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
