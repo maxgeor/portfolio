@@ -1,10 +1,7 @@
 ---
-import Caption from './Caption.astro';
-
 export interface Props {
   src: string;
   alt: string;
-  id: string;
   span?: number | { 
     base: number, 
     sm?: number, 
@@ -23,7 +20,6 @@ export interface Props {
 const { 
   src, 
   alt,
-  id,
   span = 12,
   hasCaption = true,
   description = '',
@@ -55,14 +51,8 @@ switch (typeof span) {
 }
 ---
 
-<div
-  id={id}
-  class={`
-    grid gap-5 h-fit
-    ${colClasses} ${spanClasses} ${classes}
-  `}
->
-  {hasCaption && <Caption id={id} text={alt} />}
+<div class={`grid gap-5 h-fit ${colClasses} ${spanClasses} ${classes}`}>
+  {hasCaption && <p class="col-span-full">{alt}</p>}
   <figure class={`
     image relative grid col-span-full gap-x-5
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}

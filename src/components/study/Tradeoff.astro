@@ -7,7 +7,6 @@ export interface Props {
   image?: {
     src: string;
     alt: string;
-    id: string;
     hasBorder?: boolean;
   }
 }
@@ -28,7 +27,6 @@ const { title, image } = Astro.props;
   </div>
   {image && (
     <Image
-      id='T1'
       src={image.src}
       alt={image.src}
       span={{ base: 12 }}

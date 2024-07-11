@@ -89,36 +89,10 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Problem'>Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. Etherscan is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</Context>
 
-{/* <PaginatedSection
-  classes="col-span-2 "
-  sections={[
-    {
-      id: 'R0',
-      title: 'Most actions needed basic UIs',
-      details: "We started by studying what worked with Etherscan's interface. Their \"frontend\" was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.",
-      media: {
-        type: 'image',
-        src: "/work/formie/research/forms/etherscan-form-ui.png",
-        alt: "Etherscan's UI for Uniswaps's Delegate method",
-      }
-    },
-    {
-      id: 'R1',
-      title: 'Most projects used Etherscan for one-way actions',
-      details: "Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs.",
-      media: {
-        type: 'video',
-        src: "/work/formie/research/one-ways/mloot-flow",
-        alt: "Flow to mint mLoot",
-      }
-    }
-  ]}
-/> */}
 <div class="grid grid-cols-12 gap-15">
   <Image
     src="/work/formie/research/forms/etherscan-form-ui.png"
     alt="Etherscan's UI for Uniswaps's Delegate method"
-    id='R0'
     span={{ base: 12, md: 6 }}
     orientation="horizontal"
     description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
@@ -126,7 +100,6 @@ import Carousel from "../../components/study/Carousel.astro";
   <Video
     src="/work/formie/research/one-ways/mloot-flow"
     alt="Flow to mint mLoot"
-    id='R1'
     span={{ base: 12, md: 6 }}
     description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs."
   />
@@ -134,21 +107,32 @@ import Carousel from "../../components/study/Carousel.astro";
 
 <Context title='Solution'>Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> / You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</Context>
 
-<div class="col-span-full md:col-span-8 grid grid-cols-12 md:grid-cols-8 md:col-start-3 gap-15">
-  <Video 
-    src="/work/formie/s1.mp4" 
-    alt="Full app walkthrough, desktop"
-    id='S1'
-    span={{ base: 12, md: 8 }}
-    hasBorder={true}
-  />
-</div>
+<Carousel
+  slides={[
+    {
+      type: "video",
+      src: "/work/formie/walkthrough.mp4",
+      alt: "Full app walkthrough, desktop"
+    },
+    {
+      src: "/work/formie/first-sketch.png",
+      alt: "First sketch of form builder UI",
+    },
+    {
+      src: "/work/formie/process/flow.png",
+      alt: "Form creation flow",
+    },
+    {
+      src: "/work/formie/process/sketch.png",
+      alt: "First idea for form header",
+    },
+  ]}
+/>
 
 <div class="hidden md:grid overflow-x-scroll col-span-full grid-cols-12 gap-15">
   <Image
     src="/work/formie/s4.png"
     alt="New form (find)"
-    id='S2'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
     hasBorder={false}
@@ -156,7 +140,6 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/s5.png"
     alt="New form (pick action)"
-    id='S3'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
     v
@@ -164,7 +147,6 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/s6.png"
     alt="New form (titles)"
-    id='S4'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
     hasBorder={false}
@@ -177,17 +159,14 @@ import Carousel from "../../components/study/Carousel.astro";
     {
       src: "/work/formie/s4.png",
       alt: "New form (find contract)",
-      id: 'S2'
     },
     {
       src: "/work/formie/s5.png",
       alt: "New form (pick action)",
-      id: 'S3'
     },
     {
       src: "/work/formie/s6.png",
       alt: "New form (add title & description)",
-      id: 'S4'
     },
   ]}
   classes="md:hidden"
@@ -197,7 +176,6 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/s2.png"
     alt="Index page, mobile"
-    id='S5'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
     hasBorder={false}
@@ -205,7 +183,6 @@ import Carousel from "../../components/study/Carousel.astro";
   <Image
     src="/work/formie/s3.png"
     alt="Form page, mobile"
-    id='S6'
     span={{ base: 6, md: 4 }}
     orientation="vertical"
     hasBorder={false}
@@ -219,13 +196,11 @@ import Carousel from "../../components/study/Carousel.astro";
     {
       src: '/work/formie/decisions/trust.png',
       alt: 'Trust confirmation checkbox on form page',
-      id: 'C1.1',
       hasBorder: true
     },
     {
       src: '/work/formie/challenges/scam.png',
       alt: 'Notes on handling scammers',
-      id: 'C1.2',
       hasBorder: true
     }
   ]}
@@ -237,7 +212,6 @@ import Carousel from "../../components/study/Carousel.astro";
 <Tradeoff 
   title="Tradeoff: Customize ~everything~ title + description"
   image={{ 
-    id: "T1", 
     src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
     alt: "Form page, mobile",
     hasBorder: true
@@ -249,119 +223,10 @@ import Carousel from "../../components/study/Carousel.astro";
 <Context title='Challenge: Explaining technical ideas'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 
 {/* 
-<Heading title="So we looked for something better..." number="01" classes="md:pb-12">
-  <img src="/path-l-to-r.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[48px] h-full absolute -bottom-3 left-[48%] transform rotate-1 -translate-x-1/2" />
-</Heading>
-
-<div, class="relative md:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-15">
-  <div class="flex flex-col gap-y-15 gap-x-5 col-span-full md:col-span-2 ">
-    <h2>Most actions needed basic UIs</h2>
-    <div class="flex flex-col gap-15">
-      We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
-      
-      Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
-    </div>
-  </div>
-  <Image 
-    src="/work/formie/research/forms/etherscan-form-ui.png" 
-    alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="md:order-first col-span-full md:col-span-3 xl:col-start-2 -mx-3 md:!mx-0"
-  />
-  <img src="/path-r-to-l.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[60px] h-full xl:w-[50vw] absolute -bottom-6 left-[48%] transform -rotate-1 -translate-x-1/2" />
-</div>
-
-<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-15 md:pb-12">
-  <div class="flex flex-col gap-15 col-span-full md:col-span-2 xl:col-start-2 ">
-    <h2>Projects used Etherscan for one-way actions</h2>
-    <div class="flex flex-col gap-15">
-      Contracts have two kinds of actions:
-
-      `One-way` actions _trigger a change, but return nothing_ (ex: voting, sending money, changing ownership).
-
-      `Two-way` actions _return data_, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics).
-
-      One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs.
-    </div>
-  </div>
-  <Carousel
-    slides={[
-      {
-        type: 'video',
-        src: "/work/formie/research/one-ways/mloot-flow",
-      },
-      {
-        type: 'video',
-        src: "/work/formie/research/one-ways/rune-flow",
-      },
-    ]}
-    classes="col-span-full md:col-span-3 -mx-3 md:!mx-0"
-  />
-  <img 
-    src="/path-l-to-r.svg" 
-    class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[50px] h-full  absolute -bottom-6 left-[48%] transform rotate-1 -translate-x-1/2" 
-  />
-</div>
-
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-15 md:pb-12">
-  <div class="flex flex-col gap-y-15 gap-x-5 col-span-full md:col-span-2 ">
-    <h2>Projects sacrificed UX to save time</h2>
-    <div class="flex flex-col gap-15">
-      We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
-
-      ### Etherscan was a “good enough” interface
-      Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
-
-      ### They knew Etherscan sucked
-      Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
-    </div>
-  </div>
-  <Video 
-    src="/work/formie/research/one-ways/banners-flow.png" 
-    alt="Etherscan's UI for Uniswaps's Delegate method"
-    gridClasses="md:order-first col-span-full md:col-span-3 xl:col-start-2 -mx-3 md:!mx-0"
-  />
-  <img src="/path-r-to-c.svg" class="hidden md:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
-</div>
-
-<div class="relative col-span-full xl:col-span-6 xl:col-start-2 grid grid-cols-6 gap-x-5 mt-[5px]2 md:mt-36">
-  <span class="self-start -my-1 col-span-3 lg:col-span-2 z-5 md:text-md md:tracking-tight !text-neutral-500 max-w-[225px] md:max-w-[300px] md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span class="absolute -top-1 md:-top-15 lg:-top-7 -right-0.5 md:-right-1 xl:-right-5 text-xl md:text-2xl lg:text-3xl justify-self-end text-neutral-600 tracking-tight ">02</span>
-</div>
-<h1 class=" -mt-[5px] md:-mt-2 -mb-6 md:-mb-2 xl:-my-3">What if we applied form builder patterns to smart contracts?</h1>
-<OneTwoThree >
-  <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
-  <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
-  <span slot="3">Share clear, thoughtful feedback about transactions.</span>
-</OneTwoThree>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-5 gap-y-15 md:pb-12">
-  <div class="col-span-full md:col-span-2 xl:col-start-2 md:max-w-[200px] ">
-    The form builder pattern worked for a few reasons:
-  </div>
-  <div class="col-span-full md:col-span-3 max-w-prose">
-    1. One-way actions (which covered most use cases) worked well with form-like layouts.
-    2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
-    3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
-  </div>
-</div>
-
-<div class="col-span-full -mx-3">
-  <img
-    src="/work/formie/first-sketch-sm.png"
-    alt="First sketch of form builder UI"
-    class="xl:hidden"
-  />
-  <img
-    src="/work/formie/first-sketch-lg.png"
-    alt="First sketch of form builder UI"
-    class="hidden xl:block"
-  />
-</div>
-
 <Heading title="So we got to work..." number="03" classes="!pb-0" />
 <div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-15 gap-x-5">
   <div class="col-span-full md:col-span-2 xl:col-start-2">
-    We worked by doing design and development at the same time.
+    
   </div>
   <div class="col-span-full md:col-span-2">
     First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.

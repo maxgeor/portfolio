@@ -1,12 +1,9 @@
 ---
-import Caption from "./Caption.astro";
-import PauseIcon from "../icons/PauseIcon.astro";
 import { stripExtension } from "../../utils/formatting";
 
 export interface Props {
   src: string;
   alt: string;
-  id: string;
   span: number | { 
     base: number, 
     sm?: number, 
@@ -25,7 +22,6 @@ export interface Props {
 const {
   src, 
   alt,
-  id,
   span = 12,
   description = "",
   hasPadding = false,
@@ -58,13 +54,10 @@ switch (typeof span) {
     break;
 }
 ---
-<div
-  id={id}
-  class={`grid gap-x-5 gap-y-5 h-fit ${colClasses} ${spanClasses} ${classes}`}
->
-  {hasCaption && <Caption id={id} text={alt} />}
+<div class={`flex flex-col gap-5 h-fit ${colClasses} ${spanClasses} ${classes}`}>
+  {hasCaption && <p>{alt}</p>}
   <div class={`
-    relative grid col-span-full gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out
+    relative grid gap-x-5 overflow-visible cursor-pointer transition duration-[250ms] ease-out
     ${colClasses}
     ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
@@ -84,14 +77,14 @@ switch (typeof span) {
     >
       <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
     </video>
-    <PauseIcon
+    <!-- <PauseIcon
       classes="pause-icon transform opacity-0 brightness-100 -rotate-[24deg] -translate-x-5 z-10 absolute top-[12px] left-[10px] transition-all duration-200 ease-in-out text-white pointer-events-none drop-shadow-md"
-    />
+    /> -->
   </div>
-  {description && <p class="col-span-full">{description}</p>}
+  {description && <p>{description}</p>}
 </div>
 
-<script>
+<!-- <script>
   document.querySelectorAll("video")?.forEach((video) => {
     const videoTarget = video.parentElement;
     const pauseIcon = videoTarget?.querySelector(".pause-icon") as HTMLElement;
@@ -138,6 +131,6 @@ switch (typeof span) {
       }
     });
   });
-</script>
+</script> -->
 
 

@@ -94,7 +94,7 @@ const writings = await getCollection('writing');
   <!-- <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[45px]"> -->
   <div class="col-span-full relative grid grid-cols-8 gap-15 ">
     <div class="grid grid-cols-16 gap-15 col-span-full pb-15 lg:pb-[45px]">
-      <div class=" border-l pl-5 border-neutral-800 dark:border-neutral-300 flex flex-col justify-between md:gap-15 col-span-full md:col-span-8 lg:col-span-4 md:pr-[45px]">
+      <div class="transition-all border-l pl-5 border-neutral-800 dark:border-neutral-300 flex flex-col justify-between md:gap-15 col-span-full md:col-span-8 lg:col-span-4 md:pr-[45px]">
         <h1 class="whitespcae-nowrap">Max Kevin Crapper Georgopoulos</h1>
         <p class="hyphens-auto">I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
@@ -104,12 +104,12 @@ const writings = await getCollection('writing');
           Homme Plissé.
         </p>
       </div>
-      <div class="flex md:hidden border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-full">
+      <div class="transition-all flex md:hidden border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-full">
         {links.map(link => (
           <a href={link.url} target={link.target} class="mr-1 last:mr-0 [&>span]:last:hidden">{link.name}<span>,</span></a>
         ))}
       </div>
-      <div class="flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
+      <div class="transition-all flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
         <div>
           <h3>Writing</h3>
           <ol>
@@ -151,13 +151,13 @@ const writings = await getCollection('writing');
           </ul>
         </div>
       </div>
-      <div class="flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
+      <div class="transition-all flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
         <div>
           <h3>Interests</h3>
           <ul>
             {interests.map((interest) => (
               <li class="pl-px">
-                <details class="group before:content-none  flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+                <details class="transition-all group before:content-none  flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                   <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
                   <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
                 </details>
@@ -170,7 +170,7 @@ const writings = await getCollection('writing');
           <ul>
             {influences.map((hero) => (
               <li class="pl-px">
-                <details class="group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+                <details class="transition-all group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                   <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
                   <p class="pl-[0.65rem] normal-case font-medium">{hero.description} {hero.link && <a href={hero.link} target="_blank" class="inline underline">Learn</a>}</p>
                 </details>
@@ -179,7 +179,7 @@ const writings = await getCollection('writing');
           </ul>
         </div>
       </div>
-      <div class="hidden md:flex flex-col gap-15 justify-between lg:order-last border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full sm:col-span-8 lg:col-span-4">
+      <div class="transition-all hidden md:flex flex-col gap-15 justify-between lg:order-last border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full sm:col-span-8 lg:col-span-4">
         <h3 class="col-span-full lg:col-span-2 ">Writing</h3>
         <ol>
           {writings?.sort((a, b) => {
@@ -196,7 +196,7 @@ const writings = await getCollection('writing');
           ))}
         </ol>
       </div>
-      <div class="hidden md:flex flex-col justify-between border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-2 md:col-span-4 lg:col-span-2 md:pr-15 gap-15">
+      <div class="transition-all hidden md:flex flex-col justify-between border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-2 md:col-span-4 lg:col-span-2 md:pr-15 gap-15">
         <p class="hidden md:block">Links</p>
         <ul class="flex flex-col items-end md:items-start">
           {links.map((link) => (
@@ -220,7 +220,7 @@ const writings = await getCollection('writing');
           </li>
         </ul>
       </div>
-      <div class="hidden md:flex flex-col justify-between border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15 gap-15">
+      <div class="transition-all hidden md:flex flex-col justify-between border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15 gap-15">
         <p>Skills</p>
         <ul>
           <li class="flex gap-5 whitespace-nowrap">
@@ -243,12 +243,12 @@ const writings = await getCollection('writing');
           </li>
         </ul>
       </div>
-      <div class="hidden md:flex flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+      <div class="transition-all hidden md:flex flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <h3 class="col-span-full lg:col-span-2 ">Influences</h3>
         <ul class="flex flex-col col-span-full">
           {influences.map((hero) => (
             <li class="pl-px">
-              <details class="group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+              <details class="transition-all group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
                 <p class="pl-[0.65rem] normal-case font-medium">{hero.description} {hero.link && <a href={hero.link} target="_blank" class="inline underline">Learn</a>}</p>
               </details>
@@ -256,12 +256,12 @@ const writings = await getCollection('writing');
           ))}
         </ul>
       </div>
-      <div class="hidden md:flex flex-col justify-between gap-15 border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
+      <div class="transition-all hidden md:flex flex-col justify-between gap-15 border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <h3 class="col-span-full lg:col-span-2 ">Interests</h3>
         <ul class="flex flex-col col-span-full">
           {interests.map((interest) => (
             <li class="pl-px">
-              <details class="group before:content-none  flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+              <details class="transition-all group before:content-none  flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
                 <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
                 <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
               </details>
