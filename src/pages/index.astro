@@ -109,6 +109,12 @@ const writings = await getCollection('writing');
             {link.name}<span>,</span>
           </a>
         ))}
+        <button
+          aria-label="Copy email"
+          class={`copy-email-button relative flex justify-between gap-5 items-center cursor-default`}
+        >
+          <span class="capitalize">Email</span>
+        </button>
       </div>
       <div class="transition-all flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
         <div>
@@ -213,10 +219,10 @@ const writings = await getCollection('writing');
               </a>
             </li>
           ))}
-          <li>
+          <li class="w-full">
             <button
               aria-label="Copy email"
-              class={`copy-email-button relative flex justify-between gap-5 w-full items-center cursor-default `}
+              class={`copy-email-button relative flex justify-between gap-5 w-full items-center cursor-default`}
             >
               <span class="capitalize">Email</span>
             </button>
@@ -278,39 +284,3 @@ const writings = await getCollection('writing');
     ))}
   </div>
 </Layout>
-
-<style>
-  #study-title {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-    transform-style: preserve-3d;
-    animation: spin 20s infinite linear 0s;
-    z-index: 100;
-  }
-
-  #study-title span {
-    position: absolute;
-    background-color: green;
-    color: white;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotateX(37deg) rotateY(123deg) rotateZ(45deg);
-    }
-    50% {
-      transform: rotateX(82deg) rotateY(275deg) rotateZ(19deg);
-    }
-    100% {
-      transform: rotateX(14deg) rotateY(93deg) rotateZ(27deg);
-    }
-    /* 0% {
-      transform: rotateX(10deg) rotateY(10deg);
-    }
-    50% {
-      transform: rotateX(60deg) rotateY(360deg);
-    }
-    100% {
-      transform: rotateX(10deg) rotateY(10deg);
-    } */
-  }
-</style>
