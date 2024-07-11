@@ -106,7 +106,9 @@ const writings = await getCollection('writing');
       </div>
       <div class="transition-all flex md:hidden border-l pl-5 border-neutral-800 dark:border-neutral-300 col-span-full">
         {links.map(link => (
-          <a href={link.url} target={link.target} class="mr-1 last:mr-0 [&>span]:last:hidden">{link.name}<span>,</span></a>
+          <a href={link.url} target={link.target} class="peer mr-5 last:mr-0 [&>span]:last:hidden">
+            {link.name}<span>,</span>
+          </a>
         ))}
       </div>
       <div class="transition-all flex md:hidden flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-full xs:col-span-8">
@@ -168,11 +170,11 @@ const writings = await getCollection('writing');
         <div>
           <h3>Influences</h3>
           <ul>
-            {influences.map((hero) => (
+            {influences.map((influence) => (
               <li class="pl-px">
                 <details class="transition-all group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                  <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
-                  <p class="pl-[0.65rem] normal-case font-medium">{hero.description} {hero.link && <a href={hero.link} target="_blank" class="inline underline">Learn</a>}</p>
+                  <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
+                  <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
                 </details>
               </li>
             ))}
@@ -200,7 +202,7 @@ const writings = await getCollection('writing');
         <p class="hidden md:block">Links</p>
         <ul class="flex flex-col items-end md:items-start">
           {links.map((link) => (
-            <li>
+            <li class="w-full">
               <a
                 href={link.url}
                 target={link.target}
@@ -246,11 +248,11 @@ const writings = await getCollection('writing');
       <div class="transition-all hidden md:flex flex-col justify-between gap-15 border-l border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
         <h3 class="col-span-full lg:col-span-2 ">Influences</h3>
         <ul class="flex flex-col col-span-full">
-          {influences.map((hero) => (
+          {influences.map((influence) => (
             <li class="pl-px">
               <details class="transition-all group before:content-none flex w-full justify-between items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                <summary class="transition duration-75    hover:cursor-zoom-in">{hero.name}</summary>
-                <p class="pl-[0.65rem] normal-case font-medium">{hero.description} {hero.link && <a href={hero.link} target="_blank" class="inline underline">Learn</a>}</p>
+                <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
+                <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
               </details>
             </li>
           ))}
