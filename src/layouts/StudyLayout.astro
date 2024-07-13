@@ -23,12 +23,12 @@ const {
     </a>
     <aside class='grid col-span-full grid-cols-16 gap-15 divide-neutral-800 dark:divide-neutral-300'>
       <div class="mb-15 md:mb-0 grid lg:flex flex-col grid-cols-16 md:grid-cols-1 md:row-span-3 lg:row-span-1 gap-15 col-span-full md:col-span-4 lg:col-span-2 lg:order-1">
-        <div class="flex flex-col gap-15 col-span-10">
+        <div class="flex flex-col gap-15 col-span-10 max-w-[250px]">
           <h1>{title}</h1>
           <p class="text-balance col-span-8 pr-15">{description}</p>
         </div>
-        <div class="flex flex-col lg:hidden justify-between col-span-6">
-          <div>
+        <div class={`flex flex-col lg:hidden justify-between col-span-6`}>
+          <div class={`flex flex-col justify-between ${link.href ? '' : ' h-full'}`}>
             <p class="capitalize">{type}</p>
             <p>{year}</p>
           </div>

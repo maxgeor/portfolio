@@ -67,7 +67,7 @@ module.exports = {
           50: '#FFFFFF',
           100: '#F5F5F5',
           150: '#f0f0f0',
-          200: '#ededed',
+          200: '#ececec',
           250: '#E6E6E6',
           300: '#dadada',
           400: '#909090',
@@ -100,8 +100,8 @@ module.exports = {
         'span-14': 'span 14 / span 14',
       },
       boxShadow: {
-        'sub-pixel-black': 'inset 0 0.5px 0 0 rgba(0, 0, 0, 0.9)',
-        'sub-pixel-white': 'inset 0 0.5px 0 0 rgba(255, 255, 255, 0.7)',
+        'sub-pixel-black': 'inset 0 0.5px 0 0 rgba(0, 0, 0, 1)',
+        'sub-pixel-white': 'inset 0 0.5px 0 0 rgba(255, 255, 255, 0.8)',
       },
     }
   },

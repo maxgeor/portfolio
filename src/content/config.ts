@@ -42,12 +42,6 @@ const study = defineCollection({
       tradeoffs: z.array(z.string()),
     }).optional(),
     tools: z.array(z.string()),
-    sections: z.object({
-      title: z.string(),
-      subsections: z.object({
-        title: z.string(),
-      }).array().optional(),
-    }).array(),
     image: z.string().optional(),
     teammates: z.object({
       name: z.string(),

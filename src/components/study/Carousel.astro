@@ -18,6 +18,7 @@ export interface Props {
     hasBorder?: boolean;
     classes?: string;
   }[];
+  description?: string;
   span?: number | { 
     base: number, 
     sm?: number, 
@@ -30,10 +31,31 @@ export interface Props {
   classes?: string;
 }
 
-const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" } = Astro.props;
+const { slides, description, orientation = 'horizontal', hasBorder, span = 12, classes = "" } = Astro.props;
+
+let colClasses = '';
+let spanClasses = '';
+
+switch (typeof span) {
+  case 'number':
+    colClasses = `grid-cols-${span}`;
+    spanClasses = `col-span-${span}`;
+    break;
+  case 'object':
+    for (const [breakpoint, cols] of Object.entries(span)) {
+      if (breakpoint === 'base') {
+        colClasses += `grid-cols-${cols} `;
+        spanClasses += `col-span-${cols} `;
+      } else {
+        colClasses += `${breakpoint}:grid-cols-${cols} `;
+        spanClasses += `${breakpoint}:col-span-${cols} `;
+      }
+    }
+    break;
+}
 ---
 
-<div class={`carousel flex flex-col gap-10 relative h-fit ${classes} ${span}`}>
+<div class={`carousel flex flex-col gap-10 relative h-fit ${classes} ${colClasses} ${spanClasses}`}>
   <div class="flex items-center justify-between gap-15">
     <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
       {slides?.map((slide, index) => (
@@ -45,7 +67,7 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
     <div class={`flex items-center gap-1 text-inherit bg-white dark:bg-black z-10 mt-0.5`}>
       {slides?.map(() => (
         <span 
-          class={`dot h-[5px] w-[5px] bg-neutral-600 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
+          class={`dot h-[4px] w-[4px] bg-neutral-800 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
         ></span>
       ))}
     </div>
@@ -91,6 +113,7 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
       ))
     }
   </div>
+  {description && <p>{description}</p>}
 </div>
 
 <style>
@@ -102,7 +125,7 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
     opacity: 1;
   }
   .dot {
-    opacity: 0.35;
+    opacity: 0.30;
   }
 
   .dot.current {
