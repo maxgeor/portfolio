@@ -9,16 +9,16 @@ roles:
   - Product
   - Dev
 tldr: 
-  problem: Etherscan's frontend sucked.
-  solution: Airtable Forms, but for smart contract actions.
+  problem: Etherscan's frontend sucked
+  solution: Airtable Forms, but for smart contract actions
   decisions:
-    - One action, one page.
-    - Only one-way actions.
-    - Open text titles & descriptions.
-    - Forced people to confirm trust before submitting.
+    - One action, one page
+    - Only one-way actions
+    - Open text titles & descriptions
+    - Forced people to confirm trust before submitting
   tradeoffs:
-    - Cut editing, let people make unlimited forms.
-    - Only let people customize title & description.
+    - Cut editing, let people make unlimited forms
+    - Only let people customize title & description
 teammates:
   [
     {
@@ -28,7 +28,7 @@ teammates:
     },
   ]
 tools: ["Next.Js", "Firebase", "TailwindCSS"]
-description: Universal UI for smart contracts. Featured as top product by Milk Road.
+description: Universal UI for smart contracts. Featured as top product by Milk Road
 link: https://www.formie.co/
 year: '2022'
 sections:
@@ -210,7 +210,7 @@ import Carousel from "../../components/study/Carousel.astro";
 <Context title='Challenge: Making forms flexible'>From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</Context>
 
 <Tradeoff 
-  title="Tradeoff: Customize ~everything~ title + description"
+  title="Customize ~everything~ title + description"
   image={{ 
     src: "/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
     alt: "Form page, mobile",

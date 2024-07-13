@@ -17,111 +17,73 @@ const {
 ---
 
 <Layout title={title} description={description}>
-  <div class=" relative grid grid-cols-16 gap-x-15 gap-y-30"> 
+  <div class=" relative grid grid-cols-16 gap-x-15 gap-30"> 
     <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
       <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
     </a>
-    <aside class='grid col-span-full grid-cols-16 gap-15 divide-x divide-neutral-800 dark:divide-neutral-300'>
-      <div class="border-neutral-800 dark:border-neutral-300 border-l pl-5 flex flex-col justify-between gap-15 col-span-10 md:col-span-8 lg:col-span-2">
-        <div class="flex flex-col ">
+    <aside class='grid col-span-full grid-cols-16 gap-15 divide-neutral-800 dark:divide-neutral-300'>
+      <div class="mb-15 md:mb-0 grid lg:flex flex-col grid-cols-16 md:grid-cols-1 md:row-span-3 lg:row-span-1 gap-15 col-span-full md:col-span-4 lg:col-span-2 lg:order-1">
+        <div class="flex flex-col gap-15 col-span-10">
           <h1>{title}</h1>
-          <p class="text-balance">{description}</p>
+          <p class="text-balance col-span-8 pr-15">{description}</p>
         </div>
-        <div class="hidden lg:flex flex-col justify-between lg:justify-normal">
-          <p class="capitalize hidden lg:inline-block">{type}</p>
-          <p>{year}</p>
+        <div class="flex flex-col lg:hidden justify-between col-span-6">
+          <div>
+            <p class="capitalize">{type}</p>
+            <p>{year}</p>
+          </div>
+          {link && <a href={link.href} target="_blank" class="block lg:hidden underline col-span-4">Live site</a>}
         </div>
-        {link && <a href={link.href} target="_blank" class="hidden lg:block underline">Live site</a>}
+        <!-- {link && <a href={link.href} target="_blank" class="block lg:hidden underline col-span-4">Live site</a>} -->
       </div>
-      <div class="col-start-11 md:col-start-9 flex lg:hidden flex-col justify-between  border-neutral-800 dark:border-neutral-300 pl-5 col-span-4 lg:col-span-2 ">
-        <p>{year}</p>
-        {link && <a href={link.href} target="_blank" class="md:hidden underline">Live site</a>}
-      </div>
-      {link && <a href={link.href} target="_blank" class="pl-5 hidden md:block lg:hidden  underline col-span-4">Live site</a>}
-      <div class="hidden md:flex lg:hidden flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-start-1 md:col-start-1 col-span-8 md:col-span-4 lg:col-span-2 ">
-        <p>Type</p>
-        <p class="capitalize">{type}</p>
-      </div>
-      <div class="hidden md:flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 ">
-        <p>Roles</p>
-        <ul>
-          {roles?.map((role: string) => <li>{role}</li>)}
-        </ul>
-      </div>
-      <div class="hidden md:flex flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <p>Tools</p>
-        <ul>
-          {tools?.map((tool: string) => <li>{tool}</li>)}
-        </ul>
-      </div>
-      <div class="hidden md:flex flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <p>Team</p>
-        <ul>
-          {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
-            <li>
-              <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
-            </li>
-          )) : "—"}
-        </ul>
-      </div>
-      <div class="hidden md:flex flex-col justify-between gap-15 order-1 col-start-1 lg:col-start-auto border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <p>Problem</p>
-        <p class="text-balance">{tldr?.problem || "—"}</p>
-      </div>
-      <div class="order-2 hidden md:flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <p>Solution</p>
-        <p class="text-balance">{tldr?.solution || "—"}</p>
-      </div>
-      <div class="order-3 hidden md:flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <p>Decisions</p>
-        <ul class="text-balance">
-          {tldr?.decisions?.map((decision: string, index: number) => 
-            <li>
-              <span>[{index + 1}]</span>
-              <span>{decision}</span>
-            </li>
-          ) || "—"}
-        </ul>
-      </div>
-      <div class="order-4 hidden md:flex flex-col justify-between gap-15  border-neutral-800 dark:border-neutral-300 pl-5 col-span-8 md:col-span-4 lg:col-span-2">
-        <p>Tradeoffs</p>
-        <ul class="col-span-8 text-balance">
-          {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-            <li>[<span>{index + 1}</span>] {tradeoff}</li>
-          ) || "—"}
-        </ul>
-      </div>
-      <div class="flex md:hidden flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-10">
-        <div>
-          <p>Problem</p>
-          <p class="text-balance">{tldr?.problem || "—"}</p>
+      <div class="[&>*]:max-w-[250px] 2xl:[&>*]:max-w-none grid grid-cols-2 md:grid-cols-12 lg:grid-cols-9 md:col-start-5 gap-15 border-neutral-800 dark:border-neutral-300  col-span-10 md:col-span-12 lg:col-span-9 lg:order-2">
+        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
+          <div class="flex flex-col gap-15">
+            <p>Problem</p>
+            <p class="text-balance">{tldr?.problem || "—"}</p>
+          </div>
+          <div class="flex flex-col gap-15 col-span-4 lg:col-span-3">
+            <p>Solution</p>
+            <p class="text-balance">{tldr?.solution || "—"}</p>
+          </div>
         </div>
-        <div>
-          <p>Solution</p>
-          <p class="text-balance">{tldr?.solution || "—"}</p>
-        </div>
-        <div>
+        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
           <p>Decisions</p>
-          <ul class="text-balance">
+          <ul class="text-balance md:-ml-[16px]">
             {tldr?.decisions?.map((decision: string, index: number) => 
-              <li>
-                <span>[{index + 1}]</span>
+              <li class="flex gap-5 md:gap-10">
+                <span>{index + 1}</span>
                 <span>{decision}</span>
               </li>
             ) || "—"}
           </ul>
         </div>
-        <div>
+        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
           <p>Tradeoffs</p>
-          <ul class="col-span-8 text-balance">
+          <ul class="col-span-8 text-balance md:-ml-[16px]">
             {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-              <li>[<span>{index + 1}</span>] {tradeoff}</li>
+              <li class="flex gap-5 md:gap-10">
+                <span>{index + 1}</span>
+                <span>{tradeoff}</span>
+              </li>
             ) || "—"}
           </ul>
         </div>
       </div>
-      <div class="flex md:hidden flex-col justify-between gap-15 border-neutral-800 dark:border-neutral-300 pl-5 col-span-6">
-        <div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-15 col-span-6 md:col-span-12 md:col-start-5 lg:col-start-13 md:row-span-2 lg:row-span-1 lg:order-3">
+        <div class="flex flex-col gap-15">
+          <p>Roles</p>
+          <ul>
+            {roles?.map((role: string) => <li>{role}</li>)}
+          </ul>
+        </div>
+        <div class="flex flex-col gap-15">
+          <p>Tools</p>
+          <ul>
+            {tools?.map((tool: string) => <li>{tool}</li>)}
+          </ul>
+        </div>
+        <div class="flex flex-col gap-15">
           <p>Team</p>
           <ul>
             {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
@@ -131,31 +93,19 @@ const {
             )) : "—"}
           </ul>
         </div>
-        <div>
-          <p>Tools</p>
-          <ul>
-            {tools?.map((tool: string) => <li>{tool}</li>)}
-          </ul>
-        </div>
-        <div>
-          <p>Roles</p>
-          <ul>
-            {roles?.map((role: string) => <li>{role}</li>)}
-          </ul>
-        </div>
-        <div>
-          <p>Type</p>
-          <p class="capitalize">{type}</p>
-        </div>
       </div>
+      <p class="hidden lg:block lg:order-4 capitalize col-span-2">{type}</p>
+      <p class="hidden lg:block lg:order-5 col-span-3">{year}</p>
+      {link && <a href={link.href} target="_blank" class="lg:order-6 hidden lg:block underline col-span-2">Live site</a>}
     </aside>
+    <!-- <hr class="col-span-full" /> -->
     <article
       id="article"
       class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto"
     >
       <div
         class={`
-          grid grid-cols-16 gap-x-15 gap-y-30
+          grid grid-cols-16 gap-x-15 gap-30
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5

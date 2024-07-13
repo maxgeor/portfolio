@@ -1,7 +1,6 @@
 ---
 import Image from "./Image.astro";
 import Video from "./Video.astro";
-import Caption from "./Caption.astro";
 
 export interface Props {
   slides: {
@@ -34,62 +33,63 @@ export interface Props {
 const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" } = Astro.props;
 ---
 
-<div class={`carousel grid grid-cols-12 gap-15 relative h-fit ${classes} ${span}`}>
-  <div class={`flex items-center gap-1 text-inherit absolute top-[7px] right-0 bg-white dark:bg-black z-10`}>
-    {slides?.map(() => (
-      <span 
-        class={`dot h-[5px] w-[5px] bg-neutral-600 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
-      ></span>
-    ))}
-  </div>
-  <div class={`flex flex-col gap-2 col-span-full `}>
-    <div class="flex flex-col gap-5">
-      <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
-        {slides?.map((slide, index) => (
-          <div class={`caption caption-${index} absolute h-fit w-full transition-opacity duration-[450ms] ease-in-out`}>
-            <p>{slide.alt}</p>
-          </div>
-        ))}
-      </div>
-      <div class={`
-        relative w-full rotate-0 overflow-hidden 
-        ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-        ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
-      `}>
-        <button aria-label="Next slide" class="next-slide-btn absolute inset-0 opacity-0 z-40"></button>
-        {
-          slides?.map((slide, index) => (
-            <div class={`
-              slide slide-${index} 
-              absolute h-fit w-full transition-all duration-[450ms] ease-in-out z-10
-            `}>
-              {slide.type === "video" ? (
-                <Video
-                  src={slide.src}
-                  alt={slide.alt}
-                  span={slide.span || 12}
-                  hasPadding={slide.hasPadding}
-                  hasBorder={false}
-                  hasCaption={false}
-                  classes={slide.classes}
-                />
-              ) : (
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  span={slide.span}
-                  hasPadding={slide.hasPadding}
-                  hasBorder={false}
-                  orientation={orientation}
-                  hasCaption={false}
-                  classes={slide.classes}
-                />
-              )}
-            </div>
-          ))
-        }
-      </div>
+<div class={`carousel flex flex-col gap-10 relative h-fit ${classes} ${span}`}>
+  <div class="flex items-center justify-between gap-15">
+    <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
+      {slides?.map((slide, index) => (
+        <div class={`caption caption-${index} absolute h-fit w-full transition-opacity duration-[450ms] ease-in-out`}>
+          <p>{slide.alt}</p>
+        </div>
+      ))}
     </div>
+    <div class={`flex items-center gap-1 text-inherit bg-white dark:bg-black z-10 mt-0.5`}>
+      {slides?.map(() => (
+        <span 
+          class={`dot h-[5px] w-[5px] bg-neutral-600 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
+        ></span>
+      ))}
+    </div>
+  </div>
+  <div class={`
+    relative w-full rotate-0 overflow-hidden
+    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+    ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
+  `}>
+    <button aria-label="Next slide" class="next-slide-btn absolute inset-0 opacity-0 z-40"></button>
+    {
+      [...slides, slides[0]].map((slide, index) => (
+        <div 
+          data-index={index}
+          class={`
+            slide slide-${index} 
+            absolute h-fit w-full transition-all duration-[450ms] ease-in-out z-10
+          `}
+        >
+          {slide.type === "video" ? (
+            <Video
+              src={slide.src}
+              alt={slide.alt}
+              span={slide.span || 12}
+              hasPadding={slide.hasPadding}
+              hasBorder={false}
+              hasCaption={false}
+              classes={slide.classes}
+            />
+          ) : (
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              span={slide.span}
+              hasPadding={slide.hasPadding}
+              hasBorder={false}
+              orientation={orientation}
+              hasCaption={false}
+              classes={slide.classes}
+            />
+          )}
+        </div>
+      ))
+    }
   </div>
 </div>
 
@@ -147,25 +147,55 @@ const { slides, orientation = 'horizontal', hasBorder, span = 12, classes = "" }
     const nextSlideBtns = carousel.querySelectorAll(".next-slide-btn") as NodeListOf<HTMLButtonElement>;
 
     let curSlide = 0;
+    const totalSlides = slides.length;
+    const actualSlides = totalSlides - 1; // Number of unique slides
 
     const slideTo = (position: number) => {
-      curSlide = position > slides.length - 1 ? 0 : position;
+      curSlide = position;
 
       slides.forEach((slide, index) => {
         slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
       });
 
+      updateCaption();
+      updateDots();
+
+      if (curSlide >= actualSlides) {
+        setTimeout(resetToFirstSlide, 450); // Wait for transition to complete
+      }
+    }
+
+    const updateCaption = () => {
+      const activeCaptionIndex = curSlide % actualSlides;
       captions.forEach((caption, index) => {
-        index === curSlide
+        index === activeCaptionIndex
           ? caption.classList.add('current')
           : caption.classList.remove('current');
       });
-      
+    }
+
+    const updateDots = () => {
+      const activeDotIndex = curSlide % actualSlides;
       dots.forEach((dot, index) => {
-        index === curSlide
+        index === activeDotIndex
           ? dot.classList.add('current')
           : dot.classList.remove('current');
       });
+    }
+
+    const resetToFirstSlide = () => {
+      curSlide = 0;
+      slides.forEach((slide, index) => {
+        slide.classList.add('notransition');
+        slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
+      });
+      setTimeout(() => {
+        slides.forEach((slide) => {
+          slide.classList.remove('notransition');
+        });
+      }, 50);
+      updateCaption();
+      updateDots();
     }
 
     slideTo(curSlide);

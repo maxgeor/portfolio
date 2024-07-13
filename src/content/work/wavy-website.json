@@ -2,13 +2,13 @@
   "type": "client",
   "title": "Wavy/Website",
   "description": "wavy's landing page",
-  "image": "/work/thesys.png",
+  "image": "/work/wavy/website/cover.png",
   "roles": {
     "long": ["Dev"],
     "short": ["Dev"]
   },
   "link": {
-    "href": "https://www.figma.com/community/widget/1036372982291551669",
+    "href": "https://www.joinwavy.com/",
     "target": "_blank"
   },
   "order": 1,
