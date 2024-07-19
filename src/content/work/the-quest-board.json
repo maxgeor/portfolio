@@ -4,8 +4,8 @@
   "description": "Job board for Loot",
   "image": "/work/the-quest-board.gif",
   "roles": {
-    "long": ["Product", "Dev"],
-    "short": ["Design", "Dev"]
+    "long": ["Product", "Code"],
+    "short": ["Design", "Code"]
   },
   "link": {
     "href": "https://www.lootquestboard.com/",

@@ -2,100 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
-import { formatDate } from '../utils/formatting';
-
-const links: {
-  name: string;
-  url: string;
-  target?: "_self" | "_blank";
-}[] = [
-  {
-    name: "Dribbble",
-    url: "https://dribbble.com/maxgeo",
-  },
-  {
-    name: "Layers",
-    url: "https://layers.to/maxgeorgopoulos",
-  },
-  {
-    name: "Github",
-    url:  "https://github.com/maxgeor",
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/maxoulos",
-  },
-  {
-    name: "Arena",
-    url: "https://www.are.na/max-georgopoulos",
-  },
-  {
-    name: "CV",
-    url: "/resume-max-georgopoulos.pdf",
-    target: '_self'
-  },
-];
-
-const influences = [
-  { 
-    name: "Steve Jobs",
-    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
-  },
-  { 
-    name: "Gunpei Yokoi", 
-    description: "Contraints make you creative + make fun things.", 
-    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
-  },
-  {
-    name: "Massimo/Lella Vignelli", 
-    description: "Semantics are everything + elegance elegance elegance.", 
-    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
-  },
-  { 
-    name: "Ryan Singer", 
-    description: "All roads lead to Rome.", 
-    link: "https://www.feltpresence.com/" 
-  },
-  { 
-    name: "Christopher Alexander", 
-    description: "Beauty can be objective.", 
-    link: "https://en.wikipedia.org/wiki/Christopher_Alexander" 
-  },
-  { 
-    name: "Maria Montessori", 
-    description: "It's possible to make a dent in the education system.", 
-    link: "https://en.wikipedia.org/wiki/Maria_Montessori" 
-  }
-];
-
-const interests = [
-  { 
-    title: "Education reform",
-    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen." 
-  },
-  { 
-    title: "Electronic music", 
-    description: "Contraints make you creative + make fun things.", 
-    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
-  },
-  {
-    title: "Toy design", 
-    description: "Semantics are everything + elegance elegance elegance.", 
-    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
-  },
-];
+import Links from "../details/Links.astro";
+import Skills from "../details/Skills.astro";
+import Interests from "../details/Interests.astro";
+import Influences from "../details/Influences.astro";
+import Writings from "../details/Writings.astro";
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
-const writings = await getCollection('writing');
 ---
 <Layout>
-  <!-- <Nav /> -->
-  <!-- <div class="col-span-full relative grid grid-cols-8 gap-15 md:ml-[var(--nav-offset)] pb-[45px]"> -->
-  <div class="col-span-full relative grid grid-cols-8 gap-x-15 gap-y-[60px] ">
-    <div class="grid grid-cols-16 gap-15 col-span-full">
-      <div class="transition-all   border-neutral-800 dark:border-neutral-300 flex flex-col gap-15 col-span-full md:col-span-8 lg:col-span-4 md:pr-[45px]">
-        <h1 class="whitespcae-nowrap">Max Kevin Crapper Georgopoulos</h1>
-        <p class="hyphens-auto">I'm a designer and developer based out of Toronto, but I bum
+  <div class="font-bold col-span-full relative grid grid-cols-8 gap-x-15 gap-y-[30px] lg:gap-y-[90px] ">
+    <div class="grid grid-cols-16 gap-x-15 gap-y-30 col-span-full">
+      <div class="-tracking-[0.025rem] text-[24px] leading-[25px] md:text-[30px] md:leading-8  flex flex-col col-span-full pr-[25vw]">
+        <h1 class="whitespace-nowrap text-neutral-800 dark:text-neutral-300">Max Kevin Crapper Georgopoulos</h1>
+        <p class=" text-neutral-400">I'm a designer and developer based out of Toronto, but I bum
           around different places. I believe that the boundary between design
           and engineering is artificial — you get the best results by blending
           the two. Lately, I've been inspired by Ryan Singer's design
@@ -103,182 +23,20 @@ const writings = await getCollection('writing');
           Homme Plissé.
         </p>
       </div>
-      <div class="transition-all flex md:hidden   border-neutral-800 dark:border-neutral-300 col-span-full">
-        {links.map(link => (
-          <a href={link.url} target={link.target} class="peer mr-5 last:mr-0 [&>span]:last:hidden">
-            {link.name}<span>,</span>
-          </a>
-        ))}
-        <button
-          aria-label="Copy email"
-          class={`copy-email-button relative flex  gap-5 items-center cursor-default`}
-        >
-          <span class="capitalize">Email</span>
-        </button>
+      <div class="grid grid-cols-16 border-t gap-15 col-span-full">
+
+        <Influences classes="col-span-4" />
+        <Interests classes="ccol-span-4" />
+        <Skills classes="col-span-4 " />
       </div>
-      <div class="transition-all flex md:hidden flex-col  gap-15  border-neutral-800 dark:border-neutral-300  col-span-full xs:col-span-8">
-        <div class="flex flex-col gap-15">
-          <h3>Writing</h3>
-          <ol>
-            {writings?.sort((a, b) => {
-              const dateA: any = new Date(a.data.date);
-              const dateB: any = new Date(b.data.date);
-              return dateB - dateA;
-            }).map((writing) => (
-              <li>
-                <a href={`/writing/${writing.slug}`} class="flex gap-5 truncate">
-                  <span>{formatDate(writing.data.date)}</span>
-                  <span class="overflow-hidden">{writing.data.title}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div class="flex flex-col gap-15">
-          <p>Skills</p>
-          <ul>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>5</span> <span>Product Thinking</span>
-            </li>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>5</span> <span>Product Design</span>
-            </li>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>4</span> <span>Copywriting</span>
-            </li>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>3</span> <span>Frontend Dev</span>
-            </li>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>3</span> <span>Graphic Design</span>
-            </li>
-            <li class="flex gap-5 whitespace-nowrap">
-              <span>2</span> <span>Backend Dev</span>
-            </li>
-          </ul>
-        </div>
+      <Links cols={1} classes="md:order-last col-span-4 hidden md:flex" />
+      <div class="hidden md:flex flex-col gap-15 col-span-4 ">
       </div>
-      <div class="transition-all flex md:hidden flex-col  gap-15  border-neutral-800 dark:border-neutral-300  col-span-full xs:col-span-8">
-        <div class="flex flex-col gap-15">
-          <h3>Interests</h3>
-          <ul>
-            {interests.map((interest) => (
-              <li class="pl-px">
-                <details class="transition-all group before:content-none  flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                  <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
-                  <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
-                </details>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="flex flex-col gap-15">
-          <h3>Influences</h3>
-          <ul>
-            {influences.map((influence) => (
-              <li class="pl-px">
-                <details class="transition-all group before:content-none flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                  <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
-                  <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
-                </details>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div class="transition-all hidden md:flex flex-col gap-15  lg:order-last  border-neutral-800 dark:border-neutral-300  col-span-full sm:col-span-8 lg:col-span-4">
-        <h3 class="col-span-full lg:col-span-2 ">Writing</h3>
-        <ol>
-          {writings?.sort((a, b) => {
-            const dateA: any = new Date(a.data.date);
-            const dateB: any = new Date(b.data.date);
-            return dateB - dateA;
-          }).map((writing) => (
-            <li>
-              <a href={`/writing/${writing.slug}`} class="flex gap-5">
-                <span>{formatDate(writing.data.date)}</span>
-                {writing.data.title}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </div>
-      <div class="transition-all hidden md:flex flex-col   border-neutral-800 dark:border-neutral-300  col-span-2 md:col-span-4 lg:col-span-2 md:pr-15 gap-15">
-        <p class="hidden md:block">Links</p>
-        <ul class="flex flex-col items-end md:items-start">
-          {links.map((link) => (
-            <li class="w-full">
-              <a
-                href={link.url}
-                target={link.target}
-                class={`
-                  flex w-full items-center  gap-5 transition duration-75
-                `}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-          <li class="w-full">
-            <button
-              aria-label="Copy email"
-              class={`copy-email-button relative flex  gap-5 w-full items-center cursor-default`}
-            >
-              <span class="capitalize">Email</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div class="transition-all hidden md:flex flex-col   border-neutral-800 dark:border-neutral-300  col-span-8 md:col-span-4 lg:col-span-2 pr-15 gap-15">
-        <p>Skills</p>
-        <ul class="-ml-[16px]">
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>5</span> <span>Product Thinking</span>
-          </li>
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>5</span> <span>Product Design</span>
-          </li>
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>4</span> <span>Copywriting</span>
-          </li>
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>3</span> <span>Frontend Dev</span>
-          </li>
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>3</span> <span>Graphic Design</span>
-          </li>
-          <li class="flex gap-10 whitespace-nowrap">
-            <span>2</span> <span>Backend Dev</span>
-          </li>
-        </ul>
-      </div>
-      <div class="transition-all hidden md:flex flex-col  gap-15  border-neutral-800 dark:border-neutral-300  col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <h3 class="col-span-full lg:col-span-2 ">Influences</h3>
-        <ul class="flex flex-col col-span-full">
-          {influences.map((influence) => (
-            <li class="pl-px">
-              <details class="transition-all group before:content-none flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
-                <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
-              </details>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="transition-all hidden md:flex flex-col  gap-15   border-neutral-800 dark:border-neutral-300 col-span-8 md:col-span-4 lg:col-span-2 pr-15">
-        <h3 class="col-span-full lg:col-span-2 ">Interests</h3>
-        <ul class="flex flex-col col-span-full">
-          {interests.map((interest) => (
-            <li class="pl-px">
-              <details class="transition-all group before:content-none  flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
-                <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
-                <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
-              </details>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Links classes="col-span-8 md:col-span-2 md:hidden" />
+      <Writings classes="col-span-8 md:col-span-4" />
+      
     </div>
+    <!-- <h2 class="border-t border-neutral-300 dark:border-neutral-700 col-span-full">Work</h2> -->
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} />
     ))}

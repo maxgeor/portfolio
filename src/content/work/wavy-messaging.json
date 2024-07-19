@@ -4,8 +4,8 @@
   "description": "pre-event messaging feature",
   "image": "/work/thesys.png",
   "roles": {
-    "long": ["Product", "Brand", "Dev"],
-    "short": ["Design", "Brand", "Dev"]
+    "long": ["Product", "Brand", "Code"],
+    "short": ["Design", "Brand", "Code"]
   },
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",

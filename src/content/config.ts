@@ -1,6 +1,6 @@
 import { z, reference, defineCollection } from 'astro:content';
 
-type ShortRole = 'Design' | 'Development' | 'Branding';
+type ShortRole = 'Design' | 'Codeelopment' | 'Branding';
 
 const work = defineCollection({
   type: 'data',
@@ -10,7 +10,7 @@ const work = defineCollection({
     description: z.string(),
     roles: z.object({
       long: z.array(z.string()),
-      short: z.array(z.enum(['Design', 'Dev', 'Brand']))
+      short: z.array(z.enum(['Design', 'Code', 'Brand']))
     }),
     image: z.string(),
     link: z.object({

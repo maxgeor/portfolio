@@ -22,7 +22,7 @@ const {
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class="relative bg-white dark:bg-black text-gray-800 dark:text-neutral-300 min-h-screen text-12 selection:bg-[var(--highlight-color)] p-15"
+    class="relative font-medium bg-neutral-50 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 min-h-screen text-12 selection:bg-[var(--highlight-color)] p-15"
   >
     <slot />
     <ThemeToggle />
@@ -31,8 +31,13 @@ const {
 
 <style is:global> 
   @font-face {
-    font-family: "Untitled";
+    font-family: "Untitled Sans";
     src: url(/fonts/untitled/sans/test-untitled-sans-regular.woff2);
+  }
+
+  @font-face {
+    font-family: "Untitled Sans Medium";
+    src: url(/fonts/untitled/sans/test-untitled-sans-medium.woff2);
   }
 
   @font-face {
@@ -60,6 +65,7 @@ const {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: var(--accent-color);
+    letter-spacing: -0.0065em;
   }
 
   html.dark {
@@ -77,6 +83,7 @@ const {
   a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: solid 2px var(--accent-color);
     outline-offset: 1px;
+    text-decoration: none;
   }
 
   a:hover, button:hover, summary:hover {

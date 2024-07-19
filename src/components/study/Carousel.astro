@@ -1,82 +1,52 @@
 ---
+import type { GridSpan, FullBleed } from '../../utils/class-generator'
+import { generateGridSpanClasses, generateFullBleedClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
+import clsx from 'clsx';
 
 export interface Props {
   slides: {
     type: "image" | "video";
     src: string;
     alt: string;
-    span?: number | { 
-      base: number, 
-      sm?: number, 
-      md?: number, 
-      lg?: number, 
-      xl?: number 
-    };
-    hasPadding?: boolean;
+    span?: GridSpan;
     hasBorder?: boolean;
     classes?: string;
   }[];
   description?: string;
-  span?: number | { 
-    base: number, 
-    sm?: number, 
-    md?: number, 
-    lg?: number, 
-    xl?: number 
-  };
+  span?: GridSpan;
+  fullBleed?: FullBleed;
   orientation?: 'horizontal' | 'vertical';
   hasBorder?: boolean
   classes?: string;
 }
 
-const { slides, description, orientation = 'horizontal', hasBorder, span = 12, classes = "" } = Astro.props;
+const { 
+  slides, 
+  description, 
+  orientation = 'horizontal', 
+  hasBorder, 
+  fullBleed = false,
+  span = 16, 
+  classes = "" 
+} = Astro.props;
 
-let colClasses = '';
-let spanClasses = '';
-
-switch (typeof span) {
-  case 'number':
-    colClasses = `grid-cols-${span}`;
-    spanClasses = `col-span-${span}`;
-    break;
-  case 'object':
-    for (const [breakpoint, cols] of Object.entries(span)) {
-      if (breakpoint === 'base') {
-        colClasses += `grid-cols-${cols} `;
-        spanClasses += `col-span-${cols} `;
-      } else {
-        colClasses += `${breakpoint}:grid-cols-${cols} `;
-        spanClasses += `${breakpoint}:col-span-${cols} `;
-      }
-    }
-    break;
-}
+const gridSpanClasses = generateGridSpanClasses(span);
+const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
 ---
 
-<div class={`carousel flex flex-col gap-10 relative h-fit ${classes} ${colClasses} ${spanClasses}`}>
-  <div class="flex items-center justify-between gap-15">
-    <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
-      {slides?.map((slide, index) => (
-        <div class={`caption caption-${index} absolute h-fit w-full transition-opacity duration-[450ms] ease-in-out`}>
-          <p>{slide.alt}</p>
-        </div>
-      ))}
-    </div>
-    <div class={`flex items-center gap-1 text-inherit bg-white dark:bg-black z-10 mt-0.5`}>
-      {slides?.map(() => (
-        <span 
-          class={`dot h-[4px] w-[4px] bg-neutral-800 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
-        ></span>
-      ))}
-    </div>
-  </div>
-  <div class={`
-    relative w-full rotate-0 overflow-hidden
-    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
-  `}>
+<div class={`
+  carousel flex flex-col gap-10 relative h-fit 
+  ${gridSpanClasses} 
+  ${bleedClasses}
+  ${classes}
+`}>
+  <div class={clsx(
+    'relative w-full rotate-0 overflow-hidden',
+    orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
+    hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''
+  )}>
     <button aria-label="Next slide" class="next-slide-btn absolute inset-0 opacity-0 z-40"></button>
     {
       [...slides, slides[0]].map((slide, index) => (
@@ -91,8 +61,7 @@ switch (typeof span) {
             <Video
               src={slide.src}
               alt={slide.alt}
-              span={slide.span || 12}
-              hasPadding={slide.hasPadding}
+              span={slide.span}
               hasBorder={false}
               hasCaption={false}
               classes={slide.classes}
@@ -102,7 +71,6 @@ switch (typeof span) {
               src={slide.src}
               alt={slide.alt}
               span={slide.span}
-              hasPadding={slide.hasPadding}
               hasBorder={false}
               orientation={orientation}
               hasCaption={false}
@@ -113,7 +81,25 @@ switch (typeof span) {
       ))
     }
   </div>
-  {description && <p>{description}</p>}
+  <div class={paddingClasses}>
+    <div class="relative flex flex-col gap-x-15 gap-y-10">
+      <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
+        {slides?.map((slide, index) => (
+          <div class={`caption caption-${index} absolute h-fit w-full transition-opacity text-neutral-800 dark:text-neutral-300 duration-[450ms] ease-in-out`}>
+            <p>{slide.alt}</p>
+          </div>
+        ))}
+      </div>
+      {description && <p class="col-span-4 text-justify hyphens-auto max-w-[80ch] pr-30">{description}</p>}
+      <div class={`absolute top-[5px] right-0 flex gap-1 text-inherit `}>
+        {slides?.map(() => (
+          <span 
+            class={`dot h-[4px] w-[4px] bg-neutral-800 dark:bg-neutral-300 rounded-full transition-opacity duration-[300ms]`}
+          ></span>
+        ))}
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>

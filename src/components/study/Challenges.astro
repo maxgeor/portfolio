@@ -1,0 +1,87 @@
+---
+import type { Props as ImageProps } from "./Image.astro";
+import type { Props as VideoProps } from "./Video.astro";
+import type { Props as CarouselProps } from "./Carousel.astro";
+
+import Image from "./Image.astro";
+import Video from "./Video.astro";
+import Carousel from "./Carousel.astro";
+
+export interface Props {
+  challenges: {
+    id: string;
+    title: string;
+    description: string;
+    decision: string;
+    tradeoffs?: string[];
+    media?: {
+      type: 'image'
+      data: ImageProps
+    } | {
+      type: 'video'
+      data: VideoProps
+    } | {
+      type: 'carousel'
+      data: CarouselProps;
+    }
+  }[];
+}
+
+const { challenges } = Astro.props;
+---
+<div class="relative col-span-full grid grid-cols-16 gap-x-15 gap-y-[60px]">
+  <div class="border-t border-neutral-300 dark:border-neutral-700 pt-10 grid grid-cols-16 gap-15 col-span-full mt-[30px]">
+    <h2 class="col-span-full col-start-3 text-neutral-800 dark:text-neutral-300 text-[28px] leading-[30px]">Challenges</h2>
+  </div>
+
+  <div class="hidden lg:flex flex-col gap-15 sticky top-[90px] pr-15 col-span-2">
+    {challenges.map((challenge) => (
+      <a href={'#' + challenge.id} class="!no-underline text-neutral-800 dark:text-neutral-300">{challenge.title}</a>
+    ))}
+  </div>
+
+  {challenges.map((challenge) => (
+    <>
+      <div class="col-start-3 flex flex-col gap-15 col-span-4 [&>p>mark]:bg-transparent [&>p>mark]:text-inherit [&>p>mark.solution]:text-neutral-800 [&>p>mark.solution]:dark:text-neutral-300">
+        <h2 class="">{challenge.title}</h2>
+        <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users.</p>
+        <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Solution</h3>
+        <p class="col-span-4">So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+        <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Tradeoff</h3>
+        <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+        <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Tradeoff</h3>
+        <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+      </div>
+      <Carousel
+        slides={[
+          {
+            src: '/work/formie/decisions/trust.png',
+            alt: 'Trust confirmation checkbox on form page',
+            hasBorder: true
+          },
+          {
+            src: '/work/formie/challenges/scam.png',
+            alt: 'Trust confirmation notes',
+            hasBorder: true
+          }
+        ]}
+        hasBorder={true}
+        span={8}
+        classes="col-start-8"
+      />
+      <hr class="border-neutral-300 dark:border-neutral-700 col-span-full md:col-start-3 lg:col-start-3 lg:col-span-13" />
+    </>
+  ))}
+
+  
+  <div class="col-start-3 flex flex-col gap-15 col-span-4 [border-neutral-300 dark:border-neutral-700 [&>p>mark]:bg-transparent [&>p>mark]:text-inherit [&>p>mark.solution]:text-neutral-800 [&>p>mark.solution]:dark:text-neutral-300">
+    {/* <h2 class="text-neutral-800 dark:text-neutral-300" >Challenge</h2> */}
+    <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users.</p>
+    <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Solution</h3>
+    <p class="col-span-4">So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+    <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Tradeoff</h3>
+    <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+    <h3 class="col-span-4 text-neutral-800 dark:text-neutral-300">Tradeoff</h3>
+    <p class="col-span-4">From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users. So we <mark class="solution">made people confirm they trust</mark> a form before submitting. It was a lightweight, but effective way to give users pause and question sketchy forms.</p>
+  </div>
+</div>

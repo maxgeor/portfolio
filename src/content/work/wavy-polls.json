@@ -8,8 +8,8 @@
     "target": "_blank"
   },
   "roles": {
-    "long": ["Product", "Dev"],
-    "short": ["Design", "Dev"]
+    "long": ["Product", "Code"],
+    "short": ["Design", "Code"]
   },
   "studySlug": "wavy-polls",
   "isDraft": false,

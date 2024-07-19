@@ -1,0 +1,66 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  cols?: number;
+  classes?: string;
+}
+
+const { cols = 1, classes = "" } = Astro.props;
+
+const colClasses: Record<number, string> = {
+  1: "grid-cols-1",
+  2: "grid-cols-2",
+  3: "grid-cols-3",
+  4: "grid-cols-4",
+};
+
+const links: {
+  name: string;
+  url: string;
+  target?: "_self" | "_blank";
+}[] = [
+  {
+    name: "Dribbble",
+    url: "https://dribbble.com/maxgeo",
+  },
+  {
+    name: "Layers",
+    url: "https://layers.to/maxgeorgopoulos",
+  },
+  {
+    name: "Github",
+    url:  "https://github.com/maxgeor",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/maxoulos",
+  },
+  {
+    name: "Arena",
+    url: "https://www.are.na/max-georgopoulos",
+  },
+  {
+    name: "CV",
+    url: "/resume-max-georgopoulos.pdf",
+    target: '_self'
+  },
+];
+---
+
+<div class={clsx('flex flex-col gap-15', classes)}>
+  <p>Links</p>
+  <div class={clsx("grid gap-x-15", colClasses[cols])}>
+    {links.map(link => (
+      <a href={link.url} target={link.target} class="peer mr-5 last:mr-0 [&>span]:last:hidden ">
+        {link.name}
+      </a>
+    ))}
+    <button
+      aria-label="Copy email"
+      class={`copy-email-button relative flex  gap-5 items-center cursor-default `}
+    >
+      <span class="capitalize">Email</span>
+    </button>
+  </div>
+</div>

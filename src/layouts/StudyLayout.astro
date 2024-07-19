@@ -1,6 +1,7 @@
 ---
 import Layout from "./Layout.astro";
 import XIcon from "../components/icons/XIcon.astro";
+import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
 
 const { frontmatter } = Astro.props;
 const {
@@ -17,95 +18,105 @@ const {
 ---
 
 <Layout title={title} description={description}>
-  <div class=" relative grid grid-cols-16 gap-x-15 gap-30"> 
-    <a href="/" class="group fixed -top-[2px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent">
-      <XIcon classes='shrink-0 text-neutral-700 dark:text-neutral-300 group-hover:opacity-50' />
+  <div class="font-bold text-neutral-400 relative grid grid-cols-16 gap-x-15 gap-[60px]"> 
+    <a href="/" class="group fixed -top-[5px] right-[0px] mix-blend-exclude z-50 p-15 hover:bg-transparent focus:bg-transparent uppercase text-[10px] font-bold tracking-wide leading-[15px]">
+      <!-- <XIcon classes='s hrink-0 text-neutral-800 dark:text-neutral-300 dark:text-neutral-300 group-hover:opacity-50' /> -->
+      Close
     </a>
-    <aside class='grid col-span-full grid-cols-16 gap-15 divide-neutral-800 dark:divide-neutral-300'>
-      <div class="mb-15 md:mb-0 grid lg:flex flex-col grid-cols-16 md:grid-cols-1 md:row-span-3 lg:row-span-1 gap-15 col-span-full md:col-span-4 lg:col-span-2 lg:order-1">
-        <div class="flex flex-col gap-15 col-span-10 max-w-[250px]">
-          <h1>{title}</h1>
-          <p class="text-balance col-span-8 pr-15">{description}</p>
+    <aside class='grid col-span-full grid-cols-16 gap-15 -mt-5 '>
+      <div class="grid grid-cols-8 md:grid-cols-4 col-span-8 md:col-span-4 gap-x-15">
+        <div class="col-span-2 md:col-span-1">
+          <p>Type</p>
+          <p>Year</p>
         </div>
-        <div class={`flex flex-col lg:hidden justify-between col-span-6`}>
-          <div class={`flex flex-col justify-between ${link.href ? '' : ' h-full'}`}>
-            <p class="capitalize">{type}</p>
-            <p>{year}</p>
-          </div>
-          {link && <a href={link.href} target="_blank" class="block lg:hidden underline col-span-4">Live site</a>}
+        <div class="col-span-6 md:col-span-3">
+          <p class="capitalize">{type}</p>
+          <p>{year}</p>
         </div>
-        <!-- {link && <a href={link.href} target="_blank" class="block lg:hidden underline col-span-4">Live site</a>} -->
       </div>
-      <div class="[&>*]:max-w-[250px] 2xl:[&>*]:max-w-none grid grid-cols-2 md:grid-cols-12 lg:grid-cols-9 md:col-start-5 gap-15 border-neutral-800 dark:border-neutral-300  col-span-10 md:col-span-12 lg:col-span-9 lg:order-2">
-        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
-          <div class="flex flex-col gap-15">
+      <div class="md:col-start-5  col-span-2 md:col-span-1">Roles</div>
+      <div class="md:col-span-3">
+        <ul>
+          {roles?.map((role: string) => <li>{role}</li>)}
+        </ul>
+      </div>
+      <ul class="grid grid-cols-8 md:grid-cols-4 col-span-8 md:col-span-4 gap-x-15">
+        {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
+          <>
+            <p class="col-span-2 md:col-span-1">{teammate.role}</p>
+            <a href={teammate.href} class="col-span-6 md:col-span-3 underline">{teammate.name}</a>
+          </>
+        )) : "—"}
+      </ul>
+      <div class="col-start-9 md:col-start-auto col-span-2 md:col-span-1">Tools</div>
+      <div class="col-span-3">
+        <ul>
+          {tools?.map((tool: string) => <li>{tool}</li>)}
+        </ul>
+      </div>
+      <div class="grid grid-cols-16 col-span-full  lg:row-span-1 gap-15 my-15">
+        <div class="col-span-full md:col-span-12 -tracking-[0.025rem]">
+          {link ? (
+            <a href={link.href} target="_blank" class="flex group hover:bg-transparent focus:bg-transparent">
+              <h1 class="text-neutral-800 dark:text-neutral-300 text-[24px] leading-[25px] md:text-[28px] md:leading-8 lg:text-[35px] lg:leading-[35px]">{title}</h1>
+              <ExternalLinkArrow classes="h-[25px] md:h-[30px] lg:h-[35px] w-[25px] md:w-[30px] lg:w-[35px] stroke-4 group-hover:text-neutral-800 dark:text-neutral-300 group-focus:text-neutral-800 dark:text-neutral-300" />
+            </a>
+          ) : (
+            <h1 class="text-neutral-800 dark:text-neutral-300 text-[24px] leading-[25px] md:text-[28px] md:leading-8 lg:text-[35px] lg:leading-[35px]">{title}</h1>
+          )}
+          <p class="text-neutral-400 dark:text-neutral-500 text-balance col-span-8 pr-15 text-[24px] leading-[25px] md:text-[28px] md:leading-8 lg:text-[35px] lg:leading-[35px]">{description}</p>
+        </div>
+      </div>
+      <div class="[&>*]:col-span-full xs:[&>*]:col-span-8 [&>*]:lg:col-span-4 [&>*]:border-t lg:[&>*]:border-none lg:border-t [&>*]:pt-5 lg:[&>*]:pt-0 lg:pt-10 col-span-full grid grid-cols-16 gap-15 border-neutral-300 dark:border-neutral-700 [&>*]:border-neutral-300 [&>*]:dark:border-neutral-700">
+        <div class="flex lg:hidden flex-col  ">
+          <p>Problem</p>
+          <p class="text-balance">{tldr?.problem || "—"}</p>
+        </div>
+        <div class="flex lg:hidden flex-col  ">
+          <p>Solution</p>
+          <p class="text-balance">{tldr?.solution || "—"}</p>
+        </div>
+        <div class="hidden lg:flex flex-col gap-15">
+          <div>
             <p>Problem</p>
             <p class="text-balance">{tldr?.problem || "—"}</p>
           </div>
-          <div class="flex flex-col gap-15 col-span-4 lg:col-span-3">
+          <div>
             <p>Solution</p>
             <p class="text-balance">{tldr?.solution || "—"}</p>
           </div>
         </div>
-        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
+        <div class="flex flex-col ">
           <p>Decisions</p>
-          <ul class="text-balance md:-ml-[16px]">
+          <ul class="text-balance col-span-3 ">
             {tldr?.decisions?.map((decision: string, index: number) => 
-              <li class="flex gap-5 md:gap-10">
-                <span>{index + 1}</span>
-                <span>{decision}</span>
+              <li class="flex gap-10">
+                {/* <span class="hidden md:block w-[7px] text-center shrink-0">{index + 1}</span> */}
+                <span class="">{decision}</span>
               </li>
             ) || "—"}
           </ul>
         </div>
-        <div class="flex flex-col gap-15 col-span-4 lg:col-span-3 pr-30">
+        <div class="flex flex-col ">
           <p>Tradeoffs</p>
-          <ul class="col-span-8 text-balance md:-ml-[16px]">
+          <ul class="col-span-4 text-balance">
             {tldr?.tradeoffs?.map((tradeoff: string, index: number) => 
-              <li class="flex gap-5 md:gap-10">
-                <span>{index + 1}</span>
+              <li class="flex gap-10">
+                {/* <span class="hidden md:block w-[7px] text-center shrink-0">{index + 1}</span> */}
                 <span>{tradeoff}</span>
               </li>
             ) || "—"}
           </ul>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-15 col-span-6 md:col-span-12 md:col-start-5 lg:col-start-13 md:row-span-2 lg:row-span-1 lg:order-3">
-        <div class="flex flex-col gap-15">
-          <p>Roles</p>
-          <ul>
-            {roles?.map((role: string) => <li>{role}</li>)}
-          </ul>
-        </div>
-        <div class="flex flex-col gap-15">
-          <p>Tools</p>
-          <ul>
-            {tools?.map((tool: string) => <li>{tool}</li>)}
-          </ul>
-        </div>
-        <div class="flex flex-col gap-15">
-          <p>Team</p>
-          <ul>
-            {teammates ? teammates.map((teammate: { name: string, role: string, href: string }) => (
-              <li>
-                <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
-              </li>
-            )) : "—"}
-          </ul>
-        </div>
-      </div>
-      <p class="hidden lg:block lg:order-4 capitalize col-span-2">{type}</p>
-      <p class="hidden lg:block lg:order-5 col-span-3">{year}</p>
-      {link && <a href={link.href} target="_blank" class="lg:order-6 hidden lg:block underline col-span-2">Live site</a>}
     </aside>
-    <!-- <hr class="col-span-full" /> -->
     <article
       id="article"
       class="pb-[120px] w-full col-span-full overflow-visible scroll-mt-3 mx-auto"
     >
       <div
         class={`
-          grid grid-cols-16 gap-x-15 gap-30
+          grid grid-cols-16 gap-x-15 gap-y-30 lg:gap-[60px]
           prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
           prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
           prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
@@ -119,7 +130,7 @@ const {
           prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
           prose-video:w-auto prose-video:select-none	prose-video:my-0 
           prose-td:p-0
-          [&>*]:col-span-full lg:[&>*]:col-start-3 lg:[&>*]:col-span-12
+
         `}
       >
         <slot />

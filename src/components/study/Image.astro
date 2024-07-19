@@ -1,75 +1,61 @@
 ---
+import type { GridSpan, FullBleed } from '../../utils/class-generator'
+import { generateGridSpanClasses, generateFullBleedClasses } from '../../utils/class-generator'
+import clsx from 'clsx';
+
 export interface Props {
   src: string;
   alt: string;
-  span?: number | { 
-    base: number, 
-    sm?: number, 
-    md?: number, 
-    lg?: number, 
-    xl?: number 
-  };
+  span?: GridSpan;
   description?: string;
   hasCaption?: boolean;
   hasBorder?: boolean;
   orientation?: 'horizontal' | 'vertical';
-  hasPadding?: boolean;
+  fullBleed?: FullBleed;
   classes?: string;
 }
 
 const { 
   src, 
   alt,
-  span = 12,
+  span = 16,
   hasCaption = true,
   description = '',
   orientation = 'horizontal',
+  fullBleed = false,
   hasBorder = false,
-  hasPadding = false,
+
   classes = ""
 } = Astro.props;
 
-let colClasses = '';
-let spanClasses = '';
-
-switch (typeof span) {
-  case 'number':
-    colClasses = `grid-cols-${span}`;
-    spanClasses = `col-span-${span}`;
-    break;
-  case 'object':
-    for (const [breakpoint, cols] of Object.entries(span)) {
-      if (breakpoint === 'base') {
-        colClasses += `grid-cols-${cols} `;
-        spanClasses += `col-span-${cols} `;
-      } else {
-        colClasses += `${breakpoint}:grid-cols-${cols} `;
-        spanClasses += `${breakpoint}:col-span-${cols} `;
-      }
-    }
-    break;
-}
+const gridClasses = generateGridSpanClasses(span);
+const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
 ---
-
-<div class={`grid gap-10 h-fit ${colClasses} ${spanClasses} ${classes}`}>
-  {hasCaption && <p class="col-span-full">{alt}</p>}
+<div class={clsx(
+  "text-neutral-800 dark:text-neutral-300 flex flex-col gap-10 h-fit",
+  gridClasses,
+  bleedClasses,
+  classes
+)}>
   <figure class={`
-    image relative grid col-span-full gap-x-5
+    image relative
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-    ${colClasses}
-    ${hasPadding ? '-mx-3 px-3 xs:mx-0 xs:px-0' : ''}
-    ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
   `}>
     <img
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover bg-gray-100 dark:bg-neutral-800
+        h-full w-full object-cover bg-neutral-200 dark:bg-[#212121]
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-        ${hasPadding ? 'col-start-2 col-end-[-2]' : 'col-span-full'}
       `}
     />
   </figure>
-  {description && <p class="col-span-full">{description}</p>}
+  <div class={clsx(
+    hasCaption || description ? 'flex flex-col gap-10' : 'hidden',
+    paddingClasses
+  )}>
+    {hasCaption && <p class="col-span-full">{alt}</p>}
+    {description && <p class="col-span-full">{description}</p>}
+  </div>
 </div>

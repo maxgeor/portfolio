@@ -4,8 +4,8 @@
   "description": "Some misinterpreted sayings",
   "image": "/work/sayings-forgotten.gif",
   "roles": {
-    "long": ["Web", "Dev"],
-    "short": ["Design", "Dev"]
+    "long": ["Web", "Code"],
+    "short": ["Design", "Code"]
   },
   "link": {
     "href": "https://sayings-forgotten.vercel.app/",

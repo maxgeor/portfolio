@@ -4,8 +4,8 @@
   "description": "wavy's landing page",
   "image": "/work/wavy/website/cover.png",
   "roles": {
-    "long": ["Dev"],
-    "short": ["Dev"]
+    "long": ["Code"],
+    "short": ["Code"]
   },
   "link": {
     "href": "https://www.joinwavy.com/",

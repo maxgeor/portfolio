@@ -4,8 +4,8 @@
   "description": "Some design decisions",
   "image": "/work/dissect-design.png",
   "roles": {
-    "long": ["Product", "Dev"],
-    "short": ["Design", "Dev"]
+    "long": ["Product", "Code"],
+    "short": ["Design", "Code"]
   },
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",

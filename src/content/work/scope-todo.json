@@ -4,8 +4,8 @@
   "description": "Product work, in Figma (50k users)",
   "image": "/work/scope-todo.png",
   "roles": {
-    "long": ["Product", "Dev"],
-    "short": ["Design", "Dev"]
+    "long": ["Product", "Code"],
+    "short": ["Design", "Code"]
   },
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",

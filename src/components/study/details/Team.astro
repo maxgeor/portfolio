@@ -1,0 +1,23 @@
+---
+export interface Props {
+  teammates?: { 
+    name: string; 
+    role: string; 
+    href: string; 
+  }[];
+  className?: string;
+}
+
+const { teammates, className = "" } = Astro.props;
+---
+
+<div class={`flex flex-col gap-15 ${className}`}>
+  <p>Team</p>
+  <ul class="text-balance">
+    {teammates?.map((teammate) => (
+      <li>
+        <a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})
+      </li>
+    )) || "—"}
+  </ul>
+</div>

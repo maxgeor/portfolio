@@ -4,8 +4,8 @@
   "description": "Universal UI for smart contracts",
   "image": "/work/formie/cover.png",
   "roles": {
-    "long": ["Brand", "Copy", "Product", "Dev"],
-    "short": ["Design", "Brand", "Dev"]
+    "long": ["Brand", "Copy", "Product", "Code"],
+    "short": ["Design", "Brand", "Code"]
   },
   "link": {
     "href": "https://www.formie.co/",

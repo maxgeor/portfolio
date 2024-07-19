@@ -1,47 +1,26 @@
 ---
 export interface Props {
-  title?: string
+  title: string
+  orientation?: 'vertical' | 'horizontal';
 }
 
-const { title } = Astro.props;
+const { title, orientation = 'horizontal' } = Astro.props;
 ---
-<div class="grid grid-cols-16 !col-span-full gap-y-10 shadow-sub-pixel-black dark:shadow-sub-pixel-white pt-15 lg:pt-30 mt-15 lg:mt-[30px] first:mt-0 lg:first:mt-0" >
-<!-- <div class="grid grid-cols-16 !col-span-full gap-y-10 mt-30" > -->
-  {title && <h1 class="text-pretty col-span-full lg:col-span-2 lg:pr-30">{title}</h1>}
-  <p class="col-span-full lg:col-span-12 break-words hyphens-auto tracking-[-0.0075em] text-[19px] leading-[20px] lg:text-[24px] lg:leading-[25px] 2xl:text-[30px] 2xl:leading-[30px] 3xl:text-[39px] 3xl:leading-[40px]">
+{orientation === 'horizontal' ? (
+  <div class="[&>p]:col-span-full xs:[&>p]:col-span-8 lg:[&>p]:col-span-4 [&>p]:break-words [&>p]:justify-text [&>p]:hyphens-auto border-t border-neutral-300 dark:border-neutral-700 pt-10 grid grid-cols-16 gap-15 !col-span-full" >
+    {/* <h1 class="text-neutral-800 dark:text-neutral-300 text-pretty lg:pr-30 col-span-full lg:col-span-2 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px]">{title}</h1> */}
+    <h1 class=" font-bold text-neutral-800 dark:text-neutral-300 text-pretty col-span-full lg:col-span-4 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px] -tracking-[0.025rem] ">{title}</h1>
+    {/* <p class="[&>mark]:bg-transparent [&>mark]:text-neutral-800 dark:text-neutral-500 dark:[&>mark]:text-neutral-300  col-span-full md:col-span-14 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px]">
+      <slot />
+    </p> */}
     <slot />
-  </p>
-</div>
-
-<style is:inline>
-  p > mark {
-    background-color: transparent;
-    color: inherit;
-  }
-
-  p > mark.solution::before {
-    content: '';
-    display: inline-block;
-    height: 25px;
-    width: 25px;
-    margin-right: 9px;
-    vertical-align: baseline;
-    background-color: var(--accent-color);
-  }
-
-  @media (max-width: 1599px) {
-    p > mark.solution::before {
-      height: 17px;
-      width: 17px;
-      margin-right: 6px;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    p > mark.solution::before {
-      height: 14px;
-      width: 14px;
-      margin-right: 5px;
-    }
-  }
-</style>
+  </div>
+) : (
+  <div class="-tracking-[0.025rem] flex flex-col col-span-fu">
+    {/* <h1 class="text-neutral-800 dark:text-neutral-300  text-pretty lg:pr-30 col-span-full text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">{title}</h1> */}
+    <h1 class="text-neutral-800 dark:text-neutral-300  text-pretty lg:pr-30 col-span-full text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">{title}</h1>
+    <p class="[&>mark]:bg-transparent [&>mark]:text-neutral-800 dark:text-neutral-500 dark:[&>mark]:text-neutral-300 col-span-full md:col-span-14 text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">
+      <slot />
+    </p>    
+  </div>
+)}

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  decisions?: string[];
+  className?: string;
+}
+
+const { decisions, className = "" } = Astro.props;
+---
+
+<div class={`flex flex-col gap-15 ${className}`}>
+  <p>Decisions</p>
+  <ul class="text-balance md:-ml-[16px]">
+    {decisions?.map((decision: string, index: number) => 
+      <li class="flex gap-5 md:gap-10">
+        <span>{index + 1}</span>
+        <span>{decision}</span>
+      </li>
+    ) || "—"}
+  </ul>
+</div>
