@@ -11,7 +11,7 @@ import Writings from "../details/Writings.astro";
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout>
-  <div class="font-bold col-span-full relative grid grid-cols-8 gap-x-15 gap-y-[30px] lg:gap-y-[90px] ">
+  <div class="col-span-full relative grid grid-cols-8 gap-x-15 gap-y-[30px] lg:gap-y-[90px] ">
     <div class="grid grid-cols-16 gap-x-15 gap-y-30 col-span-full">
       <div class="-tracking-[0.025rem] text-[24px] leading-[25px] md:text-[30px] md:leading-8  flex flex-col col-span-full pr-[25vw]">
         <h1 class="whitespace-nowrap text-neutral-800 dark:text-neutral-300">Max Kevin Crapper Georgopoulos</h1>
@@ -26,7 +26,7 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
       <div class="grid grid-cols-16 border-t gap-15 col-span-full">
 
         <Influences classes="col-span-4" />
-        <Interests classes="ccol-span-4" />
+        <Interests classes="col-span-4" />
         <Skills classes="col-span-4 " />
       </div>
       <Links cols={1} classes="md:order-last col-span-4 hidden md:flex" />

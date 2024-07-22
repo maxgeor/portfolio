@@ -7,17 +7,12 @@ export interface Props {
 const { title, orientation = 'horizontal' } = Astro.props;
 ---
 {orientation === 'horizontal' ? (
-  <div class="[&>p]:col-span-full xs:[&>p]:col-span-8 lg:[&>p]:col-span-4 [&>p]:break-words [&>p]:justify-text [&>p]:hyphens-auto border-t border-neutral-300 dark:border-neutral-700 pt-10 grid grid-cols-16 gap-15 !col-span-full" >
-    {/* <h1 class="text-neutral-800 dark:text-neutral-300 text-pretty lg:pr-30 col-span-full lg:col-span-2 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px]">{title}</h1> */}
-    <h1 class=" font-bold text-neutral-800 dark:text-neutral-300 text-pretty col-span-full lg:col-span-4 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px] -tracking-[0.025rem] ">{title}</h1>
-    {/* <p class="[&>mark]:bg-transparent [&>mark]:text-neutral-800 dark:text-neutral-500 dark:[&>mark]:text-neutral-300  col-span-full md:col-span-14 text-[19px] leading-5 lg:text-[28px] lg:leading-[30px]">
-      <slot />
-    </p> */}
+  <div class="text-[19px] leading-5  my-[60px] [&>p]:col-span-full xs:[&>p]:col-span-8 lg:[&>p]:col-span-6 [&>p]:break-words [&>p]:justify-text [&>p]:hyphens-auto  border-neutral-300 dark:border-neutral-700 grid grid-cols-16 gap-15 !col-span-full" >
+    <h1 class="  text-neutral-800 dark:text-neutral-300 text-pretty col-span-full lg:col-span-2 ">{title}</h1>
     <slot />
   </div>
 ) : (
-  <div class="-tracking-[0.025rem] flex flex-col col-span-fu">
-    {/* <h1 class="text-neutral-800 dark:text-neutral-300  text-pretty lg:pr-30 col-span-full text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">{title}</h1> */}
+  <div class="-tracking-[0.025rem] flex flex-col col-span-full">
     <h1 class="text-neutral-800 dark:text-neutral-300  text-pretty lg:pr-30 col-span-full text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">{title}</h1>
     <p class="[&>mark]:bg-transparent [&>mark]:text-neutral-800 dark:text-neutral-500 dark:[&>mark]:text-neutral-300 col-span-full md:col-span-14 text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">
       <slot />

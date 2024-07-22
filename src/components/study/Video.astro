@@ -1,13 +1,17 @@
 ---
-import type { GridSpan } from '../../utils/class-generator'
-import { generateGridSpanClasses } from '../../utils/class-generator'
+import type { Cols, FullBleed } from '../../utils/class-generator'
+import { getColClasses, getFullBleedClasses } from '../../utils/class-generator'
 import { stripExtension } from "../../utils/formatting";
+import clsx from 'clsx';
 
 export interface Props {
   src: string;
   alt: string;
-  span?: GridSpan;
   description?: string;
+  span?: Cols;
+  start?: Cols;
+  end?: Cols;
+  fullBleed?: FullBleed;
   hasBorder?: boolean;
   hasCaption?: boolean;
   orientation?: 'vertical' | 'horizontal';
@@ -18,6 +22,9 @@ const {
   src, 
   alt,
   span = 12,
+  start,
+  end,
+  fullBleed = false,
   description = "",
   hasBorder = false,
   hasCaption = true,
@@ -26,12 +33,33 @@ const {
 } = Astro.props;
 
 const extensionlessSrc = stripExtension(src);
-const gridClasses = generateGridSpanClasses(span);
+
+const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
+const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 
 ---
-<div class={`flex flex-col gap-10 h-fit ${gridClasses} ${classes}`}>
-  {hasCaption && <p>{alt}</p>}
-  <div class={`
+<div class={clsx(
+  "flex flex-col gap-10 h-fit",
+  spanClasses,
+  startClasses,
+  endClasses,
+  bleedClasses,
+  classes
+)}>
+  <video
+    class={`
+      object-cover w-full select-none self-center 
+      ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+    `}
+    poster={extensionlessSrc + ".png"}
+    playsinline
+    autoplay
+    muted
+    loop
+  >
+    <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
+  </video>
+  <!-- <div class={`
     relative overflow-visible
     ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
   `}>
@@ -48,6 +76,12 @@ const gridClasses = generateGridSpanClasses(span);
     >
       <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
     </video>
+  </div> -->
+  <div class={clsx(
+    hasCaption || description ? 'flex flex-col gap-10' : 'hidden',
+    paddingClasses
+  )}>
+    {hasCaption && <p class="col-span-full">{alt}</p>}
+    {description && <p class="col-span-full">{description}</p>}
   </div>
-  {description && <p>{description}</p>}
 </div>

@@ -1,6 +1,6 @@
 ---
-import type { GridSpan, FullBleed } from '../../utils/class-generator'
-import { generateGridSpanClasses, generateFullBleedClasses } from '../../utils/class-generator'
+import type { Cols, FullBleed } from '../../utils/class-generator'
+import { getColClasses, getFullBleedClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
 import clsx from 'clsx';
@@ -10,12 +10,16 @@ export interface Props {
     type: "image" | "video";
     src: string;
     alt: string;
-    span?: GridSpan;
+    span?: Cols;
+    start?: Cols;
+    end?: Cols;
     hasBorder?: boolean;
     classes?: string;
   }[];
   description?: string;
-  span?: GridSpan;
+  span?: Cols;
+  start?: Cols;
+  end?: Cols;
   fullBleed?: FullBleed;
   orientation?: 'horizontal' | 'vertical';
   hasBorder?: boolean
@@ -28,20 +32,24 @@ const {
   orientation = 'horizontal', 
   hasBorder, 
   fullBleed = false,
-  span = 16, 
+  span = 16,
+  start,
+  end,
   classes = "" 
 } = Astro.props;
 
-const gridSpanClasses = generateGridSpanClasses(span);
-const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
+const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
+const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 ---
 
-<div class={`
-  carousel flex flex-col gap-10 relative h-fit 
-  ${gridSpanClasses} 
-  ${bleedClasses}
-  ${classes}
-`}>
+<div class={clsx(
+  'carousel flex flex-col gap-10 relative h-fit',
+  spanClasses,
+  startClasses,
+  endClasses,
+  bleedClasses,
+  classes
+)}>
   <div class={clsx(
     'relative w-full rotate-0 overflow-hidden',
     orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
@@ -62,6 +70,8 @@ const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
               src={slide.src}
               alt={slide.alt}
               span={slide.span}
+              start={slide.start}
+              end={slide.end}
               hasBorder={false}
               hasCaption={false}
               classes={slide.classes}
@@ -71,6 +81,8 @@ const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
               src={slide.src}
               alt={slide.alt}
               span={slide.span}
+              start={slide.start}
+              end={slide.end}
               hasBorder={false}
               orientation={orientation}
               hasCaption={false}
@@ -81,7 +93,7 @@ const { bleedClasses, paddingClasses } = generateFullBleedClasses(fullBleed);
       ))
     }
   </div>
-  <div class={paddingClasses}>
+  <div class={clsx(paddingClasses)}>
     <div class="relative flex flex-col gap-x-15 gap-y-10">
       <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
         {slides?.map((slide, index) => (
