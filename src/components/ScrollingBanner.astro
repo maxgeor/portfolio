@@ -9,7 +9,7 @@ const { title, direction = 'left', classes = '' } = Astro.props;
 ---
 
 <div class={`
-  scrolling-banner absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 bg-white dark:bg-black marquee
+  uppercase scrolling-banner absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10 bg-neutral-300 dark:bg-black marquee
   ${classes}
 `}>
   <div class={`text ${direction === 'left' ? 'scroll-left' : 'scroll-right'}`}>

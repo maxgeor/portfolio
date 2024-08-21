@@ -1,8 +1,22 @@
-<button class="theme-toggle flex items-center justify-center group fixed bottom-0 right-0 z-[100] p-15 hover:bg-white focus-visible:bg-white dark:hover:bg-black dark:focus-visible:bg-black ">
-  <span class="h-[7px] w-[7px] shrink-0 border border-neutral-800 group-hover:bg-black dark:border-neutral-300 dark:group-hover:bg-white rounded-full "></span>
+---
+import clsx from 'clsx';
+
+export interface Props {
+  classes?: string;
+}
+
+const { classes = "" } = Astro.props;
+---
+<button class={clsx(
+  "theme-toggle flex items-center justify-self-end group p-10 -m-10 uppercase",
+  classes
+)}>
+  Light/Dark
 </button>
 
 <script>
+  const themeToggles = document.querySelectorAll('.theme-toggle');
+
   function toggleTheme() {
     document.documentElement.classList.toggle('dark');
 
@@ -11,6 +25,8 @@
     } else {
       localStorage.setItem('theme', 'light');
     }
+
+    loadThemePreference();
   }
 
   function loadThemePreference() {
@@ -23,6 +39,6 @@
     }
   }
 
-  document.querySelectorAll('.theme-toggle')?.forEach((toggle) => toggle.addEventListener('click', toggleTheme));
+  themeToggles?.forEach((toggle) => toggle.addEventListener('click', toggleTheme));
   loadThemePreference();
 </script>

@@ -48,9 +48,9 @@ const links: {
 ];
 ---
 
-<div class={clsx('flex flex-col gap-15', classes)}>
+<div class={clsx('flex flex-col gap-2', classes)}>
   <p>Links</p>
-  <div class={clsx("grid gap-x-15", colClasses[cols])}>
+  <div class={clsx("grid gap-x-2", colClasses[cols])}>
     {links.map(link => (
       <a href={link.url} target={link.target} class="peer mr-5 last:mr-0 [&>span]:last:hidden ">
         {link.name}

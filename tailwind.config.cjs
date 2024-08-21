@@ -8,8 +8,8 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      sans: ['Helvetica Neue', 'Arial', 'Untitled Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-      serif: ['Untitled Serif', 'Times New Roman', 'Times', 'Georgia', 'Cambria', 'serif'],
+      sans: ['Arial', 'Helvetica Neue',  'Untitled Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+      serif: ['Times New Roman', 'Times', 'Untitled Serif',  'Georgia', 'Cambria', 'serif'],
       mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
     },
     extend: {
@@ -69,8 +69,8 @@ module.exports = {
           150: '#f0f0f0',
           200: '#ececec',
           250: '#E6E6E6',
-          300: '#dadada',
-          400: '#909090',
+          300: '#ccc',
+          400: '#B3B3B3',
           490: '#7D7D7D',
           500: '#8B8B8B',
           700: '#4B4B4B',

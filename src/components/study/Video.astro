@@ -39,7 +39,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 
 ---
 <div class={clsx(
-  "flex flex-col gap-10 h-fit",
+  "flex flex-col gap-2 h-fit",
   spanClasses,
   startClasses,
   endClasses,
@@ -50,6 +50,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
     class={`
       object-cover w-full select-none self-center 
       ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
+      ${hasBorder ? 'border border-black dark:border-neutral-300' : ''}
     `}
     poster={extensionlessSrc + ".png"}
     playsinline
@@ -78,7 +79,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
     </video>
   </div> -->
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-10' : 'hidden',
+    hasCaption || description ? 'flex flex-col gap-2' : 'hidden',
     paddingClasses
   )}>
     {hasCaption && <p class="col-span-full">{alt}</p>}

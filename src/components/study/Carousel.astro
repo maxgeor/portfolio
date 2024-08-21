@@ -43,7 +43,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 ---
 
 <div class={clsx(
-  'carousel flex flex-col gap-10 relative h-fit',
+  'carousel flex flex-col gap-2 relative h-fit',
   spanClasses,
   startClasses,
   endClasses,
@@ -53,7 +53,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
   <div class={clsx(
     'relative w-full rotate-0 overflow-hidden',
     orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
-    hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''
+    hasBorder ? 'border  border-black dark:border-neutral-300' : ''
   )}>
     <button aria-label="Next slide" class="next-slide-btn absolute inset-0 opacity-0 z-40"></button>
     {
@@ -94,7 +94,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
     }
   </div>
   <div class={clsx(paddingClasses)}>
-    <div class="relative flex flex-col gap-x-15 gap-y-10">
+    <div class="relative flex flex-col gap-x-2 gap-y-2">
       <div class="relative min-h-[15px] w-full rotate-0 overflow-hidden">
         {slides?.map((slide, index) => (
           <div class={`caption caption-${index} absolute h-fit w-full transition-opacity text-neutral-800 dark:text-neutral-300 duration-[450ms] ease-in-out`}>

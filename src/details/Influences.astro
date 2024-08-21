@@ -39,12 +39,12 @@ const influences = [
   }
 ];
 ---
-<div class={clsx("flex flex-col gap-15", classes)}>
+<div class={clsx("flex flex-col gap-2", classes)}>
   <h3>Influences</h3>
   <ul>
     {influences.map((influence) => (
       <li class="pl-px">
-        <details class="transition-all group before:content-none flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+        <details class="transition-all group before:content-none flex w-full  items-center gap-2 [&_summary]:open:cursor-zoom-out ">
           <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
           <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
         </details>

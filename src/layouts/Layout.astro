@@ -22,10 +22,18 @@ const {
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class="relative font-medium bg-white text-black  min-h-screen text-12 selection:bg-[var(--highlight-color)] p-15"
+    class=" grid grid-cols-6  relative  bg-neutral-300 dark:bg-black dark:text-neutral-300 text-black  min-h-screen text-[10px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 pt-[40px] gap-2 gap-y-6"
   >
+    <header class="-my-1 grid grid-cols-6 col-span-full gap-2 uppercase fixed top-2 left-2 right-2 z-10">
+      <a class="col-span-3 md:col-span-2 whitespace-nowrap">Max Kevin Crapper Georgopoulos </a>
+      <button class="md:hidden menu-open col-span-3 justify-self-end uppercase">Menu</button>
+      <a class="hidden md:block col-start-3 col-span-1">About</a>
+      <a class="hidden md:block col-span-1">Writing <sup >4</sup></a>
+      <a class="hidden md:block  col-span-1">Contact</a>
+      <ThemeToggle classes='hidden md:block' />
+    </header>
+
     <slot />
-    <ThemeToggle />
   </body>
 </html>
 
@@ -76,10 +84,6 @@ const {
     text-underline-offset: 2px;
   }
   
-  a, button, summary {
-    transition: background-color 0.075s ease-in-out;
-  }
-  
   a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: solid 2px var(--accent-color);
     outline-offset: 1px;
@@ -87,7 +91,7 @@ const {
   }
 
   a:hover, button:hover, summary:hover {
-    background-color: var(--highlight-color);
+    opacity: 0.5;
     text-decoration: none;
   }
 

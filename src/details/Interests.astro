@@ -24,12 +24,12 @@ const interests = [
   },
 ];
 ---
-<div class={clsx("flex flex-col gap-15", classes)}>
+<div class={clsx("flex flex-col gap-2", classes)}>
   <h3>Interests</h3>
   <ul>
     {interests.map((interest) => (
       <li class="pl-px">
-        <details class="transition-all group before:content-none  flex w-full  items-center gap-15 [&_summary]:open:cursor-zoom-out ">
+        <details class="transition-all group before:content-none  flex w-full  items-center gap-2 [&_summary]:open:cursor-zoom-out ">
           <summary class="transition duration-75 hover:cursor-zoom-in ">{interest.title}</summary>
           <p class="pl-[0.65rem]  normal-case font-medium">{interest.description} {interest.link && <a href={interest.link} target="_blank" class="inline underline">Learn</a>}</p>  
         </details>

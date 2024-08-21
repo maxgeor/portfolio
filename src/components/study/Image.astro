@@ -35,7 +35,7 @@ const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end
 const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 ---
 <div class={clsx(
-  "text-neutral-800 dark:text-neutral-300 flex flex-col gap-10 h-fit",
+  "flex flex-col gap-1 h-fit",
   orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
   spanClasses,
   startClasses,
@@ -46,20 +46,20 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
   <figure class={`
     image relative
     ${orientation === 'vertical' ? 'aspect-[4/7]' : 'aspect-[7/4]'},
-    ${hasBorder ? 'border border-neutral-200 dark:border-neutral-800' : ''}
+    ${hasBorder ? 'border border-black dark:border-neutral-300' : ''}
   `}>
     <img
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover bg-neutral-200 dark:bg-[#212121]
+        h-full w-full object-cover bg-neutral-400 dark:bg-[#212121]
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
       `}
     />
   </figure>
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-10' : 'hidden',
+    hasCaption || description ? 'flex flex-col gap-2' : 'hidden',
     paddingClasses
   )}>
     {hasCaption && <p class="col-span-full">{alt}</p>}

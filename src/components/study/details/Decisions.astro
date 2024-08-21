@@ -7,11 +7,11 @@ export interface Props {
 const { decisions, className = "" } = Astro.props;
 ---
 
-<div class={`flex flex-col gap-15 ${className}`}>
+<div class={`flex flex-col gap-2 ${className}`}>
   <p>Decisions</p>
   <ul class="text-balance md:-ml-[16px]">
     {decisions?.map((decision: string, index: number) => 
-      <li class="flex gap-5 md:gap-10">
+      <li class="flex gap-5 md:gap-2">
         <span>{index + 1}</span>
         <span>{decision}</span>
       </li>

@@ -11,34 +11,29 @@ import Writings from "../details/Writings.astro";
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout>
-  <div class="col-span-full relative grid grid-cols-8 gap-x-15 gap-y-[30px] lg:gap-y-[90px] ">
-    <div class="grid grid-cols-16 gap-x-15 gap-y-30 col-span-full">
-      <div class="-tracking-[0.025rem] text-[24px] leading-[25px] md:text-[30px] md:leading-8  flex flex-col col-span-full pr-[25vw]">
-        <h1 class="whitespace-nowrap text-neutral-800 dark:text-neutral-300">Max Kevin Crapper Georgopoulos</h1>
-        <p class=" text-neutral-400">I'm a designer and developer based out of Toronto, but I bum
-          around different places. I believe that the boundary between design
-          and engineering is artificial — you get the best results by blending
-          the two. Lately, I've been inspired by Ryan Singer's design
-          techniques, TailwindCSS, and The 2023 Spring Summer Collection from
-          Homme Plissé.
-        </p>
-      </div>
-      <div class="grid grid-cols-16 border-t gap-15 col-span-full">
-
-        <Influences classes="col-span-4" />
-        <Interests classes="col-span-4" />
-        <Skills classes="col-span-4 " />
-      </div>
-      <Links cols={1} classes="md:order-last col-span-4 hidden md:flex" />
-      <div class="hidden md:flex flex-col gap-15 col-span-4 ">
-      </div>
-      <Links classes="col-span-8 md:col-span-2 md:hidden" />
-      <Writings classes="col-span-8 md:col-span-4" />
-      
+  <!-- <nav class="flex justify-between xs:grid md:hidden grid-cols-6 col-span-full gap-2 uppercase -my-1">
+    <a class="whitespace-nowrap">Product <sup>4</sup></a>
+    <a class="whitespace-nowrap">Brand <sup>4</sup></a>
+    <a class="whitespace-nowrap">Code <sup>4</sup></a>
+    <a class="whitespace-nowrap">Client <sup>4</sup></a>
+    <a class="whitespace-nowrap">Project <sup>4</sup></a>
+    <a class="whitespace-nowrap">Case Study <sup>4</sup></a>
+  </nav> -->
+  <nav class="grid grid-cols-6 col-span-full gap-2 uppercase -my-1">
+    <div class="flex flex-col md:flex-row gap-x-2 col-span-2 lg:col-span-1 ">
+      <a class="whitespace-nowrap col-span-1 h-min">Product <sup>4</sup></a>
+      <a class="whitespace-nowrap col-span-1 h-min">Brand <sup>4</sup></a>
+      <a class="whitespace-nowrap col-span-1 h-min">Code <sup>4</sup></a>
     </div>
-    <!-- <h2 class="border-t border-neutral-300 dark:border-neutral-700 col-span-full">Work</h2> -->
-    {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
-      <Work variant="row" {...work} index={index} />
-    ))}
-  </div>
+    <div class="flex flex-col md:flex-row gap-x-2 col-span-2  lg:col-span-1">
+      <a class="whitespace-nowrap col-span-1 h-min">Project <sup>4</sup></a>
+      <a class="whitespace-nowrap col-span-1 h-min">Client <sup>4</sup></a>
+    </div>
+    <div class="flex flex-col md:flex-row gap-x-2 col-span-2  lg:col-span-1">
+      <a class="col-span-1 h-min">Case Study <sup>4</sup></a>
+    </div>
+  </nav>
+  {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
+    <Work variant="row" {...work} index={index} isHighlighted={index % 3} />
+  ))}
 </Layout>
