@@ -25,6 +25,7 @@ const {
     <p class="hidden md:block uppercase col-span-1">{year}</p>
     <p class="uppercase col-span-2 md:col-span-1 ">{type}</p>
     <p class="uppercase col-span-2 md:col-span-1 whitespace-nowrap ">{roles.join('/')}</p>
+    {description}
     <p>{teammates.map((teammate) => (
       <span><a href={teammate.href} class="underline">{teammate.name}</a> ({teammate.role})</span>
     ))}</p>
