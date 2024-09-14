@@ -31,18 +31,20 @@ import PaginatedSection from "../../components/study/PaginatedSection.astro";
 import Carousel from "../../components/study/Carousel.astro";
 import Challenges from "../../components/study/Challenges.astro";
 
-<Context title='Problem'>
+<Context id="1.0" title='Problem'>
   Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects.
-  The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.
+  The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.
 </Context>
 
 <Carousel
   slides={[
     {
+      id: "1.1",
       src: "/work/formie/annotated-etherscan-page.png",
       alt: "Etherscan's UI",
     },
     {
+      id: "1.2",
       src: "/work/formie/research/forms/etherscan-form-ui.png",
       alt: "Etherscan's form",
     },
@@ -54,26 +56,29 @@ import Challenges from "../../components/study/Challenges.astro";
 <Carousel
   slides={[
     {
+      id: "1.3",
       src: "/work/formie/research/one-ways/mloot-flow",
       alt: "Minting mLoot",
       type: "video"
     },
     {
+      id: "1.4",
       src: "/work/formie/research/one-ways/banners-flow",
       alt: "Minting Banners",
       type: "video"
     },
     {
+      id: "1.5",
       src: "/work/formie/research/one-ways/rune-flow",
       alt: "Minting Runes",
       type: "video"
     },
   ]}
   span={{ base: 12, md: 8 }}
-  description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs."
+  description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
 />
 
-<Context title='Solution'>
+<Context id="2.0" title='Solution'>
   Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark>
   You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.
 </Context>
@@ -81,19 +86,23 @@ import Challenges from "../../components/study/Challenges.astro";
 <Carousel
   slides={[
     {
+      id: "2.1",
       type: "video",
       src: "/work/formie/walkthrough.mp4",
       alt: "Full walkthrough"
     },
     {
+      id: "2.2",
       src: "/work/formie/first-sketch.png",
       alt: "First sketch",
     },
     {
+      id: "2.3",
       src: "/work/formie/process/flow.png",
-      alt: "First sketch of form creation flow",
+      alt: "First sketch of create flow",
     },
     {
+      id: "2.4",
       src: "/work/formie/process/sketch.png",
       alt: "First sketch of form header",
     },
@@ -101,56 +110,67 @@ import Challenges from "../../components/study/Challenges.astro";
   span={{ base: 12, md: 10 }}
 />
 
+<Carousel
+  orientation="vertical"
+  slides={[
+    {
+      id: "2.5",
+      src: "/work/formie/s2.png",
+      alt: "Index page",
+    },
+    {
+      id: "2.6",
+      src: "/work/formie/s6.png",
+      alt: "Form page",
+    },
+    {
+      id: "2.7",
+      src: "/work/formie/s4.png",
+      alt: "New form, find",
+    },
+    {
+      id: "2.8",
+      src: "/work/formie/s5.png",
+      alt: "New form, pick",
+    },
+    {
+      id: "2.9",
+      src: "/work/formie/s6.png",
+      alt: "New form, titles",
+    },
+  ]}
+  classes="md:hidden"
+  fullBleed={{ base: true, lg: false }}
+/>
+
 <Image
+  id="2.5"
   src="/work/formie/s4.png"
   alt="New form, find"
-  span={{ base: 6, md: 8 }}
+  span={{ base: 6, md: 4 }}
   orientation="vertical"
+  classes="hidden md:flex"
 />
 <Image
+  id="2.6"
   src="/work/formie/s5.png"
   alt="New form, pick action"
   span={{ base: 6, md: 4 }}
   orientation="vertical"
+  classes="hidden md:flex"
 />
 <Image
+  id="2.7"
   src="/work/formie/s6.png"
   alt="New form, titles"
   span={{ base: 6, md: 4 }}
   orientation="vertical"
+  classes="hidden md:flex"
 />
-
-  <Carousel
-    orientation="vertical"
-    slides={[
-      {
-        src: "/work/formie/s2.png",
-        alt: "Index page",
-      },
-      {
-        src: "/work/formie/s6.png",
-        alt: "Form page",
-      },
-      {
-        src: "/work/formie/s4.png",
-        alt: "New form, find contract",
-      },
-      {
-        src: "/work/formie/s5.png",
-        alt: "New form, pick action",
-      },
-      {
-        src: "/work/formie/s6.png",
-        alt: "New form, add title & description",
-      },
-    ]}
-    classes="md:hidden"
-    fullBleed={{ base: true, lg: false }}
-  />
-
 
 <div class="hidden md:grid grid-cols-12 md:grid-cols-8 md:col-start-3 md:col-end-11 gap-2 col-span-full ">
   <Image
+    id="2.8"
     src="/work/formie/s2.png"
     alt="Forms page"
     span={{ base: 6, md: 4 }}
@@ -158,6 +178,7 @@ import Challenges from "../../components/study/Challenges.astro";
     hasBorder={false}
   />
   <Image
+    id="2.9"
     src="/work/formie/s3.png"
     alt="Form page"
     span={{ base: 6, md: 4 }}
@@ -166,19 +187,22 @@ import Challenges from "../../components/study/Challenges.astro";
   />
 </div>
 
-<Challenges challenges={[
+{/* <Challenges challenges={[
   {
     title: "Shooing scammers",
     description: "From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users without making the product harder to build or use.",
     decisions: [
       {
         title: "Making people confirm trust",
-        description: "We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
+        description: "We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
       }
     ],
-    image: "/work/formie/challenges/scam.png",
+    image: {
+      id: "7.1",
+      src: "/work/formie/challenges/scam.png"
+    },
     tradeoffs: [
-      "We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
+      "We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
     ]
   },
   {
@@ -190,33 +214,39 @@ import Challenges from "../../components/study/Challenges.astro";
         description: "The best way to make a universal solution was to narrow the scope of what we'd solve. Two-way methods created too many edge cases. The majority of projects using Etherscan used it for one-way actions. Just focusing on one-way actions let us make a single solution that worked for most actions."
       }
     ],
-    image: "/work/formie/challenges/explain.png",
+    image: {
+      id: "7.2",
+      src: "/work/formie/challenges/explain.png"
+    },
     tradeoffs: [
       "We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons: 1. Most people don't use Etherscan frontends for two-way actions, 2. Supporting two-way actions would've made the product harder to use, 3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch. We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions. Ditching two-ways axed our scope and got a leaner product out the door."
     ]
   },
   {
     title: "Communicating technical details",
-    description: "Smart contracts have tons of strange behaviors: Transactions cost a bit of money, Transactions take time to go through, Anyone can make a frontend for any contract (because they're public). The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.",
+    description: "Smart contracts have tons of strange behaviors: Transactions cost a bit of money, Transactions take time to go through, Anyone can make a frontend for any contract (because they're public). The reason are technical, but anyone who doesn't understand why will face confusion, missteps, and exploitation.",
     decisions: [
       {
         title: "Humanized copy",
-        description: "To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”). But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
+        description: "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
       },
       {
         title: "Letting people write their own titles and descriptions",
-        description: "To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”). But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
+        description: "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
       }
     ],
-    image: "/work/formie/challenges/technical.png",
+    image: {
+      id: "7.3",
+      src: "/work/formie/challenges/technical.png"
+    },
     tradeoffs: [
-      "To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”). But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
+      "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
     ]
   }
-]} />
+]} /> */}
 
 {/* Process
-First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order. Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
+First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we'd design and build each chunk in order. Design started with rough sketches. After breadboarding the flows and UI, I'd finish the rest in code. While pushing pixels, Hassan would build the backend (I'd help after designing).
 <img
   src="/work/formie/process/lineup.png"
   alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
@@ -231,7 +261,7 @@ Shooing scammers
 We knew three things from the jump: Scammers would use forms to misrepresent contracts, We couldn't stop them, But we had to do something. How do we deter scammers without making the product harder to build or use?
 
 Decision: Making people confirm trust
-We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
+We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
 
 Tradeoff
 Less security, more usability (still possible for people to call a scam contract but didn't have the time to build a scam recognition system. Plus, having some buffer is already better than Etherscan, which never mentions it, so it's a step up.)

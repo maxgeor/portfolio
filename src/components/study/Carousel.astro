@@ -1,8 +1,9 @@
 ---
-import type { Cols, FullBleed } from '../../utils/class-generator'
-import { getCenteredColClasses, getFullBleedClasses } from '../../utils/class-generator'
+import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
+import { getCenteredColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
+import Caption from './Caption.astro';
 import clsx from 'clsx';
 
 export interface Props {
@@ -14,11 +15,11 @@ export interface Props {
     hasBorder?: boolean;
     classes?: string;
   }[];
-  span: Cols;
+  span: ResponsiveNumber;
   description?: string;
   orientation?: 'horizontal' | 'vertical';
   hasBorder?: boolean
-  isPadded: boolean;
+  isPadded: ResponsiveBool;
   classes?: string;
 }
 
@@ -28,18 +29,18 @@ const {
   span = 12,
   orientation = 'horizontal', 
   hasBorder, 
-  isPadded = false,
+  isPadded = true,
   classes = "" 
 } = Astro.props;
 
 const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
-// const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
+// const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
 ---
 
 <div class={clsx('flex flex-col gap-y-2 col-span-full carousel', classes)}>
   <div class={clsx(
-    "grid grid-cols-12 gap-x-2 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 p-6  md:py-16 md:px-2 -mx-2 ", 
-    
+    "grid grid-cols-12 gap-x-2 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 md:px-2 -mx-2 ",
+    isPadded && 'p-8  md:py-16'
   )}>
     <button 
       aria-label="Previous slide" 
@@ -53,23 +54,22 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
       class="next-slide-btn hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 disabled:opacity-50 z-40 p-2 uppercase">
       Next
     </button>
+    <div class="mobile-slide-controls absolute inset-0 z-20 md:hidden">
+      <div class="prev-slide-area absolute left-0 top-0 bottom-0 w-1/2"></div>
+      <div class="next-slide-area absolute right-0 top-0 bottom-0 w-1/2"></div>
+    </div>
     <div class="hidden md:block slide-counter absolute top-2 right-2 z-40"></div>
     <div class={clsx(
       startClasses,
       endClasses,
       spanClasses,
-      isPadded && 'p-4 md:px-16 md:py-12 bg-neutral-200 dark:bg-neutral-900',
       hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''
     )}>
       
       <div class={clsx(
         'relative w-full rotate-0 overflow-hidden bg-neutral-200 dark:bg-neutral-900',
-        orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
+        orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
       )}>
-        <div class="mobile-slide-controls absolute inset-0 z-20 md:hidden">
-          <div class="prev-slide-area absolute left-0 top-0 bottom-0 w-1/2"></div>
-          <div class="next-slide-area absolute right-0 top-0 bottom-0 w-1/2"></div>
-        </div>
         {
           slides.map((slide, index) => (
             <div 
@@ -83,6 +83,7 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
                 <Video
                   src={slide.src}
                   alt={slide.alt}
+                  id={slide.id}
                   hasBorder={false}
                   hasCaption={false}
                   classes={slide.classes}
@@ -91,6 +92,7 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
                 <Image
                   src={slide.src}
                   alt={slide.alt}
+                  id={slide.id}
                   hasBorder={false}
                   orientation={orientation}
                   hasCaption={false}
@@ -104,26 +106,25 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
     </div>
   </div>
   <div class={clsx(
-    'grid grid-cols-12 gap-x-2 gap-y-2', 
+    'grid grid-cols-12 gap-x-2 gap-y-4', 
     spanClasses,
     startClasses,
     endClasses,
   )}>
     <div class={clsx(
-      "flex justify-between gap-4",
-      description ? 'col-span-full md:col-span-2' : 'col-span-full'
+      "flex justify-between gap-4 -my-0.5",
+      description ? 'col-span-full md:col-span-2' : 'col-span-full '
     )}>
-      <div class="flex flex-col">
+      <div class="flex flex-col ">
         {slides?.map((slide, index) => (
           <button class={`caption caption-${index} uppercase h-fit w-fit text-black dark:text-white text-left`}>
-            <p>{slide.alt}</p>
+            <Caption id={slide.id} text={slide.alt} />
           </button>
         ))}
       </div>
       <div class="md:hidden slide-counter "></div>
     </div>
-    {description && <p class="col-span-full md:col-span-8 lg:col-span-6 xl:col-span-4 ">{description}</p>}
-    </div>
+    {description && <p class="col-span-full md:col-span-8 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
   </div>
 </div>
 

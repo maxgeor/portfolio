@@ -1,25 +1,28 @@
 ---
-import type { Cols, FullBleed } from '../../utils/class-generator'
-import { getColClasses, getFullBleedClasses } from '../../utils/class-generator'
+import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
+import { getColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
+import Caption from './Caption.astro';
 import clsx from 'clsx';
 
 export interface Props {
   src: string;
   alt: string;
-  span?: Cols;
-  start?: Cols;
-  end?: Cols;
+  id: string;
+  span?: ResponsiveNumber;
+  start?: ResponsiveNumber;
+  end?: ResponsiveNumber;
   description?: string;
   hasCaption?: boolean;
   hasBorder?: boolean;
   orientation?: 'horizontal' | 'vertical';
-  fullBleed?: FullBleed;
+  fullBleed?: ResponsiveBool;
   classes?: string;
 }
 
 const { 
   src, 
   alt,
+  id,
   span = 16,
   start,
   end,
@@ -32,11 +35,10 @@ const {
 } = Astro.props;
 
 const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
-const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
+const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
 ---
 <div class={clsx(
   "flex flex-col gap-2 h-fit",
-  orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]',
   spanClasses,
   startClasses,
   endClasses,
@@ -45,24 +47,24 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
 )}>
   <figure class={`
     image relative
-    ${orientation === 'vertical' ? 'aspect-[4/7]' : 'aspect-[7/4]'},
     ${hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''}
+    ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
   `}>
     <img
       src={src}
       alt={alt}
       class={`
-        h-full w-full object-cover bg-neutral-200 dark:bg-[#212121]
+        h-full w-full object-cover bg-neutral-200 dark:bg-neutral-900
         select-none self-center
         ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
       `}
     />
   </figure>
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-2' : 'hidden',
+    hasCaption || description ? 'flex flex-col gap-x-2 gap-y-4' : 'hidden',
     paddingClasses
   )}>
-    {hasCaption && <p class="col-span-full uppercase -my-0.5">{alt}</p>}
-    {description && <p class="col-span-full">{description}</p>}
+    {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
+    {description && <p class="col-span-full -my-0.5">{description}</p>}
   </div>
 </div>

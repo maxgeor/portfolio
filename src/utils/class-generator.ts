@@ -1,4 +1,4 @@
-export type Cols = number | {
+export type ResponsiveNumber = number | {
   base: number;
   sm?: number;
   md?: number;
@@ -6,7 +6,7 @@ export type Cols = number | {
   xl?: number;
 };
 
-export type FullBleed = boolean | {
+export type ResponsiveBool = boolean | {
   base: boolean;
   sm?: boolean;
   md?: boolean;
@@ -289,7 +289,7 @@ const responsiveBleedPaddingClassesMap: Record<string, Record<string, string>> =
   },
 };
 
-function mapColSpanToClasses(colSpan: Cols): string[] {
+function mapColSpanToClasses(colSpan: ResponsiveNumber): string[] {
   if (typeof colSpan === 'number') {
     return [spanClasses[colSpan]];
   } else {
@@ -312,7 +312,7 @@ function mapColSpanToClasses(colSpan: Cols): string[] {
 }
 
 function mapColStartEndToClasses(
-  colStartEnd: Cols,
+  colStartEnd: ResponsiveNumber,
   baseClasses: Record<number, string>,
   responsiveClasses: Record<string, Record<number, string>>
 ): string[] {
@@ -339,7 +339,7 @@ function mapColStartEndToClasses(
   }
 }
 
-function mapBleedAndPaddingClasses(bleed: FullBleed) {
+function mapBleedAndPaddingClasses(bleed: ResponsiveBool) {
   const bleedClasses: string[] = [];
   const paddingClasses: string[] = [];
 
@@ -384,9 +384,9 @@ function mapBleedAndPaddingClasses(bleed: FullBleed) {
 }
 
 export function getColClasses(
-  span: Cols,
-  start?: Cols,
-  end?: Cols
+  span: ResponsiveNumber,
+  start?: ResponsiveNumber,
+  end?: ResponsiveNumber
 ) {
   const spanClasses = mapColSpanToClasses(span);
   const startClasses = start ? mapColStartEndToClasses(start, colStartClasses, responsiveColStartClasses) : [];
@@ -399,7 +399,7 @@ export function getColClasses(
   };
 }
 
-export function getCenteredColClasses(span: Cols) {
+export function getCenteredColClasses(span: ResponsiveNumber) {
   const calculateStartEnd = (spanValue: number) => {
     const start = Math.floor((12 - spanValue) / 2) + 1;
     const end = start + spanValue;
@@ -409,9 +409,9 @@ export function getCenteredColClasses(span: Cols) {
   const mapSpanToClasses = (spanValue: number, breakpoint?: string) => {
     const { start, end } = calculateStartEnd(spanValue);
     return {
-      spanClasses: mapColSpanToClasses({ [breakpoint || 'base']: spanValue } as Cols),
-      startClasses: mapColStartEndToClasses({ [breakpoint || 'base']: start } as Cols, colStartClasses, responsiveColStartClasses),
-      endClasses: mapColStartEndToClasses({ [breakpoint || 'base']: end } as Cols, colEndClasses, responsiveColEndClasses),
+      spanClasses: mapColSpanToClasses({ [breakpoint || 'base']: spanValue } as ResponsiveNumber),
+      startClasses: mapColStartEndToClasses({ [breakpoint || 'base']: start } as ResponsiveNumber, colStartClasses, responsiveColStartClasses),
+      endClasses: mapColStartEndToClasses({ [breakpoint || 'base']: end } as ResponsiveNumber, colEndClasses, responsiveColEndClasses),
     };
   };
 
@@ -439,7 +439,7 @@ export function getCenteredColClasses(span: Cols) {
 
 
 
-export function getFullBleedClasses(fullBleed: FullBleed) {
+export function getResponsiveBoolClasses(fullBleed: ResponsiveBool) {
   const { 
     bleedClasses, 
     paddingClasses 

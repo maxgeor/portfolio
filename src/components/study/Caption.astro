@@ -1,13 +1,15 @@
 ---
+import clsx from 'clsx';
 export interface Props {
   id: string;
   text: string;
+  classes?: string;
 }
 
-const { id, text } = Astro.props;
+const { id, text, classes = '' } = Astro.props;
 ---
 
-<div class="flex gap-2 col-span-full">
-  <!-- <p>{id}</p> -->
+<div class={clsx("flex gap-2 uppercase col-span-full", classes)}>
+  <p>{id}</p>
   <p>{text}</p>
 </div>

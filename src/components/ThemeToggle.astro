@@ -8,7 +8,7 @@ export interface Props {
 const { classes = "" } = Astro.props;
 ---
 <button class={clsx(
-  "theme-toggle flex items-center justify-self-end group p-10 -m-10 uppercase",
+  "theme-toggle flex md:justify-self-end group uppercase p-2 -m-2",
   classes
 )}>
   Light/Dark

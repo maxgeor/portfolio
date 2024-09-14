@@ -54,7 +54,7 @@ const props =
 <Element
   {...props}
   class={`
-    xs:col-span-6 lg:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
     ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
@@ -80,7 +80,7 @@ const props =
       {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
       {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
     </picture> 
-    <div class="uppercase work-card-content flex flex-col duration-300 -mb-1 mx-2">
+    <div class="uppercase work-card-content flex flex-col duration-300 -my-0.5 mx-2">
       <div>
         <h2 class=" flex shrink-0 whitespace-nowrap ">
           {title}

@@ -11,25 +11,18 @@ import Writings from "../details/Writings.astro";
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout>
-  <!-- <nav class="flex justify-between xs:grid md:hidden grid-cols-6 col-span-full gap-2 uppercase ">
-    <a class="whitespace-nowrap">Product <sup>4</sup></a>
-    <a class="whitespace-nowrap">Brand <sup>4</sup></a>
-    <a class="whitespace-nowrap">Code <sup>4</sup></a>
-    <a class="whitespace-nowrap">Client <sup>4</sup></a>
-    <a class="whitespace-nowrap">Project <sup>4</sup></a>
-    <a class="whitespace-nowrap">Case Study <sup>4</sup></a>
-  </nav> -->
-  <nav class="flex md:grid grid-cols-6 col-span-full gap-2 uppercase  ">
-    <div class="flex  gap-x-2 col-span-2 lg:col-span-1 col-start-3 ">
-      <a class="whitespace-nowrap col-span-1 h-min">Product <sup>4</sup></a>
-      <a class="whitespace-nowrap col-span-1 h-min">Brand <sup>4</sup></a>
-      <a class="whitespace-nowrap col-span-1 h-min">Code <sup>4</sup></a>
+  <nav class="flex flex-col xs:grid grid-cols-12 col-span-full gap-2 uppercase  flex-wrap">
+    <div class="grid grid-cols-3 xs:flex gap-x-2 col-span-6 md:col-span-4 xl:col-span-3  -my-0.5">
+      <a class="whitespace-nowrap h-min">Product <sup>4</sup></a>
+      <a class="whitespace-nowrap h-min">Brand <sup>4</sup></a>
+      <a class="whitespace-nowrap h-min">Code <sup>4</sup></a>
     </div>
-    <div class="flex  gap-x-2 col-span-2  lg:col-span-1">
-      <a class="whitespace-nowrap col-span-1 h-min">Project <sup>4</sup></a>
-      <a class="whitespace-nowrap col-span-1 h-min">Client <sup>4</sup></a>
+    <div class="grid grid-cols-3 xs:flex order-last xl:order-none gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
+      <a class="whitespace-nowrap h-min">Project <sup>4</sup></a>
+      <a class="whitespace-nowrap h-min">Client <sup>4</sup></a>
+      <a class="whitespace-nowrap md:hidden h-min">Case Study <sup>4</sup></a>
     </div>
-    <div class=" flex gap-x-2 col-span-2  lg:col-span-1">
+    <div class=" hidden md:flex gap-x-2 col-span-3 md:col-span-4 xl:col-span-3 -my-0.5">
       <a class="col-span-1 h-min">Case Study <sup>4</sup></a>
     </div>
   </nav>
