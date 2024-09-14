@@ -8,17 +8,6 @@ roles:
   - Brand
   - Product
   - Code
-tldr: 
-  problem: Etherscan's frontend sucked
-  solution: Airtable Forms, but for smart contract actions
-  decisions:
-    - One page, one action
-    - Force people to confirm trust
-    - Only support one-way actions
-    - Write your own titles & descriptions
-  tradeoffs:
-    - No editing
-    - Only let people customize title & description
 teammates:
   [
     {
@@ -28,7 +17,7 @@ teammates:
     },
   ]
 tools: ["Next.Js", "Firebase", "TailwindCSS"]
-description: Universal UI for smart contracts. Featured as top product by Milk Road
+description: Personal project to replace Etherscan's smart contract UI with an Airtable form-inspired design. It simplifies interactions by dedicating one page per action, enforcing trust confirmation, and supporting one-way transactions. Users can customize titles and descriptions, balancing ease-of-use with security. While editing is limited, the streamlined approach earned Formie recognition as a top product by Milk Road.
 link: https://www.formie.co/
 year: '2022'
 order: 1
@@ -43,8 +32,8 @@ import Carousel from "../../components/study/Carousel.astro";
 import Challenges from "../../components/study/Challenges.astro";
 
 <Context title='Problem'>
-  <p>Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects.</p>
-  <p>The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
+  Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects.
+  The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It’s hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.
 </Context>
 
 <Carousel
@@ -55,39 +44,38 @@ import Challenges from "../../components/study/Challenges.astro";
     },
     {
       src: "/work/formie/research/forms/etherscan-form-ui.png",
-      alt: "Etherscan's UI for minting",
+      alt: "Etherscan's form",
     },
   ]}
   description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
-  span={{ base: 16, md: 7 }}
-  start={{ md: 2 }}
-  hasBorder={true}
+  span={{ base: 12, md: 8 }}
+  start={{ base: 1, md: 3 }}
 />
 <Carousel
   slides={[
     {
       src: "/work/formie/research/one-ways/mloot-flow",
-      alt: "Flow for minting mLoot",
+      alt: "Minting mLoot",
       type: "video"
     },
     {
       src: "/work/formie/research/one-ways/banners-flow",
-      alt: "Flow for minting Banners",
+      alt: "Minting Banners",
       type: "video"
     },
     {
       src: "/work/formie/research/one-ways/rune-flow",
-      alt: "Flow for minting Runes",
+      alt: "Minting Runes",
       type: "video"
     },
   ]}
-  span={{ base: 16, md: 7 }}
+  span={{ base: 12, md: 8 }}
   description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account’s balance, getting an NFT’s characteristics). One-ways were simple enough for Etherscan’s UI while two-ways were more complex, often getting custom UIs."
 />
 
 <Context title='Solution'>
-  <p>Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark></p>
-  <p>You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark>
+  You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.
 </Context>
 
 <Carousel
@@ -110,9 +98,7 @@ import Challenges from "../../components/study/Challenges.astro";
       alt: "First sketch of form header",
     },
   ]}
-  fullBleed={{ base: true, lg: false }}
-  span={{ base: 16, md: 14 }}
-  start={{ md: 2 }}
+  span={{ base: 12, md: 10 }}
 />
 
 <Image

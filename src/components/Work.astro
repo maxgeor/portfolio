@@ -54,14 +54,22 @@ const props =
 <Element
   {...props}
   class={`
+    xs:col-span-6 lg:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
+    ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
+    ${classes}
+  `}
+>
+<!-- <Element
+  {...props}
+  class={`
      work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
     ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${isHighlighted ? 'xs:col-span-4 lg:col-span-2' : 'xs:col-span-2 lg:col-span-1'}
     ${classes}
   `}
->
+> -->
   <div class='flex flex-col gap-2  h-full overflow-hidden'>
-    <picture class={` dark:border-neutral-300 work-card-picture relative h-auto !group-focus:opacity-100 duration-300`}>
+    <picture class={`work-card-picture relative h-auto !group-focus:opacity-100 duration-300`}>
       <img
         src={image}
         alt={`Preview mockup of ${title}`}
@@ -72,7 +80,7 @@ const props =
       {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
       {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
     </picture> 
-    <div class="uppercase work-card-content flex flex-col duration-300 -my-1">
+    <div class="uppercase work-card-content flex flex-col duration-300 -mb-1 mx-2">
       <div>
         <h2 class=" flex shrink-0 whitespace-nowrap ">
           {title}
@@ -83,7 +91,7 @@ const props =
         <p class="">{description}</p>
       </div>
       <div class="">
-        <p>{roles.long.join(', ')}</p>
+        <p>{roles.long.join('/')}</p>
         <p class="">{type}</p>
         <p>{year}</p>
       </div>

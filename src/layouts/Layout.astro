@@ -22,15 +22,16 @@ const {
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class=" grid grid-cols-6  relative  bg-white dark:bg-black dark:text-neutral-300 text-black  min-h-screen text-[10px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 pt-[40px] gap-2 gap-y-6"
+    class=" grid grid-cols-6  relative  bg-white dark:bg-black dark:text-white text-black  min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 pt-[48px] gap-2 gap-y-8"
   >
-    <header class="-my-1 grid grid-cols-6 col-span-full gap-2 uppercase fixed top-2 left-2 right-2 z-10">
-      <a class="col-span-3 md:col-span-2 whitespace-nowrap">Max Kevin Crapper Georgopoulos </a>
-      <button class="md:hidden menu-open col-span-3 justify-self-end uppercase">Menu</button>
-      <a class="hidden md:block col-start-3 col-span-1">About</a>
-      <a class="hidden md:block col-span-1">Writing <sup >4</sup></a>
-      <a class="hidden md:block  col-span-1">Contact</a>
-      <ThemeToggle classes='hidden md:block' />
+    <header class="  grid grid-cols-12 col-span-full gap-2 uppercase fixed top-2 left-2 right-2 z-10">
+      <!-- <button class="md:hidden menu-open col-span-3 justify-self-end uppercase">Menu</button> -->
+      <a class="col-span-4 whitespace-nowrap uppercase mix-blend-difference">Max Kevin Crapper Georgopoulos</a>
+      <a class=" col-span-1">Work</a>
+      <a class=" col-span-1">About</a>
+      <a class=" col-span-1">Writing <sup >4</sup></a>
+      <a class="  col-span-1">Contact</a>
+      <ThemeToggle classes='col-start-11 col-span-2' />
     </header>
 
     <slot />
@@ -39,13 +40,8 @@ const {
 
 <style is:global> 
   @font-face {
-    font-family: "Untitled Sans";
-    src: url(/fonts/untitled/sans/test-untitled-sans-regular.woff2);
-  }
-
-  @font-face {
-    font-family: "Untitled Sans Medium";
-    src: url(/fonts/untitled/sans/test-untitled-sans-medium.woff2);
+    font-family: "Bookish";
+    src: url(/fonts/bookish-off-white-regular.woff2);
   }
 
   @font-face {

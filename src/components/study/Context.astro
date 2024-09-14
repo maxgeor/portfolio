@@ -1,23 +1,18 @@
 ---
 export interface Props {
   title: string
-  orientation?: 'vertical' | 'horizontal';
 }
 
-const { title, orientation = 'horizontal' } = Astro.props;
+const { title } = Astro.props;
 ---
-{orientation === 'horizontal' ? (
-  <div class="text-[22px] leading-[24px]  gap-2 gap-y-6 !col-span-6 border-t -mx-2" >
-    <h1 class="uppercase text-pretty col-span-2   z-10 -my-1">{title}</h1>
+<!-- <div class="grid grid-cols-12 gap-x-2 gap-y-4 !col-span-full border-t-[0.5px] pt-2 border-black dark:border-white" > -->
+<div class="grid grid-cols-12 gap-x-2 gap-y-4 !col-span-full border-t-[0.5px] pt-1 border-black dark:border-white" >
+  <h1 class="flex  uppercase text-pretty col-span-full md:col-span-2   gap-2  z-10">
+    <span>1.0</span>
+    <span class="">{title}</span>
+  </h1>
+  <div class="[&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-8 lg:col-span-6 xl:col-span-4  flex flex-col gap-2 gap-y-4 ">
     <slot />
-    <div class="col-span-full sm:col-span-11 grid grid-cols-11 [&>*]:col-span-full gap-2 sm:[&>*]:col-span-2 -my-1">
-    </div>
   </div>
-) : (
-  <div class="-tracking-[0.025rem] flex flex-col col-span-full">
-    <h1 class="text-neutral-800 dark:text-neutral-300  text-pretty lg:pr-30 col-span-full text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">{title}</h1>
-    <p class="[&>mark]:bg-transparent [&>mark]:text-neutral-800 dark:text-neutral-500 dark:[&>mark]:text-neutral-300 col-span-full md:col-span-14 text-[19px] leading-5 lg:text-[24px] lg:leading-[25px]">
-      <slot />
-    </p>    
-  </div>
-)}
+</div>
+

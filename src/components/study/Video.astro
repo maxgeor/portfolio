@@ -50,7 +50,7 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
     class={`
       object-cover w-full select-none self-center 
       ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-      ${hasBorder ? 'border border-black dark:border-neutral-300' : ''}
+      ${hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''}
     `}
     poster={extensionlessSrc + ".png"}
     playsinline
@@ -60,29 +60,11 @@ const { bleedClasses, paddingClasses } = getFullBleedClasses(fullBleed);
   >
     <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
   </video>
-  <!-- <div class={`
-    relative overflow-visible
-    ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-  `}>
-    <video
-      class={`
-       object-cover w-full select-none self-center 
-        ${orientation === 'vertical' ? 'aspect-[2/3]' : 'aspect-[7/4]'}
-      `}
-      poster={extensionlessSrc + ".png"}
-      playsinline
-      autoplay
-      muted
-      loop
-    >
-      <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
-    </video>
-  </div> -->
   <div class={clsx(
     hasCaption || description ? 'flex flex-col gap-2' : 'hidden',
     paddingClasses
   )}>
-    {hasCaption && <p class="col-span-full">{alt}</p>}
+    {hasCaption && <p class="col-span-full uppercase -my-0.5">{alt}</p>}
     {description && <p class="col-span-full">{description}</p>}
   </div>
 </div>

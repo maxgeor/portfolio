@@ -27,10 +27,6 @@ const spanClasses: Record<number, string> = {
   10: "col-span-10",
   11: "col-span-11",
   12: "col-span-12",
-  13: "col-span-13",
-  14: "col-span-14",
-  15: "col-span-15",
-  16: "col-span-16",
 };
 
 const responsiveSpanClasses: Record<string, Record<string, string>> = {
@@ -48,10 +44,6 @@ const responsiveSpanClasses: Record<string, Record<string, string>> = {
     10: "sm:col-span-10",
     11: "sm:col-span-11",
     12: "sm:col-span-12",
-    13: "sm:col-span-13",
-    14: "sm:col-span-14",
-    15: "sm:col-span-15",
-    16: "sm:col-span-16",
   },
   md: {
     1: "md:col-span-1",
@@ -66,10 +58,6 @@ const responsiveSpanClasses: Record<string, Record<string, string>> = {
     10: "md:col-span-10",
     11: "md:col-span-11",
     12: "md:col-span-12",
-    13: "md:col-span-13",
-    14: "md:col-span-14",
-    15: "md:col-span-15",
-    16: "md:col-span-16",
   },
   lg: {
     1: "lg:col-span-1",
@@ -84,10 +72,6 @@ const responsiveSpanClasses: Record<string, Record<string, string>> = {
     10: "lg:col-span-10",
     11: "lg:col-span-11",
     12: "lg:col-span-12",
-    13: "lg:col-span-13",
-    14: "lg:col-span-14",
-    15: "lg:col-span-15",
-    16: "lg:col-span-16",
   },
   xl: {
     1: "xl:col-span-1",
@@ -102,10 +86,6 @@ const responsiveSpanClasses: Record<string, Record<string, string>> = {
     10: "xl:col-span-10",
     11: "xl:col-span-11",
     12: "xl:col-span-12",
-    13: "xl:col-span-13",
-    14: "xl:col-span-14",
-    15: "xl:col-span-15",
-    16: "xl:col-span-16",
   },
 };
 
@@ -122,10 +102,6 @@ const colStartClasses: Record<number, string> = {
   10: "col-start-10",
   11: "col-start-11",
   12: "col-start-12",
-  13: "col-start-13",
-  14: "col-start-14",
-  15: "col-start-15",
-  16: "col-start-16",
 };
 
 const responsiveColStartClasses: Record<string, Record<string, string>> = {
@@ -143,10 +119,6 @@ const responsiveColStartClasses: Record<string, Record<string, string>> = {
     10: "sm:col-start-10",
     11: "sm:col-start-11",
     12: "sm:col-start-12",
-    13: "sm:col-start-13",
-    14: "sm:col-start-14",
-    15: "sm:col-start-15",
-    16: "sm:col-start-16",
   },
   md: {
     1: "md:col-start-1",
@@ -161,10 +133,6 @@ const responsiveColStartClasses: Record<string, Record<string, string>> = {
     10: "md:col-start-10",
     11: "md:col-start-11",
     12: "md:col-start-12",
-    13: "md:col-start-13",
-    14: "md:col-start-14",
-    15: "md:col-start-15",
-    16: "md:col-start-16",
   },
   lg: {
     1: "lg:col-start-1",
@@ -179,10 +147,6 @@ const responsiveColStartClasses: Record<string, Record<string, string>> = {
     10: "lg:col-start-10",
     11: "lg:col-start-11",
     12: "lg:col-start-12",
-    13: "lg:col-start-13",
-    14: "lg:col-start-14",
-    15: "lg:col-start-15",
-    16: "lg:col-start-16",
   },
   xl: {
     1: "xl:col-start-1",
@@ -197,10 +161,6 @@ const responsiveColStartClasses: Record<string, Record<string, string>> = {
     10: "xl:col-start-10",
     11: "xl:col-start-11",
     12: "xl:col-start-12",
-    13: "xl:col-start-13",
-    14: "xl:col-start-14",
-    15: "xl:col-start-15",
-    16: "xl:col-start-16",
   },
 };
 
@@ -217,10 +177,6 @@ const colEndClasses: Record<number, string> = {
   10: "col-end-10",
   11: "col-end-11",
   12: "col-end-12",
-  13: "col-end-13",
-  14: "col-end-14",
-  15: "col-end-15",
-  16: "col-end-16",
 };
 
 const responsiveColEndClasses: Record<string, Record<string, string>> = {
@@ -238,10 +194,6 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
     10: "sm:col-end-10",
     11: "sm:col-end-11",
     12: "sm:col-end-12",
-    13: "sm:col-end-13",
-    14: "sm:col-end-14",
-    15: "sm:col-end-15",
-    16: "sm:col-end-16",
   },
     md: {
     1: "md:col-end-1",
@@ -256,10 +208,6 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
     10: "md:col-end-10",
     11: "md:col-end-11",
     12: "md:col-end-12",
-    13: "md:col-end-13",
-    14: "md:col-end-14",
-    15: "md:col-end-15",
-    16: "md:col-end-16",
   },
     lg: {
     1: "lg:col-end-1",
@@ -274,10 +222,6 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
     10: "lg:col-end-10",
     11: "lg:col-end-11",
     12: "lg:col-end-12",
-    13: "lg:col-end-13",
-    14: "lg:col-end-14",
-    15: "lg:col-end-15",
-    16: "lg:col-end-16",
   },
     xl: {
     1: "xl:col-end-1",
@@ -292,10 +236,6 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
     10: "xl:col-end-10",
     11: "xl:col-end-11",
     12: "xl:col-end-12",
-    13: "xl:col-end-13",
-    14: "xl:col-end-14",
-    15: "xl:col-end-15",
-    16: "xl:col-end-16",
   },
 };
 
@@ -458,6 +398,46 @@ export function getColClasses(
     endClasses,
   };
 }
+
+export function getCenteredColClasses(span: Cols) {
+  const calculateStartEnd = (spanValue: number) => {
+    const start = Math.floor((12 - spanValue) / 2) + 1;
+    const end = start + spanValue;
+    return { start, end };
+  };
+
+  const mapSpanToClasses = (spanValue: number, breakpoint?: string) => {
+    const { start, end } = calculateStartEnd(spanValue);
+    return {
+      spanClasses: mapColSpanToClasses({ [breakpoint || 'base']: spanValue } as Cols),
+      startClasses: mapColStartEndToClasses({ [breakpoint || 'base']: start } as Cols, colStartClasses, responsiveColStartClasses),
+      endClasses: mapColStartEndToClasses({ [breakpoint || 'base']: end } as Cols, colEndClasses, responsiveColEndClasses),
+    };
+  };
+
+  if (typeof span === 'number') {
+    return mapSpanToClasses(span);
+  } else {
+    const result = {
+      spanClasses: [] as string[],
+      startClasses: [] as string[],
+      endClasses: [] as string[],
+    };
+
+    for (const [breakpoint, value] of Object.entries(span)) {
+      if (value !== undefined) {
+        const classes = mapSpanToClasses(value, breakpoint === 'base' ? undefined : breakpoint);
+        result.spanClasses.push(...classes.spanClasses);
+        result.startClasses.push(...classes.startClasses);
+        result.endClasses.push(...classes.endClasses);
+      }
+    }
+
+    return result;
+  }
+}
+
+
 
 export function getFullBleedClasses(fullBleed: FullBleed) {
   const { 
