@@ -39,31 +39,40 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
 
 <div class={clsx('flex flex-col gap-y-2 col-span-full carousel', classes)}>
   <div class={clsx(
-    "grid grid-cols-12 gap-x-2 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 md:px-2 -mx-2 ",
-    isPadded && 'p-8  md:py-16'
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative touch-manipulation h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 ",
+    isPadded && 'p-8  lg:py-16'
   )}>
     <button 
       aria-label="Previous slide" 
-      class="prev-slide-btn hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 disabled:opacity-50 z-40 p-2 uppercase hover:opacity-100 disabled:hover:opacity-auto" 
+      class="prev-slide-btn hidden lg:block absolute left-0 top-0 bottom-0 disabled:opacity-50 z-40 p-2 uppercase hover:opacity-100 disabled:hover:opacity-auto cursor-w-resize disabled:cursor-default" 
       disabled
     >
       Prev
     </button>
     <button 
       aria-label="Next slide" 
-      class="next-slide-btn hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 disabled:opacity-50 z-40 p-2 uppercase">
+      class="next-slide-btn hidden lg:block absolute right-0 top-0 bottom-0 disabled:opacity-50 hover:opacity-100 disabled:hover:opacity-auto z-40 p-2 uppercase cursor-e-resize disabled:cursor-default">
       Next
     </button>
-    <div class="mobile-slide-controls absolute inset-0 z-20 md:hidden">
-      <div class="prev-slide-area absolute left-0 top-0 bottom-0 w-1/2"></div>
-      <div class="next-slide-area absolute right-0 top-0 bottom-0 w-1/2"></div>
+    <div class="mobile-slide-controls absolute inset-0 z-20	touch-manipulation">
+      <button 
+        aria-label="Previous slide"
+        class="prev-slide-area  absolute left-0 top-0 bottom-0 w-1/2 cursor-w-resize disabled:cursor-default"
+        tabindex="-1"
+        disabled
+      ></button>
+      <button
+        aria-label="Next slide"
+        class="next-slide-area absolute right-0 top-0 bottom-0 w-1/2 cursor-e-resize disabled:cursor-default"
+        tabindex="-1"
+      ></button>
     </div>
-    <div class="hidden md:block slide-counter absolute top-2 right-2 z-40"></div>
+    <div class="hidden lg:block slide-counter absolute top-2 right-2 z-40"></div>
     <div class={clsx(
       startClasses,
       endClasses,
       spanClasses,
-      hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''
+      hasBorder ? 'border border-neutral-300 dark:border-neutral-700 touch-manipulation' : ''
     )}>
       
       <div class={clsx(
@@ -106,31 +115,31 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
     </div>
   </div>
   <div class={clsx(
-    'grid grid-cols-12 gap-x-2 gap-y-4', 
+    'grid grid-cols-12 gap-4', 
     spanClasses,
     startClasses,
     endClasses,
   )}>
     <div class={clsx(
-      "flex justify-between gap-4 -my-0.5",
-      description ? 'col-span-full md:col-span-2' : 'col-span-full '
+      "flex justify-between gap-4 ",
+      description ? 'col-span-full lg:col-span-2' : 'col-span-full '
     )}>
-      <div class="flex flex-col ">
+      <div class="flex flex-col -my-0.5">
         {slides?.map((slide, index) => (
-          <button class={`caption caption-${index} uppercase h-fit w-fit text-black dark:text-white text-left`}>
+          <button class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left`}>
             <Caption id={slide.id} text={slide.alt} />
           </button>
         ))}
       </div>
-      <div class="md:hidden slide-counter "></div>
+      <div class="lg:hidden slide-counter "></div>
     </div>
-    {description && <p class="col-span-full md:col-span-8 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
+    {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
   </div>
 </div>
 
 <style>
   .caption {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .caption.current {
@@ -174,8 +183,8 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
     const nextSlideBtn = carousel.querySelector(".next-slide-btn") as HTMLButtonElement;
     const prevSlideBtn = carousel.querySelector(".prev-slide-btn") as HTMLButtonElement;
     const slideCounters: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide-counter");
-    const prevSlideArea = carousel.querySelector(".prev-slide-area") as HTMLElement;
-    const nextSlideArea = carousel.querySelector(".next-slide-area") as HTMLElement;
+    const prevSlideArea = carousel.querySelector(".prev-slide-area") as HTMLButtonElement;
+    const nextSlideArea = carousel.querySelector(".next-slide-area") as HTMLButtonElement;
 
     let curSlide = 0;
     const totalSlides = slides.length;
@@ -183,6 +192,8 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
     const updateButtons = () => {
       prevSlideBtn.disabled = curSlide === 0;
       nextSlideBtn.disabled = curSlide === totalSlides - 1;
+      prevSlideArea.disabled = curSlide === 0;
+      nextSlideArea.disabled = curSlide === totalSlides - 1;
     }
 
     const updateCounters = () => {

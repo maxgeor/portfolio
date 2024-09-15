@@ -1,13 +1,18 @@
 ---
 import ThemeToggle from '../components/ThemeToggle.astro';
+import clsx from 'clsx';
 
 export interface Props {
   title?: string;
   description?: string;
+  offset?: string;
+  classes?: string;
 }
 const {
   title = "Max Georgopoulos",
   description,
+  offset = 'pt-[50px]',
+  classes = '',
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -24,26 +29,30 @@ const currentPath = Astro.url.pathname;
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class="grid grid-cols-6 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 pt-[50px] gap-2 gap-y-8"
+    class={clsx(
+      "grid grid-cols-6 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
+      offset,
+      classes
+    )}
   >
-    <header class="grid grid-cols-12 col-span-full gap-2 uppercase fixed top-1.5 left-2 right-2 z-20">
-      <a class="col-span-6 xs:col-span-7 md:col-span-4 whitespace-nowrap uppercase mix-blend-difference">
-        <span class="hidden xs:inline">Max Kevin Crapper Georgopoulos</span>
-        <span class="xs:hidden">Max Georgopoulos</span>
+    <header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-40">
+      <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase mix-blend-difference p-2 -m-2 w-fit">
+        <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
+        <span class="sm:hidden">Max KC Georgopoulos</span>
       </a>
       <a href="/" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Work</a>
       <a href="/about" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>About</a>
-      <a href="/writing" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Writing <sup>4</sup></a>
+      <a href="/writing" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Writing</a>
       <a href="/contact" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Contact</a>
       <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
-      <button id="menu-toggle" class="md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
+      <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
     </header>
-    <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-10 hidden md:hidden flex-col  p-2 overflow-hidden">
-      <nav class="text-[32px] leading-[32px] flex flex-col gap-8 mt-[80px] uppercase font-bold">
-        <a href="/" class={currentPath === '/' ? 'underline' : ''}>Work</a>
-        <a href="/about" class={currentPath === '/about' ? 'underline' : ''}>About</a>
-        <a href="/writing" class={currentPath === '/writing' ? 'underline' : ''}>Writing</a>
-        <a href="/contact" class={currentPath === '/contact' ? 'underline' : ''}>Contact</a>
+    <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-30 hidden md:hidden flex-col  p-2 overflow-hidden">
+      <nav class="border-black dark:border-white divide-black dark:divide-white border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
+        <a href="/" class={currentPath === '/' ? '' : ''}>Work</a>
+        <a href="/about" class={currentPath === '/about' ? '' : ''}>About</a>
+        <a href="/writing" class={currentPath === '/writing' ? '' : ''}>Writing</a>
+        <a href="/contact" class={currentPath === '/contact' ? '' : ''}>Contact</a>
       </nav>
     </div>
     <slot />
@@ -65,6 +74,7 @@ const currentPath = Astro.url.pathname;
     --nav-width: 75px;  
     --nav-offset: calc(var(--nav-width) + (15px * 2));
     --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
+    --background-color: #fff;
     --highlight-color: #eaeaea;
     --accent-color: #23FF27;
   }
@@ -80,11 +90,11 @@ const currentPath = Astro.url.pathname;
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: var(--accent-color);
-    /* letter-spacing: -0.0065em; */
+    /* -webkit-tap-highlight-color: var(--highlight-color); */
   }
 
   html.dark {
+    --background-color: #000;
     --highlight-color: #323232;
   }
 
@@ -140,7 +150,28 @@ const currentPath = Astro.url.pathname;
   }
 </style>
 
-<script>
+<script >
+  // Immediately set the theme to prevent flash
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
+
+  document.querySelector('meta[name="theme-color"]')?.remove();
+
+  window.localStorage.setItem('theme', theme);
+
   document.addEventListener('DOMContentLoaded', (event) => {
     const menuToggle = document.getElementById('menu-toggle');
     const fullScreenMenu = document.getElementById('full-screen-menu');

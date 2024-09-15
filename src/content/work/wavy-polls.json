@@ -2,17 +2,15 @@
   "type": "client",
   "title": "Wavy/Polls",
   "description": "event polling feature",
-  "image": "/work/dissect-design.png",
+  "image": "/work/polls.png",
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",
     "target": "_blank"
   },
-  "roles": {
-    "long": ["Product", "Code"],
-    "short": ["Design", "Code"]
-  },
+  "roles": ["Product", "Code"],
   "studySlug": "wavy-polls",
   "isDraft": false,
+  "isComingSoon": true,
   "order": 8,
   "year": "2023"
 }

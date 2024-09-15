@@ -76,12 +76,13 @@ module.exports = {
           700: '#4B4B4B',
           750: '#363636',
           800: '#212121',
-          900: '#171717',
+          900: '#181818',
           950: '#060606'
         }
       },
       screens: {
         xs: '425px',
+        sm: '500px',
         lg: '1024px',
         '2xl': '1600px',
         '3xl': '1900px',
@@ -153,7 +154,7 @@ module.exports = {
     "md:col-span-5",
     "md:col-span-6",
     "md:col-span-7",
-    "md:col-span-8",
+    "md:col-span-9",
     "md:col-span-9",
     "md:col-span-10",
     "md:col-span-11",

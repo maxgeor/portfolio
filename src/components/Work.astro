@@ -2,15 +2,10 @@
 import ExternalLinkArrow from './icons/ExternalLinkArrow.astro';
 import ScrollingBanner from './ScrollingBanner.astro'
 
-type Roles = {
-  long: string[],
-  short: string[];
-}
-
 type Work = {
   title: string;
   description: string;
-  roles: Roles;
+  roles: string[];
   link?: {
     href: string;
     target?: '_blank' | '_self';
@@ -21,8 +16,8 @@ type Work = {
   studySlug?: string;
   isPrivate?: boolean;
   isComingSoon?: boolean;
+  isArchived?: boolean;
   classes?: string;
-  isHighlighted?: boolean;
 }
 
 const { 
@@ -40,7 +35,7 @@ const {
   isPrivate = false,
   classes = '',
   isComingSoon = false,
-  isHighlighted = false,
+  isArchived = false,
 } = Astro.props;
 
 const Element = isComingSoon ? 'div' : 'a';
@@ -54,20 +49,11 @@ const props =
 <Element
   {...props}
   class={`
-    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2
     ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
 >
-<!-- <Element
-  {...props}
-  class={`
-     work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1
-    ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
-    ${isHighlighted ? 'xs:col-span-4 lg:col-span-2' : 'xs:col-span-2 lg:col-span-1'}
-    ${classes}
-  `}
-> -->
   <div class='flex flex-col gap-2  h-full overflow-hidden'>
     <picture class={`work-card-picture relative h-auto !group-focus:opacity-100 duration-300`}>
       <img
@@ -77,6 +63,7 @@ const props =
           w-full h-full object-top select-none object-contain 
         `}
       />
+      {isArchived && <ScrollingBanner title='Archive' classes="-rotate-[12deg]" />}
       {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
       {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
     </picture> 
@@ -91,7 +78,7 @@ const props =
         <p class="">{description}</p>
       </div>
       <div class="">
-        <p>{roles.long.join('/')}</p>
+        <p>{roles.join(', ')}</p>
         <p class="">{type}</p>
         <p>{year}</p>
       </div>

@@ -42,7 +42,7 @@ const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
 
 ---
 <div class={clsx(
-  "flex flex-col gap-2 h-fit",
+  "flex flex-col gap-x-4 gap-y-2 h-fit",
   spanClasses,
   startClasses,
   endClasses,
@@ -64,10 +64,10 @@ const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
     <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
   </video>
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-2' : 'hidden',
+    hasCaption || description ? 'flex flex-col gap-4' : 'hidden',
     paddingClasses
   )}>
-    {hasCaption && <Caption id={id} text={alt} />}
-    {description && <p class="col-span-full">{description}</p>}
+    {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
+    {description && <p class="col-span-full -my-0.5">{description}</p>}
   </div>
 </div>

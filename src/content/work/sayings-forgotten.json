@@ -3,10 +3,7 @@
   "title": "Sayings, Forgotten",
   "description": "Some misinterpreted sayings",
   "image": "/work/sayings-forgotten.gif",
-  "roles": {
-    "long": ["Web", "Code"],
-    "short": ["Design", "Code"]
-  },
+  "roles": ["Brand", "Code"],
   "link": {
     "href": "https://sayings-forgotten.vercel.app/",
     "target": "_blank"

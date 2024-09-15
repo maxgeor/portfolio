@@ -3,10 +3,7 @@
   "title": "Wavy/Home",
   "description": "home page redesign",
   "image": "/work/thesys.png",
-  "roles": {
-    "long": ["Product", "Brand", "Code"],
-    "short": ["Design", "Brand", "Code"]
-  },
+  "roles": ["Product"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",
     "target": "_blank"

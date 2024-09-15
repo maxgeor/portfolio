@@ -3,10 +3,7 @@
   "title": "Thesys",
   "description": "due diligence automation",
   "image": "/work/thesys.png",
-  "roles": {
-    "long": ["Product", "Brand", "Code"],
-    "short": ["Design", "Brand", "Code"]
-  },
+  "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",
     "target": "_blank"

@@ -3,15 +3,12 @@
   "title": "KG Handcrafted",
   "description": "Brand + site for knifemaker",
   "image": "/work/kg.png",
-  "roles": {
-    "long": ["Web", "Brand", "Code"],
-    "short": ["Design", "Brand", "Code"]
-  },
+  "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.kghandcrafted.com/",
     "target": "_blank"
   },
-  "isComingSoon": true,
+  "isArchived": true,
   "order": 4,
   "year": "2023"
 }

@@ -53,7 +53,7 @@ const responsiveSpanClasses: Record<string, Record<string, string>> = {
     5: "md:col-span-5",
     6: "md:col-span-6",
     7: "md:col-span-7",
-    8: "md:col-span-8",
+    8: "md:col-span-9",
     9: "md:col-span-9",
     10: "md:col-span-10",
     11: "md:col-span-11",
@@ -240,51 +240,51 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
 };
 
 const bleedClassesMap: Record<string, string> = {
-  true: "-mx-15",
+  true: "-mx-2",
   false: "mx-0",
 };
 
 const responsiveBleedClassesMap: Record<string, Record<string, string>> = {
   base: bleedClassesMap,
   sm: {
-    true: "sm:-mx-15",
+    true: "sm:-mx-2",
     false: "sm:mx-0",
   },
   md: {
-    true: "md:-mx-15",
+    true: "md:-mx-2",
     false: "md:mx-0",
   },
   lg: {
-    true: "lg:-mx-15",
+    true: "lg:-mx-2",
     false: "lg:mx-0",
   },
   xl: {
-    true: "xl:-mx-15",
+    true: "xl:-mx-2",
     false: "xl:mx-0",
   },
 };
 
 const bleedPaddingClassesMap: Record<string, string> = {
-  true: "px-15",
+  true: "px-2",
   false: "px-0",
 };
 
 const responsiveBleedPaddingClassesMap: Record<string, Record<string, string>> = {
   base: bleedPaddingClassesMap,
   sm: {
-    true: "sm:px-15",
+    true: "sm:px-2",
     false: "sm:px-0",
   },
   md: {
-    true: "md:px-15",
+    true: "md:px-2",
     false: "md:px-0",
   },
   lg: {
-    true: "lg:px-15",
+    true: "lg:px-2",
     false: "lg:px-0",
   },
   xl: {
-    true: "xl:px-15",
+    true: "xl:px-2",
     false: "xl:px-0",
   },
 };

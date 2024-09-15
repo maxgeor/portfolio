@@ -1,12 +1,9 @@
 {
   "type": "client",
   "title": "Wavy/Website",
-  "description": "wavy's landing page",
+  "description": "Wavy's marketing site",
   "image": "/work/wavy/website/cover.png",
-  "roles": {
-    "long": ["Code"],
-    "short": ["Code"]
-  },
+  "roles": ["Code"],
   "link": {
     "href": "https://www.joinwavy.com/",
     "target": "_blank"

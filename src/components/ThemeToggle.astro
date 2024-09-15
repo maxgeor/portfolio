@@ -34,8 +34,18 @@ const { classes = "" } = Astro.props;
 
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.querySelector('meta[name="theme-color"]')?.remove();
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'theme-color';
+      metaTag.content = '#000';
+      document.head.appendChild(metaTag);
     } else {
       document.documentElement.classList.remove('dark');
+      document.querySelector('meta[name="theme-color"]')?.remove();
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'theme-color';
+      metaTag.content = '#fff';
+      document.head.appendChild(metaTag);
     }
   }
 

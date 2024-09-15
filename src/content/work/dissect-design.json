@@ -3,10 +3,7 @@
   "title": "Dissect Design",
   "description": "Some design decisions",
   "image": "/work/dissect-design.png",
-  "roles": {
-    "long": ["Product", "Code"],
-    "short": ["Design", "Code"]
-  },
+  "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",
     "target": "_blank"

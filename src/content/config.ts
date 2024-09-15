@@ -8,10 +8,7 @@ const work = defineCollection({
     type: z.enum(['client', 'project']),
     title: z.string(),
     description: z.string(),
-    roles: z.object({
-      long: z.array(z.string()),
-      short: z.array(z.enum(['Design', 'Code', 'Brand']))
-    }),
+    roles: z.array(z.enum(['Product', 'Code', 'Brand'])),
     image: z.string(),
     link: z.object({
       href: z.string(),
@@ -20,6 +17,7 @@ const work = defineCollection({
     studySlug: z.string().optional(),
     isDraft: z.boolean().optional(),
     isPrivate: z.boolean().optional(),
+    isArchived: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
     order: z.number(),
     year: z.string(),

@@ -18,15 +18,14 @@ const {
 ---
 
 <Layout title={title} description={description}>
-  <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-x-2 gap-y-8">
-    <div class="md:order-2 flex flex-col gap-4  col-span-full md:col-span-7 lg:col-span-6 xl:col-span-4 pr-[calc((100vw/24)-16px)]">
-      <h1 class="text-[32px] leading-[32px]  uppercase font-bold -my-0.5">{title}</h1>
+  <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-x-4 gap-y-8">
+    <div class="lg:order-2 flex flex-col gap-4  col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 lg:pr-[calc((100vw/24)-16px)] lg:pr-0">
+      <h1 class="text-[34px] leading-[32px]  uppercase font-bold -my-0.5">{title}</h1>
       <p class="text-pretty -my-0.5">{description}</p>
     </div>
-    
-    <div class="md:order-1 col-span-full md:col-span-2 flex flex-col md:gap-4 pr-[calc((100vw/24)-16px)]">
-      <div class="">
-        <div class="flex col-span-3 -my-0.5 ">
+    <div class="md:col-start-1 lg:col-start-auto lg:order-1 col-span-full sm:col-span-4 lg:col-span-2 flex flex-col lg:gap-4 pr-[calc((100vw/24)-16px)]">
+      <div class="lg:-my-0.5 ">
+        <div class="flex col-span-3 ">
           <div class="uppercase shrink-0  w-16 ">Type</div>
           <div class="capitalize">{type}</div>
         </div>
@@ -35,7 +34,7 @@ const {
           <div class="">{year}</div>
         </div>
       </div>
-      <div class="flex col-span-2 -my-0.5 ">
+      <div class="flex col-span-2 lg:-my-0.5 ">
         <div class="uppercase shrink-0  w-16 ">Links</div>
         {link ? (
           <div class="flex flex-col">
@@ -47,8 +46,8 @@ const {
         ) : '—'}
       </div>
     </div>
-    <div class="-my-0.5 md:my-0 md:order-3 flex flex-col xl:flex-row xl:col-start-8  col-span-full md:col-span-3 xl:col-span-6 md:col-start-10 md:gap-4 ">
-      <div class="xl:basis-1/2 md:-my-0.5">
+    <div class="-my-0.5 lg:my-0 lg:order-3 flex flex-col xl:hidden col-span-full sm:col-span-8 lg:col-span-3 lg:col-start-10 lg:gap-4">
+      <div class="lg:-my-0.5">
         <div class="flex ">
           <div class="uppercase shrink-0 w-16 ">Roles</div>
           <p>{roles.join(', ')}</p>
@@ -58,7 +57,7 @@ const {
           <p>{tools.join(', ')}</p>
         </div>
       </div>
-      <div class="flex xl:basis-1/2 md:-my-0.5">
+      <div class="flex lg:-my-0.5">
         <div class="uppercase w-16 shrink-0 ">Team</div>
         <div class="w-full">
           {teammates ? teammates.map((teammate) => (
@@ -70,35 +69,56 @@ const {
         </div>
       </div>
     </div>
+    <div class="order-3 hidden xl:block col-span-3 col-start-8 -my-0.5">
+      <div class="flex ">
+        <div class="uppercase shrink-0 w-16 ">Roles</div>
+        <p>{roles.join(', ')}</p>
+      </div>
+      <div class="flex">
+        <div class="uppercase w-16 shrink-0 ">Tools</div>
+        <p>{tools.join(', ')}</p>
+      </div>
+    </div>
+    <div class="order-4 hidden xl:flex col-span-2 lg:-my-0.5">
+      <div class="uppercase w-16 shrink-0 ">Team</div>
+      <div class="w-full">
+        {teammates ? teammates.map((teammate) => (
+          <span>
+            <a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> 
+            ({teammate.role})
+          </span>
+        )) : '—'}
+      </div>
+    </div>
   </div>
-  <div class="col-span-full -mx-2 -mb-4 md:-mb-6 border-y-[0.5px] border-neutral-200 dark:border-neutral-800">
+  <div class="col-span-full -mx-2 -mb-4 lg:-mb-6 border-y-[0.5px] border-neutral-200 dark:border-neutral-800">
     <img src={image} alt={title} class="  w-full h-full object-contain" />
   </div>
-  <div class="col-span-full grid grid-cols-1 md:grid-cols-12 gap-x-2 gap-y-4  border-black dark:border-white mb-8">
+  <div class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4  border-black dark:border-white lg:mb-8">
     <p class="uppercase col-span-2 -my-0.5">Content</p>
     <div class="flex flex-col col-span-10 -my-0.5">
       <div class="flex gap-2">
-        <div class="">1.0</div>
+        <div class="">1.00</div>
         <div class="uppercase">Problem</div>
       </div>
       <div class="flex gap-2">
-        <div class="">2.0</div>
+        <div class="">2.00</div>
         <div class="uppercase">Solution</div>
       </div>
       <div class="flex gap-2">
-        <div class="">3.0</div>
+        <div class="">3.00</div>
         <div class="uppercase">Shooing scammers</div>
       </div>
       <div class="flex gap-2">
-        <div class="">4.0</div>
+        <div class="">4.00</div>
         <div class="uppercase">Making forms flexible</div>
       </div>
       <div class="flex gap-2">
-        <div class="">5.0</div>
+        <div class="">5.00</div>
         <div class="uppercase">Communicating technical details</div>
       </div>
       <div class="flex gap-2">
-        <div class="">6.0</div>
+        <div class="">6.00</div>
         <div class="uppercase">Tradeoffs</div>
       </div>
     </div>
@@ -109,7 +129,7 @@ const {
   >
     <div
       class={`
-        grid grid-cols-12 gap-x-2 gap-y-8 md:gap-y-16
+        grid grid-cols-12 gap-x-4 gap-y-8 lg:gap-y-16
         prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
         prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
         prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
