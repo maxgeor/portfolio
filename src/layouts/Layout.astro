@@ -47,7 +47,7 @@ const currentPath = Astro.url.pathname;
       <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
       <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
     </header>
-    <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-30 hidden md:hidden flex-col  p-2 overflow-hidden">
+    <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-50 hidden md:hidden flex-col  p-2 overflow-hidden">
       <nav class="border-black dark:border-white divide-black dark:divide-white border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
         <a href="/" class={currentPath === '/' ? '' : ''}>Work</a>
         <a href="/about" class={currentPath === '/about' ? '' : ''}>About</a>
