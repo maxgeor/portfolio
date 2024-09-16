@@ -25,190 +25,188 @@ order: 1
 
 import Tradeoff from "../../components/study/Tradeoff.astro";
 import Context from "../../components/study/Context.astro";
+import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import PaginatedSection from "../../components/study/PaginatedSection.astro";
 import Carousel from "../../components/study/Carousel.astro";
 import Challenges from "../../components/study/Challenges.astro";
 
-<Context id="1.00" title='Problem'>
-  Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects.
-  The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.
-</Context>
+<Section id="1.00" title='Problem'>
+  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
 
-<Carousel
-  slides={[
-    {
-      id: "1.01",
-      src: "/work/formie/annotated-etherscan-page.png",
-      alt: "Etherscan's UI",
-    },
-    {
-      id: "1.02",
-      src: "/work/formie/research/forms/etherscan-form-ui.png",
-      alt: "Etherscan's form",
-    },
-  ]}
-  description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
-  span={{ base: 12, md: 8 }}
-  start={{ base: 1, md: 3 }}
-/>
-<Carousel
-  slides={[
-    {
-      id: "1.03",
-      src: "/work/formie/research/one-ways/mloot-flow",
-      alt: "Minting mLoot",
-      type: "video"
-    },
-    {
-      id: "1.04",
-      src: "/work/formie/research/one-ways/banners-flow",
-      alt: "Minting Banners",
-      type: "video"
-    },
-    {
-      id: "1.05",
-      src: "/work/formie/research/one-ways/rune-flow",
-      alt: "Minting Runes",
-      type: "video"
-    },
-  ]}
-  span={{ base: 12, md: 8 }}
-  description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
-/>
+  <Carousel
+    slides={[
+      {
+        id: "1.01",
+        src: "/work/formie/annotated-etherscan-page.png",
+        alt: "Etherscan's UI",
+      },
+      {
+        id: "1.02",
+        src: "/work/formie/research/forms/etherscan-form-ui.png",
+        alt: "Etherscan's form",
+      },
+    ]}
+    description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
+    span={{ base: 12, md: 8 }}
+    start={{ base: 1, md: 3 }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "1.03",
+        src: "/work/formie/research/one-ways/mloot-flow",
+        alt: "Minting mLoot",
+        type: "video"
+      },
+      {
+        id: "1.04",
+        src: "/work/formie/research/one-ways/banners-flow",
+        alt: "Minting Banners",
+        type: "video"
+      },
+      {
+        id: "1.05",
+        src: "/work/formie/research/one-ways/rune-flow",
+        alt: "Minting Runes",
+        type: "video"
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
+  />
+</Section>
 
-<Context id="2.00" title='Solution'>
-  Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark>
-  You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.
-</Context>
+<Section id="2.00" title='Solution'>
+  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  <Carousel
+    slides={[
+      {
+        id: "2.01",
+        type: "video",
+        src: "/work/formie/walkthrough.mp4",
+        alt: "Full walkthrough"
+      },
+      {
+        id: "2.02",
+        src: "/work/formie/first-sketch.png",
+        alt: "First sketch",
+      },
+      {
+        id: "2.03",
+        src: "/work/formie/process/flow.png",
+        alt: "First sketch of create flow",
+      },
+      {
+        id: "2.04",
+        src: "/work/formie/process/sketch.png",
+        alt: "First sketch of form header",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+  />
 
-<Carousel
-  slides={[
-    {
-      id: "2.01",
-      type: "video",
-      src: "/work/formie/walkthrough.mp4",
-      alt: "Full walkthrough"
-    },
-    {
-      id: "2.02",
-      src: "/work/formie/first-sketch.png",
-      alt: "First sketch",
-    },
-    {
-      id: "2.03",
-      src: "/work/formie/process/flow.png",
-      alt: "First sketch of create flow",
-    },
-    {
-      id: "2.04",
-      src: "/work/formie/process/sketch.png",
-      alt: "First sketch of form header",
-    },
-  ]}
-  span={{ base: 12, md: 10 }}
-/>
+  <Carousel
+    orientation="vertical"
+    slides={[
+      
+      {
+        id: "2.05",
+        src: "/work/formie/s4.png",
+        alt: "New form, find",
+      },
+      {
+        id: "2.06",
+        src: "/work/formie/s5.png",
+        alt: "New form, pick",
+      },
+      {
+        id: "2.07",
+        src: "/work/formie/s6.png",
+        alt: "New form, titles",
+      },
+      {
+        id: "2.08",
+        src: "/work/formie/s2.png",
+        alt: "Forms page",
+      },
+      {
+        id: "2.09",
+        src: "/work/formie/s3.png",
+        alt: "Form page",
+      },
+      {
+        id: "2.10",
+        src: "/work/formie/form-page-end.png",
+        alt: "Form page, confirmation",
+      },
+    ]}
+    classes="md:hidden"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
 
-<Carousel
-  orientation="vertical"
-  slides={[
-    
-    {
-      id: "2.05",
-      src: "/work/formie/s4.png",
-      alt: "New form, find",
-    },
-    {
-      id: "2.06",
-      src: "/work/formie/s5.png",
-      alt: "New form, pick",
-    },
-    {
-      id: "2.07",
-      src: "/work/formie/s6.png",
-      alt: "New form, titles",
-    },
-    {
-      id: "2.08",
-      src: "/work/formie/s2.png",
-      alt: "Forms page",
-    },
-    {
-      id: "2.09",
-      src: "/work/formie/s3.png",
-      alt: "Form page",
-    },
-    {
-      id: "2.10",
-      src: "/work/formie/form-page-end.png",
-      alt: "Form page, confirmation",
-    },
-  ]}
-  classes="md:hidden"
-  fullBleed={{ base: true, lg: false }}
-  isPadded={false}
-/>
-
-<div class="hidden md:grid grid-cols-12 gap-x-[17px] col-span-full">
-  <Image
-    id="2.05"
-    src="/work/formie/s4.png"
-    alt="New form, find"
-    span={{ base: 6, md: 4 }}
-    orientation="vertical"
-    classes="hidden md:flex"
-    fullBleed={true}
-  />
-  <Image
-    id="2.06"
-    src="/work/formie/s5.png"
-    alt="New form, pick action"
-    span={{ base: 6, md: 4 }}
-    orientation="vertical"
-    classes="hidden md:flex"
-    fullBleed={true}
-  />
-  <Image
-    id="2.07"
-    src="/work/formie/s6.png"
-    alt="New form, titles"
-    span={{ base: 6, md: 4 }}
-    orientation="vertical"
-    fullBleed={true}
-    classes="hidden md:flex"
-  />
-</div>
-<div class="hidden md:grid grid-cols-12 gap-[17px] col-span-full ">
-  <Image
-    id="2.08"
-    src="/work/formie/s2.png"
-    alt="Forms page"
-    span={{ base: 6, md: 4 }}
-    start={{ base: 3 }}
-    orientation="vertical"
-    fullBleed={true}
-    hasBorder={false}
-  />
-  <Image
-    id="2.09"
-    src="/work/formie/s3.png"
-    alt="Form page"
-    span={{ base: 6, md: 4 }}
-    orientation="vertical"
-    fullBleed={true}
-    hasBorder={false}
-  />
-  <Image
-    id="2.10"
-    src="/work/formie/form-page-end.png"
-    alt="Form page, end"
-    span={{ base: 6, md: 4 }}
-    orientation="vertical"
-    fullBleed={true}
-    hasBorder={false}
-  />
-</div>
+  <div class="hidden md:grid grid-cols-12 gap-x-[17px] col-span-full">
+    <Image
+      id="2.05"
+      src="/work/formie/s4.png"
+      alt="New form, find"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      classes="hidden md:flex"
+      fullBleed={true}
+    />
+    <Image
+      id="2.06"
+      src="/work/formie/s5.png"
+      alt="New form, pick action"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      classes="hidden md:flex"
+      fullBleed={true}
+    />
+    <Image
+      id="2.07"
+      src="/work/formie/s6.png"
+      alt="New form, titles"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      fullBleed={true}
+      classes="hidden md:flex"
+    />
+  </div>
+  <div class="hidden md:grid grid-cols-12 gap-[17px] col-span-full ">
+    <Image
+      id="2.08"
+      src="/work/formie/s2.png"
+      alt="Forms page"
+      span={{ base: 6, md: 4 }}
+      start={{ base: 3 }}
+      orientation="vertical"
+      fullBleed={true}
+      hasBorder={false}
+    />
+    <Image
+      id="2.09"
+      src="/work/formie/s3.png"
+      alt="Form page"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      fullBleed={true}
+      hasBorder={false}
+    />
+    <Image
+      id="2.10"
+      src="/work/formie/form-page-end.png"
+      alt="Form page, end"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      fullBleed={true}
+      hasBorder={false}
+    />
+  </div>
+</Section>
 
 {/* <Challenges challenges={[
   {

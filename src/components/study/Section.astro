@@ -1,0 +1,33 @@
+---
+export interface Props {
+  id: string;
+  title: string
+}
+
+const { id, title } = Astro.props;
+---
+<section class="relative grid grid-cols-12 gap-x-4 col-span-full pb-8 md:mt-8">
+  <hr class="sticky lg:static top-[42px] col-span-full border-t-[0.5px] border-black dark:border-white z-10 mb-2" />
+  <h1 class="sticky top-[48px]  flex  uppercase text-pretty col-span-full lg:col-span-2   gap-2  -mt-0.5 mb-3.5 z-10">
+    <span>{id}</span>
+    <span class="">{title}</span>
+  </h1>
+  <!-- <div class="sticky top-[34px] grid grid-cols-12 gap-x-4 gap-y-2 col-span-full mb-4 z-10">
+    <hr class="col-span-full border-t-[0.5px] border-black dark:border-white " />
+    <h1 class=" flex  uppercase text-pretty col-span-full lg:col-span-2   gap-2  -my-0.5">
+      <span>{id}</span>
+      <span class="">{title}</span>
+    </h1>
+  </div> -->
+  <!-- <hr class="sticky lg:static top-[42px] col-span-full pb-2 border-t-[0.5px] border-black dark:border-white z-10" />
+  <h1 class="sticky top-[50px] flex  uppercase text-pretty col-span-full lg:col-span-2   gap-2  z-10 -mt-0.5 mb-3.5">
+    <span>{id}</span>
+    <span class="">{title}</span>
+  </h1> -->
+  <div class="flex flex-col -my-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 xl:col-start-3  [&>p]:mt-3 first:[&>p]:mt-0 h-fit">
+    <slot name="context" />
+  </div>
+  <div class="grid grid-cols-12 gap-x-4 gap-y-8  mt-8 col-span-full">
+    <slot />
+  </div>
+<section/>
