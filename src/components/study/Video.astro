@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
+import { getCenteredColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
 import { stripExtension } from "../../utils/formatting";
 import Caption from './Caption.astro';
 import clsx from 'clsx';
@@ -10,13 +10,11 @@ export interface Props {
   alt: string;
   id: string;
   description?: string;
-  span?: ResponsiveNumber;
-  start?: ResponsiveNumber;
-  end?: ResponsiveNumber;
-  fullBleed?: ResponsiveBool;
-  hasBorder?: boolean;
-  hasCaption?: boolean;
+  span: ResponsiveNumber;
+  hasBorder?: boolean
+  isPadded: ResponsiveBool;
   orientation?: 'vertical' | 'horizontal';
+  fit: 'contain' | 'cover';
   classes?: string;
 }
 
@@ -24,50 +22,62 @@ const {
   src, 
   alt,
   id,
-  span = 12,
-  start,
-  end,
-  fullBleed = false,
+  span = 10,
   description = "",
   hasBorder = false,
-  hasCaption = true,
+  isPadded = true,
   orientation = 'horizontal',
+  fit = 'contain',
   classes = "" 
 } = Astro.props;
 
 const extensionlessSrc = stripExtension(src);
 
-const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
-const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
+const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
 
+const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span);
+// const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
 ---
-<div class={clsx(
-  "flex flex-col gap-x-4 gap-y-2 h-fit",
-  spanClasses,
-  startClasses,
-  endClasses,
-  bleedClasses,
-  classes
-)}>
-  <video
-    class={`
-      object-cover w-full select-none self-center 
-      ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
-      ${hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''}
-    `}
-    poster={extensionlessSrc + ".png"}
-    playsinline
-    autoplay
-    muted
-    loop
-  >
-    <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
-  </video>
+<div class={clsx('flex flex-col gap-y-2 col-span-full carousel', classes)}>
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-4' : 'hidden',
-    paddingClasses
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
+    isPadded && 'p-8  lg:py-16'
   )}>
-    {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
-    {description && <p class="col-span-full -my-0.5">{description}</p>}
+    <div class={clsx(
+      "flex flex-col gap-x-4 gap-y-2 h-fit",
+      spanClasses,
+      startClasses,
+      endClasses,
+    )}>
+      <video
+        class={clsx(
+          'w-full select-none self-center',
+          orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+          hasBorder && 'border border-neutral-300 dark:border-neutral-700',
+          objectFit,
+        )}
+        poster={extensionlessSrc + ".png"}
+        playsinline
+        autoplay
+        muted
+        loop
+      >
+        <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+  <div class={clsx(
+    'grid grid-cols-12 gap-4', 
+    spanClasses,
+    startClasses,
+    endClasses,
+  )}>
+    <div class={clsx(
+      "flex justify-between gap-4 ",
+      description ? 'col-span-full lg:col-span-2' : 'col-span-full '
+    )}>
+      <Caption id={id} text={alt} classes='-my-0.5' />
+    </div>
+    {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
   </div>
 </div>

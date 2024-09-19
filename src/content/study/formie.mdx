@@ -32,9 +32,8 @@ import PaginatedSection from "../../components/study/PaginatedSection.astro";
 import Carousel from "../../components/study/Carousel.astro";
 import Challenges from "../../components/study/Challenges.astro";
 
-<Section id="1.00" title='Problem'>
+<Section id="1.00" title='Problem' hasBorder={false}>
   <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
-
   <Carousel
     slides={[
       {
@@ -146,7 +145,6 @@ import Challenges from "../../components/study/Challenges.astro";
     fullBleed={{ base: true, lg: false }}
     isPadded={false}
   />
-
   <div class="hidden md:grid grid-cols-12 gap-x-[17px] col-span-full">
     <Image
       id="2.05"

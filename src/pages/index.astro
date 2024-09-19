@@ -11,7 +11,7 @@ import Writings from "../details/Writings.astro";
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout offset="pt-[114px] xs:pt-[94px]">
-  <nav class="flex flex-col xs:grid grid-cols-12 col-span-full  gap-2 gap-x-4 uppercase  flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
+  <nav class=" flex flex-col xs:grid grid-cols-12 col-span-full  gap-2 gap-x-4 uppercase  flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
     <div class=" grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
       <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2 ">Product <sup>4</sup></a>
       <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2">Brand <sup>4</sup></a>

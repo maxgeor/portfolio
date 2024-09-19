@@ -2,12 +2,9 @@
   "type": "client",
   "title": "Wavy/Feedback",
   "description": "custom feedback feature",
-  "image": "/work/thesys.png",
+  "image": "/work/wavy/feedback/cover.png",
   "roles": ["Product"],
-  "link": {
-    "href": "https://www.figma.com/community/widget/1036372982291551669",
-    "target": "_blank"
-  },
   "order": 1,
+  "studySlug": "feedback",
   "year": "2024"
 }

@@ -16,6 +16,7 @@ export interface Props {
   hasBorder?: boolean;
   orientation?: 'horizontal' | 'vertical';
   fullBleed?: ResponsiveBool;
+  fit: 'contain' | 'cover';
   classes?: string;
 }
 
@@ -31,8 +32,11 @@ const {
   orientation = 'horizontal',
   fullBleed = false,
   hasBorder = false,
+  fit = 'contain',
   classes = ""
 } = Astro.props;
+
+const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
 
 const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
 const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
@@ -45,19 +49,19 @@ const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
   bleedClasses,
   classes
 )}>
-  <figure class={`
-    image relative
-    ${hasBorder ? 'border border-neutral-300 dark:border-neutral-700' : ''}
-    ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
-  `}>
+  <figure class={clsx(
+    'image  relative',
+    hasBorder && 'border border-neutral-300 dark:border-neutral-700',
+    orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+  )}>
     <img
       src={src}
       alt={alt}
-      class={`
-        h-full w-full object-cover bg-neutral-200 dark:bg-neutral-900
-        select-none self-center
-        ${orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]'}
-      `}
+      class={clsx(
+        'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+        orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+        objectFit
+      )}
     />
   </figure>
   <div class={clsx(
