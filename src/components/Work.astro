@@ -38,9 +38,10 @@ const {
   isArchived = false,
 } = Astro.props;
 
-const Element = isComingSoon ? 'div' : 'a';
-const props = 
-  isComingSoon || isPrivate
+const shouldDisable = isComingSoon || isPrivate || isArchived;
+
+const Element = shouldDisable ? 'div' : 'a';
+const props = shouldDisable
     ? {} 
     : studySlug 
       ? { href: `/study/${studySlug}`, target: '_self' } 
@@ -49,8 +50,8 @@ const props =
 <Element
   {...props}
   class={`
-    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2
-    ${isComingSoon || isPrivate ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 hover:opacity-50
+    ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${classes}
   `}
 >
@@ -71,7 +72,7 @@ const props =
       <div>
         <h2 class=" flex shrink-0 whitespace-nowrap ">
           {title}
-          {link.href && link.target === '_blank' && !studySlug && !isComingSoon && !isPrivate && (
+          {link.href && link.target === '_blank' && !shouldDisable && (
             <ExternalLinkArrow classes="-ml-px shrink-0" />
           )}
         </h2>
