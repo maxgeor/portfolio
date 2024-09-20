@@ -33,12 +33,6 @@ const study = defineCollection({
   schema: z.object({
     type: z.string(),
     work: reference('work'),
-    tldr: z.object({
-      problem: z.string(),
-      solution: z.string(),
-      decisions: z.array(z.string()),
-      tradeoffs: z.array(z.string()),
-    }).optional(),
     tools: z.array(z.string()),
     image: z.string().optional(),
     teammates: z.object({
