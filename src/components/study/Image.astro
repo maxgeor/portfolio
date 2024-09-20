@@ -14,9 +14,10 @@ export interface Props {
   description?: string;
   hasCaption?: boolean;
   hasBorder?: boolean;
-  orientation?: 'horizontal' | 'vertical';
+  isPadded?: boolean;
+  orientation?: 'horizontal' | 'vertical' | '3/2';
   fullBleed?: ResponsiveBool;
-  fit: 'contain' | 'cover';
+  fit?: 'contain' | 'cover';
   classes?: string;
 }
 
@@ -24,19 +25,36 @@ const {
   src, 
   alt,
   id,
-  span = 16,
+  span = 12,
   start,
   end,
-  hasCaption = true,
   description = '',
+  hasCaption = true,
   orientation = 'horizontal',
   fullBleed = false,
   hasBorder = false,
+  isPadded = false,
   fit = 'contain',
   classes = ""
 } = Astro.props;
 
 const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
+
+let aspectRatio;
+
+switch(orientation) {
+  case 'horizontal':
+    aspectRatio = 'aspect-[7/4]';
+    break;
+  case 'vertical':
+    aspectRatio = 'aspect-[3/4]';
+    break;
+  case '3/2':
+    aspectRatio = 'aspect-[3/2]';
+    break;
+  default:
+    aspectRatio = 'aspect-[7/4]';
+}
 
 const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
 const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
@@ -52,20 +70,20 @@ const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
   <figure class={clsx(
     'image  relative',
     hasBorder && 'border border-neutral-300 dark:border-neutral-700',
-    orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+    aspectRatio,
   )}>
     <img
       src={src}
       alt={alt}
       class={clsx(
         'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
-        orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+        aspectRatio,
         objectFit
       )}
     />
   </figure>
   <div class={clsx(
-    hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 max-w-[80ch]' : 'hidden',
+    (hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 max-w-[80ch]' : 'hidden'),
     paddingClasses
   )}>
     {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}

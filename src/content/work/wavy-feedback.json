@@ -2,7 +2,7 @@
   "type": "client",
   "title": "Wavy/Feedback",
   "description": "custom feedback feature",
-  "image": "/work/wavy/feedback/cover.png",
+  "image": "/work/wavy/feedback/cover-sm.png",
   "roles": ["Product"],
   "order": 1,
   "studySlug": "feedback",

@@ -13,11 +13,12 @@ export interface Props {
     src: string;
     alt: string;
     hasBorder?: boolean;
+    fit: 'cover' | 'contain';
     classes?: string;
   }[];
   span: ResponsiveNumber;
   description?: string;
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: 'horizontal' | 'vertical' | '3/2';
   hasBorder?: boolean
   isPadded: ResponsiveBool;
   classes?: string;
@@ -34,7 +35,22 @@ const {
 } = Astro.props;
 
 const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
-// const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
+
+let aspectRatio;
+
+switch(orientation) {
+  case 'horizontal':
+    aspectRatio = 'aspect-[7/4]';
+    break;
+  case 'vertical':
+    aspectRatio = 'aspect-[3/4]';
+    break;
+  case '3/2':
+    aspectRatio = 'aspect-[3/2]';
+    break;
+  default:
+    aspectRatio = 'aspect-[7/4]';
+}
 ---
 
 <div class={clsx('flex flex-col gap-y-2 col-span-full carousel', classes)}>
@@ -51,7 +67,8 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
     </button>
     <button 
       aria-label="Next slide" 
-      class="next-slide-btn hidden lg:block absolute right-0 top-0 bottom-0 disabled:opacity-50 hover:opacity-100 disabled:hover:opacity-auto z-40 p-2 uppercase cursor-e-resize disabled:cursor-default">
+      class="next-slide-btn hidden lg:block absolute right-0 top-0 bottom-0 disabled:opacity-50 hover:opacity-100 disabled:hover:opacity-auto z-40 p-2 uppercase cursor-e-resize disabled:cursor-default"
+    >
       Next
     </button>
     <div class="mobile-slide-controls absolute inset-0 z-20	touch-manipulation">
@@ -72,21 +89,19 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
       startClasses,
       endClasses,
       spanClasses,
-      hasBorder ? 'border border-neutral-300 dark:border-neutral-700 touch-manipulation' : ''
+      hasBorder ? 'border border-neutral-300 dark:border-neutral-700 touch-manipulation' : '',
     )}>
-      
       <div class={clsx(
-        'relative w-full rotate-0 overflow-hidden bg-neutral-200 dark:bg-neutral-900',
-        orientation === 'vertical' ? 'aspect-[3/4]' : 'aspect-[7/4]',
+        'relative rotate-0 overflow-hidden bg-neutral-200 dark:bg-neutral-900',
+        aspectRatio,
       )}>
         {
           slides.map((slide, index) => (
             <div 
               data-index={index}
-              class={`
-                slide slide-${index} 
-                absolute h-fit w-full transition-all duration-[450ms] ease-in-out z-10
-              `}
+              class={clsx(
+                `slide slide-${index} absolute h-fit w-full transition-all duration-[450ms] ease-in-out z-10`,
+              )}
             >
               {slide.type === "video" ? (
                 <Video
@@ -94,8 +109,10 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
                   alt={slide.alt}
                   id={slide.id}
                   hasBorder={false}
-                  hasCaption={false}
                   fit='cover'
+                  hasCaption={false}
+                  fit={slide.fit || 'cover'}
+                  isPadded={false}
                   classes={slide.classes}
                 />
               ) : (
@@ -106,7 +123,8 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
                   hasBorder={false}
                   orientation={orientation}
                   hasCaption={false}
-                  fit='cover'
+                  fit={slide.fit || 'cover'}
+                  isPadded={false}
                   classes={slide.classes}
                 />
               )}
@@ -116,28 +134,28 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
       </div>
     </div>
   </div>
-<div class={clsx(
-    'grid grid-cols-12 gap-4', 
-    spanClasses,
-    startClasses,
-    endClasses,
-  )}>
-    <div class={clsx(
-      "flex justify-between gap-4 ",
-      description ? 'col-span-full lg:col-span-2' : 'col-span-full '
+  <div class={clsx(
+      'grid grid-cols-12 gap-4', 
+      spanClasses,
+      startClasses,
+      endClasses,
     )}>
-      <div class="flex flex-col -my-0.5">
-        {slides?.map((slide, index) => (
-          <button class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left`}>
-            <Caption id={slide.id} text={slide.alt} />
-          </button>
-        ))}
+      <div class={clsx(
+        "flex justify-between gap-4 ",
+        description ? 'col-span-full lg:col-span-2' : 'col-span-full '
+      )}>
+        <div class="flex flex-col -my-0.5">
+          {slides?.map((slide, index) => (
+            <button class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left`}>
+              <Caption id={slide.id} text={slide.alt} />
+            </button>
+          ))}
+        </div>
+        <div class="lg:hidden slide-counter "></div>
       </div>
-      <div class="lg:hidden slide-counter "></div>
+      {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
     </div>
-    {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
   </div>
-</div>
 
 <style>
   .caption {
@@ -182,20 +200,20 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
   carousels?.forEach((carousel) => {
     const slides: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide");
     const captions: NodeListOf<HTMLElement> = carousel.querySelectorAll(".caption");
-    const nextSlideBtn = carousel.querySelector(".next-slide-btn") as HTMLButtonElement;
-    const prevSlideBtn = carousel.querySelector(".prev-slide-btn") as HTMLButtonElement;
+    const nextSlideBtn = carousel.querySelector(".next-slide-btn") as HTMLButtonElement | null;
+    const prevSlideBtn = carousel.querySelector(".prev-slide-btn") as HTMLButtonElement | null;
     const slideCounters: NodeListOf<HTMLElement> = carousel.querySelectorAll(".slide-counter");
-    const prevSlideArea = carousel.querySelector(".prev-slide-area") as HTMLButtonElement;
-    const nextSlideArea = carousel.querySelector(".next-slide-area") as HTMLButtonElement;
+    const prevSlideArea = carousel.querySelector(".prev-slide-area") as HTMLButtonElement | null;
+    const nextSlideArea = carousel.querySelector(".next-slide-area") as HTMLButtonElement | null;
 
     let curSlide = 0;
     const totalSlides = slides.length;
 
     const updateButtons = () => {
-      prevSlideBtn.disabled = curSlide === 0;
-      nextSlideBtn.disabled = curSlide === totalSlides - 1;
-      prevSlideArea.disabled = curSlide === 0;
-      nextSlideArea.disabled = curSlide === totalSlides - 1;
+      if (prevSlideBtn) prevSlideBtn.disabled = curSlide === 0;
+      if (nextSlideBtn) nextSlideBtn.disabled = curSlide === totalSlides - 1;
+      if (prevSlideArea) prevSlideArea.disabled = curSlide === 0;
+      if (nextSlideArea) nextSlideArea.disabled = curSlide === totalSlides - 1;
     }
 
     const updateCounters = () => {
@@ -226,10 +244,10 @@ const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
 
     slideTo(curSlide);
 
-    nextSlideBtn.addEventListener("click", () => slideTo(Math.min(curSlide + 1, totalSlides - 1)));
-    prevSlideBtn.addEventListener("click", () => slideTo(Math.max(curSlide - 1, 0)));
-    nextSlideArea.addEventListener("click", () => slideTo(Math.min(curSlide + 1, totalSlides - 1)));
-    prevSlideArea.addEventListener("click", () => slideTo(Math.max(curSlide - 1, 0)));
+    if (nextSlideBtn) nextSlideBtn.addEventListener("click", () => slideTo(Math.min(curSlide + 1, totalSlides - 1)));
+    if (prevSlideBtn) prevSlideBtn.addEventListener("click", () => slideTo(Math.max(curSlide - 1, 0)));
+    if (nextSlideArea) nextSlideArea.addEventListener("click", () => slideTo(Math.min(curSlide + 1, totalSlides - 1)));
+    if (prevSlideArea) prevSlideArea.addEventListener("click", () => slideTo(Math.max(curSlide - 1, 0)));
 
     captions.forEach((caption, index) => {
       caption.addEventListener("click", () => slideTo(index));

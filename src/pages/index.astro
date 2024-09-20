@@ -2,11 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
-import Links from "../details/Links.astro";
-import Skills from "../details/Skills.astro";
-import Interests from "../details/Interests.astro";
-import Influences from "../details/Influences.astro";
-import Writings from "../details/Writings.astro";
 
 const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
 ---
