@@ -72,7 +72,7 @@ const props = shouldDisable
       <div>
         <h2 class=" flex shrink-0 whitespace-nowrap ">
           {title}
-          {link.href && link.target === '_blank' && !shouldDisable && (
+          {link.href && link.target === '_blank' && !shouldDisable && !studySlug && (
             <ExternalLinkArrow classes="-ml-px shrink-0" />
           )}
         </h2>
