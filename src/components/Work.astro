@@ -43,7 +43,7 @@ const props =
   isComingSoon || isPrivate
     ? {} 
     : studySlug 
-      ? { href: `${Astro.url.origin}/study/${studySlug}`, target: '_self' } 
+      ? { href: `/study/${studySlug}`, target: '_self' } 
       : link 
 ---
 <Element
