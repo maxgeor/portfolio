@@ -46,7 +46,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     </div>
     <button id="clear-filters-btn"  class="hidden md:block opacity-0 pointer-events-none transition-opacity justify-self-end xl:justify-self-start whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2">Clear</button>
   </nav>
-  <div id="work-container" class="work-container grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+  <div id="work-container" class="work-container grid grid-cols-12 col-span-full gap-y-8 gap-x-4 h-fit">
     {orderedWork().map(({ data: work }) => (
       <Work 
         {...work}
