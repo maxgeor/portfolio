@@ -3,32 +3,162 @@ import Layout from "../layouts/Layout.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
 
-const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
+const workData = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
+
+const shuffledWork = () => {
+  const archivedWorks = workData.filter(work => work.data.isArchived);
+  const nonArchivedWorks = workData.filter(work => !work.data.isArchived);
+  const shuffledNonArchivedWorks = nonArchivedWorks.sort(() => Math.random() - 0.5);
+
+  return [...shuffledNonArchivedWorks, ...archivedWorks];
+};
+
+const orderedWork = () => workData.sort((a, b) => (a.data.order - b.data.order));
+
+const typeCounts = {
+  client: workData.filter(work => work.data.type === 'client').length,
+  project: workData.filter(work => work.data.type === 'project').length
+};
+
+const roleCounts = {
+  Product: workData.filter(work => work.data.roles.includes('Product')).length,
+  Brand: workData.filter(work => work.data.roles.includes('Brand')).length,
+  Code: workData.filter(work => work.data.roles.includes('Code')).length
+};
+
+const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 ---
+
 <Layout offset="pt-[114px] xs:pt-[94px]">
-  <nav class=" flex flex-col xs:grid grid-cols-12 col-span-full  gap-2 gap-x-4 uppercase  flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
-    <div class=" grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
-      <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2 ">Product <sup>4</sup></a>
-      <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2">Brand <sup>4</sup></a>
-      <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2">Code <sup>4</sup></a>
+  <nav class="flex flex-col xs:grid grid-cols-12 col-span-full gap-2 gap-x-4 uppercase flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
+    <div class="grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
+      <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="role" data-value="Product"><span>Product</span> <sup>{roleCounts.Product}</sup></button>
+      <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="role" data-value="Brand"><span>Brand</span> <sup>{roleCounts.Brand}</sup></button>
+      <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="role" data-value="Code"><span>Code</span> <sup>{roleCounts.Code}</sup></button>
     </div>
-    <div class="grid grid-cols-3 xs:flex order-last xl:order-none gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
-      <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2">Project <sup>4</sup></a>
-      <a class="whitespace-nowrap h-min xs:py-2 xs:-my-2">Client <sup>4</sup></a>
-      <a class="whitespace-nowrap md:hidden h-min xs:py-2 xs:-my-2">Case Study <sup>4</sup></a>
+    <div class="grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
+      <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="type" data-value="project"><span>Project</span> <sup>{typeCounts.project}</sup></button>
+      <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="type" data-value="client"><span>Client</span> <sup>{typeCounts.client}</sup></button>
+      <button class="filter-btn uppercase whitespace-nowrap md:hidden h-min xs:py-2 xs:-my-2" data-filter="caseStudy"><span>Case Study</span> <sup>{caseStudyCount}</sup></button>
     </div>
-    <div class=" hidden md:flex gap-x-2 col-span-3 md:col-span-4 xl:col-span-3 ">
-      <a class="col-span-1 h-min xs:py-2 xs:-my-2">Case Study <sup>4</sup></a>
+    <div class="hidden md:flex col-span-3">
+      <button class="filter-btn uppercase col-span-1 h-min xs:py-2 xs:-my-2" data-filter="caseStudy"><span>Case Study</span> <sup>{caseStudyCount}</sup></button>
     </div>
+    <button id="clear-filters-btn"  class="hidden md:block opacity-0 pointer-events-none transition-opacity justify-self-end xl:justify-self-start whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2">Clear</button>
   </nav>
-  <div class="grid lg:hidden grid-cols-12 col-span-full gap-y-8 gap-x-4">
-    {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
-      <Work variant="row" {...work} index={index} isHighlighted={index % 3} />
-    ))}
-  </div>
-  <div class="hidden lg:grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
-    {works?.sort(() => Math.random() - 0.5).map(({ data: work }, index) => (
-      <Work variant="row" {...work} index={index} isHighlighted={index % 3} />
+  <div id="work-container" class="work-container grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+    {orderedWork().map(({ data: work }) => (
+      <Work 
+        {...work}
+        attributes={{
+          'data-type': work.type,
+          'data-roles': work.roles.join(','),
+          'data-case-study': work.studySlug ? 'true' : null
+        }}
+      />
     ))}
   </div>
 </Layout>
+
+<script>
+  const workContainer = document.getElementById('work-container');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const clearFiltersButton = document.getElementById('clear-filters-btn');
+  const works = workContainer ? [...workContainer.children] as HTMLElement[] : [];
+
+  type FilterType = 'type' | 'role' | 'caseStudy';
+  type ActiveFilters = {
+    type: string[];
+    role: string[];
+    caseStudy: boolean;
+  };
+
+  let activeFilters: ActiveFilters = { type: [], role: [], caseStudy: false };
+
+  const hasActiveFilters = () => (
+    activeFilters.type.length > 0 || 
+    activeFilters.role.length > 0 || 
+    activeFilters.caseStudy
+  );
+
+  function updateWorks() {
+    if (!hasActiveFilters()) {
+      showAllWorks();
+    } else {
+      works.forEach(work => {
+        const type = work.getAttribute('data-type') || '';
+        const roles = work.getAttribute('data-roles')?.split(',') || [];
+        const hasCaseStudy = work.getAttribute('data-case-study') === 'true';
+
+        const typeMatch = activeFilters.type.length === 0 || activeFilters.type.includes(type);
+        const roleMatch = activeFilters.role.length === 0 || activeFilters.role.some(role => roles.includes(role));
+        const caseStudyMatch = !activeFilters.caseStudy || hasCaseStudy;
+        
+        if (typeMatch && roleMatch && caseStudyMatch) {
+          work.style.display = '';
+          work.classList.add('active');
+        } else {
+          work.style.display = 'none';
+          work.classList.remove('active');
+        }
+      });
+    }
+    updateClearFiltersButton();
+  }
+
+  function showAllWorks() {
+    works.forEach(work => {
+      work.style.display = '';
+      work.classList.remove('active');
+    });
+  }
+
+  function updateClearFiltersButton() {
+    if (hasActiveFilters()) {
+      clearFiltersButton?.classList.remove('opacity-0', 'pointer-events-none');
+      clearFiltersButton?.classList.add('opacity-100');
+    } else {
+      clearFiltersButton?.classList.add('opacity-0', 'pointer-events-none');
+      clearFiltersButton?.classList.remove('opacity-100');
+    }
+  }
+
+  function clearFilters() {
+    activeFilters = { type: [], role: [], caseStudy: false };
+    filterButtons.forEach(button => button.classList.remove('active'));
+    showAllWorks();
+    updateClearFiltersButton();
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter') as FilterType;
+      const value = button.getAttribute('data-value');
+
+      if (filter === 'caseStudy') {
+        activeFilters.caseStudy = !activeFilters.caseStudy;
+      } else if (filter && value) {
+        const filterArray = activeFilters[filter];
+        const index = filterArray.indexOf(value);
+        if (index > -1) {
+          filterArray.splice(index, 1);
+        } else {
+          filterArray.push(value);
+        }
+      }
+
+      button.classList.toggle('active');
+      updateWorks();
+    });
+  });
+
+  clearFiltersButton?.addEventListener('click', clearFilters);
+
+  updateClearFiltersButton();
+</script>
+
+<style>
+  .filter-btn.active > span {
+    text-decoration: underline;
+  }
+</style>

@@ -21,6 +21,10 @@ type Work = {
   classes?: string;
 }
 
+interface Props extends Work {
+  attributes?: Record<string, string | null>;
+}
+
 const { 
   title, 
   description, 
@@ -38,6 +42,7 @@ const {
   classes = '',
   isComingSoon = false,
   isArchived = false,
+  attributes = {},
 } = Astro.props;
 
 const shouldDisable = isComingSoon || isPrivate || isArchived;
@@ -51,6 +56,7 @@ const props = shouldDisable
 ---
 <Element
   {...props}
+  {...attributes}
   class={`
     xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 hover:opacity-50
     ${!isHidden ? 'active' : ''}
@@ -87,7 +93,7 @@ const props = shouldDisable
         <p>{year}</p>
       </div>
     </div>
-</div>
+  </div>
 </Element>
 
 <style>
