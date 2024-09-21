@@ -30,7 +30,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 ---
 
 <Layout offset="pt-[114px] xs:pt-[94px]">
-  <nav class="flex flex-col xs:grid grid-cols-12 col-span-full gap-2 gap-x-4 uppercase flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
+  <nav class="flex flex-col xs:grid grid-cols-12 col-span-full gap-y-2 xs:gap-y-4 gap-x-4 uppercase flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10">
     <div class="grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
       <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="role" data-value="Product"><span>Product</span> <sup>{roleCounts.Product}</sup></button>
       <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="role" data-value="Brand"><span>Brand</span> <sup>{roleCounts.Brand}</sup></button>
@@ -41,10 +41,12 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
       <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2" data-filter="type" data-value="client"><span>Client</span> <sup>{typeCounts.client}</sup></button>
       <button class="filter-btn uppercase whitespace-nowrap md:hidden h-min xs:py-2 xs:-my-2" data-filter="caseStudy"><span>Case Study</span> <sup>{caseStudyCount}</sup></button>
     </div>
-    <div class="hidden md:flex col-span-3">
+    <div class="hidden md:flex col-span-3 -my-0.5 ">
       <button class="filter-btn uppercase col-span-1 h-min xs:py-2 xs:-my-2" data-filter="caseStudy"><span>Case Study</span> <sup>{caseStudyCount}</sup></button>
     </div>
-    <button id="clear-filters-btn"  class="hidden md:block opacity-0 pointer-events-none transition-opacity justify-self-end xl:justify-self-start whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2">Clear</button>
+    <div class="flex md:justify-end xl:justify-start opacity-0 pointer-events-none transition-opacity col-span-6 md:col-span-1 xl:col-span-2 xs:col-start-7 lg:col-start-12 -my-0.5 h-min">
+      <button id="clear-filters-btn" class="whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2">Clear</button>
+    </div>
   </nav>
   <div id="work-container" class="work-container grid grid-cols-12 col-span-full gap-y-8 gap-x-4 h-fit">
     {orderedWork().map(({ data: work }) => (
@@ -114,12 +116,13 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   }
 
   function updateClearFiltersButton() {
+    const clearFiltersButtonParent = clearFiltersButton?.parentElement;
     if (hasActiveFilters()) {
-      clearFiltersButton?.classList.remove('opacity-0', 'pointer-events-none');
-      clearFiltersButton?.classList.add('opacity-100');
+      clearFiltersButtonParent?.classList.remove('opacity-0', 'pointer-events-none');
+      clearFiltersButtonParent?.classList.add('opacity-100');
     } else {
-      clearFiltersButton?.classList.add('opacity-0', 'pointer-events-none');
-      clearFiltersButton?.classList.remove('opacity-100');
+      clearFiltersButtonParent?.classList.add('opacity-0', 'pointer-events-none');
+      clearFiltersButtonParent?.classList.remove('opacity-100');
     }
   }
 
