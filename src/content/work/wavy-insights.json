@@ -4,7 +4,7 @@
   "description": "Product-wide analytics feature",
   "image": "/work/wavy/insights/cover-sm.png",
   "roles": ["Product"],
-  "order": 1,
+  "order": 2,
   "studySlug": "insights",
   "year": "2024"
 }

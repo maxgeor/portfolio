@@ -21,8 +21,13 @@ const works = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
       <a class="col-span-1 h-min xs:py-2 xs:-my-2">Case Study <sup>4</sup></a>
     </div>
   </nav>
-  <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+  <div class="grid lg:hidden grid-cols-12 col-span-full gap-y-8 gap-x-4">
     {works?.sort((a, b) => (a.data.order - b.data.order)).map(({ data: work }, index) => (
+      <Work variant="row" {...work} index={index} isHighlighted={index % 3} />
+    ))}
+  </div>
+  <div class="hidden lg:grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+    {works?.sort(() => Math.random() - 0.5).map(({ data: work }, index) => (
       <Work variant="row" {...work} index={index} isHighlighted={index % 3} />
     ))}
   </div>
