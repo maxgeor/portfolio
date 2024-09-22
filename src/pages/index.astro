@@ -104,6 +104,9 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
           work.classList.remove('active');
         }
       });
+      
+      // Scroll to the top of the page without transition
+      window.scrollTo(0, 0);
     }
     updateClearFiltersButton();
   }
@@ -111,7 +114,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   function showAllWorks() {
     works.forEach(work => {
       work.style.display = '';
-      work.classList.remove('active');
+      work.classList.add('active');
     });
   }
 
@@ -162,6 +165,6 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 
 <style>
   .filter-btn.active > span {
-    text-decoration: underline;
+    text-decoration: line-through;
   }
 </style>

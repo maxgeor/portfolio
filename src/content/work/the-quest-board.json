@@ -3,7 +3,7 @@
   "title": "The Quest Board",
   "description": "Job board for Loot",
   "image": "/work/the-quest-board.gif",
-  "roles": ["Product", "Brand", "Code"],
+  "roles": ["Product", "Code"],
   "link": {
     "href": "https://www.lootquestboard.com/",
     "target": "_blank"

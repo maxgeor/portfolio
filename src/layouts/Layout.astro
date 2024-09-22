@@ -18,7 +18,7 @@ const {
 const currentPath = Astro.url.pathname;
 ---
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -90,7 +90,6 @@ const currentPath = Astro.url.pathname;
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* -webkit-tap-highlight-color: var(--highlight-color); */
   }
 
   html.dark {
@@ -101,16 +100,18 @@ const currentPath = Astro.url.pathname;
   a {
     text-underline-offset: 2px;
   }
-  
+
   a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: solid 2px var(--accent-color);
     outline-offset: 1px;
     text-decoration: none;
   }
-
-  a:hover, button:hover, summary:hover {
-    opacity: 0.5;
-    text-decoration: none;
+  
+  @media (min-width: 1024px) {
+    a:hover, button:hover, summary:hover {
+      opacity: 0.5;
+      text-decoration: none;
+    }
   }
 
   button {

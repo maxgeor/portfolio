@@ -79,7 +79,7 @@ const props = shouldDisable
     </picture> 
     <div class="uppercase work-card-content flex flex-col duration-300 -my-0.5 mx-2">
       <div>
-        <h2 class=" flex shrink-0 whitespace-nowrap ">
+        <h2 class="flex shrink-0 whitespace-nowrap">
           {title}
           {link.href && link.target === '_blank' && !shouldDisable && !studySlug && (
             <ExternalLinkArrow classes="-ml-px shrink-0" />
@@ -142,7 +142,7 @@ const props = shouldDisable
           clearTimeout(timer);
           timer = setTimeout(() => {
             card.classList.remove('active');
-          }, 3000);
+          }, 5000);
         });
       });
     }
