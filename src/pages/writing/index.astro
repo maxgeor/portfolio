@@ -6,7 +6,11 @@ const writing = await getCollection('writing', ({ data: { isDraft } }) => !isDra
 ---
 <Layout>
   <div class="grid grid-cols-12 col-span-full gap-x-4 h-fit border-t-[0.5px] pt-1.5 border-black dark:border-white">
-    {writing.map(({ slug, data: writing }) => (
+    {writing.sort((a, b) => {
+      const dateA = new Date(a.data.date).getTime();
+      const dateB = new Date(b.data.date).getTime();
+      return dateB - dateA;
+    }).map(({ slug, data: writing }) => (
       <a href={`/writing/${slug}`} class=" grid grid-cols-12 col-span-full gap-x-4">
         <p class="col-span-3">{writing.date}</p>
         <h2 class="col-span-9 uppercase">{writing.title}</h2>
