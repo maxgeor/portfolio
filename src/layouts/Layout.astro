@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { getCollection } from 'astro:content';
 import clsx from 'clsx';
 
 export interface Props {
@@ -16,6 +17,12 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+
+const work = await getCollection('work', ({ data: { isDraft } }) => !isDraft);
+const writing = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
+
+const workCount = work.length;
+const writingCount = writing.length;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +37,7 @@ const currentPath = Astro.url.pathname;
   <body
     style="text-rendering: optimizeLegibility;"
     class={clsx(
-      "grid grid-cols-6 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
+      "grid grid-cols-12 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
       offset,
       classes
     )}
@@ -40,18 +47,18 @@ const currentPath = Astro.url.pathname;
         <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
         <span class="sm:hidden">Max KC Georgopoulos</span>
       </a>
-      <a href="/" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Work</a>
+      <a href="/" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Work <sup>{workCount}</sup></a>
       <a href="/about" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>About</a>
-      <a href="/writing" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Writing</a>
+      <a href="/writing" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Writing <sup>{writingCount}</sup></a>
       <a href="/contact" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Contact</a>
       <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
       <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
     </header>
     <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-40 hidden md:hidden flex-col  p-2 overflow-hidden">
       <nav class="border-black dark:border-white divide-black dark:divide-white border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
-        <a href="/" class={currentPath === '/' ? '' : ''}>Work</a>
+        <a href="/" class={currentPath === '/' ? '' : ''}>Work<sup>{workCount}</sup></a>
         <a href="/about" class={currentPath === '/about' ? '' : ''}>About</a>
-        <a href="/writing" class={currentPath === '/writing' ? '' : ''}>Writing</a>
+        <a href="/writing" class={currentPath === '/writing' ? '' : ''}>Writing<sup>{writingCount}</sup></a>
         <a href="/contact" class={currentPath === '/contact' ? '' : ''}>Contact</a>
       </nav>
     </div>

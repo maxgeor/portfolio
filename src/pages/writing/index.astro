@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const writing = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
+---
+<Layout>
+  <div class="grid grid-cols-12 col-span-full gap-x-4 h-fit border-t-[0.5px] pt-1.5 border-black dark:border-white">
+    {writing.map(({ slug, data: writing }) => (
+      <a href={`/writing/${slug}`} class=" grid grid-cols-12 col-span-full gap-x-4">
+        <p class="col-span-3">{writing.date}</p>
+        <h2 class="col-span-9 uppercase">{writing.title}</h2>
+      </a>
+    ))}
+  </div>
+</Layout>

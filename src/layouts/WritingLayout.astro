@@ -1,24 +1,19 @@
 ---
 import Layout from "./Layout.astro";
-import XIcon from "../components/icons/XIcon.astro";
-import { formatDate } from '../utils/formatting';
 
 const { frontmatter } = Astro.props;
-const formattedDate = formatDate(frontmatter.date);
 ---
 <Layout title={frontmatter.title}>
-  <main class="flex flex-col md:grid grid-cols-16 gap-2 col-span-full pb-[45px]">
-    <a href="/" class="group fixed -top-[2px] right-[0px] z-50 p-15 hover:bg-transparent focus:bg-transparent">
-      <XIcon classes='shrink-0 text-neutral-900 dark:text-neutral-300 dark:text-neutral-300 group-hover:opacity-50' />
-    </a>
-    <div class="h-min md:h-full flex flex-col justify-between xl:gap-2 col-span-full md:col-span-4 lg:col-span-3 pr-15">
-      <h1 class="">{frontmatter.title}</h1>
-      <p>{formattedDate}</p>
+  <main class="grid grid-cols-12 gap-y-8 gap-x-4 col-span-full border-t-[0.5px] pt-2 border-black dark:border-white h-fit">
+    <div class="flex flex-col col-span-full md:col-span-3  pr-4 -my-0.5 ">
+      <h1 class="uppercase">{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
     </div>
     <article
       class={`
-        flex flex-col gap-2 md:col-start-5 col-span-full md:col-span-9 lg:col-span-8 xl:col-span-6 h-full 
+        flex flex-col gap-4 col-span-full md:col-span-8 lg:col-span-5 2xl:col-span-4  -my-0.5 
         text-12
+        prose-headings:uppercase 
         prose-p:my-0
         prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[12px] md:prose-ul:pl-0
         prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[12px] md:prose-ol:pl-0
