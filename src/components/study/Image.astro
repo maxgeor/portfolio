@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
+import { getColClasses, getCenteredColClasses } from '../../utils/class-generator'
 import Caption from './Caption.astro';
 import clsx from 'clsx';
 
@@ -16,8 +16,9 @@ export interface Props {
   hasBorder?: boolean;
   isPadded?: boolean;
   orientation?: 'horizontal' | 'vertical' | '3/2';
-  fullBleed?: ResponsiveBool;
+  isFullBleed?: ResponsiveBool;
   fit?: 'contain' | 'cover';
+  withContainer?: boolean;
   classes?: string;
 }
 
@@ -26,15 +27,14 @@ const {
   alt,
   id,
   span = 12,
-  start,
-  end,
   description = '',
   hasCaption = true,
   orientation = 'horizontal',
-  fullBleed = false,
+  isFullBleed = true,
   hasBorder = false,
   isPadded = false,
   fit = 'contain',
+  withContainer = false,
   classes = ""
 } = Astro.props;
 
@@ -56,37 +56,71 @@ switch(orientation) {
     aspectRatio = 'aspect-[7/4]';
 }
 
-const { spanClasses, startClasses, endClasses } = getColClasses(span, start, end);
-const { bleedClasses, paddingClasses } = getResponsiveBoolClasses(fullBleed);
+const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span);
 ---
-<div class={clsx(
-  "flex flex-col gap-x-4 gap-y-2 h-fit",
-  spanClasses,
-  startClasses,
-  endClasses,
-  bleedClasses,
-  classes
-)}>
-  <figure class={clsx(
-    'image  relative',
-    hasBorder && 'border border-neutral-300 dark:border-neutral-700',
-    aspectRatio,
-  )}>
-    <img
-      src={src}
-      alt={alt}
-      class={clsx(
-        'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
-        aspectRatio,
-        objectFit
-      )}
-    />
-  </figure>
-  <div class={clsx(
-    (hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 max-w-[80ch]' : 'hidden'),
-    paddingClasses
-  )}>
-    {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
-    {description && <p class="col-span-full -my-0.5">{description}</p>}
+{withContainer ? (
+  <div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
+    <div class={clsx(
+      "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 col-span-full lg:px-2 -mx-2",
+      isPadded && 'p-8 lg:py-16',
+    )}>
+      <div class={clsx("h-fit", spanClasses, startClasses, endClasses)}>
+        <figure class={clsx(
+          'image  relative',
+          hasBorder && 'border border-neutral-300 dark:border-neutral-700',
+          aspectRatio,
+        )}>
+          <img
+            src={src}
+            alt={alt}
+            class={clsx(
+              'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+              aspectRatio,
+              objectFit
+            )}
+          />
+        </figure>
+      </div>
+    </div>
+    {hasCaption && (
+      <div class={clsx('grid grid-cols-12 gap-4', spanClasses, startClasses, endClasses)}>
+        <div class={clsx(description ? 'col-span-full lg:col-span-2' : 'col-span-full')}>
+          <Caption id={id} text={alt} classes='-my-0.5' />
+        </div>
+        {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
+      </div>
+    )}
   </div>
-</div>
+) : (
+  <div class={clsx(
+    "flex flex-col gap-x-4 gap-y-2 h-fit",
+    spanClasses,
+    startClasses,
+    endClasses,
+    isFullBleed && 'lg:px-2 -mx-2',
+    isPadded && 'p-8 lg:py-16',
+    classes
+  )}>
+    <figure class={clsx(
+      'image  relative',
+      hasBorder && 'border border-neutral-300 dark:border-neutral-700',
+      aspectRatio,
+    )}>
+      <img
+        src={src}
+        alt={alt}
+        class={clsx(
+          'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+          aspectRatio,
+          objectFit
+        )}
+      />
+    </figure>
+    <div class={clsx(
+      (hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 max-w-[80ch]' : 'hidden'),
+    )}>
+      {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
+      {description && <p class="col-span-full -my-0.5">{description}</p>}
+    </div>
+  </div>
+)}

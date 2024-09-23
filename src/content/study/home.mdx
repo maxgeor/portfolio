@@ -24,69 +24,29 @@ description: Personal project to replace Etherscan's smart contract UI with an f
 year: '2024'
 order: 1
 ---
-
 import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
-  <p slot="context">Wavy’s homepage made it **hard to find the events you care about**. It was a single calendar view with cells showing *events*, *notable days* and *suggested events*. These **items were undifferentiated**. At a glance, you couldn’t tell them apart. Events items themselves had no *status*, so you couldn’t tell which ones you’ve been invited to or already responded to. The month view made it difficult to see outside the current month. You’d forget all about events that 1-2 months away and go on scavenger hunts to find that event from 3 months ago. On top of that, may of the calendar’s colour themes weren’t accessible.</p>
-  {/* <Carousel
-    slides={[
-      {
-        id: "1.01",
-        src: "/work/formie/annotated-etherscan-page.png",
-        alt: "Etherscan's UI",
-      },
-      {
-        id: "1.02",
-        src: "/work/formie/research/forms/etherscan-form-ui.png",
-        alt: "Etherscan's form",
-      },
-    ]}
-    description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
-    span={{ base: 12, md: 8 }}
-    start={{ base: 1, md: 3 }}
-  />
-  <Carousel
-    slides={[
-      {
-        id: "1.03",
-        src: "/work/formie/research/one-ways/mloot-flow",
-        alt: "Minting mLoot",
-        type: "video"
-      },
-      {
-        id: "1.04",
-        src: "/work/formie/research/one-ways/banners-flow",
-        alt: "Minting Banners",
-        type: "video"
-      },
-      {
-        id: "1.05",
-        src: "/work/formie/research/one-ways/rune-flow",
-        alt: "Minting Runes",
-        type: "video"
-      },
-    ]}
-    span={{ base: 12, md: 8 }}
-    description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
-  /> */}
+  <Fragment slot="context">
+    Wavy’s homepage made it **hard to find the events you care about**. It was a single calendar view with cells showing *events*, *notable days* and *suggested events*. These **items were undifferentiated**. At a glance, you couldn’t tell them apart. Events items themselves had no *status*, so you couldn’t tell which ones you’ve been invited to or already responded to. The month view made it difficult to see outside the current month. You’d forget all about events that 1-2 months away and go on scavenger hunts to find that event from 3 months ago. On top of that, may of the calendar’s colour themes weren’t accessible.
+  </Fragment>
 </Section>
-<Section id="2.00" title='Split view'>
-  <p slot="context">We **broke the home page into two views: List & Calendar**. People liked seeing the events specially, but still needed a way to all events at a glance, organized by category (yours/others, past/upcoming, status). The calendar was redesigned to be denser, accessible and visually consistent.</p>
+<Section id="2.00" title='Solution'>
+  <p slot="context">We **split the home page into two views: List & Calendar**. People liked seeing events spacially, but needed a way to see everything at a glance. Two views gave people familiarity/utility of the original layout with the digestiblity of compact, organized lists. We also redesigned the calendar to be dense, accessible and visually consistent.</p>
   <Carousel
     slides={[
       {
         id: "2.01",
         src: "/work/wavy/home/upcoming-1.png",
-        alt: "Upcoming 1/2",
+        alt: "Upcoming 1",
       },
       {
         id: "2.02",
         src: "/work/wavy/home/upcoming-2.png",
-        alt: "Upcoming 2/2",
+        alt: "Upcoming 2",
       },
       {
         id: "2.03",
@@ -102,7 +62,11 @@ import Carousel from "../../components/study/Carousel.astro";
     span={{ base: 12, md: 8 }}
     orientation="3/2"
     fit="cover"
-  />
+  >
+    <Fragment slot="description">
+      The List View organizes events into **Swimlanes and an Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
+    </Fragment>
+  </Carousel>
   <Carousel
     slides={[
       {
@@ -200,41 +164,46 @@ import Carousel from "../../components/study/Carousel.astro";
       },
       {
         id: "2.12",
+        src: "/work/wavy/home/calendar-cell.png",
+        alt: "Calendar, cell",
+      },
+      {
+        id: "2.13",
         src: "/work/wavy/home/calendar-default.png",
         alt: "Calendar, default",
       },
       {
-        id: "2.13",
+        id: "2.14",
         src: "/work/wavy/home/calendar-red.png",
         alt: "Calendar, red",
       },
       {
-        id: "2.14",
+        id: "2.15",
         src: "/work/wavy/home/calendar-pink.png",
         alt: "Calendar, pink",
       },
       {
-        id: "2.15",
+        id: "2.16",
         src: "/work/wavy/home/calendar-orange.png",
         alt: "Calendar, orange",
       },
       {
-        id: "2.16",
+        id: "2.17",
         src: "/work/wavy/home/calendar-yellow.png",
         alt: "Calendar, yellow",
       },
       {
-        id: "2.17",
+        id: "2.18",
         src: "/work/wavy/home/calendar-green.png",
         alt: "Calendar, green",
       },
       {
-        id: "2.18",
+        id: "2.19",
         src: "/work/wavy/home/calendar-blue.png",
         alt: "Calendar, blue",
       },
       {
-        id: "2.19",
+        id: "2.20",
         src: "/work/wavy/home/calendar-purple.png",
         alt: "Calendar, purple",
       },
@@ -242,7 +211,11 @@ import Carousel from "../../components/study/Carousel.astro";
     span={{ base: 12, md: 8 }}
     orientation="3/2"
     fit="cover"
-  />
+  >
+    <Fragment slot="description">
+      The List View organizes events into **Swimlanes and an Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
+    </Fragment>
+  </Carousel>
 </Section>
 
 <Section id="3.00" title="Differenciated Styles">
