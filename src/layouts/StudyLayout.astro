@@ -64,7 +64,7 @@ const otherCaseStudies = await getCollection('work', (
         <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
           {teammates ? teammates.map((teammate: any) => (
             <tr>
-              <td class="pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
+              <td class="pr-8 lg:pr-4 xl:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
               <td class="whitespace-nowrap">{teammate.role}</td>
             </tr>
           )) : '—'}
@@ -174,19 +174,18 @@ const otherCaseStudies = await getCollection('work', (
     <div
       class={`
         relative grid grid-cols-12 gap-x-4 gap-y-8
-        prose-strong:tracking-[-0.005rem]
+        prose-strong:tracking-[-0.003rem]
         prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
         prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
-        prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-0.5
-        prose-li:list-item
-        prose-li:list-outside
-        prose-li:pl-0.5
+        prose-ol:flex prose-ol:flex-col prose-ol:gap-3
+        prose-ol:custom-ol prose-ol:list-none prose-ol:pl-0 prose-ol:[counter-reset:item]
+        prose-li:pl-[30px] prose-li:relative
+        prose-ol>prose-li:before:absolute prose-ol>prose-li:before:left-0 prose-ol>prose-li:before:content-[counter(item)] prose-ol>prose-li:before:[counter-increment:item]
         prose-li:m-0
-        prose-li:leading-3
         prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
-        prose-video:w-auto prose-video:select-none	prose-video:my-0 
+        prose-video:w-auto prose-video:select-none prose-video:my-0 
         prose-td:p-0
-        prose-code:tracking-[-0.03em]
+        prose-code:font-sans prose-code:italic
       `}
     >
       <slot />

@@ -9,8 +9,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Arial', 'Helvetica Neue',  'Untitled Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-      serif: ['Bookish', 'Times New Roman', 'Times', 'Untitled Serif',  'Georgia', 'Cambria', 'serif'],
-      mono: ['Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+      serif: ['Georgia', 'Times New Roman', 'Times', 'Bookish', , 'Cambria', 'serif'],
+      mono: ['IBM Plex Mono', 'Berkeley Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
     },
     extend: {
       gap: {
@@ -104,6 +104,10 @@ module.exports = {
         'sub-pixel-black': 'inset 0 0.5px 0 0 rgba(0, 0, 0, 1)',
         'sub-pixel-white': 'inset 0 0.5px 0 0 rgba(255, 255, 255, 1)',
       },
+      listStyleType: {
+        none: 'none',
+        custom: 'none',
+      },
     }
   },
   variants: {
@@ -112,7 +116,49 @@ module.exports = {
     shadow: ['group-hover']
   },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    function({ addUtilities, theme }) {
+      const newUtilities = {
+        'small-caps': {
+          'font-variant': 'small-caps'
+        },
+        '.custom-ol': {
+          counterReset: 'item',
+        },
+        '.custom-ol li': {
+          display: 'block',
+          position: 'relative',
+        },
+        '.custom-ol li::before': {
+          content: 'counter(item)',
+          counterIncrement: 'item',
+          position: 'absolute',
+        },
+        '@media (max-width: 1023px)': {
+          '.custom-ol li': {
+            paddingLeft: '0.75em',
+          },
+          '.custom-ol li::before': {
+            left: '0',
+            top: '0',
+          },
+        },
+        '@media (min-width: 1024px)': {
+          '.custom-ol': {
+            paddingLeft: '0',
+          },
+          '.custom-ol li': {
+            paddingLeft: '0',
+          },
+          '.custom-ol li::before': {
+            left: '-1.25em',
+            top: '0',
+            'text-align': 'right',
+          },
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    },
   ],
   safelist: [
     "col-span-1",

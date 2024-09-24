@@ -37,18 +37,27 @@ import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from "../../components/study/MarkedNumber.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <Fragment slot="context">
-    After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team picked over time. There were a few issues: 
+    After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team had picked over time. While the fixed survey covered all the bases, it had a high drop-off rate. As a result, **organizers wanted to customize surveys** to remove non-essential questions and ask more relevant ones. 
+
+    Organizers saw survey results in the event's Feedback Tab, which summarized participation and survey data. The **Feedback Tab UI was tightly coupled with the fixed questions**. Each question results were hard-coded into a dedicated card, so insights would need redesign to accommodate any combination of questions. 
+
+    In terms of survey UX, the **platform made no mention of surveys**. There was no copy explaining that it would be sent or which questions it’ll ask. This was design debt from the old practice of Wavy creating & sending surveys manually. The team eventually automated it, but didn’t have the budget to give it the design touch it needed.
     
-    1/ Too many Qs, high dropoff rate. 2/ Organizers wanted to customize. 
+    {/* After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team had picked over time. There were a few issues: 
     
-    3/ The **platform never mentions surveys**. We only show survey data in the event's Insights tab after the event. 4/ Doesn't tell organizers it sends a survey, or what the questions will be. You only saw survey info in the insights tab, which summarized the event's participation and survey data. 5/ UI for event, was tightly coupled with fixed questions. To allow custom surveys, we'd need redesign insights tab to accomodate any kind of question.
+    While the fixed survey covered all the bases, it had a high drop-off rate. As a result, **organizers wanted to customize their surveys** to remove non-essential questions and ask more relevant questions.
+    
+    Organizers see survey results in the event's Insights Tab, which summarized the participation and survey data. The **insights UI was tightly coupled with the fixed questions**. Each question results were hard-coded into a dedicated card, so insights would need redesign to accommodate any combination of questions.
+    
+    In terms of survey UX, the **platform made no mention of surveys**. There was no copy explaining that it would be sent or which questions it’ll ask. This was design debt from the old practice of Wavy creating & sending surveys manually. The team eventually automated it, but didn’t have the budget to give it the design touch it needed. */}
   </Fragment>
 </Section>
 <Section id="2.00" title='Survey'>
-  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  <p slot="context">We **grouped everything survey-related into a dedicated tab**. Centralizing all information and controls made surveys easy to discover, manage and reference later. For survey questions, we created a minimal set of types: *rating*, *multiple choice* & *long answer*. By honing in on a few options, we gave organizers enough power without adding too much complexity.</p>
   <Video 
     id= "2.01"
     src="/work/wavy/feedback/survey-video.mp4"
@@ -131,7 +140,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.07"
       src="/work/wavy/feedback/survey-summary-mobile.png"
       alt="Summary, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -139,7 +148,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.08"
       src="/work/wavy/feedback/survey-responses-mobile.png"
       alt="Responses, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -147,7 +156,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.09"
       src="/work/wavy/feedback/survey-responses-filtered-mobile.png"
       alt="Responses, filtered, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -155,7 +164,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.10"
       src="/work/wavy/feedback/survey-questions-mobile.png"
       alt="Questions, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -163,7 +172,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.11"
       src="/work/wavy/feedback/survey-public-mobile.png"
       alt="Public, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -171,7 +180,7 @@ import Carousel from "../../components/study/Carousel.astro";
       id="2.12"
       src="/work/wavy/feedback/survey-edit-mobile.png"
       alt="Edit, mobile"
-      span={{ base: 6, md: 4 }}
+      span={4}
       orientation="vertical"
       isFullBleed={true}
     />
@@ -200,7 +209,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </Section>
 <Section id="3.00" title='Insights'>
-  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  <p slot="context">We **renamed the "Feedback" tab to "Insights"**. The old name caused confusion since people tend to think of "Feedback" as "What people <i class="mr-[1px]">said</i>". Since the tab includes participation data, it made sense to name it something that could encompasses all post-event info. "Insights" also speaks better to the purpose of post event data: What's the takeaway? What did we learn? It made clicking the tab an expression of intent: GIMME SOME INSIGHTS. The new name also made a logical connection between event insights and the global Insights page, reinforcing the purpose of each space.</p>
   <Video 
     id= "3.01"
     src="/work/wavy/feedback/insights-video.mp4"
@@ -286,7 +295,7 @@ import Carousel from "../../components/study/Carousel.astro";
   </div>
 </Section>
 <Section id="4.00" title='Keeping old data'>
-  <p slot="context">A big constraint on the project is we **didn't want to lose data from past surveys**. Some customers had been </p>
+  <p slot="context">A big constraint on the project is we **didn't want to lose data from past surveys**. Using `rating`, `mutlitple-choice` and `long-answer` let us migrate all fixed questions into a set of controlled questions without losing data. We kept the old fixed questions as the defult for every survey. This gave organizers a solid template to guide their questions, while letting them make it their own.</p>
 </Section>
 
 {/* <Challenges challenges={[

@@ -17,7 +17,7 @@ const { id, title } = Astro.props;
     <span>{id}</span>
     <span class="">{title}</span>
   </h1>
-  <div class="flex flex-col mt-3.5 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
+  <div class="context flex flex-col mt-3.5 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
     <slot name="context" />
   </div>
   {Astro.slots.has('default') && (
@@ -26,3 +26,22 @@ const { id, title } = Astro.props;
     </div>
   )}
 <section/>
+
+<style>
+  .context > ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  
+  .context > ol > li {
+    counter-increment: item;
+  }
+  
+  .context > ol > li::before {
+    content: counter(item) " ";
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+</style>
