@@ -34,7 +34,10 @@ const study = defineCollection({
     type: z.string(),
     work: reference('work'),
     tools: z.array(z.string()),
-    image: z.string().optional(),
+    images: z.object({
+      sm: z.string(),
+      lg: z.string(),
+    }),
     teammates: z.object({
       name: z.string(),
       role: z.string(), 
