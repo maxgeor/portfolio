@@ -76,7 +76,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
 </Section>
 
-<Section id="2.00" title='Form UI'>
+<Section id="2.00" title='Solution'>
   <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
   <Carousel
     slides={[
@@ -104,7 +104,6 @@ import Carousel from "../../components/study/Carousel.astro";
     ]}
     span={{ base: 12, md: 10 }}
   />
-
   <Carousel
     orientation="vertical"
     slides={[
@@ -203,6 +202,13 @@ import Carousel from "../../components/study/Carousel.astro";
       hasBorder={false}
     />
   </div>
+  <Video 
+    id= "2.11"
+    src="/work/formie/landing-page.mp4"
+    alt="Landing page"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+  />
 </Section>
 
 {/* <Challenges challenges={[
