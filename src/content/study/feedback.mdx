@@ -47,7 +47,7 @@ import Carousel from "../../components/study/Carousel.astro";
     3/ The **platform never mentions surveys**. We only show survey data in the event's Insights tab after the event. 4/ Doesn't tell organizers it sends a survey, or what the questions will be. You only saw survey info in the insights tab, which summarized the event's participation and survey data. 5/ UI for event, was tightly coupled with fixed questions. To allow custom surveys, we'd need redesign insights tab to accomodate any kind of question.
   </Fragment>
 </Section>
-<Section id="2.00" title='Solution'>
+<Section id="2.00" title='Survey'>
   <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
   <Video 
     id= "2.01"
@@ -198,8 +198,11 @@ import Carousel from "../../components/study/Carousel.astro";
     orientation="3/2"
     fit="cover"
   />
+</Section>
+<Section id="3.00" title='Insights'>
+  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
   <Video 
-    id= "2.16"
+    id= "3.01"
     src="/work/wavy/feedback/insights-video.mp4"
     alt="Insights tab"
     span={{ base: 12, md: 10 }}
@@ -208,22 +211,22 @@ import Carousel from "../../components/study/Carousel.astro";
   <Carousel
     slides={[
       {
-        id: "2.17",
+        id: "3.02",
         src: "/work/wavy/feedback/insights.png",
         alt: "Tldr & Participation",
       },
       {
-        id: "2.18",
+        id: "3.03",
         src: "/work/wavy/feedback/insights-feedback.png",
         alt: "Feedback",
       },
       {
-        id: "2.19",
+        id: "3.04",
         src: "/work/wavy/feedback/insights-public.png",
         alt: "Public",
       },
       {
-        id: "2.20",
+        id: "3.05",
         src: "/work/wavy/feedback/insights-empty.png",
         alt: "Empty",
       },
@@ -236,17 +239,17 @@ import Carousel from "../../components/study/Carousel.astro";
     orientation="vertical"
     slides={[
       {
-        id: "2.21",
+        id: "3.06",
         src: "/work/wavy/feedback/insights-mobile.png",
         alt: "Tldr & Participation, mobile",
       },
       {
-        id: "2.22",
+        id: "3.07",
         src: "/work/wavy/feedback/insights-feedback-mobile.png",
         alt: "Feedback, mobile",
       },
       {
-        id: "2.23",
+        id: "3.08",
         src: "/work/wavy/feedback/insights-public-mobile.png",
         alt: "Public, mobile",
       },
@@ -257,7 +260,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
   <div class="hidden md:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
     <Image
-      id="2.21"
+      id="3.06"
       src="/work/wavy/feedback/insights-mobile.png"
       alt="Tldr & Participation, mobile"
       span={{ base: 6, md: 4 }}
@@ -265,7 +268,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.22"
+      id="3.07"
       src="/work/wavy/feedback/insights-feedback-mobile.png"
       alt="Feedback, mobile"
       span={{ base: 6, md: 4 }}
@@ -273,7 +276,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.23"
+      id="3.08"
       src="/work/wavy/feedback/insights-public-mobile.png"
       alt="Public, mobile"
       span={{ base: 6, md: 4 }}
@@ -282,7 +285,7 @@ import Carousel from "../../components/study/Carousel.astro";
     />
   </div>
 </Section>
-<Section id="3.00" title='Keeping old data'>
+<Section id="4.00" title='Keeping old data'>
   <p slot="context">A big constraint on the project is we **didn't want to lose data from past surveys**. Some customers had been </p>
 </Section>
 

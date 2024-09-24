@@ -3,13 +3,16 @@ import clsx from 'clsx';
 export interface Props {
   id: string;
   text: string;
+  element?: string;
   classes?: string;
 }
 
-const { id, text, classes = '' } = Astro.props;
+const { id, text, element = 'p', classes = '' } = Astro.props;
+
+const Element = element as keyof HTMLElementTagNameMap;
 ---
 
-<div class={clsx("flex gap-2 uppercase col-span-full", classes)}>
-  <p>{id}</p>
-  <p>{text}</p>
-</div>
+<Element class={clsx("flex gap-2 uppercase col-span-full", classes)}>
+  <span class="w-[23px]">{id}</span>
+  <span>{text}</span>
+</Element>
