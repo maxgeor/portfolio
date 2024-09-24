@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getCenteredColClasses } from '../../utils/class-generator'
+import { getCenteredColClasses, getPaddingClasses } from '../../utils/class-generator'
 import { stripExtension } from "../../utils/formatting";
 import Caption from './Caption.astro';
 import clsx from 'clsx';
@@ -12,8 +12,8 @@ export interface Props {
   description?: string;
   hasCaption?: boolean;
   span?: ResponsiveNumber;
-  hasBorder?: boolean
-  isPadded?: boolean;
+  isPadded?: ResponsiveBool;
+  hasBorder?: ResponsiveBool;
   orientation?: 'vertical' | 'horizontal' | '3/2';
   fit?: 'contain' | 'cover';
   classes?: string;
@@ -24,7 +24,6 @@ const {
   alt,
   id,
   span = 12,
-  description = "",
   hasBorder = false,
   isPadded = true,
   hasCaption = true,
@@ -37,6 +36,7 @@ const extensionlessSrc = stripExtension(src);
 
 const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
 
+const paddingClasses = getPaddingClasses(isPadded);
 const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span);
 
 let aspectRatio;
@@ -55,10 +55,10 @@ switch(orientation) {
     aspectRatio = 'aspect-[7/4]';
 }
 ---
-<div class={clsx('flex flex-col gap-y-2 col-span-full carousel', classes)}>
+<div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
   <div class={clsx(
-    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    isPadded && 'p-8 lg:py-16'
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 border-y-[0.5px] border-neutral-200 dark:border-neutral-900 lg:px-2 -mx-2 col-span-full",
+    paddingClasses
   )}>
     <div class={clsx(
       "flex flex-col gap-x-4 gap-y-2 h-fit",
@@ -67,12 +67,7 @@ switch(orientation) {
       endClasses,
     )}>
       <video
-        class={clsx(
-          'w-full select-none self-center',
-          hasBorder && 'border border-neutral-300 dark:border-neutral-700',
-          aspectRatio,
-          objectFit,
-        )}
+        class={clsx('w-full select-none self-center', aspectRatio, objectFit)}
         poster={extensionlessSrc + ".png"}
         playsinline
         autoplay

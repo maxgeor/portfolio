@@ -239,53 +239,28 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
   },
 };
 
-const bleedClassesMap: Record<string, string> = {
-  true: "-mx-2",
-  false: "mx-0",
+const paddingClassesMap: Record<string, string> = {
+  true: "p-8 lg:px-2 lg:py-16",
+  false: "",
 };
 
-const responsiveBleedClassesMap: Record<string, Record<string, string>> = {
-  base: bleedClassesMap,
+const responsivePaddingClassesMap: Record<string, Record<string, string>> = {
+  base: paddingClassesMap,
   sm: {
-    true: "sm:-mx-2",
-    false: "sm:mx-0",
+    true: "sm:p-8 lg:px-2 lg:py-16",
+    false: "sm:p-0 lg:p-0",
   },
   md: {
-    true: "md:-mx-2",
-    false: "md:mx-0",
+    true: "md:p-8 lg:px-2 lg:py-16",
+    false: "md:p-0 lg:p-0",
   },
   lg: {
-    true: "lg:-mx-2",
-    false: "lg:mx-0",
+    true: "lg:px-2 lg:py-16",
+    false: "lg:p-0",
   },
   xl: {
-    true: "xl:-mx-2",
-    false: "xl:mx-0",
-  },
-};
-
-const bleedPaddingClassesMap: Record<string, string> = {
-  true: "px-2",
-  false: "px-0",
-};
-
-const responsiveBleedPaddingClassesMap: Record<string, Record<string, string>> = {
-  base: bleedPaddingClassesMap,
-  sm: {
-    true: "sm:px-2",
-    false: "sm:px-0",
-  },
-  md: {
-    true: "md:px-2",
-    false: "md:px-0",
-  },
-  lg: {
-    true: "lg:px-2",
-    false: "lg:px-0",
-  },
-  xl: {
-    true: "xl:px-2",
-    false: "xl:px-0",
+    true: "xl:px-2 xl:py-16",
+    false: "xl:p-0",
   },
 };
 
@@ -337,50 +312,6 @@ function mapColStartEndToClasses(
     }
     return classes;
   }
-}
-
-function mapBleedAndPaddingClasses(bleed: ResponsiveBool) {
-  const bleedClasses: string[] = [];
-  const paddingClasses: string[] = [];
-
-  function addClassesForBreakpoints(
-    baseClass: string,
-    responsiveClassesMap: Record<string, Record<string, string>>,
-    breakpoints: {
-      sm?: boolean;
-      md?: boolean;
-      lg?: boolean;
-      xl?: boolean;
-    },
-    targetClasses: string[]
-  ) {
-    targetClasses.push(baseClass);
-    if (breakpoints.sm !== undefined) {
-      targetClasses.push(responsiveClassesMap.sm[breakpoints.sm.toString()]);
-    }
-    if (breakpoints.md !== undefined) {
-      targetClasses.push(responsiveClassesMap.md[breakpoints.md.toString()]);
-    }
-    if (breakpoints.lg !== undefined) {
-      targetClasses.push(responsiveClassesMap.lg[breakpoints.lg.toString()]);
-    }
-    if (breakpoints.xl !== undefined) {
-      targetClasses.push(responsiveClassesMap.xl[breakpoints.xl.toString()]);
-    }
-  }
-
-  if (typeof bleed === 'boolean') {
-    bleedClasses.push(bleedClassesMap[bleed.toString()]);
-    paddingClasses.push(bleedPaddingClassesMap[bleed.toString()]);
-  } else {
-    addClassesForBreakpoints(bleedClassesMap[bleed.base.toString()], responsiveBleedClassesMap, bleed, bleedClasses);
-    addClassesForBreakpoints(bleedPaddingClassesMap[bleed.base.toString()], responsiveBleedPaddingClassesMap, bleed, paddingClasses);
-  }
-
-  return {
-    bleedClasses,
-    paddingClasses,
-  };
 }
 
 export function getColClasses(
@@ -437,16 +368,31 @@ export function getCenteredColClasses(span: ResponsiveNumber) {
   }
 }
 
+export function getPaddingClasses(hasPadding: ResponsiveBool): string[] {
+  function mapHasPaddingToClasses(value: boolean, breakpoint?: string): string {
+    const classMap = breakpoint ? responsivePaddingClassesMap[breakpoint] : paddingClassesMap;
+    return classMap[value.toString()];
+  }
 
+  if (typeof hasPadding === 'boolean') {
+    return [mapHasPaddingToClasses(hasPadding)];
+  } else {
+    const classes: string[] = [];
+    classes.push(mapHasPaddingToClasses(hasPadding.base));
 
-export function getResponsiveBoolClasses(fullBleed: ResponsiveBool) {
-  const { 
-    bleedClasses, 
-    paddingClasses 
-  } = mapBleedAndPaddingClasses(fullBleed);
+    if (hasPadding.sm !== undefined) {
+      classes.push(mapHasPaddingToClasses(hasPadding.sm, 'sm'));
+    }
+    if (hasPadding.md !== undefined) {
+      classes.push(mapHasPaddingToClasses(hasPadding.md, 'md'));
+    }
+    if (hasPadding.lg !== undefined) {
+      classes.push(mapHasPaddingToClasses(hasPadding.lg, 'lg'));
+    }
+    if (hasPadding.xl !== undefined) {
+      classes.push(mapHasPaddingToClasses(hasPadding.xl, 'xl'));
+    }
 
-  return {
-    bleedClasses,
-    paddingClasses,
-  };
+    return classes;
+  }
 }

@@ -54,6 +54,7 @@ import Carousel from "../../components/study/Carousel.astro";
     src="/work/wavy/feedback/survey-video.mp4"
     alt="Survey tab"
     span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
   />
   <Carousel
     slides={[
@@ -88,57 +89,35 @@ import Carousel from "../../components/study/Carousel.astro";
     fit="cover"
   />
   <Carousel
-    slides={[
-      {
-        id: "2.07",
-        src: "/work/wavy/feedback/survey-edit.png",
-        alt: "Edit",
-      },
-      {
-        id: "2.08",
-        src: "/work/wavy/feedback/survey-edit-multiple-choice.png",
-        alt: "Edit, multiple choice",
-      },
-      {
-        id: "2.09",
-        src: "/work/wavy/feedback/survey-edit-long-answer.png",
-        alt: "Edit, long answer",
-      },
-    ]}
-    span={{ base: 12, md: 8 }}
-    orientation="3/2"
-    fit="cover"
-  />
-  <Carousel
     orientation="vertical"
     slides={[
       {
-        id: "2.10",
+        id: "2.07",
         src: "/work/wavy/feedback/survey-summary-mobile.png",
         alt: "Summary, mobile",
       },
       {
-        id: "2.11",
+        id: "2.08",
         src: "/work/wavy/feedback/survey-responses-mobile.png",
         alt: "Responses, mobile",
       },
       {
-        id: "2.12",
+        id: "2.09",
         src: "/work/wavy/feedback/survey-responses-filtered-mobile.png",
         alt: "Responses, filtered, mobile",
       },
       {
-        id: "2.13",
+        id: "2.10",
         src: "/work/wavy/feedback/survey-questions-mobile.png",
         alt: "Questions, mobile",
       },
       {
-        id: "2.14",
+        id: "2.11",
         src: "/work/wavy/feedback/survey-public-mobile.png",
         alt: "Public, mobile",
       },
       {
-        id: "2.15",
+        id: "2.12",
         src: "/work/wavy/feedback/survey-edit-mobile.png",
         alt: "Edit, mobile",
       },
@@ -149,7 +128,7 @@ import Carousel from "../../components/study/Carousel.astro";
   />
   <div class="hidden md:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
     <Image
-      id="2.10"
+      id="2.07"
       src="/work/wavy/feedback/survey-summary-mobile.png"
       alt="Summary, mobile"
       span={{ base: 6, md: 4 }}
@@ -157,7 +136,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.11"
+      id="2.08"
       src="/work/wavy/feedback/survey-responses-mobile.png"
       alt="Responses, mobile"
       span={{ base: 6, md: 4 }}
@@ -165,7 +144,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.12"
+      id="2.09"
       src="/work/wavy/feedback/survey-responses-filtered-mobile.png"
       alt="Responses, filtered, mobile"
       span={{ base: 6, md: 4 }}
@@ -173,7 +152,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.13"
+      id="2.10"
       src="/work/wavy/feedback/survey-questions-mobile.png"
       alt="Questions, mobile"
       span={{ base: 6, md: 4 }}
@@ -181,7 +160,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.14"
+      id="2.11"
       src="/work/wavy/feedback/survey-public-mobile.png"
       alt="Public, mobile"
       span={{ base: 6, md: 4 }}
@@ -189,7 +168,7 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.15"
+      id="2.12"
       src="/work/wavy/feedback/survey-edit-mobile.png"
       alt="Edit, mobile"
       span={{ base: 6, md: 4 }}
@@ -197,11 +176,34 @@ import Carousel from "../../components/study/Carousel.astro";
       isFullBleed={true}
     />
   </div>
+  <Carousel
+    slides={[
+      {
+        id: "2.13",
+        src: "/work/wavy/feedback/survey-edit.png",
+        alt: "Edit",
+      },
+      {
+        id: "2.14",
+        src: "/work/wavy/feedback/survey-edit-multiple-choice.png",
+        alt: "Edit, multiple choice",
+      },
+      {
+        id: "2.15",
+        src: "/work/wavy/feedback/survey-edit-long-answer.png",
+        alt: "Edit, long answer",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
   <Video 
     id= "2.16"
     src="/work/wavy/feedback/insights-video.mp4"
     alt="Insights tab"
     span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
   />
   <Carousel
     slides={[

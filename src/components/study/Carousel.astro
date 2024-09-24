@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getCenteredColClasses, getResponsiveBoolClasses } from '../../utils/class-generator'
+import { getCenteredColClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
 import Caption from './Caption.astro';
@@ -111,26 +111,25 @@ switch(orientation) {
             >
               {slide.type === "video" ? (
                 <Video
+                  id={slide.id}
                   src={slide.src}
                   alt={slide.alt}
-                  id={slide.id}
-                  hasBorder={false}
-                  fit='cover'
-                  hasCaption={false}
                   fit={slide.fit || 'cover'}
                   isPadded={false}
+                  hasBorder={false}
+                  hasCaption={false}
                   classes={slide.classes}
                 />
               ) : (
                 <Image
+                  id={slide.id}
                   src={slide.src}
                   alt={slide.alt}
-                  id={slide.id}
-                  hasBorder={false}
-                  orientation={orientation}
-                  hasCaption={false}
                   fit={slide.fit || 'cover'}
+                  orientation={orientation}
                   isPadded={false}
+                  hasBorder={false}
+                  hasCaption={false}
                   classes={slide.classes}
                 />
               )}
