@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getCenteredColClasses } from '../../utils/class-generator'
+import { getCenteredColClasses, getPaddingClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
 import Caption from './Caption.astro';
@@ -34,6 +34,7 @@ const {
   classes = "" 
 } = Astro.props;
 
+const paddingClasses = getPaddingClasses(isPadded);
 const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
 
 let aspectRatio;
@@ -61,7 +62,7 @@ switch(orientation) {
   )}
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    isPadded && 'p-8 lg:py-16'
+    paddingClasses
   )}>
     <button 
       aria-label="Previous slide" 
