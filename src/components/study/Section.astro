@@ -19,7 +19,7 @@ const { id, title } = Astro.props;
     <span>{id}</span>
     <span class="">{title}</span>
   </h1>
-  <div class="flex flex-col mt-3.5 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 xl:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mt-0">
+  <div class="flex flex-col mt-3.5 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 xl:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0">
     <slot name="context" />
   </div>
   {Astro.slots.has('default') && (
