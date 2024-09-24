@@ -36,55 +36,20 @@ import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
-  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
-  {/* <Carousel
-    slides={[
-      {
-        id: "1.01",
-        src: "/work/formie/annotated-etherscan-page.png",
-        alt: "Etherscan's UI",
-      },
-      {
-        id: "1.02",
-        src: "/work/formie/research/forms/etherscan-form-ui.png",
-        alt: "Etherscan's form",
-      },
-    ]}
-    description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
-    span={{ base: 12, md: 8 }}
-    start={{ base: 1, md: 3 }}
-  />
-  <Carousel
-    slides={[
-      {
-        id: "1.03",
-        src: "/work/formie/research/one-ways/mloot-flow",
-        alt: "Minting mLoot",
-        type: "video"
-      },
-      {
-        id: "1.04",
-        src: "/work/formie/research/one-ways/banners-flow",
-        alt: "Minting Banners",
-        type: "video"
-      },
-      {
-        id: "1.05",
-        src: "/work/formie/research/one-ways/rune-flow",
-        alt: "Minting Runes",
-        type: "video"
-      },
-    ]}
-    span={{ base: 12, md: 8 }}
-    description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
-  /> */}
+  <Fragment slot="context">
+    After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team picked over time. There were a few issues: 
+    
+    1/ Too many Qs, high dropoff rate. 2/ Organizers wanted to customize. 
+    
+    3/ The **platform never mentions surveys**. We only show survey data in the event's Insights tab after the event. 4/ Doesn't tell organizers it sends a survey, or what the questions will be. You only saw survey info in the insights tab, which summarized the event's participation and survey data. 5/ UI for event, was tightly coupled with fixed questions. To allow custom surveys, we'd need redesign insights tab to accomodate any kind of question.
+  </Fragment>
 </Section>
-<Section id="2.00" title='Survey'>
+<Section id="2.00" title='Solution'>
   <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
   <Video 
     id= "2.01"
     src="/work/wavy/feedback/survey-video.mp4"
-    alt="Survey walkthrough"
+    alt="Survey tab"
     span={{ base: 12, md: 10 }}
   />
   <Carousel
@@ -120,27 +85,59 @@ import Carousel from "../../components/study/Carousel.astro";
     fit="cover"
   />
   <Carousel
-    orientation="vertical"
     slides={[
       {
         id: "2.07",
+        src: "/work/wavy/feedback/survey-edit.png",
+        alt: "Edit",
+      },
+      {
+        id: "2.08",
+        src: "/work/wavy/feedback/survey-edit-multiple-choice.png",
+        alt: "Edit, multiple choice",
+      },
+      {
+        id: "2.09",
+        src: "/work/wavy/feedback/survey-edit-long-answer.png",
+        alt: "Edit, long answer",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    orientation="vertical"
+    slides={[
+      {
+        id: "2.10",
         src: "/work/wavy/feedback/survey-summary-mobile.png",
         alt: "Summary, mobile",
       },
       {
-        id: "2.08",
+        id: "2.11",
         src: "/work/wavy/feedback/survey-responses-mobile.png",
         alt: "Responses, mobile",
       },
       {
-        id: "2.09",
+        id: "2.12",
         src: "/work/wavy/feedback/survey-responses-filtered-mobile.png",
         alt: "Responses, filtered, mobile",
       },
       {
-        id: "2.10",
+        id: "2.13",
         src: "/work/wavy/feedback/survey-questions-mobile.png",
         alt: "Questions, mobile",
+      },
+      {
+        id: "2.14",
+        src: "/work/wavy/feedback/survey-public-mobile.png",
+        alt: "Public, mobile",
+      },
+      {
+        id: "2.15",
+        src: "/work/wavy/feedback/survey-edit-mobile.png",
+        alt: "Edit, mobile",
       },
     ]}
     classes="md:hidden"
@@ -149,66 +146,79 @@ import Carousel from "../../components/study/Carousel.astro";
   />
   <div class="hidden md:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
     <Image
-      id="2.07"
+      id="2.10"
       src="/work/wavy/feedback/survey-summary-mobile.png"
       alt="Summary, mobile"
-      span={{ base: 6, xl: 3 }}
+      span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
-      id="2.08"
+      id="2.11"
       src="/work/wavy/feedback/survey-responses-mobile.png"
       alt="Responses, mobile"
-      span={{ base: 6, xl: 3 }}
+      span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
-      id="2.09"
+      id="2.12"
       src="/work/wavy/feedback/survey-responses-filtered-mobile.png"
       alt="Responses, filtered, mobile"
-      span={{ base: 6, xl: 3 }}
+      span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
-      id="2.10"
+      id="2.13"
       src="/work/wavy/feedback/survey-questions-mobile.png"
       alt="Questions, mobile"
-      span={{ base: 6, xl: 3 }}
+      span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
+    />
+    <Image
+      id="2.14"
+      src="/work/wavy/feedback/survey-public-mobile.png"
+      alt="Public, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.15"
+      src="/work/wavy/feedback/survey-edit-mobile.png"
+      alt="Edit, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
     />
   </div>
-</Section>
-<Section id="3.00" title='Insights'>
-  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
   <Video 
-    id= "3.01"
+    id= "2.16"
     src="/work/wavy/feedback/insights-video.mp4"
-    alt="Insights walkthrough"
+    alt="Insights tab"
     span={{ base: 12, md: 10 }}
   />
   <Carousel
     slides={[
       {
-        id: "3.02",
+        id: "2.17",
         src: "/work/wavy/feedback/insights.png",
         alt: "Tldr & Participation",
       },
       {
-        id: "3.03",
+        id: "2.18",
         src: "/work/wavy/feedback/insights-feedback.png",
         alt: "Feedback",
       },
       {
-        id: "3.04",
-        src: "/work/wavy/feedback/survey-responses-filtered.png",
+        id: "2.19",
+        src: "/work/wavy/feedback/insights-public.png",
         alt: "Public",
       },
       {
-        id: "3.05",
+        id: "2.20",
         src: "/work/wavy/feedback/insights-empty.png",
         alt: "Empty",
       },
@@ -221,17 +231,17 @@ import Carousel from "../../components/study/Carousel.astro";
     orientation="vertical"
     slides={[
       {
-        id: "3.06",
+        id: "2.21",
         src: "/work/wavy/feedback/insights-mobile.png",
         alt: "Tldr & Participation, mobile",
       },
       {
-        id: "3.07",
+        id: "2.22",
         src: "/work/wavy/feedback/insights-feedback-mobile.png",
         alt: "Feedback, mobile",
       },
       {
-        id: "3.08",
+        id: "2.23",
         src: "/work/wavy/feedback/insights-public-mobile.png",
         alt: "Public, mobile",
       },
@@ -242,30 +252,33 @@ import Carousel from "../../components/study/Carousel.astro";
   />
   <div class="hidden md:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
     <Image
-      id="3.06"
+      id="2.21"
       src="/work/wavy/feedback/insights-mobile.png"
       alt="Tldr & Participation, mobile"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
-      id="3.07"
+      id="2.22"
       src="/work/wavy/feedback/insights-feedback-mobile.png"
       alt="Feedback, mobile"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
-      id="3.08"
+      id="2.23"
       src="/work/wavy/feedback/insights-public-mobile.png"
       alt="Public, mobile"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
   </div>
+</Section>
+<Section id="3.00" title='Keeping old data'>
+  <p slot="context">A big constraint on the project is we **didn't want to lose data from past surveys**. Some customers had been </p>
 </Section>
 
 {/* <Challenges challenges={[

@@ -90,11 +90,16 @@ switch(orientation) {
     endClasses,
   )}>
     <div class={clsx(
-      "flex justify-between gap-4 ",
-      hasCaption || description ? 'col-span-full lg:col-span-2' : 'col-span-full '
+      "flex justify-between gap-4 -my-0.5",
+      hasCaption || Astro.slots.has('description') ? 'col-span-full lg:col-span-2' : 'col-span-full '
     )}>
-      {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
+      {hasCaption && <Caption id={id} text={alt} />}
     </div>
-    {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
+    {Astro.slots.has('description') && (
+      <div class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">
+        <slot name="description" />
+      </div>
+    )}
+    <!-- {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>} -->
   </div>
 </div>

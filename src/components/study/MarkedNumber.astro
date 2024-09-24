@@ -1,0 +1,9 @@
+---
+export interface Props {
+  number: number;
+}
+
+const { number } = Astro.props;
+---
+
+<span class="inline-block">{number}/</span>

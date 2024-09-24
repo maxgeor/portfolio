@@ -28,10 +28,11 @@ import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from '../../components/study/MarkedNumber.astro';
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <Fragment slot="context">
-    Wavy’s homepage made it **hard to find the events you care about**. It was a single calendar view with cells showing *events*, *notable days* and *suggested events*. These **items were undifferentiated**. At a glance, you couldn’t tell them apart. Events items themselves had no *status*, so you couldn’t tell which ones you’ve been invited to or already responded to. The month view made it difficult to see outside the current month. You’d forget all about events that 1-2 months away and go on scavenger hunts to find that event from 3 months ago. On top of that, may of the calendar’s colour themes weren’t accessible.
+    Wavy’s homepage was single calendar view with cells showing events, notable days and suggested events. It had multiple issues that made it **hard to find the events you care about**. <MarkedNumber number={1} /> Calendar items were undifferentiated. They had no status, so you couldn’t tell find your event invites or RSVPs at a glance. <MarkedNumber number={2} /> You could also only seeing one month at a time. This made it easy to forget events 1-2 months away and hard to find past ones. <MarkedNumber number={3} /> Calendars had optional themes with harsh, inaccessable saturations. If a theme wasn't an eyesore, it was near-impossible to read the text.
   </Fragment>
 </Section>
 <Section id="2.00" title='Solution'>
@@ -64,7 +65,7 @@ import Carousel from "../../components/study/Carousel.astro";
     fit="cover"
   >
     <Fragment slot="description">
-      The List View organizes events into **Swimlanes and an Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
+      The List View organizes events into **Swimlanes & Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
     </Fragment>
   </Carousel>
   <Carousel
@@ -72,27 +73,27 @@ import Carousel from "../../components/study/Carousel.astro";
       {
         id: "2.05",
         src: "/work/wavy/home/upcoming-mobile-1.png",
-        alt: "Upcoming, mobile 1/2",
+        alt: "Upcoming, mobile 1",
       },
       {
         id: "2.06",
         src: "/work/wavy/home/upcoming-mobile-2.png",
-        alt: "Upcoming, mobile 2/2",
+        alt: "Upcoming, mobile 2",
       },
       {
         id: "2.07",
-        src: "/work/wavy/home/past-mobile-1.png",
-        alt: "Past, mobile 1/3",
+        src: "/work/wavy/home/upcoming-mobile-3.png",
+        alt: "Upcoming, mobile 3",
       },
       {
         id: "2.08",
-        src: "/work/wavy/home/past-mobile-2.png",
-        alt: "Past, mobile 2/3",
+        src: "/work/wavy/home/past-mobile-1.png",
+        alt: "Past, mobile 1",
       },
       {
         id: "2.09",
-        src: "/work/wavy/home/past-mobile-3.png",
-        alt: "Past, mobile 3/3",
+        src: "/work/wavy/home/past-mobile-2.png",
+        alt: "Past, mobile 2",
       },
       {
         id: "2.10",
@@ -109,50 +110,51 @@ import Carousel from "../../components/study/Carousel.astro";
     <Image
       id="2.05"
       src="/work/wavy/home/upcoming-mobile-1.png"
-      alt="Upcoming, mobile 1/2"
+      alt="Upcoming, mobile 1"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
       id="2.06"
       src="/work/wavy/home/upcoming-mobile-2.png"
-      alt="Upcoming, mobile 2/2"
+      alt="Upcoming, mobile 2"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
       id="2.07"
-      src="/work/wavy/home/past-mobile-1.png"
-      alt="Past, mobile 1/3"
+      src="/work/wavy/home/upcoming-mobile-3.png"
+      alt="Upcoming, mobile 3"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
       id="2.08"
-      src="/work/wavy/home/past-mobile-2.png"
-      alt="Past, mobile 2/3"
+      src="/work/wavy/home/past-mobile-1.png"
+      alt="Past, mobile 1"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
     <Image
       id="2.09"
-      src="/work/wavy/home/past-mobile-3.png"
-      alt="Past, mobile 3/3"
+      src="/work/wavy/home/past-mobile-2.png"
+      alt="Past, mobile 2"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
+    
     <Image
       id="2.10"
       src="/work/wavy/home/empty-mobile.png"
       alt="Empty, mobile"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      fullBleed={true}
+      isFullBleed={true}
     />
   </div>
   <Carousel
@@ -213,7 +215,7 @@ import Carousel from "../../components/study/Carousel.astro";
     fit="cover"
   >
     <Fragment slot="description">
-      The List View organizes events into **Swimlanes and an Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
+      The Calendar View got **refreshed to maximize density**. Reducing text size, item padding and cell spacing let us fit double the calendar items. We also touched-up the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel pallate. It drove home Wavy's playful brand, and, you know, just looked better.
     </Fragment>
   </Carousel>
 </Section>
