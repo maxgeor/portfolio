@@ -41,23 +41,11 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <Fragment slot="context">
-    After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team had picked over time. While the fixed survey covered all the bases, it had a high drop-off rate. As a result, **organizers wanted to customize surveys** to remove non-essential questions and ask more relevant ones. 
-
-    Organizers saw survey results in the event's Feedback Tab, which summarized participation and survey data. The **Feedback Tab UI was tightly coupled with the fixed questions**. Each question results were hard-coded into a dedicated card, so insights would need redesign to accommodate any combination of questions. 
-
-    In terms of survey UX, the **platform made no mention of surveys**. There was no copy explaining that it would be sent or which questions it’ll ask. This was design debt from the old practice of Wavy creating & sending surveys manually. The team eventually automated it, but didn’t have the budget to give it the design touch it needed.
-    
-    {/* After events, Wavy sent participants a feedback survey. It was an embedded [Typeform](https://www.typeform.com/) with 8 fixed questions the Wavy team had picked over time. There were a few issues: 
-    
-    While the fixed survey covered all the bases, it had a high drop-off rate. As a result, **organizers wanted to customize their surveys** to remove non-essential questions and ask more relevant questions.
-    
-    Organizers see survey results in the event's Insights Tab, which summarized the participation and survey data. The **insights UI was tightly coupled with the fixed questions**. Each question results were hard-coded into a dedicated card, so insights would need redesign to accommodate any combination of questions.
-    
-    In terms of survey UX, the **platform made no mention of surveys**. There was no copy explaining that it would be sent or which questions it’ll ask. This was design debt from the old practice of Wavy creating & sending surveys manually. The team eventually automated it, but didn’t have the budget to give it the design touch it needed. */}
+    Wavy sent participants an 8-question [Typeform](https://www.typeform.com/) survey after events. Though it covered all the basics, many dropped off. Organizers wanted to customize surveys to remove irrelevant questions and add more useful ones. Survey results appeared in the event's Feedback tab, but the UI was built around the fixed questions and needed a redesign for customization. The platform didn’t explain surveys or what questions would be asked, a leftover from when Wavy manually handled them.
   </Fragment>
 </Section>
 <Section id="2.00" title='Survey'>
-  <p slot="context">We **grouped everything survey-related into a dedicated tab**. Centralizing all information and controls made surveys easy to discover, manage and reference later. For survey questions, we created a minimal set of types: *rating*, *multiple choice* & *long answer*. By honing in on a few options, we gave organizers enough power without adding too much complexity.</p>
+  <p slot="context">We combined all survey-related info and tools into a single tab, making surveys easy to find, manage, and revisit. For questions, we kept it simple with three types: `rating`, `multiple choice`, and `long answer`. This gave organizers enough flexibility without making things too complicated.</p>
   <Video 
     id= "2.01"
     src="/work/wavy/feedback/survey-video.mp4"
@@ -209,7 +197,7 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
   />
 </Section>
 <Section id="3.00" title='Insights'>
-  <p slot="context">We **renamed the "Feedback" tab to "Insights"**. The old name caused confusion since people tend to think of "Feedback" as "What people <i class="mr-[1px]">said</i>". Since the tab includes participation data, it made sense to name it something that could encompasses all post-event info. "Insights" also speaks better to the purpose of post event data: What's the takeaway? What did we learn? It made clicking the tab an expression of intent: GIMME SOME INSIGHTS. The new name also made a logical connection between event insights and the global Insights page, reinforcing the purpose of each space.</p>
+  <p slot="context">We renamed the “Feedback” tab to “Insights” because "Feedback" felt too focused on just what people said. Since the tab also includes participation data, "Insights" better captured all post-event info. It highlights the main goal: What did we learn? What are the takeaways? Clicking the tab now feels intentional: “I want insights.” The new name also ties event insights to the global Insights page, reinforcing their shared purpose.</p>
   <Video 
     id= "3.01"
     src="/work/wavy/feedback/insights-video.mp4"

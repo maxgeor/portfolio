@@ -35,11 +35,13 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <Fragment slot="context">
-    Wavy’s homepage was single calendar view with cells showing events, notable days and suggested events. It had multiple issues that made it **hard to find the events you care about**. <MarkedNumber number={1} /> Calendar items were undifferentiated. They had no status, so you couldn’t tell find your event invites or RSVPs at a glance. <MarkedNumber number={2} /> You could also only seeing one month at a time. This made it easy to forget events 1-2 months away and hard to find past ones. <MarkedNumber number={3} /> Calendars had optional themes with harsh, inaccessable saturations. If a theme wasn't an eyesore, it was near-impossible to read the text.
+    Wavy’s homepage was a single calendar view showing events, notable days, and suggestions, but it had issues. 1/ Calendar items weren’t labeled, so you couldn’t quickly spot invites or RSVPs. 2/ You could only see one month at a time, making it easy to forget events months ahead and hard to find past ones. 3/ Optional themes had either harsh, inaccessible colors or made the text almost unreadable.
+    {/* Wavy’s homepage was single calendar view with cells showing events, notable days and suggested events. It had multiple issues that made it **hard to find the events you care about**. <MarkedNumber number={1} /> Calendar items were undifferentiated. They had no status, so you couldn’t tell find your event invites or RSVPs at a glance. <MarkedNumber number={2} /> You could also only seeing one month at a time. This made it easy to forget events 1-2 months away and hard to find past ones. <MarkedNumber number={3} /> Calendars had optional themes with harsh, inaccessable saturations. If a theme wasn't an eyesore, it was near-impossible to read the text. */}
   </Fragment>
 </Section>
-<Section id="2.00" title='Solution'>
-  <p slot="context">We **split the home page into two views: List & Calendar**. People liked seeing events spacially, but needed a way to see everything at a glance. Two views gave people familiarity/utility of the original layout with the digestiblity of compact, organized lists. We also redesigned the calendar to be dense, accessible and visually consistent.</p>
+<Section id="2.00" title='List View'>
+  {/* <p slot="context">We split the homepage into two views: List and Calendar. The Calendar kept the familiar layout, while the List gave a quick, organized overview. We also made the calendar more dense, accessible, and consistent for easier use.</p> */}
+  <p slot="context">We added a List View to the homepage, organizing events into Swimlanes and a Timeline. Swimlanes categorize events, like Yours/Others, Upcoming/Past, or Invites/RSVPs, while the Timeline shows all events in chronological order. We made this the default view because most users come to the dashboard looking for a specific event (“I need to edit my event” or “What do I need to bring for Cocktail Making?”), which was harder to find on the calendar.</p>
   <Carousel
     slides={[
       {
@@ -66,11 +68,7 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
     span={{ base: 12, md: 8 }}
     orientation="3/2"
     fit="cover"
-  >
-    <Fragment slot="description">
-      The List View organizes events into **Swimlanes & Timeline**. Swimlanes group events by category, like Your/Other's, Upcoming/Past, Invites/RSVPs. The Timeline shows everything from the calendar in chronological order. We made this the default view since most people come to the dashboard looking for a specific event ("I need to edit my event", "What do I need to bring for Cocktal Making?"), which was hard to do on the calendar.
-    </Fragment>
-  </Carousel>
+  />
   <Carousel
     slides={[
       {
@@ -160,55 +158,66 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
       isFullBleed={true}
     />
   </div>
+</Section>
+
+<Section id="3.00" title="Calendar View">
+  <p slot="context">We refreshed the Calendar View to maximize space by reducing text size, item padding, and cell spacing, fitting twice as many items. We also updated the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel palette, which reinforced Wavy’s playful brand and, you know, just looked better.</p>
   <Carousel
     slides={[
       {
-        id: "2.11",
+        id: "3.01",
         src: "/work/wavy/home/calendar.png",
         alt: "Calendar",
       },
       {
-        id: "2.12",
+        id: "3.02",
         src: "/work/wavy/home/calendar-cell.png",
         alt: "Calendar, cell",
       },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    slides={[
       {
-        id: "2.13",
+        id: "3.03",
         src: "/work/wavy/home/calendar-default.png",
         alt: "Calendar, default",
       },
       {
-        id: "2.14",
+        id: "3.04",
         src: "/work/wavy/home/calendar-red.png",
         alt: "Calendar, red",
       },
       {
-        id: "2.15",
+        id: "3.05",
         src: "/work/wavy/home/calendar-pink.png",
         alt: "Calendar, pink",
       },
       {
-        id: "2.16",
+        id: "3.06",
         src: "/work/wavy/home/calendar-orange.png",
         alt: "Calendar, orange",
       },
       {
-        id: "2.17",
+        id: "3.07",
         src: "/work/wavy/home/calendar-yellow.png",
         alt: "Calendar, yellow",
       },
       {
-        id: "2.18",
+        id: "3.08",
         src: "/work/wavy/home/calendar-green.png",
         alt: "Calendar, green",
       },
       {
-        id: "2.19",
+        id: "3.09",
         src: "/work/wavy/home/calendar-blue.png",
         alt: "Calendar, blue",
       },
       {
-        id: "2.20",
+        id: "3.10",
         src: "/work/wavy/home/calendar-purple.png",
         alt: "Calendar, purple",
       },
@@ -216,14 +225,10 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
     span={{ base: 12, md: 8 }}
     orientation="3/2"
     fit="cover"
-  >
-    <Fragment slot="description">
-      The Calendar View got **refreshed to maximize density**. Reducing text size, item padding and cell spacing let us fit double the calendar items. We also touched-up the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel pallate. It drove home Wavy's playful brand, and, you know, just looked better.
-    </Fragment>
-  </Carousel>
+  />
 </Section>
 
-<Section id="3.00" title="Differenciated Styles">
+<Section id="4.00" title="Differenciated Styles">
   <p slot="context"></p>
   <Image 
     id="3.01"

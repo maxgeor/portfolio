@@ -30,9 +30,10 @@ import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from "../../components/study/MarkedNumber.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
-  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? <mark class="problem">Etherscan's UI sucks</mark>. [1] It's a list of technically-worded forms [2] It's hard to navigate [3] It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
+  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? **Etherscan's UI sucks**. <MarkedNumber number={1} /> It's a list of technically-worded forms, <MarkedNumber number={2} /> It's hard to navigate and <MarkedNumber number={3} /> It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
   <Carousel
     slides={[
       {
@@ -45,13 +46,6 @@ import Carousel from "../../components/study/Carousel.astro";
         src: "/work/formie/research/forms/etherscan-form-ui.png",
         alt: "Etherscan's form",
       },
-    ]}
-    description="We started by studying what worked with Etherscan's interface. Their frontend was a list of forms for each action in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was. Turns out, smart contract actions are super simple. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts."
-    span={{ base: 12, md: 8 }}
-    start={{ base: 1, md: 3 }}
-  />
-  <Carousel
-    slides={[
       {
         id: "1.03",
         src: "/work/formie/research/one-ways/mloot-flow",
@@ -72,8 +66,12 @@ import Carousel from "../../components/study/Carousel.astro";
       },
     ]}
     span={{ base: 12, md: 8 }}
-    description="Contracts have two kinds of actions: One-way actions trigger a change, but return nothing (ex: voting, sending money, changing ownership). Two-way actions return data, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics). One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs."
-  />
+    start={{ base: 1, md: 3 }}
+  >
+    <Fragment slot="description">
+      **Etherscan worked best with one-way actions** (like voting or sending ETH), which trigger changes without returning data. Two-way actions, which return more complex data (like checking balances or viewing NFTs), often needed custom UIs to handle the extra complexity. The straightforward layout made navigating one-way actions easy, while two-ways required more tailored solutions.
+    </Fragment>
+  </Carousel>
 </Section>
 
 <Section id="2.00" title='Solution'>
@@ -103,80 +101,126 @@ import Carousel from "../../components/study/Carousel.astro";
       },
     ]}
     span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "2.05",
+        src: "/work/formie/forms.png",
+        alt: "Forms",
+      },
+      {
+        id: "2.06",
+        src: "/work/formie/new-address.png",
+        alt: "New, find",
+      },
+      {
+        id: "2.06",
+        src: "/work/formie/new-method.png",
+        alt: "New, pick",
+      },
+      {
+        id: "2.07",
+        src: "/work/formie/new-title-description.png",
+        alt: "New, title",
+      },
+      {
+        id: "2.08",
+        src: "/work/formie/new-success.png",
+        alt: "New, success",
+      },
+      {
+        id: "2.09",
+        src: "/work/formie/form.png",
+        alt: "Form",
+      },
+      {
+        id: "2.10",
+        src: "/work/formie/form-pending.png",
+        alt: "Form, pending",
+      },
+      {
+        id: "2.11",
+        src: "/work/formie/form-success.png",
+        alt: "Form, success",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
   />
   <Carousel
     orientation="vertical"
     slides={[
       
       {
-        id: "2.05",
+        id: "2.12",
         src: "/work/formie/s4.png",
-        alt: "New form, find",
+        alt: "New, find",
       },
       {
-        id: "2.06",
+        id: "2.13",
         src: "/work/formie/s5.png",
-        alt: "New form, pick",
+        alt: "New, pick",
       },
       {
-        id: "2.07",
+        id: "2.14",
         src: "/work/formie/s6.png",
-        alt: "New form, titles",
+        alt: "New, title",
       },
       {
-        id: "2.08",
+        id: "2.15",
         src: "/work/formie/s2.png",
-        alt: "Forms page",
+        alt: "Forms",
       },
       {
-        id: "2.09",
+        id: "2.16",
         src: "/work/formie/s3.png",
-        alt: "Form page",
+        alt: "Form",
       },
       {
-        id: "2.10",
+        id: "2.17",
         src: "/work/formie/form-page-end.png",
-        alt: "Form page, confirmation",
+        alt: "Form, end",
       },
     ]}
     classes="md:hidden"
     fullBleed={{ base: true, lg: false }}
     isPadded={false}
   />
-  <div class="hidden md:grid grid-cols-12 gap-x-[17px] col-span-full">
+  <div class="hidden md:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
     <Image
-      id="2.05"
+      id="2.12"
       src="/work/formie/s4.png"
-      alt="New form, find"
+      alt="New, find"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       classes="hidden md:flex"
       isFullBleed={true}
     />
     <Image
-      id="2.06"
+      id="2.13"
       src="/work/formie/s5.png"
-      alt="New form, pick action"
+      alt="New, pick"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       classes="hidden md:flex"
       isFullBleed={true}
     />
     <Image
-      id="2.07"
+      id="2.14"
       src="/work/formie/s6.png"
-      alt="New form, titles"
+      alt="New, title"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
       classes="hidden md:flex"
     />
-  </div>
-  <div class="hidden md:grid grid-cols-12 gap-[17px] col-span-full ">
     <Image
-      id="2.08"
+      id="2.15"
       src="/work/formie/s2.png"
-      alt="Forms page"
+      alt="Forms"
       span={{ base: 6, md: 4 }}
       start={{ base: 3 }}
       orientation="vertical"
@@ -184,18 +228,18 @@ import Carousel from "../../components/study/Carousel.astro";
       hasBorder={false}
     />
     <Image
-      id="2.09"
+      id="2.16"
       src="/work/formie/s3.png"
-      alt="Form page"
+      alt="Form"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
       hasBorder={false}
     />
     <Image
-      id="2.10"
+      id="2.17"
       src="/work/formie/form-page-end.png"
-      alt="Form page, end"
+      alt="Form, end"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
