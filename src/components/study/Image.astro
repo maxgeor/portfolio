@@ -31,7 +31,7 @@ const {
   hasCaption = true,
   orientation = 'horizontal',
   isFullBleed = false,
-  hasBorder = false,
+  hasBorder = true,
   isPadded = false,
   fit = 'contain',
   withContainer = false,
@@ -72,14 +72,11 @@ const {
   <div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
     <div class={clsx(
       "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 border-y-[0.5px] border-neutral-200 dark:border-neutral-900 col-span-full lg:px-2 -mx-2",
+      hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900',
       isPadded && 'p-8 lg:py-16',
     )}>
       <div class={clsx("h-fit", centerdSpanClasses, centeredStartClasses, centeredEndClasses)}>
-        <figure class={clsx(
-          'image  relative',
-          hasBorder && 'border border-neutral-300 dark:border-neutral-700',
-          aspectRatio,
-        )}>
+        <figure class={clsx('image  relative', aspectRatio)}>
           <img
             src={src}
             alt={alt}
@@ -110,11 +107,7 @@ const {
     isFullBleed && '-mx-2',
     classes
   )}>
-    <figure class={clsx(
-      'image  relative',
-      hasBorder && 'border border-neutral-300 dark:border-neutral-700',
-      aspectRatio,
-    )}>
+    <figure class={clsx('image  relative', hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900', aspectRatio)}>
       <img
         src={src}
         alt={alt}
