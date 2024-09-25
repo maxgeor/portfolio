@@ -14,9 +14,43 @@ const {
   offset = 'pt-[50px]',
   classes = '',
 } = Astro.props;
+
+// Inline critical CSS to prevent flash
+const criticalCSS = `
+  :root {
+    --background-color: #fff;
+    --text-color: #000;
+    --highlight-color: #eaeaea;
+  }
+  :root.dark {
+    --background-color: #000;
+    --text-color: #fff;
+    --highlight-color: #323232;
+  }
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+`;
+
+// Inline script to set theme immediately
+const inlineScript = `
+  (function() {
+    function getTheme() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    var theme = getTheme();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    window.localStorage.setItem('theme', theme);
+  })();
+`;
 ---
+
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -24,16 +58,18 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description || "Designer & developer"} />
+    <style set:html={criticalCSS}></style>
+    <script set:html={inlineScript}></script>
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
     class={clsx(
-      " grid grid-cols-12 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
+      "grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
       offset,
       classes
     )}
   >
-    <header class=" grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-50">
+    <header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-50">
       <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit">
         <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
         <span class="sm:hidden">Max KC Georgopoulos</span>
@@ -45,8 +81,8 @@ const {
       <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
       <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
     </header>
-    <div id="full-screen-menu" class="fixed inset-0 bg-white dark:bg-black z-40 hidden md:hidden flex-col  p-2 overflow-hidden">
-      <nav class="border-black dark:border-white divide-black dark:divide-white border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
+    <div id="full-screen-menu" class="fixed inset-0 z-40 hidden md:hidden flex-col p-2 overflow-hidden">
+      <nav class="border-current divide-current border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
         <a href="/">Work</a>
         <a href="/about">About</a>
         <a href="/writing">Writing</a>
@@ -57,14 +93,9 @@ const {
   </body>
 </html>
 
-<style is:global> 
+<style is:global>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
   
-  @font-face {
-    font-family: "Berkeley Mono";
-    src: url(/fonts/BerkeleyMono-Regular.ttf);
-  }
-
   @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
@@ -74,27 +105,12 @@ const {
     --nav-width: 75px;  
     --nav-offset: calc(var(--nav-width) + (15px * 2));
     --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
-    --background-color: #fff;
-    --highlight-color: #eaeaea;
     --accent-color: #23FF27;
-  }
-
-  ::-moz-selection { 
-    background-color: var(--highlight-color);
-  }
-
-  ::selection {
-    background-color: var(--highlight-color);
   }
 
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-
-  html.dark {
-    --background-color: #000;
-    --highlight-color: #323232;
   }
 
   a {
@@ -155,16 +171,32 @@ const {
   }
 </style>
 
-<script >
-  // Immediately set the theme to prevent flash
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const fullScreenMenu = document.getElementById('full-screen-menu');
+
+    if (menuToggle && fullScreenMenu) {
+      menuToggle.addEventListener('click', () => {
+        if (fullScreenMenu.classList.contains('hidden')) {
+          fullScreenMenu.classList.remove('hidden');
+          fullScreenMenu.classList.add('flex');
+          menuToggle.textContent = 'Close';
+        } else {
+          fullScreenMenu.classList.add('hidden');
+          fullScreenMenu.classList.remove('flex');
+          menuToggle.textContent = 'Menu';
+        }
+      });
+    }
+  });
+</script>
+<!-- <script >
   const theme = (() => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme');
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+    return 'dark';
   })();
 
   if (theme === 'light') {
@@ -195,4 +227,4 @@ const {
       });
     }
   });
-</script>
+</script> -->
