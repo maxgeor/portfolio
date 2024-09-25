@@ -114,7 +114,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   function showAllWorks() {
     works.forEach(work => {
       work.style.display = '';
-      work.classList.add('active');
+      work.classList.remove('active');
     });
   }
 

@@ -16,7 +16,7 @@ const {
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -28,7 +28,7 @@ const {
   <body
     style="text-rendering: optimizeLegibility;"
     class={clsx(
-      "grid grid-cols-12 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
+      " grid grid-cols-12 relative bg-white dark:bg-black dark:text-white text-black min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
       offset,
       classes
     )}
@@ -64,7 +64,7 @@ const {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
   }
-  
+
   @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
