@@ -227,41 +227,57 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
     fit="cover"
   />
 </Section>
-
-<Section id="4.00" title="Smart Suggestions">
+<Section id="4.00" title="Differenciated Styles">
+  <p slot="context">The old layout had little visual difference between events, notable days, and suggestions, making it hard to tell them apart. We needed each item to have its own visual language that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections. **We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text**. Events were further distinguished by an icon system showing their status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar and timeline.</p>
+  {/* <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/wavy/home/differenciated-styles.png",
+        alt: "Item components",
+      },
+      {
+        id: "4.02",
+        src: "/work/wavy/home/event-statuses.png",
+        alt: "Event status system",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+  /> */}
+  <Image
+    id="4.01"
+    src="/work/wavy/home/differenciated-styles.png"
+    alt="Item components"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
+  <Image
+    id="4.02"
+    src="/work/wavy/home/event-statuses.png"
+    alt="Event status system"
+    span={{ base: 12, md: 8 }}
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
+  {/* something about smart suggestions? */}
+</Section>
+<Section id="5.00" title="Smart Suggestions">
   <p slot="context">The toggle for show notable days and suggestions was named "Culture Pal," which confused users about its purpose. To fix this, **we renamed Culture Pal to Smart Suggestions**, making it clear that the toggle adds contextual information to the layout. We used a gray sparkle and dashed lines as visual cues for suggestions. This design worked across both List and Calendar views, allowing users to easily spot suggestions wherever they appeared.</p>
   <Carousel
     slides={[
       {
-        id: "4.01",
+        id: "5.01",
         src: "/work/wavy/home/smart-suggestions-toggle.png",
         alt: "Toggle",
       },
       {
-        id: "4.02",
+        id: "5.02",
         src: "/work/wavy/home/smart-suggestions-components.png",
         alt: "Components",
       },
     ]}
     span={{ base: 12, md: 8 }}
   />
-</Section>
-
-<Section id="5.00" title="Differenciated Styles">
-  <p slot="context">The old layout had little visual difference between events, notable days, and suggestions, making it hard to tell them apart. We needed each item to have its own visual language that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections. **We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text**. Events were further distinguished by an icon system showing their status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar and timeline.</p>
-  <Carousel
-    slides={[
-      {
-        id: "5.01",
-        src: "/work/wavy/home/differenciated-styles.png",
-        alt: "Item components",
-      },
-      {
-        id: "5.02",
-        src: "/work/wavy/home/event-statuses.png",
-        alt: "Event status system",
-      },
-    ]}
-    span={{ base: 12, md: 10 }}
-  />
+  {/* something about smart suggestions? */}
 </Section>
