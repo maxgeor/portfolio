@@ -228,141 +228,40 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
   />
 </Section>
 
-<Section id="4.00" title="Differenciated Styles">
-  <p slot="context"></p>
-  <Image 
-    id="3.01"
-    src="/work/wavy/home/differenciated-styles.png"
-    alt="Event"
-    span={8}
-    hasPadding={true}
+<Section id="4.00" title="Smart Suggestions">
+  <p slot="context">The toggle for show notable days and suggestions was named "Culture Pal," which confused users about its purpose. To fix this, **we renamed Culture Pal to Smart Suggestions**, making it clear that the toggle adds contextual information to the layout. We used a gray sparkle and dashed lines as visual cues for suggestions. This design worked across both List and Calendar views, allowing users to easily spot suggestions wherever they appeared.</p>
+  <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/wavy/home/smart-suggestions-toggle.png",
+        alt: "Toggle",
+      },
+      {
+        id: "4.02",
+        src: "/work/wavy/home/smart-suggestions-components.png",
+        alt: "Components",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
   />
 </Section>
 
-{/* <Challenges challenges={[
-  {
-    title: "Shooing scammers",
-    description: "From the start, we knew <mark>scammers could use forms to misrepresent contracts</mark>. We couldn't stop them, but we needed some way to protect users without making the product harder to build or use.",
-    decisions: [
+<Section id="5.00" title="Differenciated Styles">
+  <p slot="context">The old layout had little visual difference between events, notable days, and suggestions, making it hard to tell them apart. We needed each item to have its own visual language that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections. **We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text**. Events were further distinguished by an icon system showing their status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar and timeline.</p>
+  <Carousel
+    slides={[
       {
-        title: "Making people confirm trust",
-        description: "We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
-      }
-    ],
-    image: {
-      id: "7.1",
-      src: "/work/formie/challenges/scam.png"
-    },
-    tradeoffs: [
-      "We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves."
-    ]
-  },
-  {
-    title: "Making forms flexible",
-    description: "Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions. It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.",
-    decisions: [
-      {
-        title: "Only supporting one-way actions",
-        description: "The best way to make a universal solution was to narrow the scope of what we'd solve. Two-way methods created too many edge cases. The majority of projects using Etherscan used it for one-way actions. Just focusing on one-way actions let us make a single solution that worked for most actions."
-      }
-    ],
-    image: {
-      id: "7.2",
-      src: "/work/formie/challenges/explain.png"
-    },
-    tradeoffs: [
-      "We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons: 1. Most people don't use Etherscan frontends for two-way actions, 2. Supporting two-way actions would've made the product harder to use, 3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch. We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions. Ditching two-ways axed our scope and got a leaner product out the door."
-    ]
-  },
-  {
-    title: "Communicating technical details",
-    description: "Smart contracts have tons of strange behaviors: Transactions cost a bit of money, Transactions take time to go through, Anyone can make a frontend for any contract (because they're public). The reason are technical, but anyone who doesn't understand why will face confusion, missteps, and exploitation.",
-    decisions: [
-      {
-        title: "Humanized copy",
-        description: "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
+        id: "5.01",
+        src: "/work/wavy/home/differenciated-styles.png",
+        alt: "Item components",
       },
       {
-        title: "Letting people write their own titles and descriptions",
-        description: "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
-      }
-    ],
-    image: {
-      id: "7.3",
-      src: "/work/formie/challenges/technical.png"
-    },
-    tradeoffs: [
-      "To translate tricky ideas, we replaced technical terms ("method", "write") with Plain English ("action", "send"). But it wasn't enough. Every action needed something explained that static language couldn't cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn't easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it."
-    ]
-  }
-]} /> */}
-
-{/* Process
-First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we'd design and build each chunk in order. Design started with rough sketches. After breadboarding the flows and UI, I'd finish the rest in code. While pushing pixels, Hassan would build the backend (I'd help after designing).
-<img
-  src="/work/formie/process/lineup.png"
-  alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
-/>
-<img
-  src="/work/formie/process/lineup.png"
-  alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
-/>
-
-
-Shooing scammers
-We knew three things from the jump: Scammers would use forms to misrepresent contracts, We couldn't stop them, But we had to do something. How do we deter scammers without making the product harder to build or use?
-
-Decision: Making people confirm trust
-We couldn't stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting. Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check. Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
-
-Tradeoff
-Less security, more usability (still possible for people to call a scam contract but didn't have the time to build a scam recognition system. Plus, having some buffer is already better than Etherscan, which never mentions it, so it's a step up.)
-
-—
-
-Keeping it flexible
-Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions. It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away. How do we design a universal interface that serves many brands and actions?
-
-Decision: Only supporting one-way actions
-- The best way to make a universal solution was to narrow the scope of what we'd solve.
-  - Two-way methods created too many edge cases
-  - Majority of projects using Etherscan used it for one-way actions
-  - Just focusing on one-way actions let us make a single solution that worked for most actions
-- We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons: Most people don't use Etherscan frontends for two-way actions, Supporting two-way actions would've made the product harder to use, Tools like Dune Analytics and specialized blockchain explorers already scratch the itch. We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions. Ditching two-ways axed our scope and got a leaner product out the door.
-
-Tradeoff
-Less functionality, more focus (two-way actions were a big part of Etherscan's UI, but we decided to focus on one-ways. This let us make a simpler, more focused product that worked for most actions. We could always add two-ways later if we learned that people needed them.) 
-
-—
-
-Communicating technical details
-Smart contracts have tons of strange behaviors: Transactions cost a bit of money, Transactions take time to go through, Anyone can make a frontend for any contract (because they're public). The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation. How do we explain challenging ideas without overwhelming people?
-
-Decision: Letting people write their own titles and descriptions
-- To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”). But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
-
-Tradeoff
-- No editing
-- Only customize title & description
-
-—
-
-Decisions
-One page, one action
-- The main departure from Etherscan was limiting forms to a single action. Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want. Linking straight to the action makes it impossible to miss.
-Only supporting one-way actions
-- We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons: Most people don't use Etherscan frontends for two-way actions, Supporting two-way actions would've made the product harder to use, Tools like Dune Analytics and specialized blockchain explorers already scratch the itch. We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions. Ditching two-ways axed our scope and got a leaner product out the door.
-Letting people write their own titles and descriptions
-- To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”). But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity. Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
-
-
-Tradeoffs
-Replacing editing with infinite forms
-- We wanted to let people edit forms after creation. But, late in Codeelopment, we realized the backend would need a week-long rewrite to handle secure edits. Instead of rebuilding, we decided to Let people make unlimited forms, and Make forms permanent (for security reasons). People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough. Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
-Only letting people customize their title & description
-- We wanted every part of a form to be customizable: Field titles, descriptions, placeholders, Error messages, Button labels, etc. But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming. To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways. Limited customization kept form creation straightforward while offering more control than Etherscan.
-Limited error messaging
-- We also planned on translating every error into a clear, helpful message, but Ethereum was too limited. At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors. It was impossible to translate errors consistently, so we settled on... Humanizing basic type errors, Wrapping unknown errors in an honest, generic message. Compromising on error handling stung, but you can only do so much when working with a black box.
-
-Results
-Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort. Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each. Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case. */}
+        id: "5.02",
+        src: "/work/wavy/home/event-statuses.png",
+        alt: "Event status system",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+  />
+</Section>
