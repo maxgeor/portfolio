@@ -31,6 +31,7 @@ import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
 import MarkedNumber from "../../components/study/MarkedNumber.astro";
+import Row from "../../components/study/Row.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? **Etherscan's UI sucks**. <MarkedNumber number={1} /> It's a list of technically-worded forms, <MarkedNumber number={2} /> It's hard to navigate and <MarkedNumber number={3} /> It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
@@ -189,14 +190,13 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
     fullBleed={{ base: true, lg: false }}
     isPadded={false}
   />
-  <div class="hidden sm:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
+  <Row classes="hidden sm:grid">
     <Image
       id="2.12"
       src="/work/formie/s4.png"
       alt="New, find"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      classes="hidden md:flex"
       isFullBleed={true}
     />
     <Image
@@ -205,7 +205,6 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
       alt="New, pick"
       span={{ base: 6, md: 4 }}
       orientation="vertical"
-      classes="hidden md:flex"
       isFullBleed={true}
     />
     <Image
@@ -215,7 +214,6 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      classes="hidden md:flex"
     />
     <Image
       id="2.15"
@@ -245,7 +243,7 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
       isFullBleed={true}
       hasBorder={false}
     />
-  </div>
+  </Row>
   <Video 
     id= "2.11"
     src="/work/formie/landing-page.mp4"

@@ -32,15 +32,29 @@ import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
 import MarkedNumber from '../../components/study/MarkedNumber.astro';
+import Row from "../../components/study/Row.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <Fragment slot="context">
     Wavy’s homepage was a single calendar view showing events, notable days, and suggestions, but it had issues. 1/ Calendar items weren’t labeled, so you couldn’t quickly spot invites or RSVPs. 2/ You could only see one month at a time, making it easy to forget events months ahead and hard to find past ones. 3/ Optional themes had either harsh, inaccessible colors or made the text almost unreadable.
-    {/* Wavy’s homepage was single calendar view with cells showing events, notable days and suggested events. It had multiple issues that made it **hard to find the events you care about**. <MarkedNumber number={1} /> Calendar items were undifferentiated. They had no status, so you couldn’t tell find your event invites or RSVPs at a glance. <MarkedNumber number={2} /> You could also only seeing one month at a time. This made it easy to forget events 1-2 months away and hard to find past ones. <MarkedNumber number={3} /> Calendars had optional themes with harsh, inaccessable saturations. If a theme wasn't an eyesore, it was near-impossible to read the text. */}
   </Fragment>
+  <Carousel
+    slides={[
+      {
+        id: "1.01",
+        src: "/work/wavy/home/note-problem-1.png",
+        alt: "Problem notes",
+      },
+      {
+        id: "1.02",
+        src: "/work/wavy/home/note-problem-2.png",
+        alt: "Problem questions",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
 </Section>
 <Section id="2.00" title='List View'>
-  {/* <p slot="context">We split the homepage into two views: List and Calendar. The Calendar kept the familiar layout, while the List gave a quick, organized overview. We also made the calendar more dense, accessible, and consistent for easier use.</p> */}
   <p slot="context">We added a List View to the homepage, organizing events into Swimlanes and a Timeline. Swimlanes categorize events, like Yours/Others, Upcoming/Past, or Invites/RSVPs, while the Timeline shows all events in chronological order. We made this the default view because most users come to the dashboard looking for a specific event (“I need to edit my event” or “What do I need to bring for Cocktail Making?”), which was harder to find on the calendar.</p>
   <Carousel
     slides={[
@@ -63,6 +77,16 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
         id: "2.04",
         src: "/work/wavy/home/empty.png",
         alt: "Empty",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/home/note-layout.png",
+        alt: "Sketch, layout",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/home/note-your-events.png",
+        alt: "Sketch, your events",
       },
     ]}
     span={{ base: 12, md: 8 }}
@@ -107,7 +131,7 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
     fullBleed={{ base: true, lg: false }}
     isPadded={false}
   />
-  <div class="hidden sm:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
+  <Row classes="hidden sm:grid">
     <Image
       id="2.05"
       src="/work/wavy/home/upcoming-mobile-1.png"
@@ -157,9 +181,8 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
       orientation="vertical"
       isFullBleed={true}
     />
-  </div>
+  </Row>
 </Section>
-
 <Section id="3.00" title="Calendar View">
   <p slot="context">We refreshed the Calendar View to maximize space by reducing text size, item padding, and cell spacing, fitting twice as many items. We also updated the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel palette, which reinforced Wavy’s playful brand and, you know, just looked better.</p>
   <Carousel
@@ -173,6 +196,21 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
         id: "3.02",
         src: "/work/wavy/home/calendar-cell.png",
         alt: "Calendar, cell",
+      },
+      {
+        id: "3.03",
+        src: "/work/wavy/home/note-calendar-1.png",
+        alt: "Calendar, sketch, layout",
+      },
+      {
+        id: "3.04",
+        src: "/work/wavy/home/note-calendar-2.png",
+        alt: "Calendar, sketch, layout",
+      },
+      {
+        id: "3.05",
+        src: "/work/wavy/home/note-cell.png",
+        alt: "Calendar, sketch, cell",
       },
     ]}
     span={{ base: 12, md: 8 }}
@@ -244,23 +282,36 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
     ]}
     span={{ base: 12, md: 10 }}
   /> */}
-  <Image
-    id="4.01"
-    src="/work/wavy/home/differenciated-styles.png"
-    alt="Item components"
+  <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/wavy/home/differenciated-styles.png",
+        alt: "Item components",
+      },
+      {
+        id: "4.02",
+        src: "/work/wavy/home/note-styles.png",
+        alt: "Item components, Sketch",
+      },
+    ]}
     span={{ base: 12, md: 10 }}
-    isPadded={{ base: false, md: true }}
-    withContainer
-   />
-  <Image
-    id="4.02"
-    src="/work/wavy/home/event-statuses.png"
-    alt="Event status system"
+  />
+   <Carousel
+    slides={[
+      {
+        id: "4.03",
+        src: "/work/wavy/home/event-statuses.png",
+        alt: "Event status",
+      },
+      {
+        id: "4.04",
+        src: "/work/wavy/home/note-event-statuses.png",
+        alt: "Event status, sketch",
+      },
+    ]}
     span={{ base: 12, md: 8 }}
-    isPadded={{ base: false, md: true }}
-    withContainer
-   />
-  {/* something about smart suggestions? */}
+  />
 </Section>
 <Section id="5.00" title="Smart Suggestions">
   <p slot="context">The toggle for show notable days and suggestions was named "Culture Pal," which confused users about its purpose. To fix this, **we renamed Culture Pal to Smart Suggestions**, making it clear that the toggle adds contextual information to the layout. We used a gray sparkle and dashed lines as visual cues for suggestions. This design worked across both List and Calendar views, allowing users to easily spot suggestions wherever they appeared.</p>
@@ -269,15 +320,24 @@ import MarkedNumber from '../../components/study/MarkedNumber.astro';
       {
         id: "5.01",
         src: "/work/wavy/home/smart-suggestions-toggle.png",
-        alt: "Toggle",
+        alt: "Suggestion toggle",
       },
       {
         id: "5.02",
         src: "/work/wavy/home/smart-suggestions-components.png",
-        alt: "Components",
+        alt: "Suggestion components",
+      },
+      {
+        id: "5.03",
+        src: "/work/wavy/home/note-smart-suggestions-1.png",
+        alt: "Suggestion, sketch",
+      },
+      {
+        id: "5.03",
+        src: "/work/wavy/home/note-smart-suggestions-2.png",
+        alt: "Suggestion, sketch",
       },
     ]}
     span={{ base: 12, md: 8 }}
   />
-  {/* something about smart suggestions? */}
 </Section>

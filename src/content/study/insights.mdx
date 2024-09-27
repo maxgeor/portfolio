@@ -32,6 +32,7 @@ import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
 import Carousel from "../../components/study/Carousel.astro";
+import Row from "../../components/study/Row.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
   <p slot="context">Wavy built an event analytics page as a hackathon project, but it wasn’t used much due to limited data and lack of design. As customers used Wavy longer, they requested long-term insights to justify renewals. Engagement teams needed proof of Wavy’s value, so sales manually pulled and averaged data for presentations. New requests also came in for data on spending, department-level engagement, and event performance. The insights page needed updates to handle these requests and display averaged data.</p>
@@ -105,7 +106,7 @@ import Carousel from "../../components/study/Carousel.astro";
     fullBleed={{ base: true, lg: false }}
     isPadded={false}
   />
-  <div class="hidden sm:grid grid-cols-12 gap-x-[17px] gap-y-8 col-span-full">
+  <Row classes="hidden sm:grid">
     <Image
       id="2.07"
       src="/work/wavy/insights/standouts-mobile.png"
@@ -138,10 +139,29 @@ import Carousel from "../../components/study/Carousel.astro";
       orientation="vertical"
       isFullBleed={true}
     />
-  </div>
+  </Row>
+  <Image
+    id="5.01"
+    src="/work/wavy/insights/representation.png"
+    alt="Representation components"
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
 </Section>
-<Section id="3.00" title='Flexible timelines' hasBorder={false}>
+<Section id="3.00" title='Grouping Events' hasBorder={false}>
   <p slot="context">There could be hundreds of events in a quarter. Important to display events over time (just a list wouldn't be meaningful). Created nested tables that zoomed into months/weeks/days when many events happend close to eachother.</p>
+  <Video 
+    id= "3.01"
+    format="mov"
+    src="/work/wavy/insights/expanding-events.mp4"
+    alt="Grouping prototype"
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    withContainer
+    isPadded={true}
+  />
   {/* Jitter video of event graphs zooming in/out of event groups */}
   {/* Show top-level graphs component with different layouts for different number of events */}
 </Section>

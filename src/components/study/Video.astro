@@ -9,6 +9,7 @@ export interface Props {
   src: string;
   alt: string;
   id: string;
+  format?: 'mp4' | 'mov';
   description?: string;
   hasCaption?: boolean;
   span?: ResponsiveNumber;
@@ -25,6 +26,7 @@ const {
   id,
   span = 12,
   hasBorder = true,
+  format = 'mp4',
   isPadded = true,
   hasCaption = true,
   orientation = 'horizontal',
@@ -75,7 +77,7 @@ switch(orientation) {
         muted
         loop
       >
-        <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
+        <source src={extensionlessSrc + '.' + format} type="video/mp4" />
       </video>
     </div>
   </div>
