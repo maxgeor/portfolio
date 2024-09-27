@@ -43,11 +43,9 @@ const links: {
 
 <div class={clsx("grid gap-x-4", classes)}>
   {links.map(link => (
-    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden border-t-[0.5px] border-black dark:border-white">
+    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden border-t-[0.5px] border-black dark:border-white last:border-b-[0.5px] uppercase">
       {link.name}
     </a>
   ))}
-  <span class={`elative flex  gap-2 items-center cursor-default border-y-[0.5px] border-black dark:border-white`}>
-    max123358@gmail.com
-  </span>
+  
 </div>
