@@ -1,11 +1,13 @@
 {
   "type": "project",
   "title": "The Quest Board",
-  "description": "Job board for the Loot community",
+  "description": "Job board for Loot",
   "image": "/work/the-quest-board.gif",
+  "roles": ["Product", "Code"],
   "link": {
     "href": "https://www.lootquestboard.com/",
     "target": "_blank"
   },
-  "order": 5
+  "order": 10,
+  "year": "2022"
 }

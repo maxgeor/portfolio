@@ -1,142 +1,157 @@
 ---
-import ComingSoonBanner from './ComingSoonBanner.astro'
+import ExternalLinkArrow from './icons/ExternalLinkArrow.astro';
+import ScrollingBanner from './ScrollingBanner.astro'
 
-
-export interface Props {
+type Work = {
   title: string;
   description: string;
-  image: string;
+  roles: string[];
   link?: {
     href: string;
     target?: '_blank' | '_self';
   };
+  year: string;
+  image: string;
+  type: string;
+  isHidden?: boolean;
+  studySlug?: string;
+  isPrivate?: boolean;
   isComingSoon?: boolean;
+  isArchived?: boolean;
   classes?: string;
 }
 
+interface Props extends Work {
+  attributes?: Record<string, string | null>;
+}
+
 const { 
-  link,
   title, 
   description, 
+  type,
   image,
+  year,
+  link = {
+    href: null,
+    target: '_self',
+  },
+  roles,
+  isHidden = true,
+  studySlug,
+  isPrivate = false,
   classes = '',
   isComingSoon = false,
+  isArchived = false,
+  attributes = {},
 } = Astro.props;
+
+const shouldDisable = isComingSoon || isPrivate || isArchived;
+
+const Element = shouldDisable ? 'div' : 'a';
+const props = shouldDisable
+    ? {} 
+    : studySlug 
+      ? { href: `/study/${studySlug}`, target: '_self' } 
+      : link 
 ---
-{isComingSoon ? (
-  <div
-    class={`
-      col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-y-1 gap-x-6 h-fit cursor-not-allowed
-      ${classes} 
-    `}
-  >
-    <ComingSoonBanner />
-    <picture class='relative h-auto'>
-        <img
-          src={image}
-          alt={`Preview mockup of ${title}`}
-          class='w-full h-full object-top select-none object-contain'
-        />
-      </picture>
-    <div>
-      <h3 aria-label={`${title} (coming soon)`} class="w-fit">{title}</h3>
-      <p>{description}</p>
+<Element
+  {...props}
+  {...attributes}
+  class={`
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 lg:hover:opacity-50
+    ${!isHidden ? 'active' : ''}
+    ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
+    ${classes}
+  `}
+>
+  <div class='flex flex-col gap-2  h-full overflow-hidden'>
+    <picture class={`work-card-picture relative h-auto !group-focus:opacity-100 duration-300`}>
+      <img
+        src={image}
+        alt={`Preview mockup of ${title}`}
+        class={`
+          w-full h-full object-top select-none object-contain 
+        `}
+      />
+      {isArchived && <ScrollingBanner title='Archive' classes="-rotate-[12deg]" />}
+      {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
+      {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
+    </picture> 
+    <div class="uppercase work-card-content flex flex-col duration-300 -my-0.5 mx-2">
+      <div>
+        <h2 class="flex shrink-0 whitespace-nowrap">
+          {title}
+          {link.href && link.target === '_blank' && !shouldDisable && !studySlug && (
+            <ExternalLinkArrow classes="-ml-px shrink-0" />
+          )}
+        </h2>
+        <p class="">{description}</p>
+      </div>
+      <div class="">
+        <p>{roles.join(', ')}</p>
+        <p class="">{type}</p>
+        <p>{year}</p>
+      </div>
     </div>
   </div>
-) : (
-  <a
-    href={link?.href || '#'}
-    target={link?.target || '_self'}
-    class={`
-      col-span-full xl:col-span-4 group overflow-hidden relative flex flex-col gap-y-1 gap-x-6 h-fit
-      ${classes} 
-    `}
-  >
-    <picture class='relative h-auto'>
-      <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain'
-      />
-    </picture>
-    <div>
-      <h3 aria-label={title} class="group-hover:bg-white group-hover:text-black w-fit">
-        <span>{title}</span>
-        {link?.target === '_blank' && (
-          <svg 
-            class="inline ml-[3px] -mt-px" 
-            width="15" 
-            height="15" 
-            viewBox="0 0 15 15" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-            </path>
-          </svg>
-        )}
-      </h3>
-      <p>{description}</p>
-    </div>
-  </a>
-)}
-<!-- {isComingSoon ? (
-  <div
-    class={`
-      group overflow-hidden relative flex flex-col h-fit col-span-2 cursor-not-allowed
-      ${classes} 
-    `}
-  >
-    <ComingSoonBanner />
-    <div class="col-span-full flex flex-col md:flex-row flex-wrap gap-x-4 justify-between">
-      <h3 aria-label={`${title} (coming soon)`}>{title}</h3>
-      <p>{description}</p>
-    </div>
-    <picture class='relative h-auto col-span-full'>
-      <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain'
-      />
-    </picture>
-  </div>
-) : (
-  <a
-    href={link?.href || '#'}
-    target={link?.target || '_self'}
-    class={`
-      group overflow-hidden relative flex flex-col h-fit col-span-2
-      ${classes} 
-    `}
-  >
-    <div class="col-span-full flex flex-col md:flex-row flex-wrap gap-x-4 justify-between">
-      <h3 
-        aria-label={title}
-        class="group-hover:bg-white group-hover:text-black"
-      >
-        <span>{title}</span>
-        {link?.target === '_blank' && (
-          <svg 
-            class="inline ml-[3px] -mt-px" 
-            width="15" 
-            height="15" 
-            viewBox="0 0 15 15" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-            </path>
-          </svg>
-        )}
-      </h3>
-      <p>{description}</p>
-    </div>
-    <picture class='relative h-auto col-span-full'>
-      <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
-        class='w-full h-full object-top select-none object-contain'
-      />
-    </picture>
-  </a>
-)} -->
+</Element>
+
+<style>
+  .work-card.disabled .work-card-content {
+    opacity: 0.4;
+  }
+  .work-card.disabled.active .work-card-content {
+    opacity: 1;
+  }
+
+  .work-card .work-card-picture {
+    opacity: 0;
+  }
+
+  .work-card.active .work-card-picture {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const workCards: NodeListOf<HTMLElement> = document.querySelectorAll('.work-card');
+
+    const showIntersectingCards = (cards: NodeListOf<HTMLElement>) => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const middleOfScreen = window.innerHeight / 2;
+        const cardMiddle = rect.top + (rect.height / 2);
+
+        if (cardMiddle > (middleOfScreen - (middleOfScreen * 0.8)) &&
+          cardMiddle < (middleOfScreen + (middleOfScreen * 0.8))) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    if (window.innerWidth >= 1040) {
+      workCards.forEach(card => {
+        let timer: any;
+
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('active');
+
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            card.classList.remove('active');
+          }, 5000);
+        });
+      });
+    }
+
+    if (window.innerWidth < 1040) {
+      showIntersectingCards(workCards);
+      window.addEventListener('scroll', () => {
+        showIntersectingCards(workCards);
+      });
+    }
+  });
+</script>

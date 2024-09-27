@@ -1,0 +1,307 @@
+---
+layout: ../../layouts/StudyLayout.astro
+work: wavy-feedback
+type: client
+title: Wavy/Feedback
+images: {
+  sm: "/work/wavy/feedback/cover-sm.png",
+  lg: "/work/wavy/feedback/cover-lg.png"
+}
+roles: 
+  - Product
+teammates:
+  [
+    {
+      name: Neeshay Ahmed,
+      role: "Strategy",
+      href: https://www.linkedin.com/in/neshayahmed/,
+    },
+    {
+      name: Shawn Hewat,
+      role: Strategy,
+      href: https://www.linkedin.com/in/shawnhewat/,
+    },
+    {
+      name: Dylan Clarke,
+      role: Code,
+      href: https://www.linkedin.com/in/dylan-clarke-9476a280/,
+    },
+  ]
+tools: ["Figma"]
+description: Personal project to replace Etherscan's smart contract UI with an form-based design. It simplifies interactions by dedicating one page per action, enforcing trust confirmation, and supporting one-way transactions. You can customize titles and descriptions, balancing ease-of-use with security. While editing is limited, the streamlined approach earned Formie recognition as a top product by Milk Road.
+year: '2024'
+order: 1
+---
+
+import Section from "../../components/study/Section.astro";
+import Image from "../../components/study/Image.astro";
+import Video from "../../components/study/Video.astro";
+import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from "../../components/study/MarkedNumber.astro";
+import Row from "../../components/study/Row.astro";
+
+<Section id="1.00" title='Problem' hasBorder={false}>
+  <Fragment slot="context">
+    Wavy sent participants an 8-question [Typeform](https://www.typeform.com/) survey after events. Though it covered all the basics, many dropped off. Organizers wanted to customize surveys to remove irrelevant questions and add more useful ones. Survey results appeared in the event's Feedback tab, but the UI was built around the fixed questions and needed a redesign for customization. The platform didn’t explain surveys or what questions would be asked, a leftover from when Wavy manually handled them.
+  </Fragment>
+</Section>
+<Section id="2.00" title='Survey'>
+  <p slot="context">We combined all survey-related info and tools into a single tab, making surveys easy to find, manage, and revisit. For questions, we kept it simple with three types: `rating`, `multiple choice`, and `long answer`. This gave organizers enough flexibility without making things too complicated.</p>
+  <Video 
+    id= "2.01"
+    src="/work/wavy/feedback/survey-video.mp4"
+    alt="Survey tab"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "2.02",
+        src: "/work/wavy/feedback/survey-summary.png",
+        alt: "Summary",
+      },
+      {
+        id: "2.03",
+        src: "/work/wavy/feedback/survey-responses.png",
+        alt: "Responses",
+      },
+      {
+        id: "2.04",
+        src: "/work/wavy/feedback/survey-responses-filtered.png",
+        alt: "Responses, filtered",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/feedback/survey-public.png",
+        alt: "Public",
+      },
+      {
+        id: "2.06",
+        src: "/work/wavy/feedback/survey-empty.png",
+        alt: "Empty",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    orientation="vertical"
+    slides={[
+      {
+        id: "2.07",
+        src: "/work/wavy/feedback/survey-summary-mobile.png",
+        alt: "Summary, mobile",
+      },
+      {
+        id: "2.08",
+        src: "/work/wavy/feedback/survey-responses-mobile.png",
+        alt: "Responses, mobile",
+      },
+      {
+        id: "2.09",
+        src: "/work/wavy/feedback/survey-responses-filtered-mobile.png",
+        alt: "Responses, filtered, mobile",
+      },
+      {
+        id: "2.10",
+        src: "/work/wavy/feedback/survey-questions-mobile.png",
+        alt: "Questions, mobile",
+      },
+      {
+        id: "2.11",
+        src: "/work/wavy/feedback/survey-public-mobile.png",
+        alt: "Public, mobile",
+      },
+      {
+        id: "2.12",
+        src: "/work/wavy/feedback/survey-edit-mobile.png",
+        alt: "Edit, mobile",
+      },
+    ]}
+    classes="sm:hidden"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
+  <Row classes="hidden sm:grid">
+    <Image
+      id="2.07"
+      src="/work/wavy/feedback/survey-summary-mobile.png"
+      alt="Summary, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.08"
+      src="/work/wavy/feedback/survey-responses-mobile.png"
+      alt="Responses, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.09"
+      src="/work/wavy/feedback/survey-responses-filtered-mobile.png"
+      alt="Responses, filtered, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.10"
+      src="/work/wavy/feedback/survey-questions-mobile.png"
+      alt="Questions, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.11"
+      src="/work/wavy/feedback/survey-public-mobile.png"
+      alt="Public, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.12"
+      src="/work/wavy/feedback/survey-edit-mobile.png"
+      alt="Edit, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+  </Row>
+  <Carousel
+    slides={[
+      {
+        id: "2.13",
+        src: "/work/wavy/feedback/survey-edit.png",
+        alt: "Edit",
+      },
+      {
+        id: "2.14",
+        src: "/work/wavy/feedback/survey-edit-multiple-choice.png",
+        alt: "Edit, multiple choice",
+      },
+      {
+        id: "2.15",
+        src: "/work/wavy/feedback/survey-edit-long-answer.png",
+        alt: "Edit, long answer",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+</Section>
+<Section id="3.00" title='Insights'>
+  <p slot="context">We renamed the “Feedback” tab to “Insights” because "Feedback" felt too focused on just what people said. Since the tab also includes participation data, "Insights" better captured all post-event info. It highlights the main goal: What did we learn? What are the takeaways? Clicking the tab now feels intentional: “I want insights.” The new name also ties event insights to the global Insights page, reinforcing their shared purpose.</p>
+  <Video 
+    id= "3.01"
+    src="/work/wavy/feedback/insights-video.mp4"
+    alt="Insights tab"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "3.02",
+        src: "/work/wavy/feedback/insights.png",
+        alt: "Participation",
+      },
+      {
+        id: "3.03",
+        src: "/work/wavy/feedback/insights-feedback.png",
+        alt: "Feedback",
+      },
+      {
+        id: "3.04",
+        src: "/work/wavy/feedback/insights-public.png",
+        alt: "Public",
+      },
+      {
+        id: "3.05",
+        src: "/work/wavy/feedback/insights-empty.png",
+        alt: "Empty",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    orientation="vertical"
+    slides={[
+      {
+        id: "3.06",
+        src: "/work/wavy/feedback/insights-mobile.png",
+        alt: "Tldr & Participation, mobile",
+      },
+      {
+        id: "3.07",
+        src: "/work/wavy/feedback/insights-feedback-mobile.png",
+        alt: "Feedback, mobile",
+      },
+      {
+        id: "3.08",
+        src: "/work/wavy/feedback/insights-public-mobile.png",
+        alt: "Public, mobile",
+      },
+    ]}
+    classes="sm:hidden"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
+  <Row classes="hidden sm:grid">
+    <Image
+      id="3.06"
+      src="/work/wavy/feedback/insights-mobile.png"
+      alt="Tldr & Participation, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="3.07"
+      src="/work/wavy/feedback/insights-feedback-mobile.png"
+      alt="Feedback, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="3.08"
+      src="/work/wavy/feedback/insights-public-mobile.png"
+      alt="Public, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+  </Row>
+</Section>
+<Section id="4.00" title='Backwards compatability'>
+  <p slot="context">A key constraint was **avoiding data loss from past surveys.** By using `rating`, `multiple-choice`, and `long-answer`, we migrated all fixed questions into controlled formats without losing any data. We didn’t need the 30+ data types Typeform offered—ratings, multiple choice, and long answer covered all user needs. The old fixed questions remained as a default template, giving organizers guidance while allowing customization. This saved Wavy money by eliminating the need for Typeform and cleaning up code tied to that integration.</p>
+  <Image
+    id="4.01"
+    src="/work/wavy/feedback/backwards-compatability.png"
+    alt="Typeform vs Wavy surveys"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
+</Section>
+<Section id="5.00" title='Written Feedback'>
+  <p slot="context">We faced a challenge in showing averaged written feedback in the summary section. Quantitative data like ratings and multiple choice were easy to summarize, but written responses lacked a simple solution. We **used an LLM to summarize responses to long answer questions** whenever a new response was submitted. This allowed users to quickly understand how people felt without reading every response. If needed, the summarized section could be expanded to view individual feedback, making it easy to dive deeper when the summary wasn't enough.</p>
+  <Image
+    id="5.01"
+    src="/work/wavy/feedback/written-feedback.png"
+    alt="Written feedback component"
+    span={{ base: 12, md: 8 }}
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
+</Section>

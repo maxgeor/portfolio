@@ -4,6 +4,7 @@ export interface Props {
 }
 const { title } = Astro.props;
 ---
-
-<h4 class="cols-span-1 w-28">{title}</h4>
-<p class="col-span-2"><slot /></p>
+<div class="col-span-full">
+  <h4 class="cols-span-2">{title}</h4>
+  <p class="col-span-2 text-xs font-medium normal-case"><slot /></p>
+</div>

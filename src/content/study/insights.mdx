@@ -1,0 +1,165 @@
+---
+layout: ../../layouts/StudyLayout.astro
+work: wavy-insights
+type: client
+title: Wavy/Insights
+images: {
+  sm: "/work/wavy/insights/cover-sm.png",
+  lg: "/work/wavy/insights/cover-lg.png"
+}
+roles: 
+  - Product
+teammates:
+  [
+    {
+      name: Neeshay Ahmed,
+      role: Strategy,
+      href: https://www.linkedin.com/in/neshayahmed/,
+    },
+    {
+      name: Dylan Clarke,
+      role: Code,
+      href: https://www.linkedin.com/in/dylan-clarke-9476a280/,
+    },
+  ]
+tools: ["Figma", "Jitter"]
+description: Personal project to replace Etherscan's smart contract UI with an form-based design. It simplifies interactions by dedicating one page per action, enforcing trust confirmation, and supporting one-way transactions. You can customize titles and descriptions, balancing ease-of-use with security. While editing is limited, the streamlined approach earned Formie recognition as a top product by Milk Road.
+year: '2024'
+order: 1
+---
+
+import Section from "../../components/study/Section.astro";
+import Image from "../../components/study/Image.astro";
+import Video from "../../components/study/Video.astro";
+import Carousel from "../../components/study/Carousel.astro";
+import Row from "../../components/study/Row.astro";
+
+<Section id="1.00" title='Problem' hasBorder={false}>
+  <p slot="context">Wavy built an event analytics page as a hackathon project, but it wasn’t used much due to limited data and lack of design. As customers used Wavy longer, they requested long-term insights to justify renewals. Engagement teams needed proof of Wavy’s value, so sales manually pulled and averaged data for presentations. New requests also came in for data on spending, department-level engagement, and event performance. The insights page needed updates to handle these requests and display averaged data.</p>
+</Section>
+<Section id="2.00" title='Insights Page'>
+  <p slot="context">We updated the insights page to display data over quarters, years, and all-time, offering a clear view of long-term trends. High-level stats are front and center, supported by graphs showing key data points across time for each subsection. Participation, spend, and feedback are organized into time-based layouts, with breakdowns by department for more detailed insights. We also added last year comparables to stats to help companies track their internal progress, rather than comparing against external benchmarks.</p>
+  <Video 
+    id= "2.01"
+    src="/work/wavy/insights/walkthrough.mp4"
+    alt="Walkthrough"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "2.02",
+        src: "/work/wavy/insights/hero.png",
+        alt: "Hero",
+      },
+      {
+        id: "2.03",
+        src: "/work/wavy/insights/standouts.png",
+        alt: "Standouts",
+      },
+      {
+        id: "2.04",
+        src: "/work/wavy/insights/participation.png",
+        alt: "Participation",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/insights/feedback.png",
+        alt: "Feedback",
+      },
+      {
+        id: "2.06",
+        src: "/work/wavy/insights/spend.png",
+        alt: "Spend",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    orientation="vertical"
+    slides={[
+      {
+        id: "2.07",
+        src: "/work/wavy/insights/standouts-mobile.png",
+        alt: "Standouts, mobile",
+      },
+      {
+        id: "2.08",
+        src: "/work/wavy/insights/participation-mobile.png",
+        alt: "Participation, mobile",
+      },
+      {
+        id: "2.09",
+        src: "/work/wavy/insights/feedback-mobile.png",
+        alt: "Feedback, mobile",
+      },
+      {
+        id: "2.10",
+        src: "/work/wavy/insights/spend-mobile.png",
+        alt: "Spend, mobile",
+      },
+    ]}
+    classes="sm:hidden"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
+  <Row classes="hidden sm:grid">
+    <Image
+      id="2.07"
+      src="/work/wavy/insights/standouts-mobile.png"
+      alt="Standouts, mobile"
+      span={{ base: 6 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.08"
+      src="/work/wavy/insights/participation-mobile.png"
+      alt="Participation, mobile"
+      span={{ base: 6 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.09"
+      src="/work/wavy/insights/feedback-mobile.png"
+      alt="Feedback, mobile"
+      span={{ base: 6 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.10"
+      src="/work/wavy/insights/spend-mobile.png"
+      alt="Spend, mobile"
+      span={{ base: 6 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+  </Row>
+  <Image
+    id="5.01"
+    src="/work/wavy/insights/representation.png"
+    alt="Representation components"
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    isPadded={{ base: false, md: true }}
+    withContainer
+   />
+</Section>
+<Section id="3.00" title='Grouping Events' hasBorder={false}>
+  <p slot="context">With hundreds of events in a quarter, displaying them over time was crucial—simple lists weren’t enough. We designed **nested charts that let users zoom into event groupings** by month, week, or day. This approach offered a clean, organized view, allowing users to explore events at any level of detail they needed..</p>
+  <Video 
+    id= "3.01"
+    format="mov"
+    src="/work/wavy/insights/expanding-events.mp4"
+    alt="Grouping prototype"
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    withContainer
+    isPadded={true}
+  />
+</Section>

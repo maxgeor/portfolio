@@ -1,21 +1,56 @@
 ---
-export interface Props {
-  title: string;
-  description?: string;
-  maxWidth?: string;
-  backgroundColor?: string;
-}
+import ThemeToggle from '../components/ThemeToggle.astro';
+import clsx from 'clsx';
 
+export interface Props {
+  title?: string;
+  description?: string;
+  offset?: string;
+  classes?: string;
+}
 const {
   title = "Max Georgopoulos",
   description,
-  maxWidth = "",
-  backgroundColor = "bg-[#111]",
+  offset = 'pt-[50px]',
+  classes = '',
 } = Astro.props;
+
+// Inline critical CSS to prevent flash
+const criticalCSS = `
+  :root {
+    --background-color: #fff;
+    --text-color: #000;
+    --highlight-color: #eaeaea;
+  }
+  :root.dark {
+    --background-color: #000;
+    --text-color: #fff;
+    --highlight-color: #323232;
+  }
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+`;
+
+// Inline script to set theme immediately
+const inlineScript = `
+  (function() {
+    function getTheme() {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    var theme = getTheme();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    window.localStorage.setItem('theme', theme);
+  })();
+`;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth transition">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -23,72 +58,78 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description || "Designer & developer"} />
+    <style set:html={criticalCSS}></style>
+    <script set:html={inlineScript}></script>
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class={`
-      ${backgroundColor} ${maxWidth}
-      text-neutral-100 min-h-screen text-sm selection:bg-yellow selection:text-black antialiased pb-24 max-w-[1600px] mx-auto
-    `}
+    class={clsx(
+      "grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8",
+      offset,
+      classes
+    )}
   >
+    <header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-50">
+      <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit">
+        <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
+        <span class="sm:hidden">Max KC Georgopoulos</span>
+      </a>
+      <a href="/" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Work</a>
+      <a href="/about" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>About</a>
+      <a href="/writing" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Writing</a>
+      <a href="mailto:max123358@gmail.com" class={`whitespace-nowrap hidden md:block col-span-1 p-2 -m-2`}>Contact</a>
+      <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
+      <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
+    </header>
+    <div id="full-screen-menu" class="fixed inset-0 z-40 hidden md:hidden flex-col p-2 overflow-hidden bg-white dark:bg-black">
+      <nav class="border-current divide-current border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
+        <a href="/">Work</a>
+        <a href="/about">About</a>
+        <a href="/writing">Writing</a>
+        <a href="mailto:max123358@gmail.com">Contact</a>
+      </nav>
+    </div>
     <slot />
   </body>
 </html>
 
-<style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-  
-  @font-face {
-    font-family: Romie;
-    src: url(/fonts/romie/RomieTrial-Regular-Italic.otf);
-  }
-  
-  @font-face {
-    font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-regular.woff2) format("woff2");
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-medium.woff2) format("woff2");
-    font-weight: 500;
-  }
-
-  @font-face {
-    font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-regular-italic.woff2)
-      format("woff2");
-    font-style: italic;
-  }
-  
-  @font-face {
-    font-family: untitled;
-    src: url(/fonts/untitled/test-untitled-sans-medium-italic.woff2)
-      format("woff2");
-    font-weight: 500;
-    font-style: italic;
-  }
-
+<style is:global>  
   @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
   }
 
+  :root {
+    --nav-width: 75px;  
+    --nav-offset: calc(var(--nav-width) + (15px * 2));
+    --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
+    --accent-color: #23FF27;
+  }
+
   html {
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    letter-spacing: -0.008em;
-    -webkit-tap-highlight-color: rgba(255, 240, 0, 0.25);
   }
 
   a {
     text-underline-offset: 2px;
   }
+
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: solid 2px var(--accent-color);
+    outline-offset: 1px;
+    text-decoration: none;
+  }
   
-  a:focus-visible {
-    outline: solid 2px #fff000;
-    outline-offset: 2px;
-    border-radius: 0.02em;
+  @media (min-width: 1024px) {
+    a:hover, button:hover, summary:hover {
+      opacity: 0.5;
+      text-decoration: none;
+    }
+  }
+
+  button {
+    text-align: left;
   }
 
   tr:last-child > td {
@@ -103,21 +144,85 @@ const {
     text-decoration-thickness: 0.08em;
   }
 
-  sup {
-    margin-left: 1px;
+  .light-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(255,255,255,0.09);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 
-  select::-ms-expand {
-    display: none;
-  } 
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .dark-border::after {
+    box-shadow: inset 0 0 0 1px RGBA(0,0,0,0.09);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .text-balance {
+    text-wrap: balance;
   }
-
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const fullScreenMenu = document.getElementById('full-screen-menu');
+
+    if (menuToggle && fullScreenMenu) {
+      menuToggle.addEventListener('click', () => {
+        if (fullScreenMenu.classList.contains('hidden')) {
+          fullScreenMenu.classList.remove('hidden');
+          fullScreenMenu.classList.add('flex');
+          menuToggle.textContent = 'Close';
+        } else {
+          fullScreenMenu.classList.add('hidden');
+          fullScreenMenu.classList.remove('flex');
+          menuToggle.textContent = 'Menu';
+        }
+      });
+    }
+  });
+</script>
+<!-- <script >
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return 'dark';
+  })();
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
+
+  document.querySelector('meta[name="theme-color"]')?.remove();
+
+  window.localStorage.setItem('theme', theme || 'dark');
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const fullScreenMenu = document.getElementById('full-screen-menu');
+
+    if (menuToggle && fullScreenMenu) {
+      menuToggle.addEventListener('click', () => {
+        if (fullScreenMenu.classList.contains('hidden')) {
+          fullScreenMenu.classList.remove('hidden');
+          fullScreenMenu.classList.add('flex');
+          menuToggle.textContent = 'Close';
+        } else {
+          fullScreenMenu.classList.add('hidden');
+          fullScreenMenu.classList.remove('flex');
+          menuToggle.textContent = 'Menu';
+        }
+      });
+    }
+  });
+</script> -->

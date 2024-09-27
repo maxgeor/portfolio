@@ -1,38 +1,26 @@
 ---
 import Layout from "./Layout.astro";
-import Header from "../components/Header.astro";
-import { formatDate } from '../utils/formatting';
 
 const { frontmatter } = Astro.props;
-const formattedDate = formatDate(frontmatter.date);
-
 ---
-
 <Layout title={frontmatter.title}>
-  <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 px-6">
-    <Header goBackPath="/writing" />
-    <div class="grid grid-cols-6 xl:grid-cols-8 col-span-full gap-x-6 -my-1">
-      <h1 class="col-span-3 xl:col-start-2 xl:col-span-5 font-medium">{frontmatter.title}</h1>
-      <p class="col-span-3 md:col-span-1 text-[13px] xl:justify-self-end">
-        {formattedDate}
-      </p>
+  <main class="grid grid-cols-12 gap-y-8 gap-x-4 col-span-full border-t-[0.5px] pt-2 border-black dark:border-white h-fit">
+    <div class="flex flex-col col-span-full md:col-span-3  pr-4 -my-0.5 ">
+      <h1 class="uppercase">{frontmatter.title}</h1>
+      <p>{frontmatter.date}</p>
     </div>
-    <main class="col-span-full sm:col-span-5 md:col-span-4 xl:col-start-2 -my-1">
-      <div
-        class={`
-          prose-sm max-w-prose leading-5 text-neutral-300
-          prose-headings:text-sm prose-headings:font-medium prose-headings:text-neutral-100 prose-headings:leading-5
-          prose-h2:text-[14px] prose-h2:mt-10 prose-h2:leading-5 prose-h2:mb-4
-          prose-a:underline
-          prose-strong:font-medium prose-strong:text-neutral-100
-          prose-code:bg-neutral-700/50 prose-code:rounded prose-code:px-1 prose-code:border prose-code:border-[#333333]/[40%] prose-code:py-[2px] prose-code:text-[12px] prose-code:tracking-tight prose-code:leading-6 prose-code:font-mono prose-code:font-normal prose-code:whitespace-nowrap
-          prose-ul:list-disc
-          prose-ol:list-decimal 
-          marker:prose-li:font-inter marker:prose-li:text-[13.5px]
-        `}
-      >
-        <slot />
-      </div>
-    </main>
-  </div>
+    <article
+      class={`
+        flex flex-col gap-4 col-span-full md:col-span-8 lg:col-span-5 2xl:col-span-4  -my-0.5 
+        text-12
+        prose-headings:uppercase 
+        prose-p:my-0
+        prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[12px] md:prose-ul:pl-0
+        prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[12px] md:prose-ol:pl-0
+        prose-li:marker:text-inherit
+      `}
+    >
+      <slot />
+    </article>
+  </main>
 </Layout>

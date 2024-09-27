@@ -1,0 +1,51 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  cols?: number;
+  classes?: string;
+}
+
+const { classes = "" } = Astro.props;
+
+const links: {
+  name: string;
+  url: string;
+  target?: "_self" | "_blank";
+}[] = [
+  {
+    name: "Dribbble",
+    url: "https://dribbble.com/maxgeo",
+  },
+  {
+    name: "Layers",
+    url: "https://layers.to/maxgeorgopoulos",
+  },
+  {
+    name: "Github",
+    url:  "https://github.com/maxgeor",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/maxoulos",
+  },
+  {
+    name: "Arena",
+    url: "https://www.are.na/max-georgopoulos",
+  },
+  {
+    name: "CV",
+    url: "/resume-max-georgopoulos.pdf",
+    target: '_self'
+  },
+];
+---
+
+<div class={clsx("grid gap-x-4", classes)}>
+  {links.map(link => (
+    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden border-t-[0.5px] border-black dark:border-white last:border-b-[0.5px] uppercase">
+      {link.name}
+    </a>
+  ))}
+  
+</div>

@@ -6,14 +6,14 @@ export async function getStaticPaths() {
   const workEntries = await getCollection("writing");
   return workEntries.map((entry) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry, title: entry.data.title, },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, title } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={entry.title}>
+<Layout title={title}>
   <Content />
 </Layout>

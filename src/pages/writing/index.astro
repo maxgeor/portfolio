@@ -1,28 +1,20 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Writing from "../../components/Writing.astro";
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const writings = await getCollection('writing');
+const writing = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
 ---
-
-<Layout title="Writing">
-  <div class="grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 px-6">
-    <Header />
-    <h1 class="-my-1">Writing</h1>
-    <div class="flex flex-col col-span-full xl:col-span-6 xl:col-start-2 -my-1">
-      {writings?.sort((a, b) => {
-        const dateA: any = new Date(a.data.date);
-        const dateB: any = new Date(b.data.date);
-        return dateB - dateA;
-      }).map(writing => (
-        <Writing
-          title={writing.data.title}
-          href={`/writing/${writing.slug}`}
-          date={writing.data.date}
-        />
-      ))}
-    </div>
+<Layout>
+  <div class="grid grid-cols-12 col-span-full gap-x-4 h-fit border-t-[0.5px] pt-1.5 border-black dark:border-white">
+    {writing.sort((a, b) => {
+      const dateA = new Date(a.data.date).getTime();
+      const dateB = new Date(b.data.date).getTime();
+      return dateB - dateA;
+    }).map(({ slug, data: writing }) => (
+      <a href={`/writing/${slug}`} class=" grid grid-cols-12 col-span-full gap-x-4">
+        <p class="col-span-3">{writing.date}</p>
+        <h2 class="col-span-9 uppercase">{writing.title}</h2>
+      </a>
+    ))}
   </div>
 </Layout>

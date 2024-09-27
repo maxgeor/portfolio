@@ -1,467 +1,353 @@
 ---
 layout: ../../layouts/StudyLayout.astro
 work: formie
+type: project
 title: Formie
-image: "/work/formie/cover.jpeg"
+images: {
+  sm: "/work/formie/cover-sm.png",
+  lg: "/work/formie/cover-lg.png"
+}
+roles: 
+  - Brand
+  - Product
+  - Code
 teammates:
   [
     {
       name: Hassan Syed,
-      role: Development,
+      role: Code,
       href: https://twitter.com/hassantsyed,
     },
   ]
-roles: 
-  long: [Branding, Product Design, Frontend Development]
-  short: [Dev, Brand, Product]
-tools: ["Next.js", "Firebase", "TailwindCSS"]
-tldr: Solo project to build a universal UI for smart contracts. Featured as top product by Milk Road.
+tools: ["Next.Js", "Firebase", "TailwindCSS"]
+description: Personal project to replace Etherscan's smart contract UI with an form-based design. It simplifies interactions by dedicating one page per action, enforcing trust confirmation, and supporting one-way transactions. You can customize titles and descriptions, balancing ease-of-use with security. While editing is limited, the streamlined approach earned Formie recognition as a top product by Milk Road.
 link: https://www.formie.co/
 year: '2022'
-sections:
-  [
-    { title: "Problem" },
-    {
-      title: "Research",
-      subsections:
-        [
-          { title: "Most actions just need a form" },
-          { title: "Etherscan was mostly used for one-way actions" },
-          {
-            title: "Projects sacrificed UX to save time",
-          },
-        ],
-    },
-    { title: "Idea" },
-    { title: "Process" },
-    {
-      title: "Challenges",
-      subsections:
-        [
-          { title: "Shooing scammers" },
-          { title: "Communicating technical details" },
-          { title: "Keeping it flexible" },
-        ],
-    },
-    {
-      title: "Key Decisions",
-      subsections:
-        [
-          { title: "One page, one action" },
-          { title: "Only supporting one-way actions" },
-          { title: "Letting people write their own titles and descriptions" },
-          { title: "Making people confirm trust" },
-        ],
-    },
-    {
-      title: "Tradeoffs",
-      subsections:
-        [
-          { title: "Replacing editing with infinite forms" },
-          { title: "Only letting people customize their title & description" },
-          { title: "Limited error messaging" },
-        ],
-    },
-    { title: "Result" },
-  ]
 order: 1
 ---
 
-import Tldr from "../../components/study/Tldr.astro";
-import Heading from "../../components/study/Heading.astro";
-import OneTwoThree from "../../components/study/OneTwoThree.astro";
+import Section from "../../components/study/Section.astro";
 import Image from "../../components/study/Image.astro";
 import Video from "../../components/study/Video.astro";
-import Section from "../../components/study/Section.astro";
 import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from "../../components/study/MarkedNumber.astro";
+import Row from "../../components/study/Row.astro";
 
-<Tldr 
-  problem="Etherscan's frontend sucked."
-  solution="Airtable Forms, but for smart contract actions."
-  decisions={[
-    "Every action gets its own page.",
-    "Only supported one-way actions (two-ways were annoying and not important).",
-    "Made form titles and descriptions open text (so any action could be explained).",
-    "Forced people to confirm trust before submitting (to deter scammers).",
-  ]}
-  tradeoffs={[
-    "Cut editing, let people make unlimited forms instead.",
-    "Only let people customize title & description to simplify flow.",
-  ]}
-/>
-
-<Heading title="Etherscan's UI kinda sucked..." number="00" classes="!pb-0 -mt-1 sm:-mt-2 -mb-6 sm:-mb-2" />
-<OneTwoThree>
-  <span slot="1">The UI is a list of technically-named forms.</span>
-  <span slot="2">It’s at the bottom of the page, behind two drawers.</span>
-  <span slot="3">They share limited feedback about transactions.</span>
-</OneTwoThree>
-<div class="flex flex-col gap-y-6 col-span-full lg:col-span-2 xl:col-start-2">
-  Developers make blockchain apps by
-
-  1. Writing code
-  2. Uploading it to Ethereum or another blockchain as `smart contracts`
-  3. Building a `frontend` for those contracts (an app or website) so people can use them.
-
-  To save time, blockchain developers use `frontend generators`, which take your code and spit out a bare-bones, working UI. [Etherscan](https://etherscan.io/) is the most popular frontend generator, powering tons of Ethereum projects.
-
-  The problem? **Their frontend was impossible to use**. After peeling back two layers of UI, all you're given is a list of techincal names. No help or hints. It's so bad, you need a [YouTube tutorial](https://www.youtube.com/results?search_query=how+to+mint+from+etherscan).
-</div>
-<Image
-  src="/work/formie/annotated-etherscan-page.png"
-  alt="Etherscan's interface for smart contract actions"
-  classes="col-span-full lg:col-span-4 -mx-6 md:!mx-0"
-/>
-
-<Heading title="So we looked for something better..." number="01" classes="md:pb-12">
-  <img src="/path-l-to-r.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[48px] h-full absolute -bottom-4 left-[48%] transform rotate-1 -translate-x-1/2" />
-</Heading>
-
-<div class="relative md:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 ">
-    <h2>Most actions needed basic UIs</h2>
-    <div class="flex flex-col gap-6">
-      We started by studying what worked with Etherscan's interface. Their "frontend" was a list of forms for each `action` in a smart contract. We were sceptical that a raw, unstyled form was the best layout... but it was.
-      
-      Turns out, **smart contract actions are super simple**. Most only take 1-2 inputs and return little to no data. The form's focused, linear path makes it perfect for easing people through the unfamiliar flow of calling contracts.
-    </div>
-  </div>
-  <Image 
-    src="/work/formie/research/forms/etherscan-form-ui.png" 
-    alt="Etherscan's UI for Uniswaps's Delegate method"
-    classes="md:order-first col-span-full md:col-span-4 xl:col-start-2 -mx-6 md:!mx-0"
-  />
-  <img src="/path-r-to-l.svg" class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[60px] h-full xl:w-[50vw] absolute -bottom-6 left-[48%] transform -rotate-1 -translate-x-1/2" />
-</div>
-
-<div class="relative xl:pb-12 col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pb-12">
-  <div class="flex flex-col gap-6 col-span-full md:col-span-2 xl:col-start-2 ">
-    <h2>Projects used Etherscan for one-way actions</h2>
-    <div class="flex flex-col gap-6">
-      Contracts have two kinds of actions:
-
-      `One-way` actions _trigger a change, but return nothing_ (ex: voting, sending money, changing ownership).
-
-      `Two-way` actions _return data_, often mixing with non-blockchain data (ex: showing account's balance, getting an NFT's characteristics).
-
-      One-ways were simple enough for Etherscan's UI while two-ways were more complex, often getting custom UIs.
-    </div>
-  </div>
+<Section id="1.00" title='Problem' hasBorder={false}>
+  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? **Etherscan's UI sucks**. <MarkedNumber number={1} /> It's a list of technically-worded forms, <MarkedNumber number={2} /> It's hard to navigate and <MarkedNumber number={3} /> It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
   <Carousel
     slides={[
       {
-        type: 'video',
-        src: "/work/formie/research/one-ways/mloot-flow",
+        id: "1.01",
+        src: "/work/formie/annotated-etherscan-page.png",
+        alt: "Etherscan's UI",
       },
       {
-        type: 'video',
+        id: "1.02",
+        src: "/work/formie/research/forms/etherscan-form-ui.png",
+        alt: "Etherscan's form",
+      },
+      {
+        id: "1.03",
+        src: "/work/formie/research/one-ways/mloot-flow",
+        alt: "Minting mLoot",
+        type: "video"
+      },
+      {
+        id: "1.04",
+        src: "/work/formie/research/one-ways/banners-flow",
+        alt: "Minting Banners",
+        type: "video"
+      },
+      {
+        id: "1.05",
         src: "/work/formie/research/one-ways/rune-flow",
+        alt: "Minting Runes",
+        type: "video"
       },
     ]}
-    classes="col-span-full md:col-span-4 -mx-6 md:!mx-0"
+    span={{ base: 12, md: 8 }}
+    start={{ base: 1, md: 3 }}
+  >
+    <Fragment slot="description">
+      **Etherscan worked best with one-way actions** (like voting or sending ETH), which trigger changes without returning data. Two-way actions, which return more complex data (like checking balances or viewing NFTs), often needed custom UIs to handle the extra complexity. The straightforward layout made navigating one-way actions easy, while two-ways required more tailored solutions.
+    </Fragment>
+  </Carousel>
+</Section>
+
+<Section id="2.00" title='Form UI'>
+  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: <mark class="solution">What if we applied form builder patterns to smart contracts?</mark> You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  <Carousel
+    slides={[
+      {
+        id: "2.01",
+        type: "video",
+        src: "/work/formie/walkthrough.mp4",
+        alt: "Full walkthrough"
+      },
+      {
+        id: "2.02",
+        src: "/work/formie/first-sketch.png",
+        alt: "First sketch",
+      },
+      {
+        id: "2.03",
+        src: "/work/formie/process/flow.png",
+        alt: "First sketch of create flow",
+      },
+      {
+        id: "2.04",
+        src: "/work/formie/process/sketch.png",
+        alt: "First sketch of form header",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
   />
-  <img 
-    src="/path-l-to-r.svg" 
-    class="hidden md:block max-w-[75vw] xl:max-w-[50vw] max-h-[50px] h-full  absolute -bottom-6 left-[48%] transform rotate-1 -translate-x-1/2" 
+  <Carousel
+    slides={[
+      {
+        id: "2.05",
+        src: "/work/formie/forms.png",
+        alt: "Forms",
+      },
+      {
+        id: "2.06",
+        src: "/work/formie/new-address.png",
+        alt: "New, find",
+      },
+      {
+        id: "2.06",
+        src: "/work/formie/new-method.png",
+        alt: "New, pick",
+      },
+      {
+        id: "2.07",
+        src: "/work/formie/new-title-description.png",
+        alt: "New, title",
+      },
+      {
+        id: "2.08",
+        src: "/work/formie/new-success.png",
+        alt: "New, success",
+      },
+      {
+        id: "2.09",
+        src: "/work/formie/form.png",
+        alt: "Form",
+      },
+      {
+        id: "2.10",
+        src: "/work/formie/form-pending.png",
+        alt: "Form, pending",
+      },
+      {
+        id: "2.11",
+        src: "/work/formie/form-success.png",
+        alt: "Form, success",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
   />
-</div>
-
-<div class="relative col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pb-12">
-  <div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 ">
-    <h2>Projects sacrificed UX to save time</h2>
-    <div class="flex flex-col gap-6">
-      We wanted to understand why people reached for Etherscan. Calls with teams & developers uncovered some key insights:
-
-      ### Etherscan was a “good enough” interface
-      Teams used it for admin actions to save time, while developers used it for personal projects and testing to avoid writing frontend code.
-
-      ### They knew Etherscan sucked
-      Everyone I talked to was painfully aware of how bad the interface was. Even though projects couldn't justify making something custom, they still valued UX. Given something better with a seamless setup, we believed they'd switch.
-    </div>
-  </div>
+  <Carousel
+    orientation="vertical"
+    slides={[
+      
+      {
+        id: "2.12",
+        src: "/work/formie/s4.png",
+        alt: "New, find",
+      },
+      {
+        id: "2.13",
+        src: "/work/formie/s5.png",
+        alt: "New, pick",
+      },
+      {
+        id: "2.14",
+        src: "/work/formie/s6.png",
+        alt: "New, title",
+      },
+      {
+        id: "2.15",
+        src: "/work/formie/s2.png",
+        alt: "Forms",
+      },
+      {
+        id: "2.16",
+        src: "/work/formie/s3.png",
+        alt: "Form",
+      },
+      {
+        id: "2.17",
+        src: "/work/formie/form-page-end.png",
+        alt: "Form, end",
+      },
+    ]}
+    classes="sm:hidden"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
+  <Row classes="hidden sm:grid">
+    <Image
+      id="2.12"
+      src="/work/formie/s4.png"
+      alt="New, find"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.13"
+      src="/work/formie/s5.png"
+      alt="New, pick"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.14"
+      src="/work/formie/s6.png"
+      alt="New, title"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.15"
+      src="/work/formie/s2.png"
+      alt="Forms"
+      span={{ base: 6, md: 4 }}
+      start={{ base: 3 }}
+      orientation="vertical"
+      isFullBleed={true}
+      hasBorder={false}
+    />
+    <Image
+      id="2.16"
+      src="/work/formie/s3.png"
+      alt="Form"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+      hasBorder={false}
+    />
+    <Image
+      id="2.17"
+      src="/work/formie/form-page-end.png"
+      alt="Form, end"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+      hasBorder={false}
+    />
+  </Row>
   <Video 
-    src="/work/formie/research/one-ways/banners-flow.png" 
-    alt="Etherscan's UI for Uniswaps's Delegate method"
-    gridClasses="md:order-first col-span-full md:col-span-4 xl:col-start-2 -mx-6 md:!mx-0"
+    id= "2.11"
+    src="/work/formie/landing-page.mp4"
+    alt="Landing page"
+    span={{ base: 12, md: 10 }}
+    isPadded={{ base: false, md: true }}
   />
-  <img src="/path-r-to-c.svg" class="hidden md:block max-h-[190px] h-full absolute -bottom-[12.25rem] md:-bottom-[10.5rem] left-1/2 transform -translate-x-1/2" />
-</div>
-
-<div class="relative col-span-full xl:col-span-6 xl:col-start-2 grid grid-cols-6 gap-x-4 mt-12 md:mt-36">
-  <span class="self-start -my-1 col-span-4 lg:col-span-2 z-5 sm:text-md sm:tracking-tight !text-neutral-500 max-w-[225px] sm:max-w-[300px] md:max-w-md">Realizing smart contracts worked like mini forms made us wonder...</span>
-  <span class="absolute -top-1 md:-top-3 lg:-top-7 -right-0.5 md:-right-1 xl:-right-5 text-xl sm:text-2xl lg:text-3xl justify-self-end text-neutral-600 tracking-tight ">02</span>
-</div>
-<h1 class="col-span-6 xl:col-start-2 -mt-1 sm:-mt-2 -mb-6 sm:-mb-2 xl:-my-3">What if we applied form builder patterns to smart contracts?</h1>
-<OneTwoThree >
-  <span slot="1">Give every action a [dedicated page](#one-page-one-action).</span>
-  <span slot="2">Let people [write copy](#letting-people-write-their-own-titles-and-descriptions) to give context.</span>
-  <span slot="3">Share clear, thoughtful feedback about transactions.</span>
-</OneTwoThree>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-x-6 gap-y-6 md:pb-12">
-  <div class="col-span-full md:col-span-2 xl:col-start-2 md:max-w-[200px] ">
-    The form builder pattern worked for a few reasons:
-  </div>
-  <div class="col-span-full md:col-span-4 max-w-prose">
-    1. One-way actions (which covered most use cases) worked well with form-like layouts.
-    2. The core UI is the same as Etherscan's, so it's easy for projects to compare and switch.
-    3. Everyone has used Google or Airtable Forms before. Giving contracts a similar structure makes them easy for anyone to understand.
-  </div>
-</div>
-
-<div class="col-span-full -mx-6">
-  <img
-    src="/work/formie/first-sketch-sm.png"
-    alt="First sketch of form builder UI"
-    class="xl:hidden"
-  />
-  <img
-    src="/work/formie/first-sketch-lg.png"
-    alt="First sketch of form builder UI"
-    class="hidden xl:block"
-  />
-</div>
-
-<Heading title="So we got to work..." number="03" classes="!pb-0" />
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-y-6 gap-x-6">
-  <div class="col-span-full md:col-span-2 xl:col-start-2">
-    We worked by doing design and development at the same time.
-  </div>
-  <div class="col-span-full md:col-span-2">
-    First, we broke the project into chunks, ordering them by importance, dependence, and unknowns. Then, we’d design and build each chunk in order.
-  </div>
-  <div class="col-span-full md:col-span-2">
-    Design started with rough sketches. After breadboarding the flows and UI, I’d finish the rest in code. While pushing pixels, Hassan would build the backend (I’d help after designing).
-  </div>
-</div>
-<div class="col-span-full -mx-4 md:mx-0">
-  <img
-    src="/work/formie/process/lineup.png"
-    alt="Overlayed screenshots of project todos, breadboarded flows, and UI sketches"
-  />
-</div>
-
-<Heading title="But we had some issues..." number="04" classes="md:pb-6"  />
-<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2 xl:col-start-2">
-  <h2>Shooing scammers</h2>
-  <div class="flex flex-col gap-6 ">
-    We knew three things from the jump:
-
-    1. Scammers would use forms to misrepresent contracts,
-    2. We couldn't stop them,
-    3. But we had to do something.
-  </div>
-  <div class="mt-1 md:mt-auto p-4 rounded bg-neutral-800 ">
-    [How do we deter scammers](#making-people-confirm-trust) without making the product harder to build or use?
-  </div>
-  <Image 
-    src="/work/formie/challenges/scam.png"
-    alt="Thinking about how to handle bad guys"
-    classes="md:hidden col-span-full -mx-6 md:!mx-0"
-  />
-</div>
-
-<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2">
-  <h2>Keeping it flexible</h2>
-  <div class="flex flex-col gap-6 ">
-    Formie can plug into any contract, so its copy, error handling, and layout had to work with _thousands_ of actions.
-
-    It also had to work with different brands. Formie is part of a project's interface. Sometimes, it _is_ the interface. A strong aesthetic could clash with the project's brand — confusing users and turning projects away.
-  </div>
-  <div class="mt-1 md:mt-auto p-4 bg-neutral-800 rounded">
-    [How do we design a universal interface](#only-supporting-one-way-actions) that serves many brands and actions?
-  </div>
-  <Image 
-    src="/work/formie/challenges/explain.png"
-    alt="Thinking about out how to explain stuff"
-    classes="md:hidden col-span-full -mx-6 md:!mx-0"
-  />
-</div>
-
-<div class="flex flex-col gap-y-6 gap-x-6 col-span-full md:col-span-2">
-  <h2>Communicating technical details</h2>
-  <div class="flex flex-col gap-6 ">
-    Smart contracts have tons of strange behaviors:
-
-    - Transactions cost a bit of money
-    - Transactions take time to go through
-    - Anyone can make a frontend for any contract (because they're public)
-
-    The reason are technical, but anyone who doesn’t understand why will face confusion, missteps, and exploitation.
-  </div>
-  <div class="mt-1 md:mt-auto p-4 bg-neutral-800 rounded">
-    [How do we explain challenging ideas](#letting-people-write-their-own-titles-and-descriptions) without overwhelming people?
-  </div>
-</div>
-<img 
-  src="/work/formie/challenges/challenges.png"
-  alt="Thinking about how to handle scammers and how to explain stuff"
-  class="hidden md:block col-span-6 xl:col-start-2 !mx-0"
-/>
-
-<Heading title="So we made a few decisions..." number="05" classes="md:pb-6" />
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">1</span>
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2">
-    <h2>One page, one action</h2>
-    <div class="flex flex-col gap-6">
-      The main departure from Etherscan was limiting forms to a single action.
-
-      Etherscan puts every action in one place, but it's a mess! You end up like Indiana Jones, hacking through layers and deciphering hieroglyphics to find the form you want.
-
-      Linking straight to the action makes it impossible to miss.
-    </div>
-  </div>
+</Section>
+<Section id="3.00" title="Only one-way actions">
+  <Fragment slot="context">
+    Formie had to integrate with any contract, meaning its copy, error handling, and layout needed to adapt to _thousands_ of actions. It also had to be flexible enough to work seamlessly across different brands. **Focusing on one-way actions** made Formie a universal solution. This narrowed the scope, avoided potential edge cases, and targeted the core functionality used by the majority of projects.
+  </Fragment>
   <Image
-    src="/work/formie/decisions/one-page.png"
-    alt="Form for Uniswap's Delegate action"
-    classes="col-span-full xl:col-span-4 -mx-6 md:!mx-0"
-  />
-</div>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl justify-self-end -my-2.5  mr-4">2</span>
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2>Only supporting one-way actions</h2>
-    <div class="flex flex-col gap-6">
-      We wanted Formie to work for any action, but supporting two-way actions didn't make sense for three reasons:
-
-      1. [Most people don't use Etherscan frontends for two-way actions](#etherscan-was-mostly-used-for-one-way-actions).
-      2. Supporting two-way actions would've made the product harder to use.
-      3. Tools like Dune Analytics and specialized blockchain explorers already scratch the itch.
-
-      We couldn't create a great interface for two-way methods, so we decided to focus on our core use case by only supportting one-way actions.
-
-      Ditching two-ways axed our scope and got a leaner product out the door.
-    </div>
-  </div>
-  <Image
+    id="3.01"
     src="/work/formie/decisions/one-way-actions.png"
-    alt="Form for Uniswap's Delegate action"
-    classes="col-span-full xl:col-span-4 -mx-6 md:!mx-0"
+    alt="One-way actions UI"
+    withContainer
+    span={{ base: 12, md: 8 }}
+    isPadded={true}
   />
-</div>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-5">3</span>
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2>Letting people write their own titles and descriptions</h2>
-    <div class="flex flex-col gap-6">
-      To translate tricky ideas, we replaced technical terms (“method”, “write”) with Plain English (“action”, “send”).
-
-      But it wasn’t enough. Every action needed something explained that static language couldn’t cover. To guarentee that any action could be understood, we let people write their own titles and descriptions. It was a simple but effective way to keep forms flexible without adding complexity.
-
-      Deciding to let people edit wasn’t easy, since open text makes it trivial to misrepresent actions. But letting people edit was essential, so we had to design around it.
-    </div>
-  </div>
-  <Image
-    src="/work/formie/decisions/title-and-description.png"
-    alt="UI for editing title & description"
-    classes="col-span-full xl:col-span-4 -mx-6 md:!mx-0"
+</Section>
+<Section id="4.00" title="Confirming trust" >
+  <Fragment slot="context">
+    We knew scammers could exploit forms to misrepresent contracts from the start. While stopping them entirely wasn't feasible, we needed a way to protect users without overcomplicating the product. **Requiring users to confirm trust** became our solution. Many scams succeed because people act too quickly, especially in crypto. By forcing users to actively confirm trust, we slowed things down, giving them more time to make informed decisions.
+  </Fragment>
+  <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/formie/decisions/trust.png",
+        alt: "Confirmation checkbox",
+      },
+      {
+        id: "4.02",
+        src: "/work/formie/challenges/scam.png",
+        alt: "Notes",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
   />
-</div>
+</Section>
 
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <span class="hidden xl:block text-neutral-700 text-2xl -my-2.5 justify-self-end mr-4">4</span>
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2>Making people confirm trust</h2>
-    <div class="flex flex-col gap-6">
-      We couldn’t stop every scam or build a trustless, zero-proof protocol to do it. Instead, we detered scammers by making people confirm they trusted their form before submitting.
-
-      Most people who get scammed, especially in crypto, are in a rush: They see a hot mint in Discord, feel the FOMO, and write a check.
-
-      Forcing people to question their source was a cheap, but effective way to protect users from scammers and themselves.
-    </div>
-  </div>
-  <Image
-    src="/work/formie/decisions/trust.png"
-    alt="Confirmation checkbox at the end of every form"
-    classes="col-span-full xl:col-span-4 -mx-6 md:!mx-0"
+<Section id="5.00" title="Open text fields">
+  <Fragment slot="context">
+    Smart contracts have quirks like transaction costs, delays, and public access to frontends. These technical details confuse users. To simplify, we replaced jargon with plain English ("method" became "action"). Still, users needed more control, so we let them write their own titles and descriptions, keeping forms flexible without adding complexity.
+  </Fragment>
+  <Carousel
+    slides={[
+      {
+        id: "5.01",
+        src: "/public/work/formie/decisions/title-and-description.png",
+        alt: "Title & description fields",
+      },
+      {
+        id: "5.02",
+        src: "/public/work/formie/challenges/explain.png",
+        alt: "Notes on explaining details",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
   />
-</div>
-
-<Heading title="But we couldn't do everything..." number="06" />
-<div class="col-span-full grid grid-cols-1 xl:grid-cols-8 gap-y-6 gap-x-6">
-  <p class="col-span-4 lg:col-span-2 xl:col-start-2">Our priority was speed-to-launch. We focused on shipping something better than the current solution, not the ideal product.</p>
-  <p class="col-span-4 lg:col-span-2">By [comparing to our baseline](https://basecamp.com/shapeup/3.5-chapter-14#compare-to-baseline), we cut some non-essential features:</p>
-</div>
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 md:pt-6">
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2   
-      id="replacing-editing-with-infinite-forms" 
-      aria-label="Replacing editing with infinite forms"
-      class="-my-1"
-    ><span class="text-[#ababab]">~~Editing forms~~</span> Infinite forms</h2>
-    <div class="flex flex-col gap-6">
-      We wanted to let people edit forms after creation. But, late in development, we realized the backend would need a week-long rewrite to handle secure edits. Instead of rebuilding, we decided to
-
-      1. Let people make unlimited forms, and
-      2. Make forms permanent (for security reasons).
-
-      People could "edit" their forms by making another one, which only took ~30 seconds. Since forms had little content, we figured folks wouldn’t edit much anyways. We could always add feature later if we learned that people edit a lot. Until then, disposable forms were good enough.
-
-      Ironically, this "tradeoff" gave us editing for free, letting us ship a few hours later.
-    </div>
-  </div>
-  <div class="col-span-full xl:col-span-5 lg:max-w-[750px] -mr-6 lg:mx-auto">
-    <img
-      src="/work/formie/tradeoffs/no-editor/no-editing.png"
-      alt="UI for editing title & description"
-    />
-  </div>
-</div>
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2 id="only-letting-people-customize-their-title-&-description" aria-label="Only letting people customize their title & description">Customize <span class="text-[#ababab]">~~everything~~</span><br/> title + description</h2>
-    <div class="flex flex-col gap-6">
-      We wanted every part of a form to be customizable:
-
-      - Field titles, descriptions, placeholders
-      - Error messages
-      - Button labels, etc.
-
-      But because we cut editing, people would only have one shot to customize everything before their form is made. We knew this would be too overwhelming.
-
-      To simplify, we only let people customize their form’s title and description. Because the top-level fields gave context to the entire form, they do 80-90% of the communicating anyways.
-
-      Limited customization kept form creation straightforward while offering more control than Etherscan.
-    </div>
-  </div>
-  <div class="col-span-full xl:col-span-5 lg:max-w-[750px] -ml-6 lg:mx-auto">
-    <img
-      src="/work/formie/tradeoffs/only-edit-title-and-description/custom-title.png"
-      alt="UI for editing title & description"
-    />
-  </div>
-</div>
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6">
-  <div class="flex flex-col gap-6 col-span-full xl:col-span-2 xl:col-start-2">
-    <h2 id="limited-error-messaging" aria-label="Limited error messaging"><span class="text-[#ababab]">~~Perfect~~</span> Limited error messaging</h2>
-    <div class="flex flex-col gap-6">
-      We also planned on translating every error into a clear, helpful message, but Ethereum was too limited.
-
-      At the time, a protocol to standardize errors like HTTP didn't exist for smart contracts. Every contract handled issues differently, with no way to label common errors.
-
-      It was impossible to translate errors consistently, so we settled on...
-
-      1. Humanizing basic type errors
-      2. Wrapping unknown errors in an honest, generic message.
-
-      Compromising on error handling stung, but you can only do so much when working with a black box.
-    </div>
-  </div>
-  <div class="col-span-full xl:col-span-5 lg:max-w-[550px] mx-auto">
-    <img
-      src="/work/formie/tradeoffs/errors/errors.png"
-      alt="UI for editing title & description"
-    />
-  </div>
-</div>
-
-<div class="col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6 mt-12 md:mt-36">
-  <p class="col-span-full md:col-span-2 xl:col-start-2 ">Formie ended up getting used by teams and developers. It was also featured by Smoothie and The Milk Road as a top project from their Milk Money Cohort.</p>
-  <p class="col-span-full md:col-span-2">Despite the usage, we decided to put the product on auto-pilot. After launch, we discovered lots of cases where people needed tiny customizations. The tweaks had little overlap, so there was no elegant, standardized solution support for each.</p>
-  <p class="col-span-full md:col-span-2">Since the improvements didn't make sense to invest time and money into, we decided to keep Formie as is and only support the original use case.</p>
-</div>
-
-
+</Section>
+<Section id="6.00" title="Tradeoffs">
+  <Fragment slot="context">
+    Editing after form creation required a week-long backend rewrite. Instead, we **made forms permanent but easy to duplicate**, letting users "edit" by creating new forms in ~30 seconds. This saved development time and allowed faster shipping. Full customization was overwhelming without edits, so we **limited customization to titles and descriptions**. This kept forms simple while providing essential context.
+  </Fragment>
+  <Carousel
+    slides={[
+      {
+        id: "6.01",
+        src: "/public/work/formie/tradeoffs/no-editor/callout.png",
+        alt: "No editing callout",
+      },
+      {
+        id: "6.02",
+        src: "/public/work/formie/tradeoffs/no-editor/one-time-message.png",
+        alt: "No editing one-time message",
+      },
+      {
+        id: "6.03",
+        src: "/public/work/formie/tradeoffs/no-editor/new-plan.png",
+        alt: "No editing callout, sketch",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
+  <Carousel
+    slides={[
+      {
+        id: "6.01",
+        src: "/public/work/formie/tradeoffs/only-edit-title-and-description/editor-prototype.png",
+        alt: "Editior prototype",
+      },
+      {
+        id: "6.02",
+        src: "/public/work/formie/tradeoffs/no-editor/original-plan.png",
+        alt: "Editior sketch",
+      },
+      {
+        id: "6.03",
+        src: "/public/work/formie/tradeoffs/only-edit-title-and-description/realization.png",
+        alt: "Realization",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
+</Section>

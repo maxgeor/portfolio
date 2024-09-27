@@ -1,0 +1,32 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  classes?: string;
+}
+
+const { classes = "" } = Astro.props;
+---
+<div class={clsx("flex flex-col gap-2", classes)}>
+  <p>Skills</p>
+  <ul class="md:-ml-[11px]">
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>5</span> <span>Product Thinking</span>
+    </li>
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>5</span> <span>Product Design</span>
+    </li>
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>4</span> <span>Copywriting</span>
+    </li>
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>3</span> <span>Frontend Dev</span>
+    </li>
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>3</span> <span>Graphic Design</span>
+    </li>
+    <li class="flex gap-5 md:gap-2 whitespace-nowrap">
+      <span>2</span> <span>Backend Dev</span>
+    </li>
+  </ul>
+</div>

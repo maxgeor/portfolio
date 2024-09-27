@@ -1,0 +1,13 @@
+{
+  "type": "client",
+  "title": "Wavy/Website",
+  "description": "Marketing site for Wavy",
+  "image": "/work/wavy/website/cover.gif",
+  "link": {
+    "href": "https://www.joinwavy.com/",
+    "target": "_blank"
+  },
+  "roles": ["Code"],
+  "order": 7,
+  "year": "2024"
+}

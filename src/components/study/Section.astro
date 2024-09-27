@@ -1,27 +1,47 @@
 ---
-import { toUrlSafeKebabCase } from "../../utils/formatting"
+import Caption from './Caption.astro';
 export interface Props {
-  title: string;
-  isSubsection?: boolean;
-  classes?: string
+  id: string;
+  title: string
 }
-const { title, isSubsection = false, classes = '' } = Astro.props;
----
 
-<section 
-  id={toUrlSafeKebabCase(title)} 
-  class={`
-    relative grid grid-cols-1 md:grid-cols-6 xl:grid-cols-8 gap-6 col-span-full scroll-mt-[72px] sm:scroll-mt-[108px]
-    ${isSubsection ? '' : 'mt-[52px] first:mt-0'}
-    ${classes}
-  `}
->
-  <slot name="heading">
-    {isSubsection ? (
-      <h2 class="text-neutral-100  tracking-tighter col-span-2">{title}</h2>
-    ) : (
-      <h1 class="text-neutral-100 tracking-tighter  col-span-2 text-3xl xl:text-4xl -my-1 ">{title}</h1>
-    )}
-  </slot>
-  <slot/>
-</section>
+const { id, title } = Astro.props;
+---
+<section class="relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-8">
+  <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky lg:static top-[42px] col-span-full z-10">
+    <hr class="col-span-full border-t-[0.5px] border-black dark:border-white " />
+    <Caption id={id} text={title} element="h2" classes='text-pretty -my-0.5' />
+  </div>
+  <hr class="hidden lg:block col-span-full border-t-[0.5px] border-black dark:border-white z-10 pb-2" />
+  <h1 class="hidden lg:flex sticky top-[48px]  uppercase text-pretty col-span-2  gap-2 -my-0.5 z-10">
+    <span>{id}</span>
+    <span class="">{title}</span>
+  </h1>
+  <div class="context flex flex-col mt-3 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
+    <slot name="context" />
+  </div>
+  {Astro.slots.has('default') && (
+    <div class="grid grid-cols-12 gap-4 md:gap-y-8 mt-4 md:mt-8 col-span-full">
+      <slot />
+    </div>
+  )}
+<section/>
+
+<style>
+  .context > ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  
+  .context > ol > li {
+    counter-increment: item;
+  }
+  
+  .context > ol > li::before {
+    content: counter(item) " ";
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+</style>

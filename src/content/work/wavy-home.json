@@ -1,0 +1,10 @@
+{
+  "type": "client",
+  "title": "Wavy/Home",
+  "description": "Home page redesign",
+  "image": "/work/wavy/home/cover-sm.png",
+  "roles": ["Product"],
+  "studySlug": "home",
+  "order": 3,
+  "year": "2024"
+}

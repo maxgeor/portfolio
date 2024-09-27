@@ -5,41 +5,73 @@ import Project from "../components/resume/Project.astro";
 ---
 
 <!-- <Layout title="Resume" backgroundColor="bg-[#1a1e1e]"> -->
-<Layout title="Resume" backgroundColor="bg-white">
+<Layout title="Resume" >
   <!-- <div class="mx-auto max-w-3xl text-[#A2A9A8]"> -->
-  <div class="mx-auto max-w-3xl text-[#222]">
+  <div class="">
     <!-- <div
       class="mx-auto flex flex-col gap-4 bg-[#1a1e1e] px-8 pt-6 pb-16 text-xs"
     > -->
     <div
-      class="mx-auto flex flex-col gap-4 bg-white px-8 pt-6 pb-16 text-xs"
+      class="mx-auto grid grid-cols-2 gap-4 -mt-5"
     >
-      <header class="grid grid-cols-4 gap-4">
-        <h1>Max Georgopoulos</h1>
-        <div class="flex flex-col gap-4">
-          <div>
-            <p>Toronto</p>
-            <p>416-804-8644</p>
-            <p>max123358@gmail.com</p>
-          </div>
-          <div>
-            <p>github/maxgeor</p>
-            <p>dribbble/maxgeo</p>
-            <p>maxgeorgopoulos.com</p>
+      <header class="grid grid-cols-4 gap-4 ">
+        <h1 class="col-span-full border-y border-transparent">Max Georgopoulos</h1>
+        <p class="col-span-2 text-xs font-medium normal-case">
+          Primarily a frontend engineer, with full-stack experience. I've
+          owned multiple features, taking responsiblity for planning,
+          development, and release. I also have product design experience (in-house & freelance). My
+          blended skills let me bridge gaps within product teams and ship
+          polished interfaces.
+        </p>
+        <div>
+          <p>Toronto</p>
+          <p class="text-[11px]">416-804-8644</p>
+          <p>max123358@gmail.com</p>
+        </div>
+        <div>
+          <p>github/maxgeor</p>
+          <p>dribbble/maxgeo</p>
+          <p>maxgeorgopoulos.com</p>
+        </div>
+        <section class="grid grid-cols-4 gap-x-4 gap-y-2 ">
+        <h2>Education</h2>
+        <div class="col-span-full gap-x-4 gap-y-2">
+          <h3>Bachelor of <br /> Commerce</h3>
+          <p>Dalhousie<br />University</p>
+          <div class="relative flex h-fit justify-self-end">
+            <p class="w-[68px] shrink-0">Sep 2016</p>
+            <span
+              class="absolute top-1/2 left-[57px] -translate-y-1/2 transform"
+              >-
+            </span>
+            <p class="w-[53px] shrink-0">Apr 2021</p>
           </div>
         </div>
-        <div class="col-span-2 flex flex-col gap-4">
-          <p class="col-span-2">
-            I'm a product designer with a marketing and engineering background. I've owned multiple key features, taking responsiblity for strategy, design, development, and release.
-          </p>
-          <p class="col-span-2">
-            My blended skills let me work across the entire stack, from concept to copy and design to development. I bridge gaps between teams, ship fast, and raise the bar for design quality.
-          </p>
-        </div>
+      </section>
+        
+        
       </header>
-      <section class="grid grid-cols-4 gap-4 border-t border-[#ddd]">
-        <h2>Work</h2>
-        <div class="col-span-3 mt-4 grid grid-cols-3 gap-4">
+      
+      <section class="col-span-2 flex flex-col gap-4 ">
+        <h2 class="border-y border-transparent">Work</h2>
+        <div class=" col-span-4  grid grid-cols-4 gap-4">
+          <Experience
+            title="Product Designer"
+            company="Freelance"
+            startDate="Jan 2024"
+            endDate="Now"
+            tech={["Ruby on Rails", "View Components", "React"]}
+            blurb="Owned development & design of key features. Conceptualized & pitched projects. Maintained production code quality via code review & bug fixing."
+          >
+            <Project title="Polls">
+              Designed & built a feature allowing teams to vote for their next
+              event. Saved Sales and CS teams 5 hours of work per week.
+            </Project>
+            <Project title="Saves & Collections">
+              Co-designed and built a feature that allows people to save &
+              compare events. Saved sales 5 hours/week of creating proposals.
+            </Project>
+          </Experience>
           <Experience
             title="Full-Stack \n Engineer"
             titleWidth="w-24"
@@ -59,7 +91,7 @@ import Project from "../components/resume/Project.astro";
             </Project>
           </Experience>
           <!-- <hr class="col-span-full border-t border-[#313636]" /> -->
-          <span class="w-full h-px bg-transparent col-span-full border-t border-[#ddd]"></span>
+          
           <Experience
             title="Junior Full-Stack Engineer"
             titleWidth="w-28"
@@ -84,9 +116,10 @@ import Project from "../components/resume/Project.astro";
           </Experience>
         </div>
       </section>
-      <section class="grid grid-cols-4 gap-4 border-t border-[#ddd]">
-        <h2>Projects</h2>
-        <div class="col-span-3 mt-4 grid grid-cols-3 gap-4">
+      
+      <section class="grid grid-cols-4 gap-x-4 gap-y-2 ">
+        <h2 class="">Projects</h2>
+        <div class="col-span-3  grid grid-cols-3 gap-x-4 gap-y-2">
           <Project title="Formie">
             Created a tool to make beautiful UI for any smart contract (Next.js
             & Firebase). Featured by The Milk Road.
@@ -96,9 +129,10 @@ import Project from "../components/resume/Project.astro";
           </Project>
         </div>
       </section>
-      <section class="grid grid-cols-4 gap-4 border-t border-[#ddd]">
+      
+      <section class="grid grid-cols-4 gap-x-4 gap-y-2 ">
         <h2>Education</h2>
-        <div class="col-span-3 mt-4 grid grid-cols-3 gap-4">
+        <div class="col-span-3  grid grid-cols-3 gap-x-4 gap-y-2">
           <h3>Bachelor of <br /> Commerce</h3>
           <p>Dalhousie<br />University</p>
           <div class="relative flex h-fit justify-self-end">
@@ -111,9 +145,10 @@ import Project from "../components/resume/Project.astro";
           </div>
         </div>
       </section>
-      <section class="grid grid-cols-4 gap-4 border-t border-[#ddd]">
+      
+      <section class="grid grid-cols-4 gap-x-4 gap-y-2 ">
         <h2>Technologies</h2>
-        <div class="col-span-3 mt-4">
+        <div class="col-span-3 text-xs font-medium normal-case">
           <p>
             Figma, Next.js, React, Javascript, Typescript, Ruby on Rails, View
             Components, HTML, CSS, TailwindCSS, Sanity CMS, Git, PostgreSQL,

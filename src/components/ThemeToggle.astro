@@ -1,0 +1,53 @@
+---
+import clsx from 'clsx';
+
+export interface Props {
+  classes?: string;
+}
+
+const { classes = "" } = Astro.props;
+---
+<button class={clsx(
+  "theme-toggle flex md:justify-self-end group uppercase p-2 -m-2",
+  classes
+)}>
+  Light/Dark
+</button>
+
+<script>
+  const themeToggles = document.querySelectorAll('.theme-toggle');
+
+  function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+
+    loadThemePreference();
+  }
+
+  function loadThemePreference() {
+    const theme = localStorage.getItem('theme');
+
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.querySelector('meta[name="theme-color"]')?.remove();
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'theme-color';
+      metaTag.content = '#000';
+      document.head.appendChild(metaTag);
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.querySelector('meta[name="theme-color"]')?.remove();
+      const metaTag = document.createElement('meta');
+      metaTag.name = 'theme-color';
+      metaTag.content = '#fff';
+      document.head.appendChild(metaTag);
+    }
+  }
+
+  themeToggles?.forEach((toggle) => toggle.addEventListener('click', toggleTheme));
+</script>

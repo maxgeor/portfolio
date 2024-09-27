@@ -1,0 +1,54 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  classes?: string;
+}
+
+const { classes = "" } = Astro.props;
+
+const influences = [
+  { 
+    name: "Steve Jobs",
+    description: "Maniacle focus + uncompromising vision + you need a strong leader to make great things happen" 
+  },
+  { 
+    name: "Gunpei Yokoi", 
+    description: "Contraints make you creative + make fun things.", 
+    link: "https://en.wikipedia.org/wiki/Gunpei_Yokoi" 
+  },
+  {
+    name: "Massimo/Lella Vignelli", 
+    description: "Semantics are everything + elegance elegance elegance.", 
+    link: "https://www.rit.edu/vignellicenter/sites/rit.edu.vignellicenter/files/documents/The%20Vignelli%20Canon.pdf" 
+  },
+  { 
+    name: "Ryan Singer", 
+    description: "All roads lead to Rome.", 
+    link: "https://www.feltpresence.com/" 
+  },
+  { 
+    name: "Christopher Alexander", 
+    description: "Beauty can be objective.", 
+    link: "https://en.wikipedia.org/wiki/Christopher_Alexander" 
+  },
+  { 
+    name: "Maria Montessori", 
+    description: "It's possible to make a dent in the education system.", 
+    link: "https://en.wikipedia.org/wiki/Maria_Montessori" 
+  }
+];
+---
+<div class={clsx("flex flex-col gap-2", classes)}>
+  <h3>Influences</h3>
+  <ul>
+    {influences.map((influence) => (
+      <li class="pl-px">
+        <details class="transition-all group before:content-none flex w-full  items-center gap-2 [&_summary]:open:cursor-zoom-out ">
+          <summary class="transition duration-75    hover:cursor-zoom-in">{influence.name}</summary>
+          <p class="pl-[0.65rem] normal-case font-medium">{influence.description} {influence.link && <a href={influence.link} target="_blank" class="inline underline">Learn</a>}</p>
+        </details>
+      </li>
+    ))}
+  </ul>
+</div>

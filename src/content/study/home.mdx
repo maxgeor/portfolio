@@ -1,0 +1,343 @@
+---
+layout: ../../layouts/StudyLayout.astro
+work: wavy-home
+type: client
+title: Wavy/Home
+images: {
+  sm: "/work/wavy/home/cover-sm.png",
+  lg: "/work/wavy/home/cover-lg.png"
+}
+roles: 
+  - Product
+teammates:
+  [
+    {
+      name: Neeshay Ahmed,
+      role: "Strategy, Code",
+      href: https://www.linkedin.com/in/neshayahmed/,
+    },
+    {
+      name: Shawn Hewat,
+      role: Strategy,
+      href: https://www.linkedin.com/in/shawnhewat/,
+    },
+  ]
+tools: ["Figma"]
+description: Personal project to replace Etherscan's smart contract UI with an form-based design. It simplifies interactions by dedicating one page per action, enforcing trust confirmation, and supporting one-way transactions. You can customize titles and descriptions, balancing ease-of-use with security. While editing is limited, the streamlined approach earned Formie recognition as a top product by Milk Road.
+year: '2024'
+order: 1
+---
+import Section from "../../components/study/Section.astro";
+import Image from "../../components/study/Image.astro";
+import Video from "../../components/study/Video.astro";
+import Carousel from "../../components/study/Carousel.astro";
+import MarkedNumber from '../../components/study/MarkedNumber.astro';
+import Row from "../../components/study/Row.astro";
+
+<Section id="1.00" title='Problem' hasBorder={false}>
+  <Fragment slot="context">
+    Wavy’s homepage was a single calendar view showing events, notable days, and suggestions, but it had issues. 1/ Calendar items weren’t labeled, so you couldn’t quickly spot invites or RSVPs. 2/ You could only see one month at a time, making it easy to forget events months ahead and hard to find past ones. 3/ Optional themes had either harsh, inaccessible colors or made the text almost unreadable.
+  </Fragment>
+  <Carousel
+    slides={[
+      {
+        id: "1.01",
+        src: "/work/wavy/home/note-problem-1.png",
+        alt: "Problem notes",
+      },
+      {
+        id: "1.02",
+        src: "/work/wavy/home/note-problem-2.png",
+        alt: "Problem questions",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
+</Section>
+<Section id="2.00" title='List View'>
+  <p slot="context">We added a List View to the homepage, organizing events into Swimlanes and a Timeline. Swimlanes categorize events, like Yours/Others, Upcoming/Past, or Invites/RSVPs, while the Timeline shows all events in chronological order. We made this the default view because most users come to the dashboard looking for a specific event (“I need to edit my event” or “What do I need to bring for Cocktail Making?”), which was harder to find on the calendar.</p>
+  <Carousel
+    slides={[
+      {
+        id: "2.01",
+        src: "/work/wavy/home/upcoming-1.png",
+        alt: "Upcoming, 1",
+      },
+      {
+        id: "2.02",
+        src: "/work/wavy/home/upcoming-2.png",
+        alt: "Upcoming, 2",
+      },
+      {
+        id: "2.03",
+        src: "/work/wavy/home/past.png",
+        alt: "Past",
+      },
+      {
+        id: "2.04",
+        src: "/work/wavy/home/empty.png",
+        alt: "Empty",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/home/note-layout.png",
+        alt: "Sketch, layout",
+      },
+      {
+        id: "2.05",
+        src: "/work/wavy/home/note-your-events.png",
+        alt: "Sketch, your events",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    slides={[
+      {
+        id: "2.05",
+        src: "/work/wavy/home/upcoming-mobile-1.png",
+        alt: "Upcoming, mobile, 1",
+      },
+      {
+        id: "2.06",
+        src: "/work/wavy/home/upcoming-mobile-2.png",
+        alt: "Upcoming, mobile, 2",
+      },
+      {
+        id: "2.07",
+        src: "/work/wavy/home/upcoming-mobile-3.png",
+        alt: "Upcoming, mobile, 3",
+      },
+      {
+        id: "2.08",
+        src: "/work/wavy/home/past-mobile-1.png",
+        alt: "Past, mobile, 1",
+      },
+      {
+        id: "2.09",
+        src: "/work/wavy/home/past-mobile-2.png",
+        alt: "Past, mobile, 2",
+      },
+      {
+        id: "2.10",
+        src: "/work/wavy/home/empty-mobile.png",
+        alt: "Empty, mobile",
+      },
+    ]}
+    classes="sm:hidden"
+    orientation="vertical"
+    fullBleed={{ base: true, lg: false }}
+    isPadded={false}
+  />
+  <Row classes="hidden sm:grid">
+    <Image
+      id="2.05"
+      src="/work/wavy/home/upcoming-mobile-1.png"
+      alt="Upcoming, mobile, 1"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.06"
+      src="/work/wavy/home/upcoming-mobile-2.png"
+      alt="Upcoming, mobile, 2"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.07"
+      src="/work/wavy/home/upcoming-mobile-3.png"
+      alt="Upcoming, mobile, 3"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.08"
+      src="/work/wavy/home/past-mobile-1.png"
+      alt="Past, mobile, 1"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    <Image
+      id="2.09"
+      src="/work/wavy/home/past-mobile-2.png"
+      alt="Past, mobile, 2"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+    
+    <Image
+      id="2.10"
+      src="/work/wavy/home/empty-mobile.png"
+      alt="Empty, mobile"
+      span={{ base: 6, md: 4 }}
+      orientation="vertical"
+      isFullBleed={true}
+    />
+  </Row>
+</Section>
+<Section id="3.00" title="Calendar View">
+  <p slot="context">We refreshed the Calendar View to maximize space by reducing text size, item padding, and cell spacing, fitting twice as many items. We also updated the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel palette, which reinforced Wavy’s playful brand and, you know, just looked better.</p>
+  <Carousel
+    slides={[
+      {
+        id: "3.01",
+        src: "/work/wavy/home/calendar.png",
+        alt: "Calendar",
+      },
+      {
+        id: "3.02",
+        src: "/work/wavy/home/calendar-cell.png",
+        alt: "Calendar, cell",
+      },
+      {
+        id: "3.03",
+        src: "/work/wavy/home/note-calendar-1.png",
+        alt: "Calendar, sketch, layout",
+      },
+      {
+        id: "3.04",
+        src: "/work/wavy/home/note-calendar-2.png",
+        alt: "Calendar, sketch, layout",
+      },
+      {
+        id: "3.05",
+        src: "/work/wavy/home/note-cell.png",
+        alt: "Calendar, sketch, cell",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    slides={[
+      {
+        id: "3.03",
+        src: "/work/wavy/home/calendar-default.png",
+        alt: "Calendar, default",
+      },
+      {
+        id: "3.04",
+        src: "/work/wavy/home/calendar-red.png",
+        alt: "Calendar, red",
+      },
+      {
+        id: "3.05",
+        src: "/work/wavy/home/calendar-pink.png",
+        alt: "Calendar, pink",
+      },
+      {
+        id: "3.06",
+        src: "/work/wavy/home/calendar-orange.png",
+        alt: "Calendar, orange",
+      },
+      {
+        id: "3.07",
+        src: "/work/wavy/home/calendar-yellow.png",
+        alt: "Calendar, yellow",
+      },
+      {
+        id: "3.08",
+        src: "/work/wavy/home/calendar-green.png",
+        alt: "Calendar, green",
+      },
+      {
+        id: "3.09",
+        src: "/work/wavy/home/calendar-blue.png",
+        alt: "Calendar, blue",
+      },
+      {
+        id: "3.10",
+        src: "/work/wavy/home/calendar-purple.png",
+        alt: "Calendar, purple",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+</Section>
+<Section id="4.00" title="Differenciated Styles">
+  <p slot="context">The old layout had little visual difference between events, notable days, and suggestions, making it hard to tell them apart. We needed each item to have its own visual language that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections. **We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text**. Events were further distinguished by an icon system showing their status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar and timeline.</p>
+  {/* <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/wavy/home/differenciated-styles.png",
+        alt: "Item components",
+      },
+      {
+        id: "4.02",
+        src: "/work/wavy/home/event-statuses.png",
+        alt: "Event status system",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+  /> */}
+  <Carousel
+    slides={[
+      {
+        id: "4.01",
+        src: "/work/wavy/home/differenciated-styles.png",
+        alt: "Item components",
+      },
+      {
+        id: "4.02",
+        src: "/work/wavy/home/note-styles.png",
+        alt: "Item components, Sketch",
+      },
+    ]}
+    span={{ base: 12, md: 10 }}
+  />
+   <Carousel
+    slides={[
+      {
+        id: "4.03",
+        src: "/work/wavy/home/event-statuses.png",
+        alt: "Event status",
+      },
+      {
+        id: "4.04",
+        src: "/work/wavy/home/note-event-statuses.png",
+        alt: "Event status, sketch",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
+</Section>
+<Section id="5.00" title="Smart Suggestions">
+  <p slot="context">The toggle for show notable days and suggestions was named "Culture Pal," which confused users about its purpose. To fix this, **we renamed Culture Pal to Smart Suggestions**, making it clear that the toggle adds contextual information to the layout. We used a gray sparkle and dashed lines as visual cues for suggestions. This design worked across both List and Calendar views, allowing users to easily spot suggestions wherever they appeared.</p>
+  <Carousel
+    slides={[
+      {
+        id: "5.01",
+        src: "/work/wavy/home/smart-suggestions-toggle.png",
+        alt: "Suggestion toggle",
+      },
+      {
+        id: "5.02",
+        src: "/work/wavy/home/smart-suggestions-components.png",
+        alt: "Suggestion components",
+      },
+      {
+        id: "5.03",
+        src: "/work/wavy/home/note-smart-suggestions-1.png",
+        alt: "Suggestion, sketch",
+      },
+      {
+        id: "5.03",
+        src: "/work/wavy/home/note-smart-suggestions-2.png",
+        alt: "Suggestion, sketch",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+  />
+</Section>

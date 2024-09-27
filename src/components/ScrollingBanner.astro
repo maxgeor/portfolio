@@ -1,0 +1,67 @@
+---
+export interface Props {
+  title: string;
+  direction?: 'left' | 'right';
+  classes?: string;
+}
+
+const { title, direction = 'left', classes = '' } = Astro.props;
+---
+
+<div class={`
+  uppercase scrolling-banner absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-5 bg-white dark:bg-black h-4 marquee
+  ${classes}
+`}>
+  <div class={`text ${direction === 'left' ? 'scroll-left' : 'scroll-right'}`}>
+    {Array.from({ length: 100 }, (_) => (
+      <span>{title}</span>
+    ))}
+  </div>
+  <div class={`text ${direction === 'left' ? 'scroll-left' : 'scroll-right'}`}>
+    {Array.from({ length: 100 }, (_) => (
+      <span>{title}</span>
+    ))}
+  </div>
+</div>
+<style>
+  .scrolling-banner {
+    width: calc(100% + 32px);
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .text {
+    font-size: inherit;
+    line-height: 16px;
+  }
+
+  .text span {
+    margin-right: 3px;
+  }
+
+  .text.scroll-left {
+    animation: animate_text_left 600s linear infinite;
+  }
+
+  .text.scroll-right {
+    animation: animate_text_right 600s linear infinite;
+  }
+
+  @keyframes animate_text_left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  @keyframes animate_text_right {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+</style>

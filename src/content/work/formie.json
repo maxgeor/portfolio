@@ -1,12 +1,14 @@
 {
   "type": "project",
   "title": "Formie",
-  "description": "Universal UI for smart contracts",
-  "image": "/work/formie/cover.png",
+  "description": "UI for smart contracts",
+  "image": "/work/formie/cover-sm.png",
+  "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.formie.co/",
     "target": "_blank"
   },
-  "hasStudy": true,
-  "order": 1
+  "studySlug": "formie",
+  "order": 4,
+  "year": "2022"
 }

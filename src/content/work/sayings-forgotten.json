@@ -1,11 +1,13 @@
 {
   "type": "project",
   "title": "Sayings, Forgotten",
-  "description": "Collection of misremembered sayings",
+  "description": "Some misinterpreted sayings",
   "image": "/work/sayings-forgotten.gif",
+  "roles": ["Brand", "Code"],
   "link": {
-    "href": "https://sayings-forgotten.maxgeor.repl.co/",
+    "href": "https://sayings-forgotten.vercel.app/",
     "target": "_blank"
   },
-  "order": 7
+  "order": 11,
+  "year": "2023"
 }

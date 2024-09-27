@@ -1,252 +1,171 @@
 ---
 import Layout from "./Layout.astro";
-import Link from "../components/Link.astro";
-import Header from "../components/Header.astro";
-import ChevronUpIcon from "../components/icons/ChevronUpIcon.astro";
-import ChevronDownIcon from "../components/icons/ChevronDownIcon.astro";
-import Button from "../components/Button.astro";
-import ExpandableSidebarNav from "../components/study/ExpandableSidebarNav.astro";
+import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
+import Work from "../components/Work.astro";
+import { getCollection } from 'astro:content';
 
 const { frontmatter } = Astro.props;
 const {
   title,
+  type,
   tldr,
+  description,
   roles,
   year,
   link,
+  images,
   tools,
-  sections,
-  image,
   teammates,
 } = frontmatter;
+
+const currentStudySlug = Astro.url.pathname.split('/').pop();
+
+const otherCaseStudies = await getCollection('work', (
+  { 
+    data: { isArchived, isComingSoon, studySlug, isDraft } 
+  }
+) => (
+  studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== currentStudySlug
+  ));
 ---
 
-<Layout title={title} description={tldr} maxWidth="max-w-none">
-  <main class="relative col-span-full grid grid-cols-8 gap-6 gap-y-12 px-6">
-    <Button 
-      tag="a" 
-      href="#article" 
-      padding="px-3 py-1.5"
-      classes="opacity-0 focus:opacity-100 pointer-events-none focus:pointer-events-auto absolute z-50 top-3 sm:top-9 transform left-1/2 -translate-x-1/2  px-3.5">Skip to main content</Button>
-    <Button
-      id="go-back-up-button"
-      ariaLabel="Go back up"
-      ariaHidden="true"
-      disabled={true}
-      padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
+<Layout title={title} description={description}>
+  <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-4 md:gap-y-8">
+    <div class="lg:order-2 flex flex-col gap-4  col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 3x;:col-span-3 3xl:max-w-[85ch]">
+      <h1 class="text-[34px] leading-[32px]  uppercase font-bold -my-0.5">{title}</h1>
+      <p class="text-pretty -my-0.5">{description}</p>
+    </div>
+    <div class="order-2 md:col-start-1 lg:col-start-auto lg:order-1 col-span-full md:col-span-3 lg:col-span-2 flex flex-col lg:gap-4 pr-[calc((100vw/24)-16px)] -my-0.5 lg:my-0">
+      <div class="lg:-my-0.5 ">
+        <div class="flex col-span-3 ">
+          <div class="uppercase shrink-0  w-16 ">Type</div>
+          <div class="capitalize">{type}</div>
+        </div>
+        <div class="flex col-span-2">
+          <div class="uppercase shrink-0  w-16 ">Year</div>
+          <div class="">{year}</div>
+        </div>
+      </div>
+      <div class="flex col-span-2 lg:-my-0.5 ">
+        <div class="uppercase shrink-0  w-16 ">Links</div>
+        {link ? (
+          <div class="flex flex-col">
+            <a href={link} class="flex ">
+              <span class="whitespace-nowrap ">Live Site</span>
+              <ExternalLinkArrow classes="shrink-0" />
+            </a>
+          </div>
+        ) : '—'}
+      </div>
+    </div>
+    <div class="lg:order-3 hidden lg:flex xl:hidden flex-col  col-span-full md:col-span-8 lg:col-span-3 lg:col-start-10 lg:gap-4">
+      <div class="flex -my-0.5">
+        <div class="uppercase w-16 shrink-0 ">Team</div>
+        <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
+          {teammates ? teammates.map((teammate: any) => (
+            <tr>
+              <td class="pr-8 lg:pr-4 xl:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
+              <td class="whitespace-nowrap">{teammate.role}</td>
+            </tr>
+          )) : '—'}
+        </table>
+      </div>
+      <div class="lg:-my-0.5">
+        <div class="flex ">
+          <div class="uppercase shrink-0 w-16 ">Roles</div>
+          <p>{roles.join(', ')}</p>
+        </div>
+        <div class="flex">
+          <div class="uppercase w-16 shrink-0 ">Tools</div>
+          <p>{tools.join(', ')}</p>
+        </div>
+      </div>
+    </div>
+    <div class="order-1 md:order-3 flex lg:hidden xl:flex col-span-full md:col-span-5 xl:col-span-3 xl:col-start-8 -my-0.5">
+      <div class="uppercase w-16 shrink-0 ">Team</div>
+      <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
+        {teammates ? teammates.map((teammate: any) => (
+          <tr>
+            <td class="pr-4 md:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
+            <td class="whitespace-nowrap">{teammate.role}</td>
+          </tr>
+        )) : '—'}
+      </table>
+    </div>
+    <div class="order-3 md:order-4  lg:hidden xl:block col-span-full md:col-span-4 xl:col-span-2 -my-0.5 pr-4">
+      <div class="flex ">
+        <div class="uppercase shrink-0 w-16 ">Roles</div>
+        <p>{roles.join(', ')}</p>
+      </div>
+      <div class="flex">
+        <div class="uppercase w-16 shrink-0 ">Tools</div>
+        <p>{tools.join(', ')}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-full -mx-2 -mb-4 lg:-mb-6 border-y-[0.5px] border-neutral-250 dark:border-neutral-800">
+    <img src={images.sm} alt={title} class="md:hidden w-full h-full object-contain" />
+    <img src={images.lg} alt={title} class="hidden md:block w-full h-full object-contain" />
+  </div>
+  <div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4  border-black dark:border-white ">
+    <p class="uppercase col-span-2 -my-0.5 ">Content</p>
+    <div class="flex flex-col col-span-10 -my-0.5">
+      <div class="flex gap-2">
+        <div class="">1.00</div>
+        <div class="uppercase">Problem</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="">2.00</div>
+        <div class="uppercase">Solution</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="">3.00</div>
+        <div class="uppercase">Shooing scammers</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="">4.00</div>
+        <div class="uppercase">Making forms flexible</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="">5.00</div>
+        <div class="uppercase">Communicating technical details</div>
+      </div>
+      <div class="flex gap-2">
+        <div class="">6.00</div>
+        <div class="uppercase">Tradeoffs</div>
+      </div>
+    </div>
+  </div>
+  <article
+    id="article"
+    class="relative w-full col-span-full overflow-visible scroll-mt-3 mx-auto pb-56"
+  >
+    <div
+      class={`
+        relative grid grid-cols-12 gap-x-4 gap-y-8
+        prose-strong:tracking-[-0.003rem]
+        prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
+        prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
+        prose-ol:flex prose-ol:flex-col prose-ol:gap-3
+        prose-ol:custom-ol prose-ol:list-none prose-ol:pl-0 prose-ol:[counter-reset:item]
+        prose-li:pl-[30px] prose-li:relative
+        prose-ol>prose-li:before:absolute prose-ol>prose-li:before:left-0 prose-ol>prose-li:before:content-[counter(item)] prose-ol>prose-li:before:[counter-increment:item]
+        prose-li:m-0
+        prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
+        prose-video:w-auto prose-video:select-none prose-video:my-0 
+        prose-td:p-0
+        prose-code:font-sans prose-code:italic
+      `}
     >
-      <ChevronUpIcon classes="-mx-px -mb-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
-    <Button
-      id="go-back-down-button"
-      disabled={true}
-      ariaLabel="Go back down"
-      ariaHidden="true"
-      padding="pl-[10px] pr-3 py-1.5"
-      classes="gap-1 fixed top-6 left-1/2 z-50 transform -translate-x-1/2 -translate-y-[64px] sm:-translate-y-[80px] duration-[800ms]"
-    >
-      <ChevronDownIcon classes="-mx-px -mt-px" />
-      <span class="leading-6">Go back</span>
-    </Button>
-    <Header />
-    <section class='col-span-full grid grid-cols-6 xl:grid-cols-8 gap-6'>
-      <div class="w-full col-span-full xl:col-span-1 xl:row-span-2 flex xl:flex-col gap-6 xl:justify-between -my-1 xl:mt-0">
-        <h1 class="basis-1/2 xl:basis-auto">
-          {link ? <Link href={link} target='_blank'>{title}</Link> : `[${title}]`}
-        </h1>
-        <p class="basis-1/2 xl:basis-auto">{year}</p>
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
-        <h2>In short...</h2>
-        <p>{tldr}</p>
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
-        <h2>Role</h2>
-        <p>{roles.long.join(", ")}</p>
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
-        <h2>Team</h2>
-        {teammates?.length > 0 ? (
-          <ul class="capitalize">
-            {teammates.map((teammate: { name: string, role: string, href: string }) => (
-              <li>
-                <a 
-                  href={teammate.href}
-                  target="_blank"
-                  class="underline hover:no-underline hover:bg-white hover:text-black" 
-                >
-                  {teammate.name}
-                </a> 
-                ({teammate.role})
-              </li>
-            ))}
-          </ul>
-        ) : "—"}
-      </div>
-      <div class="col-span-full md:col-span-3 border-t border-neutral-600 -mb-1">
-        <h2>Tools</h2>
-        <p class="capitalize">{tools.join(", ")}</p>
-      </div>
-    </section>
-    <figure class="col-span-full select-none -mx-6">
-      <img
-        src={image}
-        alt={''}
-        class='h-full w-full object-cover'
-      />
-    </figure>
-    <article
-      id="article"
-      class="w-full mx-auto col-span-full overflow-visible scroll-mt-6"
-    >
-      <!-- <ExpandableSidebarNav sections={sections} /> -->
-      <div
-        class={`
-          text-neutral-100 w-full  
-                    
-          prose-h1:text-xl sm:prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:tracking-tighter
-
-          prose-h2:text-md sm:prose-h2:text-lg prose-h2:tracking-tight sm:prose-h2:tracking-[-0.04em] prose-h2:-my-1
-          
-          prose-h3:text-sm prose-h3:italic prose-h3:-mt-[4px] prose-h3:-mb-[20px]
-
-          prose-p:leading-5
-          prose-p:max-w-prose 
-          prose-p:text-neutral-300
-          prose-p:-my-1
-
-          prose-strong:text-neutral-100 prose-strong:font-medium
-
-          prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline hover:prose-a:bg-white hover:prose-a:text-black
-
-          prose-code:bg-neutral-800/[80%] prose-code:ring-1 prose-code:ring-neutral-700/[55%] prose-code:ring-inset prose-code:text-[12px] prose-code:leading-5 prose-code:font-mono prose-code:font-normal prose-code:tracking-tight prose-code:whitespace-nowrap prose-code:rounded-[3px] prose-code:py-0.5 prose-code:px-[5px] 
-
-          prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px]
-          prose-ul:-my-1 prose-ul:text-neutral-300
-
-          prose-ol:list-inside prose-ol:list-decimal prose-ol:max-w-prose prose-ol:pl-[22px] prose-ol:-my-1 prose-ol:text-neutral-300
-
-          prose-li:list-item
-          prose-li:list-outside
-          prose-li:pl-0.5
-          prose-li:m-0
-          prose-li:leading-5
-          prose-li:text-neutral-300
-          marker:prose-li:text-neutral-300
-          marker:prose-li:text-[13.5px]
-          marker:prose-li:font-inter
-          
-          prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
-          prose-video:w-auto prose-video:select-none	prose-video:my-0 
-
-          prose-td:p-0
-
-          grid grid-cols-6 xl:grid-cols-8 gap-y-12 gap-x-6 
-        `}
-      >
-        <slot />
-      </div>
-    </article>
-  </main>
+      <slot />
+    </div>
+  </article>
+  <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+    <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">
+      <h2 class="uppercase -my-0.5">More Case Studies</h2>
+    </div>
+    {otherCaseStudies?.map(({ data: work }) => (
+      <Work {...work} isHidden={false} />
+    ))}
+  </div>
 </Layout>
-
-<script>
-  // window.addEventListener("DOMContentLoaded", () => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) =>
-  //       entries.forEach((entry) => {
-  //         const id = entry.target.getAttribute("id");
-  //         entry.isIntersecting
-  //           ? document
-  //               .querySelector(`nav li a[href="#${id}"]`)
-  //               ?.parentElement?.classList.add("active")
-  //           : document
-  //               .querySelector(`nav li a[href="#${id}"]`)
-  //               ?.parentElement?.classList.remove("active");
-  //       }),
-  //     {
-  //       rootMargin: "-290px",
-  //     }
-  //   );
-
-  //   document
-  //     .querySelectorAll('h1[id], h2[id], h3[id]')
-  //     .forEach((header) => observer.observe(header));
-  // });
-
-  const links = Array.from(document.querySelectorAll("a"));
-  const internalLinks = links.filter((link) =>
-    link.getAttribute("href")?.startsWith("#")
-  );
-
-  const goBackUpButton = document.querySelector(
-    "#go-back-up-button"
-  ) as HTMLButtonElement;
-  const goBackDownButton = document.querySelector(
-    "#go-back-down-button"
-  ) as HTMLButtonElement;
-
-  const isElementInView = (element: HTMLElement) => {
-    const rect = element.getBoundingClientRect();
-    const viewportWidth =
-      window.innerWidth || document.documentElement.clientWidth;
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
-    const isInView =
-      rect.right >= 0 &&
-      rect.bottom >= 0 &&
-      rect.left <= viewportWidth &&
-      rect.top <= viewportHeight;
-
-    return isInView;
-  };
-
-  const showBackButton = (button: HTMLButtonElement) => {
-    button.disabled = false;
-    button.ariaHidden = 'false';
-    button.classList.remove("-translate-y-[64px]", "sm:-translate-y-[80px]");
-  }
-  const hideBackButton = (button: HTMLButtonElement) => {
-    button.disabled = true;
-    button.ariaHidden = 'true';
-    button.classList.add("-translate-y-[64px]", "sm:-translate-y-[80px]");
-  }
-
-  const showAndHideBackButton = (e: Event) => {
-    hideBackButton(goBackUpButton);
-    hideBackButton(goBackDownButton);
-
-    const clickedLink = e.target as HTMLAnchorElement;
-
-    if (clickedLink.getAttribute("href") === "#article") return;
-
-    setTimeout(() => {
-      if (isElementInView(clickedLink)) return;
-
-      const backButton =
-        window.scrollY > clickedLink.getBoundingClientRect().top
-          ? goBackUpButton
-          : goBackDownButton;
-
-      showBackButton(backButton);
-      setTimeout(() => hideBackButton(backButton), 8000);
-    }, 550);
-  };
-
-  internalLinks.forEach((internalLink) => {
-    internalLink.addEventListener("click", (e) => showAndHideBackButton(e));
-  });
-
-  goBackUpButton.addEventListener("click", () => {
-    window.history.back();
-    hideBackButton(goBackUpButton);
-  });
-
-  goBackDownButton.addEventListener("click", () => {
-    window.history.back();
-    hideBackButton(goBackDownButton);
-  });
-</script>

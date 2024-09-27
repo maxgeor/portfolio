@@ -1,0 +1,14 @@
+{
+  "type": "project",
+  "title": "Thesys",
+  "description": "due diligence, automated",
+  "image": "/work/thesys.png",
+  "roles": ["Product", "Brand", "Code"],
+  "link": {
+    "href": "https://www.figma.com/community/widget/1036372982291551669",
+    "target": "_blank"
+  },
+  "isPrivate": true,
+  "order": 7,
+  "year": "2024"
+}

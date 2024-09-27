@@ -1,20 +1,133 @@
 ---
+import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
+import { getColClasses, getCenteredColClasses, getPaddingClasses } from '../../utils/class-generator'
+import Caption from './Caption.astro';
+import clsx from 'clsx';
+
 export interface Props {
   src: string;
   alt: string;
+  id: string;
+  span?: ResponsiveNumber;
+  start?: ResponsiveNumber;
+  end?: ResponsiveNumber;
+  description?: string;
+  hasCaption?: boolean;
+  hasBorder?: boolean;
+  isPadded?: ResponsiveBool;
+  orientation?: 'horizontal' | 'vertical' | '3/2';
+  isFullBleed?: ResponsiveBool;
+  fit?: 'contain' | 'cover';
+  withContainer?: boolean;
   classes?: string;
 }
-const { src, alt, classes = ""} = Astro.props;
+
+const { 
+  src, 
+  alt,
+  id,
+  span = 12,
+  description = '',
+  hasCaption = true,
+  orientation = 'horizontal',
+  isFullBleed = false,
+  hasBorder = true,
+  isPadded = false,
+  fit = 'contain',
+  withContainer = false,
+  classes = ""
+} = Astro.props;
+
+const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
+
+let aspectRatio;
+
+switch(orientation) {
+  case 'horizontal':
+    aspectRatio = 'aspect-[7/4]';
+    break;
+  case 'vertical':
+    aspectRatio = 'aspect-[3/4]';
+    break;
+  case '3/2':
+    aspectRatio = 'aspect-[3/2]';
+    break;
+  default:
+    aspectRatio = 'aspect-[7/4]';
+}
+
+const { 
+  spanClasses, 
+  startClasses, 
+  endClasses 
+} = getColClasses(span);
+
+const { 
+  spanClasses: centerdSpanClasses, 
+  startClasses: centeredStartClasses, 
+  endClasses: centeredEndClasses 
+} = getCenteredColClasses(span);
+
+const paddingClasses = getPaddingClasses(isPadded);
 ---
-<figure 
-  class={`
-  relative h-0 w-full pt-[calc(4/7*100%)] select-none 
-  ${classes}
-`}
->
-  <img
-    src={src}
-    alt={alt}
-    class='aspect-[7/4] absolute inset-0 h-full w-full object-cover'
-  />
-</figure>
+{withContainer ? (
+  <div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
+    <div class={clsx(
+      "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 border-y-[0.5px] border-neutral-200 dark:border-neutral-900 col-span-full lg:px-2 -mx-2",
+      hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900',
+      paddingClasses
+    )}>
+      <div class={clsx("h-fit", centerdSpanClasses, centeredStartClasses, centeredEndClasses)}>
+        <figure class={clsx('image  relative', aspectRatio)}>
+          <img
+            src={src}
+            alt={alt}
+            class={clsx(
+              'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+              aspectRatio,
+              objectFit
+            )}
+          />
+        </figure>
+      </div>
+    </div>
+    {hasCaption && (
+      <div class={clsx('grid grid-cols-12 gap-4', spanClasses, startClasses, endClasses)}>
+        <div class={clsx(description ? 'col-span-full lg:col-span-2' : 'col-span-full')}>
+          <Caption id={id} text={alt} classes='-my-0.5' />
+        </div>
+        {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
+      </div>
+    )}
+  </div>
+) : (
+  <div class={clsx(
+    "flex flex-col gap-x-4 gap-y-2 h-fit",
+    spanClasses,
+    startClasses,
+    endClasses,
+    isFullBleed && '-mx-2',
+    classes
+  )}>
+    <figure class={clsx('image  relative', hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900', aspectRatio)}>
+      <img
+        src={src}
+        alt={alt}
+        class={clsx(
+          'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+          isFullBleed && 'lg:px-2',
+          isPadded && 'p-8 lg:py-16',
+          aspectRatio,
+          objectFit
+        )}
+      />
+    </figure>
+    <div class={clsx(
+      (hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 max-w-[80ch]' : 'hidden'),
+      isFullBleed && 'px-2',
+    )}>
+      {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
+      {description && <p class="col-span-full -my-0.5">{description}</p>}
+    </div>
+  </div>
+)}

@@ -1,41 +1,43 @@
 import { z, reference, defineCollection } from 'astro:content';
 
+type ShortRole = 'Design' | 'Codeelopment' | 'Branding';
+
 const work = defineCollection({
   type: 'data',
   schema: z.object({
     type: z.enum(['client', 'project']),
     title: z.string(),
     description: z.string(),
+    roles: z.array(z.enum(['Product', 'Code', 'Brand'])),
     image: z.string(),
     link: z.object({
       href: z.string(),
       target: z.enum(['_blank', '_self']).optional(),
     }).optional(),
-    hasStudy: z.boolean().optional(),
+    studySlug: z.string().optional(),
     isDraft: z.boolean().optional(),
+    isPrivate: z.boolean().optional(),
+    isArchived: z.boolean().optional(),
     isComingSoon: z.boolean().optional(),
-    order: z.number()
+    order: z.number(),
+    year: z.string(),
+    images: z.array(z.object({
+      src: z.string(),
+      alt: z.string()
+    })).optional(),
   })
 });
 
 const study = defineCollection({
   type: 'content',
   schema: z.object({
+    type: z.string(),
     work: reference('work'),
-    year: z.string(),
-    tldr: z.string(),
-    roles: z.object({
-      long: z.array(z.string()),
-      short: z.array(z.string()),
-    }),
     tools: z.array(z.string()),
-    sections: z.object({
-      title: z.string(),
-      subsections: z.object({
-        title: z.string(),
-      }).array().optional(),
-    }).array(),
-    image: z.string().optional(),
+    images: z.object({
+      sm: z.string(),
+      lg: z.string(),
+    }),
     teammates: z.object({
       name: z.string(),
       role: z.string(), 
@@ -52,6 +54,7 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
+    preview: z.string(),
     isDraft: z.boolean().optional(),
   }),
 });

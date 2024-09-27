@@ -3,7 +3,8 @@
   "title": "Memiori",
   "description": "Refresh of mood journaling app",
   "image": "/work/memiori/cover.png",
-  "hasStudy": true,
-  "isComingSoon": true,
-  "order": 2
+  "roles": ["Product", "Brand"],
+  "isArchived": true,
+  "order": 40,
+  "year": "2023"
 }

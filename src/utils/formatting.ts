@@ -1,8 +1,14 @@
 import { format } from 'date-fns';
 
+const formatTime = (date: string) => {
+  const dateObject = new Date(date);
+  return format(dateObject, 'HH:mm:ss');
+}
+
 const formatDate = (date: string) => {
   const dateObject = new Date(date);
-  return format(dateObject, 'MMM d, yyyy');
+  // return format(dateObject, 'MM/dd/yyyy');
+  return format(dateObject, 'MM/yy');
 }
 
 const toUrlSafeKebabCase = (s: string) => 
@@ -10,4 +16,4 @@ const toUrlSafeKebabCase = (s: string) =>
 
 const stripExtension = (src: string) => src.replace(/\..*$/, ""); // video.mp4 -> video
 
-export { formatDate, toUrlSafeKebabCase, stripExtension }
+export { formatTime, formatDate, toUrlSafeKebabCase, stripExtension }

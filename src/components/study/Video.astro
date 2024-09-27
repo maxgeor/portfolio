@@ -1,85 +1,102 @@
 ---
-import PauseIcon from "../icons/PauseIcon.astro";
+import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
+import { getCenteredColClasses, getPaddingClasses } from '../../utils/class-generator'
 import { stripExtension } from "../../utils/formatting";
+import Caption from './Caption.astro';
+import clsx from 'clsx';
 
 export interface Props {
   src: string;
-  gridClasses?: string;
+  alt: string;
+  id: string;
+  format?: 'mp4' | 'mov';
+  description?: string;
+  hasCaption?: boolean;
+  span?: ResponsiveNumber;
+  isPadded?: ResponsiveBool;
+  hasBorder?: ResponsiveBool;
+  orientation?: 'vertical' | 'horizontal' | '3/2';
+  fit?: 'contain' | 'cover';
   classes?: string;
 }
-const { src, gridClasses = "", classes = "" } = Astro.props;
+
+const {
+  src, 
+  alt,
+  id,
+  span = 12,
+  hasBorder = true,
+  format = 'mp4',
+  isPadded = true,
+  hasCaption = true,
+  orientation = 'horizontal',
+  fit = 'contain',
+  classes = "" 
+} = Astro.props;
 
 const extensionlessSrc = stripExtension(src);
+
+const objectFit = fit === 'contain' ? 'object-contain' : 'object-cover';
+
+const paddingClasses = getPaddingClasses(isPadded);
+const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span);
+
+let aspectRatio;
+
+switch(orientation) {
+  case 'horizontal':
+    aspectRatio = 'aspect-[7/4]';
+    break;
+  case 'vertical':
+    aspectRatio = 'aspect-[3/4]';
+    break;
+  case '3/2':
+    aspectRatio = 'aspect-[3/2]';
+    break;
+  default:
+    aspectRatio = 'aspect-[7/4]';
+}
 ---
-
-<div class=`relative ${gridClasses}`>
-  <video
-    class={`
-      transition duration-[250ms] ease-out aspect-[7/4] object-cover w-full cursor-pointer select-none
-      ${classes}
-    `}
-    poster={extensionlessSrc + ".png"}
-    playsinline
-    autoplay
-    muted
-    loop
-  >
-    <source
-      src={extensionlessSrc + "-small.mp4"}
-      type="video/mp4"
-      media="all and (max-width: 480px)"
-    />
-    <source
-      src={extensionlessSrc + "-small.webm"}
-      type="video/webm"
-      media="all and (max-width: 480px)"
-    />
-    <source src={extensionlessSrc + ".mp4"} type="video/mp4" />
-    <source src={extensionlessSrc + ".webm"} type="video/webm" />
-  </video>
-  <PauseIcon
-    classes="pause-icon transform opacity-0 -rotate-[24deg] -translate-x-5 z-10 absolute top-4 left-[13px] transition-all duration-200 ease-in-out text-neutral-100 pointer-events-none drop-shadow"
-  />
+<div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
+  <div class={clsx(
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
+    hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900',
+    paddingClasses
+  )}>
+    <div class={clsx(
+      "flex flex-col gap-x-4 gap-y-2 h-fit",
+      spanClasses,
+      startClasses,
+      endClasses,
+    )}>
+      <video
+        class={clsx('w-full select-none self-center', aspectRatio, objectFit)}
+        poster={extensionlessSrc + ".png"}
+        playsinline
+        autoplay
+        muted
+        loop
+      >
+        <source src={extensionlessSrc + '.' + format} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+  <div class={clsx(
+    'grid grid-cols-12 gap-4', 
+    spanClasses,
+    startClasses,
+    endClasses,
+  )}>
+    <div class={clsx(
+      "flex justify-between gap-4 -my-0.5",
+      hasCaption || Astro.slots.has('description') ? 'col-span-full lg:col-span-2' : 'col-span-full '
+    )}>
+      {hasCaption && <Caption id={id} text={alt} />}
+    </div>
+    {Astro.slots.has('description') && (
+      <div class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">
+        <slot name="description" />
+      </div>
+    )}
+  </div>
 </div>
-
-<script>
-  document.querySelectorAll("video")?.forEach((video) => {
-    const pauseIcon = video.parentElement?.querySelector(
-      ".pause-icon"
-    ) as HTMLElement;
-
-    const pauseVideo = () => {
-      video.pause();
-      video.classList.add("brightness-75");
-      pauseIcon.classList.remove(
-        "opacity-0",
-        "-rotate-[24deg]",
-        "-translate-x-5"
-      );
-    };
-
-    const playVideo = () => {
-      video.play();
-      video.classList.remove("brightness-75", "ease-in-out");
-      pauseIcon.classList.add(
-        "ease-in",
-        "opacity-0",
-        "rotate-[12deg]",
-        "-translate-x-5"
-      );
-
-      setTimeout(() => {
-        pauseIcon.classList.remove("ease-in", "rotate-[12deg]");
-        pauseIcon.classList.add("-rotate-[24deg]", "ease-in-out");
-      }, 200);
-    };
-
-    video.addEventListener("click", () => {
-      if (video.paused) {
-        playVideo();
-      } else {
-        pauseVideo();
-      }
-    });
-  });
-</script>
