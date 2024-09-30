@@ -6,12 +6,14 @@ export interface Props {
   title?: string;
   description?: string;
   offset?: string;
+  smoothScroll?: boolean;
   classes?: string;
 }
 const {
   title = "Max Georgopoulos",
   description,
   offset = 'pt-[50px]',
+  smoothScroll = true,
   classes = '',
 } = Astro.props;
 
@@ -50,7 +52,7 @@ const inlineScript = `
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={smoothScroll ? 'scroll-smooth' : ''}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

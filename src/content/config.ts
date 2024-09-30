@@ -1,7 +1,5 @@
 import { z, reference, defineCollection } from 'astro:content';
 
-type ShortRole = 'Design' | 'Codeelopment' | 'Branding';
-
 const work = defineCollection({
   type: 'data',
   schema: z.object({
@@ -45,7 +43,11 @@ const study = defineCollection({
     }).array().optional(),
     isComingSoon: z.boolean().optional(),
     isDraft: z.boolean().optional(),
-    order: z.number()
+    order: z.number(),
+    content: z.array(z.object({
+      id: z.string(),
+      title: z.string(),
+    })),
   }),
 });
 

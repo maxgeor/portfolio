@@ -16,6 +16,7 @@ const {
   images,
   tools,
   teammates,
+  content
 } = frontmatter;
 
 const currentStudySlug = Astro.url.pathname.split('/').pop();
@@ -110,35 +111,19 @@ const otherCaseStudies = await getCollection('work', (
   <div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4  border-black dark:border-white ">
     <p class="uppercase col-span-2 -my-0.5 ">Content</p>
     <div class="flex flex-col col-span-10 -my-0.5">
-      <div class="flex gap-2">
-        <div class="">1.00</div>
-        <div class="uppercase">Problem</div>
-      </div>
-      <div class="flex gap-2">
-        <div class="">2.00</div>
-        <div class="uppercase">Solution</div>
-      </div>
-      <div class="flex gap-2">
-        <div class="">3.00</div>
-        <div class="uppercase">Shooing scammers</div>
-      </div>
-      <div class="flex gap-2">
-        <div class="">4.00</div>
-        <div class="uppercase">Making forms flexible</div>
-      </div>
-      <div class="flex gap-2">
-        <div class="">5.00</div>
-        <div class="uppercase">Communicating technical details</div>
-      </div>
-      <div class="flex gap-2">
-        <div class="">6.00</div>
-        <div class="uppercase">Tradeoffs</div>
-      </div>
-    </div>
+      {content.map((section: any) => (
+        <a 
+          href={'#' + section.id + '-' + section.title} 
+          class="flex gap-2 uppercase"
+        >
+          <span>{section.id}</span>
+          <span>{section.title}</span>
+        </a>
+      ))}
   </div>
   <article
     id="article"
-    class="relative w-full col-span-full overflow-visible scroll-mt-3 mx-auto pb-24 "
+    class="relative w-full col-span-full scroll-mt-3 mx-auto pb-24 "
   >
     <div
       class={`

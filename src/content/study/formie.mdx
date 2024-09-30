@@ -24,6 +24,32 @@ description: Personal project to replace Etherscan's smart contract UI with an f
 link: https://www.formie.co/
 year: '2022'
 order: 1
+content: [
+  {
+    id: "1.00",
+    title: "Problem",
+  },
+  {
+    id: "2.00",
+    title: "Form UI",
+  },
+  {
+    id: "3.00",
+    title: "One-way actions",
+  },
+  {
+    id: "4.00",
+    title: "Confirming trust",
+  },
+  {
+    id: "5.00",
+    title: "Open text fields",
+  },
+  {
+    id: "6.00",
+    title: "Tradeoffs",
+  }
+]
 ---
 
 import Section from "../../components/study/Section.astro";
@@ -252,7 +278,7 @@ import Row from "../../components/study/Row.astro";
     isPadded={{ base: false, md: true }}
   />
 </Section>
-<Section id="3.00" title="Only one-way actions">
+<Section id="3.00" title="One-way actions">
   <Fragment slot="context">
     Formie had to integrate with any contract, meaning its copy, error handling, and layout needed to adapt to _thousands_ of actions. It also had to be flexible enough to work seamlessly across different brands. **Focusing on one-way actions** made Formie a universal solution. This narrowed the scope, avoided potential edge cases, and targeted the core functionality used by the majority of projects.
   </Fragment>

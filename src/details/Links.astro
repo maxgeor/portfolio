@@ -18,16 +18,16 @@ const links: {
     url: "https://dribbble.com/maxgeo",
   },
   {
+    name: "Twitter",
+    url: "https://twitter.com/maxoulos",
+  },
+  {
     name: "Layers",
     url: "https://layers.to/maxgeorgopoulos",
   },
   {
     name: "Github",
     url:  "https://github.com/maxgeor",
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/maxoulos",
   },
   {
     name: "Arena",
@@ -42,10 +42,10 @@ const links: {
 ---
 
 <div class={clsx("grid gap-x-4", classes)}>
+  <span class="uppercase">max123358@gmail.com</span>
   {links.map(link => (
-    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden border-t-[0.5px] border-black dark:border-white last:border-b-[0.5px] uppercase">
+    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden  uppercase">
       {link.name}
     </a>
   ))}
-  
 </div>
