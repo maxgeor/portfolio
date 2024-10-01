@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from './ResponsiveImage.astro';
 import ExternalLinkArrow from './icons/ExternalLinkArrow.astro';
 import ScrollingBanner from './ScrollingBanner.astro'
 
@@ -11,7 +12,13 @@ type Work = {
     target?: '_blank' | '_self';
   };
   year: string;
-  image: string;
+  image: {
+    src: string;
+    previewSrc: string;
+    alt: string;
+    width: string;
+    height: string;
+  };
   type: string;
   isHidden?: boolean;
   studySlug?: string;
@@ -53,6 +60,8 @@ const props = shouldDisable
     : studySlug 
       ? { href: `/study/${studySlug}`, target: '_self' } 
       : link 
+
+const aspect = image.height / image.width;
 ---
 <Element
   {...props}
@@ -66,9 +75,10 @@ const props = shouldDisable
 >
   <div class='flex flex-col gap-2  h-full overflow-hidden'>
     <picture class={`work-card-picture relative h-auto !group-focus:opacity-100 duration-300`}>
+      <!-- <ResponsiveImage {...image} /> -->
       <img
-        src={image}
-        alt={`Preview mockup of ${title}`}
+        src={image.src}
+        alt={image.alt}
         class={`
           w-full h-full object-top select-none object-contain 
         `}

@@ -2,7 +2,13 @@
   "type": "project",
   "title": "Dissect Design",
   "description": "Some design decisions",
-  "image": "/work/dissect-design.png",
+  "image": {
+    "src": "/work/dissect-design.png",
+    "previewSrc": "/work/dissect-design-preview.png",
+    "alt": "Preview of dissect design site",
+    "width": "671",
+    "height": "500"
+  },
   "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://dissect-design-sigma.vercel.app/",

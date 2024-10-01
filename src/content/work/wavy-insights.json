@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Wavy/Insights",
   "description": "Product-wide analytics feature",
-  "image": "/work/wavy/insights/cover-sm.png",
+  "image": {
+    "src": "/work/wavy/insights/cover-sm.png",
+    "previewSrc": "/work/wavy/insights/cover-sm-preview.png",
+    "alt": "Insights participation chat over tldr cards",
+    "width": "1000",
+    "height": "500"
+  },
   "roles": ["Product"],
   "order": 2,
   "studySlug": "insights",

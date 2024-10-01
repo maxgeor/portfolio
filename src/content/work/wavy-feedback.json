@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Wavy/Feedback",
   "description": "custom feedback feature",
-  "image": "/work/wavy/feedback/cover-sm.png",
+  "image": {
+    "src": "/work/wavy/feedback/cover-sm.png",
+    "previewSrc": "/work/wavy/feedback/cover-sm-preview.png",
+    "alt": "Feedback app and form UI",
+    "width": "1000",
+    "height": "500"
+  },
   "roles": ["Product"],
   "order": 1,
   "studySlug": "feedback",

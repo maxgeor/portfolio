@@ -2,7 +2,13 @@
   "type": "project",
   "title": "Thesys",
   "description": "due diligence, automated",
-  "image": "/work/thesys.png",
+  "image": {
+    "src": "/work/thesys.png",
+    "previewSrc": "/work/thesys-preview.png",
+    "alt": "Thesys cover with logo and app illustrations",
+    "width": "889",
+    "height": "500"
+  },
   "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",

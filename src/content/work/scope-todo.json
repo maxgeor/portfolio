@@ -2,7 +2,13 @@
   "type": "project",
   "title": "Scope Todo",
   "description": "Product work in Figma (50k users)",
-  "image": "/work/scope-todo.png",
+  "image": {
+    "src": "/work/scope-todo.png",
+    "previewSrc": "/work/scope-todo-preview.png",
+    "alt": "Screenshot of Scope Todo widget",
+    "width": "1000",
+    "height": "500"
+  },
   "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",

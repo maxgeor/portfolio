@@ -2,7 +2,13 @@
   "type": "project",
   "title": "Sayings, Forgotten",
   "description": "Some misinterpreted sayings",
-  "image": "/work/sayings-forgotten.gif",
+  "image": {
+    "src": "/work/sayings-forgotten.gif",
+    "previewSrc": "/work/sayings-forgotten-preview.gif",
+    "alt": "Sayings forgotten, a collection of misinterpreted sayings",
+    "width": "901",
+    "height": "500"
+  },
   "roles": ["Brand", "Code"],
   "link": {
     "href": "https://sayings-forgotten.vercel.app/",

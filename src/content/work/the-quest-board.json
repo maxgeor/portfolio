@@ -2,7 +2,13 @@
   "type": "project",
   "title": "The Quest Board",
   "description": "Job board for Loot",
-  "image": "/work/the-quest-board.gif",
+  "image": {
+    "src": "/work/the-quest-board.gif",
+    "previewSrc": "/work/the-quest-board-preview.gif",
+    "alt": "Quest board button hovering",
+    "width": "943",
+    "height": "500"
+  },
   "roles": ["Product", "Code"],
   "link": {
     "href": "https://www.lootquestboard.com/",

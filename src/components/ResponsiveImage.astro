@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  previewSrc: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+}
+
+const { src, previewSrc, alt, width, height, class: className = '' } = Astro.props;
+
+const createImageProps = (src: string, alt: string, width?: number, height?: number) => {
+  const props: Record<string, any> = { src, alt };
+  if (width) props.width = width;
+  if (height) props.height = height;
+  return props;
+};
+---
+
+<div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
+  <img
+    {...createImageProps(previewSrc, alt, width, height)}
+    class="absolute inset-0 w-full h-full object-cover blur transition-opacity duration-300"
+  />
+  <img
+    {...createImageProps(src, alt, width, height)}
+    class="w-full h-full object-cover transition-opacity duration-300"
+  />
+</div>
+
+<script>
+  const images = document.querySelectorAll('img:not([src^="data:"])') as NodeListOf<HTMLImageElement>;
+  images.forEach(img => {
+    const prevImg = img.previousElementSibling as HTMLImageElement;
+    if (img.complete) {
+      img.style.opacity = '1';
+      if (!prevImg) return;
+      prevImg.style.opacity = '0';
+    } else {
+      img.addEventListener('load', function() {
+        this.style.opacity = '1';
+        if (!prevImg) return;
+        prevImg.style.opacity = '0';
+      });
+    }
+  });
+</script>
+
+<style>
+  img {
+    opacity: 0;
+  }
+</style>

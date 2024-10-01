@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Wavy/Home",
   "description": "Home page redesign",
-  "image": "/work/wavy/home/cover-sm.png",
+  "image": {
+    "src": "/work/wavy/home/cover-sm.png",
+    "previewSrc": "/work/wavy/home/cover-sm-preview.png",
+    "alt": "Home swimlanes, timeline, and calendar UI",
+    "width": "1000",
+    "height": "500"
+  },
   "roles": ["Product"],
   "studySlug": "home",
   "order": 3,

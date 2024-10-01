@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Memiori",
   "description": "Refresh of mood journaling app",
-  "image": "/work/memiori/cover.png",
+  "image": {
+    "src": "/work/memiori/cover.png",
+    "previewSrc": "/work/memiori/cover-preview.png",
+    "alt": "Mockup preview of Memiori app and landing page",
+    "width": "1125",
+    "height": "500"
+  },
   "roles": ["Product", "Brand"],
   "isArchived": true,
   "order": 40,

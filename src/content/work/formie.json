@@ -2,7 +2,13 @@
   "type": "project",
   "title": "Formie",
   "description": "UI for smart contracts",
-  "image": "/work/formie/cover-sm.png",
+  "image": {
+    "src": "/work/formie/cover-sm.png",
+    "previewSrc": "/work/formie/cover-sm-preview.png",
+    "alt": "Preview of Formie form and UI",
+    "width": "1000",
+    "height": "500"
+  },
   "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.formie.co/",

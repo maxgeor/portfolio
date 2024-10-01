@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Wavy/Website",
   "description": "Marketing site for Wavy",
-  "image": "/work/wavy/website/cover.gif",
+  "image": {
+    "src": "/work/wavy/website/cover.gif",
+    "previewSrc": "/work/wavy/website/cover-preview.gif",
+    "alt": "Scrolling wlkthorugh of Wavy's home page",
+    "width": "853",
+    "height": "500"
+  },
   "link": {
     "href": "https://www.joinwavy.com/",
     "target": "_blank"

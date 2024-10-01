@@ -7,7 +7,14 @@ const work = defineCollection({
     title: z.string(),
     description: z.string(),
     roles: z.array(z.enum(['Product', 'Code', 'Brand'])),
-    image: z.string(),
+    // image: z.string(),
+    image: z.object({
+      src: z.string(),
+      previewSrc: z.string(),
+      alt: z.string(),
+      width: z.string().optional(),
+      height: z.string().optional(),
+    }),
     link: z.object({
       href: z.string(),
       target: z.enum(['_blank', '_self']).optional(),

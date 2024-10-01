@@ -2,7 +2,13 @@
   "type": "client",
   "title": "Vent",
   "description": "Vent with AI friends",
-  "image": "/work/vent.png",
+  "image": {
+    "src": "/work/vent.png",
+    "previewSrc": "/work/vent-preview.png",
+    "alt": "vent app mockup",
+    "width": "833",
+    "height": "500"
+  },
   "roles": ["Product", "Brand"],
   "link": {
     "href": "https://www.figma.com/community/widget/1036372982291551669",

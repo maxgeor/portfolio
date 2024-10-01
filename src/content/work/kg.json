@@ -2,7 +2,13 @@
   "type": "client",
   "title": "KG Handcrafted",
   "description": "Brand + site for knifemaker",
-  "image": "/work/kg.png",
+  "image": {
+    "src": "/work/kg.png",
+    "previewSrc": "/work/kg-preview.png",
+    "alt": "Screenshot of KG knife wesite",
+    "width": "771",
+    "height": "500"
+  },
   "roles": ["Product", "Brand", "Code"],
   "link": {
     "href": "https://www.kghandcrafted.com/",
