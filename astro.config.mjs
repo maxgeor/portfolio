@@ -1,13 +1,14 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import mdx from "@astrojs/mdx";
-import vercel from '@astrojs/vercel/serverless';
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/static';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx()],
-  output: 'server',
+  integrations: [mdx(), tailwind()],
+  output: 'static',
   adapter: vercel({
-    webAnalytics: { enabled: true }
+    webAnalytics: {
+      enabled: true,
+    },
   }),
 });
