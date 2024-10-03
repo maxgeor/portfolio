@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
 import Work from "../components/Work.astro";
@@ -27,10 +28,10 @@ const otherCaseStudies = await getCollection('work', (
   }
 ) => (
   studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== currentStudySlug
-  ));
+  )) as any[];
 ---
 
-<Layout title={title} description={description}>
+<!-- <Layout title={title} description={description}> -->
   <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-4 md:gap-y-8">
     <div class="lg:order-2 flex flex-col gap-4  col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 3x;:col-span-3 3xl:max-w-[85ch]">
       <h1 class="text-[34px] leading-[32px]  uppercase font-bold -my-0.5">{title}</h1>
@@ -150,8 +151,8 @@ const otherCaseStudies = await getCollection('work', (
     <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">
       <h2 class="uppercase -my-0.5">More Case Studies</h2>
     </div>
-    {otherCaseStudies?.map(({ data: work }) => (
-      <Work {...work} isHidden={false} />
+    {otherCaseStudies?.map((work) => (
+      <Work {...work.data} isHidden={false} />
     ))}
   </div>
-</Layout>
+<!-- </Layout> -->

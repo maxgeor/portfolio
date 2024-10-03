@@ -2,7 +2,7 @@
 export interface Props {
   title: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   blurb: string;
   tech?: string[];
   titleWidth?: string;
@@ -12,28 +12,19 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
   Astro.props;
 ---
 
-<article class="col-span-2 grid grid-cols-4 gap-x-5 gap-y-2 ">
-  <h3 class={`col-span-2  text-neutral-950`}>
-    {title}
-  </h3>
-
-  <div class="col-span-2 flex justify-between">
-    <p><span class="font-mono mr-px">@</span>{company} </p>
-
-    <p >{startDate} - {endDate}</p>
+<article class="flex flex-col gap-x-4 gap-y-3 ">
+  <div class="flex justify-between">
+    <div class="h-fit">
+      <h3 class={`col-span-2  text-neutral-950`}>
+        {title}
+      </h3>
+      <p>{company} </p>
+    </div>
+    <p class="whitespace-nowrap justify-self-end">
+      <span class="mr-0.5">{startDate}</span>-{endDate && <span class="ml-0.5">{endDate}</span>}
+    </p>
   </div>
-  <p class={`text-xs font-medium normal-case col-span-3`}>{blurb}</p>
+  <p class={` col-span-4`}>{blurb}</p>
   <slot />
-  {tech && (
-    <ul class="col-span-full">
-      {
-        tech.map((tool) => (
-          <li class="relative">
-            <span class="absolute -left-[17px] -top-px">-</span>
-            {tool}
-          </li>
-        ))
-      }
-    </ul>
-  )}
+  {tech && <p class="col-span-full">{tech.join(', ')}</p>}  
 </article>
