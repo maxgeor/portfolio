@@ -62,7 +62,7 @@ const inlineScript = `
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class={`grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] selection:bg-[var(--highlight-color)] p-2 gap-x-4 gap-y-8 ${offset} ${classes}`}
+    class={`se grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] p-2 gap-x-4 gap-y-8 ${offset} ${classes}`}
   >
     <slot />
   </body>
@@ -81,10 +81,21 @@ const inlineScript = `
     --accent-color: #23FF27;
   }
 
+  ::selection {
+    background-color: var(--accent-color);
+    color: black;
+  }
+
+  ::-moz-selection { /* Code for Firefox */
+    background-color: var(--accent-color);
+    color: black;
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  
 
   a {
     text-underline-offset: 2px;
