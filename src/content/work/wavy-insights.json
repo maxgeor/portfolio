@@ -1,7 +1,7 @@
 {
   "type": "client",
   "title": "Wavy/Insights",
-  "description": "Product-wide analytics feature",
+  "description": "Event analytics feature",
   "image": {
     "src": "/work/wavy/insights/cover-sm.png",
     "previewSrc": "/work/wavy/insights/cover-sm-preview.png",
