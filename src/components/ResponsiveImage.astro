@@ -38,6 +38,7 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
     {...createImageProps(src, alt, width, height)}
     class="absolute inset-0 w-full h-full object-cover"
     style="opacity: 0;"
+    loading="lazy"
     data-transition-delay={transitionDelay}
   />
 </div>
@@ -57,7 +58,7 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
       }
     } else {
       // Image took longer to load, apply transition
-      img.style.transition = 'opacity 300ms ease-in-out';
+      img.style.transition = 'opacity 200ms ease-in-out';
       if (prevImg && prevImg.tagName === 'IMG') {
         prevImg.style.transition = 'opacity 200ms ease-in-out';
       }
