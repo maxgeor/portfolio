@@ -63,7 +63,6 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
-    preview: z.string(),
     isDraft: z.boolean().optional(),
   }),
 });
