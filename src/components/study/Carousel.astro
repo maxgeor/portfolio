@@ -52,7 +52,7 @@ switch(orientation) {
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
   {Astro.slots.has('description') && (
-    <div class="lg:hidden col-span-full md:col-span-9 -mt-0.5 mb-[22px]">
+    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px]">
       <slot name="description" />
     </div>
   )}
