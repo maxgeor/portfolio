@@ -6,7 +6,10 @@ export interface Props {
   blurb: string;
   tech?: string[];
   titleWidth?: string;
-  company?: string;
+  company?: {
+    title: string;
+    url?: string;
+  };
 }
 const { title, startDate, endDate, tech, blurb, company, titleWidth } =
   Astro.props;
@@ -18,7 +21,11 @@ const { title, startDate, endDate, tech, blurb, company, titleWidth } =
       <h3 class={`col-span-2  text-neutral-950`}>
         {title}
       </h3>
-      <p>{company} </p>
+      {company.url ? (
+        <a href={company.url} target="_blank">{company.title}</a>
+      ) : (
+        <p>{company.title}</p>
+      )}
     </div>
     <p class="whitespace-nowrap justify-self-end">
       <span class="mr-0.5">{startDate}</span>-{endDate && <span class="ml-0.5">{endDate}</span>}

@@ -35,16 +35,14 @@ const links: {
   },
   {
     name: "CV",
-    url: "/resume-max-georgopoulos.pdf",
-    target: '_self'
+    url: "https://drive.google.com/file/d/1f3SglH6KlBLfVvPjEsKSEpHnua6UGMMq/view?usp=sharing",
   },
 ];
 ---
 
 <div class={clsx("grid gap-x-4", classes)}>
-  <!-- <span class="uppercase">max123358@gmail.com</span> -->
   {links.map(link => (
-    <a href={link.url} target={link.target} class="peer [&>span]:last:hidden  uppercase">
+    <a href={link.url} target={link.target || '_blank'} class="uppercase">
       {link.name}
     </a>
   ))}

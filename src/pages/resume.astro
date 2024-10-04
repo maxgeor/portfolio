@@ -1,9 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import Experience from "../components/resume/Experience.astro";
 import Project from "../components/resume/Project.astro";
 ---
-
 
 <div class="text-xs mx-auto grid grid-cols-7 gap-x-4 gap-y-7 px-4 py-3.5 text-pretty ">
   <h1>Max Georgopoulos</h1>
@@ -13,7 +11,7 @@ import Project from "../components/resume/Project.astro";
   <h2 class="col-start-1">Work</h2>
   <Experience
     title="Product Designer"
-    company="Freelance"
+    company={{ title: "Freelance" }}
     startDate="1/24"
     tech={["Figma", "Next.js", "TailwindCSS", "Jitter"]}
     blurb="Independent design and frontend development for early-stage startups. Projects spanned brand, product design, and marketing website development."
@@ -28,7 +26,7 @@ import Project from "../components/resume/Project.astro";
   <Experience
     title="Full-Stack Engineer"
     titleWidth="w-24"
-    company="Wavy"
+    company={{ title: "Wavy", url: 'https://www.joinwavy.com/' }}
     startDate="1/23"
     endDate="3/23"
     tech={["Ruby on Rails", "View Components", "React"]}
@@ -44,7 +42,7 @@ import Project from "../components/resume/Project.astro";
   <Experience
     title="Junior Full-Stack Engineer"
     titleWidth="w-28"
-    company="Wavy"
+    company={{ title: "Wavy", url: 'https://www.joinwavy.com/' }}
     startDate="2/22"
     endDate="1/23"
     tech={["Ruby on Rails", "Auth0", "React"]}
@@ -59,11 +57,11 @@ import Project from "../components/resume/Project.astro";
   </Experience>
   <h2 class="col-start-1">Projects</h2>
   <div class="col-span-2">
-    <p>Scope Todo</p>
+    <a href="https://www.figma.com/community/widget/1036372982291551669">Scope Todo</a>
     <p>Designed & developed a Figma/Figjam todo widget for collaborative product work. 50k+ users.</p>
   </div>
   <div class="col-span-2">
-    <p>Formie</p>
+    <a href="https://www.formie.co/">Formie</a>
     <p>Designed & developed a tool to generate beautiful UIs for smart contracts. Featured by The Milk Road.</p>
   </div>
   <h2 class="col-start-1">Technology</h2>
@@ -85,14 +83,14 @@ import Project from "../components/resume/Project.astro";
   </div>
   <h2 class="col-start-1">Contact</h2>
   <div>
-    <p>max123358@gmail.com</p>
+    <a href="mailto:max123358@gmail.com">max123358@gmail.com</a>
     <p>416-804-8644</p>
     <p>Toronto</p>
   </div>
   <div class="col-start-2">
-    <p>maxgeorgopoulos.com</p>
-    <p>linkedin/maxgeo</p>
-    <p>twitter/maxoulos</p>
-    <p>github/maxgeor</p>
+    <a href="https://www.maxgeorgopoulos.com/">maxgeorgopoulos.com</a>
+    <a href="https://www.linkedin.com/in/max-georgopoulos-109095136/">linkedin/maxgeo</a>
+    <a href="https://twitter.com/maxoulos">twitter/maxoulos</a>
+    <a href="https://github.com/maxgeor">github/maxgeor</a>
   </div>
 </div>
