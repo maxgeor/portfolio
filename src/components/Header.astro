@@ -28,19 +28,35 @@ import ThemeToggle from './ThemeToggle.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const fullScreenMenu = document.getElementById('full-screen-menu');
+    const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
+    const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
+
+    function closeMenu() {
+      fullScreenMenu.classList.add('hidden');
+      fullScreenMenu.classList.remove('flex');
+      menuToggle.textContent = 'Menu';
+    }
+
+    function openMenu() {
+      fullScreenMenu.classList.remove('hidden');
+      fullScreenMenu.classList.add('flex');
+      menuToggle.textContent = 'Close';
+    }
 
     if (menuToggle && fullScreenMenu) {
       menuToggle.addEventListener('click', () => {
         if (fullScreenMenu.classList.contains('hidden')) {
-          fullScreenMenu.classList.remove('hidden');
-          fullScreenMenu.classList.add('flex');
-          menuToggle.textContent = 'Close';
+          openMenu();
         } else {
-          fullScreenMenu.classList.add('hidden');
-          fullScreenMenu.classList.remove('flex');
-          menuToggle.textContent = 'Menu';
+          closeMenu();
+        }
+      });
+
+      // Add click event listener to the full-screen menu
+      fullScreenMenu.addEventListener('click', (e) => {
+        // Check if the click target is the full-screen menu itself
+        if (e.target === fullScreenMenu) {
+          closeMenu();
         }
       });
     }
