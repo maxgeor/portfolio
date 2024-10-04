@@ -30,13 +30,13 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 <div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
   <img
     {...createImageProps(previewSrc, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover blur-sm"
+    class="absolute inset-0 w-full h-full object-cover blur-sm select-none"
     style="opacity: 1;"
     aria-hidden="true"
   />
   <img
     {...createImageProps(src, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover"
+    class="absolute inset-0 w-full h-full object-cover select-none"
     style="opacity: 0;"
     loading="lazy"
     data-transition-delay={transitionDelay}
@@ -58,9 +58,9 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
       }
     } else {
       // Image took longer to load, apply transition
-      img.style.transition = 'opacity 200ms ease-in-out';
+      img.style.transition = 'opacity 250ms ease-in-out';
       if (prevImg && prevImg.tagName === 'IMG') {
-        prevImg.style.transition = 'opacity 200ms ease-in-out';
+        prevImg.style.transition = 'opacity 250ms ease-in-out';
       }
       
       requestAnimationFrame(() => {
