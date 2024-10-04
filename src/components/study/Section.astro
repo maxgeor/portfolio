@@ -13,10 +13,10 @@ const { id, title } = Astro.props;
     <Caption id={id} text={title} element="h2" classes='text-pretty ' />
   </div>
   <!-- <hr class="hidden lg:block col-span-full border-t-[0.5px] border-black dark:border-white z-10 pb-2" /> -->
-  <h1 class="hidden lg:flex sticky top-[48px]  uppercase text-pretty col-span-2  gap-2 -my-0.5 z-10">
+  <h2 class="hidden lg:flex sticky top-[48px]  uppercase text-pretty col-span-2  gap-2 -my-0.5 z-10">
     <span>{id}</span>
     <span class="">{title}</span>
-  </h1>
+  </h2>
   <div class="context flex flex-col mt-3 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-4 3xl:col-span-3 xl:col-start-3 justify-self-end 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
     <slot name="context" />
   </div>
