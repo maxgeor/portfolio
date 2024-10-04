@@ -1,9 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
+import previewifyImagePath from '../helpers/previewifyImagePath';
 
 const { frontmatter } = Astro.props;
 const {
@@ -19,6 +20,8 @@ const {
   teammates,
   content
 } = frontmatter;
+
+
 
 const currentStudySlug = Astro.url.pathname.split('/').pop();
 
@@ -106,8 +109,22 @@ const otherCaseStudies = await getCollection('work', (
     </div>
   </div>
   <div class="col-span-full -mx-2 -mb-4 lg:-mb-6 border-y-[0.5px] border-neutral-250 dark:border-neutral-800">
-    <img src={images.sm} alt={title} class="md:hidden w-full h-full object-contain" />
-    <img src={images.lg} alt={title} class="hidden md:block w-full h-full object-contain" />
+    <ResponsiveImage 
+      src={images.sm}
+      previewSrc={previewifyImagePath(images.sm)}
+      alt={title} 
+      height={500}
+      width={1000}
+      class="md:hidden w-full h-full object-contain" 
+      />
+    <ResponsiveImage 
+      src={images.lg} 
+      previewSrc={previewifyImagePath(images.lg)}
+      alt={title} 
+      height={800}
+      width={1600}
+      class="hidden md:block w-full h-full object-contain" 
+    />
   </div>
   <div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4  border-black dark:border-white ">
     <p class="uppercase col-span-2 -my-0.5 ">Content</p>

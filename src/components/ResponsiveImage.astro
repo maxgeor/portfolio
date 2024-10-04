@@ -6,9 +6,18 @@ interface Props {
   width?: number;
   height?: number;
   class?: string;
+  transitionDelay?: number;
 }
 
-const { src, previewSrc, alt, width, height, class: className = '' } = Astro.props;
+const { 
+  src, 
+  previewSrc, 
+  alt, 
+  width, 
+  height, 
+  class: className = '',
+  transitionDelay = 50
+} = Astro.props;
 
 const createImageProps = (src: string, alt: string, width?: number, height?: number) => {
   const props: Record<string, any> = { src, alt };
@@ -21,34 +30,92 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 <div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
   <img
     {...createImageProps(previewSrc, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover blur transition-opacity duration-300"
+    class="absolute inset-0 w-full h-full object-cover blur-sm"
+    style="opacity: 1;"
+    aria-hidden="true"
   />
   <img
     {...createImageProps(src, alt, width, height)}
-    class="w-full h-full object-cover transition-opacity duration-300"
+    class="absolute inset-0 w-full h-full object-cover"
+    style="opacity: 0;"
+    data-transition-delay={transitionDelay}
   />
 </div>
 
 <script>
-  const images = document.querySelectorAll('img:not([src^="data:"])') as NodeListOf<HTMLImageElement>;
-  images.forEach(img => {
-    const prevImg = img.previousElementSibling as HTMLImageElement;
-    if (img.complete) {
+  function handleImageLoad(img: HTMLImageElement | null, loadTime: number) {
+    if (!img) return;
+
+    const transitionDelay = parseInt(img.dataset.transitionDelay || '50', 10);
+    const prevImg = img.previousElementSibling as HTMLImageElement | null;
+
+    if (loadTime < transitionDelay) {
+      // Image loaded quickly, apply changes immediately
       img.style.opacity = '1';
-      if (!prevImg) return;
-      prevImg.style.opacity = '0';
-    } else {
-      img.addEventListener('load', function() {
-        this.style.opacity = '1';
-        if (!prevImg) return;
+      if (prevImg && prevImg.tagName === 'IMG') {
         prevImg.style.opacity = '0';
+      }
+    } else {
+      // Image took longer to load, apply transition
+      img.style.transition = 'opacity 300ms ease-in-out';
+      if (prevImg && prevImg.tagName === 'IMG') {
+        prevImg.style.transition = 'opacity 300ms ease-in-out';
+      }
+      
+      requestAnimationFrame(() => {
+        img.style.opacity = '1';
+        if (prevImg && prevImg.tagName === 'IMG') {
+          prevImg.style.opacity = '0';
+        }
       });
     }
-  });
-</script>
-
-<style>
-  img {
-    opacity: 0;
   }
-</style>
+
+  function setupImage(img: HTMLImageElement) {
+    const startTime = performance.now();
+
+    if (img.complete && img.naturalWidth !== 0) {
+      handleImageLoad(img, 0);
+    } else {
+      img.addEventListener('load', () => {
+        const loadTime = performance.now() - startTime;
+        handleImageLoad(img, loadTime);
+      });
+    }
+
+    img.addEventListener('error', () => {
+      console.error(`Failed to load image: ${img.src}`);
+    });
+  }
+
+  function setupImages() {
+    const images = document.querySelectorAll('img:not([src^="data:"])') as NodeListOf<HTMLImageElement>;
+    images.forEach(setupImage);
+  }
+
+  function safeSetupImages() {
+    try {
+      setupImages();
+    } catch (error) {
+      console.error('Error setting up images:', error);
+    }
+  }
+
+  // Run on initial load
+  safeSetupImages();
+
+  // Run on subsequent navigations in Astro
+  document.addEventListener('astro:page-load', safeSetupImages);
+
+  // Fallback for non-Astro or if the above event doesn't fire
+  if ('onload' in window) {
+    window.addEventListener('load', safeSetupImages);
+  }
+
+  // For browsers that don't support the load event on window
+  if (document.readyState === 'complete') {
+    safeSetupImages();
+  } else {
+    document.addEventListener('DOMContentLoaded', safeSetupImages);
+  }
+</script>
