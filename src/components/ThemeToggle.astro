@@ -18,36 +18,30 @@ const { classes = "" } = Astro.props;
   const themeToggles = document.querySelectorAll('.theme-toggle');
 
   function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-
-    if (document.documentElement.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
-
-    loadThemePreference();
+    const isDark = document.documentElement.classList.toggle('dark');
+    const newTheme = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    updateMetaThemeColor(newTheme);
   }
 
   function loadThemePreference() {
-    const theme = localStorage.getItem('theme');
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    updateMetaThemeColor(theme);
+  }
 
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.querySelector('meta[name="theme-color"]')?.remove();
-      const metaTag = document.createElement('meta');
-      metaTag.name = 'theme-color';
-      metaTag.content = '#000';
-      document.head.appendChild(metaTag);
+  function updateMetaThemeColor(theme) {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.content = theme === 'dark' ? '#000' : '#fff';
     } else {
-      document.documentElement.classList.remove('dark');
-      document.querySelector('meta[name="theme-color"]')?.remove();
-      const metaTag = document.createElement('meta');
-      metaTag.name = 'theme-color';
-      metaTag.content = '#fff';
-      document.head.appendChild(metaTag);
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'theme-color';
+      newMeta.content = theme === 'dark' ? '#000' : '#fff';
+      document.head.appendChild(newMeta);
     }
   }
 
-  themeToggles?.forEach((toggle) => toggle.addEventListener('click', toggleTheme));
+  themeToggles.forEach(toggle => toggle.addEventListener('click', toggleTheme));
+  loadThemePreference();
 </script>

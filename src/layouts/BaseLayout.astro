@@ -17,6 +17,8 @@ const {
   classes = '',
 } = Astro.props;
 
+const DEFAULT_THEME = 'light';
+
 const criticalCSS = `
   :root {
     --background-color: #fff;
@@ -37,10 +39,7 @@ const criticalCSS = `
 const inlineScript = `
   (function() {
     function getTheme() {
-      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme');
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      return localStorage.getItem('theme') || '${DEFAULT_THEME}';
     }
     var theme = getTheme();
     document.documentElement.classList.toggle('dark', theme === 'dark');
