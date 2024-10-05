@@ -59,15 +59,13 @@ const props = shouldDisable
     ? {} 
     : studySlug 
       ? { href: `/study/${studySlug}`, target: '_self' } 
-      : link 
-
-const aspect = image.height / image.width;
+      : link
 ---
 <Element
   {...props}
   {...attributes}
   class={`
-    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 lg:hover:opacity-50
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 lg:hover:opacity-50 transition-opacity duration-200
     ${!isHidden ? 'active' : ''}
     ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${classes}

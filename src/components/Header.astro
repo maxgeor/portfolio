@@ -1,5 +1,4 @@
 ---
-// Header.astro
 import ThemeToggle from './ThemeToggle.astro';
 ---
 <>
@@ -16,7 +15,7 @@ import ThemeToggle from './ThemeToggle.astro';
     <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-2 -m-2">Menu</button>
   </header>
 
-  <div id="full-screen-menu" class="fixed inset-0 z-40 hidden md:hidden flex-col p-2 overflow-hidden bg-white dark:bg-black">
+  <div id="full-screen-menu" class="fixed inset-0 z-40 hidden md:hidden flex-col p-2 overflow-hidden bg-white/80 dark:bg-black/80 backdrop-blur-[0px] opacity-0 scale-[1.02] -translate-y-1">
     <nav class="border-current divide-current border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
       <a href="/">Work</a>
       <a href="/about">About</a>
@@ -30,17 +29,31 @@ import ThemeToggle from './ThemeToggle.astro';
   document.addEventListener('DOMContentLoaded', (event) => {
     const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
     const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
+    const body = document.body;
 
     function closeMenu() {
-      fullScreenMenu.classList.add('hidden');
-      fullScreenMenu.classList.remove('flex');
+      fullScreenMenu.classList.add('opacity-0', 'scale-[1.02]', '-translate-y-1');
+      fullScreenMenu.style.backdropFilter = 'blur(0px)';
+      fullScreenMenu.style.transition = 'opacity 350ms ease-in-out, transform 350ms ease-in-out, backdrop-filter 350ms ease-in-out, color 350ms ease-in-out';
+      setTimeout(() => {
+        fullScreenMenu.classList.add('hidden');
+        fullScreenMenu.classList.remove('flex');
+        fullScreenMenu.style.transition = ''; // Reset to default for next opening
+      }, 300);
       menuToggle.textContent = 'Menu';
+      body.classList.remove('overflow-hidden');
     }
 
     function openMenu() {
       fullScreenMenu.classList.remove('hidden');
       fullScreenMenu.classList.add('flex');
+      fullScreenMenu.style.transition = 'opacity 200ms ease-in-out, transform 200ms ease-in-out, backdrop-filter 200ms ease-in-out';
+      requestAnimationFrame(() => {
+        fullScreenMenu.classList.remove('opacity-0', 'scale-[1.02]', '-translate-y-1');
+        fullScreenMenu.style.backdropFilter = 'blur(10px)';
+      });
       menuToggle.textContent = 'Close';
+      body.classList.add('overflow-hidden');
     }
 
     if (menuToggle && fullScreenMenu) {
@@ -52,9 +65,7 @@ import ThemeToggle from './ThemeToggle.astro';
         }
       });
 
-      // Add click event listener to the full-screen menu
       fullScreenMenu.addEventListener('click', (e) => {
-        // Check if the click target is the full-screen menu itself
         if (e.target === fullScreenMenu) {
           closeMenu();
         }
@@ -62,3 +73,26 @@ import ThemeToggle from './ThemeToggle.astro';
     }
   });
 </script>
+
+<style>
+  body {
+    padding-right: calc(100vw - 100%);
+  }
+
+  body.overflow-hidden {
+    overflow: hidden !important;
+  }
+
+  #full-screen-menu {
+    transform-origin: center center;
+  }
+
+  @supports not (backdrop-filter: blur(10px)) {
+    #full-screen-menu {
+      background-color: rgba(255, 255, 255, 0.97);
+    }
+    :global(.dark) #full-screen-menu {
+      background-color: rgba(0, 0, 0, 0.97);
+    }
+  }
+</style>

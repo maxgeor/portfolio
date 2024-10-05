@@ -21,8 +21,6 @@ const {
   content
 } = frontmatter;
 
-
-
 const currentStudySlug = Astro.url.pathname.split('/').pop();
 
 const otherCaseStudies = await getCollection('work', (
