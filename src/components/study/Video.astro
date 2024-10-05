@@ -60,7 +60,7 @@ switch(orientation) {
 <div class={clsx('flex flex-col gap-y-2 col-span-full', classes)}>
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    hasBorder && 'border-y-[0.5px] border-neutral-200 dark:border-neutral-900',
+    hasBorder && 'border-y border-neutral-200 dark:border-neutral-900',
     paddingClasses
   )}>
     <div class={clsx(
@@ -69,9 +69,9 @@ switch(orientation) {
       startClasses,
       endClasses,
     )}>
-      <div class={clsx('relative w-full', aspectRatio)}>
+      <div class={clsx('flex relative w-full', aspectRatio)}>
         <video
-          class={clsx('absolute inset-0 w-full h-full select-none', objectFit)}
+          class={clsx('absolute inset-0 w-full h-full select-none mx-auto', objectFit)}
           poster={extensionlessSrc + ".png"}
           playsinline
           autoplay

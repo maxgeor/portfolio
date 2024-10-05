@@ -108,7 +108,8 @@ const otherCaseStudies = await getCollection('work', (
       </div>
     </div>
   </div>
-  <div class="col-span-full -mx-2 -mb-4 lg:-mb-6 border-y-[0.5px] border-neutral-250 dark:border-neutral-800">
+  <div class="relative col-span-full -mx-2 -mb-4 lg:-mb-6">
+    <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.09),_inset_0_-0.5px_0_rgba(0,0,0,0.09)] pointer-events-none"></div>
     <ResponsiveImage 
       src={images.sm}
       previewSrc={previewifyImagePath(images.sm)}

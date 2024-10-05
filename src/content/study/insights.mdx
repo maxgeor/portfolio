@@ -69,23 +69,45 @@ import Row from "../../components/study/Row.astro";
       },
       {
         id: "2.03",
+        src: "/work/wavy/insights/note-hero.png",
+        alt: "Hero sketch",
+      },
+    ]}
+    span={{ base: 12, md: 8 }}
+    orientation="3/2"
+    fit="cover"
+  />
+  <Carousel
+    slides={[
+      {
+        id: "2.04",
         src: "/work/wavy/insights/standouts.png",
         alt: "Standouts",
       },
       {
-        id: "2.04",
+        id: "2.05",
         src: "/work/wavy/insights/participation.png",
         alt: "Participation",
       },
       {
-        id: "2.05",
+        id: "2.06",
         src: "/work/wavy/insights/feedback.png",
         alt: "Feedback",
       },
       {
-        id: "2.06",
+        id: "2.07",
         src: "/work/wavy/insights/spend.png",
         alt: "Spend",
+      },
+      {
+        id: "2.08",
+        src: "/work/wavy/insights/note-data.png",
+        alt: "Note, data",
+      },
+      {
+        id: "2.09",
+        src: "/work/wavy/insights/note-event.png",
+        alt: "Note, events",
       },
     ]}
     span={{ base: 12, md: 8 }}
@@ -96,22 +118,22 @@ import Row from "../../components/study/Row.astro";
     orientation="vertical"
     slides={[
       {
-        id: "2.07",
+        id: "2.10",
         src: "/work/wavy/insights/standouts-mobile.png",
         alt: "Standouts, mobile",
       },
       {
-        id: "2.08",
+        id: "2.11",
         src: "/work/wavy/insights/participation-mobile.png",
         alt: "Participation, mobile",
       },
       {
-        id: "2.09",
+        id: "2.12",
         src: "/work/wavy/insights/feedback-mobile.png",
         alt: "Feedback, mobile",
       },
       {
-        id: "2.10",
+        id: "2.13",
         src: "/work/wavy/insights/spend-mobile.png",
         alt: "Spend, mobile",
       },
@@ -122,7 +144,7 @@ import Row from "../../components/study/Row.astro";
   />
   <Row classes="hidden sm:grid">
     <Image
-      id="2.07"
+      id="2.10"
       src="/work/wavy/insights/standouts-mobile.png"
       alt="Standouts, mobile"
       span={{ base: 6, lg: 3 }}
@@ -130,7 +152,7 @@ import Row from "../../components/study/Row.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.08"
+      id="2.11"
       src="/work/wavy/insights/participation-mobile.png"
       alt="Participation, mobile"
       span={{ base: 6, lg: 3 }}
@@ -138,7 +160,7 @@ import Row from "../../components/study/Row.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.09"
+      id="2.12"
       src="/work/wavy/insights/feedback-mobile.png"
       alt="Feedback, mobile"
       span={{ base: 6, lg: 3 }}
@@ -146,7 +168,7 @@ import Row from "../../components/study/Row.astro";
       isFullBleed={true}
     />
     <Image
-      id="2.10"
+      id="2.13"
       src="/work/wavy/insights/spend-mobile.png"
       alt="Spend, mobile"
       span={{ base: 6, lg: 3 }}
@@ -154,26 +176,43 @@ import Row from "../../components/study/Row.astro";
       isFullBleed={true}
     />
   </Row>
-  <Image
-    id="5.01"
-    src="/work/wavy/insights/representation.png"
-    alt="Representation components"
+  <Carousel
+    slides={[
+      {
+        id: "2.14",
+        src: "/work/wavy/insights/representation.png",
+        alt: "Representation UI",
+      },
+      {
+        id: "2.15",
+        src: "/work/wavy/insights/note-representation.png",
+        alt: "Representation notes",
+      },
+    ]}
     span={{ base: 12, md: 10, lg: 8 }}
     orientation="3/2"
-    isPadded={{ base: false, md: true }}
-    withContainer
-   />
+    fit="cover"
+  />
 </Section>
 <Section id="3.00" title='Grouping Events' hasBorder={false}>
   <p slot="context">With hundreds of events in a quarter, displaying them over time was crucial—simple lists weren’t enough. We designed **nested charts that let users zoom into event groupings** by month, week, or day. This approach offered a clean, organized view, allowing users to explore events at any level of detail they needed..</p>
-  <Video 
-    id= "3.01"
-    format="mov"
-    src="/work/wavy/insights/expanding-events.mp4"
-    alt="Grouping prototype"
-    span={{ base: 12, md: 8 }}
+  <Carousel
+    slides={[
+      {
+        type: "video",
+        format: "mov",
+        id: "3.01",
+        src: "/work/wavy/insights/expanding-events.mov",
+        alt: "Grouping prototype",
+      },
+      {
+        id: "3.02",
+        src: "/work/wavy/insights/note-graph.png",
+        alt: "Grouping notes",
+      },
+    ]}
+    span={{ base: 12, md: 10, lg: 8 }}
     orientation="3/2"
-    withContainer
-    isPadded={true}
+    fit="cover"
   />
 </Section>
