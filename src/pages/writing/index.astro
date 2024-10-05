@@ -5,15 +5,14 @@ import { getCollection } from 'astro:content';
 const writing = await getCollection('writing', ({ data: { isDraft } }) => !isDraft);
 ---
 <Layout>
-  <!-- <div class="grid grid-cols-12 col-span-full gap-x-4 h-fit border-t-[0.5px] pt-1.5 border-black dark:border-white"> -->
   <div class="grid grid-cols-12 col-span-full gap-x-4 h-fit -my-0.5">
     {writing.sort((a, b) => {
       const dateA = new Date(a.data.date).getTime();
       const dateB = new Date(b.data.date).getTime();
       return dateB - dateA;
     }).map(({ slug, data: writing }) => (
-      <a href={`/writing/${slug}`} class=" grid grid-cols-12 col-span-full gap-x-4">
-        <p class="col-span-3 sm:col-span-2 lg:col-span-1 whitespace-nowrap">{writing.date}</p>
+      <a href={`/writing/${slug}`} class="flex gap-4 col-span-full">
+        <p class="col-span-3 sm:col-span-2 lg:col-span-1 whitespace-nowrap w-[61px]">{writing.date}</p>
         <h2 class="col-span-9 uppercase">{writing.title}</h2>
       </a>
     ))}
