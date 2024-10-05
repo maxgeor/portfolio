@@ -69,16 +69,18 @@ switch(orientation) {
       startClasses,
       endClasses,
     )}>
-      <video
-        class={clsx('w-full select-none self-center', aspectRatio, objectFit)}
-        poster={extensionlessSrc + ".png"}
-        playsinline
-        autoplay
-        muted
-        loop
-      >
-        <source src={extensionlessSrc + '.' + format} type="video/mp4" />
-      </video>
+      <div class={clsx('relative w-full', aspectRatio)}>
+        <video
+          class={clsx('absolute inset-0 w-full h-full select-none', objectFit)}
+          poster={extensionlessSrc + ".png"}
+          playsinline
+          autoplay
+          muted
+          loop
+        >
+          <source src={extensionlessSrc + '.' + format} type="video/mp4" />
+        </video>
+      </div>
     </div>
   </div>
   <div class={clsx(
