@@ -59,6 +59,7 @@ import Row from "../../components/study/Row.astro";
     alt="Walkthrough"
     span={{ base: 12, md: 10 }}
     isPadded={{ base: false, md: true }}
+    fit="cover"
   />
   <Carousel
     slides={[
@@ -150,7 +151,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, lg: 3 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.11"
@@ -159,7 +159,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, lg: 3 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.12"
@@ -168,7 +167,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, lg: 3 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.13"
@@ -177,7 +175,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, lg: 3 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
   </Row>
   <Carousel
@@ -198,7 +195,7 @@ import Row from "../../components/study/Row.astro";
     fit="cover"
   />
 </Section>
-<Section id="3.00" title='Grouping Events' hasBorder={false}>
+<Section id="3.00" title='Grouping Events'>
   <p slot="context">With hundreds of events in a quarter, displaying them over time was crucial—simple lists weren’t enough. We designed **nested charts that let users zoom into event groupings** by month, week, or day. This approach offered a clean, organized view, allowing users to explore events at any level of detail they needed..</p>
   <Carousel
     slides={[

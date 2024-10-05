@@ -62,7 +62,7 @@ import Carousel from "../../components/study/Carousel.astro";
 import MarkedNumber from "../../components/study/MarkedNumber.astro";
 import Row from "../../components/study/Row.astro";
 
-<Section id="1.00" title='Problem' hasBorder={false}>
+<Section id="1.00" title='Problem'>
   <Fragment slot="context">
     Wavy sent participants an 8-question [Typeform](https://www.typeform.com/) survey after events. Though it covered all the basics, many dropped off. Organizers wanted to customize surveys to remove irrelevant questions and add more useful ones. Survey results appeared in the event's Feedback tab, but the UI was built around the fixed questions and needed a redesign for customization. The platform didn’t explain surveys or what questions would be asked, a leftover from when Wavy manually handled them.
   </Fragment>
@@ -154,7 +154,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.08"
@@ -163,7 +162,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.09"
@@ -172,7 +170,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.10"
@@ -181,7 +178,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.11"
@@ -190,7 +186,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.12"
@@ -199,7 +194,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
   </Row>
   <Carousel
@@ -292,7 +286,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="3.07"
@@ -301,7 +294,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="3.08"
@@ -310,7 +302,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
   </Row>
 </Section>
@@ -322,6 +313,7 @@ import Row from "../../components/study/Row.astro";
     alt="Typeform vs Wavy surveys"
     span={{ base: 12, md: 10, lg: 8 }}
     isPadded={{ base: false, md: true }}
+    hasBorder={true}
     withContainer
    />
 </Section>

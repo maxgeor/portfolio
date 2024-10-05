@@ -56,7 +56,7 @@ import Carousel from "../../components/study/Carousel.astro";
 import MarkedNumber from '../../components/study/MarkedNumber.astro';
 import Row from "../../components/study/Row.astro";
 
-<Section id="1.00" title='Problem' hasBorder={false}>
+<Section id="1.00" title='Problem'>
   <Fragment slot="context">
     Wavy’s homepage was a single calendar view showing events, notable days, and suggestions, but it had issues. 1/ Calendar items weren’t labeled, so you couldn’t quickly spot invites or RSVPs. 2/ You could only see one month at a time, making it easy to forget events months ahead and hard to find past ones. 3/ Optional themes had either harsh, inaccessible colors or made the text almost unreadable.
   </Fragment>
@@ -75,6 +75,7 @@ import Row from "../../components/study/Row.astro";
     ]}
     span={{ base: 12, md: 8 }}
 		isPadded={{ base: false, md: true }}
+    hasBorder={false}
   />
 </Section>
 <Section id="2.00" title='List View'>
@@ -162,7 +163,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.06"
@@ -171,7 +171,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.07"
@@ -180,7 +179,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.08"
@@ -189,7 +187,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     <Image
       id="2.09"
@@ -198,7 +195,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
     
     <Image
@@ -208,7 +204,6 @@ import Row from "../../components/study/Row.astro";
       span={{ base: 6, md: 4 }}
       orientation="vertical"
       isFullBleed={true}
-      hasBorder={false}
     />
   </Row>
 </Section>
