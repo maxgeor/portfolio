@@ -140,7 +140,7 @@ const props = shouldDisable
 
   document.addEventListener('DOMContentLoaded', function() {
     const workCards: NodeListOf<HTMLElement> = document.querySelectorAll('.work-card');
-    const isMobileOrTabletDevice = isMobileOrTablet();
+    // const isMobileOrTabletDevice = isMobileOrTablet();
 
     const showIntersectingCards = (cards: NodeListOf<HTMLElement>) => {
       cards.forEach(card => {
@@ -157,33 +157,45 @@ const props = shouldDisable
       });
     }
 
-    if (isMobileOrTabletDevice) {
-      workCards.forEach(card => {
-        const picture = card.querySelector('.work-card-picture') as HTMLElement;
-        if (picture) {
-          picture.style.opacity = '1';
-        }
-        card.classList.add('active');
-      });
+    workCards.forEach(card => {
+      const picture = card.querySelector('.work-card-picture') as HTMLElement;
+      if (picture) {
+        picture.style.opacity = '1';
+      }
+      card.classList.add('active');
+    });
 
+    showIntersectingCards(workCards);
+    window.addEventListener('scroll', () => {
       showIntersectingCards(workCards);
-      window.addEventListener('scroll', () => {
-        showIntersectingCards(workCards);
-      });
-      
-    } else {
-      workCards.forEach(card => {
-        let timer: any;
+    });
+    
+    // if (isMobileOrTabletDevice) {
+    //   workCards.forEach(card => {
+    //     const picture = card.querySelector('.work-card-picture') as HTMLElement;
+    //     if (picture) {
+    //       picture.style.opacity = '1';
+    //     }
+    //     card.classList.add('active');
+    //   });
 
-        card.addEventListener('mouseenter', () => {
-          card.classList.add('active');
+    //   showIntersectingCards(workCards);
+    //   window.addEventListener('scroll', () => {
+    //     showIntersectingCards(workCards);
+    //   });
+    // } else {
+    //   workCards.forEach(card => {
+    //     let timer: any;
 
-          clearTimeout(timer);
-          timer = setTimeout(() => {
-            card.classList.remove('active');
-          }, 4400);
-        });
-      });
-    }
+    //     card.addEventListener('mouseenter', () => {
+    //       card.classList.add('active');
+
+    //       clearTimeout(timer);
+    //       timer = setTimeout(() => {
+    //         card.classList.remove('active');
+    //       }, 4400);
+    //     });
+    //   });
+    // }
   });
 </script>
