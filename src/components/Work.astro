@@ -116,6 +116,21 @@ const props = shouldDisable
 </style>
 
 <script>
+  function isMobileOrTablet() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const mobileKeywords = [
+      'android',
+      'webos',
+      'iphone',
+      'ipad',
+      'ipod',
+      'blackberry',
+      'windows phone'
+    ];
+    
+    return mobileKeywords.some(keyword => userAgent.includes(keyword));
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const workCards: NodeListOf<HTMLElement> = document.querySelectorAll('.work-card');
 
@@ -134,7 +149,7 @@ const props = shouldDisable
       });
     }
 
-    if (window.innerWidth >= 1040) {
+    if (!isMobileOrTablet()) {
       workCards.forEach(card => {
         let timer: any;
 
@@ -147,9 +162,7 @@ const props = shouldDisable
           }, 4400);
         });
       });
-    }
-
-    if (window.innerWidth < 1040) {
+    } else {
       showIntersectingCards(workCards);
       window.addEventListener('scroll', () => {
         showIntersectingCards(workCards);
