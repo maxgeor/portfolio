@@ -166,7 +166,7 @@ switch(orientation) {
     )}>
       <div class="flex flex-col">
         {slides?.map((slide, index) => (
-          <button class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left whitespace-nowrap`}>
+          <button aria-label={`Jump to ${slide.alt} slide`} class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left whitespace-nowrap`}>
             <Caption id={slide.id} text={slide.alt} />
           </button>
         ))}

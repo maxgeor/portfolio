@@ -117,6 +117,7 @@ const {
   <div class="flex flex-col col-span-10 -my-0.5">
     {content.map((section: any) => (
       <a 
+        aria-label={section.title}
         href={'#' + section.id + '-' + section.title} 
         class="flex gap-2 uppercase"
       >

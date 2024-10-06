@@ -12,7 +12,7 @@ const { id, text, element = 'p', classes = '' } = Astro.props;
 const Element = element as keyof HTMLElementTagNameMap;
 ---
 
-<Element class={clsx("flex gap-2 uppercase col-span-full", classes)}>
+<Element aria-label={text} class={clsx("flex gap-2 uppercase col-span-full", classes)}>
   <span class="w-[23px]">{id}</span>
   <span>{text}</span>
 </Element>
