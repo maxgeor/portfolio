@@ -1,13 +1,16 @@
 ---
 import Caption from './Caption.astro';
+import clsx from 'clsx';
+
 export interface Props {
   id: string;
   title: string
+  classes?: string;
 }
 
-const { id, title } = Astro.props;
+const { id, title, classes = "" } = Astro.props;
 ---
-<section id={id + '-' + title} class="scroll-mt-[47px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-4">
+<section id={id + '-' + title} class={clsx("scroll-mt-[47px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-4", classes)}>
   <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky lg:static top-[47px] col-span-full z-[100]">
     <Caption id={id} text={title} element="h2" classes='text-pretty ' />
   </div>
