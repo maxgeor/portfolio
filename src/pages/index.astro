@@ -87,7 +87,11 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
       'windows phone'
     ];
     
-    return mobileKeywords.some(keyword => userAgent.includes(keyword));
+    const isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
+    
+    const isTablet = /tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent);
+    
+    return isMobile || isTablet;
   }
 
   const hasActiveFilters = () => (

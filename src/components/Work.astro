@@ -113,6 +113,12 @@ const props = shouldDisable
   .work-card.active .work-card-picture {
     opacity: 1;
   }
+
+  @media (max-width: 1024px) {
+    .work-card .work-card-picture {
+      opacity: 1;
+    }
+  }
 </style>
 
 <script>
@@ -128,7 +134,13 @@ const props = shouldDisable
       'windows phone'
     ];
     
-    return mobileKeywords.some(keyword => userAgent.includes(keyword));
+    // Check if it's a mobile device
+    const isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
+    
+    // Check if it's a tablet
+    const isTablet = /tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent);
+    
+    return isMobile || isTablet;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
