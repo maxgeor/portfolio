@@ -292,7 +292,9 @@ import Row from "../../components/study/Row.astro";
     alt="One-way actions UI"
     withContainer
     span={{ base: 12, md: 8 }}
-    isPadded={true}
+    isPadded={{ base: false, md: true }} 
+		hasBorder={{ base: true, md: false }}
+
   />
 </Section>
 <Section id="4.00" title="Confirming trust" >
