@@ -7,6 +7,7 @@ import {
   getVisibilityClasses 
 } from '../../utils/class-generator'
 import Caption from './Caption.astro';
+import InsetBorder from '../InsetBorder.astro';
 import clsx from 'clsx';
 
 export interface Props {
@@ -83,6 +84,7 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
       // hasBorder && 'border-y border-neutral-200 dark:border-neutral-900',
       paddingClasses
     )}>
+      <InsetBorder classes={visibilityClasses} />
       <div class={clsx(
         "inset-border absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.12),_inset_0_-0.5px_0_rgba(0,0,0,0.12)] pointer-events-none",
         visibilityClasses

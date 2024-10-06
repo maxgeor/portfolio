@@ -4,6 +4,7 @@ import { getCenteredColClasses, getPaddingClasses, getVisibilityClasses } from '
 import Image from "./Image.astro";
 import Video from "./Video.astro";
 import Caption from './Caption.astro';
+import InsetBorder from '../InsetBorder.astro';
 import clsx from 'clsx';
 
 type Media = {
@@ -77,10 +78,7 @@ switch(orientation) {
     // hasBorder && 'border-y border-neutral-200 dark:border-neutral-900',
     paddingClasses
   )}>
-    <div class={clsx(
-      "inset-border absolute z-50 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.12),_inset_0_-0.5px_0_rgba(0,0,0,0.12)] pointer-events-none",
-      visibilityClasses
-    )}></div>
+    <InsetBorder classes={visibilityClasses} />
     <button 
       aria-label="Previous slide" 
       class="prev-slide-btn hidden md:block absolute left-0 top-0 bottom-0 disabled:opacity-50 z-40 p-2 uppercase hover:opacity-100 disabled:hover:opacity-auto cursor-w-resize disabled:cursor-default" 

@@ -4,6 +4,7 @@ import ResponsiveImage from "../components/ResponsiveImage.astro";
 import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
 import Work from "../components/Work.astro";
 import { getCollection } from 'astro:content';
+import InsetBorder from "../components/InsetBorder.astro";
 import previewifyImagePath from '../helpers/previewifyImagePath';
 
 const { frontmatter } = Astro.props;
@@ -107,7 +108,8 @@ const otherCaseStudies = await getCollection('work', (
     </div>
   </div>
   <div class="relative col-span-full -mx-2 -mb-4 lg:-mb-6">
-    <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.09),_inset_0_-0.5px_0_rgba(0,0,0,0.09)] pointer-events-none"></div>
+    <!-- <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.09),_inset_0_-0.5px_0_rgba(0,0,0,0.09)] pointer-events-none"></div> -->
+    <InsetBorder />
     <ResponsiveImage 
       src={images.sm}
       previewSrc={previewifyImagePath(images.sm)}
