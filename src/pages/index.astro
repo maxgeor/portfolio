@@ -88,11 +88,12 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     ];
     
     const isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
-    
     const isTablet = /tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent);
     
     return isMobile || isTablet;
   }
+
+  const isMobileOrTabletDevice = isMobileOrTablet();
 
   const hasActiveFilters = () => (
     activeFilters.type.length > 0 || 
@@ -115,7 +116,9 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
         
         if (typeMatch && roleMatch && caseStudyMatch) {
           work.style.display = '';
-          work.classList.add('active');
+          if (isMobileOrTabletDevice) {
+            work.classList.add('active');
+          }
         } else {
           work.style.display = 'none';
           work.classList.remove('active');
@@ -128,10 +131,8 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   }
 
   function showAllWorks() {
-    const isMobileOrTabletDevice = isMobileOrTablet();
     works.forEach((work, index) => {
       work.style.display = '';
-      work.classList.add('active');
       work.style.transition = `opacity 0.3s ease ${index * 0.1}s`;
       work.style.opacity = '0';
       setTimeout(() => {
@@ -139,11 +140,6 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
       }, 50);
       if (isMobileOrTabletDevice) {
         work.classList.add('active');
-        work.style.transition = `opacity 0.3s ease ${index * 0.1}s`;
-        work.style.opacity = '0';
-        setTimeout(() => {
-          work.style.opacity = '1';
-        }, 50);
       } else {
         work.classList.remove('transition-opacity', 'transition', 'transition-all');
         work.classList.remove('active');
@@ -194,6 +190,21 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   clearFiltersButton?.addEventListener('click', clearFilters);
 
   updateClearFiltersButton();
+
+  if (!isMobileOrTabletDevice) {
+    works.forEach(work => {
+      let timer;
+
+      work.addEventListener('mouseenter', () => {
+        work.classList.add('active');
+
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          work.classList.remove('active');
+        }, 4400);
+      });
+    });
+  }
 
   showAllWorks();
 

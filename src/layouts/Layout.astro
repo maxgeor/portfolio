@@ -35,9 +35,6 @@ const criticalCSS = `
     background-color: var(--background-color);
     color: var(--text-color);
   }
-  body.theme-transition {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
 `;
 
 const inlineScript = `
@@ -48,6 +45,9 @@ const inlineScript = `
     var theme = getTheme();
     document.documentElement.classList.toggle('dark', theme === 'dark');
     window.localStorage.setItem('theme', theme);
+
+    // Disable transitions on load
+    document.documentElement.classList.add('no-transitions');
 
     function isMobileOrTablet() {
       const userAgent = navigator.userAgent.toLowerCase();
@@ -71,7 +71,13 @@ const inlineScript = `
       }
     }
 
-    document.addEventListener('DOMContentLoaded', applyDeviceSpecificStyles);
+    document.addEventListener('DOMContentLoaded', () => {
+      applyDeviceSpecificStyles();
+      // Enable transitions after a short delay
+      setTimeout(() => {
+        document.documentElement.classList.remove('no-transitions');
+      }, 50);
+    });
   })();
 `;
 ---
@@ -101,6 +107,10 @@ const inlineScript = `
 </html>
 
 <style is:global>  
+  .no-transitions *, .no-transitions *::before, .no-transitions *::after {
+    transition: none !important;
+  }
+
   @font-face {
     font-family: "Berkeley Mono";
     src: url(/fonts/BerkeleyMono-Regular.ttf);
