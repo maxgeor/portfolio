@@ -34,7 +34,7 @@ import ThemeToggle from './ThemeToggle.astro';
     let startX: number, startY: number, startTime: number;
     let lastX: number, lastY: number, lastTime: number;
     let isSwiping = false;
-    const accelerationThreshold = 0.07; // Minimum acceleration to trigger dismissal (in pixels/ms^2)
+    const accelerationThreshold = 0.06; // Minimum acceleration to trigger dismissal (in pixels/ms^2)
 
     function closeMenu() {
       fullScreenMenu.classList.add('opacity-0', 'scale-[1.02]', '-translate-y-1');
