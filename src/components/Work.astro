@@ -157,21 +157,7 @@ const props = shouldDisable
       });
     }
 
-    if (!isMobileOrTabletDevice) {
-      workCards.forEach(card => {
-        let timer: any;
-
-        card.addEventListener('mouseenter', () => {
-          card.classList.add('active');
-
-          clearTimeout(timer);
-          timer = setTimeout(() => {
-            card.classList.remove('active');
-          }, 4400);
-        });
-      });
-    } else {
-      // For mobile and tablet devices, set all work cards to active initially
+    if (isMobileOrTabletDevice) {
       workCards.forEach(card => {
         const picture = card.querySelector('.work-card-picture') as HTMLElement;
         if (picture) {
@@ -183,6 +169,20 @@ const props = shouldDisable
       showIntersectingCards(workCards);
       window.addEventListener('scroll', () => {
         showIntersectingCards(workCards);
+      });
+      
+    } else {
+      workCards.forEach(card => {
+        let timer: any;
+
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('active');
+
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            card.classList.remove('active');
+          }, 4400);
+        });
       });
     }
   });
