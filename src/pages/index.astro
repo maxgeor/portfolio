@@ -105,33 +105,31 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   );
 
   function updateWorks() {
-    if (!hasActiveFilters()) {
-      showAllWorks();
-    } else {
-      works.forEach(work => {
-        const type = work.getAttribute('data-type') || '';
-        const roles = work.getAttribute('data-roles')?.split(',') || [];
-        const hasCaseStudy = work.getAttribute('data-case-study') === 'true';
+  if (!hasActiveFilters()) {
+    showAllWorks();
+  } else {
+    works.forEach(work => {
+      const type = work.getAttribute('data-type') || '';
+      const roles = work.getAttribute('data-roles')?.split(',') || [];
+      const hasCaseStudy = work.getAttribute('data-case-study') === 'true';
 
-        const typeMatch = activeFilters.type.length === 0 || activeFilters.type.includes(type);
-        const roleMatch = activeFilters.role.length === 0 || activeFilters.role.some(role => roles.includes(role));
-        const caseStudyMatch = !activeFilters.caseStudy || hasCaseStudy;
-        
-        if (typeMatch && roleMatch && caseStudyMatch) {
-          work.style.display = '';
-          if (isMobileOrTabletDevice) {
-            work.classList.add('active');
-          }
-        } else {
-          work.style.display = 'none';
-          work.classList.remove('active');
-        }
-      });
+      const typeMatch = activeFilters.type.length === 0 || activeFilters.type.includes(type);
+      const roleMatch = activeFilters.role.length === 0 || activeFilters.role.some(role => roles.includes(role));
+      const caseStudyMatch = !activeFilters.caseStudy || hasCaseStudy;
       
-      window.scrollTo(0, 0);
-    }
-    updateClearFiltersButton();
+      if (typeMatch && roleMatch && caseStudyMatch) {
+        work.style.display = '';
+        work.classList.add('active');
+      } else {
+        work.style.display = 'none';
+        work.classList.remove('active');
+      }
+    });
+    
+    window.scrollTo(0, 0);
   }
+  updateClearFiltersButton();
+}
 
   function showAllWorks() {
     works.forEach((work, index) => {
