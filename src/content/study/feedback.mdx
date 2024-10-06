@@ -50,7 +50,7 @@ content: [
   },
   {
     id: "5.00",
-    title: "Written Feedback",
+    title: "Written Summaries",
   },
 ]
 ---
@@ -309,7 +309,7 @@ import Row from "../../components/study/Row.astro";
   </Row>
 </Section>
 <Section id="4.00" title='Keeping old data'>
-  <p slot="context">A key constraint was **avoiding data loss from past surveys.** By using `rating`, `multiple-choice`, and `long-answer`, we migrated all fixed questions into controlled formats without losing any data. We didn’t need the 30+ data types Typeform offered—ratings, multiple choice, and long answer covered all user needs. The old fixed questions remained as a default template, giving organizers guidance while allowing customization. This saved Wavy money by eliminating the need for Typeform and cleaning up code tied to that integration.</p>
+  <p slot="context">A key constraint was avoiding data loss from past surveys. By using `rating`, `multiple-choice`, and `long-answer`, we migrated all fixed questions into controlled formats without losing any data. We didn’t need the 30+ data types Typeform offered—ratings, multiple choice, and long answer covered all user needs. The old fixed questions remained as a default template, giving organizers guidance while allowing customization. This saved Wavy money by eliminating the need for Typeform and cleaning up code tied to that integration.</p>
   <Image
     id="4.01"
     src="/work/wavy/feedback/backwards-compatability.png"
@@ -321,8 +321,8 @@ import Row from "../../components/study/Row.astro";
     withContainer
    />
 </Section>
-<Section id="5.00" title='Written Feedback'>
-  <p slot="context">We faced a challenge in showing averaged written feedback in the summary section. Quantitative data like ratings and multiple choice were easy to summarize, but written responses lacked a simple solution. We **used an LLM to summarize long answer responses**, making it easy to catch a vibe without reading every response. If needed, the summarized section could be expanded to view individual feedback, making it easy to dive deeper when the summary wasn't enough.</p>
+<Section id="5.00" title='Written Summaries'>
+  <p slot="context">We faced a challenge in showing averaged written feedback in the summary section. Quantitative data like ratings and multiple choice were easy to summarize, but written responses lacked a simple solution. We used an LLM to summarize long answer responses, making it easy to catch a vibe without reading every response. If needed, the summarized section could be expanded to view individual feedback, making it easy to dive deeper when the summary wasn't enough.</p>
   <Image
     id="5.01"
     src="/work/wavy/feedback/written-feedback.png"

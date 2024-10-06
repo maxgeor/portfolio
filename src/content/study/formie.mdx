@@ -60,7 +60,7 @@ import MarkedNumber from "../../components/study/MarkedNumber.astro";
 import Row from "../../components/study/Row.astro";
 
 <Section id="1.00" title='Problem' hasBorder={false}>
-  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? **Etherscan's UI sucks**. <MarkedNumber number={1} /> It's a list of technically-worded forms, <MarkedNumber number={2} /> It's hard to navigate and <MarkedNumber number={3} /> It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
+  <p slot="context">Lots of smart contract developers hate building frontends. Instead, many use "frontend generators" to get a free, working UI in minutes. <a href="https://etherscan.io/" target="_blank">Etherscan</a> is the most popular one, powering tons of Ethereum projects. The problem? Etherscan's UI sucks. <MarkedNumber number={1} /> It's a list of technically-worded forms, <MarkedNumber number={2} /> It's hard to navigate and <MarkedNumber number={3} /> It shares little feedback about transactions. It's bad enough that begginers need a Youtube tutorial.</p>
   <Carousel
     slides={[
       {
@@ -102,7 +102,7 @@ import Row from "../../components/study/Row.astro";
 </Section>
 
 <Section id="2.00" title='Form UI'>
-  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: What if we <mark class="solution">applied form builder patterns to smart contracts</mark>? You could solve most of the UX issues by [1] giving every action a [dedicated page](#one-page-one-action), [2] letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) [3] sharing clear, thoughtful feedback about transactions.</p>
+  <p slot="context">Realizing smart contracts worked like mini forms made us wonder: What if we applied form builder patterns to smart contracts? You could solve most of the UX issues by 1) giving every action a [dedicated page](#one-page-one-action), 2) letting people [write their own copy](#letting-people-write-their-own-titles-and-descriptions) and 3) sharing clear, thoughtful feedback about transactions.</p>
   <Carousel
     slides={[
       {
@@ -285,7 +285,7 @@ import Row from "../../components/study/Row.astro";
 </Section>
 <Section id="3.00" title="One-way actions">
   <Fragment slot="context">
-    Formie had to integrate with any contract, meaning its copy, error handling, and layout needed to adapt to _thousands_ of actions. It also had to be flexible enough to work seamlessly across different brands. To make Formie a universal solution, we **focused on one-way actions**. This narrowed the scope, avoided potential edge cases, and targeted the core functionality used by the majority of projects.
+    Formie had to integrate with any contract, meaning its copy, error handling, and layout needed to adapt to _thousands_ of actions. It also had to be flexible enough to work seamlessly across different brands. To make Formie a universal solution, we focused on one-way actions. This narrowed the scope, avoided potential edge cases, and targeted the core functionality used by the majority of projects.
   </Fragment>
   <Image
     id="3.01"
@@ -298,7 +298,7 @@ import Row from "../../components/study/Row.astro";
 </Section>
 <Section id="4.00" title="Confirming trust" >
   <Fragment slot="context">
-    We knew scammers could exploit forms to misrepresent contracts from the start. While stopping them entirely wasn't feasible, we needed a way to protect users without overcomplicating the product. **Requiring users to confirm trust** became our solution. Many scams succeed because people act too quickly, especially in crypto. By forcing users to actively confirm trust, we slowed things down, giving them more time to make informed decisions.
+    We knew scammers could exploit forms to misrepresent contracts from the start. While stopping them entirely wasn't feasible, we needed a way to protect users without overcomplicating the product. Requiring users to confirm trust became our solution. Many scams succeed because people act too quickly, especially in crypto. By forcing users to actively confirm trust, we slowed things down, giving them more time to make informed decisions.
   </Fragment>
   <Carousel
     slides={[
@@ -339,7 +339,7 @@ import Row from "../../components/study/Row.astro";
 </Section>
 <Section id="6.00" title="Tradeoffs">
   <Fragment slot="context">
-    Editing after form creation required a week-long backend rewrite. Instead, we **made forms permanent but easy to duplicate**, letting users "edit" by creating new forms in ~30 seconds. This saved development time and allowed faster shipping. Full customization was overwhelming without edits, so we **limited form customizations** to title and description. This kept forms simple while providing essential context.
+    Editing after form creation required a week-long backend rewrite. Instead, we made forms permanent but easy to duplicate, letting users "edit" by creating new forms in ~30 seconds. This saved development time and allowed faster shipping. Full customization was overwhelming without edits, so we limited form customizations to title and description. This kept forms simple while providing essential context.
   </Fragment>
   <Carousel
     slides={[
