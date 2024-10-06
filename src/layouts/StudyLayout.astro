@@ -76,11 +76,11 @@ const otherCaseStudies = await getCollection('work', (
       </div>
       <div class="lg:-my-0.5">
         <div class="flex ">
-          <div class="uppercase shrink-0 w-16 ">Role</div>
+          <div class="uppercase shrink-0 w-16 ">Roles</div>
           <p>{roles.join(', ')}</p>
         </div>
         <div class="flex">
-          <div class="uppercase w-16 shrink-0 ">Used</div>
+          <div class="uppercase w-16 shrink-0 ">Tools</div>
           <p>{tools.join(', ')}</p>
         </div>
       </div>
@@ -98,17 +98,16 @@ const otherCaseStudies = await getCollection('work', (
     </div>
     <div class="order-3 md:order-4  lg:hidden xl:block col-span-full md:col-span-4 xl:col-span-2 -my-0.5 pr-4">
       <div class="flex ">
-        <div class="uppercase shrink-0 w-16 ">Role</div>
+        <div class="uppercase shrink-0 w-16 ">Roles</div>
         <p>{roles.join(', ')}</p>
       </div>
       <div class="flex">
-        <div class="uppercase w-16 shrink-0 ">Used</div>
+        <div class="uppercase w-16 shrink-0 ">Tools</div>
         <p>{tools.join(', ')}</p>
       </div>
     </div>
   </div>
   <div class="relative col-span-full -mx-2 -mb-4 lg:-mb-6">
-    <!-- <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.09),_inset_0_-0.5px_0_rgba(0,0,0,0.09)] pointer-events-none"></div> -->
     <InsetBorder />
     <ResponsiveImage 
       src={images.sm}
