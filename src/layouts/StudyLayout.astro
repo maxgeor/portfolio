@@ -8,10 +8,11 @@ import InsetBorder from "../components/InsetBorder.astro";
 import previewifyImagePath from '../helpers/previewifyImagePath';
 
 const { frontmatter } = Astro.props;
+const { slug } = Astro.params;
+
 const {
   title,
   type,
-  tldr,
   description,
   roles,
   year,
@@ -22,82 +23,56 @@ const {
   content
 } = frontmatter;
 
-const currentStudySlug = Astro.url.pathname.split('/').pop();
-console.log(currentStudySlug);
-
-const otherCaseStudies = await getCollection('work', (
-  { 
-    data: { isArchived, isComingSoon, studySlug, isDraft } 
-  }
-) => (
-  studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== currentStudySlug
-  )) as any[];
+// const otherCaseStudies = await getCollection('work', (
+//   { 
+//     data: { isArchived, isComingSoon, studySlug, isDraft } 
+//   }
+// ) => (
+//   studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== slug
+//   )) as any[];
 ---
 
-<!-- <Layout title={title} description={description}> -->
-  <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-4 md:gap-y-8">
-    <div class="lg:order-2 flex flex-col gap-4  col-span-full sm:col-span-11 md:col-span-9 lg:col-span-6 xl:col-span-5 xl:pr-12 2xl:col-span-4 3xl:max-w-[85ch]">
-      <h1 class="text-[34px] leading-[32px] uppercase font-bold -my-0.5">{title}</h1>
-      <p class="text-pretty -my-0.5">{description}</p>
-    </div>
-    <div class="order-2 md:col-start-1 lg:col-start-auto lg:order-1 col-span-full md:col-span-3 lg:col-span-2 flex flex-col lg:gap-4 pr-[calc((100vw/24)-16px)] -my-0.5 lg:my-0">
-      <div class="lg:-my-0.5 ">
-        <div class="flex col-span-3 ">
-          <div class="uppercase shrink-0  w-16 ">Type</div>
-          <div class="capitalize">{type}</div>
-        </div>
-        <div class="flex col-span-2">
-          <div class="uppercase shrink-0  w-16 ">Year</div>
-          <div class="">{year}</div>
-        </div>
+<div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-4 md:gap-y-8">
+  <div class="lg:order-2 flex flex-col gap-4  col-span-full sm:col-span-11 md:col-span-9 lg:col-span-6 xl:col-span-5 xl:pr-12 2xl:col-span-4 3xl:max-w-[85ch]">
+    <h1 class="text-[34px] leading-[32px] uppercase font-bold -my-0.5">{title}</h1>
+    <p class="text-pretty -my-0.5">{description}</p>
+  </div>
+  <div class="order-2 md:col-start-1 lg:col-start-auto lg:order-1 col-span-full md:col-span-3 lg:col-span-2 flex flex-col lg:gap-4 pr-[calc((100vw/24)-16px)] -my-0.5 lg:my-0">
+    <div class="lg:-my-0.5 ">
+      <div class="flex col-span-3 ">
+        <div class="uppercase shrink-0  w-16 ">Type</div>
+        <div class="capitalize">{type}</div>
       </div>
-      <div class="flex col-span-2 lg:-my-0.5 ">
-        <div class="uppercase shrink-0  w-16 ">Links</div>
-        {link ? (
-          <div class="flex flex-col">
-            <a href={link} class="flex ">
-              <span class="whitespace-nowrap ">Live Site</span>
-              <ExternalLinkArrow classes="shrink-0" />
-            </a>
-          </div>
-        ) : '—'}
+      <div class="flex col-span-2">
+        <div class="uppercase shrink-0  w-16 ">Year</div>
+        <div class="">{year}</div>
       </div>
     </div>
-    <div class="lg:order-3 hidden lg:flex xl:hidden flex-col  col-span-full md:col-span-8 lg:col-span-3 lg:col-start-10 lg:gap-4">
-      <div class="flex -my-0.5">
-        <div class="uppercase w-16 shrink-0 ">Team</div>
-        <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
-          {teammates ? teammates.map((teammate: any) => (
-            <tr>
-              <td class="pr-8 lg:pr-4 xl:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
-              <td class="whitespace-nowrap">{teammate.role}</td>
-            </tr>
-          )) : '—'}
-        </table>
-      </div>
-      <div class="lg:-my-0.5">
-        <div class="flex ">
-          <div class="uppercase shrink-0 w-16 ">Roles</div>
-          <p>{roles.join(', ')}</p>
+    <div class="flex col-span-2 lg:-my-0.5 ">
+      <div class="uppercase shrink-0  w-16 ">Links</div>
+      {link ? (
+        <div class="flex flex-col">
+          <a href={link} class="flex ">
+            <span class="whitespace-nowrap ">Live Site</span>
+            <ExternalLinkArrow classes="shrink-0" />
+          </a>
         </div>
-        <div class="flex">
-          <div class="uppercase w-16 shrink-0 ">Tools</div>
-          <p>{tools.join(', ')}</p>
-        </div>
-      </div>
+      ) : '—'}
     </div>
-    <div class="order-1 md:order-3 flex lg:hidden xl:flex col-span-full md:col-span-5 xl:col-span-3 xl:col-start-8 -my-0.5">
+  </div>
+  <div class="lg:order-3 hidden lg:flex xl:hidden flex-col  col-span-full md:col-span-8 lg:col-span-3 lg:col-start-10 lg:gap-4">
+    <div class="flex -my-0.5">
       <div class="uppercase w-16 shrink-0 ">Team</div>
       <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
         {teammates ? teammates.map((teammate: any) => (
           <tr>
-            <td class="pr-4 md:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
+            <td class="pr-8 lg:pr-4 xl:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
             <td class="whitespace-nowrap">{teammate.role}</td>
           </tr>
         )) : '—'}
       </table>
     </div>
-    <div class="order-3 md:order-4  lg:hidden xl:block col-span-full md:col-span-4 xl:col-span-2 -my-0.5 pr-4">
+    <div class="lg:-my-0.5">
       <div class="flex ">
         <div class="uppercase shrink-0 w-16 ">Roles</div>
         <p>{roles.join(', ')}</p>
@@ -108,70 +83,83 @@ const otherCaseStudies = await getCollection('work', (
       </div>
     </div>
   </div>
-  <div class="relative col-span-full -mx-2 -mb-4 lg:-mb-6">
-    <InsetBorder />
-    <ResponsiveImage 
-      src={images.sm}
-      previewSrc={previewifyImagePath(images.sm)}
-      alt={title} 
-      height={500}
-      width={1000}
-      class="md:hidden w-full h-full object-contain" 
-      />
-    <ResponsiveImage 
-      src={images.lg} 
-      previewSrc={previewifyImagePath(images.lg)}
-      alt={title} 
-      height={800}
-      width={1600}
-      class="hidden md:block w-full h-full object-contain" 
+  <div class="order-1 md:order-3 flex lg:hidden xl:flex col-span-full md:col-span-5 xl:col-span-3 xl:col-start-8 -my-0.5">
+    <div class="uppercase w-16 shrink-0 ">Team</div>
+    <table class="flex flex-col w-full" cellspacing="0" cellpadding="0">
+      {teammates ? teammates.map((teammate: any) => (
+        <tr>
+          <td class="pr-4 md:pr-8"><a href={teammate.href} class="whitespace-nowrap">{teammate.name}</a> </td>
+          <td class="whitespace-nowrap">{teammate.role}</td>
+        </tr>
+      )) : '—'}
+    </table>
+  </div>
+  <div class="order-3 md:order-4  lg:hidden xl:block col-span-full md:col-span-4 xl:col-span-2 -my-0.5 pr-4">
+    <div class="flex ">
+      <div class="uppercase shrink-0 w-16 ">Roles</div>
+      <p>{roles.join(', ')}</p>
+    </div>
+    <div class="flex">
+      <div class="uppercase w-16 shrink-0 ">Tools</div>
+      <p>{tools.join(', ')}</p>
+    </div>
+  </div>
+</div>
+<div class="relative col-span-full -mx-2 -mb-4 lg:-mb-6">
+  <InsetBorder />
+  <ResponsiveImage 
+    src={images.sm}
+    previewSrc={previewifyImagePath(images.sm)}
+    alt={title} 
+    height={500}
+    width={1000}
+    class="md:hidden w-full h-full object-contain" 
     />
-  </div>
-  <div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4">
-    <p class="uppercase col-span-2 -my-0.5 ">Content</p>
-    <div class="flex flex-col col-span-10 -my-0.5">
-      {content.map((section: any) => (
-        <a 
-          href={'#' + section.id + '-' + section.title} 
-          class="flex gap-2 uppercase"
-        >
-          <span>{section.id}</span>
-          <span>{section.title}</span>
-        </a>
-      ))}
-    </div>
-  </div>
-  <article
-    id="article"
-    class="relative w-full col-span-full scroll-mt-3 mx-auto pb-24 "
-  >
-    <div
-      class={`
-        relative grid grid-cols-12 gap-x-4 gap-y-8
-        prose-strong:tracking-[-0.003rem]
-        prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
-        prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
-        prose-ol:flex prose-ol:flex-col prose-ol:gap-3
-        prose-ol:custom-ol prose-ol:list-none prose-ol:pl-0 prose-ol:[counter-reset:item]
-        prose-li:pl-[30px] prose-li:relative
-        prose-ol>prose-li:before:absolute prose-ol>prose-li:before:left-0 prose-ol>prose-li:before:content-[counter(item)] prose-ol>prose-li:before:[counter-increment:item]
-        prose-li:m-0
-        prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
-        prose-video:w-auto prose-video:select-none prose-video:my-0 
-        prose-td:p-0
-        prose-code:font-sans prose-code:italic
-      `}
-    >
-      <slot />
-    </div>
-  </article>
-  <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
-    <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">
-      <h2 class="uppercase -my-0.5">More Case Studies</h2>
-    </div>
-    {otherCaseStudies?.map((work) => (
-      <Work {...work.data} isHidden={false} />
+  <ResponsiveImage 
+    src={images.lg} 
+    previewSrc={previewifyImagePath(images.lg)}
+    alt={title} 
+    height={800}
+    width={1600}
+    class="hidden md:block w-full h-full object-contain" 
+  />
+</div>
+<div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4">
+  <p class="uppercase col-span-2 -my-0.5 ">Content</p>
+  <div class="flex flex-col col-span-10 -my-0.5">
+    {content.map((section: any) => (
+      <a 
+        href={'#' + section.id + '-' + section.title} 
+        class="flex gap-2 uppercase"
+      >
+        <span>{section.id}</span>
+        <span>{section.title}</span>
+      </a>
     ))}
   </div>
-<!-- </Layout> -->
+</div>
+<article
+  id="article"
+  class="relative w-full col-span-full scroll-mt-3 mx-auto pb-24 "
+>
+  <div
+    class={`
+      relative grid grid-cols-12 gap-x-4 gap-y-8
+      prose-strong:tracking-[-0.003rem]
+      prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline focus:prose-a:ring-2 focus:prose-a:ring-green
+      prose-ul:list-disc prose-ul:max-w-prose prose-ul:pl-[18px] prose-ul:-my-0.5 
+      prose-ol:flex prose-ol:flex-col prose-ol:gap-3
+      prose-ol:custom-ol prose-ol:list-none prose-ol:pl-0 prose-ol:[counter-reset:item]
+      prose-li:pl-[30px] prose-li:relative
+      prose-ol>prose-li:before:absolute prose-ol>prose-li:before:left-0 prose-ol>prose-li:before:content-[counter(item)] prose-ol>prose-li:before:[counter-increment:item]
+      prose-li:m-0
+      prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
+      prose-video:w-auto prose-video:select-none prose-video:my-0 
+      prose-td:p-0
+      prose-code:font-sans prose-code:italic
+    `}
+  >
+    <slot />
+  </div>
+</article>
 

@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Work from "../../components/Work.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -12,8 +13,24 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const otherCaseStudies = await getCollection('work', (
+  { 
+    data: { isArchived, isComingSoon, studySlug, isDraft } 
+  }
+) => (
+  studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== entry.slug
+  )) as any[];
 ---
 
-<Layout title={entry.title}>
+<Layout title={entry.title} description={entry.description}>
   <Content />
+  <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
+    <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">
+      <h2 class="uppercase -my-0.5">More Case Studies</h2>
+    </div>
+    {otherCaseStudies?.map((work) => (
+      <Work {...work.data} isHidden={false} />
+    ))}
+  </div>
 </Layout>
