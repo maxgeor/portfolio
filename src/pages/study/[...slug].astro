@@ -30,7 +30,11 @@ const otherCaseStudies = await getCollection('work', (
       <h2 class="uppercase -my-0.5">More Case Studies</h2>
     </div>
     {otherCaseStudies?.map((work) => (
-      <Work {...work.data} isHidden={false} />
+      <Work 
+        {...work.data} 
+        isHidden={false} 
+        classes="xs:col-span-full sm:col-span-full md:col-span-4 xl:col-span-3" 
+      />
     ))}
   </div>
 </Layout>

@@ -11,14 +11,14 @@ export interface Props {
 const { id, title, classes = "" } = Astro.props;
 ---
 <section id={id + '-' + title} class={clsx("scroll-mt-[47px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-4", classes)}>
-  <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky lg:static top-[47px] col-span-full z-[100]">
+  <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky lg:static top-[47px] col-span-full z-[100] -my-0.5 pb-2">
     <Caption id={id} text={title} element="h2" classes='text-pretty ' />
   </div>
   <h2 class="hidden lg:flex sticky top-[48px]  uppercase text-pretty col-span-2  gap-2 -my-0.5 z-[100]">
     <span>{id}</span>
     <span class="">{title}</span>
   </h2>
-  <div class="context flex flex-col mt-3 lg:-mt-0.5 -mb-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-5  2xl:col-span-4 3xl:col-span-3 xl:col-start-3 justify-self-end 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
+  <div class="context flex flex-col -my-0.5 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold  col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3  lg:col-span-6 xl:col-span-5  2xl:col-span-4 3xl:col-span-3 xl:col-start-3 justify-self-end 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0">
     <slot name="context" />
   </div>
   {Astro.slots.has('default') && (
