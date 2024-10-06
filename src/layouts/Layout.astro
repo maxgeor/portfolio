@@ -52,15 +52,13 @@ const inlineScript = `
     function isMobileOrTablet() {
       const userAgent = navigator.userAgent.toLowerCase();
       const mobileKeywords = [
-        'android',
-        'webos',
-        'iphone',
-        'ipad',
-        'ipod',
-        'blackberry',
-        'windows phone'
+        'android', 'webos', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone'
       ];
-      return mobileKeywords.some(keyword => userAgent.includes(keyword));
+      
+      const isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
+      const isTablet = /tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent);
+      
+      return isMobile || isTablet;
     }
 
     function applyDeviceSpecificStyles() {
