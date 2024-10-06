@@ -47,6 +47,30 @@ const inlineScript = `
     var theme = getTheme();
     document.documentElement.classList.toggle('dark', theme === 'dark');
     window.localStorage.setItem('theme', theme);
+
+    function isMobileOrTablet() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileKeywords = [
+        'android',
+        'webos',
+        'iphone',
+        'ipad',
+        'ipod',
+        'blackberry',
+        'windows phone'
+      ];
+      return mobileKeywords.some(keyword => userAgent.includes(keyword));
+    }
+
+    function applyDeviceSpecificStyles() {
+      if (isMobileOrTablet()) {
+        document.body.classList.add('mobile-or-tablet');
+      } else {
+        document.body.classList.add('desktop');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', applyDeviceSpecificStyles);
   })();
 `;
 ---
@@ -112,11 +136,9 @@ const inlineScript = `
     text-decoration: none;
   }
   
-  @media (min-width: 1024px) {
-    a:hover, button:hover, summary:hover {
-      opacity: 0.5;
-      text-decoration: none;
-    }
+  .desktop a:hover, .desktop button:hover, .desktop summary:hover {
+    opacity: 0.5;
+    text-decoration: none;
   }
 
   button {
