@@ -1,6 +1,6 @@
 ---
 import type { ResponsiveNumber, ResponsiveBool } from '../../utils/class-generator'
-import { getCenteredColClasses, getPaddingClasses } from '../../utils/class-generator'
+import { getCenteredColClasses, getPaddingClasses, getVisibilityClasses } from '../../utils/class-generator'
 import Image from "./Image.astro";
 import Video from "./Video.astro";
 import Caption from './Caption.astro';
@@ -32,7 +32,7 @@ export interface Props {
   span: ResponsiveNumber;
   orientation?: 'horizontal' | 'vertical' | '3/2';
   isPadded: ResponsiveBool;
-  hasBorder: boolean;
+  hasBorder: ResponsiveBool;
   classes?: string;
 }
 
@@ -41,12 +41,13 @@ const {
   span = 12,
   orientation = 'horizontal', 
   isPadded = true,
-  hasBorder = true,
+  hasBorder = false,
   classes = "" 
 } = Astro.props;
 
 const paddingClasses = getPaddingClasses(isPadded);
-const {spanClasses, startClasses, endClasses} = getCenteredColClasses(span)
+const visibilityClasses = getVisibilityClasses(hasBorder);
+const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span)
 
 let aspectRatio;
 
@@ -73,9 +74,13 @@ switch(orientation) {
   )}
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    hasBorder && 'border-y border-neutral-200 dark:border-neutral-900',
+    // hasBorder && 'border-y border-neutral-200 dark:border-neutral-900',
     paddingClasses
   )}>
+    <div class={clsx(
+      "inset-border absolute z-50 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.1),_inset_0_-0.5px_0_rgba(0,0,0,0.1)] pointer-events-none",
+      visibilityClasses
+    )}></div>
     <button 
       aria-label="Previous slide" 
       class="prev-slide-btn hidden md:block absolute left-0 top-0 bottom-0 disabled:opacity-50 z-40 p-2 uppercase hover:opacity-100 disabled:hover:opacity-auto cursor-w-resize disabled:cursor-default" 

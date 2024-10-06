@@ -264,6 +264,31 @@ const responsivePaddingClassesMap: Record<string, Record<string, string>> = {
   },
 };
 
+const visibilityClasses: Record<string, string> = {
+  true: "block",
+  false: "hidden",
+};
+
+const responsiveVisibilityClasses: Record<string, Record<string, string>> = {
+  base: visibilityClasses,
+  sm: {
+    true: "sm:block",
+    false: "sm:hidden",
+  },
+  md: {
+    true: "md:block",
+    false: "md:hidden",
+  },
+  lg: {
+    true: "lg:block",
+    false: "lg:hidden",
+  },
+  xl: {
+    true: "xl:block",
+    false: "xl:hidden",
+  },
+};
+
 function mapColSpanToClasses(colSpan: ResponsiveNumber): string[] {
   if (typeof colSpan === 'number') {
     return [spanClasses[colSpan]];
@@ -391,6 +416,35 @@ export function getPaddingClasses(hasPadding: ResponsiveBool): string[] {
     }
     if (hasPadding.xl !== undefined) {
       classes.push(mapHasPaddingToClasses(hasPadding.xl, 'xl'));
+    }
+
+    return classes;
+  }
+}
+
+export function getVisibilityClasses(isVisible: ResponsiveBool): string[] {
+  function mapIsVisibleToClasses(value: boolean, breakpoint?: string): string {
+    const classMap = breakpoint ? responsiveVisibilityClasses[breakpoint] : visibilityClasses;
+    return classMap[value.toString()];
+  }
+
+  if (typeof isVisible === 'boolean') {
+    return [mapIsVisibleToClasses(isVisible)];
+  } else {
+    const classes: string[] = [];
+    classes.push(mapIsVisibleToClasses(isVisible.base));
+
+    if (isVisible.sm !== undefined) {
+      classes.push(mapIsVisibleToClasses(isVisible.sm, 'sm'));
+    }
+    if (isVisible.md !== undefined) {
+      classes.push(mapIsVisibleToClasses(isVisible.md, 'md'));
+    }
+    if (isVisible.lg !== undefined) {
+      classes.push(mapIsVisibleToClasses(isVisible.lg, 'lg'));
+    }
+    if (isVisible.xl !== undefined) {
+      classes.push(mapIsVisibleToClasses(isVisible.xl, 'xl'));
     }
 
     return classes;
