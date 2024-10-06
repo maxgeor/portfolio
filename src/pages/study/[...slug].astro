@@ -23,7 +23,7 @@ const otherCaseStudies = await getCollection('work', (
   )) as any[];
 ---
 
-<Layout title={entry.title} description={entry.description}>
+<Layout title={entry.title} description={entry.description} mainContentId="content-list">
   <Content />
   <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
     <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">

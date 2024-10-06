@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import SkipLink from '../components/SkipLink.astro';
 import SpeedInsights from "@vercel/speed-insights/astro"
 
 export interface Props {
@@ -7,6 +8,7 @@ export interface Props {
   description?: string;
   offset?: string;
   smoothScroll?: boolean;
+  mainContentId?: string;
   classes?: string;
 }
 
@@ -15,6 +17,7 @@ const {
   description,
   offset = 'pt-[50px]',
   smoothScroll = true,
+  mainContentId,
   classes = '',
 } = Astro.props;
 
@@ -101,6 +104,7 @@ const inlineScript = `
     style="text-rendering: optimizeLegibility;"
     class={`grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] p-2 gap-x-4 gap-y-8 ${offset} ${classes}`}
   >
+    {mainContentId && <SkipLink anchor={mainContentId} />}
     <Header />
     <slot />
     <div class="hidden">

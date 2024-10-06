@@ -1,9 +1,6 @@
 ---
-import Layout from "./Layout.astro";
 import ResponsiveImage from "../components/ResponsiveImage.astro";
 import ExternalLinkArrow from "../components/icons/ExternalLinkArrow.astro";
-import Work from "../components/Work.astro";
-import { getCollection } from 'astro:content';
 import InsetBorder from "../components/InsetBorder.astro";
 import previewifyImagePath from '../helpers/previewifyImagePath';
 
@@ -115,7 +112,7 @@ const {
     class="hidden md:block w-full h-full object-contain" 
   />
 </div>
-<div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-2">
+<div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-2 scroll-mt-[47px]">
   <p class="uppercase col-span-2 -my-0.5">Content</p>
   <div class="flex flex-col col-span-10 -my-0.5">
     {content.map((section: any) => (
@@ -131,7 +128,7 @@ const {
 </div>
 <article
   id="article"
-  class="relative w-full col-span-full scroll-mt-3 mx-auto pb-16 lg:pb-24"
+  class="relative w-full col-span-full mx-auto pb-16 lg:pb-24"
 >
   <div
     class={`
