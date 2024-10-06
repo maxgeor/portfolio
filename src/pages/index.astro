@@ -69,6 +69,21 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 
   let activeFilters: ActiveFilters = { type: [], role: [], caseStudy: false };
 
+  function isMobileOrTablet() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const mobileKeywords = [
+      'android',
+      'webos',
+      'iphone',
+      'ipad',
+      'ipod',
+      'blackberry',
+      'windows phone'
+    ];
+    
+    return mobileKeywords.some(keyword => userAgent.includes(keyword));
+  }
+
   const hasActiveFilters = () => (
     activeFilters.type.length > 0 || 
     activeFilters.role.length > 0 || 
@@ -104,9 +119,21 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   }
 
   function showAllWorks() {
-    works.forEach(work => {
+    const isMobileOrTabletDevice = isMobileOrTablet();
+    works.forEach((work, index) => {
       work.style.display = '';
-      work.classList.remove('active');
+      if (isMobileOrTabletDevice) {
+        work.classList.add('active');
+        work.style.transition = `opacity 0.3s ease ${index * 0.1}s`;
+        work.style.opacity = '0';
+        setTimeout(() => {
+          work.style.opacity = '1';
+        }, 50);
+      } else {
+        work.classList.remove('active');
+        work.style.transition = '';
+        work.style.opacity = '';
+      }
     });
   }
 
@@ -153,6 +180,12 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   clearFiltersButton?.addEventListener('click', clearFilters);
 
   updateClearFiltersButton();
+
+  // Initial call to showAllWorks to set the correct state on page load
+  showAllWorks();
+
+  // Add event listener for orientation change to handle responsive behavior
+  window.addEventListener('orientationchange', showAllWorks);
 </script>
 
 <style>
