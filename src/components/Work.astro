@@ -32,6 +32,11 @@ export interface Props extends Work {
   attributes?: Record<string, string | null>;
 }
 
+export interface Props extends Work {
+  attributes?: Record<string, string | null>;
+  isIndex?: boolean;
+}
+
 const { 
   title, 
   description, 
@@ -50,6 +55,7 @@ const {
   isComingSoon = false,
   isArchived = false,
   attributes = {},
+  isIndex = false,
 } = Astro.props;
 
 const shouldDisable = isComingSoon || isPrivate || isArchived;
@@ -65,9 +71,10 @@ const props = shouldDisable
   {...props}
   {...attributes}
   class={`
-    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 lg:hover:opacity-50 transition-opacity duration-200
+    xs:col-span-6 md:col-span-4 xl:col-span-3 work-card relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 transition-opacity duration-200
     ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${!isHidden && 'active'}
+    ${isIndex ? 'index-card' : ''}
     ${classes}
   `}
 >
@@ -129,10 +136,7 @@ const props = shouldDisable
       'windows phone'
     ];
     
-    // Check if it's a mobile device
     const isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
-    
-    // Check if it's a tablet
     const isTablet = /tablet|ipad|playbook|silk|(android(?!.*mobile))/i.test(userAgent);
     
     return isMobile || isTablet;
@@ -140,62 +144,78 @@ const props = shouldDisable
 
   document.addEventListener('DOMContentLoaded', function() {
     const workCards: NodeListOf<HTMLElement> = document.querySelectorAll('.work-card');
-    // const isMobileOrTabletDevice = isMobileOrTablet();
+    const isMobileOrTabletDevice = isMobileOrTablet();
 
-    const showIntersectingCards = (cards: NodeListOf<HTMLElement>) => {
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const middleOfScreen = window.innerHeight / 2;
-        const cardMiddle = rect.top + (rect.height / 2);
+    let activeCards: HTMLElement[] = [];
+    let animationFrame: number | null = null;
 
-        if (cardMiddle > (middleOfScreen - (middleOfScreen * 0.8)) &&
-          cardMiddle < (middleOfScreen + (middleOfScreen * 0.8))) {
-          card.classList.add('active');
-        } else {
+    const isElementInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const middleOfScreen = windowHeight / 2;
+      const viewportMargin = windowHeight * 0.4; // 40% of the viewport height
+
+      return (
+        rect.top <= middleOfScreen + viewportMargin &&
+        rect.bottom >= middleOfScreen - viewportMargin
+      );
+    };
+
+    const updateActiveCards = () => {
+      const newActiveCards = Array.from(workCards).filter(isElementInViewport);
+      
+      // Remove 'active' class from cards no longer in view
+      activeCards.forEach(card => {
+        if (!newActiveCards.includes(card)) {
           card.classList.remove('active');
         }
       });
+
+      // Add 'active' class to new cards in view
+      newActiveCards.forEach((card, index) => {
+        if (!activeCards.includes(card)) {
+          setTimeout(() => {
+            card.classList.add('active');
+          }, index * 100); // 100ms delay between each card
+        }
+      });
+
+      activeCards = newActiveCards;
+    };
+
+    const onScroll = () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+      animationFrame = requestAnimationFrame(updateActiveCards);
+    };
+
+    if (isMobileOrTabletDevice) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      updateActiveCards(); // Initial check
+    } else {
+      workCards.forEach(card => {
+        let timer: number;
+
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('active');
+
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            card.classList.remove('active');
+          }, 4400);
+        });
+      });
     }
 
-    workCards.forEach(card => {
-      const picture = card.querySelector('.work-card-picture') as HTMLElement;
-      if (picture) {
-        picture.style.opacity = '1';
+    // Cleanup
+    return () => {
+      if (isMobileOrTabletDevice) {
+        window.removeEventListener('scroll', onScroll);
       }
-      card.classList.add('active');
-    });
-
-    showIntersectingCards(workCards);
-    window.addEventListener('scroll', () => {
-      showIntersectingCards(workCards);
-    });
-    
-    // if (isMobileOrTabletDevice) {
-    //   workCards.forEach(card => {
-    //     const picture = card.querySelector('.work-card-picture') as HTMLElement;
-    //     if (picture) {
-    //       picture.style.opacity = '1';
-    //     }
-    //     card.classList.add('active');
-    //   });
-
-    //   showIntersectingCards(workCards);
-    //   window.addEventListener('scroll', () => {
-    //     showIntersectingCards(workCards);
-    //   });
-    // } else {
-    //   workCards.forEach(card => {
-    //     let timer: any;
-
-    //     card.addEventListener('mouseenter', () => {
-    //       card.classList.add('active');
-
-    //       clearTimeout(timer);
-    //       timer = setTimeout(() => {
-    //         card.classList.remove('active');
-    //       }, 4400);
-    //     });
-    //   });
-    // }
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
   });
 </script>
