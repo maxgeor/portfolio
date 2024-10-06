@@ -31,6 +31,11 @@ import ThemeToggle from './ThemeToggle.astro';
     const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
     const body = document.body;
 
+    let startX: number, startY: number, startTime: number;
+    let lastX: number, lastY: number, lastTime: number;
+    let isSwiping = false;
+    const accelerationThreshold = 0.08; // Minimum acceleration to trigger dismissal (in pixels/ms^2)
+
     function closeMenu() {
       fullScreenMenu.classList.add('opacity-0', 'scale-[1.02]', '-translate-y-1');
       fullScreenMenu.style.backdropFilter = 'blur(0px)';
@@ -66,9 +71,45 @@ import ThemeToggle from './ThemeToggle.astro';
       });
 
       fullScreenMenu.addEventListener('click', (e) => {
-        if (e.target === fullScreenMenu) {
+        if (e.target === fullScreenMenu && !isSwiping) {
           closeMenu();
         }
+      });
+
+      // Add touch event listeners for swipe functionality
+      fullScreenMenu.addEventListener('touchstart', (e: TouchEvent) => {
+        const touch = e.touches[0];
+        startX = lastX = touch.clientX;
+        startY = lastY = touch.clientY;
+        startTime = lastTime = e.timeStamp;
+        isSwiping = false;
+      });
+
+      fullScreenMenu.addEventListener('touchmove', (e: TouchEvent) => {
+        isSwiping = true;
+        const touch = e.touches[0];
+        const currentTime = e.timeStamp;
+        const deltaTime = currentTime - lastTime;
+        
+        if (deltaTime > 0) {
+          const deltaX = touch.clientX - lastX;
+          const deltaY = touch.clientY - lastY;
+          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+          const velocity = distance / deltaTime;
+          const acceleration = velocity / deltaTime;
+
+          if (acceleration > accelerationThreshold) {
+            closeMenu();
+          }
+        }
+
+        lastX = touch.clientX;
+        lastY = touch.clientY;
+        lastTime = currentTime;
+      });
+
+      fullScreenMenu.addEventListener('touchend', () => {
+        isSwiping = false;
       });
     }
   });
