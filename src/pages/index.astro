@@ -54,6 +54,12 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
   </div>
 </Layout>
 
+<style>
+  .filter-btn.active > span {
+    text-decoration: line-through;
+  }
+</style>
+
 <script>
   const workContainer = document.getElementById('work-container');
   const filterButtons = document.querySelectorAll('.filter-btn');
@@ -112,7 +118,6 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
         }
       });
       
-      // Scroll to the top of the page without transition
       window.scrollTo(0, 0);
     }
     updateClearFiltersButton();
@@ -130,9 +135,8 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
           work.style.opacity = '1';
         }, 50);
       } else {
+        work.classList.remove('transition-opacity', 'transition', 'transition-all');
         work.classList.remove('active');
-        work.style.transition = '';
-        work.style.opacity = '';
       }
     });
   }
@@ -181,15 +185,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 
   updateClearFiltersButton();
 
-  // Initial call to showAllWorks to set the correct state on page load
   showAllWorks();
 
-  // Add event listener for orientation change to handle responsive behavior
   window.addEventListener('orientationchange', showAllWorks);
 </script>
-
-<style>
-  .filter-btn.active > span {
-    text-decoration: line-through;
-  }
-</style>
