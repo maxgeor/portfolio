@@ -30,7 +30,7 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 <div class={`relative overflow-visible ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
   <img
     {...createImageProps(previewSrc, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover blur-sm select-none transition-all duration-300"
+    class="absolute inset-0 w-full h-full object-cover blur select-none transition-all duration-300"
     style="opacity: 1;"
     aria-hidden="true"
   />
