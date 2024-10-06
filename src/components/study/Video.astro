@@ -73,9 +73,9 @@ const { spanClasses, startClasses, endClasses } = getCenteredColClasses(span);
       startClasses,
       endClasses,
     )}>
-      <div class={clsx('flex relative w-full', aspectRatio, isRounded && 'rounded-lg')}>
+      <div class={clsx('flex relative w-full', aspectRatio, isRounded && 'rounded-md sm:rounded-lg md:rounded-xl xl:rounded-2xl')}>
         <video
-          class={clsx('absolute inset-0 w-full h-full select-none mx-auto', objectFit)}
+          class={clsx('absolute inset-0 w-full h-full select-none mx-auto', objectFit, isRounded && 'rounded-md sm:rounded-lg md:rounded-xl xl:rounded-2xl')}
           poster={extensionlessSrc + ".png"}
           playsinline
           autoplay
