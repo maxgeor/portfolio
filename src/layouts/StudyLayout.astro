@@ -8,7 +8,6 @@ import InsetBorder from "../components/InsetBorder.astro";
 import previewifyImagePath from '../helpers/previewifyImagePath';
 
 const { frontmatter } = Astro.props;
-const { slug } = Astro.params;
 
 const {
   title,
@@ -22,14 +21,6 @@ const {
   teammates,
   content
 } = frontmatter;
-
-// const otherCaseStudies = await getCollection('work', (
-//   { 
-//     data: { isArchived, isComingSoon, studySlug, isDraft } 
-//   }
-// ) => (
-//   studySlug && !isDraft && !isComingSoon && !isArchived && studySlug !== slug
-//   )) as any[];
 ---
 
 <div class="border-t-[0.5px] border-black dark:border-white pt-2 relative grid grid-cols-12 col-span-full gap-4 md:gap-y-8">
@@ -140,7 +131,7 @@ const {
 </div>
 <article
   id="article"
-  class="relative w-full col-span-full scroll-mt-3 mx-auto pb-24 "
+  class="relative w-full col-span-full scroll-mt-3 mx-auto pb-24"
 >
   <div
     class={`
