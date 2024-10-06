@@ -13,6 +13,7 @@ type Media = {
   src: string;
   alt: string;
   fit: 'cover' | 'contain';
+  isRounded?: boolean;
   hasBorder?: boolean;
   classes?: string;
 }
@@ -133,6 +134,7 @@ switch(orientation) {
                   isPadded={false}
                   hasBorder={false}
                   hasCaption={false}
+                  isRounded={slide.isRounded}
                   classes={slide.classes}
                 />
               ) : (
@@ -145,6 +147,7 @@ switch(orientation) {
                   isPadded={false}
                   hasBorder={false}
                   hasCaption={false}
+                  isRounded={slide.isRounded}
                   classes={slide.classes}
                 />
               )}

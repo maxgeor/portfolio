@@ -21,6 +21,7 @@ export interface Props {
   hasCaption?: boolean;
   hasBorder?: ResponsiveBool;
   isPadded?: ResponsiveBool;
+  isRounded?: boolean;
   orientation?: 'horizontal' | 'vertical' | '3/2';
   isFullBleed?: ResponsiveBool;
   fit?: 'contain' | 'cover';
@@ -41,6 +42,7 @@ const {
   isPadded = false,
   fit = 'contain',
   withContainer = false,
+  isRounded = false,
   classes = ""
 } = Astro.props;
 
@@ -85,7 +87,7 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
     )}>
       <InsetBorder classes={visibilityClasses} />
       <div class={clsx("h-fit", centerdSpanClasses, centeredStartClasses, centeredEndClasses)}>
-        <figure class={clsx('image relative mx-auto', aspectRatio)}>
+        <figure class={clsx('image relative mx-auto', aspectRatio, isRounded && 'rounded-lg')}>
           <img
             src={src}
             alt={alt}
