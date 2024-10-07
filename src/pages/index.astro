@@ -21,7 +21,7 @@ const roleCounts = {
 const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 ---
 
-<Layout mainContentId="work-container" offset="pt-[114px] xs:pt-[94px]" smoothScroll={false}>
+<Layout mainContentId="work-container" offset="pt-[114px] xs:pt-[94px]">
   <nav class="flex flex-col xs:grid grid-cols-12 col-span-full gap-y-2 gap-x-4 uppercase flex-wrap fixed left-2 right-2 top-[50px] mb-[62px] z-10 mix-blend-difference">
     <div class="order-2 xs:order-none grid grid-cols-3 xs:flex gap-x-4 xs:gap-x-2 col-span-6 md:col-span-4 xl:col-span-3 -my-0.5">
       <button class="filter-btn uppercase whitespace-nowrap h-min xs:py-2 xs:-my-2 text-white" data-filter="role" data-value="Product"><span>Product</span> <sup>{roleCounts.Product}</sup></button>

@@ -140,8 +140,8 @@ const props = shouldDisable
 
     const observerOptions = {
       root: null,
-      rootMargin: '-28% 0px -12% 0px', // This creates the middle 80% zone
-      threshold: 0 // We only need to know when it enters or leaves the zone
+      rootMargin: '-28% 0px -12% 0px',
+      threshold: 0
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -173,7 +173,6 @@ const props = shouldDisable
       });
     }
 
-    // Cleanup function
     return () => {
       if (isMobileOrTabletDevice) {
         workCards.forEach(card => {
