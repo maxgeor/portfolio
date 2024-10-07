@@ -18,7 +18,7 @@ const { id, title, classes = "" } = Astro.props;
   <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky lg:static top-[45px] col-span-full z-[100] -my-0.5 pb-2 mix-blend-difference">
     <Caption id={id} text={title} element="h2" classes='text-pretty text-white' />
   </div>
-  <h2 class="hidden lg:flex sticky top-[48px] uppercase text-pretty col-span-2 gap-2 -my-0.5 z-[100] mix-blend-difference text-white">
+  <h2 class="hidden lg:flex sticky top-[45px] uppercase text-pretty col-span-2 gap-2 -my-0.5 z-[100] mix-blend-difference text-white">
     <span>{id}</span>
     <span class="">{title}</span>
   </h2>
