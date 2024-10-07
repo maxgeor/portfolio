@@ -16,5 +16,6 @@
   },
   "isArchived": true,
   "order": 20,
-  "year": "2023"
+  "year": "2023",
+  "isDraft": true
 }
