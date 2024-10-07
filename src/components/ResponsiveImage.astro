@@ -31,14 +31,14 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
   <div class="absolute inset-0 overflow-hidden">
     <img
       {...createImageProps(previewSrc, alt, width, height)}
-      class="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300 scale-110"
-      style="opacity: 1; filter: blur(7px); -webkit-filter: blur(7px); -moz-filter: blur(67px); -o-filter: blur(7px); -ms-filter: blur(7px);"
+      class="preview-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300 scale-110"
+      style="opacity: 1; filter: blur(5px);"
       aria-hidden="true"
     />
   </div>
   <img
     {...createImageProps(src, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
+    class="full-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
     style="opacity: 0;"
     loading="lazy"
     data-transition-delay={transitionDelay}
@@ -46,18 +46,18 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 </div>
 
 <script>
-  function handleImageLoad(img: HTMLImageElement | null) {
-    if (!img) return;
-
+  function handleImageLoad(img: HTMLImageElement) {
     const prevImgContainer = img.previousElementSibling as HTMLDivElement | null;
-    const prevImg = prevImgContainer?.querySelector('img');
+    const prevImg = prevImgContainer?.querySelector('img.preview-image');
 
-    requestAnimationFrame(() => {
+    const transitionDelay = parseInt(img.dataset.transitionDelay || '100', 10);
+
+    setTimeout(() => {
       img.style.opacity = '1';
-      if (prevImg && prevImg.tagName === 'IMG') {
+      if (prevImg instanceof HTMLImageElement) {
         prevImg.style.opacity = '0';
       }
-    });
+    }, transitionDelay);
   }
 
   function setupImage(img: HTMLImageElement) {
@@ -69,37 +69,31 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 
     img.addEventListener('error', () => {
       console.error(`Failed to load image: ${img.src}`);
+      img.style.display = 'none';
+      const prevImgContainer = img.previousElementSibling as HTMLDivElement | null;
+      const prevImg = prevImgContainer?.querySelector('img.preview-image');
+      if (prevImg instanceof HTMLImageElement) {
+        prevImg.style.opacity = '1';
+        prevImg.style.filter = 'none';
+        prevImg.style.transform = 'scale(1)';
+      }
     });
   }
 
   function setupImages() {
-    const images = document.querySelectorAll('img[loading="lazy"]') as NodeListOf<HTMLImageElement>;
+    const images = document.querySelectorAll('img.full-image[loading="lazy"]') as NodeListOf<HTMLImageElement>;
     images.forEach(setupImage);
   }
 
-  function safeSetupImages() {
-    try {
-      setupImages();
-    } catch (error) {
-      console.error('Error setting up images:', error);
-    }
+  document.addEventListener('astro:page-load', setupImages);
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', setupImages);
   }
 
-  // Run on initial load
-  safeSetupImages();
-
-  // Run on subsequent navigations
-  document.addEventListener('astro:page-load', safeSetupImages);
-
-  // Fallback for non-Astro environments
-  if ('onload' in window) {
-    window.addEventListener('load', safeSetupImages);
-  }
-
-  // Run if the page is already loaded
   if (document.readyState === 'complete') {
-    safeSetupImages();
+    setupImages();
   } else {
-    document.addEventListener('DOMContentLoaded', safeSetupImages);
+    document.addEventListener('DOMContentLoaded', setupImages);
   }
 </script>
