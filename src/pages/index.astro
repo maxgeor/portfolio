@@ -66,7 +66,7 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     backdrop-filter: invert(1);
     z-index: -1;
     transition: opacity 0.3s ease;
@@ -77,14 +77,13 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     opacity: 1;
   }
 
-  .filter-btn.active > span {
-    text-decoration: line-through;
-  }
-
-  /* Add styles for the text color */
-  nav button {
+   nav button {
     color: white;
     mix-blend-mode: difference;
+  }
+
+  .filter-btn.active > span {
+    text-decoration: line-through;
   }
 </style>
 
