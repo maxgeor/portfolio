@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [mdx(), tailwind()],
   prefetch: {
     defaultStrategy: 'viewport',
-    prefetchAll: false
+    prefetchAll: true,
   },
   output: 'static',
   adapter: vercel({
