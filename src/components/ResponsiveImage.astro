@@ -27,16 +27,16 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 };
 ---
 
-<div class={`relative overflow-visible ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
+<div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
   <img
     {...createImageProps(previewSrc, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover blur select-none transition-all duration-300"
+    class="absolute inset-0 w-full h-full object-cover blur-sm select-none transition-opacity duration-300"
     style="opacity: 1;"
     aria-hidden="true"
   />
   <img
     {...createImageProps(src, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover select-none transition-all duration-300"
+    class="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
     style="opacity: 0;"
     loading="lazy"
     data-transition-delay={transitionDelay}
@@ -44,44 +44,24 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 </div>
 
 <script>
-  function handleImageLoad(img: HTMLImageElement | null, loadTime: number) {
+  function handleImageLoad(img: HTMLImageElement | null) {
     if (!img) return;
 
-    const transitionDelay = parseInt(img.dataset.transitionDelay || '50', 10);
     const prevImg = img.previousElementSibling as HTMLImageElement | null;
 
-    if (loadTime < transitionDelay) {
-      // Image loaded quickly, apply changes immediately
+    requestAnimationFrame(() => {
       img.style.opacity = '1';
       if (prevImg && prevImg.tagName === 'IMG') {
         prevImg.style.opacity = '0';
       }
-    } else {
-      // Image took longer to load, apply transition
-      img.style.transition = 'opacity 250ms ease-in-out';
-      if (prevImg && prevImg.tagName === 'IMG') {
-        prevImg.style.transition = 'opacity 250ms ease-in-out';
-      }
-      
-      requestAnimationFrame(() => {
-        img.style.opacity = '1';
-        if (prevImg && prevImg.tagName === 'IMG') {
-          prevImg.style.opacity = '0';
-        }
-      });
-    }
+    });
   }
 
   function setupImage(img: HTMLImageElement) {
-    const startTime = performance.now();
-
     if (img.complete && img.naturalWidth !== 0) {
-      handleImageLoad(img, 0);
+      handleImageLoad(img);
     } else {
-      img.addEventListener('load', () => {
-        const loadTime = performance.now() - startTime;
-        handleImageLoad(img, loadTime);
-      });
+      img.addEventListener('load', () => handleImageLoad(img));
     }
 
     img.addEventListener('error', () => {
@@ -90,7 +70,7 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
   }
 
   function setupImages() {
-    const images = document.querySelectorAll('img:not([src^="data:"])') as NodeListOf<HTMLImageElement>;
+    const images = document.querySelectorAll('img[loading="lazy"]') as NodeListOf<HTMLImageElement>;
     images.forEach(setupImage);
   }
 
@@ -105,15 +85,15 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
   // Run on initial load
   safeSetupImages();
 
-  // Run on subsequent navigations in Astro
+  // Run on subsequent navigations
   document.addEventListener('astro:page-load', safeSetupImages);
 
-  // Fallback for non-Astro or if the above event doesn't fire
+  // Fallback for non-Astro environments
   if ('onload' in window) {
     window.addEventListener('load', safeSetupImages);
   }
 
-  // For browsers that don't support the load event on window
+  // Run if the page is already loaded
   if (document.readyState === 'complete') {
     safeSetupImages();
   } else {

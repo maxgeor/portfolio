@@ -58,7 +58,7 @@ const Element = shouldDisable ? 'div' : 'a';
 const props = shouldDisable
     ? {} 
     : studySlug 
-      ? { href: `/study/${studySlug}`, target: '_self' } 
+      ? { href: `/study/${studySlug}`, target: '_self', 'data-astro-prefetch': 'viewport' } 
       : link
 ---
 <Element
