@@ -28,12 +28,14 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 ---
 
 <div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
-  <img
-    {...createImageProps(previewSrc, alt, width, height)}
-    class="absolute inset-0 w-full h-full object-cover blur-sm select-none transition-opacity duration-300"
-    style="opacity: 1;"
-    aria-hidden="true"
-  />
+  <div class="absolute inset-0 overflow-hidden">
+    <img
+      {...createImageProps(previewSrc, alt, width, height)}
+      class="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300 scale-110"
+      style="opacity: 1; filter: blur(7px); -webkit-filter: blur(7px); -moz-filter: blur(67px); -o-filter: blur(7px); -ms-filter: blur(7px);"
+      aria-hidden="true"
+    />
+  </div>
   <img
     {...createImageProps(src, alt, width, height)}
     class="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
@@ -47,7 +49,8 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
   function handleImageLoad(img: HTMLImageElement | null) {
     if (!img) return;
 
-    const prevImg = img.previousElementSibling as HTMLImageElement | null;
+    const prevImgContainer = img.previousElementSibling as HTMLDivElement | null;
+    const prevImg = prevImgContainer?.querySelector('img');
 
     requestAnimationFrame(() => {
       img.style.opacity = '1';
