@@ -1,31 +1,94 @@
----
-import ThemeToggle from './ThemeToggle.astro';
----
-<>
-  <header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-[1001]">
-    <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit">
+<header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-[1001] mix-blend-difference">
+  <div class="col-span-full grid grid-cols-12 gap-4">
+    <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit text-white ">
       <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
       <span class="sm:hidden">Max KC Georgopoulos</span>
     </a>
-    <a href="/" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2">Work</a>
-    <a href="/about" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2">About</a>
-    <a href="/writing" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2">Writing</a>
-    <a href="mailto:max123358@gmail.com" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2">Contact</a>
-    <ThemeToggle classes='md:col-start-11 col-span-2 w-fit' />
-    <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-4 -m-4">Menu</button>
-  </header>
-
-  <div id="full-screen-menu" class="fixed inset-0 z-[1000] hidden md:hidden flex-col p-2 overflow-hidden bg-white/[92%] dark:bg-black/[92%] opacity-0 scale-[1.02] -translate-y-1">
-    <nav class="border-current divide-current border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
-      <a href="/">Work</a>
-      <a href="/about">About</a>
-      <a href="/writing">Writing</a>
-      <a href="mailto:max123358@gmail.com">Contact</a>
-    </nav>
+    <a href="/" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Work</a>
+    <a href="/about" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">About</a>
+    <a href="/writing" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Writing</a>
+    <a href="mailto:max123358@gmail.com" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Contact</a>
+    <button id="theme-toggle" class="theme-toggle md:col-start-11 col-span-2 w-fit text-white flex md:justify-self-end group uppercase p-2 -m-2">
+      Light/Dark
+    </button>
+    <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-4 -m-4 text-white ">Menu</button>
   </div>
-</>
+</header>
+
+<div id="full-screen-menu" class="fixed inset-0 z-[1000] hidden md:hidden flex-col p-2 overflow-hidden bg-white/[92%] dark:bg-black/[92%] opacity-0 scale-[1.02] -translate-y-1 -container">
+  <nav class="border-current divide-current border-y-[0.5px] divide-y-[0.5px] text-[34px] leading-[32px] flex flex-col mt-[42px] uppercase font-bold [&>*]:-my-0.5 [&>*]:py-4 [&>*]:px-2 -mx-2">
+    <a href="/" class="">Work</a>
+    <a href="/about" class="">About</a>
+    <a href="/writing" class="">Writing</a>
+    <a href="mailto:max123358@gmail.com" class="">Contact</a>
+  </nav>
+</div>
+
+<style>
+  body {
+    padding-right: calc(100vw - 100%);
+  }
+
+  body.overflow-hidden {
+    overflow: hidden !important;
+  }
+
+  #full-screen-menu {
+    transform-origin: center center;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    background-size: 200% 100%;
+    z-index: -1;
+  }
+</style>
 
 <script>
+  const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement;
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', newTheme);
+    updateMetaThemeColor(newTheme);
+  }
+
+  function loadThemePreference() {
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    updateMetaThemeColor(theme);
+
+    // Disable transitions on load
+    document.documentElement.classList.add('no-transitions');
+
+    // Enable transitions after a short delay
+    setTimeout(() => {
+      document.documentElement.classList.remove('no-transitions');
+    }, 50);
+  }
+
+  function updateMetaThemeColor(theme) {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.content = theme === 'dark' ? '#000' : '#fff';
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'theme-color';
+      newMeta.content = theme === 'dark' ? '#000' : '#fff';
+      document.head.appendChild(newMeta);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', (event) => {
     const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
     const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
@@ -111,18 +174,7 @@ import ThemeToggle from './ThemeToggle.astro';
       });
     }
   });
+
+  themeToggle.addEventListener('click', toggleTheme);
+  document.addEventListener('DOMContentLoaded', loadThemePreference);
 </script>
-
-<style>
-  body {
-    padding-right: calc(100vw - 100%);
-  }
-
-  body.overflow-hidden {
-    overflow: hidden !important;
-  }
-
-  #full-screen-menu {
-    transform-origin: center center;
-  }
-</style>
