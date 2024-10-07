@@ -36,8 +36,8 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     <div class="hidden md:flex col-span-3 -my-0.5">
       <button class="filter-btn uppercase col-span-1 h-min xs:py-2 xs:-my-2 text-white" data-filter="caseStudy"><span>Case Study</span> <sup>{caseStudyCount}</sup></button>
     </div>
-    <div class="order-last flex smmd:justify-end xl:justify-start opacity-0 pointer-events-none transition-opacity col-span-6 xs:col-start-7 smmd:col-span-1 xl:col-span-2  lg:col-start-12 -my-0.5 h-min">
-      <button id="clear-filters-btn" class="whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2 text-white">Clear</button>
+    <div class="order-last flex smmd:justify-end xl:justify-start opacity-0 pointer-events-none col-span-6 xs:col-start-7 smmd:col-span-1 xl:col-span-2  lg:col-start-12 -my-0.5 h-min">
+      <button id="clear-filters-btn" class="whitespace-nowrap uppercase h-min xs:py-2 xs:-my-2 text-white" disabled>Clear</button>
     </div>
   </nav>
   <div id="work-container" class="work-container grid grid-cols-12 col-span-full gap-y-8 gap-x-4 h-fit">
@@ -75,8 +75,8 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 
 <script>
   const workContainer = document.getElementById('work-container');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const clearFiltersButton = document.getElementById('clear-filters-btn');
+  const filterButtons = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+  const clearFiltersButton = document.getElementById('clear-filters-btn') as HTMLButtonElement;
   const works = workContainer ? [...workContainer.children] as HTMLElement[] : [];
 
   type FilterType = 'type' | 'role' | 'caseStudy';
@@ -162,9 +162,11 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     if (hasActiveFilters()) {
       clearFiltersButtonParent?.classList.remove('opacity-0', 'pointer-events-none');
       clearFiltersButtonParent?.classList.add('opacity-100');
+      clearFiltersButton?.removeAttribute('disabled');
     } else {
       clearFiltersButtonParent?.classList.add('opacity-0', 'pointer-events-none');
       clearFiltersButtonParent?.classList.remove('opacity-100');
+      clearFiltersButton?.setAttribute('disabled', 'disabled');
     }
   }
 

@@ -127,7 +127,7 @@ const inlineScript = `
     --nav-width: 75px;  
     --nav-offset: calc(var(--nav-width) + (15px * 2));
     --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
-    --accent-color: #23FF27;
+    --accent-color: #DB00D8;
   }
 
   ::selection {
@@ -144,6 +144,10 @@ const inlineScript = `
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+
+  html.dark {
+    --accent-color: #23FF27;
+  }
   
   a {
     text-underline-offset: 2px;
@@ -158,6 +162,10 @@ const inlineScript = `
   .desktop a:hover, .desktop button:hover, .desktop summary:hover {
     opacity: 0.5;
     text-decoration: none;
+  }
+  
+  .desktop a:focus-visible, .desktop button:focus-visible, .desktop summary:focus-visible {
+    opacity: 1;
   }
 
   button {

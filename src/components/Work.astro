@@ -170,6 +170,14 @@ const props = shouldDisable
             card.classList.remove('active');
           }, 4400);
         });
+
+        card.addEventListener('focus', () => {
+          card.classList.add('active');
+        });
+
+        card.addEventListener('blur', () => {
+          card.classList.remove('active');
+        });
       });
     }
 
