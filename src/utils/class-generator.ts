@@ -251,7 +251,7 @@ const responsivePaddingClassesMap: Record<string, Record<string, string>> = {
     false: "sm:p-0 lg:p-0",
   },
   md: {
-    true: "md:px-2 lg:px-2 md:py-16",
+    true: "md:px-2 md:py-16",
     false: "md:p-0 lg:p-0",
   },
   lg: {
