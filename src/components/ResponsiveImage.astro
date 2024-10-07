@@ -6,7 +6,7 @@ interface Props {
   width?: number;
   height?: number;
   class?: string;
-  transitionDelay?: number;
+  transitionBuffer?: number;
 }
 
 const { 
@@ -16,7 +16,7 @@ const {
   width, 
   height, 
   class: className = '',
-  transitionDelay = 50
+  transitionBuffer = 100
 } = Astro.props;
 
 const createImageProps = (src: string, alt: string, width?: number, height?: number) => {
@@ -27,12 +27,17 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
 };
 ---
 
-<div class={`relative overflow-hidden ${className}`} style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}>
+<div 
+  class={`relative overflow-hidden ${className}`} 
+  style={`
+    ${width && height ? `aspect-ratio: ${width}/${height};` : ''}
+  `}
+>
   <div class="absolute inset-0 overflow-hidden">
     <img
       {...createImageProps(previewSrc, alt, width, height)}
-      class="preview-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300 scale-110"
-      style="opacity: 1; filter: blur(5px);"
+      class="preview-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
+      style="opacity: 1; filter: blur(10px); transform: scale(1.1);"
       aria-hidden="true"
     />
   </div>
@@ -41,30 +46,43 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
     class="full-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
     style="opacity: 0;"
     loading="lazy"
-    data-transition-delay={transitionDelay}
+    data-transition-buffer={transitionBuffer}
   />
 </div>
 
 <script>
-  function handleImageLoad(img: HTMLImageElement) {
+  function handleImageLoad(img: HTMLImageElement, loadTime: number) {
     const prevImgContainer = img.previousElementSibling as HTMLDivElement | null;
     const prevImg = prevImgContainer?.querySelector('img.preview-image');
+    const transitionBuffer = parseInt(img.dataset.transitionBuffer || '100', 10);
 
-    const transitionDelay = parseInt(img.dataset.transitionDelay || '100', 10);
-
-    setTimeout(() => {
+    if (loadTime <= transitionBuffer) {
+      // If the image loaded faster than the buffer, skip the transition
       img.style.opacity = '1';
       if (prevImg instanceof HTMLImageElement) {
         prevImg.style.opacity = '0';
       }
-    }, transitionDelay);
+    } else {
+      // Otherwise, apply the transition
+      requestAnimationFrame(() => {
+        img.style.opacity = '1';
+        if (prevImg instanceof HTMLImageElement) {
+          prevImg.style.opacity = '0';
+        }
+      });
+    }
   }
 
   function setupImage(img: HTMLImageElement) {
+    const startTime = performance.now();
+
     if (img.complete && img.naturalWidth !== 0) {
-      handleImageLoad(img);
+      handleImageLoad(img, 0);
     } else {
-      img.addEventListener('load', () => handleImageLoad(img));
+      img.addEventListener('load', () => {
+        const loadTime = performance.now() - startTime;
+        handleImageLoad(img, loadTime);
+      });
     }
 
     img.addEventListener('error', () => {
@@ -85,12 +103,15 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
     images.forEach(setupImage);
   }
 
+  // Run on initial load and subsequent navigations
   document.addEventListener('astro:page-load', setupImages);
 
+  // Fallback for non-Astro environments
   if (typeof window !== 'undefined') {
     window.addEventListener('load', setupImages);
   }
 
+  // Run if the page is already loaded
   if (document.readyState === 'complete') {
     setupImages();
   } else {
