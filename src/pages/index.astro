@@ -55,8 +55,8 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
 </Layout>
 
 <style>
-  nav {
-    position: fixed;
+  .filter-btn.active > span {
+    text-decoration: line-through;
   }
 
   nav::before {
@@ -66,45 +66,12 @@ const caseStudyCount = workData.filter(work => work.data.studySlug).length;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
     backdrop-filter: invert(1);
     z-index: -1;
     transition: opacity 0.3s ease;
     opacity: 0;
-  }
-
-  nav:hover::before {
-    opacity: 1;
-  }
-
-   nav button {
-    color: white;
-    mix-blend-mode: difference;
-  }
-
-  .filter-btn.active > span {
-    text-decoration: line-through;
   }
 </style>
-
-<!-- <style>
-  .filter-btn.active > span {
-    text-decoration: line-through;
-  }
-
-  nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    backdrop-filter: invert(1);
-    z-index: -1;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
-</style> -->
 
 <script>
   const workContainer = document.getElementById('work-container');
