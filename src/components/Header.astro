@@ -1,17 +1,21 @@
+---
+// File: src/components/Header.astro
+---
+
 <header class="grid grid-cols-12 col-span-full gap-4 uppercase fixed top-1.5 left-2 right-2 z-[1001] mix-blend-difference">
   <div class="col-span-full grid grid-cols-12 gap-4">
-    <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit text-white ">
+    <a href="/" class="col-span-6 md:col-span-4 whitespace-nowrap uppercase p-2 -m-2 w-fit text-white">
       <span class="hidden sm:inline">Max Kevin Crapper Georgopoulos</span>
       <span class="sm:hidden">Max KC Georgopoulos</span>
     </a>
-    <a href="/" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Work</a>
-    <a href="/about" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">About</a>
-    <a href="/writing" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Writing</a>
-    <a href="mailto:max123358@gmail.com" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white ">Contact</a>
+    <a href="/" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white">Work</a>
+    <a href="/about" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white">About</a>
+    <a href="/writing" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white">Writing</a>
+    <a href="mailto:max123358@gmail.com" class="whitespace-nowrap hidden md:block col-span-1 p-2 -m-2 text-white">Contact</a>
     <button id="theme-toggle" class="theme-toggle md:col-start-11 col-span-2 w-fit text-white flex md:justify-self-end group uppercase p-2 -m-2">
       Light/Dark
     </button>
-    <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-4 -m-4 text-white ">Menu</button>
+    <button id="menu-toggle" class="justify-self-end w-fit md:hidden uppercase text-right col-start-11 col-span-2 p-4 -m-4 text-white">Menu</button>
   </div>
 </header>
 
@@ -49,10 +53,19 @@
     transition: opacity 0.3s ease;
     opacity: 0;
   }
+
+  @media (orientation: portrait), (orientation: landscape) {
+    header {
+      mix-blend-mode: difference;
+    }
+  }
 </style>
 
 <script>
   const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement;
+  const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
+  const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
+  const body = document.body;
 
   function toggleTheme() {
     const html = document.documentElement;
@@ -78,104 +91,105 @@
     }, 50);
   }
 
-  function updateMetaThemeColor(theme) {
+  function updateMetaThemeColor(theme: string) {
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.content = theme === 'dark' ? '#000' : '#fff';
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#000' : '#fff');
     } else {
       const newMeta = document.createElement('meta');
-      newMeta.name = 'theme-color';
-      newMeta.content = theme === 'dark' ? '#000' : '#fff';
+      newMeta.setAttribute('name', 'theme-color');
+      newMeta.setAttribute('content', theme === 'dark' ? '#000' : '#fff');
       document.head.appendChild(newMeta);
     }
   }
 
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const menuToggle = document.getElementById('menu-toggle') as HTMLButtonElement;
-    const fullScreenMenu = document.getElementById('full-screen-menu') as HTMLDivElement;
-    const body = document.body;
+  let startX: number, startY: number, startTime: number;
+  let lastX: number, lastY: number, lastTime: number;
+  let isSwiping = false;
+  const accelerationThreshold = 0.06; // Minimum acceleration to trigger dismissal (in pixels/ms^2)
 
-    let startX: number, startY: number, startTime: number;
-    let lastX: number, lastY: number, lastTime: number;
-    let isSwiping = false;
-    const accelerationThreshold = 0.06; // Minimum acceleration to trigger dismissal (in pixels/ms^2)
+  function closeMenu() {
+    fullScreenMenu.classList.add('opacity-0', 'scale-[1.02]', '-translate-y-1');
+    fullScreenMenu.style.transition = 'opacity 350ms ease-in-out, transform 350ms ease-in-out, backdrop-filter 350ms ease-in-out, color 350ms ease-in-out';
+    setTimeout(() => {
+      fullScreenMenu.classList.add('hidden');
+      fullScreenMenu.classList.remove('flex');
+      fullScreenMenu.style.transition = ''; // Reset to default for next opening
+    }, 300);
+    menuToggle.textContent = 'Menu';
+    body.classList.remove('overflow-hidden');
+  }
 
-    function closeMenu() {
-      fullScreenMenu.classList.add('opacity-0', 'scale-[1.02]', '-translate-y-1');
-      fullScreenMenu.style.transition = 'opacity 350ms ease-in-out, transform 350ms ease-in-out, backdrop-filter 350ms ease-in-out, color 350ms ease-in-out';
-      setTimeout(() => {
-        fullScreenMenu.classList.add('hidden');
-        fullScreenMenu.classList.remove('flex');
-        fullScreenMenu.style.transition = ''; // Reset to default for next opening
-      }, 300);
-      menuToggle.textContent = 'Menu';
-      body.classList.remove('overflow-hidden');
-    }
+  function openMenu() {
+    fullScreenMenu.classList.remove('hidden');
+    fullScreenMenu.classList.add('flex');
+    fullScreenMenu.style.transition = 'opacity 200ms ease-in-out, transform 200ms ease-in-out, backdrop-filter 200ms ease-in-out';
+    requestAnimationFrame(() => {
+      fullScreenMenu.classList.remove('opacity-0', 'scale-[1.02]', '-translate-y-1');
+    });
+    menuToggle.textContent = 'Close';
+    body.classList.add('overflow-hidden');
+  }
 
-    function openMenu() {
-      fullScreenMenu.classList.remove('hidden');
-      fullScreenMenu.classList.add('flex');
-      fullScreenMenu.style.transition = 'opacity 200ms ease-in-out, transform 200ms ease-in-out, backdrop-filter 200ms ease-in-out';
-      requestAnimationFrame(() => {
-        fullScreenMenu.classList.remove('opacity-0', 'scale-[1.02]', '-translate-y-1');
-      });
-      menuToggle.textContent = 'Close';
-      body.classList.add('overflow-hidden');
-    }
+  themeToggle.addEventListener('click', toggleTheme);
 
-    if (menuToggle && fullScreenMenu) {
-      menuToggle.addEventListener('click', () => {
-        if (fullScreenMenu.classList.contains('hidden')) {
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-
-      fullScreenMenu.addEventListener('click', (e) => {
-        if (e.target === fullScreenMenu && !isSwiping) {
-          closeMenu();
-        }
-      });
-
-      // Add touch event listeners for swipe functionality
-      fullScreenMenu.addEventListener('touchstart', (e: TouchEvent) => {
-        const touch = e.touches[0];
-        startX = lastX = touch.clientX;
-        startY = lastY = touch.clientY;
-        startTime = lastTime = e.timeStamp;
-        isSwiping = false;
-      });
-
-      fullScreenMenu.addEventListener('touchmove', (e: TouchEvent) => {
-        isSwiping = true;
-        const touch = e.touches[0];
-        const currentTime = e.timeStamp;
-        const deltaTime = currentTime - lastTime;
-        
-        if (deltaTime > 0) {
-          const deltaX = touch.clientX - lastX;
-          const deltaY = touch.clientY - lastY;
-          const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-          const velocity = distance / deltaTime;
-          const acceleration = velocity / deltaTime;
-
-          if (acceleration > accelerationThreshold) {
-            closeMenu();
-          }
-        }
-
-        lastX = touch.clientX;
-        lastY = touch.clientY;
-        lastTime = currentTime;
-      });
-
-      fullScreenMenu.addEventListener('touchend', () => {
-        isSwiping = false;
-      });
+  menuToggle.addEventListener('click', () => {
+    if (fullScreenMenu.classList.contains('hidden')) {
+      openMenu();
+    } else {
+      closeMenu();
     }
   });
 
-  themeToggle.addEventListener('click', toggleTheme);
+  fullScreenMenu.addEventListener('click', (e) => {
+    if (e.target === fullScreenMenu && !isSwiping) {
+      closeMenu();
+    }
+  });
+
+  fullScreenMenu.addEventListener('touchstart', (e: TouchEvent) => {
+    const touch = e.touches[0];
+    startX = lastX = touch.clientX;
+    startY = lastY = touch.clientY;
+    startTime = lastTime = e.timeStamp;
+    isSwiping = false;
+  });
+
+  fullScreenMenu.addEventListener('touchmove', (e: TouchEvent) => {
+    isSwiping = true;
+    const touch = e.touches[0];
+    const currentTime = e.timeStamp;
+    const deltaTime = currentTime - lastTime;
+    
+    if (deltaTime > 0) {
+      const deltaX = touch.clientX - lastX;
+      const deltaY = touch.clientY - lastY;
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      const velocity = distance / deltaTime;
+      const acceleration = velocity / deltaTime;
+
+      if (acceleration > accelerationThreshold) {
+        closeMenu();
+      }
+    }
+
+    lastX = touch.clientX;
+    lastY = touch.clientY;
+    lastTime = currentTime;
+  });
+
+  fullScreenMenu.addEventListener('touchend', () => {
+    isSwiping = false;
+  });
+
+  // Handle orientation changes
+  window.addEventListener('orientationchange', () => {
+    // Force a reflow to ensure the mix-blend-mode is applied correctly
+    document.body.style.display = 'none';
+    requestAnimationFrame(() => {
+      document.body.style.display = '';
+    });
+  });
+
   document.addEventListener('DOMContentLoaded', loadThemePreference);
 </script>
