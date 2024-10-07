@@ -36,14 +36,14 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
   <div class="absolute inset-0 overflow-hidden">
     <img
       {...createImageProps(previewSrc, alt, width, height)}
-      class="preview-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
+      class="preview-image absolute inset-0 w-full h-full object-cover select-none"
       style="opacity: 1; filter: blur(10px); transform: scale(1.1);"
       aria-hidden="true"
     />
   </div>
   <img
     {...createImageProps(src, alt, width, height)}
-    class="full-image absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-300"
+    class="full-image absolute inset-0 w-full h-full object-cover select-none"
     style="opacity: 0;"
     loading="lazy"
     data-transition-buffer={transitionBuffer}
@@ -56,21 +56,27 @@ const createImageProps = (src: string, alt: string, width?: number, height?: num
     const prevImg = prevImgContainer?.querySelector('img.preview-image');
     const transitionBuffer = parseInt(img.dataset.transitionBuffer || '100', 10);
 
-    if (loadTime <= transitionBuffer) {
-      // If the image loaded faster than the buffer, skip the transition
+    requestAnimationFrame(() => {
+      if (loadTime <= transitionBuffer) {
+        // If the image loaded faster than the buffer, use a faster transition
+        img.style.transition = 'opacity 75ms ease-out';
+        if (prevImg instanceof HTMLImageElement) {
+          prevImg.style.transition = 'opacity 75ms ease-out';
+        }
+      } else {
+        // Otherwise, use the default transition
+        img.style.transition = 'opacity 300ms ease-out';
+        if (prevImg instanceof HTMLImageElement) {
+          prevImg.style.transition = 'opacity 300ms ease-out';
+        }
+      }
+
+      // Apply the transition
       img.style.opacity = '1';
       if (prevImg instanceof HTMLImageElement) {
         prevImg.style.opacity = '0';
       }
-    } else {
-      // Otherwise, apply the transition
-      requestAnimationFrame(() => {
-        img.style.opacity = '1';
-        if (prevImg instanceof HTMLImageElement) {
-          prevImg.style.opacity = '0';
-        }
-      });
-    }
+    });
   }
 
   function setupImage(img: HTMLImageElement) {
