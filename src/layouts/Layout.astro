@@ -127,17 +127,18 @@ const inlineScript = `
     --nav-width: 75px;  
     --nav-offset: calc(var(--nav-width) + (15px * 2));
     --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
-    --accent-color: #DB00D8;
+    --accent-color: #FF29FB;
+    --accent-text-color: #000;
   }
 
   ::selection {
     background-color: var(--accent-color);
-    color: black;
+    color: var(--accent-text-color);
   }
 
-  ::-moz-selection { /* Code for Firefox */
+  ::-moz-selection {
     background-color: var(--accent-color);
-    color: black;
+    color: var(--accent-text-color);
   }
 
   html {
