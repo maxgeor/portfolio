@@ -13,14 +13,14 @@ const { id, title, classes = "" } = Astro.props;
 <section 
   id={id + '-' + title} 
   aria-label={title}
-  class={clsx("scroll-mt-[43px] lg:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-8", classes)}
+  class={clsx("scroll-mt-[43px] md:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-8", classes)}
 >
   <div class="grid grid-cols-12 gap-x-4 gap-2 md:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white">
     <Caption element="h2" id={id} text={title} classes='text-pretty text-white mt-1.5' />
   </div>
-  <hr class="border-0 border-b-[0.5px] hidden md:block col-span-full mb-2 border-black dark:border-white" />
-  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty col-span-2 gap-2 -my-0.5 z-[100] mix-blend-difference text-white' />
-  <div class="context flex flex-col -my-0.5 lg:-mt-[14px] [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3 lg:col-span-6 xl:col-span-5 2xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-1.5 lg:pt-0">
+  <hr class="border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
+  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
+  <div class="context flex flex-col -my-0.5 lg:-mt-4 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3 lg:col-span-6 xl:col-span-5 2xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-1.5 lg:pt-0">
     <slot name="context" />
   </div>
   {Astro.slots.has('default') && (
