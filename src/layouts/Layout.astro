@@ -1,8 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import SkipLink from '../components/SkipLink.astro';
-import MusicNote from '../components/icons/MusicNote.astro';
 import SpeedInsights from "@vercel/speed-insights/astro"
+import MusicPlayer from '../components/MusicPlayer.astro';
 
 export interface Props {
   title?: string;
@@ -103,17 +103,12 @@ const inlineScript = `
   </head>
   <body
     style="text-rendering: optimizeLegibility;"
-    class={`grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] p-2 gap-x-4 gap-y-8 ${offset} ${classes}`}
+    class={`grid grid-cols-12 relative min-h-screen text-[12px] leading-[16px] p-2 gap-x-4 gap-y-8 pb-64 ${offset} ${classes}`}
   >
     {mainContentId && <SkipLink anchor={mainContentId} />}
     <Header />
+    <MusicPlayer />
     <slot />
-    <button id="music-toggle" class="fixed right-0 bottom-0 group z-50 p-4 -m-3 !hover:opacity-100 active:scale-[0.90] transition duration-150">
-      <div class="relative flex justify-center items-center rounded group-hover:bg-black/10 dark:group-hover:bg-white/10 h-6 w-6">
-        <span id="music-toggle-line-through" class="hidden opacity-0 group-hover:opacity-100 transition-opacity absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 w-3 h-px bg-black dark:bg-white " />
-        <MusicNote classes='text-neutral-900 dark:text-neutral-100 ' />
-      </div>
-    </button>
     <div class="hidden">
       <SpeedInsights />
     </div>
@@ -196,39 +191,3 @@ const inlineScript = `
     text-wrap: balance;
   }
 </style>
-
-<script>
-  const musicToggle = document.getElementById('music-toggle') as HTMLButtonElement;
-  const musicToggleLineThrough = document.getElementById('music-toggle-line-through') as HTMLSpanElement;
-  let audio = new Audio();
-  let isPlaying = false;
-  let currentSongIndex = 0;
-
-  const songs = [
-    '/songs/magnolia.wav',
-    '/songs/typeshit.wav',
-    '/songs/miley.wav',
-  ];
-
-  function playNextSong() {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    audio.src = songs[currentSongIndex];
-    audio.play();
-  }
-
-  audio.addEventListener('ended', playNextSong);
-
-  musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      musicToggleLineThrough.classList.add('hidden');
-    } else {
-      if (audio.src === '') {
-        audio.src = songs[currentSongIndex];
-      }
-      audio.play();
-      musicToggleLineThrough.classList.remove('hidden');
-    }
-    isPlaying = !isPlaying;
-  });
-</script>
