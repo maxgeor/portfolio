@@ -1,0 +1,12 @@
+<div class="grid grid-cols-12 gap-y-3 col-span-full">
+  {Astro.slots.has('title') && (
+    <h3 class="col-span-full lg:col-span-2 lg:pl-8">
+      <slot name="title" />
+    </h3>
+  )}
+  {Astro.slots.has('default') && (
+    <p class="not-prose col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3 lg:col-span-6 xl:col-span-5 2xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] -my-0.5">
+      <slot />
+    </p>
+  )}
+</div>
