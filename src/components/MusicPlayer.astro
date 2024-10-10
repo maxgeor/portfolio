@@ -6,8 +6,7 @@ import MusicNote from '../components/icons/MusicNote.astro';
     {Array(3).fill(0).map((_, index) => (
       <div class="song-item absolute whitespace-nowrap opacity-0 transition-all duration-500 ease-out text-[11px] font-mono uppercase h-12 w-fit p-4 select-none">
         <div class="relative select-none">
-          <span class="song-title transition-all duration-500 select-none"></span>
-          <span class="song-progress absolute left-0 top-0 overflow-hidden whitespace-nowrap select-none"></span>
+          <span class="song-text absolute left-0 top-0 transition-all duration-500 select-none mix-blend-difference"></span>
         </div>
       </div>
     ))}
@@ -19,11 +18,85 @@ import MusicNote from '../components/icons/MusicNote.astro';
     <div class="relative flex justify-center items-center h-8 w-8 group-hover:bg-black/10 dark:group-hover:bg-white/10 rounded-full">
       <div id="cd-background" class="absolute inset-0 rounded-full opacity-0 transition-all duration-300 ease-in cd-shadow dark:cd-shadow-dark "></div>
       <div id="music-note-wrapper" class="relative z-10 transition-all duration-300 ease-out text-neutral-800 dark:text-neutral-100 ">
-        <MusicNote classes='w-4 h-4 drop-shadow transition-colors duration-300 ease-out drop-shadow-[0_1px_0_rgba(0,0,0,0.2)]' />
+        <MusicNote classes='w-4 h-4 transition-colors duration-300 ease-out drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]' />
       </div>
     </div>
   </button>
 </div>
+
+<style>
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  #cd-background {
+    @apply bg-gradient-to-br from-[#D8D8D8] to-[#C0C0C0] dark:from-gray-600 dark:to-gray-800;
+  }
+  #cd-background::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%),
+      linear-gradient(135deg, transparent 40%, rgba(255, 117, 163, 0.25) 50%, transparent 60%),
+      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+  .dark #cd-background::before {
+    background: 
+      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%),
+      linear-gradient(135deg, transparent 40%, rgba(255, 182, 193, 0.25) 50%, transparent 60%),
+      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%);
+  }
+  .cd-shadow {
+    box-shadow: 
+      0 0 0 0.5px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.3),
+      0 0 10px rgba(100, 149, 237, 0.2),
+      0 0 15px rgba(255, 117, 163, 0.2),
+      0 0 20px rgba(100, 149, 237, 0.1);
+  }
+  .cd-shadow-dark {
+    box-shadow: 
+      0 0 0 0.5px rgba(0, 0, 0, 1),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.20),
+      0 0 10px rgba(100, 149, 237, 0.2),
+      0 0 15px rgba(255, 117, 163, 0.2),
+      0 0 20px rgba(100, 149, 237, 0.1);
+  }
+  #music-player {
+    --song-bg-color: #a5a5a5;
+    --song-text-color: #000;
+  }
+  .dark #music-player {
+    --song-bg-color: #4f4f4f;
+    --song-text-color: #fff;
+  }
+  #song-list {
+    @apply flex items-center;
+    transition: width 0.3s ease-out;
+    min-width: 86px;
+  }
+  .song-item {
+    @apply transition-all duration-500 ease-out;
+    width: 100% !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .song-text {
+    background: linear-gradient(to right, var(--song-text-color) 0%, var(--song-text-color) 0%, var(--song-bg-color) 0%, var(--song-bg-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.3s ease;
+  }
+</style>
+
 <script>
   class MusicPlayer {
     audio: HTMLAudioElement;
@@ -123,11 +196,31 @@ import MusicNote from '../components/icons/MusicNote.astro';
       if (this.audio.duration) {
         const progress = (this.audio.currentTime / this.audio.duration) * 100;
         const currentSongItem = this.songItems[this.currentSongIndex];
-        const progressElement = currentSongItem.querySelector('.song-progress') as HTMLElement;
-        if (progressElement) {
-          progressElement.style.width = `${progress}%`;
+        const textElement = currentSongItem.querySelector('.song-text') as HTMLElement;
+        if (textElement) {
+          textElement.style.background = `linear-gradient(to right, var(--song-text-color) 0%, var(--song-text-color) ${progress}%, var(--song-bg-color) ${progress}%, var(--song-bg-color) 100%)`;
         }
       }
+    }
+
+    updateSongInfo() {
+      this.songItems.forEach((item, index) => {
+        const textElement = item.querySelector('.song-text') as HTMLElement;
+        if (textElement) {
+          const song = this.songs[index];
+          textElement.textContent = song.title;
+          if (index === this.currentSongIndex) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+            item.style.zIndex = '1';
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.zIndex = '-1';
+          }
+        }
+      });
+      this.updateSongListWidth();
     }
     fadeIn() {
       const currentSongItem = this.songItems[this.currentSongIndex];
@@ -172,27 +265,7 @@ import MusicNote from '../components/icons/MusicNote.astro';
       this.isLoading = false;
       this.updateLoadingState();
     }
-    updateSongInfo() {
-      this.songItems.forEach((item, index) => {
-        const titleElement = item.querySelector('.song-title') as HTMLElement;
-        const progressElement = item.querySelector('.song-progress') as HTMLElement;
-        if (titleElement && progressElement) {
-          const song = this.songs[index];
-          titleElement.textContent = song.title;
-          progressElement.textContent = song.title;
-          if (index === this.currentSongIndex) {
-            item.style.opacity = '1';
-            item.style.transform = 'translateX(0)';
-            item.style.zIndex = '1';
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(-20px)';
-            item.style.zIndex = '-1';
-          }
-        }
-      });
-      this.updateSongListWidth();
-    }
+
     updateSongListWidth() {
       const currentSongItem = this.songItems[this.currentSongIndex];
       if (currentSongItem) {
@@ -219,83 +292,3 @@ import MusicNote from '../components/icons/MusicNote.astro';
     new MusicPlayer(songs);
   });
 </script>
-<style>
-  @keyframes spin-slow {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
-  #cd-background {
-    @apply bg-gradient-to-br from-[#D8D8D8] to-[#C0C0C0] dark:from-gray-600 dark:to-gray-800;
-  }
-  #cd-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%),
-      linear-gradient(135deg, transparent 40%, rgba(255, 117, 163, 0.25) 50%, transparent 60%),
-      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%);
-    border-radius: 50%;
-    opacity: 0.6;
-  }
-  .dark #cd-background::before {
-    background: 
-      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%),
-      linear-gradient(135deg, transparent 40%, rgba(255, 182, 193, 0.25) 50%, transparent 60%),
-      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%);
-  }
-  .cd-shadow {
-    box-shadow: 
-      0 0 0 0.5px rgba(0, 0, 0, 0.45),
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.20),
-      0 0 10px rgba(100, 149, 237, 0.2),
-      0 0 15px rgba(255, 117, 163, 0.2),
-      0 0 20px rgba(100, 149, 237, 0.1);
-  }
-  .cd-shadow-dark {
-    box-shadow: 
-      0 0 0 0.5px rgba(0, 0, 0, 1),
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.20),
-      0 0 10px rgba(100, 149, 237, 0.2),
-      0 0 15px rgba(255, 117, 163, 0.2),
-      0 0 20px rgba(100, 149, 237, 0.1);
-  }
-  #music-player {
-    --song-title-color: #ADADAD;
-    --song-progress-color: #fff;
-  }
-  .dark #music-player {
-    --song-title-color: #646464;
-    --song-progress-color: #000;
-  }
-  .song-title {
-    color: var(--song-title-color);
-  }
-  .song-progress {
-    color: var(--song-progress-color);
-  }
-  #song-list {
-    @apply flex items-center;
-    transition: width 0.3s ease-out;
-    width: 100% !important;
-    max-width: 300px;
-    min-width: fit-content;
-  }
-  .song-item {
-    @apply transition-all duration-500 ease-out;
-    width: 100% !important;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-</style>
