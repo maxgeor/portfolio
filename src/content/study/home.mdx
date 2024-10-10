@@ -33,19 +33,19 @@ content: [
   },
   {
     id: "2.00",
-    title: "List View",
+    title: "Task",
   },
   {
     id: "3.00",
-    title: "Calendar View",
+    title: "Process",
   },
   {
     id: "4.00",
-    title: "Unique Styling",
+    title: "Solution",
   },
   {
     id: "5.00",
-    title: "Smart Suggestions",
+    title: "Results",
   },
 ]
 ---
@@ -60,10 +60,15 @@ import Text from "../../components/study/Text.astro";
 <Section id="1.00" title='Problem'>
   <Fragment slot="context">
     {/* Wavy’s homepage was a single calendar view showing events, notable days, and suggestions, but it had issues. 1/ Calendar items weren’t labeled, so you couldn’t quickly spot invites or RSVPs. 2/ You could only see one month at a time, making it easy to forget events months ahead and hard to find past ones. 3/ Optional themes had either harsh, inaccessible colors or made the text almost unreadable. */}
-    - Wavy’s homepage featured a **single calendar view** displaying events, notable days, and suggestions.
+    {/* - Wavy’s homepage featured a **single calendar view** displaying events, notable days, and suggestions.
     - Calendar **items weren’t labeled**, making it difficult to quickly identify invites or RSVPs.
     - Optional themes had either **harsh, inaccessible colors** or made text nearly unreadable.
-    - The view only showed one month at a time, making it **hard to find future & past events**.
+    - The view only showed one month at a time, making it **hard to find future & past events**. */}
+    Wavy’s homepage featured a **single calendar view** displaying events, notable days, and suggestions. The main issue was it was **hard to find information you care about**. 
+    
+    - Calendar items weren’t labeled, making it difficult to quickly identify invites or RSVPs. 
+    - Optional themes had harsh, inaccessible colors, making text nearly unreadable. 
+    - The view only showed one month at a time, making it hard to find future & past events.
   </Fragment>
   <Carousel
     slides={[
@@ -89,11 +94,11 @@ import Text from "../../components/study/Text.astro";
     <div class="col-span-full grid grid-cols-1 xs:grid-cols-2 gap-x-4 gap-3">
       <div>
         GOAL<br/>
-        **Make UI navigable and parsable**. Like unlabeled events, limited calendar visibility, and inaccessible color themes. Create a more intuitive and user-friendly interface that aligns with Wavy’s brand identity.
+        **Make UI navigable and parsable**. Needed to resolve unlabeled events, limited calendar visibility, and inaccessible color themes to let people find their way while reinforcing Wavy’s brand.
       </div>
       <div>
         ROLE<br/>
-        **Lead the redesign** of Wavy’s homepage to improve event navigation and accessibility. Collaborate with the strategy team to ensure the design met both user and business goals.
+        **Lead the redesign** of Wavy’s homepage. Collaborated with the strategy & development team throughtout to meet the business' needs and limit the burden put on a lean development team.
       </div>
     </div>
     
