@@ -33,7 +33,7 @@ content: [
   },
   {
     id: "2.00",
-    title: "Task",
+    title: "Role+Goal",
   },
   {
     id: "3.00",
@@ -88,17 +88,17 @@ import Text from "../../components/study/Text.astro";
     hasBorder={false}
   />
 </Section>
-<Section id="2.00" title='Task'>
+<Section id="2.00" title='Role+Goal'>
   {/* <p slot="context">We added a List View to the homepage, organizing events into Swimlanes and a Timeline. Swimlanes categorize events, like Yours/Others, Upcoming/Past, or Invites/RSVPs, while the Timeline shows all events in chronological order. We made this the default view because most users come to the dashboard looking for a specific event (“I need to edit my event” or “What do I need to bring for Cocktail Making?”), which was harder to find on the calendar.</p> */}
   <Fragment slot="context">
-    <div class="col-span-full grid grid-cols-1 xs:grid-cols-2 gap-x-4 gap-3">
+    <div class="col-span-full grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-3">
+      <div>
+        ROLE<br/>
+        **Lead the redesign** of Wavy’s homepage. Collaborated with the strategy & development team throughout to meet business needs and limit the burden on a lean development team.
+      </div>
       <div>
         GOAL<br/>
         **Make UI navigable and parsable**. Needed to resolve unlabeled events, limited calendar visibility, and inaccessible color themes to let people find their way while reinforcing Wavy’s brand.
-      </div>
-      <div>
-        ROLE<br/>
-        **Lead the redesign** of Wavy’s homepage. Collaborated with the strategy & development team throughtout to meet the business' needs and limit the burden put on a lean development team.
       </div>
     </div>
     
