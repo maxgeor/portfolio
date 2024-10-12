@@ -19,8 +19,8 @@ const { id, title, classes = "" } = Astro.props;
     <Caption element="h2" id={id} text={title} classes='text-pretty text-white mt-1.5' />
   </div>
   <hr class="not-prose border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
-  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
-  <div class="context flex flex-col -my-0.5 lg:-mt-4 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full  lg:col-start-3 lg:col-span-6 2xl:col-span-4 xl:col-start-3 2xl:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-3.5 lg:pt-0 [&_p]:max-w-[85ch] ">
+  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
+  <div class="context flex flex-col -my-0.5 lg:mt-0 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full  lg:col-start-3 lg:col-span-6  2xl:col-span-4 xl:col-start-3 2xl:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-3.5 lg:pt-0 [&_p]:max-w-[80ch] ">
     <slot name="context" />
   </div>
   {Astro.slots.has('default') && (
