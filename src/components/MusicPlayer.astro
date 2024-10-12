@@ -15,10 +15,10 @@ import MusicNote from '../components/icons/MusicNote.astro';
     id="play-pause-btn"
     class="group relative flex justify-center items-center rounded-full transition-all duration-100 !hover:opacity-100 active:scale-[90%]"
   >
-    <div class="relative flex justify-center items-center h-8 w-8 group-hover:bg-black/10 dark:group-hover:bg-white/10 rounded-full">
+    <div class="relative flex justify-center items-center h-[32px] w-[32px] ">
       <div id="cd-background" class="absolute inset-0 rounded-full opacity-0 transition-all duration-300 ease-in cd-shadow dark:cd-shadow-dark "></div>
       <div id="music-note-wrapper" class="relative z-10 transition-all duration-300 ease-out text-neutral-800 dark:text-neutral-100 ">
-        <MusicNote classes='w-4 h-4 transition-colors duration-300 ease-out drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]' />
+        <MusicNote classes='w-[14px] h-[14px] transition-colors duration-300 ease-out drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]' />
       </div>
     </div>
   </button>
@@ -32,17 +32,18 @@ import MusicNote from '../components/icons/MusicNote.astro';
   .animate-spin-slow {
     animation: spin-slow 20s linear infinite;
   }
+  
   #cd-background {
-    @apply bg-gradient-to-br from-[#D8D8D8] to-[#C0C0C0] dark:from-gray-600 dark:to-gray-800;
+    @apply bg-gradient-to-br from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-800;
   }
   #cd-background::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: 
-      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%),
-      linear-gradient(135deg, transparent 40%, rgba(255, 117, 163, 0.25) 50%, transparent 60%),
-      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.2) 50%, transparent 60%);
+      linear-gradient(45deg, transparent 40%, rgba(100, 149, 237, 0.25) 50%, transparent 60%),
+      linear-gradient(135deg, transparent 40%, rgba(255, 117, 163, 0.3) 50%, transparent 60%),
+      linear-gradient(225deg, transparent 40%, rgba(100, 149, 237, 0.25) 50%, transparent 60%);
     border-radius: 50%;
     opacity: 0.6;
   }
@@ -54,8 +55,8 @@ import MusicNote from '../components/icons/MusicNote.astro';
   }
   .cd-shadow {
     box-shadow: 
-      0 0 0 0.5px rgba(0, 0, 0, 0.45),
-      inset 0 0 0 0.5px rgba(255, 255, 255, 0.3),
+      0 0 0 0.5px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 0.5px rgba(255, 255, 255, 0.5),
       0 0 10px rgba(100, 149, 237, 0.2),
       0 0 15px rgba(255, 117, 163, 0.2),
       0 0 20px rgba(100, 149, 237, 0.1);
