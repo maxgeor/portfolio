@@ -5,26 +5,58 @@ import clsx from 'clsx';
 export interface Props {
   id: string;
   title: string
+  isSubsection: boolean;
   classes?: string;
 }
 
-const { id, title, classes = "" } = Astro.props;
+const { 
+  id, 
+  title, 
+  isSubsection = false, 
+  classes = "" 
+} = Astro.props;
 ---
+
 <section 
   id={id + '-' + title} 
   aria-label={title}
-  class={clsx("scroll-mt-[43px] md:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-8", classes)}
+  class={clsx(
+    "scroll-mt-[43px] md:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-neutral-400 dark:border-neutral-700 pt-4 lg:pt-8 first:pt-0 -mx-2 px-2' : 'md:mt-8',
+    classes
+  )}
 >
-  <div class="grid grid-cols-12 gap-x-4 gap-2 md:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white">
-    <Caption element="h2" id={id} text={title} classes='text-pretty text-white mt-1.5' />
-  </div>
-  <hr class="not-prose border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
-  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
-  <div class="context flex flex-col -my-0.5 lg:mt-0 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full  lg:col-start-3 lg:col-span-6  2xl:col-span-4 xl:col-start-3 2xl:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-3.5 lg:pt-0 [&_p]:max-w-[80ch] ">
-    <slot name="context" />
-  </div>
+  {isSubsection ? (
+    <>
+      <Caption 
+        element="h3" 
+        id={id} 
+        text={title} 
+        classes='first-caption uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
+      />
+      <Caption 
+        element="h3" 
+        id={id + '-second'} 
+        text={title} 
+        classes='second-caption hidden sticky top-[41px] md:top-[48px] uppercase text-pretty col-span-full col-start-5 lg:col-start-3 gap-2 z-[100] mix-blend-difference text-white -my-0.5' 
+      />
+    </>
+  ) : (
+    <>
+      <div class="grid grid-cols-12 gap-x-4 gap-2 md:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
+        <Caption element="h2" id={id} text={title} classes='text-pretty text-white -my-0.5' />
+      </div>
+      <hr class="not-prose border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
+      <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
+    </>
+  )}
+  {Astro.slots.has('context') && (
+    <div class="context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full lg:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-3.5 lg:pt-0 -my-0.5 lg:mt-0 max-w-[80ch]">
+      <slot name="context" />
+    </div>
+  )}
   {Astro.slots.has('default') && (
-    <div class="grid grid-cols-12 gap-y-8 mt-8 col-span-full">
+    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full mt-8")}>
       <slot />
     </div>
   )}
@@ -39,6 +71,7 @@ const { id, title, classes = "" } = Astro.props;
   }
 
   section h2::before,
+  section h3::before,
   section div:first-child::before {
     content: '';
     position: absolute;
@@ -51,4 +84,40 @@ const { id, title, classes = "" } = Astro.props;
     transition: opacity 0.3s ease;
     opacity: 0;
   }
+
+  .second-caption {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .second-caption.visible {
+    opacity: 1;
+  }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+      const firstCaption = section.querySelector('.first-caption');
+      const secondCaption = section.querySelector('.second-caption');
+      
+      if (firstCaption && secondCaption) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              secondCaption.classList.remove('hidden');
+              secondCaption.classList.add('visible');
+            } else {
+              secondCaption.classList.add('hidden');
+              secondCaption.classList.remove('visible');
+            }
+          });
+        }, { threshold: 0, rootMargin: '-48px 0px 0px 0px' });
+
+        observer.observe(firstCaption);
+      }
+    });
+  });
+</script>

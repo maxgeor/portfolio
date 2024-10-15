@@ -31,10 +31,14 @@ type Slide = Video | Image;
 
 export interface Props {
   slides: Slide[];
-  span: ResponsiveNumber;
+  title?: {
+    id: string;
+    text: string;
+  }
+  span?: ResponsiveNumber;
+  isPadded?: ResponsiveBool;
+  hasBorder?: ResponsiveBool;
   orientation?: 'horizontal' | 'vertical' | '3/2';
-  isPadded: ResponsiveBool;
-  hasBorder: ResponsiveBool;
   classes?: string;
 }
 
@@ -44,6 +48,7 @@ const {
   orientation = 'horizontal', 
   isPadded = true,
   hasBorder = false,
+  title,
   classes = "" 
 } = Astro.props;
 
@@ -70,7 +75,8 @@ switch(orientation) {
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
   {Astro.slots.has('description') && (
-    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px]">
+    <div class="md:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[6px] max-w-[80ch]">
+      {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase mb-1"/>}
       <slot name="description" />
     </div>
   )}
@@ -105,7 +111,7 @@ switch(orientation) {
         tabindex="-1"
       ></button>
     </div>
-    <div class="hidden lg:block slide-counter absolute top-2 right-2 z-40"></div>
+    <div class="hidden md:block slide-counter absolute top-2 right-2 z-40"></div>
     <div class={clsx(
       'touch-manipulation',
       spanClasses,
@@ -158,26 +164,27 @@ switch(orientation) {
     </div>
   </div>
   <div class={clsx(
-    'grid grid-cols-12 gap-4 col-span-full', 
+    'relative grid grid-cols-12 gap-4 col-span-full', 
   )}>
     <div class={clsx(
-      "flex justify-between gap-4 -my-0.5",
-      Astro.slots.has('description') ? 'col-span-full lg:col-span-2' : 'col-span-full '
+      "flex gap-4 -my-0.5",
+      Astro.slots.has('description') ? 'col-span-full md:col-span-3 lg:col-span-2' : 'col-span-full'
     )}>
       <div class="flex flex-col">
+        {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase hidden lg:flex "/>}
         {slides?.map((slide, index) => (
           <button aria-label={`Jump to ${slide.alt} slide`} class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left whitespace-nowrap`}>
             <Caption id={slide.id} text={slide.alt} />
           </button>
         ))}
       </div>
-      <div class="lg:hidden slide-counter"></div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="hidden lg:block lg:col-span-6 xl:col-span-5 3xl:col-span-4 3xl:max-w-[85ch] -my-0.5">
+      <div class="hidden md:block col-span-full md:col-span-6 max-w-[85ch] -my-0.5 text-balance">
         <slot name="description" />
       </div>
     )}
+    <div class="md:hidden absolute top-0 right-0 slide-counter"></div>
   </div>
 </div>
 

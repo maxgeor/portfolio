@@ -1,12 +1,21 @@
-<div class="grid grid-cols-12 gap-y-3 col-span-full">
-  {Astro.slots.has('title') && (
-    <h3 class="col-span-full lg:col-span-2 lg:pl-8">
-      <slot name="title" />
-    </h3>
+---
+import Caption from './Caption.astro';
+
+export interface Props {
+  title?: {
+    text: string
+    id?: string,
+  };
+}
+
+const { title } = Astro.props;
+---
+
+<div class="!grid grid-cols-12 gap-y-1 gap-x-4 !col-span-full -my-0.5">
+  {title && (
+    <Caption element='h3' id={title.id} text={title.text} classes="col-span-full lg:col-span-2 uppercase whitespace-nowrap" />
   )}
-  {Astro.slots.has('default') && (
-    <p class="not-prose col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3 lg:col-span-6 xl:col-span-5 2xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] -my-0.5">
-      <slot />
-    </p>
-  )}
+  <p class="order-last not-prose col-span-full  lg:col-start-3 max-w-[80ch]">
+    <slot />
+  </p>
 </div>
