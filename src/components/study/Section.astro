@@ -51,7 +51,7 @@ const {
     </div>
   )}
   {Astro.slots.has('default') && (
-    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full", Astro.slots.has('context') ? 'mt-8' : 'mt-8 lg:mt-8')}>
+    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full mt-8")}>
       <slot />
     </div>
   )}

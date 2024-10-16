@@ -41,15 +41,15 @@ content: [
   },
   {
     id: "3.1.00",
-    title: "List View",
+    title: "Unique Styling",
   },
   {
     id: "3.2.00",
-    title: "Calendar View",
+    title: "List View",
   },
   {
     id: "3.3.00",
-    title: "Unique Styles",
+    title: "Calendar View",
   },
   {
     id: "4.0.00",
@@ -69,9 +69,9 @@ import Caption from "../../components/study/Caption.astro";
 <Section id="1.0.00" title='Problem'>
   <Fragment slot="context">
     - Wavy’s homepage featured a single calendar view showing *events*, *notable days* and *suggestions*.
-    - Items were undiffereciated, making hard to discern an event from s suggestion or find invites/RSVPs. 
-    - Calendar only showed one month at a time, making it hard to find future & past events.
-    - Month themes had harsh, inaccessible colors, making text hard to read. 
+    - **Items were undiffereciated**, making hard to discern events from suggestions or find invites & RSVPs. 
+    - Calendar only showed one month at a time, making it **hard to find future & past events**.
+    - Month themes had **harsh, inaccessible colors**, making text hard to read. 
   </Fragment>
   <Carousel
     slides={[
@@ -127,17 +127,17 @@ import Caption from "../../components/study/Caption.astro";
     - Added a List View with Swimlanes and a Timeline.
     - Made calendar cells denser cells + updated themes.
   </Fragment>
-  <Section id='3.3.00' title="Unique Styles" isSubsection={true}>
-    <Fragment slot="context">The **old layout had little visual distinction** between events, notable days, and suggestions, making it hard to tell them apart. We needed each item to have its own visual language that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections.</Fragment>
+  <Section id='3.1.00' title="Unique Styling" isSubsection={true}>
+    <Fragment slot="context">The old layout had little visual distinction between events, notable days and suggestions. To tell them apart, we **gave each item its own visual language** that worked across all surfaces, including calendar themes, swimlanes, and "Your events" sections.</Fragment>
     <Carousel
       slides={[
         {
-          id: "3.3.01",
+          id: "3.1.01",
           src: "/work/wavy/home/differenciated-styles.png",
           alt: "Items",
         },
         {
-          id: "3.3.02",
+          id: "3.1.02",
           src: "/work/wavy/home/note-styles.png",
           alt: "Items Sketch",
         },
@@ -151,12 +151,12 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.4.01",
+          id: "3.1.03",
           src: "/work/wavy/home/event-statuses.png",
           alt: "Event status",
         },
         {
-          id: "3.4.02",
+          id: "3.1.04",
           src: "/work/wavy/home/note-event-statuses.png",
           alt: "Event sketch",
         },
@@ -165,18 +165,18 @@ import Caption from "../../components/study/Caption.astro";
       isPadded={{ base: false, md: true }} 
       hasBorder={{ base: true, md: false }}
     >
-      <Fragment slot="description">Events were further distinguished by an icon system showing their status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar and timeline.</Fragment>
+      <Fragment slot="description">Events were labeled by status: Invited, Going, Declined, or Went. This made it easier to quickly identify relevant events, especially in the calendar.</Fragment>
     </Carousel>
   </Section>
-  <Section id='3.1.00' title="List View" isSubsection={true}>
+  <Section id='3.2.00' title="List View" isSubsection={true}>
     <Fragment slot="context">
       
-      Research showed us that **people thought about events in 3 different ways**: 
+      Research showed us that people thought about events in 3 different ways: 
       1) Space — *When are events happening? What's open?*
       2) Category — *Where are my events? Invites? Rsvps?*
       3) Chronology — *What's coming up? What's next?*
 
-      Since the calendar only afforded spatial reasoning, we added a List View to cover the other bases.
+      Since the calendar only afforded spatial reasoning, we **added a List View to organize events by category and chronology**.
     </Fragment>
     {/* <Fragment slot="context">
       
@@ -193,22 +193,22 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.1.01",
+          id: "3.2.01",
           src: "/work/wavy/home/note-your-events.png",
           alt: "sketch, swimlanes",
         },
         {
-          id: "3.1.02",
+          id: "3.2.02",
           src: "/work/wavy/home/note-layout.png",
           alt: "sketch, Layout",
         },
         {
-          id: "3.1.02",
+          id: "3.2.03",
           src: "/work/wavy/home/list-mobile-sketch.png",
           alt: "Sketch, mobile",
         },
         {
-          id: "3.1.03",
+          id: "3.2.04",
           src: "/work/wavy/home/note-smart-suggestions-1.png",
           alt: "Sketch, suggestions",
         },
@@ -258,22 +258,22 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.1.01",
+          id: "3.2.05",
           src: "/work/wavy/home/upcoming-1.png",
           alt: "Upcoming 1",
         },
         {
-          id: "3.1.02",
+          id: "3.2.06",
           src: "/work/wavy/home/upcoming-2.png",
           alt: "Upcoming 2",
         },
         {
-          id: "3.1.03",
+          id: "3.2.07",
           src: "/work/wavy/home/past.png",
           alt: "Past",
         },
         {
-          id: "3.1.04",
+          id: "3.2.08",
           src: "/work/wavy/home/empty.png",
           alt: "Empty",
         },
@@ -287,32 +287,32 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.1.07",
+          id: "3.2.09",
           src: "/work/wavy/home/upcoming-mobile-1.png",
           alt: "Mobile, Upcoming 1",
         },
         {
-          id: "3.1.08",
+          id: "3.2.10",
           src: "/work/wavy/home/upcoming-mobile-2.png",
           alt: "Mobile, Upcoming 2",
         },
         {
-          id: "3.1.09",
+          id: "3.2.11",
           src: "/work/wavy/home/upcoming-mobile-3.png",
           alt: "Mobile, Upcoming 3",
         },
         {
-          id: "3.1.10",
+          id: "3.2.12",
           src: "/work/wavy/home/past-mobile-1.png",
           alt: "Mobile, Past 1",
         },
         {
-          id: "3.1.10",
+          id: "3.2.13",
           src: "/work/wavy/home/past-mobile-2.png",
           alt: "Mobile, Past 2",
         },
         {
-          id: "3.1.10",
+          id: "3.2.14",
           src: "/work/wavy/home/empty-mobile.png",
           alt: "Mobile, Empty",
         },
@@ -324,7 +324,7 @@ import Caption from "../../components/study/Caption.astro";
     />
     <Row classes="hidden sm:grid">
       <Image
-        id="3.1.07"
+        id="3.2.09"
         src="/work/wavy/home/upcoming-mobile-1.png"
         alt="Mobile, Upcoming 1"
         span={{ base: 6, md: 4 }}
@@ -332,7 +332,7 @@ import Caption from "../../components/study/Caption.astro";
         isFullBleed={true}
       />
       <Image
-        id="3.1.08"
+        id="3.2.10"
         src="/work/wavy/home/upcoming-mobile-2.png"
         alt="Mobile, Upcoming 2"
         span={{ base: 6, md: 4 }}
@@ -340,7 +340,7 @@ import Caption from "../../components/study/Caption.astro";
         isFullBleed={true}
       />
       <Image
-        id="3.1.09"
+        id="3.2.11"
         src="/work/wavy/home/upcoming-mobile-3.png"
         alt="Mobile, Upcoming 3"
         span={{ base: 6, md: 4 }}
@@ -348,7 +348,7 @@ import Caption from "../../components/study/Caption.astro";
         isFullBleed={true}
       />
       <Image
-        id="3.1.10"
+        id="3.2.12"
         src="/work/wavy/home/past-mobile-1.png"
         alt="Mobile, Past 1"
         span={{ base: 6, md: 4 }}
@@ -356,7 +356,7 @@ import Caption from "../../components/study/Caption.astro";
         isFullBleed={true}
       />
       <Image
-        id="3.1.11"
+        id="3.2.13"
         src="/work/wavy/home/past-mobile-2.png"
         alt="Mobile, Past 2"
         span={{ base: 6, md: 4 }}
@@ -364,7 +364,7 @@ import Caption from "../../components/study/Caption.astro";
         isFullBleed={true}
       />
       <Image
-        id="3.1.12"
+        id="3.2.14"
         src="/work/wavy/home/empty-mobile.png"
         alt="Mobile, Empty"
         span={{ base: 6, md: 4 }}
@@ -373,22 +373,22 @@ import Caption from "../../components/study/Caption.astro";
       />
     </Row>
   </Section>
-  <Section id='3.2.00' title="Calendar View" isSubsection={true}>
-    <Fragment slot="context">Before, the calender only fit 2-3 items, hiding events and suggestions. We refreshed the Calendar View to **maximize information density**, fitting double the items. We also updated the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel palette, which reinforced Wavy’s playful brand and, you know, just looked better.</Fragment>
+  <Section id='3.3.00' title="Calendar View" isSubsection={true}>
+    <Fragment slot="context">Before, the calender only fit 2-3 items, hiding events and suggestions. To fit more items, we **refreshed the Calendar View to maximize information density**. We also updated the themes to a [WACG-compliant](https://www.w3.org/mission/accessibility/) pastel palette, which reinforced Wavy’s playful brand and, you know, just looked better.</Fragment>
     <Carousel
       slides={[
         {
-          id: "3.2.03",
+          id: "3.3.01",
           src: "/work/wavy/home/note-calendar-1.png",
           alt: "Sketch, layout",
         },
         {
-          id: "3.2.04",
+          id: "3.3.02",
           src: "/work/wavy/home/note-calendar-2.png",
           alt: "Sketch, layout",
         },
         {
-          id: "3.2.04",
+          id: "3.3.03",
           src: "/work/wavy/home/note-cell.png",
           alt: "Sketch, cell",
         },
@@ -431,12 +431,12 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.2.01",
+          id: "3.3.04",
           src: "/work/wavy/home/calendar.png",
           alt: "Calendar",
         },
         {
-          id: "3.2.02",
+          id: "3.3.05",
           src: "/work/wavy/home/calendar-cell.png",
           alt: "Calendar cell",
         },
@@ -450,42 +450,42 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.2.06",
+          id: "3.3.06",
           src: "/work/wavy/home/calendar-default.png",
           alt: "Calendar, default",
         },
         {
-          id: "3.2.07",
+          id: "3.3.07",
           src: "/work/wavy/home/calendar-red.png",
           alt: "Calendar, red",
         },
         {
-          id: "3.2.08",
+          id: "3.3.08",
           src: "/work/wavy/home/calendar-pink.png",
           alt: "Calendar, pink",
         },
         {
-          id: "3.2.09",
+          id: "3.3.09",
           src: "/work/wavy/home/calendar-orange.png",
           alt: "Calendar, orange",
         },
         {
-          id: "3.2.10",
+          id: "3.3.10",
           src: "/work/wavy/home/calendar-yellow.png",
           alt: "Calendar, yellow",
         },
         {
-          id: "3.2.11",
+          id: "3.3.11",
           src: "/work/wavy/home/calendar-green.png",
           alt: "Calendar, green",
         },
         {
-          id: "3.2.12",
+          id: "3.3.12",
           src: "/work/wavy/home/calendar-blue.png",
           alt: "Calendar, blue",
         },
         {
-          id: "3.2.13",
+          id: "3.3.13",
           src: "/work/wavy/home/calendar-purple.png",
           alt: "Calendar, purple",
         },
