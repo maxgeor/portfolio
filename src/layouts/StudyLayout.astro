@@ -112,7 +112,7 @@ const {
     class="hidden md:block w-full h-full object-contain" 
   />
 </div>
-<div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-2 scroll-mt-[47px]">
+<div id="content-list" class="col-span-full grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-4 scroll-mt-[47px]">
   <p class="uppercase col-span-2 -my-0.5">Content</p>
   <div class="flex flex-col col-span-10 -my-0.5">
     {content.map((section: any) => (
@@ -137,9 +137,9 @@ const {
       prose-headings:uppercase
       prose-strong:tracking-[-0.003rem]
       prose-a:underline prose-a:decoration-[0.07em] hover:prose-a:no-underline
-      prose-ul:max-w-[85ch] prose-ul:text-pretty prose-ul:list-disc prose-ul:-my-0
-      prose-ol:max-w-[85ch] prose-ol:text-pretty prose-ol:list-none prose-ol:pl-0 
-      prose-li:relative prose-li:marker:content-[''] prose-li:before:content-['•'] lg:prose-li:before:content-['-'] prose-li:pl-3 lg:prose-li:pl-0  prose-li:before:absolute prose-li:before:-left-0 lg:prose-li:before:-left-4 prose-li:before:top-0 lg:prose-li:before:-top-px
+      prose-ul:text-pretty prose-ul:list-none prose-ul:-my-0
+      prose-ol:text-pretty prose-ol:list-none prose-ol:pl-0 
+      prose-li:relative prose-li:marker:content-[''] prose-li:before:content-['•']  lg:prose-li:before:content-['-'] prose-li:pl-3 lg:prose-li:pl-0  prose-li:before:absolute prose-li:before:-left-0 lg:prose-li:before:-left-4 prose-li:before:top-0 lg:prose-li:before:-top-px
       prose-li:m-0
       prose-figure:w-auto prose-figure:select-none prose-figure:my-0 
       prose-video:w-auto prose-video:select-none prose-video:my-0 

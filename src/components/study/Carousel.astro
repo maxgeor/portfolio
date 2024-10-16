@@ -74,12 +74,12 @@ switch(orientation) {
 ---
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
-  {Astro.slots.has('description') && (
-    <div class="md:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[6px] max-w-[80ch]">
+  <!-- {Astro.slots.has('description') && (
+    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px] max-w-[80ch]">
       {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase mb-1"/>}
       <slot name="description" />
     </div>
-  )}
+  )} -->
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
     paddingClasses
@@ -111,7 +111,7 @@ switch(orientation) {
         tabindex="-1"
       ></button>
     </div>
-    <div class="hidden md:block slide-counter absolute top-2 right-2 z-40"></div>
+    <div class="hidden lg:block slide-counter absolute top-2 right-2 z-40"></div>
     <div class={clsx(
       'touch-manipulation',
       spanClasses,
@@ -164,11 +164,11 @@ switch(orientation) {
     </div>
   </div>
   <div class={clsx(
-    'relative grid grid-cols-12 gap-4 col-span-full', 
+    'relative grid grid-cols-24 gap-4 col-span-full', 
   )}>
     <div class={clsx(
       "flex gap-4 -my-0.5",
-      Astro.slots.has('description') ? 'col-span-full md:col-span-3 lg:col-span-2' : 'col-span-full'
+      Astro.slots.has('description') ? 'col-span-full lg:col-span-4 ' : 'col-span-full'
     )}>
       <div class="flex flex-col">
         {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase hidden lg:flex "/>}
@@ -180,11 +180,11 @@ switch(orientation) {
       </div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="hidden md:block col-span-full md:col-span-6 max-w-[85ch] -my-0.5 text-balance">
+      <div class="col-span-20 sm:col-span-18 md:col-span-16 lg:col-span-12 lg:order-last -my-0.5 max-w-[75ch]">
         <slot name="description" />
       </div>
     )}
-    <div class="md:hidden absolute top-0 right-0 slide-counter"></div>
+    <div class="md:hidden absolute -top-0.5 right-0 slide-counter"></div>
   </div>
 </div>
 

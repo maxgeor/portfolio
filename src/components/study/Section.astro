@@ -21,8 +21,8 @@ const {
   id={id + '-' + title} 
   aria-label={title}
   class={clsx(
-    "scroll-mt-[43px] md:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full", 
-    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-neutral-400 dark:border-neutral-700 pt-4 lg:pt-8 first:pt-0 -mx-2 px-2' : 'md:mt-8',
+    "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[50%] dark:border-white/[50%] md:scroll-mt-[60px] pt-4 lg:pt-8 first:pt-0 -mx-2 px-2' : 'md:scroll-mt-[50px]  lg:mt-8',
     classes
   )}
 >
@@ -38,20 +38,23 @@ const {
         element="h3" 
         id={id + '-second'} 
         text={title} 
-        classes='second-caption hidden sticky top-[41px] md:top-[48px] uppercase text-pretty col-span-full col-start-5 lg:col-start-3 gap-2 z-[100] mix-blend-difference text-white -my-0.5' 
+        classes='second-caption hidden sticky top-[41px] lg:top-[48px] uppercase text-pretty col-span-full col-start-5 lg:col-start-3 gap-2 z-[100] mix-blend-difference text-white -my-0.5' 
       />
     </>
   ) : (
     <>
-      <div class="grid grid-cols-12 gap-x-4 gap-2 md:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
+      <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
         <Caption element="h2" id={id} text={title} classes='text-pretty text-white -my-0.5' />
       </div>
-      <hr class="not-prose border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
-      <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
+      <hr class="not-prose border-0 border-b-[0.5px] hidden lg:block col-span-full mb-1.5 border-black dark:border-white" />
+      <Caption element="h2" id={id} text={title} classes='hidden lg:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
     </>
   )}
   {Astro.slots.has('context') && (
-    <div class="context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full lg:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-3.5 lg:pt-0 -my-0.5 lg:mt-0 max-w-[80ch]">
+    <div class={clsx(
+      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-8 lg:col-span-6 xl:col-span-5 lg:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 ",
+      isSubsection ? 'pt-1.5' : 'pt-3.5'
+    )}>
       <slot name="context" />
     </div>
   )}
@@ -85,18 +88,13 @@ const {
     opacity: 0;
   }
 
-  .second-caption {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
   .second-caption.visible {
-    opacity: 1;
+    display: flex !important;
   }
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function setupIntersectionObserver() {
     const sections = document.querySelectorAll('section');
     
     sections.forEach(section => {
@@ -107,17 +105,30 @@ const {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (!entry.isIntersecting) {
-              secondCaption.classList.remove('hidden');
               secondCaption.classList.add('visible');
             } else {
-              secondCaption.classList.add('hidden');
               secondCaption.classList.remove('visible');
             }
           });
-        }, { threshold: 0, rootMargin: '-48px 0px 0px 0px' });
+        }, { 
+          threshold: 0,
+          rootMargin: '-48px 0px 0px 0px',
+          root: null
+        });
 
         observer.observe(firstCaption);
       }
     });
-  });
+  }
+
+  // Run the setup immediately if the DOM is already loaded
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setupIntersectionObserver();
+  } else {
+    document.addEventListener('DOMContentLoaded', setupIntersectionObserver);
+  }
+
+  // Re-run the setup after Astro page transitions
+  document.addEventListener('astro:page-load', setupIntersectionObserver);
+  document.addEventListener('astro:after-swap', setupIntersectionObserver);
 </script>

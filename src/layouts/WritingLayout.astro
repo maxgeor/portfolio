@@ -12,8 +12,10 @@ const { frontmatter } = Astro.props;
       text-12
       prose-headings:uppercase 
       prose-p:my-0
-      prose-ul:my-0 prose-ul:list-disc prose-ul:pl-[16px] lg:prose-ul:pl-0
-      prose-ol:my-0 prose-ol:list-decimal prose-ol:pl-[16px] lg:prose-ol:pl-0
+      prose-ul:text-pretty prose-ul:list-none prose-ul:-my-0
+      prose-ol:text-pretty prose-ol:list-none prose-ol:pl-0 
+      prose-li:relative prose-li:marker:content-[''] prose-li:before:content-['•']  lg:prose-li:before:content-['-'] prose-li:pl-3 lg:prose-li:pl-0  prose-li:before:absolute prose-li:before:-left-0 lg:prose-li:before:-left-4 prose-li:before:top-0 lg:prose-li:before:-top-px
+      prose-li:m-0
       prose-li:marker:text-inherit
       prose-a:underline
     `}
