@@ -27,20 +27,12 @@ const {
   )}
 >
   {isSubsection ? (
-    <>
-      <Caption 
-        element="h3" 
-        id={id} 
-        text={title} 
-        classes='first-caption uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
-      />
-      <Caption 
-        element="h3" 
-        id={id + '-second'} 
-        text={title} 
-        classes='second-caption hidden sticky top-[41px] lg:top-[48px] uppercase text-pretty col-span-full col-start-5 lg:col-start-3 gap-2 z-[100] mix-blend-difference text-white -my-0.5' 
-      />
-    </>
+    <Caption 
+      element="h3" 
+      id={id} 
+      text={title} 
+      classes='sticky top-[64px] uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
+    />
   ) : (
     <>
       <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
@@ -52,14 +44,14 @@ const {
   )}
   {Astro.slots.has('context') && (
     <div class={clsx(
-      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-8 lg:col-span-6 xl:col-span-5 lg:col-start-3 h-fit [&>p]:mb-3 last:[&>p]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 ",
-      isSubsection ? 'pt-1.5' : 'pt-3.5'
+      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-8 lg:col-span-6 xl:col-span-5 lg:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 ",
+      isSubsection ? 'pt-1' : 'pt-3.5'
     )}>
       <slot name="context" />
     </div>
   )}
   {Astro.slots.has('default') && (
-    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full mt-8")}>
+    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full", Astro.slots.has('context') ? 'mt-8' : 'mt-8 lg:mt-8')}>
       <slot />
     </div>
   )}
@@ -92,43 +84,3 @@ const {
     display: flex !important;
   }
 </style>
-
-<script>
-  function setupIntersectionObserver() {
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-      const firstCaption = section.querySelector('.first-caption');
-      const secondCaption = section.querySelector('.second-caption');
-      
-      if (firstCaption && secondCaption) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-              secondCaption.classList.add('visible');
-            } else {
-              secondCaption.classList.remove('visible');
-            }
-          });
-        }, { 
-          threshold: 0,
-          rootMargin: '-48px 0px 0px 0px',
-          root: null
-        });
-
-        observer.observe(firstCaption);
-      }
-    });
-  }
-
-  // Run the setup immediately if the DOM is already loaded
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setupIntersectionObserver();
-  } else {
-    document.addEventListener('DOMContentLoaded', setupIntersectionObserver);
-  }
-
-  // Re-run the setup after Astro page transitions
-  document.addEventListener('astro:page-load', setupIntersectionObserver);
-  document.addEventListener('astro:after-swap', setupIntersectionObserver);
-</script>

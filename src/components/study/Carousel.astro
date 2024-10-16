@@ -13,6 +13,7 @@ type Media = {
   src: string;
   alt: string;
   fit: 'cover' | 'contain';
+  isPadded?: boolean;
   isRounded?: boolean;
   hasBorder?: boolean;
   classes?: string;
@@ -82,7 +83,7 @@ switch(orientation) {
   )} -->
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    paddingClasses
+    isPadded && paddingClasses
   )}>
     <InsetBorder classes={visibilityClasses} />
     <button 
@@ -164,11 +165,11 @@ switch(orientation) {
     </div>
   </div>
   <div class={clsx(
-    'relative grid grid-cols-24 gap-4 col-span-full', 
+    'relative grid grid-cols-12 gap-4 col-span-full', 
   )}>
     <div class={clsx(
       "flex gap-4 -my-0.5",
-      Astro.slots.has('description') ? 'col-span-full lg:col-span-4 ' : 'col-span-full'
+      Astro.slots.has('description') ? 'col-span-full lg:col-span-2 ' : 'col-span-full'
     )}>
       <div class="flex flex-col">
         {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase hidden lg:flex "/>}
@@ -180,7 +181,7 @@ switch(orientation) {
       </div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="col-span-20 sm:col-span-18 md:col-span-16 lg:col-span-12 lg:order-last -my-0.5 max-w-[75ch]">
+      <div class="col-span-11 md:col-span-8 lg:col-span-6 lg:order-last -my-0.5 max-w-[75ch]">
         <slot name="description" />
       </div>
     )}
