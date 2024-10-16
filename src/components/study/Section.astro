@@ -22,7 +22,7 @@ const {
   aria-label={title}
   class={clsx(
     "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
-    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[50%] dark:border-white/[50%] md:scroll-mt-[60px] pt-8 first:pt-0 -mx-2 px-2' : 'md:scroll-mt-[50px]  lg:mt-8',
+    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[30%] dark:border-white/[30%] md:scroll-mt-[60px] pt-8 md:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
     classes
   )}
 >
@@ -44,7 +44,7 @@ const {
   )}
   {Astro.slots.has('context') && (
     <div class={clsx(
-      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-8 lg:col-span-6 xl:col-span-5 lg:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 ",
+      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full lg:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 max-w-[75ch]",
       isSubsection ? 'pt-1' : 'pt-3.5'
     )}>
       <slot name="context" />
