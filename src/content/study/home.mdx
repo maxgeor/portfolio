@@ -68,10 +68,11 @@ import Caption from "../../components/study/Caption.astro";
 
 <Section id="1.0.00" title='Problem'>
   <Fragment slot="context">
-    - Wavy’s homepage featured a single calendar view showing *events*, *notable days* and *suggestions*.
-    - **Items were undiffereciated**, making hard to discern events from suggestions or find invites & RSVPs. 
-    - Calendar only showed one month at a time, making it **hard to find future & past events**.
-    - Month themes had **harsh, inaccessible colors**, making text hard to read. 
+    Wavy’s homepage featured a single calendar view showing *events*, *notable days* and *suggestions*. The issue was that it was **hard to find events you cared about**.
+
+    - Items were undiffereciated, making hard to discern events from suggestions or find invites & RSVPs. 
+    - Calendar only showed one month at a time, making it hard to find future & past events.
+    - Month themes had harsh, inaccessible colors, making text hard to read. 
   </Fragment>
   <Carousel
     slides={[
@@ -88,26 +89,10 @@ import Caption from "../../components/study/Caption.astro";
     ]}
     span={{ base: 12, md: 8 }}
     isPadded={{ base: false, md: true }}
+    withContainer
     fit="cover"
+    isFullBleed
   />
-  {/* <Row hasGap={false}>
-    <Image 
-      id="1.0.01"
-      src="/work/wavy/home/note-problem-1.png"
-      alt="Notes"
-      span={{ base: 12, md: 6 }}
-      isPadded={false}
-      isFullBleed={true}
-    />
-    <Image 
-      id="3.1.02"
-      src="/work/wavy/home/note-problem-2.png"
-      alt="Thoughts"
-      span={{ base: 12, md: 6 }}
-      isPadded={false}
-      isFullBleed={true}
-    />
-  </Row> */}
 </Section>
 <Section id="2.0.00" title='Task'>
   <Fragment slot="context">
@@ -132,7 +117,7 @@ import Caption from "../../components/study/Caption.astro";
     <Carousel
       slides={[
         {
-          id: "3.1.01",
+          id: "3.1.03",
           src: "/work/wavy/home/differenciated-styles.png",
           alt: "Items",
         },
@@ -203,12 +188,81 @@ import Caption from "../../components/study/Caption.astro";
         },
       ]}
       span={{ base: 12, md: 8 }}
+      isPadded={{ base: false, md: true }}
+      withContainer
+      orientation="3/2"
+      fit="contain"
+    />
+    {/* <Carousel
+      slides={[
+        {
+          id: "3.2.01",
+          src: "/work/wavy/home/note-your-events.png",
+          alt: "sketch, swimlanes",
+        },
+        {
+          id: "3.2.02",
+          src: "/work/wavy/home/note-layout.png",
+          alt: "sketch, Layout",
+        },
+        {
+          id: "3.2.03",
+          src: "/work/wavy/home/list-mobile-sketch.png",
+          alt: "Sketch, mobile",
+        },
+        {
+          id: "3.2.04",
+          src: "/work/wavy/home/note-smart-suggestions-1.png",
+          alt: "Sketch, suggestions",
+        },
+      ]}
+      span={{ base: 12, md: 8 }}
       isFullBleed={true}
       isPadded={{ base: false, md: true }}
       orientation="3/2"
       withContainer
       fit="contain"
+      classes="md:hidden"
     />
+    <Row hasGap={false} classes="hidden md:grid !gap-y-2">
+      <Image 
+        id="3.2.01" 
+        src="/work/wavy/home/note-your-events.png" 
+        alt="sketch, swimlanes" 
+        span={{ base: 12, md: 6 }}
+        orientation="3/2"
+        isPadded={false}
+        isFullBleed
+      />
+      <Image 
+        id="3.2.02" 
+        src="/work/wavy/home/note-layout.png" 
+        alt="sketch, Layout" 
+        span={{ base: 12, md: 6 }}
+        orientation="3/2"
+        isPadded={false}
+        isFullBleed
+      />
+      <Image 
+        id="3.2.03" 
+        src="/work/wavy/home/list-mobile-sketch.png" 
+        alt="Sketch, mobile" 
+        span={{ base: 12, md: 6 }}
+        orientation="3/2"
+        isPadded={false}
+        isFullBleed
+      />
+      <Image 
+        id="3.2.04" 
+        src="/work/wavy/home/note-smart-suggestions-1.png" 
+        alt="Sketch, suggestions" 
+        span={{ base: 12, md: 6 }}
+        orientation="3/2"
+        isPadded={false}
+        isFullBleed
+        containerBackground="bg-[#E0DFDE]"
+      />
+    </Row> */}
     <Carousel
       slides={[
         {
@@ -232,7 +286,7 @@ import Caption from "../../components/study/Caption.astro";
           alt: "Empty",
         },
       ]}
-      span={{ base: 12, md: 8 }}
+      span={{ base: 12, md: 10, lg: 8 }}
       orientation="3/2"
       fit="contain"
     >
@@ -348,11 +402,12 @@ import Caption from "../../components/study/Caption.astro";
         },
       ]}
       span={{ base: 12, md: 8 }}
-      isFullBleed={true}
       isPadded={{ base: false, md: true }}
-      orientation="3/2"
       withContainer
+      orientation="3/2"
       fit="contain"
+      isFullBleed
+
     />
     <Carousel
       slides={[
@@ -367,7 +422,7 @@ import Caption from "../../components/study/Caption.astro";
           alt: "Calendar cell",
         },
       ]}
-      span={{ base: 12, md: 8 }}
+      span={{ base: 12, md: 10, lg: 8 }}
       orientation="3/2"
       fit="cover"
     />
@@ -414,7 +469,7 @@ import Caption from "../../components/study/Caption.astro";
           alt: "Calendar, purple",
         },
       ]}
-      span={{ base: 12, md: 8 }}
+      span={{ base: 12, md: 10, lg: 8 }}
       orientation="3/2"
       fit="cover"
     />

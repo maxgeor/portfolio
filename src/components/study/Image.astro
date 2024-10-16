@@ -17,7 +17,6 @@ export interface Props {
   span?: ResponsiveNumber;
   start?: ResponsiveNumber;
   end?: ResponsiveNumber;
-  description?: string;
   hasCaption?: boolean;
   hasBorder?: ResponsiveBool;
   isPadded?: ResponsiveBool;
@@ -35,7 +34,6 @@ const {
   alt,
   id,
   span = 12,
-  description = '',
   hasCaption = true,
   orientation = 'horizontal',
   isFullBleed = false,
@@ -106,10 +104,14 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
     </div>
     {hasCaption && (
       <div class={clsx('grid grid-cols-12 gap-4', spanClasses, startClasses, endClasses)}>
-        <div class={clsx(description ? 'col-span-full lg:col-span-2' : 'col-span-full')}>
+        <div class={clsx('col-span-full', Astro.slots.has('description') && 'lg:col-span-2')}>
           <Caption id={id} text={alt} classes='-my-0.5' />
         </div>
-        {description && <p class="col-span-full md:col-span-9 lg:col-span-6 xl:col-span-4 -my-0.5">{description}</p>}
+        {Astro.slots.has('description') && (
+          <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[75ch]">
+            <slot name="description" />
+          </p>
+        )}
       </div>
     )}
   </div>
@@ -128,7 +130,8 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
         src={src}
         alt={alt}
         class={clsx(
-          'h-full w-full bg-neutral-200 dark:bg-neutral-900 select-none self-center',
+          'h-full w-full select-none self-center',
+          containerBackground,
           isPadded && 'p-8 lg:py-16',
           aspectRatio,
           objectFit
@@ -136,11 +139,21 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
       />
     </figure>
     <div class={clsx(
-      (hasCaption || description ? 'flex flex-col gap-x-4 gap-y-4 ' : 'hidden'),
+      (hasCaption || Astro.slots.has('description') ? 'grid grid-cols-12 gap-4' : 'hidden'),
       isFullBleed && 'px-2',
     )}>
-      {hasCaption && <Caption id={id} text={alt} classes='-my-0.5' />}
-      {description && <p class="col-span-full -my-0.5">{description}</p>}
+      {hasCaption && (
+        <Caption 
+          id={id} 
+          text={alt} 
+          classes={clsx('col-span-full -my-0.5',Astro.slots.has('description') && 'lg:col-span-2')} 
+        />
+      )}
+      {Astro.slots.has('description') && (
+        <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[75ch]">
+          <slot name="description" />
+        </p>
+      )}
     </div>
   </div>
 )}

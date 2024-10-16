@@ -40,6 +40,7 @@ export interface Props {
   isPadded?: ResponsiveBool;
   hasBorder?: ResponsiveBool;
   orientation?: 'horizontal' | 'vertical' | '3/2';
+  containerBackground?: string;
   classes?: string;
 }
 
@@ -50,6 +51,7 @@ const {
   isPadded = true,
   hasBorder = false,
   title,
+  containerBackground = 'bg-neutral-200 dark:bg-neutral-900',
   classes = "" 
 } = Astro.props;
 
@@ -82,8 +84,9 @@ switch(orientation) {
     </div>
   )} -->
   <div class={clsx(
-    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    isPadded && paddingClasses
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit lg:px-2 -mx-2 col-span-full",
+    isPadded && paddingClasses,
+    containerBackground
   )}>
     <InsetBorder classes={visibilityClasses} />
     <button 
@@ -112,7 +115,7 @@ switch(orientation) {
         tabindex="-1"
       ></button>
     </div>
-    <div class="hidden lg:block slide-counter absolute top-2 right-2 z-40"></div>
+    <div class={clsx("hidden md:block slide-counter absolute right-2 z-40", containerBackground ? 'top-2' : 'top-0')}></div>
     <div class={clsx(
       'touch-manipulation',
       spanClasses,
@@ -120,7 +123,8 @@ switch(orientation) {
       endClasses,
     )}>
       <div class={clsx(
-        'relative overflow-hidden bg-neutral-200 dark:bg-neutral-900 flex items-center justify-center',
+        'relative overflow-hidden  flex items-center justify-center',
+        containerBackground,
         aspectRatio,
       )}>
         {
