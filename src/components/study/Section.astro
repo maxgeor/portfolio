@@ -44,7 +44,7 @@ const {
   )}
   {Astro.slots.has('context') && (
     <div class={clsx(
-      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full lg:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 max-w-[75ch]",
+      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-10 md:col-span-9 lg:col-span-6 xl:col-span-4 lg:col-start-3 xl:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 max-w-[80ch]",
       isSubsection ? 'pt-1' : 'pt-3.5'
     )}>
       <slot name="context" />
