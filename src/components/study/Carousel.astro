@@ -78,7 +78,7 @@ switch(orientation) {
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
   <!-- {Astro.slots.has('description') && (
-    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px] max-w-[80ch]">
+    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px] max-w-[75ch]">
       {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase mb-1"/>}
       <slot name="description" />
     </div>
@@ -185,7 +185,7 @@ switch(orientation) {
       </div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="col-span-11 sm:col-span-9 md:col-span-8 lg:col-span-6 xl:col-span-4 lg:order-last -my-0.5 max-w-[80ch]">
+      <div class="col-span-11 sm:col-span-9 md:col-span-8 lg:col-span-5 xl:col-span-4 lg:order-last -my-0.5 max-w-[75ch]">
         <slot name="description" />
       </div>
     )}

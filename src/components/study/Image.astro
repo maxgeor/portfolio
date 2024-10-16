@@ -108,7 +108,7 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
           <Caption id={id} text={alt} classes='-my-0.5' />
         </div>
         {Astro.slots.has('description') && (
-          <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[80ch]">
+          <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[75ch]">
             <slot name="description" />
           </p>
         )}
@@ -150,7 +150,7 @@ const visibilityClasses = getVisibilityClasses(hasBorder);
         />
       )}
       {Astro.slots.has('description') && (
-        <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[80ch]">
+        <p class="col-span-full lg:col-span-10 -my-0.5 max-w-[75ch]">
           <slot name="description" />
         </p>
       )}
