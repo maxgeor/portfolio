@@ -13,6 +13,7 @@ type Media = {
   src: string;
   alt: string;
   fit: 'cover' | 'contain';
+  isPadded?: boolean;
   isRounded?: boolean;
   hasBorder?: boolean;
   classes?: string;
@@ -31,10 +32,15 @@ type Slide = Video | Image;
 
 export interface Props {
   slides: Slide[];
-  span: ResponsiveNumber;
+  title?: {
+    id: string;
+    text: string;
+  }
+  span?: ResponsiveNumber;
+  isPadded?: ResponsiveBool;
+  hasBorder?: ResponsiveBool;
   orientation?: 'horizontal' | 'vertical' | '3/2';
-  isPadded: ResponsiveBool;
-  hasBorder: ResponsiveBool;
+  containerBackground?: string;
   classes?: string;
 }
 
@@ -44,6 +50,8 @@ const {
   orientation = 'horizontal', 
   isPadded = true,
   hasBorder = false,
+  title,
+  containerBackground = 'bg-neutral-200 dark:bg-neutral-900',
   classes = "" 
 } = Astro.props;
 
@@ -69,14 +77,16 @@ switch(orientation) {
 ---
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
-  {Astro.slots.has('description') && (
-    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px]">
+  <!-- {Astro.slots.has('description') && (
+    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px] max-w-[75ch]">
+      {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase mb-1"/>}
       <slot name="description" />
     </div>
-  )}
+  )} -->
   <div class={clsx(
-    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit bg-neutral-200 dark:bg-neutral-900 lg:px-2 -mx-2 col-span-full",
-    paddingClasses
+    "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit lg:px-2 -mx-2 col-span-full",
+    isPadded && paddingClasses,
+    containerBackground
   )}>
     <InsetBorder classes={visibilityClasses} />
     <button 
@@ -105,7 +115,7 @@ switch(orientation) {
         tabindex="-1"
       ></button>
     </div>
-    <div class="hidden lg:block slide-counter absolute top-2 right-2 z-40"></div>
+    <div class={clsx("hidden md:block slide-counter absolute right-2 z-40", containerBackground ? 'top-2' : 'top-0')}></div>
     <div class={clsx(
       'touch-manipulation',
       spanClasses,
@@ -113,7 +123,8 @@ switch(orientation) {
       endClasses,
     )}>
       <div class={clsx(
-        'relative overflow-hidden bg-neutral-200 dark:bg-neutral-900 flex items-center justify-center',
+        'relative overflow-hidden  flex items-center justify-center',
+        containerBackground,
         aspectRatio,
       )}>
         {
@@ -158,26 +169,27 @@ switch(orientation) {
     </div>
   </div>
   <div class={clsx(
-    'grid grid-cols-12 gap-4 col-span-full', 
+    'relative grid grid-cols-12 gap-4 col-span-full', 
   )}>
     <div class={clsx(
-      "flex justify-between gap-4 -my-0.5",
-      Astro.slots.has('description') ? 'col-span-full lg:col-span-2' : 'col-span-full '
+      "flex gap-4 -my-0.5",
+      Astro.slots.has('description') ? 'col-span-full lg:col-span-2 ' : 'col-span-full'
     )}>
       <div class="flex flex-col">
+        {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase hidden lg:flex "/>}
         {slides?.map((slide, index) => (
           <button aria-label={`Jump to ${slide.alt} slide`} class={`caption caption-${index} touch-manipulation uppercase h-fit w-fit text-black dark:text-white text-left whitespace-nowrap`}>
             <Caption id={slide.id} text={slide.alt} />
           </button>
         ))}
       </div>
-      <div class="lg:hidden slide-counter"></div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="hidden lg:block lg:col-span-6 xl:col-span-5 3xl:col-span-4 3xl:max-w-[85ch] -my-0.5">
+      <div class="col-span-11 sm:col-span-9 md:col-span-8 lg:col-span-5 xl:col-span-4 lg:order-last -my-0.5 max-w-[75ch]">
         <slot name="description" />
       </div>
     )}
+    <div class="md:hidden absolute -top-0.5 right-0 slide-counter"></div>
   </div>
 </div>
 

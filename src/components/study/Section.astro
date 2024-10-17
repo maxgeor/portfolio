@@ -5,26 +5,62 @@ import clsx from 'clsx';
 export interface Props {
   id: string;
   title: string
+  isSubsection: boolean;
   classes?: string;
 }
 
-const { id, title, classes = "" } = Astro.props;
+const { 
+  id, 
+  title, 
+  isSubsection = false, 
+  classes = "" 
+} = Astro.props;
 ---
+
 <section 
   id={id + '-' + title} 
   aria-label={title}
-  class={clsx("scroll-mt-[43px] md:scroll-mt-[50px] relative grid grid-cols-12 gap-x-4 col-span-full lg:mt-8", classes)}
+  class={clsx(
+    "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative lg:border-t-[0.5px] first:border-t-0 border-[#a2a2a2] dark:border-[#7a7a7a] md:scroll-mt-[60px] lg:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
+    classes
+  )}
 >
-  <div class="grid grid-cols-12 gap-x-4 gap-2 md:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white">
-    <Caption element="h2" id={id} text={title} classes='text-pretty text-white mt-1.5' />
-  </div>
-  <hr class="border-0 border-b-[0.5px] hidden md:block col-span-full mb-1.5 border-black dark:border-white" />
-  <Caption element="h2" id={id} text={title} classes='hidden md:flex sticky top-[48px] uppercase text-pretty col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
-  <div class="context flex flex-col -my-0.5 lg:-mt-4 [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-11 md:col-span-9 lg:col-start-3 lg:col-span-6 xl:col-span-5 2xl:col-span-4 3xl:col-span-3 xl:col-start-3 3xl:max-w-[85ch] h-fit [&>p]:mb-3 last:[&>p]:mb-0 pt-1.5 lg:pt-0">
-    <slot name="context" />
-  </div>
+<!-- <section 
+  id={id + '-' + title} 
+  aria-label={title}
+  class={clsx(
+    "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[45%] dark:border-white/[50%] md:scroll-mt-[60px] pt-2 lg:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
+    classes
+  )}
+> -->
+  {isSubsection ? (
+    <Caption 
+      element="h3" 
+      id={id} 
+      text={title} 
+      classes='sticky top-[64px] uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
+    />
+  ) : (
+    <>
+      <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
+        <Caption element="h2" id={id} text={title} classes='text-pretty text-white -my-0.5' />
+      </div>
+      <hr class="not-prose border-0 border-b-[0.5px] hidden lg:block col-span-full mb-1.5 border-black dark:border-white" />
+      <Caption element="h2" id={id} text={title} classes='hidden lg:flex sticky top-[48px] uppercase text-pretty !col-span-2 gap-2 z-[100] mix-blend-difference text-white' />
+    </>
+  )}
+  {Astro.slots.has('context') && (
+    <div class={clsx(
+      "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-10 md:col-span-9 lg:col-span-5 xl:col-span-4 lg:col-start-3 xl:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 max-w-[75ch]",
+      isSubsection ? 'pt-3.5' : 'pt-3.5'
+    )}>
+      <slot name="context" />
+    </div>
+  )}
   {Astro.slots.has('default') && (
-    <div class="grid grid-cols-12 gap-y-8 mt-8 col-span-full">
+    <div class={clsx("grid grid-cols-12 gap-y-8 col-span-full mt-8")}>
       <slot />
     </div>
   )}
@@ -39,6 +75,7 @@ const { id, title, classes = "" } = Astro.props;
   }
 
   section h2::before,
+  section h3::before,
   section div:first-child::before {
     content: '';
     position: absolute;
@@ -50,5 +87,9 @@ const { id, title, classes = "" } = Astro.props;
     z-index: -1;
     transition: opacity 0.3s ease;
     opacity: 0;
+  }
+
+  .second-caption.visible {
+    display: flex !important;
   }
 </style>

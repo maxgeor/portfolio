@@ -1,8 +1,8 @@
 ---
 import clsx from 'clsx';
 export interface Props {
-  id: string;
   text: string;
+  id?: string;
   element?: string;
   classes?: string;
 }
@@ -10,9 +10,12 @@ export interface Props {
 const { id, text, element = 'p', classes = '' } = Astro.props;
 
 const Element = element as keyof HTMLElementTagNameMap;
+
+const idParts = id?.split('.');
+const idWidth = id ? idParts.length === 3 ? 'w-[33px]' : 'w-[23px]' : null;
 ---
 
 <Element aria-label={text} class={clsx("flex gap-2 uppercase col-span-full", classes)}>
-  <span class="w-[23px]">{id}</span>
+  {id && <span class={idWidth}>{id}</span>}
   <span>{text}</span>
 </Element>
