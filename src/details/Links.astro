@@ -45,7 +45,7 @@ const links: {
 ];
 ---
 
-<div class={clsx("grid gap-x-4", classes)}>
+<div class={clsx("flex flex-col h-fit gap-x-4", classes)}>
   {links.map(link => (
     <a href={link.url} target={link.target || '_blank'} class="uppercase">
       {link.name}
