@@ -132,7 +132,7 @@ import Caption from "../../components/study/Caption.astro";
       isPadded={{ base: false, md: true }} 
       hasBorder={{ base: true, md: false }}
     >
-      <Fragment slot="description">We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text.</Fragment>
+      {/* <Fragment slot="description">We gave events a white background with black text, notable days a colored background with colored text, and suggestions a transparent background with a dashed outline and gray text.</Fragment> */}
     </Carousel> 
     <Carousel
       slides={[
@@ -151,17 +151,19 @@ import Caption from "../../components/study/Caption.astro";
       isPadded={{ base: false, md: true }} 
       hasBorder={{ base: true, md: false }}
     >
-      <Fragment slot="description">Events were labeled by status: Invited, Going, Declined, or Went. This made it easier to identify relevant events, especially in the calendar.</Fragment>
+      {/* <Fragment slot="description">Events were labeled by status: Invited, Going, Declined, or Went. This made it easier to identify relevant events, especially in the calendar.</Fragment> */}
     </Carousel>
   </Section>
   <Section id='3.2.00' title="List View" isSubsection={true}>
     <Fragment slot="context">
       
-      Research showed us that people thought about events in 3 different ways: 
-      
-      Space — *When are events happening? What's open?*<br/>
-      Category — *Where are my events? Invites? Rsvps?*<br/>
-      Chronology — *What's coming up? What's next?*
+      Research showed us that people thought about events in 3 different ways:
+
+      | Section | Description |
+      |---------|-------------|
+      | Space | When are events happening? What's open? |
+      | Category | Where are my events? Invites? Rsvps? |
+      | Chronology | What's coming up? What's next? |
 
       Since the calendar only afforded spatial reasoning, we **added a List View to organize events by category and chronology**.
     </Fragment>
@@ -291,7 +293,7 @@ import Caption from "../../components/study/Caption.astro";
       orientation="3/2"
       fit="contain"
     >
-      <Fragment slot="description">The List View was built around `Swimlanes`, rows of events grouped by category, and the `Timeline`, a dense chronological stack. We made it the default view, letting people toggle between it and the Calendar.</Fragment>
+      <Fragment slot="description">We use `Swimlanes` to group events by category and the `Timeline` to organize them in a chronological stack. It became the default view, letting people flip to the Calendar.</Fragment>
     </Carousel>
     <Carousel
       slides={[

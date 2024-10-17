@@ -22,10 +22,19 @@ const {
   aria-label={title}
   class={clsx(
     "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
-    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[50%] dark:border-white/[50%] md:scroll-mt-[60px] pt-8 md:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
+    isSubsection ? 'relative lg:border-t-[0.5px] first:border-t-0 border-[#a2a2a2] dark:border-[#7a7a7a] md:scroll-mt-[60px] lg:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
     classes
   )}
 >
+<!-- <section 
+  id={id + '-' + title} 
+  aria-label={title}
+  class={clsx(
+    "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative border-t-[0.5px] first:border-t-0 border-black/[45%] dark:border-white/[50%] md:scroll-mt-[60px] pt-2 lg:pt-8 first:pt-0 ' : 'md:scroll-mt-[50px]  lg:mt-8',
+    classes
+  )}
+> -->
   {isSubsection ? (
     <Caption 
       element="h3" 
@@ -45,7 +54,7 @@ const {
   {Astro.slots.has('context') && (
     <div class={clsx(
       "context [&_mark]:bg-transparent [&_mark]:text-black dark:[&_mark]:text-white [&_mark]:font-bold col-span-full sm:col-span-10 md:col-span-9 lg:col-span-5 xl:col-span-4 lg:col-start-3 xl:col-start-3 h-fit [&>*]:mb-3 last:[&>*]:mb-0 lg:pt-0 -my-0.5 lg:mt-0 max-w-[75ch]",
-      isSubsection ? 'pt-1' : 'pt-3.5'
+      isSubsection ? 'pt-3.5' : 'pt-3.5'
     )}>
       <slot name="context" />
     </div>
