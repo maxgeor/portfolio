@@ -128,7 +128,7 @@ const inlineScript = `
     --nav-width: 75px;  
     --nav-offset: calc(var(--nav-width) + (15px * 2));
     --aside-width: calc((100vw - var(--nav-width) - 15px) / 4);
-    --accent-color: #23FF27;
+    --accent-color: #FF29FB;
     --accent-text-color: #000;
   }
 
@@ -145,6 +145,9 @@ const inlineScript = `
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+  html.dark {
+    --accent-color: #23FF27;
   }
   
   a {
