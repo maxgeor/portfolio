@@ -77,12 +77,12 @@ switch(orientation) {
 ---
 
 <div class={clsx('grid grid-cols-12 gap-y-2 gap-x-4 col-span-full carousel', classes)}>
-  <!-- {Astro.slots.has('description') && (
-    <div class="lg:hidden col-span-full sm:col-span-11 md:col-span-9 -mt-0.5 mb-[22px] max-w-[75ch]">
+  {Astro.slots.has('description') && (
+    <div class="lg:hidden col-span-full sm:col-span-10 md:col-span-8 -mt-0.5 mb-[22px] max-w-[80ch]">
       {title && <Caption element="h3" id={title.id} text={title.text} classes="uppercase mb-1"/>}
       <slot name="description" />
     </div>
-  )} -->
+  )}
   <div class={clsx(
     "grid grid-cols-12 gap-x-4 gap-y-4 relative h-fit lg:px-2 -mx-2 col-span-full",
     isPadded && paddingClasses,
@@ -185,7 +185,7 @@ switch(orientation) {
       </div>
     </div>
     {Astro.slots.has('description') && (
-      <div class="col-span-11 sm:col-span-9 md:col-span-8 lg:col-span-5 xl:col-span-4 lg:order-last -my-0.5 max-w-[75ch]">
+      <div class="hidden lg:block col-span-11 sm:col-span-9 md:col-span-8 lg:col-span-5 xl:col-span-4 lg:order-last -my-0.5 max-w-[80ch]">
         <slot name="description" />
       </div>
     )}

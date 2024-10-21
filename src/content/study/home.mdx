@@ -23,7 +23,7 @@ teammates:
     },
   ]
 tools: ["Figma"]
-description: "Redesigned Wavy's homepage to improve event navigation and accessibility. We added a List View with Swimlanes and a Timeline for easier sorting and event tracking, making it the default view. The Calendar View was updated for better spacing and readability with accessible, pastel themes. Differentiated event types through distinct visual styles and icons for quick identification. Lastly, renamed 'Culture Pal' to 'Smart Suggestions', making it clearer and more intuitive for users."
+description: "Wavy’s homepage calendar was cluttered, making it hard to differentiate events, suggestions, and RSVPs, and limiting visibility to one month. We improved this by adding unique item styles, a List View with Swimlanes and a Timeline for better event organization, and increasing the calendar’s information density. The color scheme was updated to enhance readability and align with Wavy’s playful branding."
 year: '2024'
 order: 1
 content: [
@@ -98,11 +98,11 @@ import Caption from "../../components/study/Caption.astro";
 <Section id="2.0.00" title='Task'>
   <Fragment slot="context">
     <div>
-      <Caption element="h3" id="2.1.00" text="Goal" />
+      <Caption element="h3" id="2.1.00" text="Goal" classes="mb-1"  />
       Make UI navigable and parsable. Resolve issues with information architecture, calendar visibility and visual clarity to help people navigate Wavy while reinforcing its brand.
     </div>
     <div>
-      <Caption element="h3" id="2.2.00" text="Role" />
+      <Caption element="h3" id="2.2.00" text="Role" classes="mb-1" />
       Lead design by researching needs and redesigning flows, UI, and information architecture. Collaborated with the strategy team to ensure the design met user and business goals.
     </div>
   </Fragment>
@@ -156,6 +156,9 @@ import Caption from "../../components/study/Caption.astro";
   </Section>
   <Section id='3.2.00' title="List View" isSubsection={true}>
     <Fragment slot="context">
+      Research showed us that people thought about events in 3 different ways: `Space` (*when's everything happening?*), `Category` (*where are x kind of events?*) and `Chronology` (*what's coming up?*). Since the calendar only afforded spatial reasoning, we **added a List View to organize events in new ways**.
+    </Fragment>
+    {/* <Fragment slot="context">
       
       Research showed us that people thought about events in 3 different ways:
 
@@ -166,7 +169,7 @@ import Caption from "../../components/study/Caption.astro";
       | Space | When are events happening? What's open? |
 
       Since the calendar only afforded spatial reasoning, we **added a List View to organize events by category and chronology**.
-    </Fragment>
+    </Fragment> */}
     <Carousel
       slides={[
         {

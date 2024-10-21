@@ -10,9 +10,14 @@ const { hasGap = true, classes = "" } = Astro.props;
 ---
 
 <div class={clsx(
-  "grid grid-cols-12 gap-x-4 gap-y-4 lg:gap-y-8 col-span-full",
+  "grid grid-cols-12 gap-x-4 gap-y-8 col-span-full",
   hasGap && '-mr-px [&>*]:border-r [&>*]:border-white dark:[&>*]:border-black',
   classes
 )}>
+<!-- <div class={clsx(
+  "grid grid-cols-12 gap-x-4 gap-y-4 lg:gap-y-8 col-span-full",
+  hasGap && '-mr-px [&>*]:border-r [&>*]:border-white dark:[&>*]:border-black',
+  classes
+)}> -->
   <slot />
 </div>
