@@ -21,8 +21,8 @@ const {
   id={id + '-' + title} 
   aria-label={title}
   class={clsx(
-    "scroll-mt-[43px] relative grid grid-cols-12 gap-x-4 col-span-full", 
-    isSubsection ? 'relative scroll-mt-[66px] ' : 'scroll-mt-[43px]  md:scroll-mt-[50px] ',
+    "scroll-mt-[42px] relative grid grid-cols-12 gap-x-4 col-span-full", 
+    isSubsection ? 'relative scroll-mt-[66px] md:scroll-mt-[50px]' : 'scroll-mt-[42px]  md:scroll-mt-[50px] ',
     classes
   )}
 >
@@ -31,11 +31,11 @@ const {
       element="h3" 
       id={id} 
       text={title} 
-      classes='sticky top-[64px] uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
+      classes='sticky top-[65px] uppercase text-pretty col-span-full lg:col-span-2 gap-2 z-[100] mix-blend-difference text-white -my-0.5'
     />
   ) : (
     <>
-      <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky top-[41px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
+      <div class="grid grid-cols-12 gap-x-4 gap-2 lg:hidden sticky top-[42px] col-span-full z-[100] mix-blend-difference border-t-[0.5px] border-white pt-2">
         <Caption element="h2" id={id} text={title} classes='text-pretty text-white -my-0.5' />
       </div>
       <hr class="not-prose border-0 border-b-[0.5px] hidden lg:block col-span-full mb-2 border-black dark:border-white" />
