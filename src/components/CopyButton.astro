@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  copyText: string;
+}
+
+const { label, copyText } = Astro.props;
+---
+
+<button class="group relative inline-block uppercase" data-copy-text={copyText}>
+  <span>{label}</span>
+  <span class="copy-status hidden group-hover:inline-block opacity-50 group-hover:opacity-100 ml-[5px]">Copy</span>
+</button>
+
+<script>
+  function setupCopyButtons() {
+    const buttons = document.querySelectorAll('button[data-copy-text]');
+    buttons.forEach((button) => {
+      const statusElement = button.querySelector('.copy-status') as HTMLElement;
+
+      button.addEventListener('click', async () => {
+        const textToCopy = button.getAttribute('data-copy-text') || '';
+        await navigator.clipboard.writeText(textToCopy);
+
+        statusElement.textContent = 'Copied';
+        statusElement.classList.remove('hidden');
+
+        setTimeout(() => {
+          statusElement.classList.add('hidden');
+          statusElement.textContent = 'Copy';
+        }, 2500);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupCopyButtons);
+</script>

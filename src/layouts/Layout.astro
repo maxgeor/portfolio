@@ -186,39 +186,3 @@ const inlineScript = `
     text-wrap: balance;
   }
 </style>
-
-<!-- <script>
-  const musicToggle = document.getElementById('music-toggle') as HTMLButtonElement;
-  const musicToggleLineThrough = document.getElementById('music-toggle-line-through') as HTMLSpanElement;
-  let audio = new Audio();
-  let isPlaying = false;
-  let currentSongIndex = 0;
-
-  const songs = [
-    '/songs/magnolia.wav',
-    '/songs/typeshit.wav',
-    '/songs/miley.wav',
-  ];
-
-  function playNextSong() {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    audio.src = songs[currentSongIndex];
-    audio.play();
-  }
-
-  audio.addEventListener('ended', playNextSong);
-
-  musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-      audio.pause();
-      musicToggleLineThrough.classList.add('hidden');
-    } else {
-      if (audio.src === '') {
-        audio.src = songs[currentSongIndex];
-      }
-      audio.play();
-      musicToggleLineThrough.classList.remove('hidden');
-    }
-    isPlaying = !isPlaying;
-  });
-</script> -->

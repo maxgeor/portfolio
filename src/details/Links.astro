@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import CopyButton from "../components/CopyButton.astro";
 
 export interface Props {
   cols?: number;
@@ -8,33 +9,54 @@ export interface Props {
 
 const { classes = "" } = Astro.props;
 
-const links: {
-  name: string;
+type Link = {
+  type: 'link';
   url: string;
   target?: "_self" | "_blank";
-}[] = [
-  
+}
+
+type CopiableButton = {
+  type: 'copyButton';
+  copyText: string;
+}
+
+type Button = {
+  name: string;
+} & (Link | CopiableButton);
+
+const buttons: Button[] = [
   {
+    type: "link",
     name: "Dribbble",
     url: "https://dribbble.com/maxgeo",
   },
   {
+    type: "link",
     name: "Twitter",
     url: "https://twitter.com/maxoulos",
   },
   {
+    type: "link",
     name: "Layers",
     url: "https://layers.to/maxgeorgopoulos",
   },
   {
+    type: "link",
     name: "Github",
     url:  "https://github.com/maxgeor",
   },
   {
+    type: "link",
     name: "Arena",
     url: "https://www.are.na/max-georgopoulos",
   },
   {
+    type: "copyButton",
+    name: "Email",
+    copyText: "max@maxgeorgopoulos.com",
+  },
+  {
+    type: "link",
     name: "CV",
     url: "https://drive.google.com/file/d/1pT2umJ6XyPorDSo8amb8iwrP9ZZs7htH/view?usp=sharing",
   },
@@ -42,9 +64,13 @@ const links: {
 ---
 
 <div class={clsx("flex flex-col h-fit gap-x-4", classes)}>
-  {links.map(link => (
-    <a href={link.url} target={link.target || '_blank'} class="uppercase">
-      {link.name}
-    </a>
+  {buttons.map(btn => (
+    btn.type === "copyButton" ? (
+      <CopyButton label={btn.name} copyText={btn.copyText} />
+    ) : (
+      <a href={btn.url} target={btn.target || "_blank"} class="uppercase">
+        {btn.name}
+      </a>
+    )
   ))}
 </div>
