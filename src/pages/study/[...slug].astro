@@ -25,9 +25,9 @@ const otherCaseStudies = await getCollection('work', (
 
 <Layout title={entry.title} description={entry.description} mainContentId="content-list">
   <Content />
-  <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4">
-    <div class="border-t-[0.5px] border-black dark:border-white pt-2 col-span-full ">
-      <h2 class="uppercase -my-0.5">Next Up</h2>
+  <section class="other-case-studies grid grid-cols-12 col-span-full gap-y-8 gap-x-4 relative">
+    <div class="sticky top-[41px] border-t-[0.5px] border-white pt-2 col-span-full z-[100] mix-blend-difference">
+      <h2 class="uppercase -my-0.5 text-white">Next Up</h2>
     </div>
     {otherCaseStudies?.map((work) => (
       <Work 
@@ -36,5 +36,29 @@ const otherCaseStudies = await getCollection('work', (
         classes="xs:col-span-full sm:col-span-6 md:col-span-4 xl:col-span-3" 
       />
     ))}
-  </div>
+  </section>
 </Layout>
+
+<style>
+  section.other-case-studies::after {
+    content: '';
+    display: block;
+    height: 1px;
+    margin-bottom: -1px;
+  }
+
+  section.other-case-studies h2::before,
+  section.other-case-studies h3::before,
+  section.other-case-studies div:first-child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: invert(1);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+</style>
