@@ -240,7 +240,7 @@ const responsiveColEndClasses: Record<string, Record<string, string>> = {
 };
 
 const paddingClassesMap: Record<string, string> = {
-  true: "p-8 md:px-2 md:py-16",
+  true: "p-8 sm:px-2 md:py-16",
   false: "",
 };
 

@@ -92,8 +92,7 @@ import Row from "../../components/study/Row.astro";
         type: "video"
       },
     ]}
-    span={{ base: 12, md: 8 }}
-    start={{ base: 1, md: 3 }}
+    span={{ base: 12, sm: 10, lg: 8 }}
   >
     <Fragment slot="description">
       Etherscan worked best with one-way actions (like voting or sending ETH), which trigger changes without returning data. Two-way actions, which return more complex data (like checking balances or viewing NFTs), often needed custom UIs to handle the extra complexity. The straightforward layout made navigating one-way actions easy, while two-ways required more tailored solutions.
@@ -174,7 +173,7 @@ import Row from "../../components/study/Row.astro";
         alt: "success",
       },
     ]}
-    span={{ base: 12, md: 8 }}
+    span={{ base: 12, sm: 10, lg: 8 }}
     orientation="3/2"
     fit="cover"
   />
