@@ -70,7 +70,7 @@ const props = shouldDisable
       ? 'disabled cursor-not-allowed' 
       : link.target === '_blank' 
         ? 'cursor-alias' 
-        : 'cursor-pointer'}
+        : 'cursor-e-resize'}
     ${!isHidden && 'active'}
     ${classes}
   `}
@@ -101,11 +101,14 @@ const props = shouldDisable
 <style>
   .work-card {
     justify-content: space-between;
-    transition: height 0.3s ease;
+    transition: all 0.3s ease-in-out;
+    /* border-left: 1px #fff solid;
+    margin-left: -9px; */
   }
   
   .work-card.active {
     justify-content: start;
+    /* border-left: 1px #ddd dotted; */
   }
 
   .work-card.disabled.active .work-card-content {
