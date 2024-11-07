@@ -65,43 +65,45 @@ const props = shouldDisable
   {...props}
   {...attributes}
   class={`
-    work-card xs:col-span-6 md:col-span-4 xl:col-span-3 relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 transition-opacity duration-200
+    flex flex-col gap-2 overflow-hidden work-card xs:col-span-6 md:col-span-4 xl:col-span-3 relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 transition-opacity duration-200
     ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
     ${!isHidden && 'active'}
     ${classes}
   `}
 >
-  <div class='flex flex-col gap-2  h-full overflow-hidden'>
-    <picture class={`work-card-picture relative h-auto group-focus:opacity-100! duration-300`}>
-      <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.08),_inset_0_-0.5px_0_rgba(0,0,0,0.08)] pointer-events-none"></div>
-      <ResponsiveImage {...image} transitionBuffer={0} />
-      {isArchived && <ScrollingBanner title='Archive' classes="-rotate-[12deg]" />}
-      {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
-      {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
-    </picture> 
-    <div class="work-card-content flex flex-col uppercase -my-0.5 mx-2">
-      <div>
-        <h2 class="flex shrink-0 whitespace-nowrap">
-          {title}
-          {link.href && link.target === '_blank' && !shouldDisable && !studySlug && (
-            <ExternalLinkArrow classes="-ml-px shrink-0" />
-          )}
-        </h2>
-        <p class="">{description}</p>
-      </div>
-      <div class="">
-        <p>{roles.join(', ')}</p>
-        <p class="">{type}</p>
-        <p>{year}</p>
-      </div>
+  <picture class={`work-card-picture relative h-auto group-focus:opacity-100! duration-300`}>
+    <div class="absolute z-10 inset-0 shadow-[inset_0_0.5px_0_rgba(0,0,0,0.08),_inset_0_-0.5px_0_rgba(0,0,0,0.08)] pointer-events-none"></div>
+    <ResponsiveImage {...image} transitionBuffer={0} />
+    {isArchived && <ScrollingBanner title='Archive' classes="-rotate-[12deg]" />}
+    {isComingSoon && <ScrollingBanner title='Soon' classes="-rotate-[12deg]" />}
+    {isPrivate && <ScrollingBanner title='Private' classes="-rotate-[12deg]" />}
+  </picture> 
+  <div class="work-card-content uppercase mx-2">
+    <div class="-my-0.5">
+      <h2 class="flex shrink-0 whitespace-nowrap">
+        {title}
+        {link.href && link.target === '_blank' && !shouldDisable && !studySlug && (
+          <ExternalLinkArrow classes="-ml-px shrink-0" />
+        )}
+      </h2>
+      <p>{description}</p>
+      <p>{roles.join(', ')}</p>
+      <p>{type}</p>
+      <p>{year}</p>
     </div>
   </div>
 </Element>
 
 <style>
-  .work-card.disabled .work-card-content {
-    opacity: 0.4;
+  .work-card {
+    justify-content: space-between;
+    transition: height 0.3s ease;
   }
+  
+  .work-card.active {
+    justify-content: start;
+  }
+
   .work-card.disabled.active .work-card-content {
     opacity: 1;
   }

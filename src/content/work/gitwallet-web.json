@@ -1,0 +1,19 @@
+{
+  "type": "client",
+  "title": "Gitwallet/Web",
+  "description": "Website for Gitwallet",
+  "image": {
+    "src": "/work/gitwallet-web.mp4",
+    "previewSrc": "/work/gitwallet-web.png",
+    "alt": "Preview of gitwallet site",
+    "width": "800",
+    "height": "500"
+  },
+  "roles": ["Brand", "Code"],
+  "link": {
+    "href": "https://gitwallet.co/",
+    "target": "_blank"
+  },
+  "order": 0,
+  "year": "2024"
+}
