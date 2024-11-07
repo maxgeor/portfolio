@@ -11,6 +11,7 @@
   },
   "roles": ["Product", "Brand"],
   "isArchived": true,
+  "isDraft": true,
   "order": 1100,
   "year": "2023"
 }
