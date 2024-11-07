@@ -66,7 +66,11 @@ const props = shouldDisable
   {...attributes}
   class={`
     flex flex-col gap-2 overflow-hidden work-card xs:col-span-6 md:col-span-4 xl:col-span-3 relative group col-span-full text-pretty hover:bg-transparent !hover:opacity-1 !focus:opacity-1 -mx-2 transition-opacity duration-200
-    ${shouldDisable ? 'disabled cursor-not-allowed' : 'cursor-pointer'}
+    ${shouldDisable 
+      ? 'disabled cursor-not-allowed' 
+      : link.target === '_blank' 
+        ? 'cursor-alias' 
+        : 'cursor-pointer'}
     ${!isHidden && 'active'}
     ${classes}
   `}

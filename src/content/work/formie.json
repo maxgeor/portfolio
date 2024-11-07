@@ -11,8 +11,7 @@
   },
   "roles": ["Product", "Brand", "Code"],
   "link": {
-    "href": "https://www.formie.co/",
-    "target": "_blank"
+    "href": "https://www.formie.co/"
   },
   "studySlug": "formie",
   "order": 4,
