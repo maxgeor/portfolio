@@ -1,13 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Links from '../../details/Links.astro';
+import CopyButton from '../../components/CopyButton.astro';
 
 ---
 <Layout>
   <div class="grid grid-cols-12 col-span-full gap-y-8 gap-x-4 h-fit">
-    <p class="-my-0.5 col-span-full sm:col-span-10 md:col-span-6 lg:col-span-5 xl:col-span-4 lowercase">
-      Design at <a href="https://www.getopal.co/" target="_blank">Opal</a> + <a href="https://gitwallet.co/" target="_blank">Gitwallet</a>. Based in Toronto. Used to do engineering, now product design and frontend. Design primarily in code, think you get better results that way. Interested in fashion, education, parenting + architecture as meta-discipline. Considering architecture school.
+    <p class="-my-0.5 col-span-full sm:col-span-10 md:col-span-6 lg:col-span-5 xl:col-span-4">
+      Design at <a href="https://www.getopal.co/" target="_blank">Opal</a> + <a href="https://gitwallet.co/" target="_blank">Gitwallet</a>. Based in Toronto. Used to do engineering, now product design and frontend. Design primarily in code, think you get better results that way. Interested in fashion, education, parenting and architecture (considering going back to school for it).
     </p>
+    <CopyButton label="hey@maxgeorgopoulos.com" copyText="hey@maxgeorgopoulos.com" classes="col-span-full" />
     <Links classes='-my-0.5 col-span-full' />
   </div>
 </Layout>

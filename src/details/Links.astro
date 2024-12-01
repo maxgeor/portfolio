@@ -51,11 +51,6 @@ const buttons: Button[] = [
     url: "https://www.are.na/max-georgopoulos",
   },
   {
-    type: "copyButton",
-    name: "Email",
-    copyText: "max@maxgeorgopoulos.com",
-  },
-  {
     type: "link",
     name: "CV",
     url: "https://drive.google.com/file/d/1126aBg3Z49hJd0H5likQorzbWRWKVLvS/view?usp=sharing",
@@ -63,7 +58,7 @@ const buttons: Button[] = [
 ];
 ---
 
-<div class={clsx("flex flex-col h-fit gap-x-4", classes)}>
+<div class={clsx("flex flex-col h-fit gap-x-4 ", classes)}>
   {buttons.map(btn => (
     btn.type === "copyButton" ? (
       <CopyButton label={btn.name} copyText={btn.copyText} />

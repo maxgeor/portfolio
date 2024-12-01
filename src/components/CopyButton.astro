@@ -1,13 +1,16 @@
 ---
+import clsx from 'clsx';
+
 interface Props {
   label: string;
   copyText: string;
+  classes?: string;
 }
 
-const { label, copyText } = Astro.props;
+const { label, copyText, classes } = Astro.props;
 ---
 
-<button class="group relative inline-block uppercase" data-copy-text={copyText}>
+<button class={clsx("group relative inline-block uppercase", classes)} data-copy-text={copyText}>
   <span>{label}</span>
   <span class="copy-status hidden group-hover:inline-block opacity-50 group-hover:opacity-100 ml-[5px]">Copy</span>
 </button>
