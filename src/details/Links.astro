@@ -26,6 +26,11 @@ type Button = {
 
 const buttons: Button[] = [
   {
+    type: "copyButton",
+    name: "hey@maxgeorgopoulos.com",
+    copyText: "hey@maxgeorgopoulos.com",
+  },
+  {
     type: "link",
     name: "Dribbble",
     url: "https://dribbble.com/maxgeo",
@@ -58,7 +63,7 @@ const buttons: Button[] = [
 ];
 ---
 
-<div class={clsx("flex flex-col h-fit gap-x-4 ", classes)}>
+<div class={clsx("flex flex-col h-fit gap-x-4 divide-y border-y divide-neutral-400 dark:divide-neutral-600 border-neutral-400 dark:border-neutral-600", classes)}>
   {buttons.map(btn => (
     btn.type === "copyButton" ? (
       <CopyButton label={btn.name} copyText={btn.copyText} />
