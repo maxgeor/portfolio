@@ -63,7 +63,7 @@ const buttons: Button[] = [
 ];
 ---
 
-<div class={clsx("flex flex-col h-fit gap-x-4 divide-y-[0.5px] border-y-[0.5px]", classes)}>
+<div class={clsx("flex flex-col h-fit gap-x-4 divide-y-[0.5px] border-y-[0.5px] divide-black dark:divide-white border-black dark:border-white", classes)}>
   {buttons.map(btn => (
     btn.type === "copyButton" ? (
       <CopyButton label={btn.name} copyText={btn.copyText} />
